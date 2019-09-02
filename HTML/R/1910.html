@@ -1,0 +1,727 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>seg</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/20.html#L36'>seg</a>                36 memsmodel/mems_buffer.c   struct mems_segment *seg;</span>
+<span class='curline'><a href='../S/20.html#L49'>seg</a>                49 memsmodel/mems_buffer.c   seg = dev-&gt;seglist;</span>
+<span class='curline'><a href='../S/20.html#L50'>seg</a>                50 memsmodel/mems_buffer.c   while (seg)</span>
+<span class='curline'><a href='../S/20.html#L52'>seg</a>                52 memsmodel/mems_buffer.c       if ((blk &gt;= seg-&gt;startblkno &amp;&amp; blk &lt; seg-&gt;endblkno))</span>
+<span class='curline'><a href='../S/20.html#L54'>seg</a>                54 memsmodel/mems_buffer.c 	  blk = seg-&gt;endblkno;</span>
+<span class='curline'><a href='../S/20.html#L55'>seg</a>                55 memsmodel/mems_buffer.c 	  move_segment_to_head(seg, dev);	/* seg points to head of list */</span>
+<span class='curline'><a href='../S/20.html#L62'>seg</a>                62 memsmodel/mems_buffer.c       seg = seg-&gt;next;	/* seg now points to second element in list */</span>
+<span class='curline'><a href='../S/20.html#L73'>seg</a>                73 memsmodel/mems_buffer.c   struct mems_segment *seg;</span>
+<span class='curline'><a href='../S/20.html#L89'>seg</a>                89 memsmodel/mems_buffer.c   for (seg = dev-&gt;seglist; seg; seg = seg-&gt;next)</span>
+<span class='curline'><a href='../S/20.html#L91'>seg</a>                91 memsmodel/mems_buffer.c       if ((firstblock &gt;= seg-&gt;startblkno) &amp;&amp; </span>
+<span class='curline'><a href='../S/20.html#L92'>seg</a>                92 memsmodel/mems_buffer.c 	  (firstblock &lt;= (seg-&gt;endblkno + 1))) break;</span>
+<span class='curline'><a href='../S/20.html#L94'>seg</a>                94 memsmodel/mems_buffer.c   if (seg)</span>
+<span class='curline'><a href='../S/20.html#L98'>seg</a>                98 memsmodel/mems_buffer.c       if ((firstblock &gt;= seg-&gt;startblkno) &amp;&amp; (lastblock &lt;= seg-&gt;endblkno))</span>
+<span class='curline'><a href='../S/20.html#L100'>seg</a>               100 memsmodel/mems_buffer.c 	  move_segment_to_head(seg, dev);</span>
+<span class='curline'><a href='../S/20.html#L107'>seg</a>               107 memsmodel/mems_buffer.c       if ((seg-&gt;endblkno - seg-&gt;startblkno + 1) &lt; dev-&gt;segsize)</span>
+<span class='curline'><a href='../S/20.html#L109'>seg</a>               109 memsmodel/mems_buffer.c 	  move_segment_to_head(seg, dev);</span>
+<span class='curline'><a href='../S/20.html#L112'>seg</a>               112 memsmodel/mems_buffer.c 	      if (seg-&gt;endblkno &lt; blk)</span>
+<span class='curline'><a href='../S/20.html#L114'>seg</a>               114 memsmodel/mems_buffer.c 		  seg-&gt;endblkno = blk;</span>
+<span class='curline'><a href='../S/20.html#L115'>seg</a>               115 memsmodel/mems_buffer.c 		  if ((seg-&gt;endblkno - seg-&gt;startblkno + 1) &gt;= dev-&gt;segsize)</span>
+<span class='curline'><a href='../S/20.html#L125'>seg</a>               125 memsmodel/mems_buffer.c   seg = dev-&gt;seglist;</span>
+<span class='curline'><a href='../S/20.html#L126'>seg</a>               126 memsmodel/mems_buffer.c   while (seg-&gt;next) seg = seg-&gt;next;</span>
+<span class='curline'><a href='../S/20.html#L127'>seg</a>               127 memsmodel/mems_buffer.c   move_segment_to_head(seg, dev);</span>
+<span class='curline'><a href='../S/20.html#L128'>seg</a>               128 memsmodel/mems_buffer.c   seg-&gt;startblkno = blk;</span>
+<span class='curline'><a href='../S/20.html#L129'>seg</a>               129 memsmodel/mems_buffer.c   seg-&gt;endblkno = lastblock;</span>
+<span class='curline'><a href='../S/273.html#L975'>seg</a>               975 src/disksim_disk.c        if (tmpdiskreq-&gt;seg) {</span>
+<span class='curline'><a href='../S/273.html#L985'>seg</a>               985 src/disksim_disk.c        if (tmpdiskreq-&gt;seg) {</span>
+<span class='curline'><a href='../S/273.html#L998'>seg</a>               998 src/disksim_disk.c        if (tmpdiskreq-&gt;seg) {</span>
+<span class='curline'><a href='../S/273.html#L1008'>seg</a>              1008 src/disksim_disk.c        if (tmpdiskreq-&gt;seg) {</span>
+<span class='curline'><a href='../S/273.html#L1018'>seg</a>              1018 src/disksim_disk.c        if (tmpdiskreq-&gt;seg) {</span>
+<span class='curline'><a href='../S/258.html#L196'>seg</a>               196 src/disksim_disk.h    struct seg  *next;</span>
+<span class='curline'><a href='../S/258.html#L197'>seg</a>               197 src/disksim_disk.h    struct seg  *prev;</span>
+<span class='curline'><a href='../S/258.html#L228'>seg</a>               228 src/disksim_disk.h    segment	       *seg;		/* associated cache segment */</span>
+<span class='curline'><a href='../S/258.html#L566'>seg</a>               566 src/disksim_disk.h diskreq * disk_buffer_seg_owner(segment *seg, int effective);</span>
+<span class='curline'><a href='../S/258.html#L570'>seg</a>               570 src/disksim_disk.h 				   segment *seg, </span>
+<span class='curline'><a href='../S/258.html#L573'>seg</a>               573 src/disksim_disk.h int  disk_buffer_block_available(disk *currdisk, segment *seg, int blkno);</span>
+<span class='curline'><a href='../S/258.html#L575'>seg</a>               575 src/disksim_disk.h int  disk_buffer_overlap(segment *seg, ioreq_event *curr);</span>
+<span class='curline'><a href='../S/258.html#L581'>seg</a>               581 src/disksim_disk.h void disk_buffer_segment_wrap(segment *seg, int endblkno);</span>
+<span class='curline'><a href='../S/192.html#L113'>seg</a>               113 src/disksim_diskcache.c static int disk_buffer_segment_wrap_needed (segment *seg, int endblkno)</span>
+<span class='curline'><a href='../S/192.html#L115'>seg</a>               115 src/disksim_diskcache.c    return(seg-&gt;startblkno &lt; (endblkno - seg-&gt;size));</span>
+<span class='curline'><a href='../S/192.html#L120'>seg</a>               120 src/disksim_diskcache.c void disk_buffer_segment_wrap (segment *seg, int endblkno)</span>
+<span class='curline'><a href='../S/192.html#L122'>seg</a>               122 src/disksim_diskcache.c    seg-&gt;startblkno = max(seg-&gt;startblkno, (endblkno - seg-&gt;size));</span>
+<span class='curline'><a href='../S/192.html#L130'>seg</a>               130 src/disksim_diskcache.c int disk_buffer_overlap (segment *seg, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/192.html#L134'>seg</a>               134 src/disksim_diskcache.c    if ((curr-&gt;blkno &gt;= seg-&gt;startblkno) &amp;&amp; (curr-&gt;blkno &lt; seg-&gt;endblkno)) {</span>
+<span class='curline'><a href='../S/192.html#L139'>seg</a>               139 src/disksim_diskcache.c    if ((tmp &gt; seg-&gt;startblkno) &amp;&amp; (tmp &lt;= seg-&gt;endblkno)) {</span>
+<span class='curline'><a href='../S/192.html#L143'>seg</a>               143 src/disksim_diskcache.c    if ((curr-&gt;blkno &lt;= seg-&gt;startblkno) &amp;&amp; (tmp &gt;= seg-&gt;endblkno)) {</span>
+<span class='curline'><a href='../S/192.html#L153'>seg</a>               153 src/disksim_diskcache.c    segment *seg = currdiskreq-&gt;seg;</span>
+<span class='curline'><a href='../S/192.html#L160'>seg</a>               160 src/disksim_diskcache.c    ASSERT(seg != NULL);</span>
+<span class='curline'><a href='../S/192.html#L162'>seg</a>               162 src/disksim_diskcache.c    if (seg-&gt;diskreqlist == currdiskreq) {</span>
+<span class='curline'><a href='../S/192.html#L163'>seg</a>               163 src/disksim_diskcache.c       seg-&gt;diskreqlist = currdiskreq-&gt;seg_next;</span>
+<span class='curline'><a href='../S/192.html#L165'>seg</a>               165 src/disksim_diskcache.c       diskreq *tmpdiskreq = seg-&gt;diskreqlist;</span>
+<span class='curline'><a href='../S/192.html#L176'>seg</a>               176 src/disksim_diskcache.c    currdiskreq-&gt;seg = NULL;</span>
+<span class='curline'><a href='../S/192.html#L178'>seg</a>               178 src/disksim_diskcache.c    ASSERT1((seg-&gt;diskreqlist || seg-&gt;state != BUFFER_DIRTY),"seg-&gt;state",seg-&gt;state);</span>
+<span class='curline'><a href='../S/192.html#L187'>seg</a>               187 src/disksim_diskcache.c diskreq* disk_buffer_seg_owner (segment *seg, int effective)</span>
+<span class='curline'><a href='../S/192.html#L189'>seg</a>               189 src/disksim_diskcache.c    diskreq *seg_owner = seg-&gt;diskreqlist;</span>
+<span class='curline'><a href='../S/192.html#L190'>seg</a>               190 src/disksim_diskcache.c    diskreq *tmpdiskreq = seg-&gt;diskreqlist;</span>
+<span class='curline'><a href='../S/192.html#L199'>seg</a>               199 src/disksim_diskcache.c    if (effective &amp;&amp; seg-&gt;access &amp;&amp; (seg-&gt;access-&gt;flags &amp; READ)) {</span>
+<span class='curline'><a href='../S/192.html#L201'>seg</a>               201 src/disksim_diskcache.c 	 if ((seg-&gt;recyclereq != tmpdiskreq) &amp;&amp;</span>
+<span class='curline'><a href='../S/192.html#L396'>seg</a>               396 src/disksim_diskcache.c int disk_buffer_block_available (disk *currdisk, segment *seg, int blkno)</span>
+<span class='curline'><a href='../S/192.html#L403'>seg</a>               403 src/disksim_diskcache.c    if (seg-&gt;state == BUFFER_READING) {</span>
+<span class='curline'><a href='../S/192.html#L404'>seg</a>               404 src/disksim_diskcache.c       if ((blkno &lt; seg-&gt;endblkno) &amp;&amp; (blkno &gt;= seg-&gt;startblkno)) {</span>
+<span class='curline'><a href='../S/192.html#L407'>seg</a>               407 src/disksim_diskcache.c       if ((blkno &lt; seg-&gt;startblkno) &amp;&amp; </span>
+<span class='curline'><a href='../S/192.html#L409'>seg</a>               409 src/disksim_diskcache.c 	   (seg-&gt;endblkno != seg-&gt;startblkno))) {</span>
+<span class='curline'><a href='../S/192.html#L412'>seg</a>               412 src/disksim_diskcache.c       seg_owner = disk_buffer_seg_owner(seg,TRUE);</span>
+<span class='curline'><a href='../S/192.html#L414'>seg</a>               414 src/disksim_diskcache.c 	  ((blkno - seg_owner-&gt;outblkno) &gt;= seg-&gt;size)) {</span>
+<span class='curline'><a href='../S/192.html#L417'>seg</a>               417 src/disksim_diskcache.c    } else if (seg-&gt;state == BUFFER_WRITING) {</span>
+<span class='curline'><a href='../S/192.html#L419'>seg</a>               419 src/disksim_diskcache.c 	  (blkno &gt;= seg-&gt;endblkno)) {</span>
+<span class='curline'><a href='../S/192.html#L425'>seg</a>               425 src/disksim_diskcache.c 	    if ((seg-&gt;endblkno - seg-&gt;startblkno) &lt; </span>
+<span class='curline'><a href='../S/192.html#L430'>seg</a>               430 src/disksim_diskcache.c 	    if ((seg-&gt;endblkno - seg-&gt;startblkno) &lt; 15) {</span>
+<span class='curline'><a href='../S/192.html#L464'>seg</a>               464 src/disksim_diskcache.c static void disk_buffer_stats (disk *currdisk, ioreq_event *curr, segment *seg, int hittype)</span>
+<span class='curline'><a href='../S/192.html#L497'>seg</a>               497 src/disksim_diskcache.c          if (seg-&gt;startblkno &lt;= curr-&gt;blkno) {</span>
+<span class='curline'><a href='../S/192.html#L498'>seg</a>               498 src/disksim_diskcache.c             size = (double) (seg-&gt;endblkno - curr-&gt;blkno);</span>
+<span class='curline'><a href='../S/192.html#L506'>seg</a>               506 src/disksim_diskcache.c          if (seg-&gt;state == BUFFER_READING) {</span>
+<span class='curline'><a href='../S/192.html#L524'>seg</a>               524 src/disksim_diskcache.c 	 fprintf(stderr, "Invalid hittype in disk_buffer_stats - blkno %d, bcount %d, state %d\n", curr-&gt;blkno, curr-&gt;bcount, seg-&gt;state);</span>
+<span class='curline'><a href='../S/192.html#L583'>seg</a>               583 src/disksim_diskcache.c    segment *seg;</span>
+<span class='curline'><a href='../S/192.html#L595'>seg</a>               595 src/disksim_diskcache.c    currdiskreq-&gt;seg = NULL;</span>
+<span class='curline'><a href='../S/192.html#L597'>seg</a>               597 src/disksim_diskcache.c    seg = currdisk-&gt;seglist;</span>
+<span class='curline'><a href='../S/192.html#L598'>seg</a>               598 src/disksim_diskcache.c    while (seg) {</span>
+<span class='curline'><a href='../S/192.html#L601'>seg</a>               601 src/disksim_diskcache.c       else if (seg-&gt;recyclereq) { } </span>
+<span class='curline'><a href='../S/192.html#L603'>seg</a>               603 src/disksim_diskcache.c 	       &amp;&amp; (seg == currdisk-&gt;dedicatedwriteseg)) </span>
+<span class='curline'><a href='../S/192.html#L606'>seg</a>               606 src/disksim_diskcache.c 	     if ((seg-&gt;state == BUFFER_DIRTY) </span>
+<span class='curline'><a href='../S/192.html#L607'>seg</a>               607 src/disksim_diskcache.c 		 || (seg-&gt;state == BUFFER_WRITING)) </span>
+<span class='curline'><a href='../S/192.html#L611'>seg</a>               611 src/disksim_diskcache.c 		 if (disk_buffer_overlap(seg,tmpioreq)) {</span>
+<span class='curline'><a href='../S/192.html#L612'>seg</a>               612 src/disksim_diskcache.c 		   if (!disk_buffer_reusable_segment_check(currdisk, seg)) {</span>
+<span class='curline'><a href='../S/192.html#L614'>seg</a>               614 src/disksim_diskcache.c 		     currdiskreq-&gt;seg = NULL;</span>
+<span class='curline'><a href='../S/192.html#L622'>seg</a>               622 src/disksim_diskcache.c       else if (seg-&gt;state == BUFFER_EMPTY) {</span>
+<span class='curline'><a href='../S/192.html#L626'>seg</a>               626 src/disksim_diskcache.c       else if ((first_ioreq-&gt;blkno &lt; seg-&gt;startblkno) </span>
+<span class='curline'><a href='../S/192.html#L627'>seg</a>               627 src/disksim_diskcache.c 	       || (first_ioreq-&gt;blkno &gt;= seg-&gt;endblkno)) </span>
+<span class='curline'><a href='../S/192.html#L630'>seg</a>               630 src/disksim_diskcache.c 	if ((seg-&gt;state == BUFFER_CLEAN) &amp;&amp; !(seg-&gt;diskreqlist)) {</span>
+<span class='curline'><a href='../S/192.html#L633'>seg</a>               633 src/disksim_diskcache.c 	else if (seg-&gt;state == BUFFER_READING) {</span>
+<span class='curline'><a href='../S/192.html#L634'>seg</a>               634 src/disksim_diskcache.c 	  if ((seg-&gt;endblkno == first_ioreq-&gt;blkno) &amp;&amp; </span>
+<span class='curline'><a href='../S/192.html#L644'>seg</a>               644 src/disksim_diskcache.c 	    if (!seg-&gt;diskreqlist-&gt;ioreqlist) {</span>
+<span class='curline'><a href='../S/192.html#L649'>seg</a>               649 src/disksim_diskcache.c 	else if ((first_ioreq-&gt;blkno &lt; seg-&gt;startblkno) </span>
+<span class='curline'><a href='../S/192.html#L650'>seg</a>               650 src/disksim_diskcache.c 		 &amp;&amp; ((seg-&gt;state == BUFFER_DIRTY) </span>
+<span class='curline'><a href='../S/192.html#L651'>seg</a>               651 src/disksim_diskcache.c 		     || (seg-&gt;state == BUFFER_WRITING))) </span>
+<span class='curline'><a href='../S/192.html#L656'>seg</a>               656 src/disksim_diskcache.c 	    if (disk_buffer_overlap(seg,tmpioreq)) {</span>
+<span class='curline'><a href='../S/192.html#L657'>seg</a>               657 src/disksim_diskcache.c 	      if (!disk_buffer_reusable_segment_check(currdisk, seg)) {</span>
+<span class='curline'><a href='../S/192.html#L659'>seg</a>               659 src/disksim_diskcache.c 		currdiskreq-&gt;seg = NULL;</span>
+<span class='curline'><a href='../S/192.html#L668'>seg</a>               668 src/disksim_diskcache.c 	switch (seg-&gt;state) {</span>
+<span class='curline'><a href='../S/192.html#L676'>seg</a>               676 src/disksim_diskcache.c 	      if (!disk_buffer_reusable_segment_check(currdisk, seg)) {</span>
+<span class='curline'><a href='../S/192.html#L678'>seg</a>               678 src/disksim_diskcache.c 		currdiskreq-&gt;seg = NULL;</span>
+<span class='curline'><a href='../S/192.html#L691'>seg</a>               691 src/disksim_diskcache.c 	      if (!disk_buffer_reusable_segment_check(currdisk, seg)) {</span>
+<span class='curline'><a href='../S/192.html#L693'>seg</a>               693 src/disksim_diskcache.c 		currdiskreq-&gt;seg = NULL;</span>
+<span class='curline'><a href='../S/192.html#L705'>seg</a>               705 src/disksim_diskcache.c 	      || (seg-&gt;access &amp;&amp; (seg-&gt;access-&gt;flags &amp; READ))) </span>
+<span class='curline'><a href='../S/192.html#L715'>seg</a>               715 src/disksim_diskcache.c 	if (seg-&gt;endblkno &gt;= (first_ioreq-&gt;blkno + first_ioreq-&gt;bcount)) {</span>
+<span class='curline'><a href='../S/192.html#L725'>seg</a>               725 src/disksim_diskcache.c 	 currdiskreq-&gt;seg = seg;</span>
+<span class='curline'><a href='../S/192.html#L729'>seg</a>               729 src/disksim_diskcache.c       seg = seg-&gt;next;</span>
+<span class='curline'><a href='../S/192.html#L739'>seg</a>               739 src/disksim_diskcache.c      currdiskreq-&gt;seg = NULL;</span>
+<span class='curline'><a href='../S/192.html#L743'>seg</a>               743 src/disksim_diskcache.c fprintf (outputfile, "                        segment = %8p, hittype = %d\n",currdiskreq-&gt;seg,currdiskreq-&gt;hittype);</span>
+<span class='curline'><a href='../S/192.html#L747'>seg</a>               747 src/disksim_diskcache.c  return currdiskreq-&gt;seg;</span>
+<span class='curline'><a href='../S/192.html#L778'>seg</a>               778 src/disksim_diskcache.c    segment *seg;</span>
+<span class='curline'><a href='../S/192.html#L797'>seg</a>               797 src/disksim_diskcache.c    currdiskreq-&gt;seg = NULL;</span>
+<span class='curline'><a href='../S/192.html#L799'>seg</a>               799 src/disksim_diskcache.c    seg = currdisk-&gt;seglist;</span>
+<span class='curline'><a href='../S/192.html#L800'>seg</a>               800 src/disksim_diskcache.c    while (seg) {</span>
+<span class='curline'><a href='../S/192.html#L804'>seg</a>               804 src/disksim_diskcache.c       } else if (seg-&gt;recyclereq) {</span>
+<span class='curline'><a href='../S/192.html#L806'>seg</a>               806 src/disksim_diskcache.c 	  (seg != currdisk-&gt;dedicatedwriteseg)) {</span>
+<span class='curline'><a href='../S/192.html#L808'>seg</a>               808 src/disksim_diskcache.c          if (((seg-&gt;state == BUFFER_CLEAN) &amp;&amp;</span>
+<span class='curline'><a href='../S/192.html#L809'>seg</a>               809 src/disksim_diskcache.c 	      (seg-&gt;diskreqlist)) ||</span>
+<span class='curline'><a href='../S/192.html#L810'>seg</a>               810 src/disksim_diskcache.c 	     ((seg-&gt;state == BUFFER_READING) &amp;&amp; </span>
+<span class='curline'><a href='../S/192.html#L811'>seg</a>               811 src/disksim_diskcache.c 	      ((seg-&gt;diskreqlist-&gt;ioreqlist) || </span>
+<span class='curline'><a href='../S/192.html#L812'>seg</a>               812 src/disksim_diskcache.c 	       (seg-&gt;diskreqlist-&gt;seg_next) ||</span>
+<span class='curline'><a href='../S/192.html#L816'>seg</a>               816 src/disksim_diskcache.c 	       if (disk_buffer_overlap(seg,tmpioreq)) {</span>
+<span class='curline'><a href='../S/192.html#L817'>seg</a>               817 src/disksim_diskcache.c 		  if (!disk_buffer_reusable_segment_check(currdisk, seg)) {</span>
+<span class='curline'><a href='../S/192.html#L819'>seg</a>               819 src/disksim_diskcache.c 		     currdiskreq-&gt;seg = NULL;</span>
+<span class='curline'><a href='../S/192.html#L826'>seg</a>               826 src/disksim_diskcache.c       } else if (seg-&gt;state == BUFFER_EMPTY) {</span>
+<span class='curline'><a href='../S/192.html#L833'>seg</a>               833 src/disksim_diskcache.c       } else if (seg-&gt;state == BUFFER_READING) {</span>
+<span class='curline'><a href='../S/192.html#L834'>seg</a>               834 src/disksim_diskcache.c 	 if (!seg-&gt;diskreqlist-&gt;ioreqlist &amp;&amp; !seg-&gt;diskreqlist-&gt;seg_next) {</span>
+<span class='curline'><a href='../S/192.html#L844'>seg</a>               844 src/disksim_diskcache.c 	       if (disk_buffer_overlap(seg,tmpioreq)) {</span>
+<span class='curline'><a href='../S/192.html#L845'>seg</a>               845 src/disksim_diskcache.c 		  if (!disk_buffer_reusable_segment_check(currdisk, seg)) {</span>
+<span class='curline'><a href='../S/192.html#L847'>seg</a>               847 src/disksim_diskcache.c 		     currdiskreq-&gt;seg = NULL;</span>
+<span class='curline'><a href='../S/192.html#L854'>seg</a>               854 src/disksim_diskcache.c       } else if (seg-&gt;state == BUFFER_CLEAN) {</span>
+<span class='curline'><a href='../S/192.html#L855'>seg</a>               855 src/disksim_diskcache.c 	 if (!seg-&gt;diskreqlist) {</span>
+<span class='curline'><a href='../S/192.html#L863'>seg</a>               863 src/disksim_diskcache.c 	          if (disk_buffer_overlap(seg,first_ioreq)) {</span>
+<span class='curline'><a href='../S/192.html#L874'>seg</a>               874 src/disksim_diskcache.c 	       if (disk_buffer_overlap(seg,tmpioreq)) {</span>
+<span class='curline'><a href='../S/192.html#L875'>seg</a>               875 src/disksim_diskcache.c 		  if (!disk_buffer_reusable_segment_check(currdisk, seg)) {</span>
+<span class='curline'><a href='../S/192.html#L877'>seg</a>               877 src/disksim_diskcache.c 		     currdiskreq-&gt;seg = NULL;</span>
+<span class='curline'><a href='../S/192.html#L885'>seg</a>               885 src/disksim_diskcache.c 		 (seg-&gt;outstate == BUFFER_TRANSFERING)) {</span>
+<span class='curline'><a href='../S/192.html#L890'>seg</a>               890 src/disksim_diskcache.c 	    if (disk_buffer_overlap(seg,tmpioreq)) {</span>
+<span class='curline'><a href='../S/192.html#L891'>seg</a>               891 src/disksim_diskcache.c 	       if (!disk_buffer_reusable_segment_check(currdisk, seg)) {</span>
+<span class='curline'><a href='../S/192.html#L893'>seg</a>               893 src/disksim_diskcache.c 	          currdiskreq-&gt;seg = NULL;</span>
+<span class='curline'><a href='../S/192.html#L913'>seg</a>               913 src/disksim_diskcache.c 	 tmp_diskreq = holddiskreq = seg-&gt;diskreqlist;</span>
+<span class='curline'><a href='../S/192.html#L925'>seg</a>               925 src/disksim_diskcache.c 	     (first_ioreq-&gt;blkno == seg-&gt;endblkno) &amp;&amp;</span>
+<span class='curline'><a href='../S/192.html#L926'>seg</a>               926 src/disksim_diskcache.c 	     (seg-&gt;size &gt; (first_ioreq-&gt;blkno - (disk_buffer_seg_owner(seg,FALSE))-&gt;inblkno))) {</span>
+<span class='curline'><a href='../S/192.html#L928'>seg</a>               928 src/disksim_diskcache.c 	    curr_value = ((seg-&gt;state == BUFFER_WRITING) ? 7 : 6);</span>
+<span class='curline'><a href='../S/192.html#L929'>seg</a>               929 src/disksim_diskcache.c 	 } else if (seg-&gt;state == BUFFER_DIRTY) {</span>
+<span class='curline'><a href='../S/192.html#L937'>seg</a>               937 src/disksim_diskcache.c 	    holddiskreq = seg-&gt;diskreqlist;</span>
+<span class='curline'><a href='../S/192.html#L943'>seg</a>               943 src/disksim_diskcache.c 	        (first_ioreq-&gt;blkno == seg-&gt;startblkno) &amp;&amp;</span>
+<span class='curline'><a href='../S/192.html#L944'>seg</a>               944 src/disksim_diskcache.c 		((seg-&gt;startblkno == seg-&gt;endblkno) || (seg-&gt;hold_bcount == 0)) &amp;&amp;</span>
+<span class='curline'><a href='../S/192.html#L945'>seg</a>               945 src/disksim_diskcache.c 		(seg-&gt;size &gt;= ((seg-&gt;endblkno - seg-&gt;startblkno) + total_bcount)) &amp;&amp;</span>
+<span class='curline'><a href='../S/192.html#L947'>seg</a>               947 src/disksim_diskcache.c 		 (currdisk-&gt;extradisc_diskreq-&gt;seg != seg))) {</span>
+<span class='curline'><a href='../S/192.html#L956'>seg</a>               956 src/disksim_diskcache.c 	       if (disk_buffer_overlap(seg,tmpioreq)) {</span>
+<span class='curline'><a href='../S/192.html#L957'>seg</a>               957 src/disksim_diskcache.c 	          if (!disk_buffer_reusable_segment_check(currdisk, seg)) {</span>
+<span class='curline'><a href='../S/192.html#L959'>seg</a>               959 src/disksim_diskcache.c 	             currdiskreq-&gt;seg = NULL;</span>
+<span class='curline'><a href='../S/192.html#L980'>seg</a>               980 src/disksim_diskcache.c 	 currdiskreq-&gt;seg = seg;</span>
+<span class='curline'><a href='../S/192.html#L984'>seg</a>               984 src/disksim_diskcache.c       seg = seg-&gt;next;</span>
+<span class='curline'><a href='../S/192.html#L996'>seg</a>               996 src/disksim_diskcache.c          if (disk_buffer_overlap(currdiskreq-&gt;seg,tmpioreq)) {</span>
+<span class='curline'><a href='../S/192.html#L997'>seg</a>               997 src/disksim_diskcache.c 	    if (!disk_buffer_reusable_segment_check(currdisk, seg)) {</span>
+<span class='curline'><a href='../S/192.html#L1004'>seg</a>              1004 src/disksim_diskcache.c       currdiskreq-&gt;seg = NULL;</span>
+<span class='curline'><a href='../S/192.html#L1008'>seg</a>              1008 src/disksim_diskcache.c fprintf (outputfile, "                        segment = %8p, hittype = %d\n",currdiskreq-&gt;seg,currdiskreq-&gt;hittype);</span>
+<span class='curline'><a href='../S/192.html#L1012'>seg</a>              1012 src/disksim_diskcache.c    return(currdiskreq-&gt;seg);</span>
+<span class='curline'><a href='../S/192.html#L1019'>seg</a>              1019 src/disksim_diskcache.c    segment *seg;</span>
+<span class='curline'><a href='../S/192.html#L1022'>seg</a>              1022 src/disksim_diskcache.c       currdiskreq-&gt;seg = NULL;</span>
+<span class='curline'><a href='../S/192.html#L1028'>seg</a>              1028 src/disksim_diskcache.c       seg = disk_buffer_select_read_segment(currdisk, currdiskreq);</span>
+<span class='curline'><a href='../S/192.html#L1029'>seg</a>              1029 src/disksim_diskcache.c       if (currdisk-&gt;dedicatedwriteseg &amp;&amp; (seg == currdisk-&gt;dedicatedwriteseg)) {</span>
+<span class='curline'><a href='../S/192.html#L1035'>seg</a>              1035 src/disksim_diskcache.c       seg = disk_buffer_select_write_segment(currdisk, currdiskreq);</span>
+<span class='curline'><a href='../S/192.html#L1047'>seg</a>              1047 src/disksim_diskcache.c        &amp;&amp; seg </span>
+<span class='curline'><a href='../S/192.html#L1048'>seg</a>              1048 src/disksim_diskcache.c        &amp;&amp; ((LRU_at_seg_list_head &amp;&amp; !seg-&gt;prev) </span>
+<span class='curline'><a href='../S/192.html#L1049'>seg</a>              1049 src/disksim_diskcache.c 	   || (!LRU_at_seg_list_head &amp;&amp; !seg-&gt;next)) </span>
+<span class='curline'><a href='../S/192.html#L1050'>seg</a>              1050 src/disksim_diskcache.c        &amp;&amp; seg-&gt;access </span>
+<span class='curline'><a href='../S/192.html#L1051'>seg</a>              1051 src/disksim_diskcache.c        &amp;&amp; !(seg-&gt;access-&gt;flags &amp; READ) </span>
+<span class='curline'><a href='../S/192.html#L1052'>seg</a>              1052 src/disksim_diskcache.c        &amp;&amp; (currdiskreq-&gt;ioreqlist-&gt;blkno != seg-&gt;endblkno)) </span>
+<span class='curline'><a href='../S/192.html#L1056'>seg</a>              1056 src/disksim_diskcache.c    return(seg);</span>
+<span class='curline'><a href='../S/192.html#L1064'>seg</a>              1064 src/disksim_diskcache.c    segment *seg;</span>
+<span class='curline'><a href='../S/192.html#L1077'>seg</a>              1077 src/disksim_diskcache.c    seg = currdisk-&gt;seglist;</span>
+<span class='curline'><a href='../S/192.html#L1078'>seg</a>              1078 src/disksim_diskcache.c    while (seg) {</span>
+<span class='curline'><a href='../S/192.html#L1079'>seg</a>              1079 src/disksim_diskcache.c       if (seg-&gt;recyclereq) {</span>
+<span class='curline'><a href='../S/192.html#L1080'>seg</a>              1080 src/disksim_diskcache.c       } else if (seg-&gt;state == BUFFER_EMPTY) {</span>
+<span class='curline'><a href='../S/192.html#L1082'>seg</a>              1082 src/disksim_diskcache.c 	  (seg == currdisk-&gt;dedicatedwriteseg)) {</span>
+<span class='curline'><a href='../S/192.html#L1084'>seg</a>              1084 src/disksim_diskcache.c          if ((seg-&gt;state == BUFFER_DIRTY) || (seg-&gt;state == BUFFER_WRITING)) {</span>
+<span class='curline'><a href='../S/192.html#L1085'>seg</a>              1085 src/disksim_diskcache.c 	    if (disk_buffer_overlap(seg,currioreq) &amp;&amp;</span>
+<span class='curline'><a href='../S/192.html#L1086'>seg</a>              1086 src/disksim_diskcache.c 	        !disk_buffer_reusable_segment_check(currdisk, seg)) {</span>
+<span class='curline'><a href='../S/192.html#L1090'>seg</a>              1090 src/disksim_diskcache.c       } else if ((currioreq-&gt;blkno &lt; seg-&gt;startblkno) || </span>
+<span class='curline'><a href='../S/192.html#L1091'>seg</a>              1091 src/disksim_diskcache.c 		 (currioreq-&gt;blkno &gt;= seg-&gt;endblkno)) {</span>
+<span class='curline'><a href='../S/192.html#L1092'>seg</a>              1092 src/disksim_diskcache.c 	 if (seg-&gt;state == BUFFER_CLEAN) {</span>
+<span class='curline'><a href='../S/192.html#L1093'>seg</a>              1093 src/disksim_diskcache.c          } else if (seg-&gt;state == BUFFER_READING) {</span>
+<span class='curline'><a href='../S/192.html#L1094'>seg</a>              1094 src/disksim_diskcache.c 	    if ((seg-&gt;endblkno == currioreq-&gt;blkno) &amp;&amp; </span>
+<span class='curline'><a href='../S/192.html#L1105'>seg</a>              1105 src/disksim_diskcache.c          } else if (currioreq-&gt;blkno &lt; seg-&gt;startblkno) {</span>
+<span class='curline'><a href='../S/192.html#L1107'>seg</a>              1107 src/disksim_diskcache.c 	    if (disk_buffer_overlap(seg,currioreq) &amp;&amp;</span>
+<span class='curline'><a href='../S/192.html#L1108'>seg</a>              1108 src/disksim_diskcache.c 		!disk_buffer_reusable_segment_check(currdisk, seg)) {</span>
+<span class='curline'><a href='../S/192.html#L1113'>seg</a>              1113 src/disksim_diskcache.c 	 switch (seg-&gt;state) {</span>
+<span class='curline'><a href='../S/192.html#L1118'>seg</a>              1118 src/disksim_diskcache.c 		!disk_buffer_reusable_segment_check(currdisk, seg))) {</span>
+<span class='curline'><a href='../S/192.html#L1127'>seg</a>              1127 src/disksim_diskcache.c 		   seg-&gt;access &amp;&amp; !(seg-&gt;access-&gt;flags &amp; READ)) {</span>
+<span class='curline'><a href='../S/192.html#L1134'>seg</a>              1134 src/disksim_diskcache.c 	 if (seg-&gt;endblkno &gt;= (currioreq-&gt;blkno + currioreq-&gt;bcount)) {</span>
+<span class='curline'><a href='../S/192.html#L1136'>seg</a>              1136 src/disksim_diskcache.c 	    *buffer_reading = (seg-&gt;state == BUFFER_READING);</span>
+<span class='curline'><a href='../S/192.html#L1139'>seg</a>              1139 src/disksim_diskcache.c 	    *buffer_reading = (seg-&gt;state == BUFFER_READING);</span>
+<span class='curline'><a href='../S/192.html#L1142'>seg</a>              1142 src/disksim_diskcache.c       seg = seg-&gt;next;</span>
+<span class='curline'><a href='../S/192.html#L1160'>seg</a>              1160 src/disksim_diskcache.c    segment *seg;</span>
+<span class='curline'><a href='../S/192.html#L1175'>seg</a>              1175 src/disksim_diskcache.c    seg = currdisk-&gt;seglist;</span>
+<span class='curline'><a href='../S/192.html#L1176'>seg</a>              1176 src/disksim_diskcache.c    while (seg) {</span>
+<span class='curline'><a href='../S/192.html#L1177'>seg</a>              1177 src/disksim_diskcache.c       if (seg-&gt;recyclereq) {</span>
+<span class='curline'><a href='../S/192.html#L1179'>seg</a>              1179 src/disksim_diskcache.c       else if (seg-&gt;state == BUFFER_EMPTY) {</span>
+<span class='curline'><a href='../S/192.html#L1181'>seg</a>              1181 src/disksim_diskcache.c       else if (seg-&gt;state == BUFFER_READING) {</span>
+<span class='curline'><a href='../S/192.html#L1185'>seg</a>              1185 src/disksim_diskcache.c 	  (seg != currdisk-&gt;dedicatedwriteseg)) {</span>
+<span class='curline'><a href='../S/192.html#L1187'>seg</a>              1187 src/disksim_diskcache.c          if ((seg-&gt;state == BUFFER_CLEAN) &amp;&amp; seg-&gt;diskreqlist) {</span>
+<span class='curline'><a href='../S/192.html#L1188'>seg</a>              1188 src/disksim_diskcache.c 	    if (disk_buffer_overlap(seg,currioreq) &amp;&amp;</span>
+<span class='curline'><a href='../S/192.html#L1189'>seg</a>              1189 src/disksim_diskcache.c 	        !disk_buffer_reusable_segment_check(currdisk, seg)) {</span>
+<span class='curline'><a href='../S/192.html#L1194'>seg</a>              1194 src/disksim_diskcache.c       else if ((seg-&gt;state == BUFFER_CLEAN) || </span>
+<span class='curline'><a href='../S/192.html#L1195'>seg</a>              1195 src/disksim_diskcache.c 	       (seg-&gt;state == BUFFER_DIRTY)) </span>
+<span class='curline'><a href='../S/192.html#L1198'>seg</a>              1198 src/disksim_diskcache.c 	  if (seg-&gt;diskreqlist) {</span>
+<span class='curline'><a href='../S/192.html#L1199'>seg</a>              1199 src/disksim_diskcache.c 	    if (disk_buffer_overlap(seg,currioreq) &amp;&amp;</span>
+<span class='curline'><a href='../S/192.html#L1200'>seg</a>              1200 src/disksim_diskcache.c 		!disk_buffer_reusable_segment_check(currdisk, seg)) {</span>
+<span class='curline'><a href='../S/192.html#L1205'>seg</a>              1205 src/disksim_diskcache.c       else if (seg-&gt;outstate == BUFFER_TRANSFERING) {</span>
+<span class='curline'><a href='../S/192.html#L1207'>seg</a>              1207 src/disksim_diskcache.c 	 if (disk_buffer_overlap(seg,currioreq) &amp;&amp;</span>
+<span class='curline'><a href='../S/192.html#L1208'>seg</a>              1208 src/disksim_diskcache.c 	     !disk_buffer_reusable_segment_check(currdisk, seg)) {</span>
+<span class='curline'><a href='../S/192.html#L1213'>seg</a>              1213 src/disksim_diskcache.c 	 tmp_diskreq = holddiskreq = seg-&gt;diskreqlist;</span>
+<span class='curline'><a href='../S/192.html#L1225'>seg</a>              1225 src/disksim_diskcache.c 	     (currioreq-&gt;blkno == seg-&gt;endblkno) &amp;&amp;</span>
+<span class='curline'><a href='../S/192.html#L1226'>seg</a>              1226 src/disksim_diskcache.c 	     (seg-&gt;size &gt; (currioreq-&gt;blkno - (disk_buffer_seg_owner(seg,FALSE))-&gt;inblkno))) {</span>
+<span class='curline'><a href='../S/192.html#L1231'>seg</a>              1231 src/disksim_diskcache.c 	    if (disk_buffer_overlap(seg,currioreq) &amp;&amp;</span>
+<span class='curline'><a href='../S/192.html#L1232'>seg</a>              1232 src/disksim_diskcache.c 	        !disk_buffer_reusable_segment_check(currdisk, seg)) {</span>
+<span class='curline'><a href='../S/192.html#L1237'>seg</a>              1237 src/disksim_diskcache.c       seg = seg-&gt;next;</span>
+<span class='curline'><a href='../S/192.html#L1265'>seg</a>              1265 src/disksim_diskcache.c    segment     *seg = currdiskreq-&gt;seg;</span>
+<span class='curline'><a href='../S/192.html#L1276'>seg</a>              1276 src/disksim_diskcache.c    if (!seg) {</span>
+<span class='curline'><a href='../S/192.html#L1283'>seg</a>              1283 src/disksim_diskcache.c    if (is_read &amp;&amp; (seg == currdisk-&gt;dedicatedwriteseg)) {</span>
+<span class='curline'><a href='../S/192.html#L1288'>seg</a>              1288 src/disksim_diskcache.c    if (seg-&gt;recyclereq &amp;&amp; (currdiskreq != seg-&gt;recyclereq)) {</span>
+<span class='curline'><a href='../S/192.html#L1293'>seg</a>              1293 src/disksim_diskcache.c    switch (seg-&gt;state) {</span>
+<span class='curline'><a href='../S/192.html#L1295'>seg</a>              1295 src/disksim_diskcache.c 	 if (currdiskreq == seg-&gt;recyclereq) {</span>
+<span class='curline'><a href='../S/192.html#L1302'>seg</a>              1302 src/disksim_diskcache.c 	 if (currdiskreq == seg-&gt;recyclereq) {</span>
+<span class='curline'><a href='../S/192.html#L1306'>seg</a>              1306 src/disksim_diskcache.c 	 if (is_read &amp;&amp; currdiskreq-&gt;hittype != BUFFER_NOMATCH &amp;&amp; !currdisk-&gt;readhitsonwritedata &amp;&amp; seg-&gt;access &amp;&amp; !(seg-&gt;access-&gt;flags &amp; READ)) {</span>
+<span class='curline'><a href='../S/192.html#L1313'>seg</a>              1313 src/disksim_diskcache.c 	 if (currdiskreq == seg-&gt;recyclereq) {</span>
+<span class='curline'><a href='../S/192.html#L1330'>seg</a>              1330 src/disksim_diskcache.c 	 if (currdiskreq == seg-&gt;recyclereq) {</span>
+<span class='curline'><a href='../S/192.html#L1344'>seg</a>              1344 src/disksim_diskcache.c 	 if (currdiskreq == seg-&gt;recyclereq) {</span>
+<span class='curline'><a href='../S/192.html#L1362'>seg</a>              1362 src/disksim_diskcache.c 	 fprintf(stderr, "Invalid segment state in disk_buffer_set_segment - blkno %d, bcount %d, state %d\n", currdiskreq-&gt;ioreqlist-&gt;blkno, currdiskreq-&gt;ioreqlist-&gt;bcount, seg-&gt;state);</span>
+<span class='curline'><a href='../S/192.html#L1368'>seg</a>              1368 src/disksim_diskcache.c    disk_buffer_stats(currdisk,currdiskreq-&gt;ioreqlist,seg,currdiskreq-&gt;hittype);</span>
+<span class='curline'><a href='../S/192.html#L1372'>seg</a>              1372 src/disksim_diskcache.c       if (seg-&gt;prev) {</span>
+<span class='curline'><a href='../S/192.html#L1373'>seg</a>              1373 src/disksim_diskcache.c          seg-&gt;prev-&gt;next = seg-&gt;next;</span>
+<span class='curline'><a href='../S/192.html#L1374'>seg</a>              1374 src/disksim_diskcache.c          if (seg-&gt;next) {</span>
+<span class='curline'><a href='../S/192.html#L1375'>seg</a>              1375 src/disksim_diskcache.c 	    seg-&gt;next-&gt;prev = seg-&gt;prev;</span>
+<span class='curline'><a href='../S/192.html#L1377'>seg</a>              1377 src/disksim_diskcache.c          seg-&gt;next = currdisk-&gt;seglist;</span>
+<span class='curline'><a href='../S/192.html#L1378'>seg</a>              1378 src/disksim_diskcache.c          currdisk-&gt;seglist-&gt;prev = seg;</span>
+<span class='curline'><a href='../S/192.html#L1379'>seg</a>              1379 src/disksim_diskcache.c          seg-&gt;prev = NULL;</span>
+<span class='curline'><a href='../S/192.html#L1380'>seg</a>              1380 src/disksim_diskcache.c          currdisk-&gt;seglist = seg;</span>
+<span class='curline'><a href='../S/192.html#L1384'>seg</a>              1384 src/disksim_diskcache.c       if (seg-&gt;next) {</span>
+<span class='curline'><a href='../S/192.html#L1385'>seg</a>              1385 src/disksim_diskcache.c          if (seg-&gt;prev) {</span>
+<span class='curline'><a href='../S/192.html#L1386'>seg</a>              1386 src/disksim_diskcache.c             seg-&gt;prev-&gt;next = seg-&gt;next;</span>
+<span class='curline'><a href='../S/192.html#L1388'>seg</a>              1388 src/disksim_diskcache.c    	 currdisk-&gt;seglist = seg-&gt;next;</span>
+<span class='curline'><a href='../S/192.html#L1390'>seg</a>              1390 src/disksim_diskcache.c          seg-&gt;next-&gt;prev = seg-&gt;prev;</span>
+<span class='curline'><a href='../S/192.html#L1395'>seg</a>              1395 src/disksim_diskcache.c          tmp_seg-&gt;next = seg;</span>
+<span class='curline'><a href='../S/192.html#L1396'>seg</a>              1396 src/disksim_diskcache.c          seg-&gt;prev = tmp_seg;</span>
+<span class='curline'><a href='../S/192.html#L1397'>seg</a>              1397 src/disksim_diskcache.c          seg-&gt;next = NULL;</span>
+<span class='curline'><a href='../S/192.html#L1406'>seg</a>              1406 src/disksim_diskcache.c 	 if (tmp_seg != seg) {</span>
+<span class='curline'><a href='../S/192.html#L1431'>seg</a>              1431 src/disksim_diskcache.c    if (!seg-&gt;diskreqlist) {</span>
+<span class='curline'><a href='../S/192.html#L1432'>seg</a>              1432 src/disksim_diskcache.c       if (seg-&gt;access == NULL) {</span>
+<span class='curline'><a href='../S/192.html#L1433'>seg</a>              1433 src/disksim_diskcache.c          seg-&gt;access = ioreq_copy(currdiskreq-&gt;ioreqlist);</span>
+<span class='curline'><a href='../S/192.html#L1434'>seg</a>              1434 src/disksim_diskcache.c 	 seg-&gt;access-&gt;type = NULL_EVENT;</span>
+<span class='curline'><a href='../S/192.html#L1436'>seg</a>              1436 src/disksim_diskcache.c       seg-&gt;diskreqlist = currdiskreq;</span>
+<span class='curline'><a href='../S/192.html#L1440'>seg</a>              1440 src/disksim_diskcache.c       tmp_diskreq = seg-&gt;diskreqlist;</span>
+<span class='curline'><a href='../S/192.html#L1445'>seg</a>              1445 src/disksim_diskcache.c             if (seg-&gt;diskreqlist == tmp_diskreq) {</span>
+<span class='curline'><a href='../S/192.html#L1446'>seg</a>              1446 src/disksim_diskcache.c 	       seg-&gt;diskreqlist = currdiskreq;</span>
+<span class='curline'><a href='../S/192.html#L1468'>seg</a>              1468 src/disksim_diskcache.c          currdiskreq-&gt;watermark = max(1, (int) ((double) min(seg-&gt;size, tmp_ioreq-&gt;bcount) * currdisk-&gt;readwater));</span>
+<span class='curline'><a href='../S/192.html#L1470'>seg</a>              1470 src/disksim_diskcache.c          currdiskreq-&gt;watermark = (int) (((double) seg-&gt;size * currdisk-&gt;readwater) + (double) 0.9999999999);</span>
+<span class='curline'><a href='../S/192.html#L1474'>seg</a>              1474 src/disksim_diskcache.c          currdiskreq-&gt;watermark = max(1, (int) ((double) min(seg-&gt;size, tmp_ioreq-&gt;bcount) * currdisk-&gt;writewater));</span>
+<span class='curline'><a href='../S/192.html#L1476'>seg</a>              1476 src/disksim_diskcache.c          currdiskreq-&gt;watermark = (int) (((double) seg-&gt;size * currdisk-&gt;writewater) + (double) 0.9999999999);</span>
+<span class='curline'><a href='../S/192.html#L1484'>seg</a>              1484 src/disksim_diskcache.c    segment     *seg = currdiskreq-&gt;seg;</span>
+<span class='curline'><a href='../S/192.html#L1497'>seg</a>              1497 src/disksim_diskcache.c    if (!seg) {</span>
+<span class='curline'><a href='../S/192.html#L1507'>seg</a>              1507 src/disksim_diskcache.c    tmp_diskreq = seg-&gt;diskreqlist;</span>
+<span class='curline'><a href='../S/192.html#L1511'>seg</a>              1511 src/disksim_diskcache.c             if (seg-&gt;state != BUFFER_DIRTY) {</span>
+<span class='curline'><a href='../S/192.html#L1518'>seg</a>              1518 src/disksim_diskcache.c 	    if (seg-&gt;endblkno != seg-&gt;startblkno) {</span>
+<span class='curline'><a href='../S/192.html#L1519'>seg</a>              1519 src/disksim_diskcache.c 	       if (seg-&gt;hold_bcount != 0) {</span>
+<span class='curline'><a href='../S/192.html#L1523'>seg</a>              1523 src/disksim_diskcache.c                seg-&gt;hold_blkno = seg-&gt;startblkno;</span>
+<span class='curline'><a href='../S/192.html#L1524'>seg</a>              1524 src/disksim_diskcache.c 	       seg-&gt;hold_bcount = seg-&gt;endblkno - seg-&gt;startblkno;</span>
+<span class='curline'><a href='../S/192.html#L1553'>seg</a>              1553 src/disksim_diskcache.c 	   (currdisk-&gt;effectivehda-&gt;seg != seg))) {</span>
+<span class='curline'><a href='../S/192.html#L1554'>seg</a>              1554 src/disksim_diskcache.c          seg-&gt;access-&gt;flags = currioreq-&gt;flags;</span>
+<span class='curline'><a href='../S/192.html#L1567'>seg</a>              1567 src/disksim_diskcache.c 	     (seg-&gt;startblkno &gt; currdiskreq-&gt;outblkno)) {</span>
+<span class='curline'><a href='../S/192.html#L1574'>seg</a>              1574 src/disksim_diskcache.c 	    ASSERT1(((seg-&gt;access-&gt;type == NULL_EVENT) ||</span>
+<span class='curline'><a href='../S/192.html#L1575'>seg</a>              1575 src/disksim_diskcache.c 		     (seg-&gt;recyclereq == currdiskreq)),"seg-&gt;access-&gt;type",seg-&gt;access-&gt;type);</span>
+<span class='curline'><a href='../S/192.html#L1576'>seg</a>              1576 src/disksim_diskcache.c 	    if (currdiskreq != seg-&gt;recyclereq) {</span>
+<span class='curline'><a href='../S/192.html#L1577'>seg</a>              1577 src/disksim_diskcache.c 	       seg-&gt;state = BUFFER_CLEAN;</span>
+<span class='curline'><a href='../S/192.html#L1578'>seg</a>              1578 src/disksim_diskcache.c                seg-&gt;access-&gt;blkno = currdiskreq-&gt;outblkno;</span>
+<span class='curline'><a href='../S/192.html#L1580'>seg</a>              1580 src/disksim_diskcache.c 	    seg-&gt;startblkno = seg-&gt;endblkno = currdiskreq-&gt;outblkno;</span>
+<span class='curline'><a href='../S/192.html#L1581'>seg</a>              1581 src/disksim_diskcache.c 	    seg-&gt;minreadaheadblkno = seg-&gt;maxreadaheadblkno = -1;</span>
+<span class='curline'><a href='../S/192.html#L1582'>seg</a>              1582 src/disksim_diskcache.c 	    seg-&gt;hold_bcount = 0;</span>
+<span class='curline'><a href='../S/192.html#L1589'>seg</a>              1589 src/disksim_diskcache.c 	    seg-&gt;minreadaheadblkno = max(seg-&gt;minreadaheadblkno, min((currioreq-&gt;blkno + currioreq-&gt;bcount + currdisk-&gt;minreadahead), currdisk-&gt;model-&gt;dm_sectors));</span>
+<span class='curline'><a href='../S/192.html#L1591'>seg</a>              1591 src/disksim_diskcache.c 	    seg-&gt;maxreadaheadblkno = max(seg-&gt;maxreadaheadblkno, min(disk_buffer_get_max_readahead(currdisk,seg,currioreq), currdisk-&gt;model-&gt;dm_sectors));</span>
+<span class='curline'><a href='../S/192.html#L1593'>seg</a>              1593 src/disksim_diskcache.c 	    if ((seg-&gt;endblkno &gt;= (currioreq-&gt;blkno + currioreq-&gt;bcount)) &amp;&amp;</span>
+<span class='curline'><a href='../S/192.html#L1595'>seg</a>              1595 src/disksim_diskcache.c                seg-&gt;access-&gt;flags |= BUFFER_BACKGROUND;</span>
+<span class='curline'><a href='../S/192.html#L1602'>seg</a>              1602 src/disksim_diskcache.c 	     (currdisk-&gt;effectivehda-&gt;seg != seg)) {</span>
+<span class='curline'><a href='../S/192.html#L1603'>seg</a>              1603 src/disksim_diskcache.c 	    if ((currdiskreq != seg-&gt;recyclereq) &amp;&amp;</span>
+<span class='curline'><a href='../S/192.html#L1604'>seg</a>              1604 src/disksim_diskcache.c 		(seg-&gt;access-&gt;type == NULL_EVENT)){</span>
+<span class='curline'><a href='../S/192.html#L1605'>seg</a>              1605 src/disksim_diskcache.c                seg-&gt;access-&gt;blkno = currdiskreq-&gt;inblkno;</span>
+<span class='curline'><a href='../S/192.html#L1608'>seg</a>              1608 src/disksim_diskcache.c                seg-&gt;access-&gt;flags |= BUFFER_BACKGROUND;</span>
+<span class='curline'><a href='../S/192.html#L1612'>seg</a>              1612 src/disksim_diskcache.c 	    seg-&gt;minreadaheadblkno = seg-&gt;maxreadaheadblkno = -1;</span>
+<span class='curline'><a href='../S/192.html#L1613'>seg</a>              1613 src/disksim_diskcache.c 	    seg-&gt;hold_bcount = 0;</span>
+<span class='curline'><a href='../S/192.html#L1614'>seg</a>              1614 src/disksim_diskcache.c 	    seg-&gt;startblkno = seg-&gt;endblkno = currdiskreq-&gt;inblkno;</span>
+<span class='curline'><a href='../S/192.html#L1615'>seg</a>              1615 src/disksim_diskcache.c 	    if (currdiskreq != seg-&gt;recyclereq) {</span>
+<span class='curline'><a href='../S/192.html#L1616'>seg</a>              1616 src/disksim_diskcache.c 	       seg-&gt;state = BUFFER_DIRTY;</span>
+<span class='curline'><a href='../S/192.html#L1625'>seg</a>              1625 src/disksim_diskcache.c 	    seg-&gt;startblkno = seg-&gt;endblkno = currdiskreq-&gt;inblkno;</span>
+<span class='curline'><a href='../S/192.html#L1638'>seg</a>              1638 src/disksim_diskcache.c int disk_buffer_get_max_readahead (disk *currdisk, segment *seg, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/192.html#L1677'>seg</a>              1677 src/disksim_diskcache.c       if (seg-&gt;startblkno &lt; startlbn) {</span>
+<span class='curline'><a href='../S/192.html#L1688'>seg</a>              1688 src/disksim_diskcache.c       if ((curr-&gt;bcount &gt;= seg-&gt;size) </span>
+<span class='curline'><a href='../S/192.html#L1689'>seg</a>              1689 src/disksim_diskcache.c 	  || ((seg-&gt;size - curr-&gt;bcount) &lt; currdisk-&gt;minreadahead)) </span>
+<span class='curline'><a href='../S/192.html#L1693'>seg</a>              1693 src/disksim_diskcache.c       return(curr-&gt;blkno + seg-&gt;size);</span>
+<span class='curline'><a href='../S/192.html#L1696'>seg</a>              1696 src/disksim_diskcache.c    return(endreq + seg-&gt;size);</span>
+<span class='curline'><a href='../S/196.html#L404'>seg</a>               404 src/disksim_diskctlr.c   ddbg_assert(currdisk-&gt;effectivehda-&gt;seg != 0);</span>
+<span class='curline'><a href='../S/196.html#L408'>seg</a>               408 src/disksim_diskctlr.c       (currdisk-&gt;effectivehda-&gt;seg-&gt;access-&gt;flags &amp; BUFFER_BACKGROUND) </span>
+<span class='curline'><a href='../S/196.html#L409'>seg</a>               409 src/disksim_diskctlr.c       &amp;&amp; (currdisk-&gt;effectivehda-&gt;seg-&gt;access-&gt;flags &amp; READ);</span>
+<span class='curline'><a href='../S/196.html#L419'>seg</a>               419 src/disksim_diskctlr.c     if(!nextdiskreq-&gt;seg) {</span>
+<span class='curline'><a href='../S/196.html#L513'>seg</a>               513 src/disksim_diskctlr.c 	!currdiskreq-&gt;seg-&gt;diskreqlist-&gt;seg_next)</span>
+<span class='curline'><a href='../S/196.html#L515'>seg</a>               515 src/disksim_diskctlr.c 	ddbg_assert2((currdiskreq-&gt;outblkno &lt;= currdiskreq-&gt;seg-&gt;endblkno),</span>
+<span class='curline'><a href='../S/196.html#L518'>seg</a>               518 src/disksim_diskctlr.c 	currdiskreq-&gt;seg-&gt;startblkno = currdiskreq-&gt;outblkno;</span>
+<span class='curline'><a href='../S/196.html#L525'>seg</a>               525 src/disksim_diskctlr.c 	if(currdiskreq-&gt;seg-&gt;access-&gt;type == NULL_EVENT) {</span>
+<span class='curline'><a href='../S/196.html#L539'>seg</a>               539 src/disksim_diskctlr.c 	if(currdiskreq-&gt;seg-&gt;access-&gt;type == NULL_EVENT) {</span>
+<span class='curline'><a href='../S/196.html#L656'>seg</a>               656 src/disksim_diskctlr.c static void disk_find_new_seg_owner(disk *currdisk, segment *seg)</span>
+<span class='curline'><a href='../S/196.html#L658'>seg</a>               658 src/disksim_diskctlr.c   diskreq *currdiskreq = seg-&gt;diskreqlist;</span>
+<span class='curline'><a href='../S/196.html#L666'>seg</a>               666 src/disksim_diskctlr.c   ddbg_assert(seg != NULL);</span>
+<span class='curline'><a href='../S/196.html#L667'>seg</a>               667 src/disksim_diskctlr.c   ddbg_assert(seg-&gt;recyclereq == NULL);</span>
+<span class='curline'><a href='../S/196.html#L682'>seg</a>               682 src/disksim_diskctlr.c     currdiskreq = seg-&gt;diskreqlist;</span>
+<span class='curline'><a href='../S/196.html#L696'>seg</a>               696 src/disksim_diskctlr.c 	  &amp;&amp; (currdisk-&gt;effectivehda-&gt;seg == seg)) </span>
+<span class='curline'><a href='../S/196.html#L718'>seg</a>               718 src/disksim_diskctlr.c   segment *seg = currdiskreq-&gt;seg;</span>
+<span class='curline'><a href='../S/196.html#L736'>seg</a>               736 src/disksim_diskctlr.c   ddbg_assert(seg != NULL);</span>
+<span class='curline'><a href='../S/196.html#L744'>seg</a>               744 src/disksim_diskctlr.c     seg-&gt;state = </span>
+<span class='curline'><a href='../S/196.html#L745'>seg</a>               745 src/disksim_diskctlr.c       ((currdisk-&gt;enablecache || seg-&gt;diskreqlist-&gt;seg_next) </span>
+<span class='curline'><a href='../S/196.html#L761'>seg</a>               761 src/disksim_diskctlr.c 	seg-&gt;state = (currdisk-&gt;enablecache </span>
+<span class='curline'><a href='../S/196.html#L762'>seg</a>               762 src/disksim_diskctlr.c 		       || seg-&gt;diskreqlist-&gt;seg_next </span>
+<span class='curline'><a href='../S/196.html#L778'>seg</a>               778 src/disksim_diskctlr.c       tmpdiskreq = seg-&gt;diskreqlist;</span>
+<span class='curline'><a href='../S/196.html#L788'>seg</a>               788 src/disksim_diskctlr.c 	      seg-&gt;state = BUFFER_DIRTY;</span>
+<span class='curline'><a href='../S/196.html#L810'>seg</a>               810 src/disksim_diskctlr.c 	if(seg-&gt;diskreqlist-&gt;seg_next) {</span>
+<span class='curline'><a href='../S/196.html#L811'>seg</a>               811 src/disksim_diskctlr.c 	  seg-&gt;state = BUFFER_CLEAN;</span>
+<span class='curline'><a href='../S/196.html#L816'>seg</a>               816 src/disksim_diskctlr.c 	    seg-&gt;state = BUFFER_CLEAN;</span>
+<span class='curline'><a href='../S/196.html#L819'>seg</a>               819 src/disksim_diskctlr.c 	    seg-&gt;state = BUFFER_EMPTY;</span>
+<span class='curline'><a href='../S/196.html#L850'>seg</a>               850 src/disksim_diskctlr.c     if(seg-&gt;recyclereq) {</span>
+<span class='curline'><a href='../S/196.html#L854'>seg</a>               854 src/disksim_diskctlr.c       ddbg_assert2(seg-&gt;diskreqlist == 0,</span>
+<span class='curline'><a href='../S/196.html#L857'>seg</a>               857 src/disksim_diskctlr.c       nextdiskreq = seg-&gt;recyclereq;</span>
+<span class='curline'><a href='../S/196.html#L858'>seg</a>               858 src/disksim_diskctlr.c       disk_buffer_set_segment(currdisk,seg-&gt;recyclereq);</span>
+<span class='curline'><a href='../S/196.html#L859'>seg</a>               859 src/disksim_diskctlr.c       disk_buffer_attempt_seg_ownership(currdisk,seg-&gt;recyclereq);</span>
+<span class='curline'><a href='../S/196.html#L860'>seg</a>               860 src/disksim_diskctlr.c       seg-&gt;recyclereq = NULL;</span>
+<span class='curline'><a href='../S/196.html#L862'>seg</a>               862 src/disksim_diskctlr.c     else if(seg-&gt;diskreqlist) {</span>
+<span class='curline'><a href='../S/196.html#L863'>seg</a>               863 src/disksim_diskctlr.c       disk_find_new_seg_owner(currdisk,seg);</span>
+<span class='curline'><a href='../S/196.html#L872'>seg</a>               872 src/disksim_diskctlr.c     ddbg_assert2(seg-&gt;access-&gt;type == NULL_EVENT,</span>
+<span class='curline'><a href='../S/196.html#L893'>seg</a>               893 src/disksim_diskctlr.c   segment     *seg = currdiskreq-&gt;seg;</span>
+<span class='curline'><a href='../S/196.html#L925'>seg</a>               925 src/disksim_diskctlr.c   if(seg </span>
+<span class='curline'><a href='../S/196.html#L926'>seg</a>               926 src/disksim_diskctlr.c      &amp;&amp; (currdiskreq != seg-&gt;recyclereq) </span>
+<span class='curline'><a href='../S/196.html#L941'>seg</a>               941 src/disksim_diskctlr.c 	if((seg-&gt;endblkno &gt; currdiskreq-&gt;outblkno) </span>
+<span class='curline'><a href='../S/196.html#L942'>seg</a>               942 src/disksim_diskctlr.c 	   &amp;&amp; (seg-&gt;startblkno &lt;= currdiskreq-&gt;outblkno) </span>
+<span class='curline'><a href='../S/196.html#L944'>seg</a>               944 src/disksim_diskctlr.c 	       || (seg-&gt;endblkno &gt;= (tmpioreq-&gt;blkno + tmpioreq-&gt;bcount)) </span>
+<span class='curline'><a href='../S/196.html#L945'>seg</a>               945 src/disksim_diskctlr.c 	       || ((seg-&gt;endblkno - currdiskreq-&gt;outblkno) &gt;= </span>
+<span class='curline'><a href='../S/196.html#L959'>seg</a>               959 src/disksim_diskctlr.c 	    busioreq-&gt;bcount = min(seg-&gt;endblkno,(tmpioreq-&gt;blkno + tmpioreq-&gt;bcount)) - currdiskreq-&gt;outblkno;</span>
+<span class='curline'><a href='../S/196.html#L963'>seg</a>               963 src/disksim_diskctlr.c 	seg_owner = disk_buffer_seg_owner(seg,FALSE);</span>
+<span class='curline'><a href='../S/196.html#L970'>seg</a>               970 src/disksim_diskctlr.c 	   || ((seg-&gt;endblkno == currdiskreq-&gt;outblkno) </span>
+<span class='curline'><a href='../S/196.html#L971'>seg</a>               971 src/disksim_diskctlr.c 	       &amp;&amp; (seg-&gt;endblkno &lt; (tmpioreq-&gt;blkno + tmpioreq-&gt;bcount)) </span>
+<span class='curline'><a href='../S/196.html#L972'>seg</a>               972 src/disksim_diskctlr.c 	       &amp;&amp; ((seg-&gt;endblkno - seg_owner-&gt;inblkno) &lt; seg-&gt;size) </span>
+<span class='curline'><a href='../S/196.html#L974'>seg</a>               974 src/disksim_diskctlr.c 		   || ((seg-&gt;endblkno - currdiskreq-&gt;inblkno) &lt;= </span>
+<span class='curline'><a href='../S/196.html#L991'>seg</a>               991 src/disksim_diskctlr.c 		busioreq-&gt;bcount = min(tmpioreq-&gt;bcount,seg-&gt;size);</span>
+<span class='curline'><a href='../S/196.html#L997'>seg</a>               997 src/disksim_diskctlr.c 	      int i2 = seg-&gt;size - seg-&gt;endblkno + seg_owner-&gt;inblkno;</span>
+<span class='curline'><a href='../S/196.html#L1064'>seg</a>              1064 src/disksim_diskctlr.c     if(currdiskreq-&gt;seg </span>
+<span class='curline'><a href='../S/196.html#L1065'>seg</a>              1065 src/disksim_diskctlr.c        &amp;&amp; (currdiskreq-&gt;seg-&gt;recyclereq == currdiskreq)) </span>
+<span class='curline'><a href='../S/196.html#L1096'>seg</a>              1096 src/disksim_diskctlr.c 	if(currdiskreq-&gt;seg) {</span>
+<span class='curline'><a href='../S/196.html#L1104'>seg</a>              1104 src/disksim_diskctlr.c 	    curr_value = ((currdiskreq-&gt;seg-&gt;endblkno &gt;= (tmpioreq-&gt;blkno + tmpioreq-&gt;bcount)) ? 6 : 5);</span>
+<span class='curline'><a href='../S/196.html#L1123'>seg</a>              1123 src/disksim_diskctlr.c 			 currdiskreq-&gt;seg-&gt;startblkno, </span>
+<span class='curline'><a href='../S/196.html#L1124'>seg</a>              1124 src/disksim_diskctlr.c 			 currdiskreq-&gt;seg-&gt;endblkno);</span>
+<span class='curline'><a href='../S/196.html#L1141'>seg</a>              1141 src/disksim_diskctlr.c 	if(!currdiskreq-&gt;seg &amp;&amp; (best_value &lt;= 4)) {</span>
+<span class='curline'><a href='../S/196.html#L1143'>seg</a>              1143 src/disksim_diskctlr.c 	  if(currdiskreq-&gt;seg) {</span>
+<span class='curline'><a href='../S/196.html#L1145'>seg</a>              1145 src/disksim_diskctlr.c 	      currdiskreq-&gt;seg = NULL;</span>
+<span class='curline'><a href='../S/196.html#L1149'>seg</a>              1149 src/disksim_diskctlr.c 		currdiskreq-&gt;watermark = max(1, (int) ((double) min(currdiskreq-&gt;seg-&gt;size, currdiskreq-&gt;ioreqlist-&gt;bcount) * currdisk-&gt;readwater));</span>
+<span class='curline'><a href='../S/196.html#L1152'>seg</a>              1152 src/disksim_diskctlr.c 		currdiskreq-&gt;watermark = (int) (((double) currdiskreq-&gt;seg-&gt;size * currdisk-&gt;readwater) + (double) 0.9999999999);</span>
+<span class='curline'><a href='../S/196.html#L1157'>seg</a>              1157 src/disksim_diskctlr.c 		currdiskreq-&gt;seg = NULL;</span>
+<span class='curline'><a href='../S/196.html#L1172'>seg</a>              1172 src/disksim_diskctlr.c 	if(currdiskreq-&gt;seg) {</span>
+<span class='curline'><a href='../S/196.html#L1180'>seg</a>              1180 src/disksim_diskctlr.c 	       (currdisk-&gt;effectivehda-&gt;seg == currdiskreq-&gt;seg)) {</span>
+<span class='curline'><a href='../S/196.html#L1184'>seg</a>              1184 src/disksim_diskctlr.c 		    (currdisk-&gt;currenthda-&gt;seg == currdiskreq-&gt;seg)) {</span>
+<span class='curline'><a href='../S/196.html#L1194'>seg</a>              1194 src/disksim_diskctlr.c 	  if(currdiskreq-&gt;seg) {</span>
+<span class='curline'><a href='../S/196.html#L1196'>seg</a>              1196 src/disksim_diskctlr.c 	      currdiskreq-&gt;watermark = max(1, (int) ((double) min(currdiskreq-&gt;seg-&gt;size, currdiskreq-&gt;ioreqlist-&gt;bcount) * currdisk-&gt;writewater));</span>
+<span class='curline'><a href='../S/196.html#L1199'>seg</a>              1199 src/disksim_diskctlr.c 	      currdiskreq-&gt;watermark = (int) (((double) currdiskreq-&gt;seg-&gt;size * currdisk-&gt;writewater) + (double) 0.9999999999);</span>
+<span class='curline'><a href='../S/196.html#L1207'>seg</a>              1207 src/disksim_diskctlr.c 	      currdiskreq-&gt;seg = NULL;</span>
+<span class='curline'><a href='../S/196.html#L1218'>seg</a>              1218 src/disksim_diskctlr.c 	  bestdiskreq-&gt;seg = NULL;</span>
+<span class='curline'><a href='../S/196.html#L1227'>seg</a>              1227 src/disksim_diskctlr.c       currdiskreq-&gt;seg = NULL;</span>
+<span class='curline'><a href='../S/196.html#L1372'>seg</a>              1372 src/disksim_diskctlr.c 	nextdiskreq-&gt;seg-&gt;outstate = BUFFER_CONTACTING;</span>
+<span class='curline'><a href='../S/196.html#L1393'>seg</a>              1393 src/disksim_diskctlr.c   segment *seg;</span>
+<span class='curline'><a href='../S/196.html#L1398'>seg</a>              1398 src/disksim_diskctlr.c   seg = currdiskreq-&gt;seg;</span>
+<span class='curline'><a href='../S/196.html#L1445'>seg</a>              1445 src/disksim_diskctlr.c   if(((currdiskreq != seg-&gt;recyclereq) </span>
+<span class='curline'><a href='../S/196.html#L1446'>seg</a>              1446 src/disksim_diskctlr.c       &amp;&amp; disk_buffer_block_available(currdisk, seg, curr-&gt;blkno)) </span>
+<span class='curline'><a href='../S/196.html#L1473'>seg</a>              1473 src/disksim_diskctlr.c   segment *seg;</span>
+<span class='curline'><a href='../S/196.html#L1477'>seg</a>              1477 src/disksim_diskctlr.c   seg = currdiskreq-&gt;seg;</span>
+<span class='curline'><a href='../S/196.html#L1478'>seg</a>              1478 src/disksim_diskctlr.c   if(seg-&gt;outstate == BUFFER_PREEMPT) {</span>
+<span class='curline'><a href='../S/196.html#L1483'>seg</a>              1483 src/disksim_diskctlr.c   if((currdiskreq != seg-&gt;recyclereq) </span>
+<span class='curline'><a href='../S/196.html#L1484'>seg</a>              1484 src/disksim_diskctlr.c      &amp;&amp; disk_buffer_block_available(currdisk, seg, curr-&gt;blkno)) </span>
+<span class='curline'><a href='../S/196.html#L1496'>seg</a>              1496 src/disksim_diskctlr.c     seg-&gt;time += rotatetime;</span>
+<span class='curline'><a href='../S/196.html#L1508'>seg</a>              1508 src/disksim_diskctlr.c 		    segment *seg, </span>
+<span class='curline'><a href='../S/196.html#L1534'>seg</a>              1534 src/disksim_diskctlr.c   seg-&gt;time = simtime + delay;</span>
+<span class='curline'><a href='../S/196.html#L1577'>seg</a>              1577 src/disksim_diskctlr.c     seg-&gt;time += mintime - seektime;</span>
+<span class='curline'><a href='../S/196.html#L1580'>seg</a>              1580 src/disksim_diskctlr.c   curr-&gt;time = seg-&gt;time + seektime;</span>
+<span class='curline'><a href='../S/196.html#L1679'>seg</a>              1679 src/disksim_diskctlr.c       if(nextdiskreq-&gt;seg &amp;&amp; </span>
+<span class='curline'><a href='../S/196.html#L1681'>seg</a>              1681 src/disksim_diskctlr.c 	  (nextdiskreq-&gt;seg-&gt;recyclereq != nextdiskreq)) </span>
+<span class='curline'><a href='../S/196.html#L1687'>seg</a>              1687 src/disksim_diskctlr.c       if(!nextdiskreq-&gt;seg) {</span>
+<span class='curline'><a href='../S/196.html#L1690'>seg</a>              1690 src/disksim_diskctlr.c 	if(nextdiskreq-&gt;seg) {</span>
+<span class='curline'><a href='../S/196.html#L1696'>seg</a>              1696 src/disksim_diskctlr.c 	  nextdiskreq-&gt;seg = </span>
+<span class='curline'><a href='../S/196.html#L1699'>seg</a>              1699 src/disksim_diskctlr.c 	  if(nextdiskreq-&gt;seg) {</span>
+<span class='curline'><a href='../S/196.html#L1700'>seg</a>              1700 src/disksim_diskctlr.c 	    nextdiskreq-&gt;seg-&gt;recyclereq = nextdiskreq;</span>
+<span class='curline'><a href='../S/196.html#L1708'>seg</a>              1708 src/disksim_diskctlr.c       if(nextdiskreq-&gt;seg) {</span>
+<span class='curline'><a href='../S/196.html#L1747'>seg</a>              1747 src/disksim_diskctlr.c 		       segment *seg, </span>
+<span class='curline'><a href='../S/196.html#L1759'>seg</a>              1759 src/disksim_diskctlr.c   seg-&gt;access-&gt;flags = nextioreq-&gt;flags;</span>
+<span class='curline'><a href='../S/196.html#L1763'>seg</a>              1763 src/disksim_diskctlr.c     if(seg-&gt;access-&gt;type != NULL_EVENT) {</span>
+<span class='curline'><a href='../S/196.html#L1778'>seg</a>              1778 src/disksim_diskctlr.c       seg-&gt;access-&gt;blkno = seg-&gt;endblkno;</span>
+<span class='curline'><a href='../S/196.html#L1781'>seg</a>              1781 src/disksim_diskctlr.c     if(!seg-&gt;recyclereq) {</span>
+<span class='curline'><a href='../S/196.html#L1782'>seg</a>              1782 src/disksim_diskctlr.c       seg-&gt;minreadaheadblkno = </span>
+<span class='curline'><a href='../S/196.html#L1783'>seg</a>              1783 src/disksim_diskctlr.c 	max(seg-&gt;minreadaheadblkno, </span>
+<span class='curline'><a href='../S/196.html#L1789'>seg</a>              1789 src/disksim_diskctlr.c       seg-&gt;maxreadaheadblkno = </span>
+<span class='curline'><a href='../S/196.html#L1790'>seg</a>              1790 src/disksim_diskctlr.c 	max(seg-&gt;maxreadaheadblkno, </span>
+<span class='curline'><a href='../S/196.html#L1791'>seg</a>              1791 src/disksim_diskctlr.c 	    min(disk_buffer_get_max_readahead(currdisk,seg,nextioreq),</span>
+<span class='curline'><a href='../S/196.html#L1796'>seg</a>              1796 src/disksim_diskctlr.c     seg-&gt;state = BUFFER_READING;</span>
+<span class='curline'><a href='../S/196.html#L1797'>seg</a>              1797 src/disksim_diskctlr.c     if(seg-&gt;recyclereq) {</span>
+<span class='curline'><a href='../S/196.html#L1798'>seg</a>              1798 src/disksim_diskctlr.c       seg-&gt;access-&gt;blkno = nextdiskreq-&gt;outblkno;</span>
+<span class='curline'><a href='../S/196.html#L1801'>seg</a>              1801 src/disksim_diskctlr.c     else if((seg-&gt;endblkno &lt; (nextioreq-&gt;blkno + </span>
+<span class='curline'><a href='../S/196.html#L1803'>seg</a>              1803 src/disksim_diskctlr.c 	    || (seg-&gt;startblkno &gt; nextdiskreq-&gt;outblkno)) </span>
+<span class='curline'><a href='../S/196.html#L1807'>seg</a>              1807 src/disksim_diskctlr.c     else if(seg-&gt;endblkno &lt; </span>
+<span class='curline'><a href='../S/196.html#L1808'>seg</a>              1808 src/disksim_diskctlr.c 	    max(seg-&gt;maxreadaheadblkno, </span>
+<span class='curline'><a href='../S/196.html#L1810'>seg</a>              1810 src/disksim_diskctlr.c 					      seg, </span>
+<span class='curline'><a href='../S/196.html#L1813'>seg</a>              1813 src/disksim_diskctlr.c       seg-&gt;access-&gt;flags |= BUFFER_BACKGROUND;</span>
+<span class='curline'><a href='../S/196.html#L1823'>seg</a>              1823 src/disksim_diskctlr.c     if(seg-&gt;access-&gt;type != NULL_EVENT) {</span>
+<span class='curline'><a href='../S/196.html#L1836'>seg</a>              1836 src/disksim_diskctlr.c     if(seg-&gt;access-&gt;type != NULL_EVENT) {</span>
+<span class='curline'><a href='../S/196.html#L1844'>seg</a>              1844 src/disksim_diskctlr.c        || (seg-&gt;access-&gt;flags &amp; READ) </span>
+<span class='curline'><a href='../S/196.html#L1845'>seg</a>              1845 src/disksim_diskctlr.c        || (seg-&gt;access-&gt;blkno != nextdiskreq-&gt;ioreqlist-&gt;blkno) </span>
+<span class='curline'><a href='../S/196.html#L1846'>seg</a>              1846 src/disksim_diskctlr.c        || (seg-&gt;access-&gt;bcount != 1) </span>
+<span class='curline'><a href='../S/196.html#L1847'>seg</a>              1847 src/disksim_diskctlr.c        || (seg-&gt;access-&gt;time != simtime)) </span>
+<span class='curline'><a href='../S/196.html#L1856'>seg</a>              1856 src/disksim_diskctlr.c     seg-&gt;access-&gt;blkno = nextdiskreq-&gt;inblkno;</span>
+<span class='curline'><a href='../S/196.html#L1858'>seg</a>              1858 src/disksim_diskctlr.c       seg-&gt;access-&gt;flags |= BUFFER_BACKGROUND;</span>
+<span class='curline'><a href='../S/196.html#L1861'>seg</a>              1861 src/disksim_diskctlr.c     if((seg-&gt;state != BUFFER_WRITING)</span>
+<span class='curline'><a href='../S/196.html#L1862'>seg</a>              1862 src/disksim_diskctlr.c        &amp;&amp; (seg-&gt;state != BUFFER_DIRTY))</span>
+<span class='curline'><a href='../S/196.html#L1879'>seg</a>              1879 src/disksim_diskctlr.c     seg-&gt;state = BUFFER_WRITING;</span>
+<span class='curline'><a href='../S/196.html#L1907'>seg</a>              1907 src/disksim_diskctlr.c   segment     *seg;</span>
+<span class='curline'><a href='../S/196.html#L1948'>seg</a>              1948 src/disksim_diskctlr.c   assert(nextdiskreq-&gt;seg != 0);</span>
+<span class='curline'><a href='../S/196.html#L1949'>seg</a>              1949 src/disksim_diskctlr.c   seg = nextdiskreq-&gt;seg;</span>
+<span class='curline'><a href='../S/196.html#L1955'>seg</a>              1955 src/disksim_diskctlr.c 			   seg, </span>
+<span class='curline'><a href='../S/196.html#L1963'>seg</a>              1963 src/disksim_diskctlr.c     seg-&gt;state = BUFFER_READING;</span>
+<span class='curline'><a href='../S/196.html#L1964'>seg</a>              1964 src/disksim_diskctlr.c     if(seg-&gt;endblkno &lt; seg-&gt;maxreadaheadblkno) {</span>
+<span class='curline'><a href='../S/196.html#L1965'>seg</a>              1965 src/disksim_diskctlr.c       if(seg-&gt;access-&gt;type != NULL_EVENT) {</span>
+<span class='curline'><a href='../S/196.html#L1976'>seg</a>              1976 src/disksim_diskctlr.c 	seg-&gt;access-&gt;blkno = seg-&gt;endblkno;</span>
+<span class='curline'><a href='../S/196.html#L1979'>seg</a>              1979 src/disksim_diskctlr.c       seg-&gt;access-&gt;flags = READ | BUFFER_BACKGROUND;</span>
+<span class='curline'><a href='../S/196.html#L1982'>seg</a>              1982 src/disksim_diskctlr.c       if(seg-&gt;access-&gt;type == NULL_EVENT) {</span>
+<span class='curline'><a href='../S/196.html#L2008'>seg</a>              2008 src/disksim_diskctlr.c 			   seg, </span>
+<span class='curline'><a href='../S/196.html#L2009'>seg</a>              2009 src/disksim_diskctlr.c 			   seg-&gt;access, </span>
+<span class='curline'><a href='../S/196.html#L2022'>seg</a>              2022 src/disksim_diskctlr.c      &amp;&amp; (seg-&gt;state == BUFFER_READING) </span>
+<span class='curline'><a href='../S/196.html#L2023'>seg</a>              2023 src/disksim_diskctlr.c      &amp;&amp; (seg-&gt;access-&gt;flags &amp; BUFFER_BACKGROUND)) </span>
+<span class='curline'><a href='../S/196.html#L2040'>seg</a>              2040 src/disksim_diskctlr.c   segment* seg;</span>
+<span class='curline'><a href='../S/196.html#L2051'>seg</a>              2051 src/disksim_diskctlr.c   seg = effective-&gt;seg;</span>
+<span class='curline'><a href='../S/196.html#L2053'>seg</a>              2053 src/disksim_diskctlr.c   ddbg_assert((seg-&gt;access-&gt;flags &amp; BUFFER_BACKGROUND) &amp;&amp;</span>
+<span class='curline'><a href='../S/196.html#L2054'>seg</a>              2054 src/disksim_diskctlr.c 	 (seg-&gt;access-&gt;flags &amp; READ));</span>
+<span class='curline'><a href='../S/196.html#L2056'>seg</a>              2056 src/disksim_diskctlr.c   if(seg-&gt;access-&gt;type != NULL_EVENT) {</span>
+<span class='curline'><a href='../S/196.html#L2057'>seg</a>              2057 src/disksim_diskctlr.c     int rv = removefromintq((event *)seg-&gt;access);</span>
+<span class='curline'><a href='../S/196.html#L2060'>seg</a>              2060 src/disksim_diskctlr.c 		seg-&gt;access-&gt;type));</span>
+<span class='curline'><a href='../S/196.html#L2062'>seg</a>              2062 src/disksim_diskctlr.c     seg-&gt;access-&gt;type = NULL_EVENT;</span>
+<span class='curline'><a href='../S/196.html#L2065'>seg</a>              2065 src/disksim_diskctlr.c   seg-&gt;state = ((!(effective-&gt;flags &amp; COMPLETION_RECEIVED) </span>
+<span class='curline'><a href='../S/196.html#L2067'>seg</a>              2067 src/disksim_diskctlr.c 		 || seg-&gt;diskreqlist-&gt;seg_next) ? BUFFER_CLEAN : BUFFER_EMPTY);</span>
+<span class='curline'><a href='../S/196.html#L2075'>seg</a>              2075 src/disksim_diskctlr.c     if(seg-&gt;diskreqlist) {</span>
+<span class='curline'><a href='../S/196.html#L2076'>seg</a>              2076 src/disksim_diskctlr.c       disk_find_new_seg_owner(currdisk,seg);</span>
+<span class='curline'><a href='../S/196.html#L2092'>seg</a>              2092 src/disksim_diskctlr.c   segment     *seg;</span>
+<span class='curline'><a href='../S/196.html#L2102'>seg</a>              2102 src/disksim_diskctlr.c   seg = effective-&gt;seg;</span>
+<span class='curline'><a href='../S/196.html#L2104'>seg</a>              2104 src/disksim_diskctlr.c   ddbg_assert(seg-&gt;access-&gt;flags &amp; READ);</span>
+<span class='curline'><a href='../S/196.html#L2112'>seg</a>              2112 src/disksim_diskctlr.c      &amp;&amp; (seg-&gt;access-&gt;flags &amp; BUFFER_BACKGROUND) </span>
+<span class='curline'><a href='../S/196.html#L2129'>seg</a>              2129 src/disksim_diskctlr.c       seg-&gt;access-&gt;flags = currioreq-&gt;flags;</span>
+<span class='curline'><a href='../S/196.html#L2131'>seg</a>              2131 src/disksim_diskctlr.c       seg-&gt;minreadaheadblkno = max(seg-&gt;minreadaheadblkno, min((currioreq-&gt;blkno + currioreq-&gt;bcount + currdisk-&gt;minreadahead), currdisk-&gt;model-&gt;dm_sectors));</span>
+<span class='curline'><a href='../S/196.html#L2133'>seg</a>              2133 src/disksim_diskctlr.c       seg-&gt;maxreadaheadblkno = max(seg-&gt;maxreadaheadblkno, min(disk_buffer_get_max_readahead(currdisk,seg,currioreq), currdisk-&gt;model-&gt;dm_sectors));</span>
+<span class='curline'><a href='../S/196.html#L2135'>seg</a>              2135 src/disksim_diskctlr.c       if((seg-&gt;endblkno &gt;= (currioreq-&gt;blkno + currioreq-&gt;bcount)) </span>
+<span class='curline'><a href='../S/196.html#L2136'>seg</a>              2136 src/disksim_diskctlr.c 	 &amp;&amp; (seg-&gt;endblkno &lt; seg-&gt;maxreadaheadblkno)) </span>
+<span class='curline'><a href='../S/196.html#L2138'>seg</a>              2138 src/disksim_diskctlr.c 	seg-&gt;access-&gt;flags |= BUFFER_BACKGROUND;</span>
+<span class='curline'><a href='../S/196.html#L2206'>seg</a>              2206 src/disksim_diskctlr.c      &amp;&amp; (!currdiskreq-&gt;seg </span>
+<span class='curline'><a href='../S/196.html#L2207'>seg</a>              2207 src/disksim_diskctlr.c 	 || (currdiskreq-&gt;seg-&gt;recyclereq == currdiskreq) </span>
+<span class='curline'><a href='../S/196.html#L2208'>seg</a>              2208 src/disksim_diskctlr.c 	 || (currdiskreq-&gt;seg-&gt;state != BUFFER_DIRTY)) </span>
+<span class='curline'><a href='../S/196.html#L2211'>seg</a>              2211 src/disksim_diskctlr.c     if((currdiskreq-&gt;seg != currdisk-&gt;effectivehda-&gt;seg) </span>
+<span class='curline'><a href='../S/196.html#L2222'>seg</a>              2222 src/disksim_diskctlr.c   if(currdiskreq-&gt;seg &amp;&amp; setseg) {</span>
+<span class='curline'><a href='../S/196.html#L2224'>seg</a>              2224 src/disksim_diskctlr.c       if(currdiskreq-&gt;seg-&gt;recyclereq == currdiskreq) {</span>
+<span class='curline'><a href='../S/196.html#L2227'>seg</a>              2227 src/disksim_diskctlr.c 	currdiskreq-&gt;seg-&gt;recyclereq = NULL;</span>
+<span class='curline'><a href='../S/196.html#L2229'>seg</a>              2229 src/disksim_diskctlr.c       currdiskreq-&gt;seg = NULL;</span>
+<span class='curline'><a href='../S/196.html#L2238'>seg</a>              2238 src/disksim_diskctlr.c   if(currdiskreq-&gt;seg &amp;&amp; !(currdiskreq-&gt;flags &amp; SEG_OWNED)) {</span>
+<span class='curline'><a href='../S/196.html#L2298'>seg</a>              2298 src/disksim_diskctlr.c       if((currdiskreq-&gt;seg != currdisk-&gt;effectivehda-&gt;seg) </span>
+<span class='curline'><a href='../S/196.html#L2304'>seg</a>              2304 src/disksim_diskctlr.c   if(currdiskreq-&gt;seg &amp;&amp; setseg) {</span>
+<span class='curline'><a href='../S/196.html#L2306'>seg</a>              2306 src/disksim_diskctlr.c       if(currdiskreq-&gt;seg-&gt;recyclereq == currdiskreq) {</span>
+<span class='curline'><a href='../S/196.html#L2309'>seg</a>              2309 src/disksim_diskctlr.c 	currdiskreq-&gt;seg-&gt;recyclereq = NULL;</span>
+<span class='curline'><a href='../S/196.html#L2311'>seg</a>              2311 src/disksim_diskctlr.c       currdiskreq-&gt;seg = NULL;</span>
+<span class='curline'><a href='../S/196.html#L2319'>seg</a>              2319 src/disksim_diskctlr.c   if(currdiskreq-&gt;seg &amp;&amp; !(currdiskreq-&gt;flags &amp; SEG_OWNED)) {</span>
+<span class='curline'><a href='../S/196.html#L2349'>seg</a>              2349 src/disksim_diskctlr.c   segment *seg;</span>
+<span class='curline'><a href='../S/196.html#L2427'>seg</a>              2427 src/disksim_diskctlr.c   seg = disk_buffer_select_segment(currdisk, new_diskreq,TRUE);</span>
+<span class='curline'><a href='../S/196.html#L2435'>seg</a>              2435 src/disksim_diskctlr.c     disk_read_arrive(currdisk, curr, new_diskreq, seg, intrp);</span>
+<span class='curline'><a href='../S/196.html#L2438'>seg</a>              2438 src/disksim_diskctlr.c     disk_write_arrive(currdisk, curr, new_diskreq, seg, intrp);</span>
+<span class='curline'><a href='../S/196.html#L2447'>seg</a>              2447 src/disksim_diskctlr.c 		 segment *seg,</span>
+<span class='curline'><a href='../S/196.html#L2477'>seg</a>              2477 src/disksim_diskctlr.c 	readwater = max(1, (int)((double)min(seg-&gt;size,curr-&gt;bcount) </span>
+<span class='curline'><a href='../S/196.html#L2481'>seg</a>              2481 src/disksim_diskctlr.c 	readwater = (int)((((double) seg-&gt;size * currdisk-&gt;readwater)) + (double) 0.9999999999);</span>
+<span class='curline'><a href='../S/196.html#L2483'>seg</a>              2483 src/disksim_diskctlr.c       if((seg-&gt;endblkno &lt;= curr-&gt;blkno) </span>
+<span class='curline'><a href='../S/196.html#L2484'>seg</a>              2484 src/disksim_diskctlr.c 	 || ((seg-&gt;endblkno - curr-&gt;blkno) &lt; min(readwater,curr-&gt;bcount))) </span>
+<span class='curline'><a href='../S/196.html#L2535'>seg</a>              2535 src/disksim_diskctlr.c       if(seg) {</span>
+<span class='curline'><a href='../S/196.html#L2537'>seg</a>              2537 src/disksim_diskctlr.c 	seg-&gt;outstate = BUFFER_CONTACTING;</span>
+<span class='curline'><a href='../S/196.html#L2597'>seg</a>              2597 src/disksim_diskctlr.c 			     segment *seg,</span>
+<span class='curline'><a href='../S/196.html#L2636'>seg</a>              2636 src/disksim_diskctlr.c      || (seg </span>
+<span class='curline'><a href='../S/196.html#L2664'>seg</a>              2664 src/disksim_diskctlr.c 	  if(seg) {</span>
+<span class='curline'><a href='../S/196.html#L2665'>seg</a>              2665 src/disksim_diskctlr.c 	    seg-&gt;outstate = BUFFER_IDLE;</span>
+<span class='curline'><a href='../S/196.html#L2693'>seg</a>              2693 src/disksim_diskctlr.c 	if(seg) {</span>
+<span class='curline'><a href='../S/196.html#L2694'>seg</a>              2694 src/disksim_diskctlr.c 	  seg-&gt;outstate = BUFFER_CONTACTING;</span>
+<span class='curline'><a href='../S/196.html#L2700'>seg</a>              2700 src/disksim_diskctlr.c       if(seg) {</span>
+<span class='curline'><a href='../S/196.html#L2819'>seg</a>              2819 src/disksim_diskctlr.c   segment     *seg;</span>
+<span class='curline'><a href='../S/196.html#L2835'>seg</a>              2835 src/disksim_diskctlr.c   seg = currdiskreq-&gt;seg;</span>
+<span class='curline'><a href='../S/196.html#L2836'>seg</a>              2836 src/disksim_diskctlr.c   ddbg_assert2((seg != 0) || (currdisk-&gt;const_acctime &gt;= 0),</span>
+<span class='curline'><a href='../S/196.html#L2878'>seg</a>              2878 src/disksim_diskctlr.c       if(seg-&gt;access-&gt;type == NULL_EVENT) {</span>
+<span class='curline'><a href='../S/196.html#L2888'>seg</a>              2888 src/disksim_diskctlr.c       if(seg-&gt;recyclereq) {</span>
+<span class='curline'><a href='../S/196.html#L2889'>seg</a>              2889 src/disksim_diskctlr.c 	ddbg_assert2(seg-&gt;diskreqlist == 0,</span>
+<span class='curline'><a href='../S/196.html#L2892'>seg</a>              2892 src/disksim_diskctlr.c 	disk_buffer_set_segment(currdisk,seg-&gt;recyclereq);</span>
+<span class='curline'><a href='../S/196.html#L2893'>seg</a>              2893 src/disksim_diskctlr.c 	disk_buffer_attempt_seg_ownership(currdisk,seg-&gt;recyclereq);</span>
+<span class='curline'><a href='../S/196.html#L2894'>seg</a>              2894 src/disksim_diskctlr.c 	seg-&gt;recyclereq = NULL;</span>
+<span class='curline'><a href='../S/196.html#L2896'>seg</a>              2896 src/disksim_diskctlr.c       else if(seg-&gt;diskreqlist) {</span>
+<span class='curline'><a href='../S/196.html#L2897'>seg</a>              2897 src/disksim_diskctlr.c 	disk_find_new_seg_owner(currdisk,seg);</span>
+<span class='curline'><a href='../S/196.html#L2900'>seg</a>              2900 src/disksim_diskctlr.c 	seg-&gt;state = BUFFER_EMPTY;</span>
+<span class='curline'><a href='../S/196.html#L2918'>seg</a>              2918 src/disksim_diskctlr.c 	if(seg-&gt;recyclereq) {</span>
+<span class='curline'><a href='../S/196.html#L2919'>seg</a>              2919 src/disksim_diskctlr.c 	  ddbg_assert2(seg-&gt;diskreqlist == 0,</span>
+<span class='curline'><a href='../S/196.html#L2922'>seg</a>              2922 src/disksim_diskctlr.c 	  disk_buffer_set_segment(currdisk,seg-&gt;recyclereq);</span>
+<span class='curline'><a href='../S/196.html#L2923'>seg</a>              2923 src/disksim_diskctlr.c 	  disk_buffer_attempt_seg_ownership(currdisk,seg-&gt;recyclereq);</span>
+<span class='curline'><a href='../S/196.html#L2924'>seg</a>              2924 src/disksim_diskctlr.c 	  seg-&gt;recyclereq = NULL;</span>
+<span class='curline'><a href='../S/196.html#L2925'>seg</a>              2925 src/disksim_diskctlr.c 	} else if(seg-&gt;diskreqlist) {</span>
+<span class='curline'><a href='../S/196.html#L2926'>seg</a>              2926 src/disksim_diskctlr.c 	  disk_find_new_seg_owner(currdisk,seg);</span>
+<span class='curline'><a href='../S/196.html#L2931'>seg</a>              2931 src/disksim_diskctlr.c       seg-&gt;access-&gt;flags |= BUFFER_BACKGROUND;</span>
+<span class='curline'><a href='../S/196.html#L3069'>seg</a>              3069 src/disksim_diskctlr.c   segment *seg = currdiskreq-&gt;seg;</span>
+<span class='curline'><a href='../S/196.html#L3082'>seg</a>              3082 src/disksim_diskctlr.c   background = seg-&gt;access-&gt;flags &amp; BUFFER_BACKGROUND;</span>
+<span class='curline'><a href='../S/196.html#L3083'>seg</a>              3083 src/disksim_diskctlr.c   reading = (seg-&gt;state == BUFFER_READING);</span>
+<span class='curline'><a href='../S/196.html#L3094'>seg</a>              3094 src/disksim_diskctlr.c       if(seg-&gt;endblkno &gt;= seg-&gt;maxreadaheadblkno) {</span>
+<span class='curline'><a href='../S/196.html#L3099'>seg</a>              3099 src/disksim_diskctlr.c       if((seg-&gt;endblkno - currdiskreq-&gt;outblkno) &gt;= currdiskreq-&gt;watermark) {</span>
+<span class='curline'><a href='../S/196.html#L3102'>seg</a>              3102 src/disksim_diskctlr.c       if(seg-&gt;endblkno &gt;= (tmpioreq-&gt;blkno + tmpioreq-&gt;bcount)) {</span>
+<span class='curline'><a href='../S/196.html#L3109'>seg</a>              3109 src/disksim_diskctlr.c       if(seg-&gt;endblkno == currdiskreq-&gt;inblkno) {</span>
+<span class='curline'><a href='../S/196.html#L3114'>seg</a>              3114 src/disksim_diskctlr.c       if((seg-&gt;endblkno - currdiskreq-&gt;inblkno) &lt;= currdiskreq-&gt;watermark) {</span>
+<span class='curline'><a href='../S/196.html#L3115'>seg</a>              3115 src/disksim_diskctlr.c 	if(seg-&gt;endblkno &lt; (tmpioreq-&gt;blkno + tmpioreq-&gt;bcount)) {</span>
+<span class='curline'><a href='../S/196.html#L3127'>seg</a>              3127 src/disksim_diskctlr.c      || (seg-&gt;outstate == BUFFER_PREEMPT)) </span>
+<span class='curline'><a href='../S/196.html#L3129'>seg</a>              3129 src/disksim_diskctlr.c     seg-&gt;access-&gt;type = NULL_EVENT;</span>
+<span class='curline'><a href='../S/196.html#L3135'>seg</a>              3135 src/disksim_diskctlr.c      &amp;&amp; (seg-&gt;outstate == BUFFER_IDLE) </span>
+<span class='curline'><a href='../S/196.html#L3143'>seg</a>              3143 src/disksim_diskctlr.c      &amp;&amp; (seg-&gt;endblkno == seg-&gt;minreadaheadblkno) </span>
+<span class='curline'><a href='../S/196.html#L3152'>seg</a>              3152 src/disksim_diskctlr.c     hold_type = seg-&gt;access-&gt;type;</span>
+<span class='curline'><a href='../S/196.html#L3153'>seg</a>              3153 src/disksim_diskctlr.c     seg-&gt;access-&gt;type = NULL_EVENT;</span>
+<span class='curline'><a href='../S/196.html#L3155'>seg</a>              3155 src/disksim_diskctlr.c     if((seg-&gt;outstate == BUFFER_PREEMPT) ||</span>
+<span class='curline'><a href='../S/196.html#L3159'>seg</a>              3159 src/disksim_diskctlr.c     seg-&gt;access-&gt;type = hold_type;</span>
+<span class='curline'><a href='../S/196.html#L3164'>seg</a>              3164 src/disksim_diskctlr.c        || (seg-&gt;endblkno &gt;= seg-&gt;maxreadaheadblkno)) </span>
+<span class='curline'><a href='../S/196.html#L3166'>seg</a>              3166 src/disksim_diskctlr.c       seg-&gt;access-&gt;type = NULL_EVENT;</span>
+<span class='curline'><a href='../S/196.html#L3169'>seg</a>              3169 src/disksim_diskctlr.c       seg-&gt;access-&gt;flags |= BUFFER_BACKGROUND;</span>
+<span class='curline'><a href='../S/196.html#L3209'>seg</a>              3209 src/disksim_diskctlr.c 	hold_type = seg-&gt;access-&gt;type;</span>
+<span class='curline'><a href='../S/196.html#L3210'>seg</a>              3210 src/disksim_diskctlr.c 	seg-&gt;access-&gt;type = NULL_EVENT;</span>
+<span class='curline'><a href='../S/196.html#L3212'>seg</a>              3212 src/disksim_diskctlr.c 	if((seg-&gt;outstate == BUFFER_PREEMPT) ||</span>
+<span class='curline'><a href='../S/196.html#L3216'>seg</a>              3216 src/disksim_diskctlr.c 	seg-&gt;access-&gt;type = hold_type;</span>
+<span class='curline'><a href='../S/196.html#L3231'>seg</a>              3231 src/disksim_diskctlr.c 	 &amp;&amp; (seg-&gt;outstate == BUFFER_IDLE)) </span>
+<span class='curline'><a href='../S/196.html#L3236'>seg</a>              3236 src/disksim_diskctlr.c     seg-&gt;access-&gt;type = NULL_EVENT;</span>
+<span class='curline'><a href='../S/196.html#L3251'>seg</a>              3251 src/disksim_diskctlr.c   segment *seg;</span>
+<span class='curline'><a href='../S/196.html#L3255'>seg</a>              3255 src/disksim_diskctlr.c   seg = currdiskreq-&gt;seg;</span>
+<span class='curline'><a href='../S/196.html#L3256'>seg</a>              3256 src/disksim_diskctlr.c   if(seg-&gt;outstate == BUFFER_PREEMPT) {</span>
+<span class='curline'><a href='../S/196.html#L3257'>seg</a>              3257 src/disksim_diskctlr.c     seg-&gt;access-&gt;type = NULL_EVENT;</span>
+<span class='curline'><a href='../S/196.html#L3262'>seg</a>              3262 src/disksim_diskctlr.c   if((currdiskreq == seg-&gt;recyclereq) </span>
+<span class='curline'><a href='../S/196.html#L3263'>seg</a>              3263 src/disksim_diskctlr.c      || !disk_buffer_block_available(currdisk, seg, curr-&gt;blkno)) </span>
+<span class='curline'><a href='../S/196.html#L3266'>seg</a>              3266 src/disksim_diskctlr.c       seg-&gt;time += rottime;</span>
+<span class='curline'><a href='../S/196.html#L3273'>seg</a>              3273 src/disksim_diskctlr.c     if(seg-&gt;state == BUFFER_READING) {</span>
+<span class='curline'><a href='../S/196.html#L3274'>seg</a>              3274 src/disksim_diskctlr.c       if(curr-&gt;blkno != (seg-&gt;endblkno+1)) {</span>
+<span class='curline'><a href='../S/196.html#L3278'>seg</a>              3278 src/disksim_diskctlr.c       seg-&gt;endblkno++;</span>
+<span class='curline'><a href='../S/196.html#L3288'>seg</a>              3288 src/disksim_diskctlr.c       if(!disk_initiate_seek(currdisk, seg, curr, 0, 0.0, 0.0)) {</span>
+<span class='curline'><a href='../S/196.html#L3298'>seg</a>              3298 src/disksim_diskctlr.c disk_buffer_update_outbuffer(disk *currdisk, segment *seg)</span>
+<span class='curline'><a href='../S/196.html#L3310'>seg</a>              3310 src/disksim_diskctlr.c   ddbg_assert(currdiskreq-&gt;seg == seg);</span>
+<span class='curline'><a href='../S/196.html#L3313'>seg</a>              3313 src/disksim_diskctlr.c   seg_owner = disk_buffer_seg_owner(seg,FALSE);</span>
+<span class='curline'><a href='../S/196.html#L3331'>seg</a>              3331 src/disksim_diskctlr.c   fprintf (outputfile, "Entered disk_buffer_update_ongoing - devno %d\n", seg-&gt;access-&gt;devno);</span>
+<span class='curline'><a href='../S/196.html#L3346'>seg</a>              3346 src/disksim_diskctlr.c       blks = seg-&gt;outbcount;</span>
+<span class='curline'><a href='../S/196.html#L3350'>seg</a>              3350 src/disksim_diskctlr.c   blks = min(seg-&gt;outbcount, (blks - currdisk-&gt;blksdone));</span>
+<span class='curline'><a href='../S/196.html#L3353'>seg</a>              3353 src/disksim_diskctlr.c   seg-&gt;outbcount -= blks;</span>
+<span class='curline'><a href='../S/196.html#L3355'>seg</a>              3355 src/disksim_diskctlr.c   if(currdiskreq-&gt;outblkno &gt; seg-&gt;endblkno) {</span>
+<span class='curline'><a href='../S/196.html#L3356'>seg</a>              3356 src/disksim_diskctlr.c     seg-&gt;endblkno = currdiskreq-&gt;outblkno;</span>
+<span class='curline'><a href='../S/196.html#L3359'>seg</a>              3359 src/disksim_diskctlr.c   disk_buffer_segment_wrap(seg, seg-&gt;endblkno);</span>
+<span class='curline'><a href='../S/196.html#L3361'>seg</a>              3361 src/disksim_diskctlr.c   if((seg-&gt;state == BUFFER_WRITING) </span>
+<span class='curline'><a href='../S/196.html#L3362'>seg</a>              3362 src/disksim_diskctlr.c      &amp;&amp; ((seg_owner-&gt;inblkno &lt; seg-&gt;startblkno) </span>
+<span class='curline'><a href='../S/196.html#L3363'>seg</a>              3363 src/disksim_diskctlr.c 	 || (seg_owner-&gt;inblkno &gt; seg-&gt;endblkno))) </span>
+<span class='curline'><a href='../S/196.html#L3368'>seg</a>              3368 src/disksim_diskctlr.c 		 seg-&gt;startblkno, </span>
+<span class='curline'><a href='../S/196.html#L3369'>seg</a>              3369 src/disksim_diskctlr.c 		 seg-&gt;endblkno, </span>
+<span class='curline'><a href='../S/196.html#L3393'>seg</a>              3393 src/disksim_diskctlr.c   segment *seg = currdiskreq-&gt;seg;</span>
+<span class='curline'><a href='../S/196.html#L3412'>seg</a>              3412 src/disksim_diskctlr.c   if(!seg) {</span>
+<span class='curline'><a href='../S/196.html#L3434'>seg</a>              3434 src/disksim_diskctlr.c     if(seg-&gt;outstate == BUFFER_TRANSFERING) {</span>
+<span class='curline'><a href='../S/196.html#L3435'>seg</a>              3435 src/disksim_diskctlr.c       currdiskreq-&gt;outblkno += seg-&gt;outbcount;</span>
+<span class='curline'><a href='../S/196.html#L3440'>seg</a>              3440 src/disksim_diskctlr.c 	seg-&gt;outstate = BUFFER_IDLE;</span>
+<span class='curline'><a href='../S/196.html#L3453'>seg</a>              3453 src/disksim_diskctlr.c     if(seg-&gt;endblkno &gt; currdiskreq-&gt;outblkno) {</span>
+<span class='curline'><a href='../S/196.html#L3454'>seg</a>              3454 src/disksim_diskctlr.c       seg-&gt;outstate = BUFFER_TRANSFERING;</span>
+<span class='curline'><a href='../S/196.html#L3455'>seg</a>              3455 src/disksim_diskctlr.c       curr-&gt;bcount = seg-&gt;outbcount = min(seg-&gt;endblkno,(tmpioreq-&gt;blkno + tmpioreq-&gt;bcount)) - currdiskreq-&gt;outblkno;</span>
+<span class='curline'><a href='../S/196.html#L3458'>seg</a>              3458 src/disksim_diskctlr.c       seg-&gt;outstate = BUFFER_TRANSFERING;</span>
+<span class='curline'><a href='../S/196.html#L3459'>seg</a>              3459 src/disksim_diskctlr.c       seg-&gt;outbcount = 0;</span>
+<span class='curline'><a href='../S/196.html#L3462'>seg</a>              3462 src/disksim_diskctlr.c       seg-&gt;outstate = BUFFER_IDLE;</span>
+<span class='curline'><a href='../S/196.html#L3473'>seg</a>              3473 src/disksim_diskctlr.c       seg-&gt;outstate = BUFFER_IDLE;</span>
+<span class='curline'><a href='../S/196.html#L3478'>seg</a>              3478 src/disksim_diskctlr.c     seg_owner = disk_buffer_seg_owner(seg,FALSE);</span>
+<span class='curline'><a href='../S/196.html#L3483'>seg</a>              3483 src/disksim_diskctlr.c     if(seg-&gt;outstate == BUFFER_TRANSFERING) {</span>
+<span class='curline'><a href='../S/196.html#L3484'>seg</a>              3484 src/disksim_diskctlr.c       currdiskreq-&gt;outblkno += seg-&gt;outbcount;</span>
+<span class='curline'><a href='../S/196.html#L3485'>seg</a>              3485 src/disksim_diskctlr.c       if(tmpioreq-&gt;blkno &lt; seg-&gt;startblkno) {</span>
+<span class='curline'><a href='../S/196.html#L3486'>seg</a>              3486 src/disksim_diskctlr.c 	seg-&gt;startblkno = tmpioreq-&gt;blkno;</span>
+<span class='curline'><a href='../S/196.html#L3488'>seg</a>              3488 src/disksim_diskctlr.c       if(currdiskreq-&gt;outblkno &gt; seg-&gt;endblkno) {</span>
+<span class='curline'><a href='../S/196.html#L3489'>seg</a>              3489 src/disksim_diskctlr.c 	seg-&gt;endblkno = currdiskreq-&gt;outblkno;</span>
+<span class='curline'><a href='../S/196.html#L3491'>seg</a>              3491 src/disksim_diskctlr.c       if(seg-&gt;hold_bcount &amp;&amp; </span>
+<span class='curline'><a href='../S/196.html#L3492'>seg</a>              3492 src/disksim_diskctlr.c 	  (seg-&gt;endblkno == seg-&gt;hold_blkno)) {</span>
+<span class='curline'><a href='../S/196.html#L3498'>seg</a>              3498 src/disksim_diskctlr.c 	seg-&gt;endblkno += seg-&gt;hold_bcount;</span>
+<span class='curline'><a href='../S/196.html#L3499'>seg</a>              3499 src/disksim_diskctlr.c 	seg-&gt;hold_bcount = 0;</span>
+<span class='curline'><a href='../S/196.html#L3501'>seg</a>              3501 src/disksim_diskctlr.c       disk_buffer_segment_wrap(seg, seg-&gt;endblkno);</span>
+<span class='curline'><a href='../S/196.html#L3502'>seg</a>              3502 src/disksim_diskctlr.c       ddbg_assert((seg_owner-&gt;inblkno &gt;= seg-&gt;startblkno) &amp;&amp; </span>
+<span class='curline'><a href='../S/196.html#L3503'>seg</a>              3503 src/disksim_diskctlr.c 	     (seg_owner-&gt;inblkno &lt;= seg-&gt;endblkno));</span>
+<span class='curline'><a href='../S/196.html#L3507'>seg</a>              3507 src/disksim_diskctlr.c 	  seg-&gt;outstate = BUFFER_IDLE;</span>
+<span class='curline'><a href='../S/196.html#L3526'>seg</a>              3526 src/disksim_diskctlr.c       if((currdiskreq-&gt;outblkno - seg_owner-&gt;inblkno) &gt; seg-&gt;size) {</span>
+<span class='curline'><a href='../S/196.html#L3532'>seg</a>              3532 src/disksim_diskctlr.c     seg-&gt;outstate = BUFFER_TRANSFERING;</span>
+<span class='curline'><a href='../S/196.html#L3533'>seg</a>              3533 src/disksim_diskctlr.c     curr-&gt;bcount = seg-&gt;outbcount = </span>
+<span class='curline'><a href='../S/196.html#L3534'>seg</a>              3534 src/disksim_diskctlr.c       min((seg-&gt;size - (currdiskreq-&gt;outblkno - seg_owner-&gt;inblkno)), </span>
+<span class='curline'><a href='../S/196.html#L3540'>seg</a>              3540 src/disksim_diskctlr.c 	&amp;&amp; (seg-&gt;endblkno &lt; currdiskreq-&gt;outblkno)) </span>
+<span class='curline'><a href='../S/196.html#L3541'>seg</a>              3541 src/disksim_diskctlr.c        || (seg-&gt;outbcount &lt;= 0)) </span>
+<span class='curline'><a href='../S/196.html#L3549'>seg</a>              3549 src/disksim_diskctlr.c 	    seg-&gt;outstate = BUFFER_TRANSFERING;</span>
+<span class='curline'><a href='../S/196.html#L3550'>seg</a>              3550 src/disksim_diskctlr.c 	    seg-&gt;outbcount = 0;</span>
+<span class='curline'><a href='../S/196.html#L3554'>seg</a>              3554 src/disksim_diskctlr.c 	  seg-&gt;outstate = BUFFER_IDLE;</span>
+<span class='curline'><a href='../S/196.html#L3609'>seg</a>              3609 src/disksim_diskctlr.c     if(currdiskreq-&gt;seg) {</span>
+<span class='curline'><a href='../S/196.html#L3610'>seg</a>              3610 src/disksim_diskctlr.c       ddbg_assert(currdiskreq-&gt;seg-&gt;recyclereq != currdiskreq);</span>
+<span class='curline'><a href='../S/196.html#L3611'>seg</a>              3611 src/disksim_diskctlr.c       if((currdiskreq-&gt;seg-&gt;state == BUFFER_WRITING) ||</span>
+<span class='curline'><a href='../S/196.html#L3612'>seg</a>              3612 src/disksim_diskctlr.c 	  (currdiskreq-&gt;seg-&gt;state == BUFFER_DIRTY)) {</span>
+<span class='curline'><a href='../S/196.html#L3613'>seg</a>              3613 src/disksim_diskctlr.c 	if(!disk_buffer_reusable_segment_check(currdisk,currdiskreq-&gt;seg)) {</span>
+<span class='curline'><a href='../S/196.html#L3619'>seg</a>              3619 src/disksim_diskctlr.c       if(currdiskreq-&gt;seg) {</span>
+<span class='curline'><a href='../S/196.html#L3620'>seg</a>              3620 src/disksim_diskctlr.c 	if((currdiskreq-&gt;seg-&gt;state == BUFFER_WRITING) </span>
+<span class='curline'><a href='../S/196.html#L3621'>seg</a>              3621 src/disksim_diskctlr.c 	   || (currdiskreq-&gt;seg-&gt;state == BUFFER_DIRTY)) </span>
+<span class='curline'><a href='../S/196.html#L3623'>seg</a>              3623 src/disksim_diskctlr.c 	    if(!disk_buffer_reusable_segment_check(currdisk,currdiskreq-&gt;seg)) {</span>
+<span class='curline'><a href='../S/196.html#L3625'>seg</a>              3625 src/disksim_diskctlr.c 	      currdiskreq-&gt;seg = NULL;</span>
+<span class='curline'><a href='../S/196.html#L3630'>seg</a>              3630 src/disksim_diskctlr.c 	currdiskreq-&gt;seg = NULL;</span>
+<span class='curline'><a href='../S/196.html#L3642'>seg</a>              3642 src/disksim_diskctlr.c     if(currdiskreq-&gt;seg) {</span>
+<span class='curline'><a href='../S/196.html#L3646'>seg</a>              3646 src/disksim_diskctlr.c       ddbg_assert(currdiskreq-&gt;seg-&gt;recyclereq != currdiskreq);</span>
+<span class='curline'><a href='../S/196.html#L3648'>seg</a>              3648 src/disksim_diskctlr.c 	seg_owner = disk_buffer_seg_owner(currdiskreq-&gt;seg,FALSE);</span>
+<span class='curline'><a href='../S/196.html#L3650'>seg</a>              3650 src/disksim_diskctlr.c 	  seg_owner = currdiskreq-&gt;seg-&gt;diskreqlist;</span>
+<span class='curline'><a href='../S/196.html#L3665'>seg</a>              3665 src/disksim_diskctlr.c 	      currdiskreq-&gt;seg-&gt;size) </span>
+<span class='curline'><a href='../S/196.html#L3675'>seg</a>              3675 src/disksim_diskctlr.c       if(currdiskreq-&gt;seg) {</span>
+<span class='curline'><a href='../S/196.html#L3677'>seg</a>              3677 src/disksim_diskctlr.c 	  seg_owner = disk_buffer_seg_owner(currdiskreq-&gt;seg, FALSE);</span>
+<span class='curline'><a href='../S/196.html#L3686'>seg</a>              3686 src/disksim_diskctlr.c 	      currdiskreq-&gt;seg-&gt;size) </span>
+<span class='curline'><a href='../S/196.html#L3690'>seg</a>              3690 src/disksim_diskctlr.c 	      currdiskreq-&gt;seg = NULL;</span>
+<span class='curline'><a href='../S/196.html#L3695'>seg</a>              3695 src/disksim_diskctlr.c 	currdiskreq-&gt;seg = NULL;</span>
+<span class='curline'><a href='../S/196.html#L3726'>seg</a>              3726 src/disksim_diskctlr.c   segment *seg;</span>
+<span class='curline'><a href='../S/196.html#L3741'>seg</a>              3741 src/disksim_diskctlr.c   seg = effective-&gt;seg;</span>
+<span class='curline'><a href='../S/196.html#L3743'>seg</a>              3743 src/disksim_diskctlr.c   if(!seg) {</span>
+<span class='curline'><a href='../S/196.html#L3748'>seg</a>              3748 src/disksim_diskctlr.c   if(seg-&gt;recyclereq) {</span>
+<span class='curline'><a href='../S/196.html#L3749'>seg</a>              3749 src/disksim_diskctlr.c     if(seg-&gt;recyclereq != effective) {</span>
+<span class='curline'><a href='../S/196.html#L3756'>seg</a>              3756 src/disksim_diskctlr.c   ddbg_assert2(((seg-&gt;state == BUFFER_READING) </span>
+<span class='curline'><a href='../S/196.html#L3757'>seg</a>              3757 src/disksim_diskctlr.c 	      || (seg-&gt;state == BUFFER_WRITING)),</span>
+<span class='curline'><a href='../S/196.html#L3761'>seg</a>              3761 src/disksim_diskctlr.c   if(seg-&gt;state == BUFFER_READING) {</span>
+<span class='curline'><a href='../S/196.html#L3772'>seg</a>              3772 src/disksim_diskctlr.c 	(seg-&gt;endblkno &lt; seg-&gt;minreadaheadblkno) &amp;&amp; </span>
+<span class='curline'><a href='../S/196.html#L3774'>seg</a>              3774 src/disksim_diskctlr.c 	 (currdiskreq-&gt;seg != seg) ||</span>
+<span class='curline'><a href='../S/196.html#L3775'>seg</a>              3775 src/disksim_diskctlr.c 	 (currioreq-&gt;blkno &lt; seg-&gt;startblkno) || </span>
+<span class='curline'><a href='../S/196.html#L3776'>seg</a>              3776 src/disksim_diskctlr.c 	 (currioreq-&gt;blkno &gt; seg-&gt;endblkno))) {</span>
+<span class='curline'><a href='../S/196.html#L3782'>seg</a>              3782 src/disksim_diskctlr.c 	if(disk_buffer_overlap(seg, currioreq)) {</span>
+<span class='curline'><a href='../S/196.html#L3783'>seg</a>              3783 src/disksim_diskctlr.c 	  seg-&gt;maxreadaheadblkno = seg-&gt;minreadaheadblkno = seg-&gt;endblkno;</span>
+<span class='curline'><a href='../S/196.html#L3802'>seg</a>              3802 src/disksim_diskctlr.c 	(currdiskreq-&gt;seg == seg) &amp;&amp;</span>
+<span class='curline'><a href='../S/196.html#L3803'>seg</a>              3803 src/disksim_diskctlr.c 	(currioreq-&gt;blkno &gt;= seg-&gt;startblkno) &amp;&amp; </span>
+<span class='curline'><a href='../S/196.html#L3804'>seg</a>              3804 src/disksim_diskctlr.c 	((currioreq-&gt;blkno &lt; seg-&gt;endblkno) || </span>
+<span class='curline'><a href='../S/196.html#L3805'>seg</a>              3805 src/disksim_diskctlr.c 	 (currdisk-&gt;almostreadhits &amp;&amp; (currioreq-&gt;blkno == seg-&gt;endblkno)))) {</span>
+<span class='curline'><a href='../S/196.html#L3831'>seg</a>              3831 src/disksim_diskctlr.c     if(seg-&gt;endblkno &lt; seg-&gt;minreadaheadblkno) {</span>
+<span class='curline'><a href='../S/196.html#L3832'>seg</a>              3832 src/disksim_diskctlr.c       seg-&gt;maxreadaheadblkno = seg-&gt;minreadaheadblkno;</span>
+<span class='curline'><a href='../S/196.html#L3836'>seg</a>              3836 src/disksim_diskctlr.c     if((seg-&gt;access-&gt;type == DEVICE_GOT_REMAPPED_SECTOR) ||</span>
+<span class='curline'><a href='../S/196.html#L3837'>seg</a>              3837 src/disksim_diskctlr.c 	(seg-&gt;access-&gt;type == DEVICE_GOTO_REMAPPED_SECTOR)) </span>
+<span class='curline'><a href='../S/196.html#L3839'>seg</a>              3839 src/disksim_diskctlr.c 	seg-&gt;outstate = BUFFER_PREEMPT;</span>
+<span class='curline'><a href='../S/196.html#L3842'>seg</a>              3842 src/disksim_diskctlr.c     else if(seg-&gt;access-&gt;type == NULL_EVENT) {</span>
+<span class='curline'><a href='../S/196.html#L3847'>seg</a>              3847 src/disksim_diskctlr.c        &amp;&amp; ((seg-&gt;access-&gt;type == DEVICE_BUFFER_SEEKDONE) </span>
+<span class='curline'><a href='../S/196.html#L3850'>seg</a>              3850 src/disksim_diskctlr.c       int rv = removefromintq((event *)seg-&gt;access);</span>
+<span class='curline'><a href='../S/196.html#L3853'>seg</a>              3853 src/disksim_diskctlr.c 		 "seg-&gt;access-&gt;type: %d", seg-&gt;access-&gt;type));</span>
+<span class='curline'><a href='../S/196.html#L3855'>seg</a>              3855 src/disksim_diskctlr.c       if(seg-&gt;access-&gt;type == DEVICE_BUFFER_SEEKDONE) {</span>
+<span class='curline'><a href='../S/196.html#L3863'>seg</a>              3863 src/disksim_diskctlr.c 						     seg-&gt;access-&gt;blkno, </span>
+<span class='curline'><a href='../S/196.html#L3868'>seg</a>              3868 src/disksim_diskctlr.c 	  seg-&gt;access-&gt;cause = pbn.sector;</span>
+<span class='curline'><a href='../S/196.html#L3890'>seg</a>              3890 src/disksim_diskctlr.c 			(seg-&gt;access-&gt;flags &amp; READ));</span>
+<span class='curline'><a href='../S/196.html#L3896'>seg</a>              3896 src/disksim_diskctlr.c 	  seg-&gt;access-&gt;time = seg-&gt;time + dm_time_itod(nsecs);</span>
+<span class='curline'><a href='../S/196.html#L3899'>seg</a>              3899 src/disksim_diskctlr.c       disk_seek_stoptime = seg-&gt;access-&gt;time;</span>
+<span class='curline'><a href='../S/196.html#L3900'>seg</a>              3900 src/disksim_diskctlr.c       seg-&gt;access-&gt;type = NULL_EVENT;</span>
+<span class='curline'><a href='../S/196.html#L3904'>seg</a>              3904 src/disksim_diskctlr.c     if((seg-&gt;access-&gt;type == DEVICE_BUFFER_SEEKDONE) </span>
+<span class='curline'><a href='../S/196.html#L3908'>seg</a>              3908 src/disksim_diskctlr.c 	seg-&gt;outstate = BUFFER_PREEMPT;</span>
+<span class='curline'><a href='../S/196.html#L3914'>seg</a>              3914 src/disksim_diskctlr.c   else if(seg-&gt;state == BUFFER_WRITING) {</span>
+<span class='curline'><a href='../S/196.html#L3916'>seg</a>              3916 src/disksim_diskctlr.c        (currdiskreq-&gt;seg == seg) &amp;&amp;</span>
+<span class='curline'><a href='../S/196.html#L3917'>seg</a>              3917 src/disksim_diskctlr.c        (seg-&gt;endblkno == currdiskreq-&gt;ioreqlist-&gt;blkno) &amp;&amp;</span>
+<span class='curline'><a href='../S/196.html#L3974'>seg</a>              3974 src/disksim_diskctlr.c     curr-&gt;time = seg-&gt;time + dm_time_itod(nsecs);</span>
+<span class='curline'><a href='../S/196.html#L3994'>seg</a>              3994 src/disksim_diskctlr.c   segment *seg;</span>
+<span class='curline'><a href='../S/196.html#L4008'>seg</a>              4008 src/disksim_diskctlr.c   seg = currdiskreq-&gt;seg;</span>
+<span class='curline'><a href='../S/196.html#L4033'>seg</a>              4033 src/disksim_diskctlr.c   if(seg-&gt;outstate == BUFFER_PREEMPT) {</span>
+<span class='curline'><a href='../S/196.html#L4089'>seg</a>              4089 src/disksim_diskctlr.c   seg-&gt;time = simtime;</span>
+<span class='curline'><a href='../S/196.html#L4100'>seg</a>              4100 src/disksim_diskctlr.c     dm_time_t isimtime = dm_time_dtoi(seg-&gt;time) - currdisk-&gt;currtime_i;</span>
+<span class='curline'><a href='../S/196.html#L4133'>seg</a>              4133 src/disksim_diskctlr.c    curr-&gt;time = seg-&gt;time + latency;</span>
+<span class='curline'><a href='../S/196.html#L4170'>seg</a>              4170 src/disksim_diskctlr.c 	   seg-&gt;startblkno, seg-&gt;endblkno, </span>
+<span class='curline'><a href='../S/196.html#L4171'>seg</a>              4171 src/disksim_diskctlr.c 	   currdiskreq-&gt;outblkno, seg-&gt;reqlist-&gt;blkno, </span>
+<span class='curline'><a href='../S/196.html#L4172'>seg</a>              4172 src/disksim_diskctlr.c 	   (seg-&gt;reqlist-&gt;blkno + seg-&gt;reqlist-&gt;bcount));</span>
+<span class='curline'><a href='../S/196.html#L4277'>seg</a>              4277 src/disksim_diskctlr.c     dm_time_t reqtime = dm_time_dtoi(seg-&gt;time) - currdisk-&gt;currtime_i;</span>
+<span class='curline'><a href='../S/196.html#L4312'>seg</a>              4312 src/disksim_diskctlr.c     currdisk-&gt;currtime = seg-&gt;time + dm_time_itod(nsecs);</span>
+<span class='curline'><a href='../S/196.html#L4313'>seg</a>              4313 src/disksim_diskctlr.c     currdisk-&gt;currtime_i = dm_time_dtoi(seg-&gt;time) + nsecs;</span>
+<span class='curline'><a href='../S/196.html#L4315'>seg</a>              4315 src/disksim_diskctlr.c     curr-&gt;time = seg-&gt;time + dm_time_itod(nsecs);</span>
+<span class='curline'><a href='../S/196.html#L4342'>seg</a>              4342 src/disksim_diskctlr.c   segment *seg;</span>
+<span class='curline'><a href='../S/196.html#L4375'>seg</a>              4375 src/disksim_diskctlr.c   seg = currdiskreq-&gt;seg;</span>
+<span class='curline'><a href='../S/196.html#L4402'>seg</a>              4402 src/disksim_diskctlr.c     diff_i = (dm_time_dtoi(seg-&gt;time) - currdisk-&gt;currtime_i) % currdisk-&gt;model-&gt;mech-&gt;dm_period(currdisk-&gt;model);</span>
+<span class='curline'><a href='../S/196.html#L4408'>seg</a>              4408 src/disksim_diskctlr.c   diff_i = dm_time_dtoi(simtime - seg-&gt;time);</span>
+<span class='curline'><a href='../S/196.html#L4420'>seg</a>              4420 src/disksim_diskctlr.c      &amp;&amp; !(disk_buffer_block_available(currdisk, seg, currblkno))) </span>
+<span class='curline'><a href='../S/196.html#L4434'>seg</a>              4434 src/disksim_diskctlr.c   if(seg-&gt;recyclereq == currdiskreq) {</span>
+<span class='curline'><a href='../S/196.html#L4443'>seg</a>              4443 src/disksim_diskctlr.c   else if(seg-&gt;state == BUFFER_READING) {</span>
+<span class='curline'><a href='../S/196.html#L4444'>seg</a>              4444 src/disksim_diskctlr.c     firstblkno = seg-&gt;endblkno;</span>
+<span class='curline'><a href='../S/196.html#L4446'>seg</a>              4446 src/disksim_diskctlr.c       lastblkno = min(seg-&gt;maxreadaheadblkno, next);</span>
+<span class='curline'><a href='../S/196.html#L4458'>seg</a>              4458 src/disksim_diskctlr.c     lastblkno = min(seg-&gt;endblkno, next);</span>
+<span class='curline'><a href='../S/196.html#L4491'>seg</a>              4491 src/disksim_diskctlr.c     else if(currblkno &lt; seg-&gt;startblkno) {</span>
+<span class='curline'><a href='../S/196.html#L4495'>seg</a>              4495 src/disksim_diskctlr.c       ddbg_assert3(((seg-&gt;state == BUFFER_READING) </span>
+<span class='curline'><a href='../S/196.html#L4498'>seg</a>              4498 src/disksim_diskctlr.c 		  seg-&gt;state,</span>
+<span class='curline'><a href='../S/196.html#L4501'>seg</a>              4501 src/disksim_diskctlr.c       seg-&gt;startblkno = currblkno;</span>
+<span class='curline'><a href='../S/196.html#L4510'>seg</a>              4510 src/disksim_diskctlr.c 	if((seg-&gt;state == BUFFER_READING) </span>
+<span class='curline'><a href='../S/196.html#L4529'>seg</a>              4529 src/disksim_diskctlr.c       disk_buffer_segment_wrap(seg, currdisk-&gt;immedend);</span>
+<span class='curline'><a href='../S/196.html#L4538'>seg</a>              4538 src/disksim_diskctlr.c   if((currdiskreq != seg-&gt;recyclereq) &amp;&amp; </span>
+<span class='curline'><a href='../S/196.html#L4539'>seg</a>              4539 src/disksim_diskctlr.c      (seg-&gt;outstate == BUFFER_TRANSFERING)) {</span>
+<span class='curline'><a href='../S/196.html#L4540'>seg</a>              4540 src/disksim_diskctlr.c     disk_buffer_update_outbuffer(currdisk, seg);</span>
+<span class='curline'><a href='../S/196.html#L4546'>seg</a>              4546 src/disksim_diskctlr.c     currdisk-&gt;stat.latency = seg-&gt;time - currdisk-&gt;stat.latency;</span>
+<span class='curline'><a href='../S/196.html#L4551'>seg</a>              4551 src/disksim_diskctlr.c     currdisk-&gt;stat.xfertime += simtime - seg-&gt;time;</span>
+<span class='curline'><a href='../S/196.html#L4555'>seg</a>              4555 src/disksim_diskctlr.c   if(currdiskreq != seg-&gt;recyclereq) {</span>
+<span class='curline'><a href='../S/196.html#L4556'>seg</a>              4556 src/disksim_diskctlr.c     if(seg-&gt;state == BUFFER_READING) {</span>
+<span class='curline'><a href='../S/196.html#L4557'>seg</a>              4557 src/disksim_diskctlr.c       seg-&gt;endblkno = firstblkno;</span>
+<span class='curline'><a href='../S/196.html#L4563'>seg</a>              4563 src/disksim_diskctlr.c     disk_buffer_segment_wrap(seg, seg-&gt;endblkno);</span>
+<span class='curline'><a href='../S/196.html#L4581'>seg</a>              4581 src/disksim_diskctlr.c     if(!(disk_initiate_seek(currdisk, seg, curr, 0, 0.0, 0.0))) {</span>
+<span class='curline'><a href='../S/196.html#L4627'>seg</a>              4627 src/disksim_diskctlr.c     seg-&gt;time = simtime;</span>
+<span class='curline'><a href='../S/196.html#L4629'>seg</a>              4629 src/disksim_diskctlr.c     curr-&gt;time = seg-&gt;time + dm_time_itod(currdisk-&gt;model-&gt;mech-&gt;dm_xfertime(currdisk-&gt;model, &amp;currdisk-&gt;mech_state, 1));</span>
+<span class='curline'><a href='../S/196.html#L4652'>seg</a>              4652 src/disksim_diskctlr.c     if((currdiskreq != seg-&gt;recyclereq) </span>
+<span class='curline'><a href='../S/196.html#L4654'>seg</a>              4654 src/disksim_diskctlr.c        &amp;&amp; (seg-&gt;state == BUFFER_READING) </span>
+<span class='curline'><a href='../S/196.html#L4658'>seg</a>              4658 src/disksim_diskctlr.c        &amp;&amp; (currblkno == (seg-&gt;endblkno-1)) </span>
+<span class='curline'><a href='../S/196.html#L4659'>seg</a>              4659 src/disksim_diskctlr.c        &amp;&amp; (seg-&gt;endblkno &lt; currdiskreq-&gt;ioreqlist-&gt;blkno) </span>
+<span class='curline'><a href='../S/196.html#L4662'>seg</a>              4662 src/disksim_diskctlr.c       seg-&gt;startblkno = currdiskreq-&gt;ioreqlist-&gt;blkno;</span>
+<span class='curline'><a href='../S/196.html#L4663'>seg</a>              4663 src/disksim_diskctlr.c       seg-&gt;endblkno = seg-&gt;startblkno;</span>
+<span class='curline'><a href='../S/196.html#L4683'>seg</a>              4683 src/disksim_diskctlr.c 	  &amp;&amp; ((currdiskreq == seg-&gt;recyclereq) </span>
+<span class='curline'><a href='../S/196.html#L4684'>seg</a>              4684 src/disksim_diskctlr.c 	      || !(disk_buffer_block_available(currdisk, seg, currcause)))) </span>
+</pre>
+</body>
+</html>

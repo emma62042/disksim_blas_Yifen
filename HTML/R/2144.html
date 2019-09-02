@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>statgen</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/37.html#L573'>statgen</a>           573 memsmodel/mems_disksim.c   statgen *statset[MAXDEVICES];</span>
+<span class='curline'><a href='../S/37.html#L610'>statgen</a>           610 memsmodel/mems_disksim.c   statgen *statset[MAXDEVICES];</span>
+<span class='curline'><a href='../S/37.html#L824'>statgen</a>           824 memsmodel/mems_disksim.c   statgen *statset[MAXDEVICES];</span>
+<span class='curline'><a href='../S/37.html#L977'>statgen</a>           977 memsmodel/mems_disksim.c   statgen *statset[MAXDEVICES];</span>
+<span class='curline'><a href='../S/37.html#L1066'>statgen</a>          1066 memsmodel/mems_disksim.c   statgen *statset[MAXDEVICES];</span>
+<span class='curline'><a href='../S/30.html#L104'>statgen</a>           104 memsmodel/mems_global.h   statgen request_energy_uj;	/* Average energy dissipated per request */</span>
+<span class='curline'><a href='../S/30.html#L111'>statgen</a>           111 memsmodel/mems_global.h   statgen seek_time;		/* Initial positioning time */</span>
+<span class='curline'><a href='../S/30.html#L112'>statgen</a>           112 memsmodel/mems_global.h   statgen x_seek_time;		/* Initial positioning time in X */</span>
+<span class='curline'><a href='../S/30.html#L113'>statgen</a>           113 memsmodel/mems_global.h   statgen y_seek_time;		/* Initial positioning time in Y */</span>
+<span class='curline'><a href='../S/30.html#L117'>statgen</a>           117 memsmodel/mems_global.h   statgen turnaround_time;	/* Initial turnaround time to position */      </span>
+<span class='curline'><a href='../S/30.html#L118'>statgen</a>           118 memsmodel/mems_global.h   statgen turnaround_number;	/* Initial number of to's to position */</span>
+<span class='curline'><a href='../S/30.html#L122'>statgen</a>           122 memsmodel/mems_global.h   statgen stream_turnaround_time; /* "Streaming" turnaround time */</span>
+<span class='curline'><a href='../S/30.html#L123'>statgen</a>           123 memsmodel/mems_global.h   statgen stream_turnaround_number; /* "Streaming turnaround number */</span>
+<span class='curline'><a href='../S/30.html#L125'>statgen</a>           125 memsmodel/mems_global.h   statgen subtrack_accesses;	/* Sectors accessed per request */</span>
+<span class='curline'><a href='../S/30.html#L126'>statgen</a>           126 memsmodel/mems_global.h   statgen tips_per_access;	/* Average number of tips per sector access */</span>
+<span class='curline'><a href='../S/30.html#L130'>statgen</a>           130 memsmodel/mems_global.h   statgen inactive_time;	/* Time spent inactive before spinup */</span>
+<span class='curline'><a href='../S/30.html#L135'>statgen</a>           135 memsmodel/mems_global.h   statgen prefetched_blocks;	/* Number of blocks prefetched each request */</span>
+<span class='curline'><a href='../S/30.html#L136'>statgen</a>           136 memsmodel/mems_global.h   statgen batch_response_time;  /* Response time for batches */</span>
+<span class='curline'><a href='../S/262.html#L158'>statgen</a>           158 src/disksim_bus.h   statgen	arbwaitstats;</span>
+<span class='curline'><a href='../S/262.html#L159'>statgen</a>           159 src/disksim_bus.h   statgen	busidlestats;</span>
+<span class='curline'><a href='../S/273.html#L649'>statgen</a>           649 src/disksim_disk.c   statgen * statset[MAXDEVICES];</span>
+<span class='curline'><a href='../S/273.html#L681'>statgen</a>           681 src/disksim_disk.c   statgen * statset[MAXDEVICES];</span>
+<span class='curline'><a href='../S/273.html#L710'>statgen</a>           710 src/disksim_disk.c   statgen * statset[MAXDEVICES];</span>
+<span class='curline'><a href='../S/273.html#L725'>statgen</a>           725 src/disksim_disk.c   statgen * statset[MAXDEVICES];</span>
+<span class='curline'><a href='../S/258.html#L244'>statgen</a>           244 src/disksim_disk.h    statgen seekdiststats;</span>
+<span class='curline'><a href='../S/258.html#L245'>statgen</a>           245 src/disksim_disk.h    statgen seektimestats;</span>
+<span class='curline'><a href='../S/258.html#L246'>statgen</a>           246 src/disksim_disk.h    statgen rotlatstats;</span>
+<span class='curline'><a href='../S/258.html#L247'>statgen</a>           247 src/disksim_disk.h    statgen xfertimestats;</span>
+<span class='curline'><a href='../S/258.html#L248'>statgen</a>           248 src/disksim_disk.h    statgen postimestats;</span>
+<span class='curline'><a href='../S/258.html#L249'>statgen</a>           249 src/disksim_disk.h    statgen acctimestats;</span>
+<span class='curline'><a href='../S/218.html#L179'>statgen</a>           179 src/disksim_iodriver.h    statgen emptyqueuestats;</span>
+<span class='curline'><a href='../S/218.html#L180'>statgen</a>           180 src/disksim_iodriver.h    statgen initiatenextstats;</span>
+<span class='curline'><a href='../S/254.html#L3844'>statgen</a>          3844 src/disksim_ioqueue.c    statgen ** statset;</span>
+<span class='curline'><a href='../S/254.html#L3845'>statgen</a>          3845 src/disksim_ioqueue.c    statset = (statgen **)  DISKSIM_malloc (3*setsize*sizeof(statgen *));</span>
+<span class='curline'><a href='../S/254.html#L3913'>statgen</a>          3913 src/disksim_ioqueue.c    statgen ** statset;</span>
+<span class='curline'><a href='../S/254.html#L3915'>statgen</a>          3915 src/disksim_ioqueue.c    statset = (statgen **)  DISKSIM_malloc (setsize*sizeof(statgen *));</span>
+<span class='curline'><a href='../S/254.html#L3942'>statgen</a>          3942 src/disksim_ioqueue.c    statgen ** statset;</span>
+<span class='curline'><a href='../S/254.html#L3944'>statgen</a>          3944 src/disksim_ioqueue.c    statset = (statgen **)  DISKSIM_malloc (setsize*sizeof(statgen *));</span>
+<span class='curline'><a href='../S/254.html#L3971'>statgen</a>          3971 src/disksim_ioqueue.c    statgen ** statset;</span>
+<span class='curline'><a href='../S/254.html#L3973'>statgen</a>          3973 src/disksim_ioqueue.c    statset = (statgen **)  DISKSIM_malloc (setsize*sizeof(statgen *));</span>
+<span class='curline'><a href='../S/254.html#L3993'>statgen</a>          3993 src/disksim_ioqueue.c    statgen ** statset;</span>
+<span class='curline'><a href='../S/254.html#L3995'>statgen</a>          3995 src/disksim_ioqueue.c    statset = (statgen **)  DISKSIM_malloc (setsize*sizeof(statgen *));</span>
+<span class='curline'><a href='../S/254.html#L4046'>statgen</a>          4046 src/disksim_ioqueue.c    statgen ** statset;</span>
+<span class='curline'><a href='../S/254.html#L4048'>statgen</a>          4048 src/disksim_ioqueue.c    statset = (statgen **)  DISKSIM_malloc (setsize*sizeof(statgen *));</span>
+<span class='curline'><a href='../S/254.html#L4129'>statgen</a>          4129 src/disksim_ioqueue.c    statgen ** statset;</span>
+<span class='curline'><a href='../S/254.html#L4132'>statgen</a>          4132 src/disksim_ioqueue.c    statset = (statgen **)  DISKSIM_malloc (3*setsize*sizeof(statgen *));</span>
+<span class='curline'><a href='../S/259.html#L244'>statgen</a>           244 src/disksim_ioqueue.h    statgen	outtimestats;</span>
+<span class='curline'><a href='../S/259.html#L245'>statgen</a>           245 src/disksim_ioqueue.h    statgen	critreadstats;</span>
+<span class='curline'><a href='../S/259.html#L246'>statgen</a>           246 src/disksim_ioqueue.h    statgen	critwritestats;</span>
+<span class='curline'><a href='../S/259.html#L247'>statgen</a>           247 src/disksim_ioqueue.h    statgen	nocritreadstats;</span>
+<span class='curline'><a href='../S/259.html#L248'>statgen</a>           248 src/disksim_ioqueue.h    statgen	nocritwritestats;</span>
+<span class='curline'><a href='../S/259.html#L249'>statgen</a>           249 src/disksim_ioqueue.h    statgen	qtimestats;</span>
+<span class='curline'><a href='../S/259.html#L250'>statgen</a>           250 src/disksim_ioqueue.h    statgen	accstats;</span>
+<span class='curline'><a href='../S/259.html#L251'>statgen</a>           251 src/disksim_ioqueue.h    statgen	instqueuelen;</span>
+<span class='curline'><a href='../S/259.html#L252'>statgen</a>           252 src/disksim_ioqueue.h    statgen	infopenalty;</span>
+<span class='curline'><a href='../S/259.html#L290'>statgen</a>           290 src/disksim_ioqueue.h    statgen	idlestats;</span>
+<span class='curline'><a href='../S/259.html#L291'>statgen</a>           291 src/disksim_ioqueue.h    statgen	intarrstats;</span>
+<span class='curline'><a href='../S/259.html#L292'>statgen</a>           292 src/disksim_ioqueue.h    statgen	readintarrstats;</span>
+<span class='curline'><a href='../S/259.html#L293'>statgen</a>           293 src/disksim_ioqueue.h    statgen	writeintarrstats;</span>
+<span class='curline'><a href='../S/259.html#L294'>statgen</a>           294 src/disksim_ioqueue.h    statgen	reqsizestats;</span>
+<span class='curline'><a href='../S/259.html#L295'>statgen</a>           295 src/disksim_ioqueue.h    statgen	readsizestats;</span>
+<span class='curline'><a href='../S/259.html#L296'>statgen</a>           296 src/disksim_ioqueue.h    statgen	writesizestats;</span>
+<span class='curline'><a href='../S/259.html#L297'>statgen</a>           297 src/disksim_ioqueue.h    statgen      batchsizestats;</span>
+<span class='curline'><a href='../S/194.html#L485'>statgen</a>           485 src/disksim_iosim.c       tracestats2 = (statgen *)DISKSIM_malloc(sizeof(statgen));</span>
+<span class='curline'><a href='../S/194.html#L486'>statgen</a>           486 src/disksim_iosim.c       tracestats3 = (statgen *)DISKSIM_malloc(sizeof(statgen));</span>
+<span class='curline'><a href='../S/194.html#L487'>statgen</a>           487 src/disksim_iosim.c       tracestats4 = (statgen *)DISKSIM_malloc(sizeof(statgen));</span>
+<span class='curline'><a href='../S/194.html#L488'>statgen</a>           488 src/disksim_iosim.c       tracestats5 = (statgen *)DISKSIM_malloc(sizeof(statgen));</span>
+<span class='curline'><a href='../S/194.html#L532'>statgen</a>           532 src/disksim_iosim.c       tracestats  = (statgen *)DISKSIM_malloc(tracemappings * sizeof(statgen));</span>
+<span class='curline'><a href='../S/194.html#L533'>statgen</a>           533 src/disksim_iosim.c       tracestats1 = (statgen *)DISKSIM_malloc(tracemappings * sizeof(statgen));</span>
+<span class='curline'><a href='../S/194.html#L534'>statgen</a>           534 src/disksim_iosim.c       tracestats2 = (statgen *)DISKSIM_malloc(tracemappings * sizeof(statgen));</span>
+<span class='curline'><a href='../S/194.html#L535'>statgen</a>           535 src/disksim_iosim.c       tracestats3 = (statgen *)DISKSIM_malloc(tracemappings * sizeof(statgen));</span>
+<span class='curline'><a href='../S/194.html#L536'>statgen</a>           536 src/disksim_iosim.c       tracestats4 = (statgen *)DISKSIM_malloc(tracemappings * sizeof(statgen));</span>
+<span class='curline'><a href='../S/255.html#L287'>statgen</a>           287 src/disksim_iosim.h    statgen *tracestats;</span>
+<span class='curline'><a href='../S/255.html#L288'>statgen</a>           288 src/disksim_iosim.h    statgen *tracestats1;</span>
+<span class='curline'><a href='../S/255.html#L289'>statgen</a>           289 src/disksim_iosim.h    statgen *tracestats2;</span>
+<span class='curline'><a href='../S/255.html#L290'>statgen</a>           290 src/disksim_iosim.h    statgen *tracestats3;</span>
+<span class='curline'><a href='../S/255.html#L291'>statgen</a>           291 src/disksim_iosim.h    statgen *tracestats4;</span>
+<span class='curline'><a href='../S/255.html#L292'>statgen</a>           292 src/disksim_iosim.h    statgen *tracestats5;</span>
+<span class='curline'><a href='../S/278.html#L1336'>statgen</a>          1336 src/disksim_logorg.c    statgen * statset[MAXDEVICES];</span>
+<span class='curline'><a href='../S/278.html#L1477'>statgen</a>          1477 src/disksim_logorg.c    statgen * statset[MAXDEVICES];</span>
+<span class='curline'><a href='../S/248.html#L204'>statgen</a>           204 src/disksim_logorg.h    statgen      resptimestats;</span>
+<span class='curline'><a href='../S/248.html#L205'>statgen</a>           205 src/disksim_logorg.h    statgen	idlestats;</span>
+<span class='curline'><a href='../S/248.html#L206'>statgen</a>           206 src/disksim_logorg.h    statgen      sizestats;</span>
+<span class='curline'><a href='../S/248.html#L207'>statgen</a>           207 src/disksim_logorg.h    statgen	readsizestats;</span>
+<span class='curline'><a href='../S/248.html#L208'>statgen</a>           208 src/disksim_logorg.h    statgen	writesizestats;</span>
+<span class='curline'><a href='../S/248.html#L209'>statgen</a>           209 src/disksim_logorg.h    statgen      intarrstats;</span>
+<span class='curline'><a href='../S/248.html#L210'>statgen</a>           210 src/disksim_logorg.h    statgen      readintarrstats;</span>
+<span class='curline'><a href='../S/248.html#L211'>statgen</a>           211 src/disksim_logorg.h    statgen      writeintarrstats;</span>
+<span class='curline'><a href='../S/248.html#L227'>statgen</a>           227 src/disksim_logorg.h    statgen streakstats;</span>
+<span class='curline'><a href='../S/248.html#L228'>statgen</a>           228 src/disksim_logorg.h    statgen localitystats;</span>
+<span class='curline'><a href='../S/191.html#L1182'>statgen</a>          1182 src/disksim_pfsim.c    statgen * readlimitstats[511];</span>
+<span class='curline'><a href='../S/191.html#L1183'>statgen</a>          1183 src/disksim_pfsim.c    statgen * writelimitstats[511];</span>
+<span class='curline'><a href='../S/191.html#L1184'>statgen</a>          1184 src/disksim_pfsim.c    statgen * readmissstats[511];</span>
+<span class='curline'><a href='../S/191.html#L1185'>statgen</a>          1185 src/disksim_pfsim.c    statgen * writemissstats[511];</span>
+<span class='curline'><a href='../S/208.html#L169'>statgen</a>           169 src/disksim_pfsim.h    statgen readtimelimitstats;</span>
+<span class='curline'><a href='../S/208.html#L170'>statgen</a>           170 src/disksim_pfsim.h    statgen writetimelimitstats;</span>
+<span class='curline'><a href='../S/208.html#L171'>statgen</a>           171 src/disksim_pfsim.h    statgen readmisslimitstats;</span>
+<span class='curline'><a href='../S/208.html#L172'>statgen</a>           172 src/disksim_pfsim.h    statgen writemisslimitstats;</span>
+<span class='curline'><a href='../S/208.html#L275'>statgen</a>           275 src/disksim_pfsim.h    statgen timecritrespstats;</span>
+<span class='curline'><a href='../S/208.html#L276'>statgen</a>           276 src/disksim_pfsim.h    statgen timelimitrespstats;</span>
+<span class='curline'><a href='../S/208.html#L277'>statgen</a>           277 src/disksim_pfsim.h    statgen timenoncritrespstats;</span>
+<span class='curline'><a href='../S/201.html#L868'>statgen</a>           868 src/disksim_simpledisk.c    statgen * statset[MAXDEVICES];</span>
+<span class='curline'><a href='../S/275.html#L107'>statgen</a>           107 src/disksim_simpledisk.h    statgen acctimestats;</span>
+<span class='curline'><a href='../S/285.html#L105'>statgen</a>           105 src/disksim_stat.c int stat_get_count (statgen *statptr)</span>
+<span class='curline'><a href='../S/285.html#L111'>statgen</a>           111 src/disksim_stat.c int stat_get_count_set (statgen **statset, int statcnt)</span>
+<span class='curline'><a href='../S/285.html#L117'>statgen</a>           117 src/disksim_stat.c       statgen *statptr = statset[i];</span>
+<span class='curline'><a href='../S/285.html#L124'>statgen</a>           124 src/disksim_stat.c double stat_get_runval (statgen *statptr)</span>
+<span class='curline'><a href='../S/285.html#L130'>statgen</a>           130 src/disksim_stat.c void stat_update (statgen *statptr, double value)</span>
+<span class='curline'><a href='../S/285.html#L198'>statgen</a>           198 src/disksim_stat.c static void stat_print_large_dist (statgen **statset, int statcnt, int count, char *identstr)</span>
+<span class='curline'><a href='../S/285.html#L201'>statgen</a>           201 src/disksim_stat.c    statgen *statptr = statset[0];</span>
+<span class='curline'><a href='../S/285.html#L238'>statgen</a>           238 src/disksim_stat.c void stat_print (statgen *statptr, char *identstr)</span>
+<span class='curline'><a href='../S/285.html#L244'>statgen</a>           244 src/disksim_stat.c void stat_print_file (statgen *statptr, char *identstr, FILE *outfile){</span>
+<span class='curline'><a href='../S/285.html#L295'>statgen</a>           295 src/disksim_stat.c void stat_print_set (statgen **statset, int statcnt, char *identstr)</span>
+<span class='curline'><a href='../S/285.html#L299'>statgen</a>           299 src/disksim_stat.c    statgen *statptr = statset[0];</span>
+<span class='curline'><a href='../S/285.html#L375'>statgen</a>           375 src/disksim_stat.c void stat_reset (statgen *statptr)</span>
+<span class='curline'><a href='../S/285.html#L396'>statgen</a>           396 src/disksim_stat.c static void stat_get_large_dist (FILE *statdef_file, statgen *statptr, int buckets)</span>
+<span class='curline'><a href='../S/285.html#L432'>statgen</a>           432 src/disksim_stat.c void stat_initialize (FILE *statdef_file, char *statdesc, statgen *statptr)</span>
+<span class='curline'><a href='../S/288.html#L128'>statgen</a>           128 src/disksim_stat.h void   stat_initialize (FILE *statdef_file, char *statdesc, statgen *statptr);</span>
+<span class='curline'><a href='../S/288.html#L129'>statgen</a>           129 src/disksim_stat.h void   stat_reset (statgen *statptr);</span>
+<span class='curline'><a href='../S/288.html#L130'>statgen</a>           130 src/disksim_stat.h void   stat_update (statgen *statptr, double value);</span>
+<span class='curline'><a href='../S/288.html#L131'>statgen</a>           131 src/disksim_stat.h int    stat_get_count (statgen *statptr);</span>
+<span class='curline'><a href='../S/288.html#L132'>statgen</a>           132 src/disksim_stat.h double stat_get_runval (statgen *statptr);</span>
+<span class='curline'><a href='../S/288.html#L133'>statgen</a>           133 src/disksim_stat.h void   stat_print (statgen *statptr, char *identstr);</span>
+<span class='curline'><a href='../S/288.html#L134'>statgen</a>           134 src/disksim_stat.h void   stat_print_file (statgen *statptr, char *identstr, FILE *outfile);</span>
+<span class='curline'><a href='../S/288.html#L135'>statgen</a>           135 src/disksim_stat.h void   stat_print_set (statgen **statset, int statcnt, char *identstr);</span>
+<span class='curline'><a href='../S/288.html#L136'>statgen</a>           136 src/disksim_stat.h int    stat_get_count_set (statgen **statset, int statcnt);</span>
+<span class='curline'><a href='../S/156.html#L29'>statgen</a>            29 ssdmodel/include/ssdmodel/ssd.h    statgen acctimestats;</span>
+<span class='curline'><a href='../S/187.html#L1139'>statgen</a>          1139 ssdmodel/ssd.c    statgen * statset[MAXDEVICES];</span>
+<span class='curline'><a href='../S/147.html#L29'>statgen</a>            29 ssdmodel/ssd.h    statgen acctimestats;</span>
+</pre>
+</body>
+</html>

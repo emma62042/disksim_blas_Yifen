@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>src/disksim_simpledisk.h</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<a id='TOP' name='TOP'></a><h2 class='header'><a href='../mains.html'>root</a>/<a href='../files/402.html'>src</a>/disksim_simpledisk.h</h2>
+<em class='comment'>/* [&lt;][&gt;][^][v][top]<a href='#BOTTOM'>[bottom]</a><a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</em>
+<hr />
+<h2 class='header'><a href='../J/117.html' title='Multiple included from 2 places.'>INCLUDED FROM</a></h2>
+<hr />
+<pre>
+<a id='L1' name='L1'></a>   1 <em class='comment'>/*</em>
+<a id='L2' name='L2'></a>   2 <em class='comment'> * DiskSim Storage Subsystem Simulation Environment (Version 4.0)</em>
+<a id='L3' name='L3'></a>   3 <em class='comment'> * Revision Authors: John Bucy, Greg Ganger</em>
+<a id='L4' name='L4'></a>   4 <em class='comment'> * Contributors: John Griffin, Jiri Schindler, Steve Schlosser</em>
+<a id='L5' name='L5'></a>   5 <em class='comment'> *</em>
+<a id='L6' name='L6'></a>   6 <em class='comment'> * Copyright (c) of Carnegie Mellon University, 2001-2008.</em>
+<a id='L7' name='L7'></a>   7 <em class='comment'> *</em>
+<a id='L8' name='L8'></a>   8 <em class='comment'> * This software is being provided by the copyright holders under the</em>
+<a id='L9' name='L9'></a>   9 <em class='comment'> * following license. By obtaining, using and/or copying this software,</em>
+<a id='L10' name='L10'></a>  10 <em class='comment'> * you agree that you have read, understood, and will comply with the</em>
+<a id='L11' name='L11'></a>  11 <em class='comment'> * following terms and conditions:</em>
+<a id='L12' name='L12'></a>  12 <em class='comment'> *</em>
+<a id='L13' name='L13'></a>  13 <em class='comment'> * Permission to reproduce, use, and prepare derivative works of this</em>
+<a id='L14' name='L14'></a>  14 <em class='comment'> * software is granted provided the copyright and "No Warranty" statements</em>
+<a id='L15' name='L15'></a>  15 <em class='comment'> * are included with all reproductions and derivative works and associated</em>
+<a id='L16' name='L16'></a>  16 <em class='comment'> * documentation. This software may also be redistributed without charge</em>
+<a id='L17' name='L17'></a>  17 <em class='comment'> * provided that the copyright and "No Warranty" statements are included</em>
+<a id='L18' name='L18'></a>  18 <em class='comment'> * in all redistributions.</em>
+<a id='L19' name='L19'></a>  19 <em class='comment'> *</em>
+<a id='L20' name='L20'></a>  20 <em class='comment'> * NO WARRANTY. THIS SOFTWARE IS FURNISHED ON AN "AS IS" BASIS.</em>
+<a id='L21' name='L21'></a>  21 <em class='comment'> * CARNEGIE MELLON UNIVERSITY MAKES NO WARRANTIES OF ANY KIND, EITHER</em>
+<a id='L22' name='L22'></a>  22 <em class='comment'> * EXPRESSED OR IMPLIED AS TO THE MATTER INCLUDING, BUT NOT LIMITED</em>
+<a id='L23' name='L23'></a>  23 <em class='comment'> * TO: WARRANTY OF FITNESS FOR PURPOSE OR MERCHANTABILITY, EXCLUSIVITY</em>
+<a id='L24' name='L24'></a>  24 <em class='comment'> * OF RESULTS OR RESULTS OBTAINED FROM USE OF THIS SOFTWARE. CARNEGIE</em>
+<a id='L25' name='L25'></a>  25 <em class='comment'> * MELLON UNIVERSITY DOES NOT MAKE ANY WARRANTY OF ANY KIND WITH RESPECT</em>
+<a id='L26' name='L26'></a>  26 <em class='comment'> * TO FREEDOM FROM PATENT, TRADEMARK, OR COPYRIGHT INFRINGEMENT.</em>
+<a id='L27' name='L27'></a>  27 <em class='comment'> * COPYRIGHT HOLDERS WILL BEAR NO LIABILITY FOR ANY USE OF THIS SOFTWARE</em>
+<a id='L28' name='L28'></a>  28 <em class='comment'> * OR DOCUMENTATION.</em>
+<a id='L29' name='L29'></a>  29 <em class='comment'> *</em>
+<a id='L30' name='L30'></a>  30 <em class='comment'> */</em>
+<a id='L31' name='L31'></a>  31 
+<a id='L32' name='L32'></a>  32 
+<a id='L33' name='L33'></a>  33 
+<a id='L34' name='L34'></a>  34 <em class='comment'>/*</em>
+<a id='L35' name='L35'></a>  35 <em class='comment'> * DiskSim Storage Subsystem Simulation Environment (Version 2.0)</em>
+<a id='L36' name='L36'></a>  36 <em class='comment'> * Revision Authors: Greg Ganger</em>
+<a id='L37' name='L37'></a>  37 <em class='comment'> * Contributors: Ross Cohen, John Griffin, Steve Schlosser</em>
+<a id='L38' name='L38'></a>  38 <em class='comment'> *</em>
+<a id='L39' name='L39'></a>  39 <em class='comment'> * Copyright (c) of Carnegie Mellon University, 1999.</em>
+<a id='L40' name='L40'></a>  40 <em class='comment'> *</em>
+<a id='L41' name='L41'></a>  41 <em class='comment'> * Permission to reproduce, use, and prepare derivative works of</em>
+<a id='L42' name='L42'></a>  42 <em class='comment'> * this software for internal use is granted provided the copyright</em>
+<a id='L43' name='L43'></a>  43 <em class='comment'> * and "No Warranty" statements are included with all reproductions</em>
+<a id='L44' name='L44'></a>  44 <em class='comment'> * and derivative works. This software may also be redistributed</em>
+<a id='L45' name='L45'></a>  45 <em class='comment'> * without charge provided that the copyright and "No Warranty"</em>
+<a id='L46' name='L46'></a>  46 <em class='comment'> * statements are included in all redistributions.</em>
+<a id='L47' name='L47'></a>  47 <em class='comment'> *</em>
+<a id='L48' name='L48'></a>  48 <em class='comment'> * NO WARRANTY. THIS SOFTWARE IS FURNISHED ON AN "AS IS" BASIS.</em>
+<a id='L49' name='L49'></a>  49 <em class='comment'> * CARNEGIE MELLON UNIVERSITY MAKES NO WARRANTIES OF ANY KIND, EITHER</em>
+<a id='L50' name='L50'></a>  50 <em class='comment'> * EXPRESSED OR IMPLIED AS TO THE MATTER INCLUDING, BUT NOT LIMITED</em>
+<a id='L51' name='L51'></a>  51 <em class='comment'> * TO: WARRANTY OF FITNESS FOR PURPOSE OR MERCHANTABILITY, EXCLUSIVITY</em>
+<a id='L52' name='L52'></a>  52 <em class='comment'> * OF RESULTS OR RESULTS OBTAINED FROM USE OF THIS SOFTWARE. CARNEGIE</em>
+<a id='L53' name='L53'></a>  53 <em class='comment'> * MELLON UNIVERSITY DOES NOT MAKE ANY WARRANTY OF ANY KIND WITH RESPECT</em>
+<a id='L54' name='L54'></a>  54 <em class='comment'> * TO FREEDOM FROM PATENT, TRADEMARK, OR COPYRIGHT INFRINGEMENT.</em>
+<a id='L55' name='L55'></a>  55 <em class='comment'> */</em>
+<a id='L56' name='L56'></a>  56 
+<a id='L57' name='L57'></a>  57 
+<a id='L58' name='L58'></a>  58 <em class='sharp'>#include</em> "<a href='283.html'>disksim_global.h</a>"
+<a id='L59' name='L59'></a>  59 <em class='sharp'>#include</em> "<a href='255.html'>disksim_iosim.h</a>"
+<a id='L60' name='L60'></a>  60 <em class='sharp'>#include</em> "<a href='288.html'>disksim_stat.h</a>"
+<a id='L61' name='L61'></a>  61 <em class='sharp'>#include</em> "<a href='259.html'>disksim_ioqueue.h</a>"
+<a id='L62' name='L62'></a>  62 <em class='sharp'>#include</em> "<a href='262.html'>disksim_bus.h</a>"
+<a id='L63' name='L63'></a>  63 <em class='sharp'>#include</em> "<a href='276.html'>config.h</a>"
+<a id='L64' name='L64'></a>  64 
+<a id='L65' name='L65'></a>  65 <em class='sharp'>#ifndef</em> <a href='../S/275.html#L66' title='Defined at 66 in src/disksim_simpledisk.h.'>DISKSIM_SIMPLEDISK_H</a>
+<a id='L66' name='L66'></a>  66 <em class='sharp'>#define</em> <a href='../S/275.html#L65' title='Referred from 65 in src/disksim_simpledisk.h.'>DISKSIM_SIMPLEDISK_H</a>
+<a id='L67' name='L67'></a>  67 
+<a id='L68' name='L68'></a>  68 <em class='comment'>/* externalized disksim_simpledisk.c functions */</em>
+<a id='L69' name='L69'></a>  69 
+<a id='L70' name='L70'></a>  70 <strong class='reserved'>void</strong>    simpledisk_read_toprints (FILE *parfile);
+<a id='L71' name='L71'></a>  71 <strong class='reserved'>void</strong>    simpledisk_read_specs (FILE *parfile, <strong class='reserved'>int</strong> devno, <strong class='reserved'>int</strong> copies);
+<a id='L72' name='L72'></a>  72 <strong class='reserved'>void</strong>    <a href='../S/201.html#L860' title='Defined at 860 in src/disksim_simpledisk.c.'>simpledisk_set_syncset</a> (<strong class='reserved'>int</strong> setstart, <strong class='reserved'>int</strong> setend);
+<a id='L73' name='L73'></a>  73 <strong class='reserved'>void</strong>    simpledisk_param_override (<strong class='reserved'>char</strong> *paramname, <strong class='reserved'>char</strong> *paramval, <strong class='reserved'>int</strong> first, <strong class='reserved'>int</strong> last);
+<a id='L74' name='L74'></a>  74 <strong class='reserved'>void</strong>    <a href='../S/201.html#L736' title='Defined at 736 in src/disksim_simpledisk.c.'>simpledisk_setcallbacks</a> (<strong class='reserved'>void</strong>);
+<a id='L75' name='L75'></a>  75 <strong class='reserved'>void</strong>    <a href='../S/201.html#L752' title='Defined at 752 in src/disksim_simpledisk.c.'>simpledisk_initialize</a> (<strong class='reserved'>void</strong>);
+<a id='L76' name='L76'></a>  76 <strong class='reserved'>void</strong>    <a href='../S/201.html#L780' title='Defined at 780 in src/disksim_simpledisk.c.'>simpledisk_resetstats</a> (<strong class='reserved'>void</strong>);
+<a id='L77' name='L77'></a>  77 <strong class='reserved'>void</strong>    <a href='../S/201.html#L921' title='Defined at 921 in src/disksim_simpledisk.c.'>simpledisk_printstats</a> (<strong class='reserved'>void</strong>);
+<a id='L78' name='L78'></a>  78 <strong class='reserved'>void</strong>    <a href='../S/201.html#L897' title='Defined at 897 in src/disksim_simpledisk.c.'>simpledisk_printsetstats</a> (<strong class='reserved'>int</strong> *set, <strong class='reserved'>int</strong> setsize, <strong class='reserved'>char</strong> *sourcestr);
+<a id='L79' name='L79'></a>  79 <strong class='reserved'>void</strong>    <a href='../S/201.html#L699' title='Defined at 699 in src/disksim_simpledisk.c.'>simpledisk_cleanstats</a> (<strong class='reserved'>void</strong>);
+<a id='L80' name='L80'></a>  80 <strong class='reserved'>int</strong>     <a href='../S/201.html#L126' title='Defined at 126 in src/disksim_simpledisk.c.'>simpledisk_set_depth</a> (<strong class='reserved'>int</strong> devno, <strong class='reserved'>int</strong> inbusno, <strong class='reserved'>int</strong> depth, <strong class='reserved'>int</strong> slotno);
+<a id='L81' name='L81'></a>  81 <strong class='reserved'>int</strong>     <a href='../S/201.html#L146' title='Defined at 146 in src/disksim_simpledisk.c.'>simpledisk_get_depth</a> (<strong class='reserved'>int</strong> devno);
+<a id='L82' name='L82'></a>  82 <strong class='reserved'>int</strong>     <a href='../S/201.html#L162' title='Defined at 162 in src/disksim_simpledisk.c.'>simpledisk_get_inbus</a> (<strong class='reserved'>int</strong> devno);
+<a id='L83' name='L83'></a>  83 <strong class='reserved'>int</strong>     <a href='../S/201.html#L192' title='Defined at 192 in src/disksim_simpledisk.c.'>simpledisk_get_busno</a> (<a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr);
+<a id='L84' name='L84'></a>  84 <strong class='reserved'>int</strong>     <a href='../S/201.html#L154' title='Defined at 154 in src/disksim_simpledisk.c.'>simpledisk_get_slotno</a> (<strong class='reserved'>int</strong> devno);
+<a id='L85' name='L85'></a>  85 <strong class='reserved'>int</strong>     <a href='../S/201.html#L631' title='Defined at 631 in src/disksim_simpledisk.c.'>simpledisk_get_number_of_blocks</a> (<strong class='reserved'>int</strong> devno);
+<a id='L86' name='L86'></a>  86 <strong class='reserved'>int</strong>     <a href='../S/201.html#L170' title='Defined at 170 in src/disksim_simpledisk.c.'>simpledisk_get_maxoutstanding</a> (<strong class='reserved'>int</strong> devno);
+<a id='L87' name='L87'></a>  87 <strong class='reserved'>int</strong>     <a href='../S/201.html#L693' title='Defined at 693 in src/disksim_simpledisk.c.'>simpledisk_get_numdisks</a> (<strong class='reserved'>void</strong>);
+<a id='L88' name='L88'></a>  88 <strong class='reserved'>int</strong>     <a href='../S/201.html#L638' title='Defined at 638 in src/disksim_simpledisk.c.'>simpledisk_get_numcyls</a> (<strong class='reserved'>int</strong> devno);
+<a id='L89' name='L89'></a>  89 <strong class='reserved'>double</strong>  <a href='../S/201.html#L178' title='Defined at 178 in src/disksim_simpledisk.c.'>simpledisk_get_blktranstime</a> (<a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr);
+<a id='L90' name='L90'></a>  90 <strong class='reserved'>int</strong>     <a href='../S/201.html#L666' title='Defined at 666 in src/disksim_simpledisk.c.'>simpledisk_get_avg_sectpercyl</a> (<strong class='reserved'>int</strong> devno);
+<a id='L91' name='L91'></a>  91 <strong class='reserved'>void</strong>    <a href='../S/201.html#L645' title='Defined at 645 in src/disksim_simpledisk.c.'>simpledisk_get_mapping</a> (<strong class='reserved'>int</strong> maptype, <strong class='reserved'>int</strong> devno, <strong class='reserved'>int</strong> blkno, <strong class='reserved'>int</strong> *cylptr, <strong class='reserved'>int</strong> *surfaceptr, <strong class='reserved'>int</strong> *blkptr);
+<a id='L92' name='L92'></a>  92 <strong class='reserved'>void</strong>    <a href='../S/201.html#L582' title='Defined at 582 in src/disksim_simpledisk.c.'>simpledisk_event_arrive</a> (<a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr);
+<a id='L93' name='L93'></a>  93 <strong class='reserved'>int</strong>     <a href='../S/201.html#L672' title='Defined at 672 in src/disksim_simpledisk.c.'>simpledisk_get_distance</a> (<strong class='reserved'>int</strong> devno, <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *req, <strong class='reserved'>int</strong> exact, <strong class='reserved'>int</strong> direction);
+<a id='L94' name='L94'></a>  94 <strong class='reserved'>double</strong>  <a href='../S/201.html#L679' title='Defined at 679 in src/disksim_simpledisk.c.'>simpledisk_get_servtime</a> (<strong class='reserved'>int</strong> devno, <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *req, <strong class='reserved'>int</strong> checkcache, <strong class='reserved'>double</strong> maxtime);
+<a id='L95' name='L95'></a>  95 <strong class='reserved'>double</strong>  <a href='../S/201.html#L686' title='Defined at 686 in src/disksim_simpledisk.c.'>simpledisk_get_acctime</a> (<strong class='reserved'>int</strong> devno, <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *req, <strong class='reserved'>double</strong> maxtime);
+<a id='L96' name='L96'></a>  96 <strong class='reserved'>void</strong>    <a href='../S/201.html#L292' title='Defined at 292 in src/disksim_simpledisk.c.'>simpledisk_bus_delay_complete</a> (<strong class='reserved'>int</strong> devno, <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr, <strong class='reserved'>int</strong> sentbusno);
+<a id='L97' name='L97'></a>  97 <strong class='reserved'>void</strong>    <a href='../S/201.html#L269' title='Defined at 269 in src/disksim_simpledisk.c.'>simpledisk_bus_ownership_grant</a> (<strong class='reserved'>int</strong> devno, <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr, <strong class='reserved'>int</strong> busno, <strong class='reserved'>double</strong> arbdelay);
+<a id='L98' name='L98'></a>  98 
+<a id='L99' name='L99'></a>  99 <strong class='reserved'>struct</strong> <a href='../S/275.html#L114' title='Defined at 114 in src/disksim_simpledisk.h.'>simpledisk</a> *<a href='../S/201.html#L119' title='Defined at 119 in src/disksim_simpledisk.c.'>getsimpledisk</a> (<strong class='reserved'>int</strong> devno);
+<a id='L100' name='L100'></a> 100 
+<a id='L101' name='L101'></a> 101 <em class='comment'>/* default simpledisk dev header */</em>
+<a id='L102' name='L102'></a> 102 <strong class='reserved'>extern</strong> <strong class='reserved'>struct</strong> <a href='../S/223.html#L170' title='Defined at 170 in src/disksim_device.h.'>device_header</a> simpledisk_hdr_initializer;
+<a id='L103' name='L103'></a> 103 
+<a id='L104' name='L104'></a> 104 
+<a id='L105' name='L105'></a> 105 
+<a id='L106' name='L106'></a> 106 <strong class='reserved'>typedef</strong> <strong class='reserved'>struct</strong> <em class='brace'>{</em>
+<a id='L107' name='L107'></a> 107    <a href='../S/288.html#L123' title='Defined at 123 in src/disksim_stat.h.'>statgen</a> acctimestats;
+<a id='L108' name='L108'></a> 108    <strong class='reserved'>double</strong>  requestedbus;
+<a id='L109' name='L109'></a> 109    <strong class='reserved'>double</strong>  waitingforbus;
+<a id='L110' name='L110'></a> 110    <strong class='reserved'>int</strong>     numbuswaits;
+<a id='L111' name='L111'></a> 111 <em class='brace'>}</em> <a href='../S/275.html#L137' title='Referred from 137 in src/disksim_simpledisk.h.'>simpledisk_stat_t</a>;
+<a id='L112' name='L112'></a> 112 
+<a id='L113' name='L113'></a> 113 
+<a id='L114' name='L114'></a> 114 <strong class='reserved'>typedef</strong> <strong class='reserved'>struct</strong> <a href='../R/1922.html' title='Multiple referred from 14 places.'>simpledisk</a> <em class='brace'>{</em>
+<a id='L115' name='L115'></a> 115   <strong class='reserved'>struct</strong> <a href='../S/223.html#L170' title='Defined at 170 in src/disksim_device.h.'>device_header</a> hdr;
+<a id='L116' name='L116'></a> 116    <strong class='reserved'>double</strong> acctime;
+<a id='L117' name='L117'></a> 117    <strong class='reserved'>double</strong> overhead;
+<a id='L118' name='L118'></a> 118    <strong class='reserved'>double</strong> bus_transaction_latency;
+<a id='L119' name='L119'></a> 119    <strong class='reserved'>int</strong> numblocks;
+<a id='L120' name='L120'></a> 120    <strong class='reserved'>int</strong> devno;
+<a id='L121' name='L121'></a> 121    <strong class='reserved'>int</strong> inited;
+<a id='L122' name='L122'></a> 122    <strong class='reserved'>struct</strong> <a href='../S/259.html#L255' title='Defined at 255 in src/disksim_ioqueue.h.'>ioq</a> *queue;
+<a id='L123' name='L123'></a> 123    <strong class='reserved'>int</strong> media_busy;
+<a id='L124' name='L124'></a> 124    <strong class='reserved'>int</strong> reconnect_reason;
+<a id='L125' name='L125'></a> 125 
+<a id='L126' name='L126'></a> 126    <strong class='reserved'>double</strong> blktranstime;
+<a id='L127' name='L127'></a> 127    <strong class='reserved'>int</strong> maxqlen;
+<a id='L128' name='L128'></a> 128    <strong class='reserved'>int</strong> busowned;
+<a id='L129' name='L129'></a> 129    <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *buswait;
+<a id='L130' name='L130'></a> 130    <strong class='reserved'>int</strong> neverdisconnect;
+<a id='L131' name='L131'></a> 131    <strong class='reserved'>int</strong> numinbuses;
+<a id='L132' name='L132'></a> 132    <strong class='reserved'>int</strong> inbuses[<a href='../S/255.html#L112' title='Defined at 112 in src/disksim_iosim.h.'>MAXINBUSES</a>];
+<a id='L133' name='L133'></a> 133    <strong class='reserved'>int</strong> depth[<a href='../S/255.html#L112' title='Defined at 112 in src/disksim_iosim.h.'>MAXINBUSES</a>];
+<a id='L134' name='L134'></a> 134    <strong class='reserved'>int</strong> slotno[<a href='../S/255.html#L112' title='Defined at 112 in src/disksim_iosim.h.'>MAXINBUSES</a>];
+<a id='L135' name='L135'></a> 135 
+<a id='L136' name='L136'></a> 136    <strong class='reserved'>int</strong> printstats;
+<a id='L137' name='L137'></a> 137    <a href='../S/275.html#L111' title='Defined at 111 in src/disksim_simpledisk.h.'>simpledisk_stat_t</a> stat;
+<a id='L138' name='L138'></a> 138 <em class='brace'>}</em> <a href='../R/1967.html' title='Multiple referred from 36 places.'>simpledisk_t</a>;
+<a id='L139' name='L139'></a> 139 
+<a id='L140' name='L140'></a> 140 
+<a id='L141' name='L141'></a> 141 <strong class='reserved'>typedef</strong> <strong class='reserved'>struct</strong> <a href='../R/1949.html' title='Multiple referred from 2 places.'>simpledisk_info</a> <em class='brace'>{</em>
+<a id='L142' name='L142'></a> 142    <strong class='reserved'>struct</strong> <a href='../S/275.html#L114' title='Defined at 114 in src/disksim_simpledisk.h.'>simpledisk</a> **simpledisks;
+<a id='L143' name='L143'></a> 143    <strong class='reserved'>int</strong> <a href='../S/201.html#L114' title='Defined at 114 in src/disksim_simpledisk.c.'>numsimpledisks</a>;
+<a id='L144' name='L144'></a> 144   <strong class='reserved'>int</strong> simpledisks_len; <em class='comment'>/* allocated size of simpledisks */</em>
+<a id='L145' name='L145'></a> 145 <em class='brace'>}</em> <a href='../R/1968.html' title='Multiple referred from 2 places.'>simplediskinfo_t</a>;
+<a id='L146' name='L146'></a> 146 
+<a id='L147' name='L147'></a> 147 
+<a id='L148' name='L148'></a> 148 <em class='sharp'>#endif</em>   <em class='comment'>/* DISKSIM_SIMPLEDISK_H */</em>
+<a id='L149' name='L149'></a> 149 
+</pre>
+<hr />
+<a id='BOTTOM' name='BOTTOM'></a>
+<em class='comment'>/* [&lt;][&gt;][^][v]<a href='#TOP'>[top]</a>[bottom]<a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</em>
+</body>
+</html>

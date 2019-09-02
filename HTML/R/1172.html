@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>dm_layout_if</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/77.html#L51'>dm_layout_if</a>       51 diskmodel/dm.h struct dm_layout_if;</span>
+<span class='curline'><a href='../S/77.html#L488'>dm_layout_if</a>      488 diskmodel/dm.h   struct dm_layout_if   *layout;</span>
+<span class='curline'><a href='../S/77.html#L503'>dm_layout_if</a>      503 diskmodel/dm.h typedef struct dm_layout_if *(*dm_layout_loader_t)(struct lp_block *, struct dm_disk_if *);</span>
+<span class='curline'><a href='../S/76.html#L579'>dm_layout_if</a>      579 diskmodel/dm_testsuite.c   struct dm_layout_if dif;</span>
+<span class='curline'><a href='../S/92.html#L2014'>dm_layout_if</a>     2014 diskmodel/layout_g1.c struct dm_layout_if g1_layout_nosparing = {</span>
+<span class='curline'><a href='../S/92.html#L2035'>dm_layout_if</a>     2035 diskmodel/layout_g1.c struct dm_layout_if g1_layout_tracksparing = {</span>
+<span class='curline'><a href='../S/92.html#L2056'>dm_layout_if</a>     2056 diskmodel/layout_g1.c struct dm_layout_if g1_layout_sectpertrackspare = {</span>
+<span class='curline'><a href='../S/92.html#L2077'>dm_layout_if</a>     2077 diskmodel/layout_g1.c struct dm_layout_if g1_layout_sectpercylspare = {</span>
+<span class='curline'><a href='../S/92.html#L2098'>dm_layout_if</a>     2098 diskmodel/layout_g1.c struct dm_layout_if g1_layout_sectperrangespare = {</span>
+<span class='curline'><a href='../S/92.html#L2119'>dm_layout_if</a>     2119 diskmodel/layout_g1.c struct dm_layout_if g1_layout_sectperzonespare = {</span>
+<span class='curline'><a href='../S/71.html#L158'>dm_layout_if</a>      158 diskmodel/layout_g1.h   struct dm_layout_if hdr;</span>
+<span class='curline'><a href='../S/71.html#L207'>dm_layout_if</a>      207 diskmodel/layout_g1.h extern struct dm_layout_if g1_layout_nosparing;</span>
+<span class='curline'><a href='../S/71.html#L208'>dm_layout_if</a>      208 diskmodel/layout_g1.h extern struct dm_layout_if g1_layout_tracksparing;</span>
+<span class='curline'><a href='../S/71.html#L209'>dm_layout_if</a>      209 diskmodel/layout_g1.h extern struct dm_layout_if g1_layout_sectpertrackspare;</span>
+<span class='curline'><a href='../S/71.html#L210'>dm_layout_if</a>      210 diskmodel/layout_g1.h extern struct dm_layout_if g1_layout_sectpercylspare;</span>
+<span class='curline'><a href='../S/71.html#L211'>dm_layout_if</a>      211 diskmodel/layout_g1.h extern struct dm_layout_if g1_layout_sectperrangespare;</span>
+<span class='curline'><a href='../S/71.html#L212'>dm_layout_if</a>      212 diskmodel/layout_g1.h extern struct dm_layout_if g1_layout_sectperzonespare;</span>
+<span class='curline'><a href='../S/57.html#L128'>dm_layout_if</a>      128 diskmodel/layout_g1_load.c struct dm_layout_if *</span>
+<span class='curline'><a href='../S/57.html#L139'>dm_layout_if</a>      139 diskmodel/layout_g1_load.c   result-&gt;disk-&gt;layout = (struct dm_layout_if *)result;</span>
+<span class='curline'><a href='../S/57.html#L193'>dm_layout_if</a>      193 diskmodel/layout_g1_load.c   return (struct dm_layout_if *)result;</span>
+<span class='curline'><a href='../S/98.html#L473'>dm_layout_if</a>      473 diskmodel/layout_g2.c struct dm_layout_if layout_g2 = {</span>
+<span class='curline'><a href='../S/61.html#L36'>dm_layout_if</a>       36 diskmodel/layout_g2.h   struct dm_layout_if hdr;</span>
+<span class='curline'><a href='../S/44.html#L42'>dm_layout_if</a>       42 diskmodel/layout_g2_load.c extern struct dm_layout_if layout_g2;</span>
+<span class='curline'><a href='../S/44.html#L309'>dm_layout_if</a>      309 diskmodel/layout_g2_load.c struct dm_layout_if *</span>
+<span class='curline'><a href='../S/44.html#L329'>dm_layout_if</a>      329 diskmodel/layout_g2_load.c   parent-&gt;layout = (struct dm_layout_if *)result;</span>
+<span class='curline'><a href='../S/44.html#L337'>dm_layout_if</a>      337 diskmodel/layout_g2_load.c   return (struct dm_layout_if *)result;</span>
+<span class='curline'><a href='../S/70.html#L776'>dm_layout_if</a>      776 diskmodel/layout_g4.c struct dm_layout_if layout_g4 = {</span>
+<span class='curline'><a href='../S/56.html#L114'>dm_layout_if</a>      114 diskmodel/layout_g4.h   struct dm_layout_if hdr;</span>
+<span class='curline'><a href='../S/56.html#L139'>dm_layout_if</a>      139 diskmodel/layout_g4.h extern struct dm_layout_if layout_g4;</span>
+<span class='curline'><a href='../S/58.html#L445'>dm_layout_if</a>      445 diskmodel/layout_g4_load.c struct dm_layout_if *</span>
+<span class='curline'><a href='../S/58.html#L461'>dm_layout_if</a>      461 diskmodel/layout_g4_load.c   parent-&gt;layout = (struct dm_layout_if *)result;</span>
+<span class='curline'><a href='../S/58.html#L463'>dm_layout_if</a>      463 diskmodel/layout_g4_load.c   return (struct dm_layout_if *)result;</span>
+</pre>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>segment</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/273.html#L945'>segment</a>           945 src/disksim_disk.c    segment *tmpseg;</span>
+<span class='curline'><a href='../S/273.html#L949'>segment</a>           949 src/disksim_disk.c    StaticAssert (sizeof(segment) &lt;= DISKSIM_EVENT_SIZE);</span>
+<span class='curline'><a href='../S/273.html#L1038'>segment</a>          1038 src/disksim_disk.c        currdisk-&gt;seglist = (segment *) DISKSIM_malloc(sizeof(segment));</span>
+<span class='curline'><a href='../S/273.html#L1045'>segment</a>          1045 src/disksim_disk.c 	 tmpseg = (segment *) DISKSIM_malloc(sizeof(segment));</span>
+<span class='curline'><a href='../S/258.html#L228'>segment</a>           228 src/disksim_disk.h    segment	       *seg;		/* associated cache segment */</span>
+<span class='curline'><a href='../S/258.html#L341'>segment</a>           341 src/disksim_disk.h   segment *	dedicatedwriteseg;</span>
+<span class='curline'><a href='../S/258.html#L370'>segment</a>           370 src/disksim_disk.h   segment      *seglist;</span>
+<span class='curline'><a href='../S/258.html#L561'>segment</a>           561 src/disksim_disk.h segment * disk_buffer_select_segment(disk *currdisk, </span>
+<span class='curline'><a href='../S/258.html#L565'>segment</a>           565 src/disksim_disk.h segment * disk_buffer_recyclable_segment(disk *currdisk, int isread);</span>
+<span class='curline'><a href='../S/258.html#L566'>segment</a>           566 src/disksim_disk.h diskreq * disk_buffer_seg_owner(segment *seg, int effective);</span>
+<span class='curline'><a href='../S/258.html#L570'>segment</a>           570 src/disksim_disk.h 				   segment *seg, </span>
+<span class='curline'><a href='../S/258.html#L573'>segment</a>           573 src/disksim_disk.h int  disk_buffer_block_available(disk *currdisk, segment *seg, int blkno);</span>
+<span class='curline'><a href='../S/258.html#L574'>segment</a>           574 src/disksim_disk.h int  disk_buffer_reusable_segment_check(disk *currdisk, segment *currseg);</span>
+<span class='curline'><a href='../S/258.html#L575'>segment</a>           575 src/disksim_disk.h int  disk_buffer_overlap(segment *seg, ioreq_event *curr);</span>
+<span class='curline'><a href='../S/258.html#L581'>segment</a>           581 src/disksim_disk.h void disk_buffer_segment_wrap(segment *seg, int endblkno);</span>
+<span class='curline'><a href='../S/192.html#L113'>segment</a>           113 src/disksim_diskcache.c static int disk_buffer_segment_wrap_needed (segment *seg, int endblkno)</span>
+<span class='curline'><a href='../S/192.html#L120'>segment</a>           120 src/disksim_diskcache.c void disk_buffer_segment_wrap (segment *seg, int endblkno)</span>
+<span class='curline'><a href='../S/192.html#L130'>segment</a>           130 src/disksim_diskcache.c int disk_buffer_overlap (segment *seg, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/192.html#L153'>segment</a>           153 src/disksim_diskcache.c    segment *seg = currdiskreq-&gt;seg;</span>
+<span class='curline'><a href='../S/192.html#L187'>segment</a>           187 src/disksim_diskcache.c diskreq* disk_buffer_seg_owner (segment *seg, int effective)</span>
+<span class='curline'><a href='../S/192.html#L224'>segment</a>           224 src/disksim_diskcache.c int disk_buffer_reusable_segment_check (disk *currdisk, segment *currseg)</span>
+<span class='curline'><a href='../S/192.html#L286'>segment</a>           286 src/disksim_diskcache.c static int disk_buffer_recyclable_segment_check (disk *currdisk, segment *currseg, int isread)</span>
+<span class='curline'><a href='../S/192.html#L354'>segment</a>           354 src/disksim_diskcache.c segment* disk_buffer_recyclable_segment (disk *currdisk, int isread)</span>
+<span class='curline'><a href='../S/192.html#L356'>segment</a>           356 src/disksim_diskcache.c    segment *currseg = currdisk-&gt;seglist;</span>
+<span class='curline'><a href='../S/192.html#L396'>segment</a>           396 src/disksim_diskcache.c int disk_buffer_block_available (disk *currdisk, segment *seg, int blkno)</span>
+<span class='curline'><a href='../S/192.html#L464'>segment</a>           464 src/disksim_diskcache.c static void disk_buffer_stats (disk *currdisk, ioreq_event *curr, segment *seg, int hittype)</span>
+<span class='curline'><a href='../S/192.html#L580'>segment</a>           580 src/disksim_diskcache.c static segment * </span>
+<span class='curline'><a href='../S/192.html#L583'>segment</a>           583 src/disksim_diskcache.c    segment *seg;</span>
+<span class='curline'><a href='../S/192.html#L776'>segment</a>           776 src/disksim_diskcache.c static segment* disk_buffer_select_write_segment(disk *currdisk, diskreq *currdiskreq)</span>
+<span class='curline'><a href='../S/192.html#L778'>segment</a>           778 src/disksim_diskcache.c    segment *seg;</span>
+<span class='curline'><a href='../S/192.html#L1016'>segment</a>          1016 src/disksim_diskcache.c segment * disk_buffer_select_segment (disk *currdisk, diskreq *currdiskreq,</span>
+<span class='curline'><a href='../S/192.html#L1019'>segment</a>          1019 src/disksim_diskcache.c    segment *seg;</span>
+<span class='curline'><a href='../S/192.html#L1064'>segment</a>          1064 src/disksim_diskcache.c    segment *seg;</span>
+<span class='curline'><a href='../S/192.html#L1160'>segment</a>          1160 src/disksim_diskcache.c    segment *seg;</span>
+<span class='curline'><a href='../S/192.html#L1265'>segment</a>          1265 src/disksim_diskcache.c    segment     *seg = currdiskreq-&gt;seg;</span>
+<span class='curline'><a href='../S/192.html#L1266'>segment</a>          1266 src/disksim_diskcache.c    segment     *tmp_seg;</span>
+<span class='curline'><a href='../S/192.html#L1484'>segment</a>          1484 src/disksim_diskcache.c    segment     *seg = currdiskreq-&gt;seg;</span>
+<span class='curline'><a href='../S/192.html#L1638'>segment</a>          1638 src/disksim_diskcache.c int disk_buffer_get_max_readahead (disk *currdisk, segment *seg, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/196.html#L656'>segment</a>           656 src/disksim_diskctlr.c static void disk_find_new_seg_owner(disk *currdisk, segment *seg)</span>
+<span class='curline'><a href='../S/196.html#L718'>segment</a>           718 src/disksim_diskctlr.c   segment *seg = currdiskreq-&gt;seg;</span>
+<span class='curline'><a href='../S/196.html#L893'>segment</a>           893 src/disksim_diskctlr.c   segment     *seg = currdiskreq-&gt;seg;</span>
+<span class='curline'><a href='../S/196.html#L1393'>segment</a>          1393 src/disksim_diskctlr.c   segment *seg;</span>
+<span class='curline'><a href='../S/196.html#L1473'>segment</a>          1473 src/disksim_diskctlr.c   segment *seg;</span>
+<span class='curline'><a href='../S/196.html#L1508'>segment</a>          1508 src/disksim_diskctlr.c 		    segment *seg, </span>
+<span class='curline'><a href='../S/196.html#L1747'>segment</a>          1747 src/disksim_diskctlr.c 		       segment *seg, </span>
+<span class='curline'><a href='../S/196.html#L1907'>segment</a>          1907 src/disksim_diskctlr.c   segment     *seg;</span>
+<span class='curline'><a href='../S/196.html#L2040'>segment</a>          2040 src/disksim_diskctlr.c   segment* seg;</span>
+<span class='curline'><a href='../S/196.html#L2092'>segment</a>          2092 src/disksim_diskctlr.c   segment     *seg;</span>
+<span class='curline'><a href='../S/196.html#L2349'>segment</a>          2349 src/disksim_diskctlr.c   segment *seg;</span>
+<span class='curline'><a href='../S/196.html#L2447'>segment</a>          2447 src/disksim_diskctlr.c 		 segment *seg,</span>
+<span class='curline'><a href='../S/196.html#L2597'>segment</a>          2597 src/disksim_diskctlr.c 			     segment *seg,</span>
+<span class='curline'><a href='../S/196.html#L2819'>segment</a>          2819 src/disksim_diskctlr.c   segment     *seg;</span>
+<span class='curline'><a href='../S/196.html#L3069'>segment</a>          3069 src/disksim_diskctlr.c   segment *seg = currdiskreq-&gt;seg;</span>
+<span class='curline'><a href='../S/196.html#L3251'>segment</a>          3251 src/disksim_diskctlr.c   segment *seg;</span>
+<span class='curline'><a href='../S/196.html#L3298'>segment</a>          3298 src/disksim_diskctlr.c disk_buffer_update_outbuffer(disk *currdisk, segment *seg)</span>
+<span class='curline'><a href='../S/196.html#L3393'>segment</a>          3393 src/disksim_diskctlr.c   segment *seg = currdiskreq-&gt;seg;</span>
+<span class='curline'><a href='../S/196.html#L3726'>segment</a>          3726 src/disksim_diskctlr.c   segment *seg;</span>
+<span class='curline'><a href='../S/196.html#L3994'>segment</a>          3994 src/disksim_diskctlr.c   segment *seg;</span>
+<span class='curline'><a href='../S/196.html#L4342'>segment</a>          4342 src/disksim_diskctlr.c   segment *seg;</span>
+</pre>
+</body>
+</html>

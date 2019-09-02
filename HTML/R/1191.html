@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>dm_pbn_t</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/77.html#L76'>dm_pbn_t</a>           76 diskmodel/dm.h int dm_to_pbn(dm_pbn_t, struct dm_pbn *);</span>
+<span class='curline'><a href='../S/77.html#L79'>dm_pbn_t</a>           79 diskmodel/dm.h int dm_from_pbn(struct dm_pbn *, dm_pbn_t *);</span>
+<span class='curline'><a href='../S/95.html#L38'>dm_pbn_t</a>           38 diskmodel/pbn.c int dm_to_pbn(dm_pbn_t i, struct dm_pbn *result)</span>
+<span class='curline'><a href='../S/95.html#L47'>dm_pbn_t</a>           47 diskmodel/pbn.c int dm_from_pbn(struct dm_pbn *p, dm_pbn_t *result)</span>
+<span class='curline'><a href='../S/95.html#L50'>dm_pbn_t</a>           50 diskmodel/pbn.c   *result |= ((dm_pbn_t)(p-&gt;head &amp; 0xff) &lt;&lt; 32);</span>
+<span class='curline'><a href='../S/95.html#L51'>dm_pbn_t</a>           51 diskmodel/pbn.c   *result |= ((dm_pbn_t)(p-&gt;cyl &amp; 0xffffff) &lt;&lt; 40);</span>
+</pre>
+</body>
+</html>

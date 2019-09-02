@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>warmuptime</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/272.html#L507'>warmuptime</a>        507 src/disksim.c     warmuptime = simtime;</span>
+<span class='curline'><a href='../S/272.html#L539'>warmuptime</a>        539 src/disksim.c     fprintf (outputfile, "Warm-up time:            %f\n\n", warmuptime);</span>
+<span class='curline'><a href='../S/272.html#L1125'>warmuptime</a>       1125 src/disksim.c     warmuptime = 0.0;	/* gets remapped to disksim-&gt;warmuptime */</span>
+<span class='curline'><a href='../S/200.html#L638'>warmuptime</a>        638 src/disksim_bus.c          fprintf (outputfile, "Bus #%d Total utilization time: \t%.2f   \t%6.5f\n", i, (simtime - warmuptime - currbus-&gt;runidletime), ((simtime - warmuptime - currbus-&gt;runidletime) / (simtime - warmuptime)));</span>
+<span class='curline'><a href='../S/283.html#L350'>warmuptime</a>        350 src/disksim_global.h    double warmuptime;</span>
+<span class='curline'><a href='../S/283.html#L437'>warmuptime</a>        437 src/disksim_global.h #define warmuptime       (disksim-&gt;warmuptime)</span>
+<span class='curline'><a href='../S/205.html#L773'>warmuptime</a>        773 src/disksim_iodriver.c       warmuptime = simtime;</span>
+<span class='curline'><a href='../S/254.html#L3872'>warmuptime</a>       3872 src/disksim_ioqueue.c    fprintf(outputfile, "%swarmuptime:              %f\n", prefix, warmuptime);</span>
+<span class='curline'><a href='../S/254.html#L3875'>warmuptime</a>       3875 src/disksim_ioqueue.c    fprintf(outputfile, "%sAverage # requests:      %f\n", prefix, (runlistlen/((simtime - warmuptime) * (double) setsize)));</span>
+<span class='curline'><a href='../S/254.html#L3878'>warmuptime</a>       3878 src/disksim_ioqueue.c    fprintf(outputfile, "%sAverage queue length:    %f\n", prefix, ((runlistlen - runoutstanding)/((simtime - warmuptime) * (double) setsize)));</span>
+<span class='curline'><a href='../S/254.html#L3889'>warmuptime</a>       3889 src/disksim_ioqueue.c    fprintf (outputfile, "%sAvg # read requests:     %f\n", prefix, (runreadlen / ((simtime - warmuptime) * (double) setsize)));</span>
+<span class='curline'><a href='../S/254.html#L3891'>warmuptime</a>       3891 src/disksim_ioqueue.c    fprintf (outputfile, "%sAvg # write requests:    %f\n", prefix, (runwritelen / ((simtime - warmuptime) * (double) setsize)));</span>
+<span class='curline'><a href='../S/254.html#L4079'>warmuptime</a>       4079 src/disksim_ioqueue.c    fprintf(outputfile, "%sAverage # requests:      %f\n", prefix, (runlistlen/((simtime - warmuptime) * (double) setsize)));</span>
+<span class='curline'><a href='../S/254.html#L4082'>warmuptime</a>       4082 src/disksim_ioqueue.c    fprintf(outputfile, "%sAverage queue length:    %f\n", prefix, ((runlistlen - runoutstanding)/((simtime - warmuptime) * (double) setsize)));</span>
+<span class='curline'><a href='../S/254.html#L4180'>warmuptime</a>       4180 src/disksim_ioqueue.c    fprintf(outputfile, "%sRequests per second:   \t%f\n", sourcestr, ((double)1000 * (double)numcomplete / (simtime - warmuptime)));</span>
+<span class='curline'><a href='../S/254.html#L4181'>warmuptime</a>       4181 src/disksim_ioqueue.c    fprintf(outputfile, "%sCompletely idle time:  \t%f   \t%f\n", sourcestr, idletime, (idletime / (simtime - warmuptime)));</span>
+<span class='curline'><a href='../S/278.html#L1314'>warmuptime</a>       1314 src/disksim_logorg.c    fprintf(outputfile, "%sAverage outstanding:      %f\n", prefix, (currlogorg-&gt;stat.runouttime / (simtime - warmuptime)));</span>
+<span class='curline'><a href='../S/278.html#L1321'>warmuptime</a>       1321 src/disksim_logorg.c    fprintf(outputfile, "%sCompletely idle time:     %f\n", prefix, (simtime - warmuptime - currlogorg-&gt;stat.nonzeroouttime));</span>
+<span class='curline'><a href='../S/191.html#L1310'>warmuptime</a>       1310 src/disksim_pfsim.c    fprintf(outputfile, "%sPercentage idle cycles:       %f\n", cpustr, ((double) 100.0 * idletime / ((simtime - warmuptime) * (double) cpucnt)));</span>
+<span class='curline'><a href='../S/191.html#L1313'>warmuptime</a>       1313 src/disksim_pfsim.c    fprintf(outputfile, "%sPercentage false idle cycles: %f\n", cpustr, ((double) 100.0 * falseidletime / ((simtime - warmuptime) * (double) cpucnt)));</span>
+<span class='curline'><a href='../S/191.html#L1317'>warmuptime</a>       1317 src/disksim_pfsim.c    fprintf(outputfile, "%sPercentage switching cycles:  %f\n", cpustr, ((double) 100.0 * runswitchtime / ((simtime - warmuptime) * (double) cpucnt)));</span>
+<span class='curline'><a href='../S/191.html#L1320'>warmuptime</a>       1320 src/disksim_pfsim.c    fprintf(outputfile, "%sPercentage interrupt cycles:  %f\n", cpustr, ((double) 100.0 * runintr / ((simtime - warmuptime) * (double) cpucnt)));</span>
+</pre>
+</body>
+</html>

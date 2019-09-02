@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>READY_TO_GO</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/254.html#L697'>READY_TO_GO</a>       697 src/disksim_ioqueue.c    if ((req1 == queue-&gt;list) || (req1 == req2) || !READY_TO_GO(req1,queue) || !READY_TO_GO(req2,queue) || ((req1-&gt;blkno + req1-&gt;totalsize) != req2-&gt;blkno) || ((req1-&gt;totalsize + req2-&gt;totalsize) &gt; concatmax)) {</span>
+<span class='curline'><a href='../S/254.html#L786'>READY_TO_GO</a>       786 src/disksim_ioqueue.c    if ((current == listhead) || !READY_TO_GO(current-&gt;prev,(&amp;queue-&gt;base))) {</span>
+<span class='curline'><a href='../S/254.html#L833'>READY_TO_GO</a>       833 src/disksim_ioqueue.c             if (READY_TO_GO(tmp,queue)) {</span>
+<span class='curline'><a href='../S/254.html#L840'>READY_TO_GO</a>       840 src/disksim_ioqueue.c          if (READY_TO_GO(tmp,queue)) {</span>
+<span class='curline'><a href='../S/254.html#L911'>READY_TO_GO</a>       911 src/disksim_ioqueue.c       if (READY_TO_GO(tmp,queue)) {</span>
+<span class='curline'><a href='../S/254.html#L959'>READY_TO_GO</a>       959 src/disksim_ioqueue.c    while ((temp-&gt;next != stop) &amp;&amp; !READY_TO_GO(temp,queue)) {</span>
+<span class='curline'><a href='../S/254.html#L962'>READY_TO_GO</a>       962 src/disksim_ioqueue.c    if ((temp-&gt;next == stop) &amp;&amp; !READY_TO_GO(temp,queue)) {</span>
+<span class='curline'><a href='../S/254.html#L990'>READY_TO_GO</a>       990 src/disksim_ioqueue.c       while ((bottom != head) &amp;&amp; !READY_TO_GO(bottom,queue)) {</span>
+<span class='curline'><a href='../S/254.html#L993'>READY_TO_GO</a>       993 src/disksim_ioqueue.c       if ((bottom == head) &amp;&amp; !READY_TO_GO(bottom,queue)) {</span>
+<span class='curline'><a href='../S/254.html#L999'>READY_TO_GO</a>       999 src/disksim_ioqueue.c 	    bestbottom = (READY_TO_GO(bottom,queue)) ? bottom : bestbottom;</span>
+<span class='curline'><a href='../S/254.html#L1010'>READY_TO_GO</a>      1010 src/disksim_ioqueue.c       while ((top-&gt;next != head) &amp;&amp; !READY_TO_GO(top,queue)) {</span>
+<span class='curline'><a href='../S/254.html#L1014'>READY_TO_GO</a>      1014 src/disksim_ioqueue.c    if ((top == NULL) || !READY_TO_GO(top,queue) || (!(ioqueue_seqstream_head(queue-&gt;bigqueue, head, top)))) {</span>
+<span class='curline'><a href='../S/254.html#L1016'>READY_TO_GO</a>      1016 src/disksim_ioqueue.c    } else if ((bottom == NULL) || !READY_TO_GO(bottom,queue)) {</span>
+<span class='curline'><a href='../S/254.html#L1042'>READY_TO_GO</a>      1042 src/disksim_ioqueue.c    if ((top) &amp;&amp; READY_TO_GO(top,queue)) {</span>
+<span class='curline'><a href='../S/254.html#L1118'>READY_TO_GO</a>      1118 src/disksim_ioqueue.c       while ((temp-&gt;next != head) &amp;&amp; (lastcylno == temp-&gt;next-&gt;cylinder) &amp;&amp; (!READY_TO_GO(temp,queue) || (temp-&gt;blkno &lt; lastblkno))) {</span>
+<span class='curline'><a href='../S/254.html#L1121'>READY_TO_GO</a>      1121 src/disksim_ioqueue.c       if (READY_TO_GO(temp,queue) &amp;&amp; (temp-&gt;blkno &gt;= lastblkno)) {</span>
+<span class='curline'><a href='../S/254.html#L1131'>READY_TO_GO</a>      1131 src/disksim_ioqueue.c       while ((temp-&gt;next != head) &amp;&amp; (lastcylno == temp-&gt;next-&gt;cylinder) &amp;&amp; (lastsurface == temp-&gt;next-&gt;surface) &amp;&amp; (!READY_TO_GO(temp,queue) || (temp-&gt;blkno &lt; lastblkno))) {</span>
+<span class='curline'><a href='../S/254.html#L1134'>READY_TO_GO</a>      1134 src/disksim_ioqueue.c       if (READY_TO_GO(temp,queue) &amp;&amp; (temp-&gt;blkno &gt;= lastblkno) &amp;&amp; (temp-&gt;surface == lastsurface)) {</span>
+<span class='curline'><a href='../S/254.html#L1140'>READY_TO_GO</a>      1140 src/disksim_ioqueue.c       while ((temp-&gt;next != head) &amp;&amp; (lastcylno == temp-&gt;next-&gt;cylinder) &amp;&amp; !READY_TO_GO(temp,queue)) {</span>
+<span class='curline'><a href='../S/254.html#L1143'>READY_TO_GO</a>      1143 src/disksim_ioqueue.c       if (READY_TO_GO(temp,queue)) {</span>
+<span class='curline'><a href='../S/254.html#L1152'>READY_TO_GO</a>      1152 src/disksim_ioqueue.c    if (!READY_TO_GO(temp,queue)) {</span>
+<span class='curline'><a href='../S/254.html#L1153'>READY_TO_GO</a>      1153 src/disksim_ioqueue.c       while (!READY_TO_GO(temp,queue) &amp;&amp; (temp-&gt;next != head) &amp;&amp; (temp-&gt;next-&gt;cylinder == lastcylno)) {</span>
+<span class='curline'><a href='../S/254.html#L1174'>READY_TO_GO</a>      1174 src/disksim_ioqueue.c    while (!READY_TO_GO(temp,queue) &amp;&amp; (temp-&gt;next != stop)) {</span>
+<span class='curline'><a href='../S/254.html#L1177'>READY_TO_GO</a>      1177 src/disksim_ioqueue.c    if ((temp-&gt;next == stop) &amp;&amp; !READY_TO_GO(temp,queue)) {</span>
+<span class='curline'><a href='../S/254.html#L1204'>READY_TO_GO</a>      1204 src/disksim_ioqueue.c    if (!READY_TO_GO(bestone,queue) || (bestone-&gt;cylinder != queue-&gt;lastcylno)) {</span>
+<span class='curline'><a href='../S/254.html#L1212'>READY_TO_GO</a>      1212 src/disksim_ioqueue.c       while ((bottom != head) &amp;&amp; !READY_TO_GO(bottom,queue)) {</span>
+<span class='curline'><a href='../S/254.html#L1216'>READY_TO_GO</a>      1216 src/disksim_ioqueue.c       if (READY_TO_GO(bottom,queue) &amp;&amp; (!bestone)) {</span>
+<span class='curline'><a href='../S/254.html#L1220'>READY_TO_GO</a>      1220 src/disksim_ioqueue.c          while ((bottom != temp) &amp;&amp; !READY_TO_GO(bottom,queue)) {</span>
+<span class='curline'><a href='../S/254.html#L1227'>READY_TO_GO</a>      1227 src/disksim_ioqueue.c       while ((top-&gt;next != head) &amp;&amp; !READY_TO_GO(top,queue)) {</span>
+<span class='curline'><a href='../S/254.html#L1232'>READY_TO_GO</a>      1232 src/disksim_ioqueue.c       if ((top == NULL) || !READY_TO_GO(top,queue)) {</span>
+<span class='curline'><a href='../S/254.html#L1234'>READY_TO_GO</a>      1234 src/disksim_ioqueue.c       } else if ((bottom == NULL) || !READY_TO_GO(bottom,queue)) {</span>
+<span class='curline'><a href='../S/254.html#L1264'>READY_TO_GO</a>      1264 src/disksim_ioqueue.c    if ((top == NULL) || !READY_TO_GO(top,queue)) {</span>
+<span class='curline'><a href='../S/254.html#L1269'>READY_TO_GO</a>      1269 src/disksim_ioqueue.c    if ((bottom2 == NULL) || !READY_TO_GO(bottom2,queue)) {</span>
+<span class='curline'><a href='../S/254.html#L1330'>READY_TO_GO</a>      1330 src/disksim_ioqueue.c       if (READY_TO_GO(temp,queue) &amp;&amp; (ioqueue_seqstream_head(queue-&gt;bigqueue, queue-&gt;list-&gt;next, temp))) {</span>
+<span class='curline'><a href='../S/254.html#L1668'>READY_TO_GO</a>      1668 src/disksim_ioqueue.c       if (READY_TO_GO(temp,queue) &amp;&amp; (ioqueue_seqstream_head(queue-&gt;bigqueue, queue-&gt;list-&gt;next, temp))) {</span>
+<span class='curline'><a href='../S/254.html#L1799'>READY_TO_GO</a>      1799 src/disksim_ioqueue.c       if (READY_TO_GO(temp,queue) &amp;&amp; (ioqueue_seqstream_head(queue-&gt;bigqueue, queue-&gt;list-&gt;next, temp))) {</span>
+<span class='curline'><a href='../S/254.html#L1886'>READY_TO_GO</a>      1886 src/disksim_ioqueue.c       if (READY_TO_GO(temp,queue) &amp;&amp; (ioqueue_seqstream_head(queue-&gt;bigqueue, queue-&gt;list-&gt;next, temp))) {</span>
+<span class='curline'><a href='../S/254.html#L1937'>READY_TO_GO</a>      1937 src/disksim_ioqueue.c       if (READY_TO_GO(temp,queue) &amp;&amp; (ioqueue_seqstream_head(queue-&gt;bigqueue, queue-&gt;list-&gt;next, temp))) {</span>
+<span class='curline'><a href='../S/254.html#L2027'>READY_TO_GO</a>      2027 src/disksim_ioqueue.c       if (READY_TO_GO(temp,queue) &amp;&amp; (ioqueue_seqstream_head(queue-&gt;bigqueue, queue-&gt;list-&gt;next, temp))) {</span>
+<span class='curline'><a href='../S/254.html#L2084'>READY_TO_GO</a>      2084 src/disksim_ioqueue.c       if (READY_TO_GO(temp,queue) &amp;&amp; (ioqueue_seqstream_head(queue-&gt;bigqueue, queue-&gt;list-&gt;next, temp))) {</span>
+<span class='curline'><a href='../S/254.html#L2139'>READY_TO_GO</a>      2139 src/disksim_ioqueue.c       if (READY_TO_GO(temp,queue) &amp;&amp; (ioqueue_seqstream_head(queue-&gt;bigqueue, queue-&gt;list-&gt;next, temp))) {</span>
+<span class='curline'><a href='../S/254.html#L2236'>READY_TO_GO</a>      2236 src/disksim_ioqueue.c     if (READY_TO_GO(temp,queue) &amp;&amp; (ioqueue_seqstream_head(queue-&gt;bigqueue, queue-&gt;list-&gt;next, temp))) {</span>
+<span class='curline'><a href='../S/254.html#L2288'>READY_TO_GO</a>      2288 src/disksim_ioqueue.c     if (READY_TO_GO(tmp,queue)) {</span>
+<span class='curline'><a href='../S/254.html#L2318'>READY_TO_GO</a>      2318 src/disksim_ioqueue.c       if (READY_TO_GO(queue-&gt;list,queue)) {</span>
+<span class='curline'><a href='../S/254.html#L2430'>READY_TO_GO</a>      2430 src/disksim_ioqueue.c    } else if (!READY_TO_GO(temp,queue)) {</span>
+<span class='curline'><a href='../S/254.html#L2481'>READY_TO_GO</a>      2481 src/disksim_ioqueue.c       if (READY_TO_GO(queue-&gt;list,queue)) {</span>
+<span class='curline'><a href='../S/254.html#L2623'>READY_TO_GO</a>      2623 src/disksim_ioqueue.c    } else if (!READY_TO_GO(temp,queue)) {</span>
+<span class='curline'><a href='../S/254.html#L2765'>READY_TO_GO</a>      2765 src/disksim_ioqueue.c    ASSERT(READY_TO_GO(temp,queue));</span>
+</pre>
+</body>
+</html>

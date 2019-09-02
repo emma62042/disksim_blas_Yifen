@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>tracestats2</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/194.html#L484'>tracestats2</a>       484 src/disksim_iosim.c    if (tracestats2 == NULL) {</span>
+<span class='curline'><a href='../S/194.html#L485'>tracestats2</a>       485 src/disksim_iosim.c       tracestats2 = (statgen *)DISKSIM_malloc(sizeof(statgen));</span>
+<span class='curline'><a href='../S/194.html#L490'>tracestats2</a>       490 src/disksim_iosim.c       stat_initialize(statdeffile, statdesc_traceaccstats, tracestats2);</span>
+<span class='curline'><a href='../S/194.html#L508'>tracestats2</a>       508 src/disksim_iosim.c    stat_update(tracestats2, validate_lastserv);</span>
+<span class='curline'><a href='../S/194.html#L534'>tracestats2</a>       534 src/disksim_iosim.c       tracestats2 = (statgen *)DISKSIM_malloc(tracemappings * sizeof(statgen));</span>
+<span class='curline'><a href='../S/194.html#L541'>tracestats2</a>       541 src/disksim_iosim.c          stat_initialize(statdeffile, statdesc_traceaccstats, &amp;tracestats2[i]);</span>
+<span class='curline'><a href='../S/194.html#L575'>tracestats2</a>       575 src/disksim_iosim.c 	    stat_update(&amp;tracestats2[i],((double) temp-&gt;tempint2 / (double) 1000));</span>
+<span class='curline'><a href='../S/194.html#L667'>tracestats2</a>       667 src/disksim_iosim.c          stat_print(&amp;tracestats2[i], prefix);</span>
+<span class='curline'><a href='../S/194.html#L671'>tracestats2</a>       671 src/disksim_iosim.c    } else if ((tracestats2) &amp;&amp; (PRINTTRACESTATS)) {</span>
+<span class='curline'><a href='../S/194.html#L674'>tracestats2</a>       674 src/disksim_iosim.c       stat_print(tracestats2, "VALIDATE ");</span>
+<span class='curline'><a href='../S/255.html#L289'>tracestats2</a>       289 src/disksim_iosim.h    statgen *tracestats2;</span>
+<span class='curline'><a href='../S/255.html#L312'>tracestats2</a>       312 src/disksim_iosim.h #define tracestats2              (disksim-&gt;iosim_info-&gt;tracestats2)</span>
+</pre>
+</body>
+</html>

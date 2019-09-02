@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>dm_disk_if</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/77.html#L48'>dm_disk_if</a>         48 diskmodel/dm.h struct dm_disk_if;</span>
+<span class='curline'><a href='../S/77.html#L176'>dm_disk_if</a>        176 diskmodel/dm.h   (*dm_translate_ltop)(struct dm_disk_if *, </span>
+<span class='curline'><a href='../S/77.html#L183'>dm_disk_if</a>        183 diskmodel/dm.h   (*dm_translate_ltop_0t)(struct dm_disk_if *, </span>
+<span class='curline'><a href='../S/77.html#L193'>dm_disk_if</a>        193 diskmodel/dm.h   (*dm_translate_ptol)(struct dm_disk_if *, </span>
+<span class='curline'><a href='../S/77.html#L198'>dm_disk_if</a>        198 diskmodel/dm.h   (*dm_translate_ptol_0t)(struct dm_disk_if *, </span>
+<span class='curline'><a href='../S/77.html#L205'>dm_disk_if</a>        205 diskmodel/dm.h   (*dm_get_sectors_lbn)(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/77.html#L210'>dm_disk_if</a>        210 diskmodel/dm.h   (*dm_get_sectors_pbn)(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/77.html#L221'>dm_disk_if</a>        221 diskmodel/dm.h   (*dm_get_track_boundaries)(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/77.html#L232'>dm_disk_if</a>        232 diskmodel/dm.h   (*dm_seek_distance)(struct dm_disk_if *,</span>
+<span class='curline'><a href='../S/77.html#L239'>dm_disk_if</a>        239 diskmodel/dm.h   (*dm_pbn_skew)(struct dm_disk_if *,</span>
+<span class='curline'><a href='../S/77.html#L244'>dm_disk_if</a>        244 diskmodel/dm.h   (*dm_get_track_zerol)(struct dm_disk_if *, </span>
+<span class='curline'><a href='../S/77.html#L255'>dm_disk_if</a>        255 diskmodel/dm.h   (*dm_convert_ptoa)(struct dm_disk_if *,</span>
+<span class='curline'><a href='../S/77.html#L266'>dm_disk_if</a>        266 diskmodel/dm.h   (*dm_convert_atop)(struct dm_disk_if *,</span>
+<span class='curline'><a href='../S/77.html#L274'>dm_disk_if</a>        274 diskmodel/dm.h   (*dm_get_sector_width)(struct dm_disk_if *,</span>
+<span class='curline'><a href='../S/77.html#L280'>dm_disk_if</a>        280 diskmodel/dm.h   (*dm_lbn_offset)(struct dm_disk_if *,</span>
+<span class='curline'><a href='../S/77.html#L286'>dm_disk_if</a>        286 diskmodel/dm.h   int(*dm_marshaled_len)(struct dm_disk_if *);</span>
+<span class='curline'><a href='../S/77.html#L288'>dm_disk_if</a>        288 diskmodel/dm.h   void *(*dm_marshal)(struct dm_disk_if *, char *);</span>
+<span class='curline'><a href='../S/77.html#L292'>dm_disk_if</a>        292 diskmodel/dm.h   int (*dm_get_numzones)(struct dm_disk_if *);</span>
+<span class='curline'><a href='../S/77.html#L297'>dm_disk_if</a>        297 diskmodel/dm.h   int (*dm_get_zone)(struct dm_disk_if *, int n, struct dm_layout_zone *z);</span>
+<span class='curline'><a href='../S/77.html#L304'>dm_disk_if</a>        304 diskmodel/dm.h   (*dm_defect_count)(struct dm_disk_if *d, </span>
+<span class='curline'><a href='../S/77.html#L351'>dm_disk_if</a>        351 diskmodel/dm.h   dm_time_t(*dm_seek_time)(struct dm_disk_if *, </span>
+<span class='curline'><a href='../S/77.html#L360'>dm_disk_if</a>        360 diskmodel/dm.h   int(*dm_access_block)(struct dm_disk_if *,</span>
+<span class='curline'><a href='../S/77.html#L379'>dm_disk_if</a>        379 diskmodel/dm.h   dm_time_t(*dm_latency)(struct dm_disk_if *,</span>
+<span class='curline'><a href='../S/77.html#L395'>dm_disk_if</a>        395 diskmodel/dm.h   dm_time_t(*dm_latency_seq)(struct dm_disk_if *,</span>
+<span class='curline'><a href='../S/77.html#L406'>dm_disk_if</a>        406 diskmodel/dm.h   dm_time_t(*dm_pos_time)(struct dm_disk_if *,</span>
+<span class='curline'><a href='../S/77.html#L425'>dm_disk_if</a>        425 diskmodel/dm.h   dm_time_t(*dm_acctime)(struct dm_disk_if *, </span>
+<span class='curline'><a href='../S/77.html#L436'>dm_disk_if</a>        436 diskmodel/dm.h   dm_time_t(*dm_rottime)(struct dm_disk_if *,</span>
+<span class='curline'><a href='../S/77.html#L444'>dm_disk_if</a>        444 diskmodel/dm.h   dm_time_t(*dm_xfertime)(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/77.html#L450'>dm_disk_if</a>        450 diskmodel/dm.h   dm_time_t(*dm_headswitch_time)(struct dm_disk_if *, </span>
+<span class='curline'><a href='../S/77.html#L457'>dm_disk_if</a>        457 diskmodel/dm.h   dm_angle_t(*dm_rotate)(struct dm_disk_if *, </span>
+<span class='curline'><a href='../S/77.html#L461'>dm_disk_if</a>        461 diskmodel/dm.h   dm_time_t(*dm_period)(struct dm_disk_if *);</span>
+<span class='curline'><a href='../S/77.html#L466'>dm_disk_if</a>        466 diskmodel/dm.h   void(*dm_randomize_rpm)(struct dm_disk_if *);</span>
+<span class='curline'><a href='../S/77.html#L469'>dm_disk_if</a>        469 diskmodel/dm.h   int(*dm_marshaled_len)(struct dm_disk_if *);</span>
+<span class='curline'><a href='../S/77.html#L473'>dm_disk_if</a>        473 diskmodel/dm.h   void *(*dm_marshal)(struct dm_disk_if *, char *);</span>
+<span class='curline'><a href='../S/77.html#L502'>dm_disk_if</a>        502 diskmodel/dm.h typedef struct dm_mech_if *(*dm_mech_loader_t)(struct lp_block *, struct dm_disk_if *);</span>
+<span class='curline'><a href='../S/77.html#L503'>dm_disk_if</a>        503 diskmodel/dm.h typedef struct dm_layout_if *(*dm_layout_loader_t)(struct lp_block *, struct dm_disk_if *);</span>
+<span class='curline'><a href='../S/75.html#L45'>dm_disk_if</a>         45 diskmodel/dm_load.c struct dm_disk_if *</span>
+<span class='curline'><a href='../S/75.html#L48'>dm_disk_if</a>         48 diskmodel/dm_load.c   struct dm_disk_if *result = calloc(1, sizeof(*result));</span>
+<span class='curline'><a href='../S/76.html#L43'>dm_disk_if</a>         43 diskmodel/dm_testsuite.c void layout_test_simple(struct dm_disk_if *d) {</span>
+<span class='curline'><a href='../S/76.html#L78'>dm_disk_if</a>         78 diskmodel/dm_testsuite.c void test_rotate(struct dm_disk_if *d) {</span>
+<span class='curline'><a href='../S/76.html#L90'>dm_disk_if</a>         90 diskmodel/dm_testsuite.c void layout_test_skew(struct dm_disk_if *d) {</span>
+<span class='curline'><a href='../S/76.html#L121'>dm_disk_if</a>        121 diskmodel/dm_testsuite.c void mech_test_postime1(struct dm_disk_if *d) {</span>
+<span class='curline'><a href='../S/76.html#L144'>dm_disk_if</a>        144 diskmodel/dm_testsuite.c void mech_test_postime2(struct dm_disk_if *d) {</span>
+<span class='curline'><a href='../S/76.html#L162'>dm_disk_if</a>        162 diskmodel/dm_testsuite.c void mech_test_xfertime(struct dm_disk_if *d) {</span>
+<span class='curline'><a href='../S/76.html#L182'>dm_disk_if</a>        182 diskmodel/dm_testsuite.c void mech_test_access(struct dm_disk_if *d) {</span>
+<span class='curline'><a href='../S/76.html#L213'>dm_disk_if</a>        213 diskmodel/dm_testsuite.c void mech_pos_vs_acc(struct dm_disk_if *d) {</span>
+<span class='curline'><a href='../S/76.html#L247'>dm_disk_if</a>        247 diskmodel/dm_testsuite.c void mech_test_access2(struct dm_disk_if *d) {</span>
+<span class='curline'><a href='../S/76.html#L276'>dm_disk_if</a>        276 diskmodel/dm_testsuite.c void mech_test_access3(struct dm_disk_if *d) {</span>
+<span class='curline'><a href='../S/76.html#L305'>dm_disk_if</a>        305 diskmodel/dm_testsuite.c void mech_test_access_big(struct dm_disk_if *d) {</span>
+<span class='curline'><a href='../S/76.html#L356'>dm_disk_if</a>        356 diskmodel/dm_testsuite.c void mech_test_access_immed(struct dm_disk_if *d) {</span>
+<span class='curline'><a href='../S/76.html#L404'>dm_disk_if</a>        404 diskmodel/dm_testsuite.c void mech_test_seek(struct dm_disk_if *d) {</span>
+<span class='curline'><a href='../S/76.html#L419'>dm_disk_if</a>        419 diskmodel/dm_testsuite.c void layout_test_trackbound(struct dm_disk_if *d) {</span>
+<span class='curline'><a href='../S/76.html#L439'>dm_disk_if</a>        439 diskmodel/dm_testsuite.c void weird_disksim_test(struct dm_disk_if *d) {</span>
+<span class='curline'><a href='../S/76.html#L453'>dm_disk_if</a>        453 diskmodel/dm_testsuite.c void test_lbn_offset(struct dm_disk_if *d) {</span>
+<span class='curline'><a href='../S/76.html#L472'>dm_disk_if</a>        472 diskmodel/dm_testsuite.c void test_breakdown(struct dm_disk_if *d) {</span>
+<span class='curline'><a href='../S/76.html#L490'>dm_disk_if</a>        490 diskmodel/dm_testsuite.c void test_0t(struct dm_disk_if *d) {</span>
+<span class='curline'><a href='../S/76.html#L509'>dm_disk_if</a>        509 diskmodel/dm_testsuite.c void test_1track(struct dm_disk_if *d) {</span>
+<span class='curline'><a href='../S/76.html#L524'>dm_disk_if</a>        524 diskmodel/dm_testsuite.c void test_skew2(struct dm_disk_if *d) {</span>
+<span class='curline'><a href='../S/76.html#L540'>dm_disk_if</a>        540 diskmodel/dm_testsuite.c void test_g2_skew(struct dm_disk_if *d) {</span>
+<span class='curline'><a href='../S/76.html#L559'>dm_disk_if</a>        559 diskmodel/dm_testsuite.c void test_zonefoo(struct dm_disk_if *d) {</span>
+<span class='curline'><a href='../S/76.html#L580'>dm_disk_if</a>        580 diskmodel/dm_testsuite.c   struct dm_disk_if *disk;</span>
+<span class='curline'><a href='../S/92.html#L157'>dm_disk_if</a>        157 diskmodel/layout_g1.c g1_st_lbn(struct dm_disk_if *d, int lbn) {</span>
+<span class='curline'><a href='../S/92.html#L182'>dm_disk_if</a>        182 diskmodel/layout_g1.c g1_st_pbn(struct dm_disk_if *d, struct dm_pbn *p) {</span>
+<span class='curline'><a href='../S/92.html#L222'>dm_disk_if</a>        222 diskmodel/layout_g1.c g1_map_pbn_skew(struct dm_disk_if *d, </span>
+<span class='curline'><a href='../S/92.html#L292'>dm_disk_if</a>        292 diskmodel/layout_g1.c g1_get_track_0l(struct dm_disk_if *d, </span>
+<span class='curline'><a href='../S/92.html#L313'>dm_disk_if</a>        313 diskmodel/layout_g1.c g1_convert_ptoa(struct dm_disk_if *d, </span>
+<span class='curline'><a href='../S/92.html#L370'>dm_disk_if</a>        370 diskmodel/layout_g1.c g1_convert_atop(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/92.html#L445'>dm_disk_if</a>        445 diskmodel/layout_g1.c g1_ptol_0t(struct dm_disk_if *d, </span>
+<span class='curline'><a href='../S/92.html#L483'>dm_disk_if</a>        483 diskmodel/layout_g1.c g1_ptol_nosparing(struct dm_disk_if *d, </span>
+<span class='curline'><a href='../S/92.html#L522'>dm_disk_if</a>        522 diskmodel/layout_g1.c g1_ptol_sectpertrackspare(struct dm_disk_if *d, </span>
+<span class='curline'><a href='../S/92.html#L598'>dm_disk_if</a>        598 diskmodel/layout_g1.c g1_ptol_sectpercylspare(struct dm_disk_if *d, </span>
+<span class='curline'><a href='../S/92.html#L687'>dm_disk_if</a>        687 diskmodel/layout_g1.c g1_ptol_sectperrangespare(struct dm_disk_if *d, </span>
+<span class='curline'><a href='../S/92.html#L767'>dm_disk_if</a>        767 diskmodel/layout_g1.c g1_ptol_sectperzonespare(struct dm_disk_if *d, </span>
+<span class='curline'><a href='../S/92.html#L840'>dm_disk_if</a>        840 diskmodel/layout_g1.c g1_ptol_trackspare(struct dm_disk_if *d, </span>
+<span class='curline'><a href='../S/92.html#L925'>dm_disk_if</a>        925 diskmodel/layout_g1.c g1_track_boundaries_nosparing(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/92.html#L964'>dm_disk_if</a>        964 diskmodel/layout_g1.c g1_track_boundaries_sectpertrackspare(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/92.html#L1015'>dm_disk_if</a>       1015 diskmodel/layout_g1.c g1_track_boundaries_sectpercylspare(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/92.html#L1102'>dm_disk_if</a>       1102 diskmodel/layout_g1.c g1_track_boundaries_sectperrangespare(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/92.html#L1185'>dm_disk_if</a>       1185 diskmodel/layout_g1.c g1_track_boundaries_sectperzonespare(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/92.html#L1274'>dm_disk_if</a>       1274 diskmodel/layout_g1.c g1_track_boundaries_trackspare(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/92.html#L1358'>dm_disk_if</a>       1358 diskmodel/layout_g1.c g1_ltop_0t(struct dm_disk_if *d, </span>
+<span class='curline'><a href='../S/92.html#L1398'>dm_disk_if</a>       1398 diskmodel/layout_g1.c g1_ltop_nosparing(struct dm_disk_if *d, </span>
+<span class='curline'><a href='../S/92.html#L1425'>dm_disk_if</a>       1425 diskmodel/layout_g1.c g1_ltop_sectpertrackspare(struct dm_disk_if *d, </span>
+<span class='curline'><a href='../S/92.html#L1492'>dm_disk_if</a>       1492 diskmodel/layout_g1.c g1_ltop_sectpercylspare(struct dm_disk_if *d, </span>
+<span class='curline'><a href='../S/92.html#L1565'>dm_disk_if</a>       1565 diskmodel/layout_g1.c g1_ltop_sectperrangespare(struct dm_disk_if *d, </span>
+<span class='curline'><a href='../S/92.html#L1629'>dm_disk_if</a>       1629 diskmodel/layout_g1.c g1_ltop_sectperzonespare(struct dm_disk_if *d, </span>
+<span class='curline'><a href='../S/92.html#L1688'>dm_disk_if</a>       1688 diskmodel/layout_g1.c g1_ltop_trackspare(struct dm_disk_if *d, </span>
+<span class='curline'><a href='../S/92.html#L1733'>dm_disk_if</a>       1733 diskmodel/layout_g1.c g1_seek_distance(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/92.html#L1756'>dm_disk_if</a>       1756 diskmodel/layout_g1.c g1_get_sector_width(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/92.html#L1775'>dm_disk_if</a>       1775 diskmodel/layout_g1.c g1_lbn_offset(struct dm_disk_if *d, int lbn1, int lbn2)</span>
+<span class='curline'><a href='../S/92.html#L1796'>dm_disk_if</a>       1796 diskmodel/layout_g1.c layout_g1_marshaled_len(struct dm_disk_if *d) {</span>
+<span class='curline'><a href='../S/92.html#L1817'>dm_disk_if</a>       1817 diskmodel/layout_g1.c layout_g1_marshal(struct dm_disk_if *d, char *buff) {</span>
+<span class='curline'><a href='../S/92.html#L1927'>dm_disk_if</a>       1927 diskmodel/layout_g1.c g1_get_numzones(struct dm_disk_if *d) </span>
+<span class='curline'><a href='../S/92.html#L1937'>dm_disk_if</a>       1937 diskmodel/layout_g1.c g1_get_zone(struct dm_disk_if *d, </span>
+<span class='curline'><a href='../S/71.html#L159'>dm_disk_if</a>        159 diskmodel/layout_g1.h   struct dm_disk_if *disk; // back pointer</span>
+<span class='curline'><a href='../S/57.html#L117'>dm_disk_if</a>        117 diskmodel/layout_g1_load.c static void initialize_bands(struct dm_disk_if *d);</span>
+<span class='curline'><a href='../S/57.html#L121'>dm_disk_if</a>        121 diskmodel/layout_g1_load.c static void dm_layout_g1_initialize(struct dm_disk_if *d);</span>
+<span class='curline'><a href='../S/57.html#L124'>dm_disk_if</a>        124 diskmodel/layout_g1_load.c dm_layout_g1_compute_blksinband(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/57.html#L129'>dm_disk_if</a>        129 diskmodel/layout_g1_load.c dm_layout_g1_loadparams(struct lp_block *b, struct dm_disk_if *d)</span>
+<span class='curline'><a href='../S/57.html#L238'>dm_disk_if</a>        238 diskmodel/layout_g1_load.c static void initialize_bands(struct dm_disk_if *d) {</span>
+<span class='curline'><a href='../S/57.html#L443'>dm_disk_if</a>        443 diskmodel/layout_g1_load.c dm_layout_g1_initialize(struct dm_disk_if *d)</span>
+<span class='curline'><a href='../S/57.html#L469'>dm_disk_if</a>        469 diskmodel/layout_g1_load.c dm_layout_g1_compute_blksinband(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/98.html#L39'>dm_disk_if</a>         39 diskmodel/layout_g2.c find_zone_lbn(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/98.html#L58'>dm_disk_if</a>         58 diskmodel/layout_g2.c find_zone_pbn(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/98.html#L94'>dm_disk_if</a>         94 diskmodel/layout_g2.c ltop(struct dm_disk_if *d, </span>
+<span class='curline'><a href='../S/98.html#L126'>dm_disk_if</a>        126 diskmodel/layout_g2.c ltop_0t(struct dm_disk_if *d, </span>
+<span class='curline'><a href='../S/98.html#L138'>dm_disk_if</a>        138 diskmodel/layout_g2.c ptol(struct dm_disk_if *d, </span>
+<span class='curline'><a href='../S/98.html#L170'>dm_disk_if</a>        170 diskmodel/layout_g2.c ptol_0t(struct dm_disk_if *d, </span>
+<span class='curline'><a href='../S/98.html#L198'>dm_disk_if</a>        198 diskmodel/layout_g2.c g2_defect_count(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/98.html#L235'>dm_disk_if</a>        235 diskmodel/layout_g2.c st_lbn(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/98.html#L243'>dm_disk_if</a>        243 diskmodel/layout_g2.c st_pbn(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/98.html#L258'>dm_disk_if</a>        258 diskmodel/layout_g2.c track_boundaries(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/98.html#L289'>dm_disk_if</a>        289 diskmodel/layout_g2.c sector_width(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/98.html#L300'>dm_disk_if</a>        300 diskmodel/layout_g2.c pbn_skew_new(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/98.html#L340'>dm_disk_if</a>        340 diskmodel/layout_g2.c pbn_skew(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/98.html#L379'>dm_disk_if</a>        379 diskmodel/layout_g2.c ptoa(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/98.html#L395'>dm_disk_if</a>        395 diskmodel/layout_g2.c atop(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/98.html#L416'>dm_disk_if</a>        416 diskmodel/layout_g2.c g2_seek_distance(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/98.html#L440'>dm_disk_if</a>        440 diskmodel/layout_g2.c g2_get_numzones(struct dm_disk_if *d)</span>
+<span class='curline'><a href='../S/98.html#L450'>dm_disk_if</a>        450 diskmodel/layout_g2.c g2_get_zone(struct dm_disk_if *d, int n, struct dm_layout_zone *result)</span>
+<span class='curline'><a href='../S/44.html#L215'>dm_disk_if</a>        215 diskmodel/layout_g2_load.c precompute_skews(struct dm_disk_if *d)</span>
+<span class='curline'><a href='../S/44.html#L310'>dm_disk_if</a>        310 diskmodel/layout_g2_load.c dm_layout_g2_loadparams(struct lp_block *b, struct dm_disk_if *parent) {</span>
+<span class='curline'><a href='../S/70.html#L364'>dm_disk_if</a>        364 diskmodel/layout_g4.c ltop(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/70.html#L434'>dm_disk_if</a>        434 diskmodel/layout_g4.c ptol(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/70.html#L530'>dm_disk_if</a>        530 diskmodel/layout_g4.c g4_spt_lbn(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/70.html#L550'>dm_disk_if</a>        550 diskmodel/layout_g4.c g4_spt_pbn(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/70.html#L570'>dm_disk_if</a>        570 diskmodel/layout_g4.c g4_track_bound(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/70.html#L626'>dm_disk_if</a>        626 diskmodel/layout_g4.c g4_sector_width(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/70.html#L661'>dm_disk_if</a>        661 diskmodel/layout_g4.c g4_skew(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/70.html#L712'>dm_disk_if</a>        712 diskmodel/layout_g4.c g4_atop(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/70.html#L730'>dm_disk_if</a>        730 diskmodel/layout_g4.c g4_defect_count(struct dm_disk_if *d, </span>
+<span class='curline'><a href='../S/70.html#L745'>dm_disk_if</a>        745 diskmodel/layout_g4.c g4_get_numzones(struct dm_disk_if *d) </span>
+<span class='curline'><a href='../S/70.html#L753'>dm_disk_if</a>        753 diskmodel/layout_g4.c g4_get_zone(struct dm_disk_if *d, int n, struct dm_layout_zone *z)</span>
+<span class='curline'><a href='../S/56.html#L116'>dm_disk_if</a>        116 diskmodel/layout_g4.h   struct dm_disk_if *parent;</span>
+<span class='curline'><a href='../S/58.html#L447'>dm_disk_if</a>        447 diskmodel/layout_g4_load.c 			struct dm_disk_if *parent)</span>
+<span class='curline'><a href='../S/102.html#L118'>dm_disk_if</a>        118 diskmodel/layout_g4_tools/g4_skews.c 		    struct dm_disk_if *d) {</span>
+<span class='curline'><a href='../S/102.html#L217'>dm_disk_if</a>        217 diskmodel/layout_g4_tools/g4_skews.c adjust_lbns(struct dm_disk_if *d, int *l1, int *l2) {</span>
+<span class='curline'><a href='../S/102.html#L375'>dm_disk_if</a>        375 diskmodel/layout_g4_tools/g4_skews.c measure_one_skew(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/102.html#L401'>dm_disk_if</a>        401 diskmodel/layout_g4_tools/g4_skews.c do_idx_ent(struct dm_disk_if *d,        // diskmodel</span>
+<span class='curline'><a href='../S/102.html#L551'>dm_disk_if</a>        551 diskmodel/layout_g4_tools/g4_skews.c int do_idx(struct dm_disk_if *d,    // diskmodel</span>
+<span class='curline'><a href='../S/102.html#L602'>dm_disk_if</a>        602 diskmodel/layout_g4_tools/g4_skews.c   struct dm_disk_if *d;</span>
+<span class='curline'><a href='../S/97.html#L37'>dm_disk_if</a>         37 diskmodel/marshal.c struct dm_disk_if *</span>
+<span class='curline'><a href='../S/97.html#L40'>dm_disk_if</a>         40 diskmodel/marshal.c   struct dm_disk_if *result;</span>
+<span class='curline'><a href='../S/97.html#L60'>dm_disk_if</a>         60 diskmodel/marshal.c   struct dm_disk_if *d = malloc(sizeof(*d));</span>
+<span class='curline'><a href='../S/97.html#L64'>dm_disk_if</a>         64 diskmodel/marshal.c   memcpy((char *)d, ptr, sizeof(struct dm_disk_if));</span>
+<span class='curline'><a href='../S/97.html#L65'>dm_disk_if</a>         65 diskmodel/marshal.c   ptr += sizeof(struct dm_disk_if);</span>
+<span class='curline'><a href='../S/97.html#L91'>dm_disk_if</a>         91 diskmodel/marshal.c dm_marshal(struct dm_disk_if *d) {</span>
+<span class='curline'><a href='../S/97.html#L97'>dm_disk_if</a>         97 diskmodel/marshal.c   alloc_size = sizeof(struct dm_disk_if);</span>
+<span class='curline'><a href='../S/97.html#L112'>dm_disk_if</a>        112 diskmodel/marshal.c   memcpy(ptr, (char *)d, sizeof(struct dm_disk_if));</span>
+<span class='curline'><a href='../S/97.html#L114'>dm_disk_if</a>        114 diskmodel/marshal.c   ptr += sizeof(struct dm_disk_if);</span>
+<span class='curline'><a href='../S/99.html#L67'>dm_disk_if</a>         67 diskmodel/marshal.h struct dm_disk_if * dm_unmarshal(struct dm_marshal_hdr *h, int bufflen);</span>
+<span class='curline'><a href='../S/99.html#L68'>dm_disk_if</a>         68 diskmodel/marshal.h struct dm_marshal_hdr * dm_marshal(struct dm_disk_if *d);</span>
+<span class='curline'><a href='../S/72.html#L113'>dm_disk_if</a>        113 diskmodel/mech_g1.c dm_seek_time_g1(struct dm_disk_if *d, </span>
+<span class='curline'><a href='../S/72.html#L140'>dm_disk_if</a>        140 diskmodel/mech_g1.c dm_pos_time_g1(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/72.html#L190'>dm_disk_if</a>        190 diskmodel/mech_g1.c dm_acctime_track(struct dm_disk_if *d, </span>
+<span class='curline'><a href='../S/72.html#L278'>dm_disk_if</a>        278 diskmodel/mech_g1.c dm_acctime_g1(struct dm_disk_if *d, </span>
+<span class='curline'><a href='../S/72.html#L381'>dm_disk_if</a>        381 diskmodel/mech_g1.c dm_latency_g1(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/72.html#L482'>dm_disk_if</a>        482 diskmodel/mech_g1.c dm_latency_seq_g1(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/72.html#L497'>dm_disk_if</a>        497 diskmodel/mech_g1.c g1_access_block(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/72.html#L590'>dm_disk_if</a>        590 diskmodel/mech_g1.c dm_latency_g1_average(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/72.html#L608'>dm_disk_if</a>        608 diskmodel/mech_g1.c dm_rottime_g1_average(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/72.html#L619'>dm_disk_if</a>        619 diskmodel/mech_g1.c dm_rottime_g1(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/72.html#L648'>dm_disk_if</a>        648 diskmodel/mech_g1.c dm_xfertime_g1(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/72.html#L683'>dm_disk_if</a>        683 diskmodel/mech_g1.c dm_headswitch_time_g1(struct dm_disk_if *d, </span>
+<span class='curline'><a href='../S/72.html#L700'>dm_disk_if</a>        700 diskmodel/mech_g1.c dm_rotate_g1(struct dm_disk_if *d, </span>
+<span class='curline'><a href='../S/72.html#L733'>dm_disk_if</a>        733 diskmodel/mech_g1.c dm_progress_g1(struct dm_disk_if *d, </span>
+<span class='curline'><a href='../S/72.html#L742'>dm_disk_if</a>        742 diskmodel/mech_g1.c dm_period_g1(struct dm_disk_if *d) { </span>
+<span class='curline'><a href='../S/72.html#L750'>dm_disk_if</a>        750 diskmodel/mech_g1.c mech_g1_marshaled_len(struct dm_disk_if *d) {</span>
+<span class='curline'><a href='../S/72.html#L760'>dm_disk_if</a>        760 diskmodel/mech_g1.c static void dm_mech_g1_set_period(struct dm_disk_if *d) {</span>
+<span class='curline'><a href='../S/72.html#L766'>dm_disk_if</a>        766 diskmodel/mech_g1.c static void *mech_g1_marshal(struct dm_disk_if *d, char *b);</span>
+<span class='curline'><a href='../S/72.html#L797'>dm_disk_if</a>        797 diskmodel/mech_g1.c mech_g1_marshal(struct dm_disk_if *d, char *b) {</span>
+<span class='curline'><a href='../S/94.html#L124'>dm_disk_if</a>        124 diskmodel/mech_g1.h typedef dm_time_t(*dm_mech_g1_seekfn)(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/94.html#L135'>dm_disk_if</a>        135 diskmodel/mech_g1.h   struct dm_disk_if *disk; // back pointer to disk this goes with</span>
+<span class='curline'><a href='../S/74.html#L309'>dm_disk_if</a>        309 diskmodel/mech_g1_load.c dm_mech_g1_seek_init(struct dm_disk_if *d) {</span>
+<span class='curline'><a href='../S/96.html#L37'>dm_disk_if</a>         37 diskmodel/mech_g1_private.h dm_mech_g1_seek_const(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/96.html#L43'>dm_disk_if</a>         43 diskmodel/mech_g1_private.h dm_mech_g1_seek_3pt_curve(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/96.html#L49'>dm_disk_if</a>         49 diskmodel/mech_g1_private.h dm_mech_g1_seek_3pt_line(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/96.html#L55'>dm_disk_if</a>         55 diskmodel/mech_g1_private.h dm_mech_g1_seek_hpl(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/96.html#L61'>dm_disk_if</a>         61 diskmodel/mech_g1_private.h dm_mech_g1_seek_1st10_plus_hpl(struct dm_disk_if *d, </span>
+<span class='curline'><a href='../S/96.html#L67'>dm_disk_if</a>         67 diskmodel/mech_g1_private.h dm_mech_g1_seek_extracted(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/60.html#L107'>dm_disk_if</a>        107 diskmodel/mech_g1_seektime.c dm_mech_g1_seek_const(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/60.html#L119'>dm_disk_if</a>        119 diskmodel/mech_g1_seektime.c dm_mech_g1_seek_3pt_curve(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/60.html#L144'>dm_disk_if</a>        144 diskmodel/mech_g1_seektime.c dm_mech_g1_seek_3pt_line(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/60.html#L193'>dm_disk_if</a>        193 diskmodel/mech_g1_seektime.c dm_mech_g1_seek_hpl(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/60.html#L231'>dm_disk_if</a>        231 diskmodel/mech_g1_seektime.c dm_mech_g1_seek_1st10_plus_hpl(struct dm_disk_if *d, </span>
+<span class='curline'><a href='../S/60.html#L274'>dm_disk_if</a>        274 diskmodel/mech_g1_seektime.c dm_mech_g1_seek_hpl(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/60.html#L284'>dm_disk_if</a>        284 diskmodel/mech_g1_seektime.c dm_mech_g1_seek_1st10_plus_hpl(struct dm_disk_if *d, </span>
+<span class='curline'><a href='../S/60.html#L297'>dm_disk_if</a>        297 diskmodel/mech_g1_seektime.c dm_mech_g1_seek_extracted(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/89.html#L43'>dm_disk_if</a>         43 diskmodel/tests/driver.c extern doTests(struct dm_disk_if *, int, char **);</span>
+<span class='curline'><a href='../S/89.html#L105'>dm_disk_if</a>        105 diskmodel/tests/driver.c   struct dm_disk_if *disk;</span>
+<span class='curline'><a href='../S/89.html#L139'>dm_disk_if</a>        139 diskmodel/tests/driver.c   disk = (struct dm_disk_if *)lp_instantiate("foo", modelname);</span>
+<span class='curline'><a href='../S/83.html#L42'>dm_disk_if</a>         42 diskmodel/tests/layout_bogon.c layout_bogon(struct dm_disk_if *d) {</span>
+<span class='curline'><a href='../S/83.html#L73'>dm_disk_if</a>         73 diskmodel/tests/layout_bogon.c int doTests(struct dm_disk_if *d, int argc, char **argv)</span>
+<span class='curline'><a href='../S/79.html#L66'>dm_disk_if</a>         66 diskmodel/tests/layout_raw.c int raw_layout_test(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/79.html#L116'>dm_disk_if</a>        116 diskmodel/tests/layout_raw.c int doTests(struct dm_disk_if *d, </span>
+<span class='curline'><a href='../S/88.html#L41'>dm_disk_if</a>         41 diskmodel/tests/layout_simple.c layout_test_simple(struct dm_disk_if *d) {</span>
+<span class='curline'><a href='../S/88.html#L100'>dm_disk_if</a>        100 diskmodel/tests/layout_simple.c int doTests(struct dm_disk_if *d, int argc, char **argv)</span>
+<span class='curline'><a href='../S/90.html#L38'>dm_disk_if</a>         38 diskmodel/tests/layout_simple_0t.c layout_test_simple_0t(struct dm_disk_if *d)</span>
+<span class='curline'><a href='../S/90.html#L70'>dm_disk_if</a>         70 diskmodel/tests/layout_simple_0t.c int doTests(struct dm_disk_if *d, int argc, char **argv)</span>
+<span class='curline'><a href='../S/87.html#L40'>dm_disk_if</a>         40 diskmodel/tests/layout_skew.c layout_test_simple(struct dm_disk_if *d) {</span>
+<span class='curline'><a href='../S/87.html#L76'>dm_disk_if</a>         76 diskmodel/tests/layout_skew.c int doTests(struct dm_disk_if *d, int argc, char **argv)</span>
+<span class='curline'><a href='../S/80.html#L39'>dm_disk_if</a>         39 diskmodel/tests/layout_torture.c layout_torture(struct dm_disk_if *d) {</span>
+<span class='curline'><a href='../S/80.html#L78'>dm_disk_if</a>         78 diskmodel/tests/layout_torture.c int doTests(struct dm_disk_if *d, int argc, char **argv)</span>
+<span class='curline'><a href='../S/82.html#L38'>dm_disk_if</a>         38 diskmodel/tests/layout_track.c int layout_test_trackbound(struct dm_disk_if *d) {</span>
+<span class='curline'><a href='../S/82.html#L123'>dm_disk_if</a>        123 diskmodel/tests/layout_track.c int doTests(struct dm_disk_if *d, int argc, char **argv)</span>
+<span class='curline'><a href='../S/85.html#L38'>dm_disk_if</a>         38 diskmodel/tests/mech_seek.c mech_test_seek(struct dm_disk_if *d) {</span>
+<span class='curline'><a href='../S/85.html#L64'>dm_disk_if</a>         64 diskmodel/tests/mech_seek.c int doTests(struct dm_disk_if *d, int argc, char **argv)</span>
+<span class='curline'><a href='../S/84.html#L40'>dm_disk_if</a>         40 diskmodel/tests/template.c extern doTests(struct dm_disk_if *, int, char **);</span>
+<span class='curline'><a href='../S/84.html#L49'>dm_disk_if</a>         49 diskmodel/tests/template.c   struct dm_disk_if *disk;</span>
+<span class='curline'><a href='../S/273.html#L1132'>dm_disk_if</a>       1132 src/disksim_disk.c   struct dm_disk_if *d = disksim-&gt;diskinfo-&gt;disks[n]-&gt;model;</span>
+<span class='curline'><a href='../S/258.html#L277'>dm_disk_if</a>        277 src/disksim_disk.h   struct dm_disk_if    *model;</span>
+<span class='curline'><a href='../S/195.html#L488'>dm_disk_if</a>        488 src/disksim_interface.c struct dm_disk_if *</span>
+<span class='curline'><a href='../S/289.html#L122'>dm_disk_if</a>        122 src/disksim_interface.h struct dm_disk_if *</span>
+<span class='curline'><a href='../S/158.html#L9'>dm_disk_if</a>          9 ssdmodel/include/ssdmodel/modules/ssdmodel_ssd_param.h struct dm_disk_if;</span>
+</pre>
+</body>
+</html>

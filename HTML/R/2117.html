@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>ssd_t</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/156.html#L440'>ssd_t</a>             440 ssdmodel/include/ssdmodel/ssd.h void    ssd_assert_free_blocks(ssd_t *s, ssd_element_metadata *metadata);</span>
+<span class='curline'><a href='../S/156.html#L441'>ssd_t</a>             441 ssdmodel/include/ssdmodel/ssd.h void    ssd_assert_valid_pages(int plane_num, ssd_element_metadata *metadata, ssd_t *s);</span>
+<span class='curline'><a href='../S/156.html#L442'>ssd_t</a>             442 ssdmodel/include/ssdmodel/ssd.h double  ssd_data_transfer_cost(ssd_t *s, int sectors_count);</span>
+<span class='curline'><a href='../S/156.html#L443'>ssd_t</a>             443 ssdmodel/include/ssdmodel/ssd.h int     ssd_last_page_in_block(int page_num, ssd_t *s);</span>
+<span class='curline'><a href='../S/156.html#L444'>ssd_t</a>             444 ssdmodel/include/ssdmodel/ssd.h double  _ssd_write_page_osr(ssd_t *s, ssd_element_metadata *metadata, int lpn);</span>
+<span class='curline'><a href='../S/156.html#L445'>ssd_t</a>             445 ssdmodel/include/ssdmodel/ssd.h int     ssd_logical_pageno(int blkno, ssd_t *s);</span>
+<span class='curline'><a href='../S/156.html#L446'>ssd_t</a>             446 ssdmodel/include/ssdmodel/ssd.h int     ssd_block_to_bitpos(ssd_t *currdisk, int block);</span>
+<span class='curline'><a href='../S/156.html#L447'>ssd_t</a>             447 ssdmodel/include/ssdmodel/ssd.h int     ssd_bitpos_to_block(int bitpos, ssd_t *s);</span>
+<span class='curline'><a href='../S/156.html#L448'>ssd_t</a>             448 ssdmodel/include/ssdmodel/ssd.h void    _ssd_alloc_active_block(int plane_num, int elem_num, ssd_t *s);</span>
+<span class='curline'><a href='../S/156.html#L449'>ssd_t</a>             449 ssdmodel/include/ssdmodel/ssd.h int     ssd_free_bits(int plane_num, int elem_num, ssd_element_metadata *metadata, ssd_t *s);</span>
+<span class='curline'><a href='../S/156.html#L450'>ssd_t</a>             450 ssdmodel/include/ssdmodel/ssd.h void    ssd_assert_plane_freebits(int plane_num, int elem_num, ssd_element_metadata *metadata, ssd_t *s);</span>
+<span class='curline'><a href='../S/156.html#L451'>ssd_t</a>             451 ssdmodel/include/ssdmodel/ssd.h double  ssd_read_policy_simple(int count, ssd_t *s);</span>
+<span class='curline'><a href='../S/156.html#L452'>ssd_t</a>             452 ssdmodel/include/ssdmodel/ssd.h void    ssd_complete_parent(ioreq_event *curr, ssd_t *currdisk);</span>
+<span class='curline'><a href='../S/156.html#L453'>ssd_t</a>             453 ssdmodel/include/ssdmodel/ssd.h double _ssd_invoke_element_cleaning(int elem_num, ssd_t *s);</span>
+<span class='curline'><a href='../S/187.html#L39'>ssd_t</a>              39 ssdmodel/ssd.c    ssd_t *currdisk;</span>
+<span class='curline'><a href='../S/187.html#L58'>ssd_t</a>              58 ssdmodel/ssd.c    ssd_t *currdisk;</span>
+<span class='curline'><a href='../S/187.html#L65'>ssd_t</a>              65 ssdmodel/ssd.c    ssd_t *currdisk;</span>
+<span class='curline'><a href='../S/187.html#L72'>ssd_t</a>              72 ssdmodel/ssd.c    ssd_t *currdisk;</span>
+<span class='curline'><a href='../S/187.html#L79'>ssd_t</a>              79 ssdmodel/ssd.c    ssd_t *currdisk;</span>
+<span class='curline'><a href='../S/187.html#L86'>ssd_t</a>              86 ssdmodel/ssd.c    ssd_t *currdisk;</span>
+<span class='curline'><a href='../S/187.html#L99'>ssd_t</a>              99 ssdmodel/ssd.c    ssd_t *currdisk;</span>
+<span class='curline'><a href='../S/187.html#L109'>ssd_t</a>             109 ssdmodel/ssd.c static void ssd_assert_current_activity(ssd_t *currdisk, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/187.html#L129'>ssd_t</a>             129 ssdmodel/ssd.c    ssd_t *currdisk;</span>
+<span class='curline'><a href='../S/187.html#L185'>ssd_t</a>             185 ssdmodel/ssd.c static void ssd_check_channel_activity (ssd_t *currdisk)</span>
+<span class='curline'><a href='../S/187.html#L242'>ssd_t</a>             242 ssdmodel/ssd.c    ssd_t *currdisk;</span>
+<span class='curline'><a href='../S/187.html#L265'>ssd_t</a>             265 ssdmodel/ssd.c    ssd_t *currdisk;</span>
+<span class='curline'><a href='../S/187.html#L310'>ssd_t</a>             310 ssdmodel/ssd.c    ssd_t *currdisk;</span>
+<span class='curline'><a href='../S/187.html#L336'>ssd_t</a>             336 ssdmodel/ssd.c       ssd_t *currdisk = getssd (curr-&gt;devno);</span>
+<span class='curline'><a href='../S/187.html#L356'>ssd_t</a>             356 ssdmodel/ssd.c int ssd_logical_pageno(int blkno, ssd_t *s)</span>
+<span class='curline'><a href='../S/187.html#L392'>ssd_t</a>             392 ssdmodel/ssd.c double _ssd_invoke_element_cleaning(int elem_num, ssd_t *s)</span>
+<span class='curline'><a href='../S/187.html#L398'>ssd_t</a>             398 ssdmodel/ssd.c static int ssd_invoke_element_cleaning(int elem_num, ssd_t *s)</span>
+<span class='curline'><a href='../S/187.html#L438'>ssd_t</a>             438 ssdmodel/ssd.c static void ssd_activate_elem(ssd_t *currdisk, int elem_num)</span>
+<span class='curline'><a href='../S/187.html#L622'>ssd_t</a>             622 ssdmodel/ssd.c    ssd_t *currdisk = getssd(curr-&gt;devno);</span>
+<span class='curline'><a href='../S/187.html#L657'>ssd_t</a>             657 ssdmodel/ssd.c     ssd_t *currdisk = getssd(curr-&gt;devno);</span>
+<span class='curline'><a href='../S/187.html#L681'>ssd_t</a>             681 ssdmodel/ssd.c    ssd_t *currdisk;</span>
+<span class='curline'><a href='../S/187.html#L716'>ssd_t</a>             716 ssdmodel/ssd.c    ssd_t *currdisk;</span>
+<span class='curline'><a href='../S/187.html#L762'>ssd_t</a>             762 ssdmodel/ssd.c    ssd_t *currdisk;</span>
+<span class='curline'><a href='../S/187.html#L777'>ssd_t</a>             777 ssdmodel/ssd.c void ssd_complete_parent(ioreq_event *curr, ssd_t *currdisk)</span>
+<span class='curline'><a href='../S/187.html#L807'>ssd_t</a>             807 ssdmodel/ssd.c    ssd_t *currdisk;</span>
+<span class='curline'><a href='../S/187.html#L834'>ssd_t</a>             834 ssdmodel/ssd.c     ssd_t *currdisk = getssd (curr-&gt;devno);;</span>
+<span class='curline'><a href='../S/187.html#L859'>ssd_t</a>             859 ssdmodel/ssd.c    ssd_t *currdisk;</span>
+<span class='curline'><a href='../S/187.html#L878'>ssd_t</a>             878 ssdmodel/ssd.c    ssd_t *currdisk = getssd (curr-&gt;devno);</span>
+<span class='curline'><a href='../S/187.html#L919'>ssd_t</a>             919 ssdmodel/ssd.c    ssd_t *currdisk;</span>
+<span class='curline'><a href='../S/187.html#L976'>ssd_t</a>             976 ssdmodel/ssd.c    ssd_t *currdisk = getssd (devno);</span>
+<span class='curline'><a href='../S/187.html#L983'>ssd_t</a>             983 ssdmodel/ssd.c    ssd_t *currdisk = getssd (devno);</span>
+<span class='curline'><a href='../S/187.html#L990'>ssd_t</a>             990 ssdmodel/ssd.c    ssd_t *currdisk = getssd (devno);</span>
+<span class='curline'><a href='../S/187.html#L1051'>ssd_t</a>            1051 ssdmodel/ssd.c       ssd_t *currdisk = getssd (i);</span>
+<span class='curline'><a href='../S/187.html#L1143'>ssd_t</a>            1143 ssdmodel/ssd.c          ssd_t *currdisk = getssd (set[i]);</span>
+<span class='curline'><a href='../S/187.html#L1158'>ssd_t</a>            1158 ssdmodel/ssd.c       ssd_t *currdisk = getssd (set[i]);</span>
+<span class='curline'><a href='../S/187.html#L1167'>ssd_t</a>            1167 ssdmodel/ssd.c void ssd_print_block_lifetime_distribution(int elem_num, ssd_t *s, int ssdno, double avg_lifetime, char *sourcestr)</span>
+<span class='curline'><a href='../S/187.html#L1258'>ssd_t</a>            1258 ssdmodel/ssd.c         ssd_t *s = getssd(set[i]);</span>
+<span class='curline'><a href='../S/187.html#L1370'>ssd_t</a>            1370 ssdmodel/ssd.c       ssd_t *currdisk = getssd (set[i]);</span>
+<span class='curline'><a href='../S/187.html#L1405'>ssd_t</a>            1405 ssdmodel/ssd.c       ssd_t *currdisk = getssd (i);</span>
+<span class='curline'><a href='../S/187.html#L1425'>ssd_t</a>            1425 ssdmodel/ssd.c       ssd_t *currdisk = getssd (i);</span>
+<span class='curline'><a href='../S/187.html#L1441'>ssd_t</a>            1441 ssdmodel/ssd.c       ssd_t *currdisk = getssd (set[i]);</span>
+<span class='curline'><a href='../S/147.html#L440'>ssd_t</a>             440 ssdmodel/ssd.h void    ssd_assert_free_blocks(ssd_t *s, ssd_element_metadata *metadata);</span>
+<span class='curline'><a href='../S/147.html#L441'>ssd_t</a>             441 ssdmodel/ssd.h void    ssd_assert_valid_pages(int plane_num, ssd_element_metadata *metadata, ssd_t *s);</span>
+<span class='curline'><a href='../S/147.html#L442'>ssd_t</a>             442 ssdmodel/ssd.h double  ssd_data_transfer_cost(ssd_t *s, int sectors_count);</span>
+<span class='curline'><a href='../S/147.html#L443'>ssd_t</a>             443 ssdmodel/ssd.h int     ssd_last_page_in_block(int page_num, ssd_t *s);</span>
+<span class='curline'><a href='../S/147.html#L444'>ssd_t</a>             444 ssdmodel/ssd.h double  _ssd_write_page_osr(ssd_t *s, ssd_element_metadata *metadata, int lpn);</span>
+<span class='curline'><a href='../S/147.html#L445'>ssd_t</a>             445 ssdmodel/ssd.h int     ssd_logical_pageno(int blkno, ssd_t *s);</span>
+<span class='curline'><a href='../S/147.html#L446'>ssd_t</a>             446 ssdmodel/ssd.h int     ssd_block_to_bitpos(ssd_t *currdisk, int block);</span>
+<span class='curline'><a href='../S/147.html#L447'>ssd_t</a>             447 ssdmodel/ssd.h int     ssd_bitpos_to_block(int bitpos, ssd_t *s);</span>
+<span class='curline'><a href='../S/147.html#L448'>ssd_t</a>             448 ssdmodel/ssd.h void    _ssd_alloc_active_block(int plane_num, int elem_num, ssd_t *s);</span>
+<span class='curline'><a href='../S/147.html#L449'>ssd_t</a>             449 ssdmodel/ssd.h int     ssd_free_bits(int plane_num, int elem_num, ssd_element_metadata *metadata, ssd_t *s);</span>
+<span class='curline'><a href='../S/147.html#L450'>ssd_t</a>             450 ssdmodel/ssd.h void    ssd_assert_plane_freebits(int plane_num, int elem_num, ssd_element_metadata *metadata, ssd_t *s);</span>
+<span class='curline'><a href='../S/147.html#L451'>ssd_t</a>             451 ssdmodel/ssd.h double  ssd_read_policy_simple(int count, ssd_t *s);</span>
+<span class='curline'><a href='../S/147.html#L452'>ssd_t</a>             452 ssdmodel/ssd.h void    ssd_complete_parent(ioreq_event *curr, ssd_t *currdisk);</span>
+<span class='curline'><a href='../S/147.html#L453'>ssd_t</a>             453 ssdmodel/ssd.h double _ssd_invoke_element_cleaning(int elem_num, ssd_t *s);</span>
+<span class='curline'><a href='../S/151.html#L12'>ssd_t</a>              12 ssdmodel/ssd_clean.c (ssd_t *s, ssd_element_metadata *metadata, int from_blk, int to_blk)</span>
+<span class='curline'><a href='../S/151.html#L20'>ssd_t</a>              20 ssdmodel/ssd_clean.c int ssd_can_clean_block(ssd_t *s, ssd_element_metadata *metadata, int blk)</span>
+<span class='curline'><a href='../S/151.html#L30'>ssd_t</a>              30 ssdmodel/ssd_clean.c (ssd_t *s, ssd_element_metadata *metadata, int from_blk, int to_blk)</span>
+<span class='curline'><a href='../S/151.html#L47'>ssd_t</a>              47 ssdmodel/ssd_clean.c static double ssd_move_page(int lpn, int from_blk, int plane_num, int elem_num, ssd_t *s)</span>
+<span class='curline'><a href='../S/151.html#L81'>ssd_t</a>              81 ssdmodel/ssd_clean.c (int lp_num, int pp_index, int blk, int plane_num, int elem_num, ssd_element_metadata *metadata, ssd_t *s)</span>
+<span class='curline'><a href='../S/151.html#L130'>ssd_t</a>             130 ssdmodel/ssd_clean.c void ssd_update_free_block_status(int blk, int plane_num, ssd_element_metadata *metadata, ssd_t *s)</span>
+<span class='curline'><a href='../S/151.html#L195'>ssd_t</a>             195 ssdmodel/ssd_clean.c double ssd_compute_avg_lifetime_in_plane(int plane_num, int elem_num, ssd_t *s)</span>
+<span class='curline'><a href='../S/151.html#L216'>ssd_t</a>             216 ssdmodel/ssd_clean.c double ssd_compute_avg_lifetime_in_element(int elem_num, ssd_t *s)</span>
+<span class='curline'><a href='../S/151.html#L229'>ssd_t</a>             229 ssdmodel/ssd_clean.c double ssd_compute_avg_lifetime(int plane_num, int elem_num, ssd_t *s)</span>
+<span class='curline'><a href='../S/151.html#L249'>ssd_t</a>             249 ssdmodel/ssd_clean.c int ssd_pick_wear_aware(int blk, int block_life, double avg_lifetime, ssd_t *s)</span>
+<span class='curline'><a href='../S/151.html#L280'>ssd_t</a>             280 ssdmodel/ssd_clean.c int ssd_pick_wear_aware(int blk, int block_life, double avg_lifetime, ssd_t *s)</span>
+<span class='curline'><a href='../S/151.html#L305'>ssd_t</a>             305 ssdmodel/ssd_clean.c (int blk, int plane_num, int elem_num, ssd_element_metadata *metadata, ssd_t *s)</span>
+<span class='curline'><a href='../S/151.html#L333'>ssd_t</a>             333 ssdmodel/ssd_clean.c int ssd_migrate_cold_data(int to_blk, double *mcost, int plane_num, int elem_num, ssd_t *s)</span>
+<span class='curline'><a href='../S/151.html#L458'>ssd_t</a>             458 ssdmodel/ssd_clean.c (int blk, int block_life, double avg_lifetime, double *cost, int plane_num, int elem_num, ssd_t *s)</span>
+<span class='curline'><a href='../S/151.html#L485'>ssd_t</a>             485 ssdmodel/ssd_clean.c static int ssd_pick_block_to_clean2(int plane_num, int elem_num, double *mcost, ssd_element_metadata *metadata, ssd_t *s)</span>
+<span class='curline'><a href='../S/151.html#L571'>ssd_t</a>             571 ssdmodel/ssd_clean.c static int ssd_pick_block_to_clean1(int plane_num, int elem_num, ssd_element_metadata *metadata, ssd_t *s)</span>
+<span class='curline'><a href='../S/151.html#L595'>ssd_t</a>             595 ssdmodel/ssd_clean.c static int ssd_pick_block_to_clean(int plane_num, int elem_num, double *mcost, ssd_element_metadata *metadata, ssd_t *s)</span>
+<span class='curline'><a href='../S/151.html#L604'>ssd_t</a>             604 ssdmodel/ssd_clean.c static double _ssd_clean_block_partially(int plane_num, int elem_num, ssd_t *s)</span>
+<span class='curline'><a href='../S/151.html#L643'>ssd_t</a>             643 ssdmodel/ssd_clean.c double ssd_clean_block_partially(int plane_num, int elem_num, ssd_t *s)</span>
+<span class='curline'><a href='../S/151.html#L670'>ssd_t</a>             670 ssdmodel/ssd_clean.c double _ssd_clean_block_fully(int blk, int plane_num, int elem_num, ssd_element_metadata *metadata, ssd_t *s)</span>
+<span class='curline'><a href='../S/151.html#L690'>ssd_t</a>             690 ssdmodel/ssd_clean.c static double ssd_clean_block_fully(int plane_num, int elem_num, ssd_t *s)</span>
+<span class='curline'><a href='../S/151.html#L708'>ssd_t</a>             708 ssdmodel/ssd_clean.c static usage_table *ssd_build_usage_table(int elem_num, ssd_t *s)</span>
+<span class='curline'><a href='../S/151.html#L744'>ssd_t</a>             744 ssdmodel/ssd_clean.c static void ssd_release_usage_table(usage_table *table, ssd_t *s)</span>
+<span class='curline'><a href='../S/151.html#L759'>ssd_t</a>             759 ssdmodel/ssd_clean.c static double ssd_clean_blocks_random(int plane_num, int elem_num, ssd_t *s)</span>
+<span class='curline'><a href='../S/151.html#L813'>ssd_t</a>             813 ssdmodel/ssd_clean.c static double ssd_clean_blocks_greedy(int plane_num, int elem_num, ssd_t *s)</span>
+<span class='curline'><a href='../S/151.html#L907'>ssd_t</a>             907 ssdmodel/ssd_clean.c double ssd_clean_element_no_copyback(int elem_num, ssd_t *s)</span>
+<span class='curline'><a href='../S/151.html#L934'>ssd_t</a>             934 ssdmodel/ssd_clean.c double ssd_clean_plane_copyback(int plane_num, int elem_num, ssd_t *s)</span>
+<span class='curline'><a href='../S/151.html#L960'>ssd_t</a>             960 ssdmodel/ssd_clean.c double ssd_clean_element_copyback(int elem_num, ssd_t *s)</span>
+<span class='curline'><a href='../S/151.html#L1005'>ssd_t</a>            1005 ssdmodel/ssd_clean.c double ssd_clean_element(ssd_t *s, int elem_num)</span>
+<span class='curline'><a href='../S/151.html#L1016'>ssd_t</a>            1016 ssdmodel/ssd_clean.c int ssd_next_plane_in_parunit(int plane_num, int parunit_num, int elem_num, ssd_t *s)</span>
+<span class='curline'><a href='../S/151.html#L1021'>ssd_t</a>            1021 ssdmodel/ssd_clean.c int ssd_start_cleaning_parunit(int parunit_num, int elem_num, ssd_t *s)</span>
+<span class='curline'><a href='../S/151.html#L1046'>ssd_t</a>            1046 ssdmodel/ssd_clean.c int ssd_start_cleaning(int plane_num, int elem_num, ssd_t *s)</span>
+<span class='curline'><a href='../S/151.html#L1061'>ssd_t</a>            1061 ssdmodel/ssd_clean.c int ssd_stop_cleaning(int plane_num, int elem_num, ssd_t *s)</span>
+<span class='curline'><a href='../S/144.html#L52'>ssd_t</a>              52 ssdmodel/ssd_clean.h double ssd_compute_avg_lifetime(int plane_num, int elem_num, ssd_t *s);</span>
+<span class='curline'><a href='../S/144.html#L53'>ssd_t</a>              53 ssdmodel/ssd_clean.h double ssd_clean_block_partially(int plane_num, int elem_num, ssd_t *s);</span>
+<span class='curline'><a href='../S/144.html#L54'>ssd_t</a>              54 ssdmodel/ssd_clean.h double ssd_clean_element_no_copyback(int elem_num, ssd_t *s);</span>
+<span class='curline'><a href='../S/144.html#L55'>ssd_t</a>              55 ssdmodel/ssd_clean.h int ssd_free_bits(int plane_num, int elem_num, ssd_element_metadata *metadata, ssd_t *s);</span>
+<span class='curline'><a href='../S/144.html#L56'>ssd_t</a>              56 ssdmodel/ssd_clean.h void ssd_assert_plane_freebits(int plane_num, int elem_num, ssd_element_metadata *metadata, ssd_t *s);</span>
+<span class='curline'><a href='../S/144.html#L58'>ssd_t</a>              58 ssdmodel/ssd_clean.h double _ssd_clean_block_fully(int blk, int plane_num, int elem_num, ssd_element_metadata *metadata, ssd_t *s);</span>
+<span class='curline'><a href='../S/144.html#L59'>ssd_t</a>              59 ssdmodel/ssd_clean.h double ssd_clean_element(ssd_t *s, int elem_num);</span>
+<span class='curline'><a href='../S/144.html#L60'>ssd_t</a>              60 ssdmodel/ssd_clean.h int ssd_next_plane_in_parunit(int plane_num, int parunit_num, int elem_num, ssd_t *s);</span>
+<span class='curline'><a href='../S/144.html#L61'>ssd_t</a>              61 ssdmodel/ssd_clean.h int ssd_start_cleaning_parunit(int parunit_num, int elem_num, ssd_t *s);</span>
+<span class='curline'><a href='../S/144.html#L62'>ssd_t</a>              62 ssdmodel/ssd_clean.h int ssd_start_cleaning(int plane_num, int elem_num, ssd_t *s);</span>
+<span class='curline'><a href='../S/144.html#L63'>ssd_t</a>              63 ssdmodel/ssd_clean.h int ssd_stop_cleaning(int plane_num, int elem_num, ssd_t *s);</span>
+<span class='curline'><a href='../S/146.html#L8'>ssd_t</a>               8 ssdmodel/ssd_gang.c static int ssd_invoke_gang_cleaning(int gang_num, ssd_t *s)</span>
+<span class='curline'><a href='../S/146.html#L61'>ssd_t</a>              61 ssdmodel/ssd_gang.c static int ssd_next_elem_in_gang(ssd_t *s, int gang_num, int elem_num)</span>
+<span class='curline'><a href='../S/146.html#L71'>ssd_t</a>              71 ssdmodel/ssd_gang.c (ssd_t *s, int gang_num, ssd_req ***rd_q, ssd_req ***wr_q, int *rd_total, int *wr_total)</span>
+<span class='curline'><a href='../S/146.html#L147'>ssd_t</a>             147 ssdmodel/ssd_gang.c int choose_gang(int blk, ssd_t *s)</span>
+<span class='curline'><a href='../S/146.html#L156'>ssd_t</a>             156 ssdmodel/ssd_gang.c int ssd_gang_index(int blk, ssd_t *s)</span>
+<span class='curline'><a href='../S/146.html#L163'>ssd_t</a>             163 ssdmodel/ssd_gang.c int choose_elem_in_gang(int blk, int gang_num, ssd_t *s)</span>
+<span class='curline'><a href='../S/146.html#L184'>ssd_t</a>             184 ssdmodel/ssd_gang.c void choose_gang_and_element(int blk, ioreq_event *req, ssd_t *s, int *gang_num, int *elem_num)</span>
+<span class='curline'><a href='../S/146.html#L194'>ssd_t</a>             194 ssdmodel/ssd_gang.c double ssd_gang_read_sync(int gang_num, int blkno, int count, ssd_t *s)</span>
+<span class='curline'><a href='../S/146.html#L247'>ssd_t</a>             247 ssdmodel/ssd_gang.c static void ssd_activate_gang_sync(int gang_num, ssd_t *s)</span>
+<span class='curline'><a href='../S/146.html#L407'>ssd_t</a>             407 ssdmodel/ssd_gang.c (ssd_t *s, gang_metadata *g, int gang_num, ssd_req ***reqs_queue, int read_flag, int total)</span>
+<span class='curline'><a href='../S/146.html#L505'>ssd_t</a>             505 ssdmodel/ssd_gang.c static void ssd_activate_gang(ssd_t *s, int gang_num)</span>
+<span class='curline'><a href='../S/146.html#L572'>ssd_t</a>             572 ssdmodel/ssd_gang.c     ssd_t *currdisk = getssd(curr-&gt;devno);</span>
+<span class='curline'><a href='../S/146.html#L628'>ssd_t</a>             628 ssdmodel/ssd_gang.c     ssd_t *currdisk = getssd(curr-&gt;devno);</span>
+<span class='curline'><a href='../S/146.html#L690'>ssd_t</a>             690 ssdmodel/ssd_gang.c    ssd_t *currdisk;</span>
+<span class='curline'><a href='../S/146.html#L722'>ssd_t</a>             722 ssdmodel/ssd_gang.c     ssd_t *currdisk;</span>
+<span class='curline'><a href='../S/146.html#L748'>ssd_t</a>             748 ssdmodel/ssd_gang.c    ssd_t *currdisk;</span>
+<span class='curline'><a href='../S/185.html#L15'>ssd_t</a>              15 ssdmodel/ssd_init.c    ssd_t *currdisk;</span>
+<span class='curline'><a href='../S/185.html#L33'>ssd_t</a>              33 ssdmodel/ssd_init.c    disksim-&gt;ssdinfo-&gt;ssds = malloc(MAXDEVICES * (sizeof(ssd_t)));</span>
+<span class='curline'><a href='../S/185.html#L35'>ssd_t</a>              35 ssdmodel/ssd_init.c    bzero ((char *)disksim-&gt;ssdinfo-&gt;ssds, (MAXDEVICES * (sizeof(ssd_t))));</span>
+<span class='curline'><a href='../S/185.html#L39'>ssd_t</a>              39 ssdmodel/ssd_init.c static int ssd_first_page_in_next_block(int ppage, ssd_t *currdisk)</span>
+<span class='curline'><a href='../S/185.html#L46'>ssd_t</a>              46 ssdmodel/ssd_init.c int ssd_elem_export_size(ssd_t *currdisk)</span>
+<span class='curline'><a href='../S/185.html#L66'>ssd_t</a>              66 ssdmodel/ssd_init.c void ssd_element_metadata_init(int elem_number, ssd_element_metadata *metadata, ssd_t *currdisk)</span>
+<span class='curline'><a href='../S/185.html#L387'>ssd_t</a>             387 ssdmodel/ssd_init.c void ssd_plane_init(ssd_element *elem, ssd_t *s, int devno)</span>
+<span class='curline'><a href='../S/185.html#L407'>ssd_t</a>             407 ssdmodel/ssd_init.c void ssd_verify_parameters(ssd_t *currdisk)</span>
+<span class='curline'><a href='../S/185.html#L424'>ssd_t</a>             424 ssdmodel/ssd_init.c void ssd_alloc_queues(ssd_t *t)</span>
+<span class='curline'><a href='../S/185.html#L463'>ssd_t</a>             463 ssdmodel/ssd_init.c       ssd_t *currdisk = getssd (i);</span>
+<span class='curline'><a href='../S/185.html#L533'>ssd_t</a>             533 ssdmodel/ssd_init.c       ssd_t *currdisk = getssd (i);</span>
+<span class='curline'><a href='../S/160.html#L10'>ssd_t</a>              10 ssdmodel/ssd_init.h int ssd_elem_export_size(ssd_t *currdisk);</span>
+<span class='curline'><a href='../S/160.html#L11'>ssd_t</a>              11 ssdmodel/ssd_init.h void ssd_element_metadata_init(int elem_number, ssd_element_metadata *metadata, ssd_t *currdisk);</span>
+<span class='curline'><a href='../S/160.html#L12'>ssd_t</a>              12 ssdmodel/ssd_init.h void ssd_plane_init(ssd_element *elem, ssd_t *s, int devno);</span>
+<span class='curline'><a href='../S/160.html#L13'>ssd_t</a>              13 ssdmodel/ssd_init.h void ssd_verify_parameters(ssd_t *currdisk);</span>
+<span class='curline'><a href='../S/159.html#L38'>ssd_t</a>              38 ssdmodel/ssd_timing.c static double ssd_write_policy_simple(int blkno, int count, int elem_num, ssd_t *s)</span>
+<span class='curline'><a href='../S/159.html#L109'>ssd_t</a>             109 ssdmodel/ssd_timing.c double ssd_read_policy_simple(int count, ssd_t *s)</span>
+<span class='curline'><a href='../S/159.html#L124'>ssd_t</a>             124 ssdmodel/ssd_timing.c int ssd_free_bits(int plane_num, int elem_num, ssd_element_metadata *metadata, ssd_t *s)</span>
+<span class='curline'><a href='../S/159.html#L142'>ssd_t</a>             142 ssdmodel/ssd_timing.c void ssd_assert_plane_freebits(int plane_num, int elem_num, ssd_element_metadata *metadata, ssd_t *s)</span>
+<span class='curline'><a href='../S/159.html#L154'>ssd_t</a>             154 ssdmodel/ssd_timing.c void ssd_assert_free_blocks(ssd_t *s, ssd_element_metadata *metadata)</span>
+<span class='curline'><a href='../S/159.html#L169'>ssd_t</a>             169 ssdmodel/ssd_timing.c void ssd_assert_page_version(int prev_page, int active_page, ssd_element_metadata *metadata, ssd_t *s)</span>
+<span class='curline'><a href='../S/159.html#L181'>ssd_t</a>             181 ssdmodel/ssd_timing.c void ssd_assert_valid_pages(int plane_num, ssd_element_metadata *metadata, ssd_t *s)</span>
+<span class='curline'><a href='../S/159.html#L199'>ssd_t</a>             199 ssdmodel/ssd_timing.c double ssd_data_transfer_cost(ssd_t *s, int sectors_count)</span>
+<span class='curline'><a href='../S/159.html#L204'>ssd_t</a>             204 ssdmodel/ssd_timing.c int ssd_last_page_in_block(int page_num, ssd_t *s)</span>
+<span class='curline'><a href='../S/159.html#L209'>ssd_t</a>             209 ssdmodel/ssd_timing.c int ssd_bitpos_to_block(int bitpos, ssd_t *s)</span>
+<span class='curline'><a href='../S/159.html#L246'>ssd_t</a>             246 ssdmodel/ssd_timing.c int ssd_block_to_bitpos(ssd_t *currdisk, int block)</span>
+<span class='curline'><a href='../S/159.html#L289'>ssd_t</a>             289 ssdmodel/ssd_timing.c int ssd_bitpos_to_plane(int bitpos, ssd_t *s)</span>
+<span class='curline'><a href='../S/159.html#L300'>ssd_t</a>             300 ssdmodel/ssd_timing.c double _ssd_write_page_osr(ssd_t *s, ssd_element_metadata *metadata, int lpn)</span>
+<span class='curline'><a href='../S/159.html#L388'>ssd_t</a>             388 ssdmodel/ssd_timing.c void _ssd_alloc_active_block(int plane_num, int elem_num, ssd_t *s)</span>
+<span class='curline'><a href='../S/159.html#L476'>ssd_t</a>             476 ssdmodel/ssd_timing.c listnode **ssd_pick_parunits(ssd_req **reqs, int total, int elem_num, ssd_element_metadata *metadata, ssd_t *s)</span>
+<span class='curline'><a href='../S/159.html#L613'>ssd_t</a>             613 ssdmodel/ssd_timing.c static double ssd_issue_overlapped_ios(ssd_req **reqs, int total, int elem_num, ssd_t *s)</span>
+<span class='curline'><a href='../S/159.html#L747'>ssd_t</a>             747 ssdmodel/ssd_timing.c static double ssd_write_one_active_page(int blkno, int count, int elem_num, ssd_t *s)</span>
+<span class='curline'><a href='../S/159.html#L805'>ssd_t</a>             805 ssdmodel/ssd_timing.c (ssd_req **reqs, int total, int elem_num, ssd_t *s)</span>
+<span class='curline'><a href='../S/159.html#L880'>ssd_t</a>             880 ssdmodel/ssd_timing.c void ssd_compute_access_time(ssd_t *s, int elem_num, ssd_req **reqs, int total)</span>
+<span class='curline'><a href='../S/143.html#L23'>ssd_t</a>              23 ssdmodel/ssd_timing.h void ssd_compute_access_time(ssd_t *s, int elem_num, ssd_req **reqs, int total);</span>
+</pre>
+</body>
+</html>

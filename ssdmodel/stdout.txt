@@ -1,0 +1,503 @@
+elen_num1=1,ppn1=1759,lpn=13857
+Y_add_Lg_page_to_cache_buffer
+elen_num1=2,ppn1=1759,lpn=13858
+Y_add_Lg_page_to_cache_buffer
+elen_num1=3,ppn1=1759,lpn=13859
+Y_add_Lg_page_to_cache_buffer
+elen_num1=4,ppn1=1759,lpn=13860
+Y_add_Lg_page_to_cache_buffer
+elen_num1=5,ppn1=1759,lpn=13861
+Y_add_Lg_page_to_cache_buffer
+elen_num1=6,ppn1=1759,lpn=13862
+Y_add_Lg_page_to_cache_buffer
+elen_num1=7,ppn1=1759,lpn=13863
+Y_add_Lg_page_to_cache_buffer
+elen_num1=0,ppn1=1760,lpn=13864
+Y_add_Lg_page_to_cache_buffer
+elen_num1=1,ppn1=1760,lpn=13865
+Y_add_Lg_page_to_cache_buffer
+elen_num1=2,ppn1=1760,lpn=13866
+Y_add_Lg_page_to_cache_buffer
+elen_num1=3,ppn1=1760,lpn=13867
+Y_add_Lg_page_to_cache_buffer
+elen_num1=4,ppn1=1760,lpn=13868
+Y_add_Lg_page_to_cache_buffer
+full_cache == LRU___page cache : 
+135|13852,13860,13868,14092,
+54|13857,14089,14097,
+27|13832,13856,14088,14096,
+216|13855,14087,14095,
+189|13854,14094,
+162|13853,14093,
+216|13852,13853,13854,13855,13856,13857,13858,13859,13860,13861,13862,13863,13864,13865,13866,13867,13868,
+252|18622,
+99|16906,
+33|16904,
+264|16903,
+102|17474,
+231|16902,
+3186 current_block[0][0].ptr_lru_node = 99
+3186 current_block[0][1].ptr_lru_node = 252
+3186 current_block[0][2].ptr_lru_node = 216
+3186 current_block[0][3].ptr_lru_node = 162
+3186 current_block[0][4].ptr_lru_node = 189
+3186 current_block[0][5].ptr_lru_node = 216
+3186 current_block[0][6].ptr_lru_node = 27
+full_cache == 1___page cache : 
+135|13852,13860,13868,14092,
+54|13857,14089,14097,
+27|13832,13856,14088,14096,
+216|13855,14087,14095,
+189|13854,14094,
+162|13853,14093,
+216|13852,13853,13854,13855,13856,13857,13858,13859,13860,13861,13862,13863,13864,13865,13866,13867,13868,
+252|18622,
+99|16906,
+33|16904,
+264|16903,
+102|17474,
+231|16902,
+ptr_lru_node->16906.exist=2
+* if the page already been marked|ptr_lru_node = 99:16906
+current_block[channel_num][plane].current_mark_count=1
+ptr_lru_node->16902.exist=2
+* if the page already been marked|ptr_lru_node = 231:16902
+current_block[channel_num][plane].current_mark_count=1
+ptr_lru_node->13852.exist=2
+* if the page already been marked|ptr_lru_node = 216:13852
+current_block[channel_num][plane].current_mark_count=17
+13853.exist=2
+* if the page already been marked|ptr_lru_node = 216:13853
+current_block[channel_num][plane].current_mark_count=16
+13854.exist=2
+* if the page already been marked|ptr_lru_node = 216:13854
+current_block[channel_num][plane].current_mark_count=15
+13855.exist=2
+* if the page already been marked|ptr_lru_node = 216:13855
+current_block[channel_num][plane].current_mark_count=14
+13856.exist=2
+* if the page already been marked|ptr_lru_node = 216:13856
+current_block[channel_num][plane].current_mark_count=13
+13857.exist=2
+* if the page already been marked|ptr_lru_node = 216:13857
+current_block[channel_num][plane].current_mark_count=12
+13858.exist=2
+* if the page already been marked|ptr_lru_node = 216:13858
+current_block[channel_num][plane].current_mark_count=11
+13859.exist=2
+* if the page already been marked|ptr_lru_node = 216:13859
+current_block[channel_num][plane].current_mark_count=10
+13860.exist=2
+* if the page already been marked|ptr_lru_node = 216:13860
+current_block[channel_num][plane].current_mark_count=9
+13861.exist=2
+* if the page already been marked|ptr_lru_node = 216:13861
+current_block[channel_num][plane].current_mark_count=8
+13862.exist=2
+* if the page already been marked|ptr_lru_node = 216:13862
+current_block[channel_num][plane].current_mark_count=7
+13863.exist=2
+* if the page already been marked|ptr_lru_node = 216:13863
+current_block[channel_num][plane].current_mark_count=6
+13864.exist=2
+* if the page already been marked|ptr_lru_node = 216:13864
+current_block[channel_num][plane].current_mark_count=5
+13865.exist=2
+* if the page already been marked|ptr_lru_node = 216:13865
+current_block[channel_num][plane].current_mark_count=4
+13866.exist=2
+* if the page already been marked|ptr_lru_node = 216:13866
+current_block[channel_num][plane].current_mark_count=3
+13867.exist=2
+* if the page already been marked|ptr_lru_node = 216:13867
+current_block[channel_num][plane].current_mark_count=2
+13868.exist=2
+* if the page already been marked|ptr_lru_node = 216:13868
+current_block[channel_num][plane].current_mark_count=1
+if(!(curr->flags&READ))
+13----接收新的request----
+inininininin
+req_check=13
+elen_num1=0,ppn1=891528,lpn=13860
+add node
+flag==0
+add node|ptr_buffer_cache->hash_Pg[logical_node_num % HASHSIZE]=13930
+full_cache == LRU___page cache : 
+13930|13860,
+135|13852,13860,13868,14092,
+54|13857,14089,14097,
+27|13832,13856,14088,14096,
+216|13855,14087,14095,
+189|13854,14094,
+162|13853,14093,
+252|18622,
+33|16904,
+264|16903,
+102|17474,
+3186 current_block[0][0].ptr_lru_node = 54
+full_cache == 1___page cache : 
+13930|13860,
+135|13852,13860,13868,14092,
+54|13857,14089,14097,
+27|13832,13856,14088,14096,
+216|13855,14087,14095,
+189|13854,14094,
+162|13853,14093,
+252|18622,
+33|16904,
+264|16903,
+102|17474,
+<= max_buffer_page_num
+if(!(curr->flags&READ))
+14----接收新的request----
+inininininin
+req_check=14
+elen_num1=0,ppn1=891536,lpn=13868
+find node
+full_cache == LRU___page cache : 
+13930|13860,13868,
+135|13852,13860,13868,14092,
+54|13857,14089,14097,
+27|13832,13856,14088,14096,
+216|13855,14087,14095,
+189|13854,14094,
+162|13853,14093,
+252|18622,
+33|16904,
+264|16903,
+102|17474,
+full_cache == 1___page cache : 
+13930|13860,13868,
+135|13852,13860,13868,14092,
+54|13857,14089,14097,
+27|13832,13856,14088,14096,
+216|13855,14087,14095,
+189|13854,14094,
+162|13853,14093,
+252|18622,
+33|16904,
+264|16903,
+102|17474,
+<= max_buffer_page_num
+if(!(curr->flags&READ))
+15----接收新的request----
+inininininin
+req_check=15
+assert(curr->flags&READ);
+elem_num=0,ppn=891520
+elem_num=0,ppn=891521
+elem_num=0,ppn=891522
+elem_num=0,ppn=891523
+elem_num=0,ppn=891524
+elem_num=0,ppn=891525
+16----接收新的request----
+inininininin
+req_check=16
+elen_num1=7,ppn1=1787,lpn=14087
+find node
+elen_num1=0,ppn1=1788,lpn=14088
+find node
+full_cache == LRU___page cache : 
+27|13832,13856,14088,14096,
+216|13855,14087,14095,
+13930|13860,13868,
+135|13852,13860,13868,14092,
+54|13857,14089,14097,
+189|13854,14094,
+162|13853,14093,
+252|18622,
+33|16904,
+264|16903,
+102|17474,
+3186 current_block[0][2].ptr_lru_node = 135
+3186 current_block[0][5].ptr_lru_node = 13930
+full_cache == 1___page cache : 
+27|13832,13856,14088,14096,
+216|13855,14087,14095,
+13930|13860,13868,
+135|13852,13860,13868,14092,
+54|13857,14089,14097,
+189|13854,14094,
+162|13853,14093,
+252|18622,
+33|16904,
+264|16903,
+102|17474,
+<= max_buffer_page_num
+if(!(curr->flags&READ))
+17----接收新的request----
+inininininin
+req_check=17
+elen_num1=2,ppn1=3102,lpn=24434
+add node
+flag==0
+add node|ptr_buffer_cache->hash_Pg[logical_node_num % HASHSIZE]=144
+elen_num1=3,ppn1=3102,lpn=24435
+add node
+flag==0
+add node|ptr_buffer_cache->hash_Pg[logical_node_num % HASHSIZE]=192
+elen_num1=4,ppn1=3102,lpn=24436
+add node
+flag==0
+add node|ptr_buffer_cache->hash_Pg[logical_node_num % HASHSIZE]=240
+elen_num1=5,ppn1=3102,lpn=24437
+add node
+flag==0
+add node|ptr_buffer_cache->hash_Pg[logical_node_num % HASHSIZE]=288
+elen_num1=6,ppn1=3102,lpn=24438
+add node
+flag==0
+add node|ptr_buffer_cache->hash_Pg[logical_node_num % HASHSIZE]=336
+full_cache == LRU___page cache : 
+336|24438,
+288|24437,
+240|24436,
+192|24435,
+144|24434,
+27|13832,13856,14088,14096,
+216|13855,14087,14095,
+13930|13860,13868,
+135|13852,13860,13868,14092,
+54|13857,14089,14097,
+189|13854,14094,
+162|13853,14093,
+252|18622,
+33|16904,
+264|16903,
+102|17474,
+3186 current_block[0][6].ptr_lru_node = 216
+3186 current_block[0][7].ptr_lru_node = 27
+3186 current_block[1][0].ptr_lru_node = 144
+3186 current_block[1][1].ptr_lru_node = 192
+3186 current_block[1][2].ptr_lru_node = 240
+full_cache == 1___page cache : 
+336|24438,
+288|24437,
+240|24436,
+192|24435,
+144|24434,
+27|13832,13856,14088,14096,
+216|13855,14087,14095,
+13930|13860,13868,
+135|13852,13860,13868,14092,
+54|13857,14089,14097,
+189|13854,14094,
+162|13853,14093,
+252|18622,
+33|16904,
+264|16903,
+102|17474,
+ptr_lru_node->24434.exist=2
+* if the page already been marked|ptr_lru_node = 144:24434
+current_block[channel_num][plane].current_mark_count=1
+ptr_lru_node->17474.exist=2
+* if the page already been marked|ptr_lru_node = 102:17474
+current_block[channel_num][plane].current_mark_count=1
+ptr_lru_node->16903.exist=2
+* if the page already been marked|ptr_lru_node = 264:16903
+current_block[channel_num][plane].current_mark_count=1
+ptr_lru_node->16904.exist=2
+* if the page already been marked|ptr_lru_node = 33:16904
+current_block[channel_num][plane].current_mark_count=1
+ptr_lru_node->24435.exist=2
+* if the page already been marked|ptr_lru_node = 192:24435
+current_block[channel_num][plane].current_mark_count=1
+if(!(curr->flags&READ))
+18----接收新的request----
+inininininin
+req_check=18
+elen_num1=1,ppn1=891392,lpn=16900
+add node
+flag==0
+add node|ptr_buffer_cache->hash_Pg[logical_node_num % HASHSIZE]=27856
+elen_num1=1,ppn1=891456,lpn=16901
+add node
+flag==0
+add node|ptr_buffer_cache->hash_Pg[logical_node_num % HASHSIZE]=27858
+elen_num1=1,ppn1=891520,lpn=16902
+add node
+flag==0
+add node|ptr_buffer_cache->hash_Pg[logical_node_num % HASHSIZE]=27860
+full_cache == LRU___page cache : 
+27860|16902,
+27858|16901,
+27856|16900,
+336|24438,
+288|24437,
+240|24436,
+27|13832,13856,14088,14096,
+216|13855,14087,14095,
+13930|13860,13868,
+135|13852,13860,13868,14092,
+54|13857,14089,14097,
+189|13854,14094,
+162|13853,14093,
+252|18622,
+3186 current_block[1][0].ptr_lru_node = 288
+3186 current_block[1][1].ptr_lru_node = 336
+3186 current_block[1][3].ptr_lru_node = 27856
+full_cache == 1___page cache : 
+27860|16902,
+27858|16901,
+27856|16900,
+336|24438,
+288|24437,
+240|24436,
+27|13832,13856,14088,14096,
+216|13855,14087,14095,
+13930|13860,13868,
+135|13852,13860,13868,14092,
+54|13857,14089,14097,
+189|13854,14094,
+162|13853,14093,
+252|18622,
+ptr_lru_node->24437.exist=2
+* if the page already been marked|ptr_lru_node = 288:24437
+current_block[channel_num][plane].current_mark_count=1
+ptr_lru_node->24436.exist=2
+* if the page already been marked|ptr_lru_node = 240:24436
+current_block[channel_num][plane].current_mark_count=1
+ptr_lru_node->16900.exist=2
+* if the page already been marked|ptr_lru_node = 27856:16900
+current_block[channel_num][plane].current_mark_count=1
+if(!(curr->flags&READ))
+19----接收新的request----
+inininininin
+req_check=19
+elen_num1=1,ppn1=1788,lpn=14089
+find node
+full_cache == LRU___page cache : 
+54|13857,14089,14097,
+27860|16902,
+27858|16901,
+336|24438,
+27|13832,13856,14088,14096,
+216|13855,14087,14095,
+13930|13860,13868,
+135|13852,13860,13868,14092,
+189|13854,14094,
+162|13853,14093,
+252|18622,
+3186 current_block[0][0].ptr_lru_node = 27858
+full_cache == 1___page cache : 
+54|13857,14089,14097,
+27860|16902,
+27858|16901,
+336|24438,
+27|13832,13856,14088,14096,
+216|13855,14087,14095,
+13930|13860,13868,
+135|13852,13860,13868,14092,
+189|13854,14094,
+162|13853,14093,
+252|18622,
+<= max_buffer_page_num
+if(!(curr->flags&READ))
+20----接收新的request----
+inininininin
+req_check=20
+elen_num1=0,ppn1=891525,lpn=13857
+find node
+full_cache == LRU___page cache : 
+13930|13857,13860,13868,
+54|13857,14089,14097,
+27860|16902,
+27858|16901,
+336|24438,
+27|13832,13856,14088,14096,
+216|13855,14087,14095,
+135|13852,13860,13868,14092,
+189|13854,14094,
+162|13853,14093,
+252|18622,
+3186 current_block[0][5].ptr_lru_node = 27860
+full_cache == 1___page cache : 
+13930|13857,13860,13868,
+54|13857,14089,14097,
+27860|16902,
+27858|16901,
+336|24438,
+27|13832,13856,14088,14096,
+216|13855,14087,14095,
+135|13852,13860,13868,14092,
+189|13854,14094,
+162|13853,14093,
+252|18622,
+ptr_lru_node->24438.exist=2
+* if the page already been marked|ptr_lru_node = 336:24438
+current_block[channel_num][plane].current_mark_count=1
+if(!(curr->flags&READ))
+21----接收新的request----
+inininininin
+req_check=21
+elen_num1=0,ppn1=891523,lpn=13855
+find node
+full_cache == LRU___page cache : 
+13930|13855,13857,13860,13868,
+54|13857,14089,14097,
+27860|16902,
+27858|16901,
+27|13832,13856,14088,14096,
+216|13855,14087,14095,
+135|13852,13860,13868,14092,
+189|13854,14094,
+162|13853,14093,
+252|18622,
+full_cache == 1___page cache : 
+13930|13855,13857,13860,13868,
+54|13857,14089,14097,
+27860|16902,
+27858|16901,
+27|13832,13856,14088,14096,
+216|13855,14087,14095,
+135|13852,13860,13868,14092,
+189|13854,14094,
+162|13853,14093,
+252|18622,
+ptr_lru_node->16901.exist=2
+* if the page already been marked|ptr_lru_node = 27858:16901
+current_block[channel_num][plane].current_mark_count=1
+if(!(curr->flags&READ))
+22----接收新的request----
+inininininin
+req_check=22
+elen_num1=7,ppn1=1788,lpn=14095
+find node
+full_cache == LRU___page cache : 
+216|13855,14087,14095,
+13930|13855,13857,13860,13868,
+54|13857,14089,14097,
+27860|16902,
+27|13832,13856,14088,14096,
+135|13852,13860,13868,14092,
+189|13854,14094,
+162|13853,14093,
+252|18622,
+3186 current_block[0][0].ptr_lru_node = 54
+full_cache == 1___page cache : 
+216|13855,14087,14095,
+13930|13855,13857,13860,13868,
+54|13857,14089,14097,
+27860|16902,
+27|13832,13856,14088,14096,
+135|13852,13860,13868,14092,
+189|13854,14094,
+162|13853,14093,
+252|18622,
+<= max_buffer_page_num
+if(!(curr->flags&READ))
+ytc94u 22 total_live_page_cp_count2 = 0 W resp time = -4097324237899637550155495475082499871957321116837914296785072920228997073834082466506278320931080160754049712534965118724680477746263115373079775468206125542897113322574280514480318663458516966652729615439024345573586207401574400.000000 R resp time = 369386647366558562265046383421201504796453486905476366201622888448.000000 resp time = -3911082227086017539094355608362057345623496519044105612305116012697451022154359519338226442702150111528989881323135475681954999014012634262214816942646411749063555327286222528500553287039328273889794449429376364279234793941499904.000000 				 striping count = 0 striping page = 0
+ total_childcompTimeDiff = 0.000000ytc94u w_multiple = 9999.000000 ,cache_size = 24
+ ytc94u total_live_page_cp_count2 = 0,total_gc_count = 0
+ytc94u write hit count = 12 write miss count = 59 write hit rate = 0.169014
+ytc94u read hit count = 0 read miss count = 6 read hit rate = 0.000000
+ytc94u kick_read_intensive_page_count = 0 kick_write_intensive_page_count = 35
+ytc94u handle_write_count_in_activity_elem = 35
+ytc94u write request average serve time = -4097324237899637550155495475082499871957321116837914296785072920228997073834082466506278320931080160754049712534965118724680477746263115373079775468206125542897113322574280514480318663458516966652729615439024345573586207401574400.000000 
+ytc94u read request average serve time = 369386647366558562265046383421201504796453486905476366201622888448.000000 
+ytc94u write and read request average serve time = -3911082227086017539094355608362057345623496519044105612305116012697451022154359519338226442702150111528989881323135475681954999014012634262214816942646411749063555327286222528500553287039328273889794449429376364279234793941499904.000000 
+ytc94u striping_count = 0,striping_page= 0
+ytc94u total_wait_striping_page_count == 0
+ytc94u fill_block_count == 0s->sum=10.694397
+response time: n=22 average=0.486109 std. deviation=1.168290
+osnet@osnet-D820MT-D820SF-BM3CE:~/disksim_blas_lpb$ 

@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>cpus</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/261.html#L236'>cpus</a>              236 src/disksim_pfdisp.c       if(cpus[i].current-&gt;procp == NULL) {</span>
+<span class='curline'><a href='../S/261.html#L237'>cpus</a>              237 src/disksim_pfdisp.c          cpus[i].current-&gt;procp = pf_dispatch(i);</span>
+<span class='curline'><a href='../S/191.html#L239'>cpus</a>              239 src/disksim_pfsim.c       } else if ((procp-&gt;stat == PROC_ONPROC) &amp;&amp; (cpus[procp-&gt;runcpu].state == CPU_IDLE) &amp;&amp; (procp-&gt;pfflags &amp; PF_SLEEP_FLAG) &amp;&amp; (procp-&gt;iosleep)) {</span>
+<span class='curline'><a href='../S/191.html#L383'>cpus</a>              383 src/disksim_pfsim.c    cpu *currcpu = &amp;cpus[(cpu_ev-&gt;cpunum)];</span>
+<span class='curline'><a href='../S/191.html#L434'>cpus</a>              434 src/disksim_pfsim.c   ASSERT(cpus[cpunum].current-&gt;procp == NULL);</span>
+<span class='curline'><a href='../S/191.html#L436'>cpus</a>              436 src/disksim_pfsim.c    if (cpus[cpunum].idleevents == NULL) {</span>
+<span class='curline'><a href='../S/191.html#L440'>cpus</a>              440 src/disksim_pfsim.c       new-&gt;next = cpus[cpunum].idleevents;</span>
+<span class='curline'><a href='../S/191.html#L441'>cpus</a>              441 src/disksim_pfsim.c       cpus[cpunum].idleevents = new;</span>
+<span class='curline'><a href='../S/191.html#L443'>cpus</a>              443 src/disksim_pfsim.c       if (cpus[cpunum].current-&gt;intrp == NULL) {</span>
+<span class='curline'><a href='../S/191.html#L444'>cpus</a>              444 src/disksim_pfsim.c 	cpus[cpunum].idletime += simtime - cpus[cpunum].idlestart;</span>
+<span class='curline'><a href='../S/191.html#L445'>cpus</a>              445 src/disksim_pfsim.c 	cpus[cpunum].falseidletime += pf_add_false_idle_time(simtime - cpus[cpunum].idlestart);</span>
+<span class='curline'><a href='../S/191.html#L446'>cpus</a>              446 src/disksim_pfsim.c 	cpus[cpunum].current-&gt;time = simtime + (cpus[cpunum].scale * new-&gt;time);</span>
+<span class='curline'><a href='../S/191.html#L448'>cpus</a>              448 src/disksim_pfsim.c 	cpus[cpunum].state = CPU_IDLE_WORK;</span>
+<span class='curline'><a href='../S/191.html#L449'>cpus</a>              449 src/disksim_pfsim.c 	addtointq((event *) cpus[cpunum].current);</span>
+<span class='curline'><a href='../S/191.html#L482'>cpus</a>              482 src/disksim_pfsim.c    cpus[(cpu_ev-&gt;cpunum)].state = (curr-&gt;newprocp) ? CPU_PROCESS : CPU_IDLE;</span>
+<span class='curline'><a href='../S/191.html#L493'>cpus</a>              493 src/disksim_pfsim.c       addlisttoextraq((event **) &amp;cpus[(cpu_ev-&gt;cpunum)].idleevents);</span>
+<span class='curline'><a href='../S/191.html#L650'>cpus</a>              650 src/disksim_pfsim.c    cpu *currcpu = &amp;cpus[(cpu_ev-&gt;cpunum)];</span>
+<span class='curline'><a href='../S/191.html#L791'>cpus</a>              791 src/disksim_pfsim.c    cpu *currcpu = &amp;cpus[cpunum];</span>
+<span class='curline'><a href='../S/191.html#L843'>cpus</a>              843 src/disksim_pfsim.c    cpu *currcpu = &amp;cpus[(curr-&gt;cpunum)];</span>
+<span class='curline'><a href='../S/191.html#L921'>cpus</a>              921 src/disksim_pfsim.c       cpus[i].idletime = 0.0;</span>
+<span class='curline'><a href='../S/191.html#L922'>cpus</a>              922 src/disksim_pfsim.c       cpus[i].falseidletime = 0.0;</span>
+<span class='curline'><a href='../S/191.html#L923'>cpus</a>              923 src/disksim_pfsim.c       cpus[i].idleworktime = 0.0;</span>
+<span class='curline'><a href='../S/191.html#L924'>cpus</a>              924 src/disksim_pfsim.c       cpus[i].idlestart = simtime;</span>
+<span class='curline'><a href='../S/191.html#L925'>cpus</a>              925 src/disksim_pfsim.c       cpus[i].intrs = 0;</span>
+<span class='curline'><a href='../S/191.html#L926'>cpus</a>              926 src/disksim_pfsim.c       cpus[i].iointrs = 0;</span>
+<span class='curline'><a href='../S/191.html#L927'>cpus</a>              927 src/disksim_pfsim.c       cpus[i].clockintrs = 0;</span>
+<span class='curline'><a href='../S/191.html#L928'>cpus</a>              928 src/disksim_pfsim.c       cpus[i].runintrtime = 0.0;</span>
+<span class='curline'><a href='../S/191.html#L929'>cpus</a>              929 src/disksim_pfsim.c       cpus[i].runiointrtime = 0.0;</span>
+<span class='curline'><a href='../S/191.html#L930'>cpus</a>              930 src/disksim_pfsim.c       cpus[i].runclockintrtime = 0.0;</span>
+<span class='curline'><a href='../S/191.html#L931'>cpus</a>              931 src/disksim_pfsim.c       cpus[i].cswitches = 0;</span>
+<span class='curline'><a href='../S/191.html#L932'>cpus</a>              932 src/disksim_pfsim.c       cpus[i].runswitchtime = 0.0;</span>
+<span class='curline'><a href='../S/191.html#L942'>cpus</a>              942 src/disksim_pfsim.c       cpus[i].scale = pfscale;</span>
+<span class='curline'><a href='../S/191.html#L943'>cpus</a>              943 src/disksim_pfsim.c       cpus[i].idleevents = NULL;</span>
+<span class='curline'><a href='../S/191.html#L944'>cpus</a>              944 src/disksim_pfsim.c       cpus[i].current = (cpu_event *) getfromextraq();</span>
+<span class='curline'><a href='../S/191.html#L945'>cpus</a>              945 src/disksim_pfsim.c       cpus[i].current-&gt;type = CPU_EVENT;</span>
+<span class='curline'><a href='../S/191.html#L946'>cpus</a>              946 src/disksim_pfsim.c       cpus[i].current-&gt;cpunum = i;</span>
+<span class='curline'><a href='../S/191.html#L947'>cpus</a>              947 src/disksim_pfsim.c       cpus[i].current-&gt;procp = NULL;</span>
+<span class='curline'><a href='../S/191.html#L948'>cpus</a>              948 src/disksim_pfsim.c       cpus[i].current-&gt;intrp = NULL;</span>
+<span class='curline'><a href='../S/191.html#L1008'>cpus</a>             1008 src/disksim_pfsim.c      if(cpus[i].current-&gt;procp) {</span>
+<span class='curline'><a href='../S/191.html#L1009'>cpus</a>             1009 src/disksim_pfsim.c        cpus[i].current-&gt;procp-&gt;active = 1;</span>
+<span class='curline'><a href='../S/191.html#L1010'>cpus</a>             1010 src/disksim_pfsim.c        cpus[i].current-&gt;time = cpus[i].scale * </span>
+<span class='curline'><a href='../S/191.html#L1011'>cpus</a>             1011 src/disksim_pfsim.c 	 pf_get_time_to_next_process_event(cpus[i].current-&gt;procp);</span>
+<span class='curline'><a href='../S/191.html#L1013'>cpus</a>             1013 src/disksim_pfsim.c        addtointq((event *)cpus[i].current);</span>
+<span class='curline'><a href='../S/191.html#L1014'>cpus</a>             1014 src/disksim_pfsim.c          cpus[i].state = CPU_PROCESS;</span>
+<span class='curline'><a href='../S/191.html#L1016'>cpus</a>             1016 src/disksim_pfsim.c 		  cpus[i].current-&gt;time);</span>
+<span class='curline'><a href='../S/191.html#L1019'>cpus</a>             1019 src/disksim_pfsim.c        cpus[i].state = CPU_IDLE;</span>
+<span class='curline'><a href='../S/191.html#L1072'>cpus</a>             1072 src/disksim_pfsim.c       intrp = cpus[i].current-&gt;intrp;</span>
+<span class='curline'><a href='../S/191.html#L1073'>cpus</a>             1073 src/disksim_pfsim.c       procp = cpus[i].current-&gt;procp;</span>
+<span class='curline'><a href='../S/191.html#L1074'>cpus</a>             1074 src/disksim_pfsim.c       switch (cpus[i].state) {</span>
+<span class='curline'><a href='../S/191.html#L1076'>cpus</a>             1076 src/disksim_pfsim.c                       cpus[i].idletime += simtime - cpus[i].idlestart;</span>
+<span class='curline'><a href='../S/191.html#L1077'>cpus</a>             1077 src/disksim_pfsim.c                       cpus[i].falseidletime += pf_add_false_idle_time(simtime - cpus[i].idlestart);</span>
+<span class='curline'><a href='../S/191.html#L1080'>cpus</a>             1080 src/disksim_pfsim.c                       cpus[i].idleworktime += simtime - cpus[i].idleevents-&gt;time;</span>
+<span class='curline'><a href='../S/191.html#L1092'>cpus</a>             1092 src/disksim_pfsim.c                       fprintf(stderr, "Unknown CPU state at pf_cleanstats - %d\n", cpus[i].state);</span>
+<span class='curline'><a href='../S/191.html#L1129'>cpus</a>             1129 src/disksim_pfsim.c       iointrs += cpus[i].iointrs;</span>
+<span class='curline'><a href='../S/191.html#L1130'>cpus</a>             1130 src/disksim_pfsim.c       clockintrs += cpus[i].clockintrs;</span>
+<span class='curline'><a href='../S/191.html#L1131'>cpus</a>             1131 src/disksim_pfsim.c       runiointr += cpus[i].runiointrtime;</span>
+<span class='curline'><a href='../S/191.html#L1132'>cpus</a>             1132 src/disksim_pfsim.c       runclockintr += cpus[i].runclockintrtime;</span>
+<span class='curline'><a href='../S/191.html#L1300'>cpus</a>             1300 src/disksim_pfsim.c       idletime += cpus[i].idletime;</span>
+<span class='curline'><a href='../S/191.html#L1301'>cpus</a>             1301 src/disksim_pfsim.c       falseidletime += cpus[i].falseidletime;</span>
+<span class='curline'><a href='../S/191.html#L1302'>cpus</a>             1302 src/disksim_pfsim.c       idleworktime += cpus[i].idleworktime;</span>
+<span class='curline'><a href='../S/191.html#L1303'>cpus</a>             1303 src/disksim_pfsim.c       cswitches += cpus[i].cswitches;</span>
+<span class='curline'><a href='../S/191.html#L1304'>cpus</a>             1304 src/disksim_pfsim.c       runswitchtime += cpus[i].runswitchtime;</span>
+<span class='curline'><a href='../S/191.html#L1305'>cpus</a>             1305 src/disksim_pfsim.c       numintrs += cpus[i].intrs;</span>
+<span class='curline'><a href='../S/191.html#L1306'>cpus</a>             1306 src/disksim_pfsim.c       runintr += cpus[i].runintrtime;</span>
+<span class='curline'><a href='../S/208.html#L261'>cpus</a>              261 src/disksim_pfsim.h    cpu *cpus;</span>
+<span class='curline'><a href='../S/208.html#L289'>cpus</a>              289 src/disksim_pfsim.h #define cpus                      (disksim-&gt;pf_info-&gt;cpus)</span>
+</pre>
+</body>
+</html>

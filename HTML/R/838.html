@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>controller</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/204.html#L116'>controller</a>        116 src/disksim_controller.c INLINE controller * getctlr (int ctlrno)</span>
+<span class='curline'><a href='../S/204.html#L123'>controller</a>        123 src/disksim_controller.c controller *getctlrbyname(char *name, int *num) {</span>
+<span class='curline'><a href='../S/204.html#L137'>controller</a>        137 src/disksim_controller.c    controller *currctlr = getctlr(ctlno);</span>
+<span class='curline'><a href='../S/204.html#L145'>controller</a>        145 src/disksim_controller.c int controller_get_downward_busno (controller *currctlr, ioreq_event *curr, int *slotnoptr)</span>
+<span class='curline'><a href='../S/204.html#L163'>controller</a>        163 src/disksim_controller.c static int controller_get_upward_busno (controller *currctlr, ioreq_event *curr, int *slotnoptr)</span>
+<span class='curline'><a href='../S/204.html#L183'>controller</a>        183 src/disksim_controller.c void controller_send_event_down_path (controller *currctlr, ioreq_event *curr, double delay)</span>
+<span class='curline'><a href='../S/204.html#L217'>controller</a>        217 src/disksim_controller.c void controller_send_event_up_path (controller *currctlr, ioreq_event *curr, double delay)</span>
+<span class='curline'><a href='../S/204.html#L256'>controller</a>        256 src/disksim_controller.c    controller *currctlr = getctlr(ctlno);</span>
+<span class='curline'><a href='../S/204.html#L275'>controller</a>        275 src/disksim_controller.c static void controller_disown_busno (controller *currctlr, int busno)</span>
+<span class='curline'><a href='../S/204.html#L289'>controller</a>        289 src/disksim_controller.c    controller *currctlr = getctlr(ctlno);</span>
+<span class='curline'><a href='../S/204.html#L320'>controller</a>        320 src/disksim_controller.c void controller_remove_type_from_buswait (controller *currctlr, int type)</span>
+<span class='curline'><a href='../S/204.html#L352'>controller</a>        352 src/disksim_controller.c    controller *currctlr = getctlr(ctlno);</span>
+<span class='curline'><a href='../S/204.html#L398'>controller</a>        398 src/disksim_controller.c    controller *currctlr = getctlr(ctlno);</span>
+<span class='curline'><a href='../S/204.html#L448'>controller</a>        448 src/disksim_controller.c controller *controller_copy(controller *orig) {</span>
+<span class='curline'><a href='../S/204.html#L449'>controller</a>        449 src/disksim_controller.c   controller *result = malloc(sizeof(controller));</span>
+<span class='curline'><a href='../S/204.html#L451'>controller</a>        451 src/disksim_controller.c   memcpy(result, orig, sizeof(controller));</span>
+<span class='curline'><a href='../S/204.html#L465'>controller</a>        465 src/disksim_controller.c struct controller *disksim_ctlr_loadparams(struct lp_block *b)</span>
+<span class='curline'><a href='../S/204.html#L468'>controller</a>        468 src/disksim_controller.c   controller *result;</span>
+<span class='curline'><a href='../S/204.html#L505'>controller</a>        505 src/disksim_controller.c   result = malloc(sizeof(controller));</span>
+<span class='curline'><a href='../S/204.html#L507'>controller</a>        507 src/disksim_controller.c   bzero(result, sizeof(controller));</span>
+<span class='curline'><a href='../S/204.html#L510'>controller</a>        510 src/disksim_controller.c   bzero(result, sizeof(controller));</span>
+<span class='curline'><a href='../S/204.html#L584'>controller</a>        584 src/disksim_controller.c    controller *currctlr = getctlr (ctlno);</span>
+<span class='curline'><a href='../S/204.html#L627'>controller</a>        627 src/disksim_controller.c       controller *currctlr = getctlr(i);</span>
+<span class='curline'><a href='../S/204.html#L642'>controller</a>        642 src/disksim_controller.c    controller *currctlr = getctlr(ctlno);</span>
+<span class='curline'><a href='../S/204.html#L664'>controller</a>        664 src/disksim_controller.c    controller *currctlr = getctlr(ctlno);</span>
+<span class='curline'><a href='../S/204.html#L671'>controller</a>        671 src/disksim_controller.c    controller *currctlr = getctlr(ctlno);</span>
+<span class='curline'><a href='../S/204.html#L678'>controller</a>        678 src/disksim_controller.c    controller *currctlr = getctlr(ctlno);</span>
+<span class='curline'><a href='../S/204.html#L685'>controller</a>        685 src/disksim_controller.c    controller *currctlr = getctlr(ctlno);</span>
+<span class='curline'><a href='../S/204.html#L702'>controller</a>        702 src/disksim_controller.c       controller *currctlr = getctlr(i);</span>
+<span class='curline'><a href='../S/204.html#L726'>controller</a>        726 src/disksim_controller.c       controller *currctlr = getctlr(i);</span>
+<span class='curline'><a href='../S/204.html#L746'>controller</a>        746 src/disksim_controller.c       controller *currctlr = getctlr(ctlno);</span>
+<span class='curline'><a href='../S/204.html#L783'>controller</a>        783 src/disksim_controller.c   controller *ctlr;</span>
+<span class='curline'><a href='../S/284.html#L178'>controller</a>        178 src/disksim_ctlr.h    controller **controllers;</span>
+<span class='curline'><a href='../S/284.html#L199'>controller</a>        199 src/disksim_ctlr.h void controller_passthru_event_arrive (controller *currctlr, ioreq_event *curr);</span>
+<span class='curline'><a href='../S/284.html#L200'>controller</a>        200 src/disksim_ctlr.h void controller_passthru_printstats (controller *currctlr, char *prefix);</span>
+<span class='curline'><a href='../S/284.html#L201'>controller</a>        201 src/disksim_ctlr.h void controller_53c700_event_arrive (controller *currctlr, ioreq_event *curr);</span>
+<span class='curline'><a href='../S/284.html#L202'>controller</a>        202 src/disksim_ctlr.h void controller_53c700_printstats (controller *currctlr, char *prefix);</span>
+<span class='curline'><a href='../S/284.html#L206'>controller</a>        206 src/disksim_ctlr.h void controller_smart_event_arrive (controller *currctlr, ioreq_event *curr);</span>
+<span class='curline'><a href='../S/284.html#L208'>controller</a>        208 src/disksim_ctlr.h void controller_smart_initialize (controller *currctlr);</span>
+<span class='curline'><a href='../S/284.html#L209'>controller</a>        209 src/disksim_ctlr.h void controller_smart_resetstats (controller *currctlr);</span>
+<span class='curline'><a href='../S/284.html#L210'>controller</a>        210 src/disksim_ctlr.h void controller_smart_read_specs (FILE *parfile, controller *controllers, int start, int copies);</span>
+<span class='curline'><a href='../S/284.html#L211'>controller</a>        211 src/disksim_ctlr.h void controller_smart_printstats (controller *currctlr, char *prefix);</span>
+<span class='curline'><a href='../S/284.html#L215'>controller</a>        215 src/disksim_ctlr.h INLINE controller * getctlr (int ctlrno);</span>
+<span class='curline'><a href='../S/284.html#L216'>controller</a>        216 src/disksim_ctlr.h controller *getctlrbyname(char *name, int *num);</span>
+<span class='curline'><a href='../S/284.html#L220'>controller</a>        220 src/disksim_ctlr.h void controller_send_event_up_path (controller *currctlr, ioreq_event *curr, double delay);</span>
+<span class='curline'><a href='../S/284.html#L221'>controller</a>        221 src/disksim_ctlr.h void controller_send_event_down_path (controller *currctlr, ioreq_event *curr, double delay);</span>
+<span class='curline'><a href='../S/284.html#L222'>controller</a>        222 src/disksim_ctlr.h void controller_remove_type_from_buswait (controller *currctlr, int type);</span>
+<span class='curline'><a href='../S/284.html#L223'>controller</a>        223 src/disksim_ctlr.h int  controller_get_downward_busno (controller *currctlr, ioreq_event *curr, int *slotnoptr);</span>
+<span class='curline'><a href='../S/220.html#L113'>controller</a>        113 src/disksim_ctlrdumb.c static void controller_53c700_reset_complete (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/220.html#L139'>controller</a>        139 src/disksim_ctlrdumb.c static void controller_53c700_reconnection_complete (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/220.html#L151'>controller</a>        151 src/disksim_ctlrdumb.c static void controller_53c700_reconnect_to_transfer (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/220.html#L176'>controller</a>        176 src/disksim_ctlrdumb.c static void controller_53c700_request_complete (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/220.html#L198'>controller</a>        198 src/disksim_ctlrdumb.c static void controller_53c700_disconnect (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/220.html#L221'>controller</a>        221 src/disksim_ctlrdumb.c static void controller_53c700_ready_to_transfer (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/220.html#L234'>controller</a>        234 src/disksim_ctlrdumb.c static void controller_53c700_request_arrive (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/220.html#L254'>controller</a>        254 src/disksim_ctlrdumb.c static void controller_53c700_interrupt_arrive (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/220.html#L281'>controller</a>        281 src/disksim_ctlrdumb.c static void controller_53c700_interrupt_complete (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/220.html#L301'>controller</a>        301 src/disksim_ctlrdumb.c static void controller_53c700_data_transfer (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/220.html#L334'>controller</a>        334 src/disksim_ctlrdumb.c static void controller_53c700_data_transfer_complete (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/220.html#L362'>controller</a>        362 src/disksim_ctlrdumb.c void controller_53c700_event_arrive (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/220.html#L401'>controller</a>        401 src/disksim_ctlrdumb.c void controller_passthru_event_arrive (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/220.html#L444'>controller</a>        444 src/disksim_ctlrdumb.c void controller_passthru_printstats (controller *currctlr, char *prefix)</span>
+<span class='curline'><a href='../S/220.html#L449'>controller</a>        449 src/disksim_ctlrdumb.c void controller_53c700_printstats (controller *currctlr, char *prefix)</span>
+<span class='curline'><a href='../S/268.html#L112'>controller</a>        112 src/disksim_ctlrsmart.c    controller *currctlr = queuefindparam;</span>
+<span class='curline'><a href='../S/268.html#L120'>controller</a>        120 src/disksim_ctlrsmart.c    controller *currctlr = wakeupfuncparam;</span>
+<span class='curline'><a href='../S/268.html#L129'>controller</a>        129 src/disksim_ctlrsmart.c    controller *currctlr = issuefuncparam;</span>
+<span class='curline'><a href='../S/268.html#L146'>controller</a>        146 src/disksim_ctlrsmart.c static void controller_smart_disk_data_transfer (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/268.html#L174'>controller</a>        174 src/disksim_ctlrsmart.c static void controller_smart_disk_data_transfer_complete (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/268.html#L201'>controller</a>        201 src/disksim_ctlrsmart.c    controller *currctlr = donefuncparam;</span>
+<span class='curline'><a href='../S/268.html#L212'>controller</a>        212 src/disksim_ctlrsmart.c static void controller_smart_host_data_transfer_complete (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/268.html#L242'>controller</a>        242 src/disksim_ctlrsmart.c    controller *currctlr = donefuncparam;</span>
+<span class='curline'><a href='../S/268.html#L267'>controller</a>        267 src/disksim_ctlrsmart.c static void controller_smart_request_arrive (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/268.html#L279'>controller</a>        279 src/disksim_ctlrsmart.c static void controller_smart_access_complete (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/268.html#L311'>controller</a>        311 src/disksim_ctlrsmart.c static void controller_smart_ready_to_transfer (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/268.html#L321'>controller</a>        321 src/disksim_ctlrsmart.c static void controller_smart_disconnect (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/268.html#L330'>controller</a>        330 src/disksim_ctlrsmart.c static void controller_smart_reconnect_to_transfer (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/268.html#L339'>controller</a>        339 src/disksim_ctlrsmart.c static void controller_smart_interrupt_arrive (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/268.html#L366'>controller</a>        366 src/disksim_ctlrsmart.c static void controller_smart_interrupt_complete (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/268.html#L381'>controller</a>        381 src/disksim_ctlrsmart.c void controller_smart_event_arrive (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/268.html#L434'>controller</a>        434 src/disksim_ctlrsmart.c void controller_smart_initialize (controller *currctlr)</span>
+<span class='curline'><a href='../S/268.html#L458'>controller</a>        458 src/disksim_ctlrsmart.c void controller_smart_resetstats (controller *currctlr)</span>
+<span class='curline'><a href='../S/268.html#L472'>controller</a>        472 src/disksim_ctlrsmart.c void controller_smart_printstats (controller *currctlr, char *prefix)</span>
+</pre>
+</body>
+</html>

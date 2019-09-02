@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>ssdmodel/ssd_utils.h</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<a id='TOP' name='TOP'></a><h2 class='header'><a href='../mains.html'>root</a>/<a href='../files/403.html'>ssdmodel</a>/ssd_utils.h</h2>
+<em class='comment'>/* [&lt;][&gt;][^][v][top]<a href='#BOTTOM'>[bottom]</a><a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</em>
+<hr />
+<h2 class='header'><a href='../J/146.html' title='Multiple included from 4 places.'>INCLUDED FROM</a></h2>
+<hr />
+<pre>
+<a id='L1' name='L1'></a>   1 <em class='comment'>// DiskSim SSD support</em>
+<a id='L2' name='L2'></a>   2 <em class='comment'>// ©2008 Microsoft Corporation. All Rights Reserved</em>
+<a id='L3' name='L3'></a>   3 
+<a id='L4' name='L4'></a>   4 <em class='sharp'>#ifndef</em> <a href='../S/188.html#L5' title='Defined at 5 in ssdmodel/ssd_utils.h.'>__DISKSIM_SSD_UTILS_H__</a>
+<a id='L5' name='L5'></a>   5 <em class='sharp'>#define</em> <a href='../S/188.html#L4' title='Referred from 4 in ssdmodel/ssd_utils.h.'>__DISKSIM_SSD_UTILS_H__</a>
+<a id='L6' name='L6'></a>   6 <em class='sharp'>#include</em> "<a href='../I/132.html'>ssd.h</a>"
+<a id='L7' name='L7'></a>   7 
+<a id='L8' name='L8'></a>   8 <em class='comment'>//////////////////////////////////////////////////////////////////////////////</em>
+<a id='L9' name='L9'></a>   9 <em class='comment'>//                 code for bit manipulation routines</em>
+<a id='L10' name='L10'></a>  10 <em class='comment'>//////////////////////////////////////////////////////////////////////////////</em>
+<a id='L11' name='L11'></a>  11 
+<a id='L12' name='L12'></a>  12 <strong class='reserved'>void</strong> <a href='../S/186.html#L13' title='Defined at 13 in ssdmodel/ssd_utils.c.'>ssd_clear_bit</a>(<strong class='reserved'>unsigned</strong> <strong class='reserved'>char</strong> *c, <strong class='reserved'>int</strong> pos);
+<a id='L13' name='L13'></a>  13 <strong class='reserved'>void</strong> <a href='../S/186.html#L27' title='Defined at 27 in ssdmodel/ssd_utils.c.'>ssd_set_bit</a>(<strong class='reserved'>unsigned</strong> <strong class='reserved'>char</strong> *c, <strong class='reserved'>int</strong> pos);
+<a id='L14' name='L14'></a>  14 <strong class='reserved'>int</strong> <a href='../S/186.html#L38' title='Defined at 38 in ssdmodel/ssd_utils.c.'>ssd_bit_on</a>(<strong class='reserved'>unsigned</strong> <strong class='reserved'>char</strong> *c, <strong class='reserved'>int</strong> pos);
+<a id='L15' name='L15'></a>  15 <strong class='reserved'>int</strong> <a href='../S/186.html#L52' title='Defined at 52 in ssdmodel/ssd_utils.c.'>ssd_find_zero_bit</a>(<strong class='reserved'>unsigned</strong> <strong class='reserved'>char</strong> *c, <strong class='reserved'>int</strong> total, <strong class='reserved'>int</strong> start);
+<a id='L16' name='L16'></a>  16 
+<a id='L17' name='L17'></a>  17 
+<a id='L18' name='L18'></a>  18 <em class='comment'>//////////////////////////////////////////////////////////////////////////////</em>
+<a id='L19' name='L19'></a>  19 <em class='comment'>//             adding some code for a linked list module</em>
+<a id='L20' name='L20'></a>  20 <em class='comment'>//////////////////////////////////////////////////////////////////////////////</em>
+<a id='L21' name='L21'></a>  21 
+<a id='L22' name='L22'></a>  22 <strong class='reserved'>struct</strong> <a href='../S/188.html#L24' title='Defined at 24 in ssdmodel/ssd_utils.h.'>_listnode</a>;
+<a id='L23' name='L23'></a>  23 
+<a id='L24' name='L24'></a>  24 <strong class='reserved'>typedef</strong> <strong class='reserved'>struct</strong> <a href='../R/654.html' title='Multiple referred from 3 places.'>_listnode</a> <em class='brace'>{</em>
+<a id='L25' name='L25'></a>  25     <strong class='reserved'>struct</strong> <a href='../S/188.html#L24' title='Defined at 24 in ssdmodel/ssd_utils.h.'>_listnode</a> *prev;
+<a id='L26' name='L26'></a>  26     <strong class='reserved'>struct</strong> <a href='../S/188.html#L24' title='Defined at 24 in ssdmodel/ssd_utils.h.'>_listnode</a> *next;
+<a id='L27' name='L27'></a>  27     <strong class='reserved'>void</strong> *data;
+<a id='L28' name='L28'></a>  28 <em class='brace'>}</em> <a href='../R/1554.html' title='Multiple referred from 38 places.'>listnode</a>;
+<a id='L29' name='L29'></a>  29 
+<a id='L30' name='L30'></a>  30 <strong class='reserved'>typedef</strong> <strong class='reserved'>struct</strong> _header_data <em class='brace'>{</em>
+<a id='L31' name='L31'></a>  31     <strong class='reserved'>unsigned</strong> <strong class='reserved'>int</strong> size;
+<a id='L32' name='L32'></a>  32 <em class='brace'>}</em> <a href='../R/1345.html' title='Multiple referred from 7 places.'>header_data</a>;
+<a id='L33' name='L33'></a>  33 
+<a id='L34' name='L34'></a>  34 <strong class='reserved'>void</strong> <a href='../S/186.html#L74' title='Defined at 74 in ssdmodel/ssd_utils.c.'>ll_create</a>(<a href='../S/188.html#L28' title='Defined at 28 in ssdmodel/ssd_utils.h.'>listnode</a> **start);
+<a id='L35' name='L35'></a>  35 <strong class='reserved'>void</strong> <a href='../S/186.html#L84' title='Defined at 84 in ssdmodel/ssd_utils.c.'>ll_release</a>(<a href='../S/188.html#L28' title='Defined at 28 in ssdmodel/ssd_utils.h.'>listnode</a> *start);
+<a id='L36' name='L36'></a>  36 <a href='../S/188.html#L28' title='Defined at 28 in ssdmodel/ssd_utils.h.'>listnode</a> *<a href='../S/186.html#L166' title='Defined at 166 in ssdmodel/ssd_utils.c.'>ll_insert_at_tail</a>(<a href='../S/188.html#L28' title='Defined at 28 in ssdmodel/ssd_utils.h.'>listnode</a> *start, <strong class='reserved'>void</strong> *data);
+<a id='L37' name='L37'></a>  37 <a href='../S/188.html#L28' title='Defined at 28 in ssdmodel/ssd_utils.h.'>listnode</a> *<a href='../S/186.html#L181' title='Defined at 181 in ssdmodel/ssd_utils.c.'>ll_insert_at_head</a>(<a href='../S/188.html#L28' title='Defined at 28 in ssdmodel/ssd_utils.h.'>listnode</a> *start, <strong class='reserved'>void</strong> *data);
+<a id='L38' name='L38'></a>  38 <strong class='reserved'>void</strong> <a href='../S/186.html#L196' title='Defined at 196 in ssdmodel/ssd_utils.c.'>ll_release_node</a>(<a href='../S/188.html#L28' title='Defined at 28 in ssdmodel/ssd_utils.h.'>listnode</a> *start, <a href='../S/188.html#L28' title='Defined at 28 in ssdmodel/ssd_utils.h.'>listnode</a> *node);
+<a id='L39' name='L39'></a>  39 <strong class='reserved'>void</strong> <a href='../S/186.html#L236' title='Defined at 236 in ssdmodel/ssd_utils.c.'>ll_release_tail</a>(<a href='../S/188.html#L28' title='Defined at 28 in ssdmodel/ssd_utils.h.'>listnode</a> *start);
+<a id='L40' name='L40'></a>  40 <a href='../S/188.html#L28' title='Defined at 28 in ssdmodel/ssd_utils.h.'>listnode</a> *<a href='../S/186.html#L248' title='Defined at 248 in ssdmodel/ssd_utils.c.'>ll_get_tail</a>(<a href='../S/188.html#L28' title='Defined at 28 in ssdmodel/ssd_utils.h.'>listnode</a> *start);
+<a id='L41' name='L41'></a>  41 <strong class='reserved'>int</strong> <a href='../S/186.html#L256' title='Defined at 256 in ssdmodel/ssd_utils.c.'>ll_get_size</a>(<a href='../S/188.html#L28' title='Defined at 28 in ssdmodel/ssd_utils.h.'>listnode</a> *start);
+<a id='L42' name='L42'></a>  42 <a href='../S/188.html#L28' title='Defined at 28 in ssdmodel/ssd_utils.h.'>listnode</a> *<a href='../S/186.html#L267' title='Defined at 267 in ssdmodel/ssd_utils.c.'>ll_get_nth_node</a>(<a href='../S/188.html#L28' title='Defined at 28 in ssdmodel/ssd_utils.h.'>listnode</a> *start, <strong class='reserved'>int</strong> n);
+<a id='L43' name='L43'></a>  43 
+<a id='L44' name='L44'></a>  44 <em class='sharp'>#endif</em>
+<a id='L45' name='L45'></a>  45 
+</pre>
+<hr />
+<a id='BOTTOM' name='BOTTOM'></a>
+<em class='comment'>/* [&lt;][&gt;][^][v]<a href='#TOP'>[top]</a>[bottom]<a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</em>
+</body>
+</html>

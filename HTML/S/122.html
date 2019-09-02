@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>libddbg/libddbg.h</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<a id='TOP' name='TOP'></a><h2 class='header'><a href='../mains.html'>root</a>/<a href='../files/399.html'>libddbg</a>/libddbg.h</h2>
+<em class='comment'>/* [&lt;][&gt;][^][v][top]<a href='#BOTTOM'>[bottom]</a><a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</em>
+<hr />
+<h2 class='header'><a href='../J/40.html' title='Multiple included from 14 places.'>INCLUDED FROM</a></h2>
+<hr />
+<pre>
+<a id='L1' name='L1'></a>   1 
+<a id='L2' name='L2'></a>   2 <em class='comment'>/* libddbg (version 1.0)</em>
+<a id='L3' name='L3'></a>   3 <em class='comment'> * Authors: John Bucy, Greg Ganger</em>
+<a id='L4' name='L4'></a>   4 <em class='comment'> * Contributors: John Griffin, Jiri Schindler, Steve Schlosser</em>
+<a id='L5' name='L5'></a>   5 <em class='comment'> *</em>
+<a id='L6' name='L6'></a>   6 <em class='comment'> * Copyright (c) of Carnegie Mellon University, 2001-2008.</em>
+<a id='L7' name='L7'></a>   7 <em class='comment'> *</em>
+<a id='L8' name='L8'></a>   8 <em class='comment'> * This software is being provided by the copyright holders under the</em>
+<a id='L9' name='L9'></a>   9 <em class='comment'> * following license. By obtaining, using and/or copying this</em>
+<a id='L10' name='L10'></a>  10 <em class='comment'> * software, you agree that you have read, understood, and will comply</em>
+<a id='L11' name='L11'></a>  11 <em class='comment'> * with the following terms and conditions:</em>
+<a id='L12' name='L12'></a>  12 <em class='comment'> *</em>
+<a id='L13' name='L13'></a>  13 <em class='comment'> * Permission to reproduce, use, and prepare derivative works of this</em>
+<a id='L14' name='L14'></a>  14 <em class='comment'> * software is granted provided the copyright and "No Warranty"</em>
+<a id='L15' name='L15'></a>  15 <em class='comment'> * statements are included with all reproductions and derivative works</em>
+<a id='L16' name='L16'></a>  16 <em class='comment'> * and associated documentation. This software may also be</em>
+<a id='L17' name='L17'></a>  17 <em class='comment'> * redistributed without charge provided that the copyright and "No</em>
+<a id='L18' name='L18'></a>  18 <em class='comment'> * Warranty" statements are included in all redistributions.</em>
+<a id='L19' name='L19'></a>  19 <em class='comment'> *</em>
+<a id='L20' name='L20'></a>  20 <em class='comment'> * NO WARRANTY. THIS SOFTWARE IS FURNISHED ON AN "AS IS" BASIS.</em>
+<a id='L21' name='L21'></a>  21 <em class='comment'> * CARNEGIE MELLON UNIVERSITY MAKES NO WARRANTIES OF ANY KIND, EITHER</em>
+<a id='L22' name='L22'></a>  22 <em class='comment'> * EXPRESSED OR IMPLIED AS TO THE MATTER INCLUDING, BUT NOT LIMITED</em>
+<a id='L23' name='L23'></a>  23 <em class='comment'> * TO: WARRANTY OF FITNESS FOR PURPOSE OR MERCHANTABILITY, EXCLUSIVITY</em>
+<a id='L24' name='L24'></a>  24 <em class='comment'> * OF RESULTS OR RESULTS OBTAINED FROM USE OF THIS SOFTWARE. CARNEGIE</em>
+<a id='L25' name='L25'></a>  25 <em class='comment'> * MELLON UNIVERSITY DOES NOT MAKE ANY WARRANTY OF ANY KIND WITH</em>
+<a id='L26' name='L26'></a>  26 <em class='comment'> * RESPECT TO FREEDOM FROM PATENT, TRADEMARK, OR COPYRIGHT</em>
+<a id='L27' name='L27'></a>  27 <em class='comment'> * INFRINGEMENT.  COPYRIGHT HOLDERS WILL BEAR NO LIABILITY FOR ANY USE</em>
+<a id='L28' name='L28'></a>  28 <em class='comment'> * OF THIS SOFTWARE OR DOCUMENTATION.  </em>
+<a id='L29' name='L29'></a>  29 <em class='comment'> */</em>
+<a id='L30' name='L30'></a>  30 
+<a id='L31' name='L31'></a>  31 
+<a id='L32' name='L32'></a>  32 
+<a id='L33' name='L33'></a>  33 <em class='sharp'>#ifndef</em> <a href='../S/122.html#L34' title='Defined at 34 in libddbg/libddbg.h.'>_LIBTRACE_LIBTRACE_H</a>
+<a id='L34' name='L34'></a>  34 <em class='sharp'>#define</em> <a href='../S/122.html#L33' title='Referred from 33 in libddbg/libddbg.h.'>_LIBTRACE_LIBTRACE_H</a>
+<a id='L35' name='L35'></a>  35 
+<a id='L36' name='L36'></a>  36 <em class='sharp'>#ifdef</em> __cplusplus
+<a id='L37' name='L37'></a>  37 <strong class='reserved'>extern</strong> "C" <em class='brace'>{</em>
+<a id='L38' name='L38'></a>  38 <em class='sharp'>#endif</em>
+<a id='L39' name='L39'></a>  39 
+<a id='L40' name='L40'></a>  40 <em class='sharp'>#include</em> &lt;stdio.h&gt;
+<a id='L41' name='L41'></a>  41 
+<a id='L42' name='L42'></a>  42 <em class='comment'>/* tracing functions */</em>
+<a id='L43' name='L43'></a>  43 <strong class='reserved'>void</strong> ddbg_setup(FILE *);
+<a id='L44' name='L44'></a>  44 
+<a id='L45' name='L45'></a>  45 <em class='comment'>// register a new class.  Returns an int class id to be used with</em>
+<a id='L46' name='L46'></a>  46 <em class='comment'>// subsequent calls</em>
+<a id='L47' name='L47'></a>  47 <strong class='reserved'>int</strong> <a href='../S/121.html#L83' title='Defined at 83 in libddbg/ddbg_trace.c.'>ddbg_register</a>(<strong class='reserved'>char</strong> *classname);
+<a id='L48' name='L48'></a>  48 
+<a id='L49' name='L49'></a>  49 <em class='comment'>// start logging (class,instance) traces.  -1 is the wildcard which logs</em>
+<a id='L50' name='L50'></a>  50 <em class='comment'>// all instances from that class.</em>
+<a id='L51' name='L51'></a>  51 <strong class='reserved'>void</strong> <a href='../S/121.html#L103' title='Defined at 103 in libddbg/ddbg_trace.c.'>ddbg_enable</a>(<strong class='reserved'>int</strong> dclass, <strong class='reserved'>int</strong> instance);
+<a id='L52' name='L52'></a>  52 
+<a id='L53' name='L53'></a>  53 <em class='comment'>// stop logging (class,instance) traces.  -1 is the wildcard which</em>
+<a id='L54' name='L54'></a>  54 <em class='comment'>// squelches all instances from that class.</em>
+<a id='L55' name='L55'></a>  55 <strong class='reserved'>void</strong> <a href='../S/121.html#L116' title='Defined at 116 in libddbg/ddbg_trace.c.'>ddbg_disable</a>(<strong class='reserved'>int</strong> dclass, <strong class='reserved'>int</strong> instance);
+<a id='L56' name='L56'></a>  56 
+<a id='L57' name='L57'></a>  57 <strong class='reserved'>void</strong> <a href='../S/121.html#L129' title='Defined at 129 in libddbg/ddbg_trace.c.'>ddbg_trace</a>(<strong class='reserved'>int</strong> dclass, <strong class='reserved'>int</strong> instance, <strong class='reserved'>char</strong> *fmt, ...);
+<a id='L58' name='L58'></a>  58 
+<a id='L59' name='L59'></a>  59 <em class='comment'>// set the file for traces to be sent to.  if 0, traces</em>
+<a id='L60' name='L60'></a>  60 <em class='comment'>// will be discarded</em>
+<a id='L61' name='L61'></a>  61 <strong class='reserved'>void</strong> <a href='../S/121.html#L152' title='Defined at 152 in libddbg/ddbg_trace.c.'>ddbg_setfile</a>(FILE *);
+<a id='L62' name='L62'></a>  62 
+<a id='L63' name='L63'></a>  63 <em class='sharp'>#define</em> <a href='../R/109.html' title='Multiple referred from 7 places.'>DDBG_MAX_INSTANCE</a> 256
+<a id='L64' name='L64'></a>  64 
+<a id='L65' name='L65'></a>  65 
+<a id='L66' name='L66'></a>  66 <em class='comment'>/* assert functions */</em>
+<a id='L67' name='L67'></a>  67 
+<a id='L68' name='L68'></a>  68 <em class='comment'>/*</em>
+<a id='L69' name='L69'></a>  69 <em class='comment'> * If neither a file nor a handler is set (the default), ddbg_assert</em>
+<a id='L70' name='L70'></a>  70 <em class='comment'> * will abort the program.  If a file has been set</em>
+<a id='L71' name='L71'></a>  71 <em class='comment'> * (e.g. setfile(stderr)), a message will be written to that file; if</em>
+<a id='L72' name='L72'></a>  72 <em class='comment'> * the file has been set to 0, no output will be generated.  If a</em>
+<a id='L73' name='L73'></a>  73 <em class='comment'> * handler has been set, it will be called instead of aborting the</em>
+<a id='L74' name='L74'></a>  74 <em class='comment'> * program.  </em>
+<a id='L75' name='L75'></a>  75 <em class='comment'> */</em>
+<a id='L76' name='L76'></a>  76 
+<a id='L77' name='L77'></a>  77 <strong class='reserved'>void</strong> <a href='../S/124.html#L49' title='Defined at 49 in libddbg/ddbg_assert.c.'>ddbg_assert_setfile</a>(FILE *);
+<a id='L78' name='L78'></a>  78 
+<a id='L79' name='L79'></a>  79 <strong class='reserved'>typedef</strong> <strong class='reserved'>void</strong>(*ddbg_assert_handler)(<strong class='reserved'>char</strong> *file, 
+<a id='L80' name='L80'></a>  80                                    <strong class='reserved'>int</strong> line, 
+<a id='L81' name='L81'></a>  81                                    <strong class='reserved'>const</strong> <strong class='reserved'>char</strong> *cond, 
+<a id='L82' name='L82'></a>  82                                    <strong class='reserved'>const</strong> <strong class='reserved'>char</strong> *func,
+<a id='L83' name='L83'></a>  83                                    <strong class='reserved'>const</strong> <strong class='reserved'>char</strong> *fmt, ...);
+<a id='L84' name='L84'></a>  84 
+<a id='L85' name='L85'></a>  85 <strong class='reserved'>void</strong> <a href='../S/124.html#L100' title='Defined at 100 in libddbg/ddbg_assert.c.'>ddbg_assert_sethandler</a>(ddbg_assert_handler);
+<a id='L86' name='L86'></a>  86 <strong class='reserved'>void</strong> <a href='../S/124.html#L105' title='Defined at 105 in libddbg/ddbg_assert.c.'>ddbg_assert_msg</a>(<strong class='reserved'>char</strong> *file, 
+<a id='L87' name='L87'></a>  87                      <strong class='reserved'>int</strong> line, 
+<a id='L88' name='L88'></a>  88                      <strong class='reserved'>const</strong> <strong class='reserved'>char</strong> *cond,
+<a id='L89' name='L89'></a>  89                      <strong class='reserved'>const</strong> <strong class='reserved'>char</strong> *func, 
+<a id='L90' name='L90'></a>  90                      <strong class='reserved'>const</strong> <strong class='reserved'>char</strong> *fmt, ...);
+<a id='L91' name='L91'></a>  91   
+<a id='L92' name='L92'></a>  92 <strong class='reserved'>void</strong> <a href='../S/124.html#L128' title='Defined at 128 in libddbg/ddbg_assert.c.'>ddbg_assert_fail</a>(<strong class='reserved'>char</strong> *file, 
+<a id='L93' name='L93'></a>  93                       <strong class='reserved'>int</strong> line, 
+<a id='L94' name='L94'></a>  94                       <strong class='reserved'>const</strong> <strong class='reserved'>char</strong> *cond,
+<a id='L95' name='L95'></a>  95                       <strong class='reserved'>const</strong> <strong class='reserved'>char</strong> *func, 
+<a id='L96' name='L96'></a>  96                       <strong class='reserved'>const</strong> <strong class='reserved'>char</strong> *fmt, ...);
+<a id='L97' name='L97'></a>  97 
+<a id='L98' name='L98'></a>  98 
+<a id='L99' name='L99'></a>  99 
+<a id='L100' name='L100'></a> 100 <strong class='reserved'>void</strong> <a href='../D/1157.html' title='Multiple defined in 2 places.'>ddbg_assert_printmsg</a>(<strong class='reserved'>const</strong> <strong class='reserved'>char</strong> *fmt, ...);
+<a id='L101' name='L101'></a> 101 
+<a id='L102' name='L102'></a> 102 
+<a id='L103' name='L103'></a> 103 <em class='comment'>// if we're using remotely recent gcc, we can use __PRETTY_FUNCTION__</em>
+<a id='L104' name='L104'></a> 104 <em class='comment'>// if we're using C99, we can use __func__</em>
+<a id='L105' name='L105'></a> 105 <em class='comment'>// otherwise, just pass 0</em>
+<a id='L106' name='L106'></a> 106 <em class='sharp'>#ifdef</em> __GNUC__
+<a id='L107' name='L107'></a> 107 
+<a id='L108' name='L108'></a> 108 <em class='sharp'>#if</em> __GNUC__ &gt; 2 || (__GNUC__ == 2 \
+<a id='L109' name='L109'></a> 109                         &amp;&amp; __GNUC_MINOR__ &gt;= (<strong class='reserved'>defined</strong> __cplusplus ? 6 : 4))
+<a id='L110' name='L110'></a> 110 <em class='sharp'>#define</em> <a href='../R/651.html' title='Multiple referred from 15 places.'>__func__</a> __PRETTY_FUNCTION__
+<a id='L111' name='L111'></a> 111 <em class='sharp'>#else</em> 
+<a id='L112' name='L112'></a> 112 <em class='sharp'>#if</em> <strong class='reserved'>defined</strong> __STDC_VERSION__ &amp;&amp; __STDC_VERSION__ &gt;= 199901L
+<a id='L113' name='L113'></a> 113 <em class='comment'>// don't do anything -- C99 has __func__</em>
+<a id='L114' name='L114'></a> 114 <em class='sharp'>#endif</em>
+<a id='L115' name='L115'></a> 115 <em class='sharp'>#endif</em>
+<a id='L116' name='L116'></a> 116 <em class='sharp'>#else</em> 
+<a id='L117' name='L117'></a> 117 <em class='sharp'>#define</em> <a href='../R/651.html' title='Multiple referred from 15 places.'>__func__</a> ((<strong class='reserved'>const</strong> <strong class='reserved'>char</strong> *)0)
+<a id='L118' name='L118'></a> 118 
+<a id='L119' name='L119'></a> 119 <em class='sharp'>#endif</em>
+<a id='L120' name='L120'></a> 120 
+<a id='L121' name='L121'></a> 121 
+<a id='L122' name='L122'></a> 122 <em class='comment'>/* like assert() modulo above */</em>
+<a id='L123' name='L123'></a> 123 <em class='sharp'>#ifndef</em> _DDBG_DISABLE_ASSERTIONS
+<a id='L124' name='L124'></a> 124 <em class='sharp'>#define</em> <a href='../R/914.html' title='Multiple referred from 212 places.'>ddbg_assert</a>(cond) <strong class='reserved'>do</strong> <em class='brace'>{</em> <strong class='reserved'>int</strong> _ltassert_cond = (<strong class='reserved'>int</strong>)(cond); \
+<a id='L125' name='L125'></a> 125 <strong class='reserved'>if</strong>(!_ltassert_cond) <em class='brace'>{</em> \
+<a id='L126' name='L126'></a> 126 <a href='../S/124.html#L105' title='Defined at 105 in libddbg/ddbg_assert.c.'>ddbg_assert_msg</a>(__FILE__, __LINE__, #cond, <a href='../D/858.html' title='Multiple defined in 2 places.'>__func__</a>, ""); \
+<a id='L127' name='L127'></a> 127 <a href='../S/124.html#L128' title='Defined at 128 in libddbg/ddbg_assert.c.'>ddbg_assert_fail</a>(__FILE__, __LINE__, #cond, <a href='../D/858.html' title='Multiple defined in 2 places.'>__func__</a>, ""); \
+<a id='L128' name='L128'></a> 128 <em class='brace'>}</em> <em class='brace'>}</em> <strong class='reserved'>while</strong>(0)
+<a id='L129' name='L129'></a> 129 <em class='sharp'>#else</em>
+<a id='L130' name='L130'></a> 130 <em class='sharp'>#define</em> <a href='../R/914.html' title='Multiple referred from 212 places.'>ddbg_assert</a>(cond) 
+<a id='L131' name='L131'></a> 131 <em class='sharp'>#endif</em>
+<a id='L132' name='L132'></a> 132 
+<a id='L133' name='L133'></a> 133 <em class='comment'>/* print a message */</em>
+<a id='L134' name='L134'></a> 134 <em class='sharp'>#ifndef</em> _DDBG_DISABLE_ASSERTIONS
+<a id='L135' name='L135'></a> 135 <em class='sharp'>#define</em> <a href='../R/915.html' title='Multiple referred from 60 places.'>ddbg_assert2</a>(cond,fmt) <strong class='reserved'>do</strong> <em class='brace'>{</em> <strong class='reserved'>int</strong> _ltassert_cond = (<strong class='reserved'>int</strong>)(cond); \
+<a id='L136' name='L136'></a> 136 <strong class='reserved'>if</strong>(!_ltassert_cond) <em class='brace'>{</em> \
+<a id='L137' name='L137'></a> 137 <a href='../S/124.html#L105' title='Defined at 105 in libddbg/ddbg_assert.c.'>ddbg_assert_msg</a>(__FILE__, __LINE__, #cond, <a href='../D/858.html' title='Multiple defined in 2 places.'>__func__</a>, fmt); \
+<a id='L138' name='L138'></a> 138 <a href='../S/124.html#L128' title='Defined at 128 in libddbg/ddbg_assert.c.'>ddbg_assert_fail</a>(__FILE__, __LINE__, #cond, <a href='../D/858.html' title='Multiple defined in 2 places.'>__func__</a>, fmt); \
+<a id='L139' name='L139'></a> 139 <em class='brace'>}</em> <em class='brace'>}</em> <strong class='reserved'>while</strong>(0)
+<a id='L140' name='L140'></a> 140 <em class='sharp'>#else</em>
+<a id='L141' name='L141'></a> 141 <em class='sharp'>#define</em> <a href='../R/915.html' title='Multiple referred from 60 places.'>ddbg_assert2</a>(x,y)
+<a id='L142' name='L142'></a> 142 <em class='sharp'>#endif</em>
+<a id='L143' name='L143'></a> 143 
+<a id='L144' name='L144'></a> 144 
+<a id='L145' name='L145'></a> 145 <em class='comment'>/* invoke by e.g. </em>
+<a id='L146' name='L146'></a> 146 <em class='comment'> *   ddbg_assert3(cond, ("foo %d", 3));</em>
+<a id='L147' name='L147'></a> 147 <em class='comment'> */</em>
+<a id='L148' name='L148'></a> 148 
+<a id='L149' name='L149'></a> 149 <em class='sharp'>#ifndef</em> _DDBG_DISABLE_ASSERTIONS
+<a id='L150' name='L150'></a> 150 <em class='sharp'>#define</em> <a href='../R/916.html' title='Multiple referred from 23 places.'>ddbg_assert3</a>(cond,msg) <strong class='reserved'>do</strong> <em class='brace'>{</em> <strong class='reserved'>int</strong> _ltassert_cond = (<strong class='reserved'>int</strong>)(cond);\
+<a id='L151' name='L151'></a> 151 <strong class='reserved'>if</strong>(!_ltassert_cond) <em class='brace'>{</em> \
+<a id='L152' name='L152'></a> 152  <a href='../S/124.html#L105' title='Defined at 105 in libddbg/ddbg_assert.c.'>ddbg_assert_msg</a>(__FILE__, __LINE__, #cond, <a href='../D/858.html' title='Multiple defined in 2 places.'>__func__</a>, ""); \
+<a id='L153' name='L153'></a> 153  <a href='../D/1157.html' title='Multiple defined in 2 places.'>ddbg_assert_printmsg</a> msg; \
+<a id='L154' name='L154'></a> 154  <a href='../S/124.html#L128' title='Defined at 128 in libddbg/ddbg_assert.c.'>ddbg_assert_fail</a>(__FILE__, __LINE__, #cond, <a href='../D/858.html' title='Multiple defined in 2 places.'>__func__</a>, ""); \
+<a id='L155' name='L155'></a> 155 <em class='brace'>}</em> <em class='brace'>}</em> <strong class='reserved'>while</strong>(0)
+<a id='L156' name='L156'></a> 156 <em class='sharp'>#else</em>
+<a id='L157' name='L157'></a> 157 <em class='sharp'>#define</em> <a href='../R/916.html' title='Multiple referred from 23 places.'>ddbg_assert3</a>(x,y)
+<a id='L158' name='L158'></a> 158 <em class='sharp'>#endif</em>
+<a id='L159' name='L159'></a> 159 
+<a id='L160' name='L160'></a> 160 
+<a id='L161' name='L161'></a> 161 
+<a id='L162' name='L162'></a> 162 <em class='comment'>// your compiler must support C99 variadic macros to use this</em>
+<a id='L163' name='L163'></a> 163 <em class='sharp'>#if</em> __STDC_VERSION__ &gt;= 199901L
+<a id='L164' name='L164'></a> 164 
+<a id='L165' name='L165'></a> 165 <em class='comment'>/* print a message like printf */</em>
+<a id='L166' name='L166'></a> 166 <em class='sharp'>#define</em> ddbg_assert4(cond,fmt,...) ((cond) ? 0 : <a href='../S/124.html#L105' title='Defined at 105 in libddbg/ddbg_assert.c.'>ddbg_assert_msg</a>(__FILE__, __LINE__, #cond, <a href='../D/858.html' title='Multiple defined in 2 places.'>__func__</a>, fmt, __VA_ARGS__))
+<a id='L167' name='L167'></a> 167 
+<a id='L168' name='L168'></a> 168 <em class='sharp'>#endif</em>
+<a id='L169' name='L169'></a> 169 
+<a id='L170' name='L170'></a> 170 
+<a id='L171' name='L171'></a> 171 <em class='sharp'>#ifdef</em> __cplusplus
+<a id='L172' name='L172'></a> 172 <em class='brace'>}</em>
+<a id='L173' name='L173'></a> 173 <em class='sharp'>#endif</em>
+<a id='L174' name='L174'></a> 174 
+<a id='L175' name='L175'></a> 175 
+<a id='L176' name='L176'></a> 176 <em class='sharp'>#endif</em> <em class='comment'>/* _LIBTRACE_LIBTRACE_H */</em>
+<a id='L177' name='L177'></a> 177 
+<a id='L178' name='L178'></a> 178 
+<a id='L179' name='L179'></a> 179 
+<a id='L180' name='L180'></a> 180 
+<a id='L181' name='L181'></a> 181 
+</pre>
+<hr />
+<a id='BOTTOM' name='BOTTOM'></a>
+<em class='comment'>/* [&lt;][&gt;][^][v]<a href='#TOP'>[top]</a>[bottom]<a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</em>
+</body>
+</html>

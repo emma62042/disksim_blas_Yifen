@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>slip</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/92.html#L270'>slip</a>              270 diskmodel/layout_g1.c 	  if (b-&gt;slip[i] &lt; cutoff) {</span>
+<span class='curline'><a href='../S/92.html#L349'>slip</a>              349 diskmodel/layout_g1.c 	if (b-&gt;slip[i] &lt; cutoff) {</span>
+<span class='curline'><a href='../S/92.html#L411'>slip</a>              411 diskmodel/layout_g1.c 	if (b-&gt;slip[i] &lt; cutoff) {</span>
+<span class='curline'><a href='../S/92.html#L559'>slip</a>              559 diskmodel/layout_g1.c     if (p-&gt;sector == b-&gt;slip[i]) {          /* Slipped bad block */</span>
+<span class='curline'><a href='../S/92.html#L562'>slip</a>              562 diskmodel/layout_g1.c     if ((p-&gt;sector &gt; b-&gt;slip[i]) </span>
+<span class='curline'><a href='../S/92.html#L563'>slip</a>              563 diskmodel/layout_g1.c 	&amp;&amp; ((b-&gt;slip[i] / (b-&gt;blkspertrack * d-&gt;dm_surfaces)) == (p-&gt;cyl - b-&gt;startcyl)) </span>
+<span class='curline'><a href='../S/92.html#L564'>slip</a>              564 diskmodel/layout_g1.c 	&amp;&amp; ((b-&gt;slip[i] % (b-&gt;blkspertrack * d-&gt;dm_surfaces)) == p-&gt;head)) </span>
+<span class='curline'><a href='../S/92.html#L643'>slip</a>              643 diskmodel/layout_g1.c     if (p-&gt;sector == b-&gt;slip[i]) {          /* Slipped bad block */</span>
+<span class='curline'><a href='../S/92.html#L646'>slip</a>              646 diskmodel/layout_g1.c     if (p-&gt;sector &gt; b-&gt;slip[i]) {</span>
+<span class='curline'><a href='../S/92.html#L647'>slip</a>              647 diskmodel/layout_g1.c       if ((b-&gt;slip[i] / blkspercyl) == (p-&gt;cyl - b-&gt;startcyl)) {</span>
+<span class='curline'><a href='../S/92.html#L737'>slip</a>              737 diskmodel/layout_g1.c     if (p-&gt;sector == b-&gt;slip[i]) {          /* Slipped bad block */</span>
+<span class='curline'><a href='../S/92.html#L740'>slip</a>              740 diskmodel/layout_g1.c     if (p-&gt;sector &gt; b-&gt;slip[i]) {</span>
+<span class='curline'><a href='../S/92.html#L741'>slip</a>              741 diskmodel/layout_g1.c       if ((b-&gt;slip[i] / blksperrange) == rangeno) {</span>
+<span class='curline'><a href='../S/92.html#L815'>slip</a>              815 diskmodel/layout_g1.c     if (p-&gt;sector == b-&gt;slip[i]) {          /* Slipped bad block */</span>
+<span class='curline'><a href='../S/92.html#L818'>slip</a>              818 diskmodel/layout_g1.c     if (p-&gt;sector &gt; b-&gt;slip[i]) {</span>
+<span class='curline'><a href='../S/92.html#L877'>slip</a>              877 diskmodel/layout_g1.c     if (trackno == b-&gt;slip[i]) {     /* Slipped bad track */</span>
+<span class='curline'><a href='../S/92.html#L880'>slip</a>              880 diskmodel/layout_g1.c     if (trackno &gt; b-&gt;slip[i]) {</span>
+<span class='curline'><a href='../S/92.html#L1309'>slip</a>             1309 diskmodel/layout_g1.c     if(trackno == b-&gt;slip[i]) {     /* Slipped bad track */</span>
+<span class='curline'><a href='../S/92.html#L1312'>slip</a>             1312 diskmodel/layout_g1.c     if(trackno &gt; b-&gt;slip[i]) {</span>
+<span class='curline'><a href='../S/92.html#L1453'>slip</a>             1453 diskmodel/layout_g1.c       if ((b-&gt;slip[i] &gt;= firstblkontrack) &amp;&amp; </span>
+<span class='curline'><a href='../S/92.html#L1454'>slip</a>             1454 diskmodel/layout_g1.c 	  ((b-&gt;slip[i] - firstblkontrack) &lt;= lbn)) </span>
+<span class='curline'><a href='../S/92.html#L1525'>slip</a>             1525 diskmodel/layout_g1.c 	   ((b-&gt;slip[i]/blkspercyl) &lt; cyl)) || </span>
+<span class='curline'><a href='../S/92.html#L1526'>slip</a>             1526 diskmodel/layout_g1.c 	  ((b-&gt;slip[i] &gt;= firstblkoncyl) &amp;&amp; </span>
+<span class='curline'><a href='../S/92.html#L1527'>slip</a>             1527 diskmodel/layout_g1.c 	   ((b-&gt;slip[i] - firstblkoncyl) &lt;= (lbn+slips)))) </span>
+<span class='curline'><a href='../S/92.html#L1596'>slip</a>             1596 diskmodel/layout_g1.c       if ((b-&gt;slip[i] &gt;= firstblkinrange) &amp;&amp; </span>
+<span class='curline'><a href='../S/92.html#L1597'>slip</a>             1597 diskmodel/layout_g1.c 	  ((b-&gt;slip[i] - firstblkinrange) &lt;= (lbn+slips))) {</span>
+<span class='curline'><a href='../S/92.html#L1646'>slip</a>             1646 diskmodel/layout_g1.c       if (b-&gt;slip[i] &lt;= (lbn+slips)) {</span>
+<span class='curline'><a href='../S/92.html#L1709'>slip</a>             1709 diskmodel/layout_g1.c       if (b-&gt;slip[i] &lt;= trackno) {</span>
+<span class='curline'><a href='../S/92.html#L1844'>slip</a>             1844 diskmodel/layout_g1.c     memcpy(ptr, b-&gt;slip, b-&gt;numslips * sizeof(int));</span>
+<span class='curline'><a href='../S/92.html#L1894'>slip</a>             1894 diskmodel/layout_g1.c       b-&gt;slip = malloc(b-&gt;numslips * sizeof(int));</span>
+<span class='curline'><a href='../S/92.html#L1895'>slip</a>             1895 diskmodel/layout_g1.c       memcpy(b-&gt;slip, ptr, b-&gt;numslips * sizeof(int));</span>
+<span class='curline'><a href='../S/92.html#L2155'>slip</a>             2155 diskmodel/layout_g1.c       (*destbands)[i].slip = malloc (srcbands[i].numslips * sizeof(int));</span>
+<span class='curline'><a href='../S/92.html#L2159'>slip</a>             2159 diskmodel/layout_g1.c       memcpy((*destbands)[i].slip, </span>
+<span class='curline'><a href='../S/92.html#L2160'>slip</a>             2160 diskmodel/layout_g1.c 	     srcbands[i].slip, </span>
+<span class='curline'><a href='../S/71.html#L188'>slip</a>              188 diskmodel/layout_g1.h   int   *slip;</span>
+<span class='curline'><a href='../S/57.html#L365'>slip</a>              365 diskmodel/layout_g1_load.c   if(z-&gt;slip) {</span>
+<span class='curline'><a href='../S/57.html#L386'>slip</a>              386 diskmodel/layout_g1_load.c   i = z-&gt;slip = malloc(z-&gt;numslips * sizeof(int));</span>
+<span class='curline'><a href='../S/56.html#L130'>slip</a>              130 diskmodel/layout_g4.h   struct slip *slips;</span>
+<span class='curline'><a href='../S/58.html#L79'>slip</a>               79 diskmodel/layout_g4_load.c marshal_g4_slip(struct slip *slips, int n) {</span>
+</pre>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>ctlrinfo</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/204.html#L118'>ctlrinfo</a>          118 src/disksim_controller.c    ctlrinfo_t *ctlrinfo = disksim-&gt;ctlrinfo;</span>
+<span class='curline'><a href='../S/204.html#L119'>ctlrinfo</a>          119 src/disksim_controller.c    ASSERT1((ctlrno &gt;= 0) &amp;&amp; (ctlrno &lt; ctlrinfo-&gt;numcontrollers), "ctlrno", ctlrno);</span>
+<span class='curline'><a href='../S/204.html#L120'>ctlrinfo</a>          120 src/disksim_controller.c    return (ctlrinfo-&gt;controllers[ctlrno]);</span>
+<span class='curline'><a href='../S/204.html#L125'>ctlrinfo</a>          125 src/disksim_controller.c   for(c = 0; c &lt; disksim-&gt;ctlrinfo-&gt;numcontrollers; c++) {</span>
+<span class='curline'><a href='../S/204.html#L126'>ctlrinfo</a>          126 src/disksim_controller.c     if(!strcmp(name, disksim-&gt;ctlrinfo-&gt;controllers[c]-&gt;name)) {</span>
+<span class='curline'><a href='../S/204.html#L128'>ctlrinfo</a>          128 src/disksim_controller.c       return disksim-&gt;ctlrinfo-&gt;controllers[c];</span>
+<span class='curline'><a href='../S/204.html#L430'>ctlrinfo</a>          430 src/disksim_controller.c   ctlrinfo_t *ctlrinfo;</span>
+<span class='curline'><a href='../S/204.html#L432'>ctlrinfo</a>          432 src/disksim_controller.c   if(disksim-&gt;ctlrinfo == NULL) {</span>
+<span class='curline'><a href='../S/204.html#L433'>ctlrinfo</a>          433 src/disksim_controller.c     disksim-&gt;ctlrinfo = malloc(sizeof(ctlrinfo_t));</span>
+<span class='curline'><a href='../S/204.html#L434'>ctlrinfo</a>          434 src/disksim_controller.c     if(!disksim-&gt;ctlrinfo) return 0;</span>
+<span class='curline'><a href='../S/204.html#L435'>ctlrinfo</a>          435 src/disksim_controller.c     bzero((char *)disksim-&gt;ctlrinfo, sizeof(ctlrinfo_t));</span>
+<span class='curline'><a href='../S/204.html#L437'>ctlrinfo</a>          437 src/disksim_controller.c   ctlrinfo = disksim-&gt;ctlrinfo;</span>
+<span class='curline'><a href='../S/204.html#L475'>ctlrinfo</a>          475 src/disksim_controller.c   if (disksim-&gt;ctlrinfo == NULL) {</span>
+<span class='curline'><a href='../S/204.html#L476'>ctlrinfo</a>          476 src/disksim_controller.c     disksim-&gt;ctlrinfo = DISKSIM_malloc (sizeof(ctlrinfo_t));</span>
+<span class='curline'><a href='../S/204.html#L477'>ctlrinfo</a>          477 src/disksim_controller.c     bzero ((char *)disksim-&gt;ctlrinfo, sizeof(ctlrinfo_t));</span>
+<span class='curline'><a href='../S/204.html#L483'>ctlrinfo</a>          483 src/disksim_controller.c   for(c = 0; c &lt; disksim-&gt;ctlrinfo-&gt;ctlrs_len; c++) {</span>
+<span class='curline'><a href='../S/204.html#L484'>ctlrinfo</a>          484 src/disksim_controller.c     if(!disksim-&gt;ctlrinfo-&gt;controllers[c]) { goto foundslot; } </span>
+<span class='curline'><a href='../S/204.html#L493'>ctlrinfo</a>          493 src/disksim_controller.c     disksim-&gt;ctlrinfo-&gt;controllers = realloc(disksim-&gt;ctlrinfo-&gt;controllers,</span>
+<span class='curline'><a href='../S/204.html#L496'>ctlrinfo</a>          496 src/disksim_controller.c     bzero(disksim-&gt;ctlrinfo-&gt;controllers + zerooff, zerolen);</span>
+<span class='curline'><a href='../S/204.html#L497'>ctlrinfo</a>          497 src/disksim_controller.c     disksim-&gt;ctlrinfo-&gt;ctlrs_len = newlen;</span>
+<span class='curline'><a href='../S/204.html#L502'>ctlrinfo</a>          502 src/disksim_controller.c   disksim-&gt;ctlrinfo-&gt;numcontrollers++;</span>
+<span class='curline'><a href='../S/204.html#L509'>ctlrinfo</a>          509 src/disksim_controller.c   disksim-&gt;ctlrinfo-&gt;controllers[c] = result;</span>
+<span class='curline'><a href='../S/204.html#L622'>ctlrinfo</a>          622 src/disksim_controller.c    ctlrinfo_t *ctlrinfo = disksim-&gt;ctlrinfo;</span>
+<span class='curline'><a href='../S/204.html#L626'>ctlrinfo</a>          626 src/disksim_controller.c    for (i = 0; i &lt; ctlrinfo-&gt;numcontrollers; i++) {</span>
+<span class='curline'><a href='../S/204.html#L657'>ctlrinfo</a>          657 src/disksim_controller.c    ctlrinfo_t *ctlrinfo = disksim-&gt;ctlrinfo;</span>
+<span class='curline'><a href='../S/204.html#L658'>ctlrinfo</a>          658 src/disksim_controller.c    return (ctlrinfo-&gt;numcontrollers);</span>
+<span class='curline'><a href='../S/204.html#L698'>ctlrinfo</a>          698 src/disksim_controller.c    ctlrinfo_t *ctlrinfo = disksim-&gt;ctlrinfo;</span>
+<span class='curline'><a href='../S/204.html#L701'>ctlrinfo</a>          701 src/disksim_controller.c    for (i = 0; i &lt; ctlrinfo-&gt;numcontrollers; i++) {</span>
+<span class='curline'><a href='../S/204.html#L722'>ctlrinfo</a>          722 src/disksim_controller.c    ctlrinfo_t *ctlrinfo = disksim-&gt;ctlrinfo;</span>
+<span class='curline'><a href='../S/204.html#L725'>ctlrinfo</a>          725 src/disksim_controller.c    for (i=0; i&lt;ctlrinfo-&gt;numcontrollers; i++) {</span>
+<span class='curline'><a href='../S/204.html#L737'>ctlrinfo</a>          737 src/disksim_controller.c    ctlrinfo_t *ctlrinfo = disksim-&gt;ctlrinfo;</span>
+<span class='curline'><a href='../S/204.html#L745'>ctlrinfo</a>          745 src/disksim_controller.c    for (ctlno=0; ctlno &lt; ctlrinfo-&gt;numcontrollers; ctlno++) {</span>
+<span class='curline'><a href='../S/268.html#L474'>ctlrinfo</a>          474 src/disksim_ctlrsmart.c    ctlrinfo_t *ctlrinfo = disksim-&gt;ctlrinfo;</span>
+<span class='curline'><a href='../S/268.html#L479'>ctlrinfo</a>          479 src/disksim_ctlrsmart.c    if (ctlrinfo-&gt;ctl_printcachestats) {</span>
+<span class='curline'><a href='../S/268.html#L489'>ctlrinfo</a>          489 src/disksim_ctlrsmart.c    if ((ctlrinfo-&gt;ctl_printperdiskstats) &amp;&amp; (currctlr-&gt;numdevices &gt; 1)) {</span>
+<span class='curline'><a href='../S/283.html#L334'>ctlrinfo</a>          334 src/disksim_global.h struct ctlrinfo;</span>
+<span class='curline'><a href='../S/283.html#L416'>ctlrinfo</a>          416 src/disksim_global.h    struct ctlrinfo *ctlrinfo;</span>
+</pre>
+</body>
+</html>

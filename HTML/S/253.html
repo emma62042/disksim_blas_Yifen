@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>src/disksim_cachedev.h</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<a id='TOP' name='TOP'></a><h2 class='header'><a href='../mains.html'>root</a>/<a href='../files/402.html'>src</a>/disksim_cachedev.h</h2>
+<em class='comment'>/* [&lt;][&gt;][^][v][top]<a href='#BOTTOM'>[bottom]</a><a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</em>
+<hr />
+<h2 class='header'><a href='../J/71.html' title='Multiple included from 2 places.'>INCLUDED FROM</a></h2>
+<hr />
+<pre>
+<a id='L1' name='L1'></a>   1 <em class='comment'>/*</em>
+<a id='L2' name='L2'></a>   2 <em class='comment'> * DiskSim Storage Subsystem Simulation Environment (Version 4.0)</em>
+<a id='L3' name='L3'></a>   3 <em class='comment'> * Revision Authors: John Bucy, Greg Ganger</em>
+<a id='L4' name='L4'></a>   4 <em class='comment'> * Contributors: John Griffin, Jiri Schindler, Steve Schlosser</em>
+<a id='L5' name='L5'></a>   5 <em class='comment'> *</em>
+<a id='L6' name='L6'></a>   6 <em class='comment'> * Copyright (c) of Carnegie Mellon University, 2001-2008.</em>
+<a id='L7' name='L7'></a>   7 <em class='comment'> *</em>
+<a id='L8' name='L8'></a>   8 <em class='comment'> * This software is being provided by the copyright holders under the</em>
+<a id='L9' name='L9'></a>   9 <em class='comment'> * following license. By obtaining, using and/or copying this software,</em>
+<a id='L10' name='L10'></a>  10 <em class='comment'> * you agree that you have read, understood, and will comply with the</em>
+<a id='L11' name='L11'></a>  11 <em class='comment'> * following terms and conditions:</em>
+<a id='L12' name='L12'></a>  12 <em class='comment'> *</em>
+<a id='L13' name='L13'></a>  13 <em class='comment'> * Permission to reproduce, use, and prepare derivative works of this</em>
+<a id='L14' name='L14'></a>  14 <em class='comment'> * software is granted provided the copyright and "No Warranty" statements</em>
+<a id='L15' name='L15'></a>  15 <em class='comment'> * are included with all reproductions and derivative works and associated</em>
+<a id='L16' name='L16'></a>  16 <em class='comment'> * documentation. This software may also be redistributed without charge</em>
+<a id='L17' name='L17'></a>  17 <em class='comment'> * provided that the copyright and "No Warranty" statements are included</em>
+<a id='L18' name='L18'></a>  18 <em class='comment'> * in all redistributions.</em>
+<a id='L19' name='L19'></a>  19 <em class='comment'> *</em>
+<a id='L20' name='L20'></a>  20 <em class='comment'> * NO WARRANTY. THIS SOFTWARE IS FURNISHED ON AN "AS IS" BASIS.</em>
+<a id='L21' name='L21'></a>  21 <em class='comment'> * CARNEGIE MELLON UNIVERSITY MAKES NO WARRANTIES OF ANY KIND, EITHER</em>
+<a id='L22' name='L22'></a>  22 <em class='comment'> * EXPRESSED OR IMPLIED AS TO THE MATTER INCLUDING, BUT NOT LIMITED</em>
+<a id='L23' name='L23'></a>  23 <em class='comment'> * TO: WARRANTY OF FITNESS FOR PURPOSE OR MERCHANTABILITY, EXCLUSIVITY</em>
+<a id='L24' name='L24'></a>  24 <em class='comment'> * OF RESULTS OR RESULTS OBTAINED FROM USE OF THIS SOFTWARE. CARNEGIE</em>
+<a id='L25' name='L25'></a>  25 <em class='comment'> * MELLON UNIVERSITY DOES NOT MAKE ANY WARRANTY OF ANY KIND WITH RESPECT</em>
+<a id='L26' name='L26'></a>  26 <em class='comment'> * TO FREEDOM FROM PATENT, TRADEMARK, OR COPYRIGHT INFRINGEMENT.</em>
+<a id='L27' name='L27'></a>  27 <em class='comment'> * COPYRIGHT HOLDERS WILL BEAR NO LIABILITY FOR ANY USE OF THIS SOFTWARE</em>
+<a id='L28' name='L28'></a>  28 <em class='comment'> * OR DOCUMENTATION.</em>
+<a id='L29' name='L29'></a>  29 <em class='comment'> *</em>
+<a id='L30' name='L30'></a>  30 <em class='comment'> */</em>
+<a id='L31' name='L31'></a>  31 
+<a id='L32' name='L32'></a>  32 
+<a id='L33' name='L33'></a>  33 
+<a id='L34' name='L34'></a>  34 <em class='comment'>/*</em>
+<a id='L35' name='L35'></a>  35 <em class='comment'> * DiskSim Storage Subsystem Simulation Environment (Version 2.0)</em>
+<a id='L36' name='L36'></a>  36 <em class='comment'> * Revision Authors: Greg Ganger</em>
+<a id='L37' name='L37'></a>  37 <em class='comment'> * Contributors: Ross Cohen, John Griffin, Steve Schlosser</em>
+<a id='L38' name='L38'></a>  38 <em class='comment'> *</em>
+<a id='L39' name='L39'></a>  39 <em class='comment'> * Copyright (c) of Carnegie Mellon University, 1999.</em>
+<a id='L40' name='L40'></a>  40 <em class='comment'> *</em>
+<a id='L41' name='L41'></a>  41 <em class='comment'> * Permission to reproduce, use, and prepare derivative works of</em>
+<a id='L42' name='L42'></a>  42 <em class='comment'> * this software for internal use is granted provided the copyright</em>
+<a id='L43' name='L43'></a>  43 <em class='comment'> * and "No Warranty" statements are included with all reproductions</em>
+<a id='L44' name='L44'></a>  44 <em class='comment'> * and derivative works. This software may also be redistributed</em>
+<a id='L45' name='L45'></a>  45 <em class='comment'> * without charge provided that the copyright and "No Warranty"</em>
+<a id='L46' name='L46'></a>  46 <em class='comment'> * statements are included in all redistributions.</em>
+<a id='L47' name='L47'></a>  47 <em class='comment'> *</em>
+<a id='L48' name='L48'></a>  48 <em class='comment'> * NO WARRANTY. THIS SOFTWARE IS FURNISHED ON AN "AS IS" BASIS.</em>
+<a id='L49' name='L49'></a>  49 <em class='comment'> * CARNEGIE MELLON UNIVERSITY MAKES NO WARRANTIES OF ANY KIND, EITHER</em>
+<a id='L50' name='L50'></a>  50 <em class='comment'> * EXPRESSED OR IMPLIED AS TO THE MATTER INCLUDING, BUT NOT LIMITED</em>
+<a id='L51' name='L51'></a>  51 <em class='comment'> * TO: WARRANTY OF FITNESS FOR PURPOSE OR MERCHANTABILITY, EXCLUSIVITY</em>
+<a id='L52' name='L52'></a>  52 <em class='comment'> * OF RESULTS OR RESULTS OBTAINED FROM USE OF THIS SOFTWARE. CARNEGIE</em>
+<a id='L53' name='L53'></a>  53 <em class='comment'> * MELLON UNIVERSITY DOES NOT MAKE ANY WARRANTY OF ANY KIND WITH RESPECT</em>
+<a id='L54' name='L54'></a>  54 <em class='comment'> * TO FREEDOM FROM PATENT, TRADEMARK, OR COPYRIGHT INFRINGEMENT.</em>
+<a id='L55' name='L55'></a>  55 <em class='comment'> */</em>
+<a id='L56' name='L56'></a>  56 
+<a id='L57' name='L57'></a>  57 <em class='comment'>/*</em>
+<a id='L58' name='L58'></a>  58 <em class='comment'> * DiskSim Storage Subsystem Simulation Environment</em>
+<a id='L59' name='L59'></a>  59 <em class='comment'> * Authors: Greg Ganger, Bruce Worthington, Yale Patt</em>
+<a id='L60' name='L60'></a>  60 <em class='comment'> *</em>
+<a id='L61' name='L61'></a>  61 <em class='comment'> * Copyright (C) 1993, 1995, 1997 The Regents of the University of Michigan </em>
+<a id='L62' name='L62'></a>  62 <em class='comment'> *</em>
+<a id='L63' name='L63'></a>  63 <em class='comment'> * This software is being provided by the copyright holders under the</em>
+<a id='L64' name='L64'></a>  64 <em class='comment'> * following license. By obtaining, using and/or copying this software,</em>
+<a id='L65' name='L65'></a>  65 <em class='comment'> * you agree that you have read, understood, and will comply with the</em>
+<a id='L66' name='L66'></a>  66 <em class='comment'> * following terms and conditions:</em>
+<a id='L67' name='L67'></a>  67 <em class='comment'> *</em>
+<a id='L68' name='L68'></a>  68 <em class='comment'> * Permission to use, copy, modify, distribute, and sell this software</em>
+<a id='L69' name='L69'></a>  69 <em class='comment'> * and its documentation for any purpose and without fee or royalty is</em>
+<a id='L70' name='L70'></a>  70 <em class='comment'> * hereby granted, provided that the full text of this NOTICE appears on</em>
+<a id='L71' name='L71'></a>  71 <em class='comment'> * ALL copies of the software and documentation or portions thereof,</em>
+<a id='L72' name='L72'></a>  72 <em class='comment'> * including modifications, that you make.</em>
+<a id='L73' name='L73'></a>  73 <em class='comment'> *</em>
+<a id='L74' name='L74'></a>  74 <em class='comment'> * THIS SOFTWARE IS PROVIDED "AS IS," AND COPYRIGHT HOLDERS MAKE NO</em>
+<a id='L75' name='L75'></a>  75 <em class='comment'> * REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED. BY WAY OF EXAMPLE,</em>
+<a id='L76' name='L76'></a>  76 <em class='comment'> * BUT NOT LIMITATION, COPYRIGHT HOLDERS MAKE NO REPRESENTATIONS OR</em>
+<a id='L77' name='L77'></a>  77 <em class='comment'> * WARRANTIES OF MERCHANTABILITY OR FITNESS FOR ANY PARTICULAR PURPOSE OR</em>
+<a id='L78' name='L78'></a>  78 <em class='comment'> * THAT THE USE OF THE SOFTWARE OR DOCUMENTATION WILL NOT INFRINGE ANY</em>
+<a id='L79' name='L79'></a>  79 <em class='comment'> * THIRD PARTY PATENTS, COPYRIGHTS, TRADEMARKS OR OTHER RIGHTS. COPYRIGHT</em>
+<a id='L80' name='L80'></a>  80 <em class='comment'> * HOLDERS WILL BEAR NO LIABILITY FOR ANY USE OF THIS SOFTWARE OR</em>
+<a id='L81' name='L81'></a>  81 <em class='comment'> * DOCUMENTATION.</em>
+<a id='L82' name='L82'></a>  82 <em class='comment'> *</em>
+<a id='L83' name='L83'></a>  83 <em class='comment'> *  This software is provided AS IS, WITHOUT REPRESENTATION FROM THE</em>
+<a id='L84' name='L84'></a>  84 <em class='comment'> * UNIVERSITY OF MICHIGAN AS TO ITS FITNESS FOR ANY PURPOSE, AND</em>
+<a id='L85' name='L85'></a>  85 <em class='comment'> * WITHOUT WARRANTY BY THE UNIVERSITY OF MICHIGAN OF ANY KIND, EITHER</em>
+<a id='L86' name='L86'></a>  86 <em class='comment'> * EXPRESSED OR IMPLIED, INCLUDING WITHOUT LIMITATION THE IMPLIED</em>
+<a id='L87' name='L87'></a>  87 <em class='comment'> * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE REGENTS</em>
+<a id='L88' name='L88'></a>  88 <em class='comment'> * OF THE UNIVERSITY OF MICHIGAN SHALL NOT BE LIABLE FOR ANY DAMAGES,</em>
+<a id='L89' name='L89'></a>  89 <em class='comment'> * INCLUDING SPECIAL , INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES,</em>
+<a id='L90' name='L90'></a>  90 <em class='comment'> * WITH RESPECT TO ANY CLAIM ARISING OUT OF OR IN CONNECTION WITH THE</em>
+<a id='L91' name='L91'></a>  91 <em class='comment'> * USE OF OR IN CONNECTION WITH THE USE OF THE SOFTWARE, EVEN IF IT HAS</em>
+<a id='L92' name='L92'></a>  92 <em class='comment'> * BEEN OR IS HEREAFTER ADVISED OF THE POSSIBILITY OF SUCH DAMAGES</em>
+<a id='L93' name='L93'></a>  93 <em class='comment'> *</em>
+<a id='L94' name='L94'></a>  94 <em class='comment'> * The names and trademarks of copyright holders or authors may NOT be</em>
+<a id='L95' name='L95'></a>  95 <em class='comment'> * used in advertising or publicity pertaining to the software without</em>
+<a id='L96' name='L96'></a>  96 <em class='comment'> * specific, written prior permission. Title to copyright in this software</em>
+<a id='L97' name='L97'></a>  97 <em class='comment'> * and any associated documentation will at all times remain with copyright</em>
+<a id='L98' name='L98'></a>  98 <em class='comment'> * holders.</em>
+<a id='L99' name='L99'></a>  99 <em class='comment'> */</em>
+<a id='L100' name='L100'></a> 100 
+<a id='L101' name='L101'></a> 101 <em class='sharp'>#ifndef</em> <a href='../S/253.html#L102' title='Defined at 102 in src/disksim_cachedev.h.'>DISKSIM_CACHEDEV_H</a>
+<a id='L102' name='L102'></a> 102 <em class='sharp'>#define</em> <a href='../S/253.html#L101' title='Referred from 101 in src/disksim_cachedev.h.'>DISKSIM_CACHEDEV_H</a>
+<a id='L103' name='L103'></a> 103 
+<a id='L104' name='L104'></a> 104 <em class='sharp'>#include</em> "<a href='283.html'>disksim_global.h</a>"
+<a id='L105' name='L105'></a> 105 <em class='sharp'>#include</em> "<a href='255.html'>disksim_iosim.h</a>"
+<a id='L106' name='L106'></a> 106 <em class='sharp'>#include</em> "<a href='259.html'>disksim_ioqueue.h</a>"
+<a id='L107' name='L107'></a> 107 <em class='sharp'>#include</em> "<a href='276.html'>config.h</a>"
+<a id='L108' name='L108'></a> 108 <em class='sharp'>#include</em> "<a href='267.html'>disksim_cache.h</a>"
+<a id='L109' name='L109'></a> 109 
+<a id='L110' name='L110'></a> 110 <em class='comment'>/* cache event types */</em>
+<a id='L111' name='L111'></a> 111 
+<a id='L112' name='L112'></a> 112 <em class='sharp'>#define</em> CACHE_EVENT_IOREQ               0
+<a id='L113' name='L113'></a> 113 <em class='sharp'>#define</em> <a href='../R/61.html' title='Multiple referred from 12 places.'>CACHE_EVENT_READ</a>                1
+<a id='L114' name='L114'></a> 114 <em class='sharp'>#define</em> <a href='../R/60.html' title='Multiple referred from 2 places.'>CACHE_EVENT_POPULATE_ONLY</a>       2
+<a id='L115' name='L115'></a> 115 <em class='sharp'>#define</em> <a href='../R/59.html' title='Multiple referred from 3 places.'>CACHE_EVENT_POPULATE_ALSO</a>       3
+<a id='L116' name='L116'></a> 116 <em class='sharp'>#define</em> <a href='../R/65.html' title='Multiple referred from 9 places.'>CACHE_EVENT_WRITE</a>               4
+<a id='L117' name='L117'></a> 117 <em class='sharp'>#define</em> <a href='../R/55.html' title='Multiple referred from 4 places.'>CACHE_EVENT_FLUSH</a>               5
+<a id='L118' name='L118'></a> 118 <em class='sharp'>#define</em> <a href='../R/57.html' title='Multiple referred from 2 places.'>CACHE_EVENT_IDLEFLUSH_READ</a>      6
+<a id='L119' name='L119'></a> 119 <em class='sharp'>#define</em> <a href='../R/56.html' title='Multiple referred from 2 places.'>CACHE_EVENT_IDLEFLUSH_FLUSH</a>     7
+<a id='L120' name='L120'></a> 120 
+<a id='L121' name='L121'></a> 121 <em class='comment'>/* cache write schemes */</em>
+<a id='L122' name='L122'></a> 122 
+<a id='L123' name='L123'></a> 123 <em class='sharp'>#define</em> CACHE_WRITE_MIN         1
+<a id='L124' name='L124'></a> 124 <em class='sharp'>#define</em> <a href='../S/222.html#L1877' title='Referred from 1877 in src/disksim_cachemem.c.'>CACHE_WRITE_SYNCONLY</a>    1
+<a id='L125' name='L125'></a> 125 <em class='sharp'>#define</em> <a href='../S/215.html#L515' title='Referred from 515 in src/disksim_cachedev.c.'>CACHE_WRITE_THRU</a>        2
+<a id='L126' name='L126'></a> 126 <em class='sharp'>#define</em> <a href='../S/222.html#L1799' title='Referred from 1799 in src/disksim_cachemem.c.'>CACHE_WRITE_BACK</a>        3
+<a id='L127' name='L127'></a> 127 <em class='sharp'>#define</em> CACHE_WRITE_MAX         3
+<a id='L128' name='L128'></a> 128 
+<a id='L129' name='L129'></a> 129 <em class='comment'>/* cache background flush types */</em>
+<a id='L130' name='L130'></a> 130 
+<a id='L131' name='L131'></a> 131 <em class='sharp'>#define</em> CACHE_FLUSH_MIN         0
+<a id='L132' name='L132'></a> 132 <em class='sharp'>#define</em> CACHE_FLUSH_DEMANDONLY  0
+<a id='L133' name='L133'></a> 133 <em class='sharp'>#define</em> <a href='../S/222.html#L2215' title='Referred from 2215 in src/disksim_cachemem.c.'>CACHE_FLUSH_PERIODIC</a>    1
+<a id='L134' name='L134'></a> 134 <em class='sharp'>#define</em> CACHE_FLUSH_MAX         1
+<a id='L135' name='L135'></a> 135 
+<a id='L136' name='L136'></a> 136 
+<a id='L137' name='L137'></a> 137 
+<a id='L138' name='L138'></a> 138 <strong class='reserved'>struct</strong> <a href='../R/743.html' title='Multiple referred from 17 places.'>cache_dev_event</a> <em class='brace'>{</em>
+<a id='L139' name='L139'></a> 139    <strong class='reserved'>double</strong> time;
+<a id='L140' name='L140'></a> 140    <strong class='reserved'>int</strong> type;
+<a id='L141' name='L141'></a> 141    <strong class='reserved'>struct</strong> <a href='../S/253.html#L138' title='Defined at 138 in src/disksim_cachedev.h.'>cache_dev_event</a> *next;
+<a id='L142' name='L142'></a> 142    <strong class='reserved'>struct</strong> <a href='../S/253.html#L138' title='Defined at 138 in src/disksim_cachedev.h.'>cache_dev_event</a> *prev;
+<a id='L143' name='L143'></a> 143    <strong class='reserved'>void</strong> (**donefunc)(<strong class='reserved'>void</strong> *,<a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *);     <em class='comment'>/* Function to call when complete */</em>
+<a id='L144' name='L144'></a> 144    <strong class='reserved'>void</strong> *doneparam;             <em class='comment'>/* parameter for donefunc */</em>
+<a id='L145' name='L145'></a> 145    <strong class='reserved'>int</strong> flags;
+<a id='L146' name='L146'></a> 146    <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *req;
+<a id='L147' name='L147'></a> 147    <strong class='reserved'>struct</strong> <a href='../S/253.html#L138' title='Defined at 138 in src/disksim_cachedev.h.'>cache_dev_event</a> *waitees;
+<a id='L148' name='L148'></a> 148    <strong class='reserved'>int</strong> validpoint;
+<a id='L149' name='L149'></a> 149 <em class='brace'>}</em>;
+<a id='L150' name='L150'></a> 150 
+<a id='L151' name='L151'></a> 151 <strong class='reserved'>struct</strong> <a href='../S/253.html#L191' title='Referred from 191 in src/disksim_cachedev.h.'>cache_dev_stats</a> <em class='brace'>{</em>
+<a id='L152' name='L152'></a> 152    <strong class='reserved'>int</strong> reads;
+<a id='L153' name='L153'></a> 153    <strong class='reserved'>int</strong> readblocks;
+<a id='L154' name='L154'></a> 154    <strong class='reserved'>int</strong> readhitsfull;
+<a id='L155' name='L155'></a> 155    <strong class='reserved'>int</strong> readmisses;
+<a id='L156' name='L156'></a> 156    <strong class='reserved'>int</strong> popwrites;
+<a id='L157' name='L157'></a> 157    <strong class='reserved'>int</strong> popwriteblocks;
+<a id='L158' name='L158'></a> 158    <strong class='reserved'>int</strong> writes;
+<a id='L159' name='L159'></a> 159    <strong class='reserved'>int</strong> writeblocks;
+<a id='L160' name='L160'></a> 160    <strong class='reserved'>int</strong> writehitsfull;
+<a id='L161' name='L161'></a> 161    <strong class='reserved'>int</strong> writemisses;
+<a id='L162' name='L162'></a> 162    <strong class='reserved'>int</strong> destagereads;
+<a id='L163' name='L163'></a> 163    <strong class='reserved'>int</strong> destagereadblocks;
+<a id='L164' name='L164'></a> 164    <strong class='reserved'>int</strong> destagewrites;
+<a id='L165' name='L165'></a> 165    <strong class='reserved'>int</strong> destagewriteblocks;
+<a id='L166' name='L166'></a> 166    <strong class='reserved'>int</strong> maxbufferspace;
+<a id='L167' name='L167'></a> 167 <em class='brace'>}</em>;
+<a id='L168' name='L168'></a> 168 
+<a id='L169' name='L169'></a> 169 
+<a id='L170' name='L170'></a> 170 <strong class='reserved'>struct</strong> <a href='../R/742.html' title='Multiple referred from 22 places.'>cache_dev</a> <em class='brace'>{</em>
+<a id='L171' name='L171'></a> 171   <strong class='reserved'>struct</strong> <a href='../S/267.html#L109' title='Defined at 109 in src/disksim_cache.h.'>cache_if</a> hdr;
+<a id='L172' name='L172'></a> 172    <strong class='reserved'>void</strong> (**issuefunc)(<strong class='reserved'>void</strong> *,<a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *);    <em class='comment'>/* to issue a disk access    */</em>
+<a id='L173' name='L173'></a> 173    <strong class='reserved'>void</strong> *issueparam;                            <em class='comment'>/* first param for issuefunc */</em>
+<a id='L174' name='L174'></a> 174    <strong class='reserved'>struct</strong> <a href='../S/259.html#L255' title='Defined at 255 in src/disksim_ioqueue.h.'>ioq</a> * (**queuefind)(<strong class='reserved'>void</strong> *,<strong class='reserved'>int</strong>);      <em class='comment'>/* to get ioqueue ptr for dev*/</em>
+<a id='L175' name='L175'></a> 175    <strong class='reserved'>void</strong> *queuefindparam;                        <em class='comment'>/* first param for queuefind */</em>
+<a id='L176' name='L176'></a> 176    <em class='comment'>// void (**wakeupfunc)(void *,void *);       /* to re-activate slept proc */</em>
+<a id='L177' name='L177'></a> 177    <strong class='reserved'>void</strong> (**wakeupfunc)(<strong class='reserved'>void</strong> *, <strong class='reserved'>struct</strong> cacheevent *);    <em class='comment'>/* to re-activate slept proc */</em>
+<a id='L178' name='L178'></a> 178    <strong class='reserved'>void</strong> *wakeupparam;                           <em class='comment'>/* first param for wakeupfunc */</em>
+<a id='L179' name='L179'></a> 179    <strong class='reserved'>int</strong> size;                                    <em class='comment'>/* in 512B blks  */</em>
+<a id='L180' name='L180'></a> 180    <strong class='reserved'>int</strong> cache_devno;                             <em class='comment'>/* device used for cache */</em>
+<a id='L181' name='L181'></a> 181    <strong class='reserved'>int</strong> real_devno;                              <em class='comment'>/* device for which cache is used */</em>
+<a id='L182' name='L182'></a> 182    <strong class='reserved'>int</strong> maxreqsize;
+<a id='L183' name='L183'></a> 183    <strong class='reserved'>int</strong> writescheme;
+<a id='L184' name='L184'></a> 184    <strong class='reserved'>int</strong> flush_policy;
+<a id='L185' name='L185'></a> 185    <strong class='reserved'>double</strong> flush_period;
+<a id='L186' name='L186'></a> 186    <strong class='reserved'>double</strong> flush_idledelay;
+<a id='L187' name='L187'></a> 187    <strong class='reserved'>int</strong> bufferspace;
+<a id='L188' name='L188'></a> 188    <strong class='reserved'>struct</strong> <a href='../S/253.html#L138' title='Defined at 138 in src/disksim_cachedev.h.'>cache_dev_event</a> *ongoing_requests;
+<a id='L189' name='L189'></a> 189    <a href='../S/202.html#L68' title='Defined at 68 in src/disksim_bitstring.h.'>bitstr_t</a> *validmap;
+<a id='L190' name='L190'></a> 190    <a href='../S/202.html#L68' title='Defined at 68 in src/disksim_bitstring.h.'>bitstr_t</a> *dirtymap;
+<a id='L191' name='L191'></a> 191    <strong class='reserved'>struct</strong> <a href='../S/253.html#L151' title='Defined at 151 in src/disksim_cachedev.h.'>cache_dev_stats</a> stat;
+<a id='L192' name='L192'></a> 192    <strong class='reserved'>char</strong> *name;
+<a id='L193' name='L193'></a> 193 <em class='brace'>}</em>;
+<a id='L194' name='L194'></a> 194 
+<a id='L195' name='L195'></a> 195 <strong class='reserved'>void</strong> <a href='../S/215.html#L642' title='Defined at 642 in src/disksim_cachedev.c.'>cachedev_setcallbacks</a>(<strong class='reserved'>void</strong>);
+<a id='L196' name='L196'></a> 196 
+<a id='L197' name='L197'></a> 197 
+<a id='L198' name='L198'></a> 198 <em class='sharp'>#endif</em> <em class='comment'>// DISKSIM_CACHEDEV_H</em>
+<a id='L199' name='L199'></a> 199 
+<a id='L200' name='L200'></a> 200 
+<a id='L201' name='L201'></a> 201 
+</pre>
+<hr />
+<a id='BOTTOM' name='BOTTOM'></a>
+<em class='comment'>/* [&lt;][&gt;][^][v]<a href='#TOP'>[top]</a>[bottom]<a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</em>
+</body>
+</html>

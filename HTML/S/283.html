@@ -1,0 +1,534 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>src/disksim_global.h</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<a id='TOP' name='TOP'></a><h2 class='header'><a href='../mains.html'>root</a>/<a href='../files/402.html'>src</a>/disksim_global.h</h2>
+<em class='comment'>/* [&lt;][&gt;][^][v][top]<a href='#BOTTOM'>[bottom]</a><a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</em>
+<hr />
+<h2 class='header'><a href='../J/86.html' title='Multiple included from 38 places.'>INCLUDED FROM</a></h2>
+<hr />
+<pre>
+<a id='L1' name='L1'></a>   1 <em class='comment'>/*</em>
+<a id='L2' name='L2'></a>   2 <em class='comment'> * DiskSim Storage Subsystem Simulation Environment (Version 4.0)</em>
+<a id='L3' name='L3'></a>   3 <em class='comment'> * Revision Authors: John Bucy, Greg Ganger</em>
+<a id='L4' name='L4'></a>   4 <em class='comment'> * Contributors: John Griffin, Jiri Schindler, Steve Schlosser</em>
+<a id='L5' name='L5'></a>   5 <em class='comment'> *</em>
+<a id='L6' name='L6'></a>   6 <em class='comment'> * Copyright (c) of Carnegie Mellon University, 2001-2008.</em>
+<a id='L7' name='L7'></a>   7 <em class='comment'> *</em>
+<a id='L8' name='L8'></a>   8 <em class='comment'> * This software is being provided by the copyright holders under the</em>
+<a id='L9' name='L9'></a>   9 <em class='comment'> * following license. By obtaining, using and/or copying this software,</em>
+<a id='L10' name='L10'></a>  10 <em class='comment'> * you agree that you have read, understood, and will comply with the</em>
+<a id='L11' name='L11'></a>  11 <em class='comment'> * following terms and conditions:</em>
+<a id='L12' name='L12'></a>  12 <em class='comment'> *</em>
+<a id='L13' name='L13'></a>  13 <em class='comment'> * Permission to reproduce, use, and prepare derivative works of this</em>
+<a id='L14' name='L14'></a>  14 <em class='comment'> * software is granted provided the copyright and "No Warranty" statements</em>
+<a id='L15' name='L15'></a>  15 <em class='comment'> * are included with all reproductions and derivative works and associated</em>
+<a id='L16' name='L16'></a>  16 <em class='comment'> * documentation. This software may also be redistributed without charge</em>
+<a id='L17' name='L17'></a>  17 <em class='comment'> * provided that the copyright and "No Warranty" statements are included</em>
+<a id='L18' name='L18'></a>  18 <em class='comment'> * in all redistributions.</em>
+<a id='L19' name='L19'></a>  19 <em class='comment'> *</em>
+<a id='L20' name='L20'></a>  20 <em class='comment'> * NO WARRANTY. THIS SOFTWARE IS FURNISHED ON AN "AS IS" BASIS.</em>
+<a id='L21' name='L21'></a>  21 <em class='comment'> * CARNEGIE MELLON UNIVERSITY MAKES NO WARRANTIES OF ANY KIND, EITHER</em>
+<a id='L22' name='L22'></a>  22 <em class='comment'> * EXPRESSED OR IMPLIED AS TO THE MATTER INCLUDING, BUT NOT LIMITED</em>
+<a id='L23' name='L23'></a>  23 <em class='comment'> * TO: WARRANTY OF FITNESS FOR PURPOSE OR MERCHANTABILITY, EXCLUSIVITY</em>
+<a id='L24' name='L24'></a>  24 <em class='comment'> * OF RESULTS OR RESULTS OBTAINED FROM USE OF THIS SOFTWARE. CARNEGIE</em>
+<a id='L25' name='L25'></a>  25 <em class='comment'> * MELLON UNIVERSITY DOES NOT MAKE ANY WARRANTY OF ANY KIND WITH RESPECT</em>
+<a id='L26' name='L26'></a>  26 <em class='comment'> * TO FREEDOM FROM PATENT, TRADEMARK, OR COPYRIGHT INFRINGEMENT.</em>
+<a id='L27' name='L27'></a>  27 <em class='comment'> * COPYRIGHT HOLDERS WILL BEAR NO LIABILITY FOR ANY USE OF THIS SOFTWARE</em>
+<a id='L28' name='L28'></a>  28 <em class='comment'> * OR DOCUMENTATION.</em>
+<a id='L29' name='L29'></a>  29 <em class='comment'> *</em>
+<a id='L30' name='L30'></a>  30 <em class='comment'> */</em>
+<a id='L31' name='L31'></a>  31 
+<a id='L32' name='L32'></a>  32 
+<a id='L33' name='L33'></a>  33 
+<a id='L34' name='L34'></a>  34 <em class='comment'>/*</em>
+<a id='L35' name='L35'></a>  35 <em class='comment'> * DiskSim Storage Subsystem Simulation Environment (Version 2.0)</em>
+<a id='L36' name='L36'></a>  36 <em class='comment'> * Revision Authors: Greg Ganger</em>
+<a id='L37' name='L37'></a>  37 <em class='comment'> * Contributors: Ross Cohen, John Griffin, Steve Schlosser</em>
+<a id='L38' name='L38'></a>  38 <em class='comment'> *</em>
+<a id='L39' name='L39'></a>  39 <em class='comment'> * Copyright (c) of Carnegie Mellon University, 1999.</em>
+<a id='L40' name='L40'></a>  40 <em class='comment'> *</em>
+<a id='L41' name='L41'></a>  41 <em class='comment'> * Permission to reproduce, use, and prepare derivative works of</em>
+<a id='L42' name='L42'></a>  42 <em class='comment'> * this software for internal use is granted provided the copyright</em>
+<a id='L43' name='L43'></a>  43 <em class='comment'> * and "No Warranty" statements are included with all reproductions</em>
+<a id='L44' name='L44'></a>  44 <em class='comment'> * and derivative works. This software may also be redistributed</em>
+<a id='L45' name='L45'></a>  45 <em class='comment'> * without charge provided that the copyright and "No Warranty"</em>
+<a id='L46' name='L46'></a>  46 <em class='comment'> * statements are included in all redistributions.</em>
+<a id='L47' name='L47'></a>  47 <em class='comment'> *</em>
+<a id='L48' name='L48'></a>  48 <em class='comment'> * NO WARRANTY. THIS SOFTWARE IS FURNISHED ON AN "AS IS" BASIS.</em>
+<a id='L49' name='L49'></a>  49 <em class='comment'> * CARNEGIE MELLON UNIVERSITY MAKES NO WARRANTIES OF ANY KIND, EITHER</em>
+<a id='L50' name='L50'></a>  50 <em class='comment'> * EXPRESSED OR IMPLIED AS TO THE MATTER INCLUDING, BUT NOT LIMITED</em>
+<a id='L51' name='L51'></a>  51 <em class='comment'> * TO: WARRANTY OF FITNESS FOR PURPOSE OR MERCHANTABILITY, EXCLUSIVITY</em>
+<a id='L52' name='L52'></a>  52 <em class='comment'> * OF RESULTS OR RESULTS OBTAINED FROM USE OF THIS SOFTWARE. CARNEGIE</em>
+<a id='L53' name='L53'></a>  53 <em class='comment'> * MELLON UNIVERSITY DOES NOT MAKE ANY WARRANTY OF ANY KIND WITH RESPECT</em>
+<a id='L54' name='L54'></a>  54 <em class='comment'> * TO FREEDOM FROM PATENT, TRADEMARK, OR COPYRIGHT INFRINGEMENT.</em>
+<a id='L55' name='L55'></a>  55 <em class='comment'> */</em>
+<a id='L56' name='L56'></a>  56 
+<a id='L57' name='L57'></a>  57 <em class='comment'>/*</em>
+<a id='L58' name='L58'></a>  58 <em class='comment'> * DiskSim Storage Subsystem Simulation Environment</em>
+<a id='L59' name='L59'></a>  59 <em class='comment'> * Authors: Greg Ganger, Bruce Worthington, Yale Patt</em>
+<a id='L60' name='L60'></a>  60 <em class='comment'> *</em>
+<a id='L61' name='L61'></a>  61 <em class='comment'> * Copyright (C) 1993, 1995, 1997 The Regents of the University of Michigan </em>
+<a id='L62' name='L62'></a>  62 <em class='comment'> *</em>
+<a id='L63' name='L63'></a>  63 <em class='comment'> * This software is being provided by the copyright holders under the</em>
+<a id='L64' name='L64'></a>  64 <em class='comment'> * following license. By obtaining, using and/or copying this software,</em>
+<a id='L65' name='L65'></a>  65 <em class='comment'> * you agree that you have read, understood, and will comply with the</em>
+<a id='L66' name='L66'></a>  66 <em class='comment'> * following terms and conditions:</em>
+<a id='L67' name='L67'></a>  67 <em class='comment'> *</em>
+<a id='L68' name='L68'></a>  68 <em class='comment'> * Permission to use, copy, modify, distribute, and sell this software</em>
+<a id='L69' name='L69'></a>  69 <em class='comment'> * and its documentation for any purpose and without fee or royalty is</em>
+<a id='L70' name='L70'></a>  70 <em class='comment'> * hereby granted, provided that the full text of this NOTICE appears on</em>
+<a id='L71' name='L71'></a>  71 <em class='comment'> * ALL copies of the software and documentation or portions thereof,</em>
+<a id='L72' name='L72'></a>  72 <em class='comment'> * including modifications, that you make.</em>
+<a id='L73' name='L73'></a>  73 <em class='comment'> *</em>
+<a id='L74' name='L74'></a>  74 <em class='comment'> * THIS SOFTWARE IS PROVIDED "AS IS," AND COPYRIGHT HOLDERS MAKE NO</em>
+<a id='L75' name='L75'></a>  75 <em class='comment'> * REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED. BY WAY OF EXAMPLE,</em>
+<a id='L76' name='L76'></a>  76 <em class='comment'> * BUT NOT LIMITATION, COPYRIGHT HOLDERS MAKE NO REPRESENTATIONS OR</em>
+<a id='L77' name='L77'></a>  77 <em class='comment'> * WARRANTIES OF MERCHANTABILITY OR FITNESS FOR ANY PARTICULAR PURPOSE OR</em>
+<a id='L78' name='L78'></a>  78 <em class='comment'> * THAT THE USE OF THE SOFTWARE OR DOCUMENTATION WILL NOT INFRINGE ANY</em>
+<a id='L79' name='L79'></a>  79 <em class='comment'> * THIRD PARTY PATENTS, COPYRIGHTS, TRADEMARKS OR OTHER RIGHTS. COPYRIGHT</em>
+<a id='L80' name='L80'></a>  80 <em class='comment'> * HOLDERS WILL BEAR NO LIABILITY FOR ANY USE OF THIS SOFTWARE OR</em>
+<a id='L81' name='L81'></a>  81 <em class='comment'> * DOCUMENTATION.</em>
+<a id='L82' name='L82'></a>  82 <em class='comment'> *</em>
+<a id='L83' name='L83'></a>  83 <em class='comment'> *  This software is provided AS IS, WITHOUT REPRESENTATION FROM THE</em>
+<a id='L84' name='L84'></a>  84 <em class='comment'> * UNIVERSITY OF MICHIGAN AS TO ITS FITNESS FOR ANY PURPOSE, AND</em>
+<a id='L85' name='L85'></a>  85 <em class='comment'> * WITHOUT WARRANTY BY THE UNIVERSITY OF MICHIGAN OF ANY KIND, EITHER</em>
+<a id='L86' name='L86'></a>  86 <em class='comment'> * EXPRESSED OR IMPLIED, INCLUDING WITHOUT LIMITATION THE IMPLIED</em>
+<a id='L87' name='L87'></a>  87 <em class='comment'> * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE REGENTS</em>
+<a id='L88' name='L88'></a>  88 <em class='comment'> * OF THE UNIVERSITY OF MICHIGAN SHALL NOT BE LIABLE FOR ANY DAMAGES,</em>
+<a id='L89' name='L89'></a>  89 <em class='comment'> * INCLUDING SPECIAL , INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES,</em>
+<a id='L90' name='L90'></a>  90 <em class='comment'> * WITH RESPECT TO ANY CLAIM ARISING OUT OF OR IN CONNECTION WITH THE</em>
+<a id='L91' name='L91'></a>  91 <em class='comment'> * USE OF OR IN CONNECTION WITH THE USE OF THE SOFTWARE, EVEN IF IT HAS</em>
+<a id='L92' name='L92'></a>  92 <em class='comment'> * BEEN OR IS HEREAFTER ADVISED OF THE POSSIBILITY OF SUCH DAMAGES</em>
+<a id='L93' name='L93'></a>  93 <em class='comment'> *</em>
+<a id='L94' name='L94'></a>  94 <em class='comment'> * The names and trademarks of copyright holders or authors may NOT be</em>
+<a id='L95' name='L95'></a>  95 <em class='comment'> * used in advertising or publicity pertaining to the software without</em>
+<a id='L96' name='L96'></a>  96 <em class='comment'> * specific, written prior permission. Title to copyright in this software</em>
+<a id='L97' name='L97'></a>  97 <em class='comment'> * and any associated documentation will at all times remain with copyright</em>
+<a id='L98' name='L98'></a>  98 <em class='comment'> * holders.</em>
+<a id='L99' name='L99'></a>  99 <em class='comment'> */</em>
+<a id='L100' name='L100'></a> 100 
+<a id='L101' name='L101'></a> 101 <em class='sharp'>#ifndef</em> <a href='../S/283.html#L102' title='Defined at 102 in src/disksim_global.h.'>DISKSIM_GLOBAL_H</a>
+<a id='L102' name='L102'></a> 102 <em class='sharp'>#define</em> <a href='../S/283.html#L101' title='Referred from 101 in src/disksim_global.h.'>DISKSIM_GLOBAL_H</a>
+<a id='L103' name='L103'></a> 103 
+<a id='L104' name='L104'></a> 104 <em class='sharp'>#include</em> "<a href='217.html'>disksim_rand48.h</a>"
+<a id='L105' name='L105'></a> 105 <em class='sharp'>#include</em> "<a href='197.html'>disksim_malloc.h</a>"
+<a id='L106' name='L106'></a> 106 <em class='sharp'>#include</em> "<a href='202.html'>disksim_bitstring.h</a>"
+<a id='L107' name='L107'></a> 107 <em class='sharp'>#include</em> "<a href='265.html'>inline.h</a>"
+<a id='L108' name='L108'></a> 108 
+<a id='L109' name='L109'></a> 109 <em class='sharp'>#include</em> &lt;sys/types.h&gt;
+<a id='L110' name='L110'></a> 110 <em class='sharp'>#include</em> &lt;stdio.h&gt;
+<a id='L111' name='L111'></a> 111 
+<a id='L112' name='L112'></a> 112 <em class='sharp'>#ifdef</em> _WIN32
+<a id='L113' name='L113'></a> 113 <em class='sharp'>#define</em> <a href='../R/2221.html' title='Multiple referred from 17 places.'>u_int</a>           <strong class='reserved'>unsigned</strong> <strong class='reserved'>int</strong>
+<a id='L114' name='L114'></a> 114 <em class='sharp'>#define</em> u_int64_t       <strong class='reserved'>unsigned</strong> __int64
+<a id='L115' name='L115'></a> 115 <em class='sharp'>#endif</em>
+<a id='L116' name='L116'></a> 116 
+<a id='L117' name='L117'></a> 117 <em class='comment'>/* must enable this on Suns and Alphas */</em>
+<a id='L118' name='L118'></a> 118 <em class='sharp'>#ifndef</em> _WIN32
+<a id='L119' name='L119'></a> 119 <em class='sharp'>#define</em> <a href='../R/2222.html' title='Multiple referred from 16 places.'>u_int32_t</a>       <strong class='reserved'>unsigned</strong> <strong class='reserved'>int</strong>
+<a id='L120' name='L120'></a> 120 <em class='sharp'>#define</em> <a href='../R/1360.html' title='Multiple referred from 13 places.'>int32_t</a>         <strong class='reserved'>int</strong>
+<a id='L121' name='L121'></a> 121 <em class='sharp'>#else</em>
+<a id='L122' name='L122'></a> 122 <em class='sharp'>#define</em> <a href='../R/2222.html' title='Multiple referred from 16 places.'>u_int32_t</a>       <strong class='reserved'>unsigned</strong> <strong class='reserved'>long</strong>
+<a id='L123' name='L123'></a> 123 <em class='sharp'>#define</em> <a href='../R/1360.html' title='Multiple referred from 13 places.'>int32_t</a>         <strong class='reserved'>long</strong>
+<a id='L124' name='L124'></a> 124 <em class='sharp'>#endif</em>
+<a id='L125' name='L125'></a> 125 
+<a id='L126' name='L126'></a> 126 <em class='sharp'>#ifndef</em> _WIN32
+<a id='L127' name='L127'></a> 127 <em class='sharp'>#define</em> <a href='../R/573.html' title='Multiple referred from 2 places.'>SUPPORT_CHECKPOINTS</a>
+<a id='L128' name='L128'></a> 128 <em class='sharp'>#endif</em>
+<a id='L129' name='L129'></a> 129 
+<a id='L130' name='L130'></a> 130 <em class='sharp'>#include</em> &lt;stdlib.h&gt;
+<a id='L131' name='L131'></a> 131 <em class='sharp'>#include</em> &lt;string.h&gt;
+<a id='L132' name='L132'></a> 132 <em class='sharp'>#include</em> &lt;math.h&gt;
+<a id='L133' name='L133'></a> 133 <em class='sharp'>#include</em> &lt;time.h&gt;
+<a id='L134' name='L134'></a> 134 
+<a id='L135' name='L135'></a> 135 <em class='sharp'>#define</em> DISKSIM_time()          time(NULL)
+<a id='L136' name='L136'></a> 136 
+<a id='L137' name='L137'></a> 137 <em class='sharp'>#ifndef</em> <a href='../S/283.html#L138' title='Defined at 138 in src/disksim_global.h.'>MAXINT</a>
+<a id='L138' name='L138'></a> 138 <em class='sharp'>#define</em> <a href='../S/283.html#L137' title='Referred from 137 in src/disksim_global.h.'>MAXINT</a>  0x7FFFFFFF
+<a id='L139' name='L139'></a> 139 <em class='sharp'>#endif</em>
+<a id='L140' name='L140'></a> 140 
+<a id='L141' name='L141'></a> 141 <em class='sharp'>#include</em> "<a href='199.html'>disksim_assertlib.h</a>"
+<a id='L142' name='L142'></a> 142 
+<a id='L143' name='L143'></a> 143 <em class='sharp'>#ifdef</em> __cplusplus
+<a id='L144' name='L144'></a> 144 <strong class='reserved'>extern</strong> "C" <em class='brace'>{</em>
+<a id='L145' name='L145'></a> 145 <strong class='reserved'>typedef</strong>      <strong class='reserved'>unsigned</strong> <a href='../R/2221.html' title='Multiple referred from 17 places.'>u_int</a>;
+<a id='L146' name='L146'></a> 146 <em class='sharp'>#endif</em>
+<a id='L147' name='L147'></a> 147 
+<a id='L148' name='L148'></a> 148 <em class='sharp'>#define</em> <a href='../R/3.html' title='Multiple referred from 5 places.'>ALLOCSIZE</a>       8192
+<a id='L149' name='L149'></a> 149 
+<a id='L150' name='L150'></a> 150 <em class='sharp'>#ifndef</em> <a href='../D/803.html' title='Multiple defined in 2 places.'>TRUE</a>
+<a id='L151' name='L151'></a> 151 <em class='sharp'>#define</em> <a href='../R/601.html' title='Multiple referred from 181 places.'>TRUE</a>    1
+<a id='L152' name='L152'></a> 152 <em class='sharp'>#endif</em>
+<a id='L153' name='L153'></a> 153 <em class='sharp'>#ifndef</em> <a href='../D/374.html' title='Multiple defined in 2 places.'>FALSE</a>
+<a id='L154' name='L154'></a> 154 <em class='sharp'>#define</em> <a href='../R/287.html' title='Multiple referred from 212 places.'>FALSE</a>   0
+<a id='L155' name='L155'></a> 155 <em class='sharp'>#endif</em>
+<a id='L156' name='L156'></a> 156 
+<a id='L157' name='L157'></a> 157 <em class='sharp'>#define</em> <a href='../S/222.html#L271' title='Referred from 271 in src/disksim_cachemem.c.'>BITS_PER_INT_MASK</a>       0x0000001F
+<a id='L158' name='L158'></a> 158 <em class='sharp'>#define</em> <a href='../S/222.html#L271' title='Referred from 271 in src/disksim_cachemem.c.'>INV_BITS_PER_INT_MASK</a>   0xFFFFFFE0
+<a id='L159' name='L159'></a> 159 
+<a id='L160' name='L160'></a> 160 <em class='sharp'>#define</em> <a href='../R/615.html' title='Multiple referred from 4 places.'>_BIG_ENDIAN</a>     1
+<a id='L161' name='L161'></a> 161 <em class='sharp'>#define</em> <a href='../R/637.html' title='Multiple referred from 4 places.'>_LITTLE_ENDIAN</a>  2
+<a id='L162' name='L162'></a> 162 
+<a id='L163' name='L163'></a> 163 <em class='comment'>/* Trace Formats */</em>
+<a id='L164' name='L164'></a> 164 
+<a id='L165' name='L165'></a> 165 <em class='sharp'>#define</em> <a href='../R/6.html' title='Multiple referred from 3 places.'>ASCII</a>           1
+<a id='L166' name='L166'></a> 166 <em class='sharp'>#define</em> <a href='../R/301.html' title='Multiple referred from 5 places.'>HPL</a>             2
+<a id='L167' name='L167'></a> 167 <em class='sharp'>#define</em> <a href='../R/110.html' title='Multiple referred from 2 places.'>DEC</a>             3
+<a id='L168' name='L168'></a> 168 <em class='sharp'>#define</em> <a href='../R/605.html' title='Multiple referred from 7 places.'>VALIDATE</a>        4
+<a id='L169' name='L169'></a> 169 <em class='sharp'>#define</em> <a href='../R/485.html' title='Multiple referred from 2 places.'>RAW</a>             5
+<a id='L170' name='L170'></a> 170 <em class='sharp'>#define</em> ATABUS          6
+<a id='L171' name='L171'></a> 171 <em class='sharp'>#define</em> IPEAK           7
+<a id='L172' name='L172'></a> 172 <em class='sharp'>#define</em> POSTGRES        8
+<a id='L173' name='L173'></a> 173 <em class='sharp'>#define</em> <a href='../R/283.html' title='Multiple referred from 2 places.'>EMCSYMM</a>         9
+<a id='L174' name='L174'></a> 174 <em class='sharp'>#define</em> <a href='../R/282.html' title='Multiple referred from 2 places.'>EMCBACKEND</a>      10
+<a id='L175' name='L175'></a> 175 <em class='sharp'>#define</em> <a href='../R/15.html' title='Multiple referred from 2 places.'>BATCH</a>           11
+<a id='L176' name='L176'></a> 176 <em class='sharp'>#define</em> <a href='../S/264.html#L135' title='Referred from 135 in src/disksim_iotrace.c.'>DEFAULT</a>         <a href='../S/283.html#L165' title='Defined at 165 in src/disksim_global.h.'>ASCII</a>
+<a id='L177' name='L177'></a> 177 
+<a id='L178' name='L178'></a> 178 <em class='comment'>/* Time conversions */</em>
+<a id='L179' name='L179'></a> 179 
+<a id='L180' name='L180'></a> 180 <em class='sharp'>#define</em> <a href='../R/419.html' title='Multiple referred from 2 places.'>MILLI</a>   1000
+<a id='L181' name='L181'></a> 181 <em class='sharp'>#define</em> MICRO   1000000
+<a id='L182' name='L182'></a> 182 <em class='sharp'>#define</em> NANO    1000000000
+<a id='L183' name='L183'></a> 183 
+<a id='L184' name='L184'></a> 184 <em class='sharp'>#define</em> SECONDS_PER_MINUTE      60
+<a id='L185' name='L185'></a> 185 <em class='sharp'>#define</em> SECONDS_PER_HOUR        3600
+<a id='L186' name='L186'></a> 186 <em class='sharp'>#define</em> SECONDS_PER_DAY         86400
+<a id='L187' name='L187'></a> 187 
+<a id='L188' name='L188'></a> 188 <em class='comment'>/* Flags components */</em>
+<a id='L189' name='L189'></a> 189 
+<a id='L190' name='L190'></a> 190 <em class='sharp'>#include</em> "<a href='277.html'>disksim_reqflags.h</a>"
+<a id='L191' name='L191'></a> 191 
+<a id='L192' name='L192'></a> 192 <em class='sharp'>#define</em> <a href='../R/613.html' title='Multiple referred from 7 places.'>WRITE</a>           <a href='../S/277.html#L36' title='Defined at 36 in src/disksim_reqflags.h.'>DISKSIM_WRITE</a>           
+<a id='L193' name='L193'></a> 193 <em class='sharp'>#define</em> <a href='../R/486.html' title='Multiple referred from 212 places.'>READ</a>            <a href='../S/277.html#L37' title='Defined at 37 in src/disksim_reqflags.h.'>DISKSIM_READ</a>            
+<a id='L194' name='L194'></a> 194 <em class='sharp'>#define</em> <a href='../R/590.html' title='Multiple referred from 36 places.'>TIME_CRITICAL</a>   <a href='../S/277.html#L38' title='Defined at 38 in src/disksim_reqflags.h.'>DISKSIM_TIME_CRITICAL</a>   
+<a id='L195' name='L195'></a> 195 <em class='sharp'>#define</em> <a href='../R/591.html' title='Multiple referred from 19 places.'>TIME_LIMITED</a>    <a href='../S/277.html#L39' title='Defined at 39 in src/disksim_reqflags.h.'>DISKSIM_TIME_LIMITED</a>    
+<a id='L196' name='L196'></a> 196 <em class='sharp'>#define</em> <a href='../R/587.html' title='Multiple referred from 6 places.'>TIMED_OUT</a>       <a href='../S/277.html#L40' title='Defined at 40 in src/disksim_reqflags.h.'>DISKSIM_TIMED_OUT</a>       
+<a id='L197' name='L197'></a> 197 <em class='sharp'>#define</em> <a href='../R/296.html' title='Multiple referred from 3 places.'>HALF_OUT</a>        <a href='../S/277.html#L41' title='Defined at 41 in src/disksim_reqflags.h.'>DISKSIM_HALF_OUT</a>        
+<a id='L198' name='L198'></a> 198 <em class='sharp'>#define</em> <a href='../R/375.html' title='Multiple referred from 3 places.'>MAPPED</a>          <a href='../S/277.html#L42' title='Defined at 42 in src/disksim_reqflags.h.'>DISKSIM_MAPPED</a>          
+<a id='L199' name='L199'></a> 199 <em class='sharp'>#define</em> READ_AFTR_WRITE <a href='../S/277.html#L43' title='Defined at 43 in src/disksim_reqflags.h.'>DISKSIM_READ_AFTR_WRITE</a> 
+<a id='L200' name='L200'></a> 200 <em class='sharp'>#define</em> <a href='../R/576.html' title='Multiple referred from 2 places.'>SYNCHRONOUS</a>     <a href='../S/277.html#L44' title='Defined at 44 in src/disksim_reqflags.h.'>DISKSIM_SYNC</a>
+<a id='L201' name='L201'></a> 201 <em class='sharp'>#define</em> <a href='../R/13.html' title='Multiple referred from 2 places.'>ASYNCHRONOUS</a>    <a href='../S/277.html#L45' title='Defined at 45 in src/disksim_reqflags.h.'>DISKSIM_ASYNC</a>
+<a id='L202' name='L202'></a> 202 <em class='sharp'>#define</em> IO_FLAG_PAGEIO  <a href='../S/277.html#L46' title='Defined at 46 in src/disksim_reqflags.h.'>DISKSIM_IO_FLAG_PAGEIO</a>  
+<a id='L203' name='L203'></a> 203 <em class='sharp'>#define</em> <a href='../R/515.html' title='Multiple referred from 5 places.'>SEQ</a>             <a href='../S/277.html#L47' title='Defined at 47 in src/disksim_reqflags.h.'>DISKSIM_SEQ</a>             
+<a id='L204' name='L204'></a> 204 <em class='sharp'>#define</em> <a href='../R/366.html' title='Multiple referred from 4 places.'>LOCAL</a>           <a href='../S/277.html#L48' title='Defined at 48 in src/disksim_reqflags.h.'>DISKSIM_LOCAL</a>        
+<a id='L205' name='L205'></a> 205 <em class='sharp'>#define</em> <a href='../S/264.html#L629' title='Referred from 629 in src/disksim_iotrace.c.'>BATCH_COMPLETE</a>  <a href='../S/277.html#L49' title='Defined at 49 in src/disksim_reqflags.h.'>DISKSIM_BATCH_COMPLETE</a>  
+<a id='L206' name='L206'></a> 206 
+<a id='L207' name='L207'></a> 207 <em class='comment'>/* Event Type Ranges */</em>
+<a id='L208' name='L208'></a> 208 
+<a id='L209' name='L209'></a> 209 <em class='sharp'>#define</em> <a href='../R/431.html' title='Multiple referred from 27 places.'>NULL_EVENT</a>              0
+<a id='L210' name='L210'></a> 210 <em class='sharp'>#define</em> <a href='../S/272.html#L796' title='Referred from 796 in src/disksim.c.'>PF_MIN_EVENT</a>            1
+<a id='L211' name='L211'></a> 211 <em class='sharp'>#define</em> <a href='../S/272.html#L796' title='Referred from 796 in src/disksim.c.'>PF_MAX_EVENT</a>            97
+<a id='L212' name='L212'></a> 212 <em class='sharp'>#define</em> <a href='../R/318.html' title='Multiple referred from 4 places.'>INTR_EVENT</a>              98
+<a id='L213' name='L213'></a> 213 <em class='sharp'>#define</em> <a href='../R/315.html' title='Multiple referred from 4 places.'>INTEND_EVENT</a>            99
+<a id='L214' name='L214'></a> 214 <em class='sharp'>#define</em> <a href='../R/352.html' title='Multiple referred from 2 places.'>IO_MIN_EVENT</a>            100
+<a id='L215' name='L215'></a> 215 <em class='sharp'>#define</em> <a href='../R/351.html' title='Multiple referred from 2 places.'>IO_MAX_EVENT</a>            120
+<a id='L216' name='L216'></a> 216 <em class='sharp'>#define</em> <a href='../R/588.html' title='Multiple referred from 3 places.'>TIMER_EXPIRED</a>           121
+<a id='L217' name='L217'></a> 217 <em class='sharp'>#define</em> <a href='../R/87.html' title='Multiple referred from 2 places.'>CHECKPOINT</a>              122
+<a id='L218' name='L218'></a> 218 <em class='sharp'>#define</em> <a href='../S/272.html#L823' title='Referred from 823 in src/disksim.c.'>STOP_SIM</a>                123
+<a id='L219' name='L219'></a> 219 <em class='sharp'>#define</em> <a href='../S/272.html#L827' title='Referred from 827 in src/disksim.c.'>EXIT_DISKSIM</a>            124
+<a id='L220' name='L220'></a> 220 <em class='sharp'>#define</em> <a href='../S/272.html#L805' title='Referred from 805 in src/disksim.c.'>MEMS_MIN_EVENT</a>          200
+<a id='L221' name='L221'></a> 221 <em class='sharp'>#define</em> <a href='../S/272.html#L806' title='Referred from 806 in src/disksim.c.'>MEMS_MAX_EVENT</a>          220
+<a id='L222' name='L222'></a> 222 <em class='sharp'>#define</em> <a href='../S/272.html#L811' title='Referred from 811 in src/disksim.c.'>SSD_MIN_EVENT</a>           300
+<a id='L223' name='L223'></a> 223 <em class='sharp'>#define</em> <a href='../S/272.html#L812' title='Referred from 812 in src/disksim.c.'>SSD_MAX_EVENT</a>           320
+<a id='L224' name='L224'></a> 224 
+<a id='L225' name='L225'></a> 225 <em class='comment'>/* Interrupt vector types */</em>
+<a id='L226' name='L226'></a> 226 
+<a id='L227' name='L227'></a> 227 <em class='sharp'>#define</em> <a href='../R/88.html' title='Multiple referred from 4 places.'>CLOCK_INTERRUPT</a>         100
+<a id='L228' name='L228'></a> 228 <em class='sharp'>#define</em> SUBCLOCK_INTERRUPT      101
+<a id='L229' name='L229'></a> 229 <em class='sharp'>#define</em> <a href='../R/348.html' title='Multiple referred from 5 places.'>IO_INTERRUPT</a>            102
+<a id='L230' name='L230'></a> 230 <em class='sharp'>#define</em> CPUSWAP_INTERRUPT       103
+<a id='L231' name='L231'></a> 231 
+<a id='L232' name='L232'></a> 232 <em class='sharp'>#define</em> MSECS_PER_MIN           60000
+<a id='L233' name='L233'></a> 233 
+<a id='L234' name='L234'></a> 234 <em class='comment'>/* </em>
+<a id='L235' name='L235'></a> 235 <em class='comment'>   this threshold allows some difference between disksim's</em>
+<a id='L236' name='L236'></a> 236 <em class='comment'>   internal time and simos' time.  it was determined by</em>
+<a id='L237' name='L237'></a> 237 <em class='comment'>   trial and error and may require some adjustment.</em>
+<a id='L238' name='L238'></a> 238 <em class='comment'>*/</em>
+<a id='L239' name='L239'></a> 239 <em class='sharp'>#define</em> <a href='../S/272.html#L288' title='Referred from 288 in src/disksim.c.'>DISKSIM_TIME_THRESHOLD</a>  0.0013
+<a id='L240' name='L240'></a> 240 
+<a id='L241' name='L241'></a> 241 <strong class='reserved'>typedef</strong> <strong class='reserved'>union</strong> <em class='brace'>{</em>
+<a id='L242' name='L242'></a> 242    <a href='../D/2554.html' title='Multiple defined in 3 places.'>u_int32_t</a>    value;
+<a id='L243' name='L243'></a> 243    <strong class='reserved'>char</strong>         byte[4];
+<a id='L244' name='L244'></a> 244 <em class='brace'>}</em> <a href='../R/1362.html' title='Multiple referred from 36 places.'>intchar</a>;
+<a id='L245' name='L245'></a> 245 
+<a id='L246' name='L246'></a> 246 <em class='sharp'>#define</em> <a href='../R/585.html' title='Multiple referred from 25 places.'>StaticAssert</a>(c) <strong class='reserved'>switch</strong> (c) <strong class='reserved'>case</strong> 0: <strong class='reserved'>case</strong> (c):
+<a id='L247' name='L247'></a> 247 
+<a id='L248' name='L248'></a> 248 <strong class='reserved'>typedef</strong> <strong class='reserved'>struct</strong> <a href='../R/1260.html' title='Multiple referred from 3 places.'>foo</a> <em class='brace'>{</em>
+<a id='L249' name='L249'></a> 249    <strong class='reserved'>double</strong> time;
+<a id='L250' name='L250'></a> 250    <strong class='reserved'>int</strong> type;
+<a id='L251' name='L251'></a> 251    <strong class='reserved'>struct</strong> <a href='../S/283.html#L259' title='Defined at 259 in src/disksim_global.h.'>ev</a> *next;
+<a id='L252' name='L252'></a> 252    <strong class='reserved'>struct</strong> <a href='../S/283.html#L259' title='Defined at 259 in src/disksim_global.h.'>ev</a> *prev;
+<a id='L253' name='L253'></a> 253    <strong class='reserved'>int</strong>    temp;
+<a id='L254' name='L254'></a> 254 <em class='brace'>}</em> <a href='../R/1260.html' title='Multiple referred from 3 places.'>foo</a>;
+<a id='L255' name='L255'></a> 255 
+<a id='L256' name='L256'></a> 256 <em class='sharp'>#define</em> <a href='../R/144.html' title='Multiple referred from 22 places.'>DISKSIM_EVENT_SIZE</a>      128
+<a id='L257' name='L257'></a> 257 <em class='sharp'>#define</em> <a href='../S/283.html#L265' title='Referred from 265 in src/disksim_global.h.'>DISKSIM_EVENT_SPACESIZE</a> (<a href='../S/283.html#L256' title='Defined at 256 in src/disksim_global.h.'>DISKSIM_EVENT_SIZE</a> - <strong class='reserved'>sizeof</strong>(<strong class='reserved'>struct</strong> <a href='../D/1541.html' title='Multiple defined in 2 places.'>foo</a>))
+<a id='L258' name='L258'></a> 258 
+<a id='L259' name='L259'></a> 259 <strong class='reserved'>typedef</strong> <strong class='reserved'>struct</strong> <a href='../R/1235.html' title='Multiple referred from 7 places.'>ev</a> <em class='brace'>{</em>
+<a id='L260' name='L260'></a> 260    <strong class='reserved'>double</strong> time;
+<a id='L261' name='L261'></a> 261    <strong class='reserved'>int</strong> type;
+<a id='L262' name='L262'></a> 262    <strong class='reserved'>struct</strong> <a href='../S/283.html#L259' title='Defined at 259 in src/disksim_global.h.'>ev</a> *next;
+<a id='L263' name='L263'></a> 263    <strong class='reserved'>struct</strong> <a href='../S/283.html#L259' title='Defined at 259 in src/disksim_global.h.'>ev</a> *prev;
+<a id='L264' name='L264'></a> 264    <strong class='reserved'>int</strong>    temp;
+<a id='L265' name='L265'></a> 265    <strong class='reserved'>char</strong> space[<a href='../S/283.html#L257' title='Defined at 257 in src/disksim_global.h.'>DISKSIM_EVENT_SPACESIZE</a>];
+<a id='L266' name='L266'></a> 266 <em class='brace'>}</em> <a href='../R/1236.html' title='Multiple referred from 345 places.'>event</a>;
+<a id='L267' name='L267'></a> 267 
+<a id='L268' name='L268'></a> 268 <strong class='reserved'>typedef</strong> <strong class='reserved'>struct</strong> <a href='../R/1498.html' title='Multiple referred from 5 places.'>ioreq_ev</a> <em class='brace'>{</em>
+<a id='L269' name='L269'></a> 269    <strong class='reserved'>double</strong> time;
+<a id='L270' name='L270'></a> 270    <strong class='reserved'>int</strong>    type;
+<a id='L271' name='L271'></a> 271    <strong class='reserved'>struct</strong> <a href='../S/283.html#L268' title='Defined at 268 in src/disksim_global.h.'>ioreq_ev</a> *next;
+<a id='L272' name='L272'></a> 272    <strong class='reserved'>struct</strong> <a href='../S/283.html#L268' title='Defined at 268 in src/disksim_global.h.'>ioreq_ev</a> *prev;
+<a id='L273' name='L273'></a> 273    <strong class='reserved'>int</strong>    bcount;
+<a id='L274' name='L274'></a> 274    <strong class='reserved'>int</strong>    blkno;
+<a id='L275' name='L275'></a> 275    <a href='../D/2553.html' title='Multiple defined in 2 places.'>u_int</a>  flags;
+<a id='L276' name='L276'></a> 276    <a href='../D/2553.html' title='Multiple defined in 2 places.'>u_int</a>  busno;
+<a id='L277' name='L277'></a> 277    <a href='../D/2553.html' title='Multiple defined in 2 places.'>u_int</a>  slotno;
+<a id='L278' name='L278'></a> 278    <strong class='reserved'>int</strong>    devno;
+<a id='L279' name='L279'></a> 279    <strong class='reserved'>int</strong>    opid;
+<a id='L280' name='L280'></a> 280    <strong class='reserved'>void</strong>  *buf;
+<a id='L281' name='L281'></a> 281    <strong class='reserved'>int</strong>    cause;
+<a id='L282' name='L282'></a> 282    <strong class='reserved'>int</strong>    tempint1;
+<a id='L283' name='L283'></a> 283    <strong class='reserved'>int</strong>    tempint2;
+<a id='L284' name='L284'></a> 284    <strong class='reserved'>void</strong>  *tempptr1;
+<a id='L285' name='L285'></a> 285    <strong class='reserved'>void</strong>  *tempptr2;
+<a id='L286' name='L286'></a> 286    <strong class='reserved'>void</strong>  *mems_sled;     <em class='comment'>/* mems sled associated with a particular event */</em>
+<a id='L287' name='L287'></a> 287    <strong class='reserved'>void</strong>  *mems_reqinfo; <em class='comment'>/* per-request info for mems subsystem */</em>
+<a id='L288' name='L288'></a> 288    <strong class='reserved'>int</strong>    ssd_elem_num;  <em class='comment'>/* SSD: element to which this request went */</em>
+<a id='L289' name='L289'></a> 289    <strong class='reserved'>int</strong>    ssd_gang_num ; <em class='comment'>/* SSD: gang to which this request went */</em>
+<a id='L290' name='L290'></a> 290    <strong class='reserved'>double</strong> start_time;    <em class='comment'>/* temporary; used for memulator timing */</em>
+<a id='L291' name='L291'></a> 291    <strong class='reserved'>int</strong>    batchno;
+<a id='L292' name='L292'></a> 292    <strong class='reserved'>int</strong>    batch_complete;
+<a id='L293' name='L293'></a> 293    <strong class='reserved'>int</strong>    batch_size;
+<a id='L294' name='L294'></a> 294    <strong class='reserved'>struct</strong> <a href='../S/283.html#L268' title='Defined at 268 in src/disksim_global.h.'>ioreq_ev</a> *batch_next;
+<a id='L295' name='L295'></a> 295    <strong class='reserved'>struct</strong> <a href='../S/283.html#L268' title='Defined at 268 in src/disksim_global.h.'>ioreq_ev</a> *batch_prev;
+<a id='L296' name='L296'></a> 296 <em class='brace'>}</em> <a href='../R/1499.html' title='Multiple referred from 753 places.'>ioreq_event</a>;
+<a id='L297' name='L297'></a> 297 
+<a id='L298' name='L298'></a> 298 <strong class='reserved'>typedef</strong> <strong class='reserved'>struct</strong> <a href='../R/2194.html' title='Multiple referred from 3 places.'>timer_ev</a> <em class='brace'>{</em>
+<a id='L299' name='L299'></a> 299    <strong class='reserved'>double</strong> time;
+<a id='L300' name='L300'></a> 300    <strong class='reserved'>int</strong> type;
+<a id='L301' name='L301'></a> 301    <strong class='reserved'>struct</strong> <a href='../S/283.html#L298' title='Defined at 298 in src/disksim_global.h.'>timer_ev</a> *next;
+<a id='L302' name='L302'></a> 302    <strong class='reserved'>struct</strong> <a href='../S/283.html#L298' title='Defined at 298 in src/disksim_global.h.'>timer_ev</a> *prev;
+<a id='L303' name='L303'></a> 303    <strong class='reserved'>void</strong> (**func)(<strong class='reserved'>struct</strong> <a href='../S/283.html#L298' title='Defined at 298 in src/disksim_global.h.'>timer_ev</a> *);
+<a id='L304' name='L304'></a> 304    <strong class='reserved'>int</strong>    val;
+<a id='L305' name='L305'></a> 305    <strong class='reserved'>void</strong>  *ptr;
+<a id='L306' name='L306'></a> 306 <em class='brace'>}</em> <a href='../R/2195.html' title='Multiple referred from 14 places.'>timer_event</a>;
+<a id='L307' name='L307'></a> 307 
+<a id='L308' name='L308'></a> 308 <strong class='reserved'>typedef</strong> <strong class='reserved'>struct</strong> <a href='../R/1366.html' title='Multiple referred from 2 places.'>intr_ev</a> <em class='brace'>{</em>
+<a id='L309' name='L309'></a> 309    <strong class='reserved'>double</strong> time;
+<a id='L310' name='L310'></a> 310    <strong class='reserved'>int</strong>    type;
+<a id='L311' name='L311'></a> 311    <strong class='reserved'>struct</strong> <a href='../S/283.html#L308' title='Defined at 308 in src/disksim_global.h.'>intr_ev</a> * next;
+<a id='L312' name='L312'></a> 312    <strong class='reserved'>struct</strong> <a href='../S/283.html#L308' title='Defined at 308 in src/disksim_global.h.'>intr_ev</a> * prev;
+<a id='L313' name='L313'></a> 313    <strong class='reserved'>int</strong>    vector;
+<a id='L314' name='L314'></a> 314    <strong class='reserved'>int</strong>    oldstate;
+<a id='L315' name='L315'></a> 315    <strong class='reserved'>int</strong>    flags;
+<a id='L316' name='L316'></a> 316    <a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a>  *eventlist;
+<a id='L317' name='L317'></a> 317    <a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a>  *infoptr;
+<a id='L318' name='L318'></a> 318    <strong class='reserved'>double</strong> runtime;
+<a id='L319' name='L319'></a> 319 <em class='brace'>}</em> <a href='../R/1367.html' title='Multiple referred from 36 places.'>intr_event</a>;
+<a id='L320' name='L320'></a> 320 
+<a id='L321' name='L321'></a> 321 
+<a id='L322' name='L322'></a> 322 <em class='comment'>/* place-holding definitions for structure types; placed here because */</em>
+<a id='L323' name='L323'></a> 323 <em class='comment'>/* some compilers can't handle them being inside other structure defs */</em>
+<a id='L324' name='L324'></a> 324 
+<a id='L325' name='L325'></a> 325 <strong class='reserved'>struct</strong> cacheevent;
+<a id='L326' name='L326'></a> 326 <strong class='reserved'>struct</strong> <a href='../S/259.html#L255' title='Defined at 255 in src/disksim_ioqueue.h.'>ioq</a>;
+<a id='L327' name='L327'></a> 327 <strong class='reserved'>struct</strong> <a href='../S/255.html#L273' title='Defined at 273 in src/disksim_iosim.h.'>iosim_info</a>;
+<a id='L328' name='L328'></a> 328 <strong class='reserved'>struct</strong> <a href='../S/223.html#L79' title='Defined at 79 in src/disksim_device.h.'>device_info</a>;
+<a id='L329' name='L329'></a> 329 <strong class='reserved'>struct</strong> <a href='../S/258.html#L475' title='Defined at 475 in src/disksim_disk.h.'>disk_info</a>;
+<a id='L330' name='L330'></a> 330 <strong class='reserved'>struct</strong> <a href='../S/275.html#L141' title='Defined at 141 in src/disksim_simpledisk.h.'>simpledisk_info</a>;
+<a id='L331' name='L331'></a> 331 <strong class='reserved'>struct</strong> <a href='../S/30.html#L238' title='Defined at 238 in memsmodel/mems_global.h.'>mems_info</a>;
+<a id='L332' name='L332'></a> 332 <strong class='reserved'>struct</strong> <a href='../S/218.html#L160' title='Defined at 160 in src/disksim_iodriver.h.'>iodriver_info</a>;
+<a id='L333' name='L333'></a> 333 <strong class='reserved'>struct</strong> <a href='../S/262.html#L133' title='Defined at 133 in src/disksim_bus.h.'>businfo</a>;
+<a id='L334' name='L334'></a> 334 <strong class='reserved'>struct</strong> <a href='../S/284.html#L176' title='Defined at 176 in src/disksim_ctlr.h.'>ctlrinfo</a>;
+<a id='L335' name='L335'></a> 335 <strong class='reserved'>struct</strong> <a href='../S/208.html#L259' title='Defined at 259 in src/disksim_pfsim.h.'>pf_info</a>;
+<a id='L336' name='L336'></a> 336 <strong class='reserved'>struct</strong> <a href='../S/213.html#L158' title='Defined at 158 in src/disksim_synthio.h.'>synthio_info</a>;
+<a id='L337' name='L337'></a> 337 <strong class='reserved'>struct</strong> <a href='../S/280.html#L65' title='Defined at 65 in src/disksim_iotrace.h.'>iotrace_info</a>;
+<a id='L338' name='L338'></a> 338 <strong class='reserved'>struct</strong> <a href='../S/193.html#L88' title='Defined at 88 in src/disksim_rand48.c.'>rand48_info</a>;
+<a id='L339' name='L339'></a> 339 
+<a id='L340' name='L340'></a> 340 <strong class='reserved'>typedef</strong> <a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a>*(*disksim_iodone_notify_t)(<a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *, <strong class='reserved'>void</strong> *ctx);
+<a id='L341' name='L341'></a> 341 
+<a id='L342' name='L342'></a> 342 <strong class='reserved'>typedef</strong> <strong class='reserved'>struct</strong> <a href='../R/1105.html' title='Multiple referred from 605 places.'>disksim</a> <em class='brace'>{</em>
+<a id='L343' name='L343'></a> 343    <strong class='reserved'>void</strong> * startaddr;
+<a id='L344' name='L344'></a> 344    <strong class='reserved'>int</strong>    totallength;
+<a id='L345' name='L345'></a> 345    <strong class='reserved'>int</strong>    curroffset;
+<a id='L346' name='L346'></a> 346    <strong class='reserved'>int</strong>    totalreqs;
+<a id='L347' name='L347'></a> 347    <strong class='reserved'>int</strong>    closedios;
+<a id='L348' name='L348'></a> 348    <strong class='reserved'>double</strong> closedthinktime;
+<a id='L349' name='L349'></a> 349    <strong class='reserved'>int</strong>    warmup_iocnt;
+<a id='L350' name='L350'></a> 350    <strong class='reserved'>double</strong> <a href='../S/283.html#L437' title='Defined at 437 in src/disksim_global.h.'>warmuptime</a>;
+<a id='L351' name='L351'></a> 351    <a href='../S/283.html#L306' title='Defined at 306 in src/disksim_global.h.'>timer_event</a> *warmup_event;
+<a id='L352' name='L352'></a> 352    <strong class='reserved'>double</strong> <a href='../S/283.html#L438' title='Defined at 438 in src/disksim_global.h.'>simtime</a>;
+<a id='L353' name='L353'></a> 353    <strong class='reserved'>int</strong>    checkpoint_disable;
+<a id='L354' name='L354'></a> 354    <strong class='reserved'>int</strong>    checkpoint_iocnt;
+<a id='L355' name='L355'></a> 355    <strong class='reserved'>double</strong> checkpoint_interval;
+<a id='L356' name='L356'></a> 356    <a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a> *checkpoint_event;
+<a id='L357' name='L357'></a> 357    <strong class='reserved'>int</strong>    traceformat;
+<a id='L358' name='L358'></a> 358    <strong class='reserved'>int</strong>    endian;
+<a id='L359' name='L359'></a> 359    <strong class='reserved'>int</strong>    traceendian;
+<a id='L360' name='L360'></a> 360    <strong class='reserved'>int</strong>    traceheader;
+<a id='L361' name='L361'></a> 361    <strong class='reserved'>int</strong>    iotrace;
+<a id='L362' name='L362'></a> 362    <strong class='reserved'>int</strong>    synthgen;
+<a id='L363' name='L363'></a> 363    <strong class='reserved'>int</strong>    external_control;
+<a id='L364' name='L364'></a> 364 
+<a id='L365' name='L365'></a> 365    disksim_iodone_notify_t external_io_done_notify;
+<a id='L366' name='L366'></a> 366    <strong class='reserved'>void</strong> *notify_ctx;
+<a id='L367' name='L367'></a> 367 
+<a id='L368' name='L368'></a> 368    FILE * parfile;
+<a id='L369' name='L369'></a> 369    FILE * iotracefile;
+<a id='L370' name='L370'></a> 370    FILE * <a href='../S/283.html#L439' title='Defined at 439 in src/disksim_global.h.'>statdeffile</a>;
+<a id='L371' name='L371'></a> 371    FILE * <a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>;
+<a id='L372' name='L372'></a> 372    FILE * <a href='../S/283.html#L441' title='Defined at 441 in src/disksim_global.h.'>outios</a>;
+<a id='L373' name='L373'></a> 373    <strong class='reserved'>char</strong>   iotracefilename[256];
+<a id='L374' name='L374'></a> 374    <strong class='reserved'>char</strong>   outputfilename[256];
+<a id='L375' name='L375'></a> 375    <strong class='reserved'>char</strong>   outiosfilename[256];
+<a id='L376' name='L376'></a> 376    <strong class='reserved'>char</strong>   checkpointfilename[256];
+<a id='L377' name='L377'></a> 377    fpos_t iotracefileposition;
+<a id='L378' name='L378'></a> 378    fpos_t outputfileposition;
+<a id='L379' name='L379'></a> 379    fpos_t outiosfileposition;
+<a id='L380' name='L380'></a> 380    <a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a> *intq;
+<a id='L381' name='L381'></a> 381    <a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a> *intqhint;
+<a id='L382' name='L382'></a> 382    <a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a> *extraq;
+<a id='L383' name='L383'></a> 383    <strong class='reserved'>int</strong>    intqlen;
+<a id='L384' name='L384'></a> 384    <strong class='reserved'>int</strong>    extraqlen;
+<a id='L385' name='L385'></a> 385    <strong class='reserved'>int</strong>    stop_sim;
+<a id='L386' name='L386'></a> 386    <strong class='reserved'>int</strong>    seedval;
+<a id='L387' name='L387'></a> 387    <strong class='reserved'>double</strong> lastphystime;
+<a id='L388' name='L388'></a> 388 
+<a id='L389' name='L389'></a> 389 <em class='comment'>/* call-back indirections for allowing checkpoint restores to deal with */</em>
+<a id='L390' name='L390'></a> 390 <em class='comment'>/* functions whose addresses change on recompilation.                   */</em>
+<a id='L391' name='L391'></a> 391    <strong class='reserved'>void</strong>         (*issuefunc_ctlrsmart)     (<strong class='reserved'>void</strong> *, <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *);
+<a id='L392' name='L392'></a> 392    <strong class='reserved'>struct</strong> <a href='../S/259.html#L255' title='Defined at 255 in src/disksim_ioqueue.h.'>ioq</a> * (*queuefind_ctlrsmart)     (<strong class='reserved'>void</strong> *, <strong class='reserved'>int</strong>);
+<a id='L393' name='L393'></a> 393    <strong class='reserved'>void</strong>         (*wakeupfunc_ctlrsmart)    (<strong class='reserved'>void</strong> *, <strong class='reserved'>struct</strong> cacheevent *);
+<a id='L394' name='L394'></a> 394    <strong class='reserved'>void</strong>         (*donefunc_ctlrsmart_read) (<strong class='reserved'>void</strong> *, <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *);
+<a id='L395' name='L395'></a> 395    <strong class='reserved'>void</strong>         (*donefunc_ctlrsmart_write)(<strong class='reserved'>void</strong> *, <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *);
+<a id='L396' name='L396'></a> 396    <strong class='reserved'>void</strong>         (*donefunc_cachemem_empty) (<strong class='reserved'>void</strong> *, <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *);
+<a id='L397' name='L397'></a> 397    <strong class='reserved'>void</strong>         (*donefunc_cachedev_empty) (<strong class='reserved'>void</strong> *, <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *);
+<a id='L398' name='L398'></a> 398    <strong class='reserved'>void</strong>         (*idlework_cachemem)       (<strong class='reserved'>void</strong> *, <strong class='reserved'>int</strong>);
+<a id='L399' name='L399'></a> 399    <strong class='reserved'>void</strong>         (*idlework_cachedev)       (<strong class='reserved'>void</strong> *, <strong class='reserved'>int</strong>);
+<a id='L400' name='L400'></a> 400    <strong class='reserved'>int</strong>          (*concatok_cachemem)       (<strong class='reserved'>void</strong> *, <strong class='reserved'>int</strong>, <strong class='reserved'>int</strong>, <strong class='reserved'>int</strong>, <strong class='reserved'>int</strong>);
+<a id='L401' name='L401'></a> 401    <strong class='reserved'>int</strong>          (*enablement_disk)         (<a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *);
+<a id='L402' name='L402'></a> 402    <strong class='reserved'>void</strong>         (*timerfunc_disksim)       (<a href='../S/283.html#L306' title='Defined at 306 in src/disksim_global.h.'>timer_event</a> *);
+<a id='L403' name='L403'></a> 403    <strong class='reserved'>void</strong>         (*timerfunc_ioqueue)       (<a href='../S/283.html#L306' title='Defined at 306 in src/disksim_global.h.'>timer_event</a> *);
+<a id='L404' name='L404'></a> 404    <strong class='reserved'>void</strong>         (*timerfunc_cachemem)      (<a href='../S/283.html#L306' title='Defined at 306 in src/disksim_global.h.'>timer_event</a> *);
+<a id='L405' name='L405'></a> 405    <strong class='reserved'>void</strong>         (*timerfunc_cachedev)      (<a href='../S/283.html#L306' title='Defined at 306 in src/disksim_global.h.'>timer_event</a> *);
+<a id='L406' name='L406'></a> 406 
+<a id='L407' name='L407'></a> 407 <em class='comment'>/* opaque structures for different modules */</em>
+<a id='L408' name='L408'></a> 408    <strong class='reserved'>struct</strong> <a href='../S/255.html#L273' title='Defined at 273 in src/disksim_iosim.h.'>iosim_info</a> *<a href='../S/255.html#L273' title='Defined at 273 in src/disksim_iosim.h.'>iosim_info</a>;
+<a id='L409' name='L409'></a> 409    <strong class='reserved'>struct</strong> <a href='../S/223.html#L79' title='Defined at 79 in src/disksim_device.h.'>device_info</a> *deviceinfo;
+<a id='L410' name='L410'></a> 410    <strong class='reserved'>struct</strong> <a href='../S/258.html#L475' title='Defined at 475 in src/disksim_disk.h.'>disk_info</a> *diskinfo;
+<a id='L411' name='L411'></a> 411    <strong class='reserved'>struct</strong> <a href='../S/275.html#L141' title='Defined at 141 in src/disksim_simpledisk.h.'>simpledisk_info</a> *simplediskinfo;
+<a id='L412' name='L412'></a> 412    <strong class='reserved'>struct</strong> <a href='../S/30.html#L238' title='Defined at 238 in memsmodel/mems_global.h.'>mems_info</a> *memsinfo;
+<a id='L413' name='L413'></a> 413    <strong class='reserved'>struct</strong> <a href='../D/2385.html' title='Multiple defined in 2 places.'>ssd_info</a> *ssdinfo;  <em class='comment'>/* SSD: ssd specific plugin */</em>
+<a id='L414' name='L414'></a> 414    <strong class='reserved'>struct</strong> <a href='../S/218.html#L160' title='Defined at 160 in src/disksim_iodriver.h.'>iodriver_info</a> *<a href='../S/218.html#L160' title='Defined at 160 in src/disksim_iodriver.h.'>iodriver_info</a>;
+<a id='L415' name='L415'></a> 415    <strong class='reserved'>struct</strong> <a href='../S/262.html#L133' title='Defined at 133 in src/disksim_bus.h.'>businfo</a> *<a href='../S/262.html#L133' title='Defined at 133 in src/disksim_bus.h.'>businfo</a>;
+<a id='L416' name='L416'></a> 416    <strong class='reserved'>struct</strong> <a href='../S/284.html#L176' title='Defined at 176 in src/disksim_ctlr.h.'>ctlrinfo</a> *<a href='../S/284.html#L176' title='Defined at 176 in src/disksim_ctlr.h.'>ctlrinfo</a>;
+<a id='L417' name='L417'></a> 417    <strong class='reserved'>struct</strong> <a href='../S/208.html#L259' title='Defined at 259 in src/disksim_pfsim.h.'>pf_info</a> *<a href='../S/208.html#L259' title='Defined at 259 in src/disksim_pfsim.h.'>pf_info</a>;
+<a id='L418' name='L418'></a> 418    <strong class='reserved'>struct</strong> <a href='../S/213.html#L158' title='Defined at 158 in src/disksim_synthio.h.'>synthio_info</a> *<a href='../S/213.html#L158' title='Defined at 158 in src/disksim_synthio.h.'>synthio_info</a>;
+<a id='L419' name='L419'></a> 419    <strong class='reserved'>struct</strong> <a href='../S/280.html#L65' title='Defined at 65 in src/disksim_iotrace.h.'>iotrace_info</a> *<a href='../S/280.html#L65' title='Defined at 65 in src/disksim_iotrace.h.'>iotrace_info</a>;
+<a id='L420' name='L420'></a> 420    <strong class='reserved'>struct</strong> <a href='../S/193.html#L88' title='Defined at 88 in src/disksim_rand48.c.'>rand48_info</a> *<a href='../S/193.html#L88' title='Defined at 88 in src/disksim_rand48.c.'>rand48_info</a>;
+<a id='L421' name='L421'></a> 421 
+<a id='L422' name='L422'></a> 422    <strong class='reserved'>char</strong> **overrides;
+<a id='L423' name='L423'></a> 423    <strong class='reserved'>int</strong> overrides_len;
+<a id='L424' name='L424'></a> 424    <strong class='reserved'>int</strong> verbosity;
+<a id='L425' name='L425'></a> 425 
+<a id='L426' name='L426'></a> 426   <strong class='reserved'>int</strong> tracepipes[2];
+<a id='L427' name='L427'></a> 427   <strong class='reserved'>enum</strong> <em class='brace'>{</em> DISKSIM_MASTER, DISKSIM_SLAVE, DISKSIM_NONE <em class='brace'>}</em> trace_mode;
+<a id='L428' name='L428'></a> 428 
+<a id='L429' name='L429'></a> 429   FILE *exectrace;
+<a id='L430' name='L430'></a> 430   <strong class='reserved'>char</strong> *exectrace_fn;
+<a id='L431' name='L431'></a> 431 
+<a id='L432' name='L432'></a> 432 <em class='brace'>}</em> <a href='../R/1142.html' title='Multiple referred from 3 places.'>disksim_t</a>;
+<a id='L433' name='L433'></a> 433 
+<a id='L434' name='L434'></a> 434 <strong class='reserved'>extern</strong> <a href='../S/283.html#L432' title='Defined at 432 in src/disksim_global.h.'>disksim_t</a> *<a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>;
+<a id='L435' name='L435'></a> 435 
+<a id='L436' name='L436'></a> 436 <em class='comment'>/* remapping #defines for some of the variables in disksim_t */</em>
+<a id='L437' name='L437'></a> 437 <em class='sharp'>#define</em> <a href='../R/2249.html' title='Multiple referred from 22 places.'>warmuptime</a>       (<a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;<a href='../S/283.html#L437' title='Defined at 437 in src/disksim_global.h.'>warmuptime</a>)
+<a id='L438' name='L438'></a> 438 <em class='sharp'>#define</em> <a href='../R/1969.html' title='Multiple referred from 424 places.'>simtime</a>          (<a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;<a href='../S/283.html#L438' title='Defined at 438 in src/disksim_global.h.'>simtime</a>)
+<a id='L439' name='L439'></a> 439 <em class='sharp'>#define</em> <a href='../R/2143.html' title='Multiple referred from 83 places.'>statdeffile</a>      (<a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;<a href='../S/283.html#L439' title='Defined at 439 in src/disksim_global.h.'>statdeffile</a>)
+<a id='L440' name='L440'></a> 440 <em class='sharp'>#define</em> <a href='../R/1807.html' title='Multiple referred from 590 places.'>outputfile</a>       (<a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>)
+<a id='L441' name='L441'></a> 441 <em class='sharp'>#define</em> <a href='../R/1806.html' title='Multiple referred from 12 places.'>outios</a>           (<a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;<a href='../S/283.html#L441' title='Defined at 441 in src/disksim_global.h.'>outios</a>)
+<a id='L442' name='L442'></a> 442 
+<a id='L443' name='L443'></a> 443 
+<a id='L444' name='L444'></a> 444 <em class='sharp'>#ifndef</em> _WIN32
+<a id='L445' name='L445'></a> 445 <em class='sharp'>#define</em> <a href='../R/1784.html' title='Multiple referred from 36 places.'>min</a>(x,y)        ((x) &lt; (y) ? (x) : (y))
+<a id='L446' name='L446'></a> 446 
+<a id='L447' name='L447'></a> 447 <em class='sharp'>#define</em> <a href='../R/1689.html' title='Multiple referred from 91 places.'>max</a>(x,y)        ((x) &lt; (y) ? (y) : (x))
+<a id='L448' name='L448'></a> 448 <em class='sharp'>#endif</em>
+<a id='L449' name='L449'></a> 449 
+<a id='L450' name='L450'></a> 450 <em class='sharp'>#define</em> <a href='../S/278.html#L677' title='Referred from 677 in src/disksim_logorg.c.'>wrap</a>(x,y)       ((y) &lt; (x) ? 1 : 0)
+<a id='L451' name='L451'></a> 451 
+<a id='L452' name='L452'></a> 452 <em class='sharp'>#define</em> <a href='../R/984.html' title='Multiple referred from 25 places.'>diff</a>(x,y)       ((x) &lt; (y) ? (y)-(x) : (x)-(y))
+<a id='L453' name='L453'></a> 453 
+<a id='L454' name='L454'></a> 454 <em class='sharp'>#define</em> <a href='../R/1904.html' title='Multiple referred from 3 places.'>rounduptomult</a>(val,mult) ((val) + ((mult) - (((val)-1) % (mult))) - 1)
+<a id='L455' name='L455'></a> 455 
+<a id='L456' name='L456'></a> 456 <em class='comment'>/* translate from the deprecated but convenient bzero function to memset */</em>
+<a id='L457' name='L457'></a> 457 <em class='sharp'>#define</em> <a href='../R/730.html' title='Multiple referred from 87 places.'>bzero</a>(ptr,size)  memset(ptr,0,size)
+<a id='L458' name='L458'></a> 458 
+<a id='L459' name='L459'></a> 459 
+<a id='L460' name='L460'></a> 460 <em class='comment'>/* Global disksim_intr.c functions */</em>
+<a id='L461' name='L461'></a> 461 
+<a id='L462' name='L462'></a> 462 <strong class='reserved'>void</strong> <a href='../S/252.html#L106' title='Defined at 106 in src/disksim_intr.c.'>intr_request</a>(<a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a> *curr);
+<a id='L463' name='L463'></a> 463 <strong class='reserved'>void</strong> <a href='../S/252.html#L125' title='Defined at 125 in src/disksim_intr.c.'>intr_acknowledge</a> (<a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a> *intrp);
+<a id='L464' name='L464'></a> 464 
+<a id='L465' name='L465'></a> 465 
+<a id='L466' name='L466'></a> 466 <em class='comment'>/* Global disksim.c functions */</em>
+<a id='L467' name='L467'></a> 467 
+<a id='L468' name='L468'></a> 468 <strong class='reserved'>void</strong> <a href='../S/272.html#L494' title='Defined at 494 in src/disksim.c.'>resetstats</a> (<strong class='reserved'>void</strong>);
+<a id='L469' name='L469'></a> 469 <strong class='reserved'>void</strong> <a href='../S/272.html#L706' title='Defined at 706 in src/disksim.c.'>disksim_simstop</a> (<strong class='reserved'>void</strong>);
+<a id='L470' name='L470'></a> 470 <strong class='reserved'>void</strong> <a href='../S/272.html#L712' title='Defined at 712 in src/disksim.c.'>disksim_register_checkpoint</a> (<strong class='reserved'>double</strong> atsimtime);
+<a id='L471' name='L471'></a> 471 <a href='../D/438.html' title='Multiple defined in 4 places.'>INLINE</a> <strong class='reserved'>void</strong> <a href='../S/272.html#L176' title='Defined at 176 in src/disksim.c.'>addtoextraq</a> (<a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a> *temp);
+<a id='L472' name='L472'></a> 472 <strong class='reserved'>void</strong> <a href='../S/272.html#L220' title='Defined at 220 in src/disksim.c.'>addlisttoextraq</a> (<a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a> **headptr);
+<a id='L473' name='L473'></a> 473 <a href='../D/438.html' title='Multiple defined in 4 places.'>INLINE</a> <a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a> * <a href='../S/272.html#L193' title='Defined at 193 in src/disksim.c.'>getfromextraq</a> (<strong class='reserved'>void</strong>);
+<a id='L474' name='L474'></a> 474 <a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a> * <a href='../S/272.html#L245' title='Defined at 245 in src/disksim.c.'>event_copy</a> (<a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a> *orig);
+<a id='L475' name='L475'></a> 475 <a href='../D/438.html' title='Multiple defined in 4 places.'>INLINE</a> <strong class='reserved'>void</strong> <a href='../S/272.html#L280' title='Defined at 280 in src/disksim.c.'>addtointq</a> (<a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a> *temp);
+<a id='L476' name='L476'></a> 476 <a href='../D/438.html' title='Multiple defined in 4 places.'>INLINE</a> <strong class='reserved'>int</strong> <a href='../S/272.html#L393' title='Defined at 393 in src/disksim.c.'>removefromintq</a> (<a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a> *curr);
+<a id='L477' name='L477'></a> 477 <strong class='reserved'>void</strong> <a href='../S/272.html#L424' title='Defined at 424 in src/disksim.c.'>scanparam_int</a> (<strong class='reserved'>char</strong> *parline, <strong class='reserved'>char</strong> *parname, <strong class='reserved'>int</strong> *parptr, <strong class='reserved'>int</strong> parchecks, <strong class='reserved'>int</strong> parminval, <strong class='reserved'>int</strong> parmaxval);
+<a id='L478' name='L478'></a> 478 <strong class='reserved'>void</strong> <a href='../S/272.html#L438' title='Defined at 438 in src/disksim.c.'>getparam_int</a> (FILE *parfile, <strong class='reserved'>char</strong> *parname, <strong class='reserved'>int</strong> *parptr, <strong class='reserved'>int</strong> parchecks, <strong class='reserved'>int</strong> parminval, <strong class='reserved'>int</strong> parmaxval);
+<a id='L479' name='L479'></a> 479 <strong class='reserved'>void</strong> <a href='../S/272.html#L457' title='Defined at 457 in src/disksim.c.'>getparam_double</a> (FILE *parfile, <strong class='reserved'>char</strong> *parname, <strong class='reserved'>double</strong> *parptr, <strong class='reserved'>int</strong> parchecks, <strong class='reserved'>double</strong> parminval, <strong class='reserved'>double</strong> parmaxval);
+<a id='L480' name='L480'></a> 480 <strong class='reserved'>void</strong> <a href='../S/272.html#L476' title='Defined at 476 in src/disksim.c.'>getparam_bool</a> (FILE *parfile, <strong class='reserved'>char</strong> *parname, <strong class='reserved'>int</strong> *parptr);
+<a id='L481' name='L481'></a> 481 <a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a> * <a href='../S/272.html#L613' title='Defined at 613 in src/disksim.c.'>io_done_notify</a> (<a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr);
+<a id='L482' name='L482'></a> 482 
+<a id='L483' name='L483'></a> 483 
+<a id='L484' name='L484'></a> 484 <em class='comment'>/* disksim.c functions used for external control */</em>
+<a id='L485' name='L485'></a> 485 
+<a id='L486' name='L486'></a> 486 
+<a id='L487' name='L487'></a> 487 
+<a id='L488' name='L488'></a> 488 <strong class='reserved'>int</strong> <a href='../S/272.html#L1117' title='Defined at 1117 in src/disksim.c.'>disksim_initialize_disksim_structure</a> (<strong class='reserved'>struct</strong> <a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a> *);
+<a id='L489' name='L489'></a> 489 <strong class='reserved'>int</strong> <a href='../S/269.html#L59' title='Defined at 59 in src/disksim_loadparams.c.'>disksim_loadparams</a>(<strong class='reserved'>char</strong> *inputfile, <strong class='reserved'>int</strong> synthgen);
+<a id='L490' name='L490'></a> 490 <strong class='reserved'>void</strong> <a href='../S/272.html#L911' title='Defined at 911 in src/disksim.c.'>disksim_setup_disksim</a> (<strong class='reserved'>int</strong> argc, <strong class='reserved'>char</strong> **argv);
+<a id='L491' name='L491'></a> 491 <strong class='reserved'>void</strong> <a href='../S/272.html#L607' title='Defined at 607 in src/disksim.c.'>disksim_set_external_io_done_notify</a> (disksim_iodone_notify_t);
+<a id='L492' name='L492'></a> 492 <strong class='reserved'>void</strong> <a href='../S/272.html#L1109' title='Defined at 1109 in src/disksim.c.'>disksim_cleanup_and_printstats</a> (<strong class='reserved'>void</strong>);
+<a id='L493' name='L493'></a> 493 <strong class='reserved'>void</strong> <a href='../S/272.html#L596' title='Defined at 596 in src/disksim.c.'>disksim_cleanstats</a> (<strong class='reserved'>void</strong>);
+<a id='L494' name='L494'></a> 494 <strong class='reserved'>void</strong> <a href='../S/272.html#L534' title='Defined at 534 in src/disksim.c.'>disksim_printstats2</a> (<strong class='reserved'>void</strong>);
+<a id='L495' name='L495'></a> 495 <strong class='reserved'>void</strong> <a href='../S/272.html#L765' title='Defined at 765 in src/disksim.c.'>disksim_simulate_event</a> (<strong class='reserved'>int</strong>);
+<a id='L496' name='L496'></a> 496 <strong class='reserved'>void</strong> <a href='../S/272.html#L1018' title='Defined at 1018 in src/disksim.c.'>disksim_restore_from_checkpoint</a> (<strong class='reserved'>char</strong> *filename);
+<a id='L497' name='L497'></a> 497 <strong class='reserved'>void</strong> <a href='../S/272.html#L1062' title='Defined at 1062 in src/disksim.c.'>disksim_run_simulation</a> ();
+<a id='L498' name='L498'></a> 498 
+<a id='L499' name='L499'></a> 499 <strong class='reserved'>void</strong> <a href='../S/272.html#L1101' title='Defined at 1101 in src/disksim.c.'>disksim_printstats</a>(<strong class='reserved'>void</strong>);
+<a id='L500' name='L500'></a> 500 
+<a id='L501' name='L501'></a> 501 <em class='comment'>// destructor</em>
+<a id='L502' name='L502'></a> 502 <strong class='reserved'>void</strong> <a href='../S/272.html#L1076' title='Defined at 1076 in src/disksim.c.'>disksim_cleanup</a>(<strong class='reserved'>void</strong>);
+<a id='L503' name='L503'></a> 503 
+<a id='L504' name='L504'></a> 504 <strong class='reserved'>void</strong> <a href='../S/272.html#L1135' title='Defined at 1135 in src/disksim.c.'>disksim_exectrace</a>(<strong class='reserved'>char</strong> *fmt,...);
+<a id='L505' name='L505'></a> 505 
+<a id='L506' name='L506'></a> 506 
+<a id='L507' name='L507'></a> 507 <em class='sharp'>#ifdef</em> __cplusplus
+<a id='L508' name='L508'></a> 508 <em class='brace'>}</em>
+<a id='L509' name='L509'></a> 509 <em class='sharp'>#endif</em>
+<a id='L510' name='L510'></a> 510 
+<a id='L511' name='L511'></a> 511 <em class='sharp'>#endif</em>  <em class='comment'>/* DISKSIM_GLOBAL_H */</em>
+<a id='L512' name='L512'></a> 512 
+</pre>
+<hr />
+<a id='BOTTOM' name='BOTTOM'></a>
+<em class='comment'>/* [&lt;][&gt;][^][v]<a href='#TOP'>[top]</a>[bottom]<a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</em>
+</body>
+</html>

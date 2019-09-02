@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>disk</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/76.html#L580'>disk</a>              580 diskmodel/dm_testsuite.c   struct dm_disk_if *disk;</span>
+<span class='curline'><a href='../S/76.html#L618'>disk</a>              618 diskmodel/dm_testsuite.c   disk = lp_instantiate("foo", modelname);</span>
+<span class='curline'><a href='../S/76.html#L621'>disk</a>              621 diskmodel/dm_testsuite.c   layout_test_simple(disk); </span>
+<span class='curline'><a href='../S/92.html#L205'>disk</a>              205 diskmodel/layout_g1.c       return (d-&gt;disk-&gt;dm_surfaces - p-&gt;head - 1);</span>
+<span class='curline'><a href='../S/92.html#L211'>disk</a>              211 diskmodel/layout_g1.c       return (d-&gt;disk-&gt;dm_surfaces - p-&gt;head - 1);</span>
+<span class='curline'><a href='../S/92.html#L1918'>disk</a>             1918 diskmodel/layout_g1.c   l-&gt;disk = parent;</span>
+<span class='curline'><a href='../S/71.html#L159'>disk</a>              159 diskmodel/layout_g1.h   struct dm_disk_if *disk; // back pointer</span>
+<span class='curline'><a href='../S/57.html#L138'>disk</a>              138 diskmodel/layout_g1_load.c   result-&gt;disk = d;</span>
+<span class='curline'><a href='../S/57.html#L139'>disk</a>              139 diskmodel/layout_g1_load.c   result-&gt;disk-&gt;layout = (struct dm_layout_if *)result;</span>
+<span class='curline'><a href='../S/57.html#L188'>disk</a>              188 diskmodel/layout_g1_load.c   initialize_bands(result-&gt;disk);</span>
+<span class='curline'><a href='../S/57.html#L206'>disk</a>              206 diskmodel/layout_g1_load.c   if (numblocks != d-&gt;disk-&gt;dm_sectors) {</span>
+<span class='curline'><a href='../S/57.html#L211'>disk</a>              211 diskmodel/layout_g1_load.c   d-&gt;disk-&gt;dm_sectors = numblocks;</span>
+<span class='curline'><a href='../S/72.html#L885'>disk</a>              885 diskmodel/mech_g1.c   m-&gt;disk = parent;</span>
+<span class='curline'><a href='../S/94.html#L135'>disk</a>              135 diskmodel/mech_g1.h   struct dm_disk_if *disk; // back pointer to disk this goes with</span>
+<span class='curline'><a href='../S/89.html#L105'>disk</a>              105 diskmodel/tests/driver.c   struct dm_disk_if *disk;</span>
+<span class='curline'><a href='../S/89.html#L139'>disk</a>              139 diskmodel/tests/driver.c   disk = (struct dm_disk_if *)lp_instantiate("foo", modelname);</span>
+<span class='curline'><a href='../S/89.html#L144'>disk</a>              144 diskmodel/tests/driver.c   badct = doTests(disk, argc, argv);</span>
+<span class='curline'><a href='../S/84.html#L49'>disk</a>               49 diskmodel/tests/template.c   struct dm_disk_if *disk;</span>
+<span class='curline'><a href='../S/84.html#L83'>disk</a>               83 diskmodel/tests/template.c   disk = lp_instantiate("foo", modelname);</span>
+<span class='curline'><a href='../S/84.html#L84'>disk</a>               84 diskmodel/tests/template.c   printf("*** got a dm_disk with %d sectors!\n", disk-&gt;dm_sectors);</span>
+<span class='curline'><a href='../S/84.html#L87'>disk</a>               87 diskmodel/tests/template.c   doTests(disk, argc, argv);</span>
+<span class='curline'><a href='../S/273.html#L121'>disk</a>              121 src/disksim_disk.c INLINE struct disk *getdisk (int diskno)</span>
+<span class='curline'><a href='../S/273.html#L123'>disk</a>              123 src/disksim_disk.c    disk *currdisk;</span>
+<span class='curline'><a href='../S/273.html#L133'>disk</a>              133 src/disksim_disk.c int disk_add(struct disk *d) {</span>
+<span class='curline'><a href='../S/273.html#L148'>disk</a>              148 src/disksim_disk.c 			   2 * NUMDISKS * sizeof(disk *));</span>
+<span class='curline'><a href='../S/273.html#L168'>disk</a>              168 src/disksim_disk.c       disk *currdisk = getdisk (i);</span>
+<span class='curline'><a href='../S/273.html#L181'>disk</a>              181 src/disksim_disk.c    disk *currdisk = getdisk (diskno);</span>
+<span class='curline'><a href='../S/273.html#L234'>disk</a>              234 src/disksim_disk.c     disk *currdisk = getdisk (i);</span>
+<span class='curline'><a href='../S/273.html#L249'>disk</a>              249 src/disksim_disk.c 	  disk *currdisk2 = getdisk(j); </span>
+<span class='curline'><a href='../S/273.html#L262'>disk</a>              262 src/disksim_disk.c static void disk_postpass_perdisk (disk *currdisk)</span>
+<span class='curline'><a href='../S/273.html#L473'>disk</a>              473 src/disksim_disk.c     disk *currdisk = getdisk (i);</span>
+<span class='curline'><a href='../S/273.html#L506'>disk</a>              506 src/disksim_disk.c   disksim-&gt;diskinfo-&gt;disks = (struct disk**) malloc(MAXDEVICES * sizeof(disk));</span>
+<span class='curline'><a href='../S/273.html#L508'>disk</a>              508 src/disksim_disk.c   bzero ((char *)disksim-&gt;diskinfo-&gt;disks, (MAXDEVICES * sizeof(disk)));</span>
+<span class='curline'><a href='../S/273.html#L528'>disk</a>              528 src/disksim_disk.c     disk *currdisk = getdisk (i);</span>
+<span class='curline'><a href='../S/273.html#L547'>disk</a>              547 src/disksim_disk.c     disk *currdisk = getdisk (setstart);</span>
+<span class='curline'><a href='../S/273.html#L567'>disk</a>              567 src/disksim_disk.c     disk *currdisk = getdisk (set[i]);</span>
+<span class='curline'><a href='../S/273.html#L603'>disk</a>              603 src/disksim_disk.c     disk *currdisk = getdisk (set[i]);</span>
+<span class='curline'><a href='../S/273.html#L657'>disk</a>              657 src/disksim_disk.c     disk *currdisk = getdisk (set[i]);</span>
+<span class='curline'><a href='../S/273.html#L670'>disk</a>              670 src/disksim_disk.c     disk *currdisk = getdisk (set[i]);</span>
+<span class='curline'><a href='../S/273.html#L683'>disk</a>              683 src/disksim_disk.c   disk *currdisk = NULL;</span>
+<span class='curline'><a href='../S/273.html#L714'>disk</a>              714 src/disksim_disk.c       disk *currdisk = getdisk (set[i]);</span>
+<span class='curline'><a href='../S/273.html#L729'>disk</a>              729 src/disksim_disk.c       disk *currdisk = getdisk (set[i]);</span>
+<span class='curline'><a href='../S/273.html#L734'>disk</a>              734 src/disksim_disk.c       disk *currdisk = getdisk (set[i]);</span>
+<span class='curline'><a href='../S/273.html#L751'>disk</a>              751 src/disksim_disk.c     disk *currdisk = getdisk (set[i]);</span>
+<span class='curline'><a href='../S/273.html#L786'>disk</a>              786 src/disksim_disk.c     disk *currdisk = getdisk (i);</span>
+<span class='curline'><a href='../S/273.html#L806'>disk</a>              806 src/disksim_disk.c     disk *currdisk = getdisk (i);</span>
+<span class='curline'><a href='../S/273.html#L827'>disk</a>              827 src/disksim_disk.c     disk *currdisk = getdisk (set[i]); </span>
+<span class='curline'><a href='../S/273.html#L858'>disk</a>              858 src/disksim_disk.c disk *disksim_disk_loadparams(struct lp_block *b,</span>
+<span class='curline'><a href='../S/273.html#L862'>disk</a>              862 src/disksim_disk.c   disk *result;</span>
+<span class='curline'><a href='../S/273.html#L873'>disk</a>              873 src/disksim_disk.c   result = malloc(sizeof(disk));</span>
+<span class='curline'><a href='../S/273.html#L875'>disk</a>              875 src/disksim_disk.c   memset(result, 0, sizeof(struct disk));</span>
+<span class='curline'><a href='../S/273.html#L897'>disk</a>              897 src/disksim_disk.c   struct disk *result = malloc(sizeof(disk));</span>
+<span class='curline'><a href='../S/273.html#L898'>disk</a>              898 src/disksim_disk.c   memcpy((struct disk *)result, orig, sizeof(disk));</span>
+<span class='curline'><a href='../S/273.html#L903'>disk</a>              903 src/disksim_disk.c   result-&gt;queue = ioqueue_copy(((struct disk *)orig)-&gt;queue);</span>
+<span class='curline'><a href='../S/273.html#L912'>disk</a>              912 src/disksim_disk.c   disk *currdisk;</span>
+<span class='curline'><a href='../S/273.html#L922'>disk</a>              922 src/disksim_disk.c       currdisk = (disk*)getdevbyname(l-&gt;values[c]-&gt;v.s, 0, &amp;devnum, &amp;type);</span>
+<span class='curline'><a href='../S/273.html#L961'>disk</a>              961 src/disksim_disk.c      disk *currdisk = getdisk (i); if(!currdisk) continue;</span>
+<span class='curline'><a href='../S/273.html#L1085'>disk</a>             1085 src/disksim_disk.c void disk_acctimestats (disk *currdisk, int distance, double seektime,</span>
+<span class='curline'><a href='../S/273.html#L1157'>disk</a>             1157 src/disksim_disk.c   sizeof(struct disk),</span>
+<span class='curline'><a href='../S/258.html#L476'>disk</a>              476 src/disksim_disk.h    disk **disks;</span>
+<span class='curline'><a href='../S/258.html#L488'>disk</a>              488 src/disksim_disk.h   disk *lastdisk;</span>
+<span class='curline'><a href='../S/258.html#L553'>disk</a>              553 src/disksim_disk.h int  disk_buffer_stopable_access (disk *currdisk, diskreq *currdiskreq);</span>
+<span class='curline'><a href='../S/258.html#L561'>disk</a>              561 src/disksim_disk.h segment * disk_buffer_select_segment(disk *currdisk, </span>
+<span class='curline'><a href='../S/258.html#L565'>disk</a>              565 src/disksim_disk.h segment * disk_buffer_recyclable_segment(disk *currdisk, int isread);</span>
+<span class='curline'><a href='../S/258.html#L567'>disk</a>              567 src/disksim_disk.h int  disk_buffer_attempt_seg_ownership(disk *currdisk, diskreq *currdiskreq);</span>
+<span class='curline'><a href='../S/258.html#L569'>disk</a>              569 src/disksim_disk.h int  disk_buffer_get_max_readahead(disk *currdisk, </span>
+<span class='curline'><a href='../S/258.html#L573'>disk</a>              573 src/disksim_disk.h int  disk_buffer_block_available(disk *currdisk, segment *seg, int blkno);</span>
+<span class='curline'><a href='../S/258.html#L574'>disk</a>              574 src/disksim_disk.h int  disk_buffer_reusable_segment_check(disk *currdisk, segment *currseg);</span>
+<span class='curline'><a href='../S/258.html#L576'>disk</a>              576 src/disksim_disk.h int  disk_buffer_check_segments(disk *currdisk, </span>
+<span class='curline'><a href='../S/258.html#L580'>disk</a>              580 src/disksim_disk.h void disk_buffer_set_segment(disk *currdisk, diskreq *currdiskreq);</span>
+<span class='curline'><a href='../S/258.html#L583'>disk</a>              583 src/disksim_disk.h void disk_interferestats(disk *currdisk, ioreq_event *curr);</span>
+<span class='curline'><a href='../S/258.html#L590'>disk</a>              590 src/disksim_disk.h INLINE struct disk *getdisk (int diskno);</span>
+<span class='curline'><a href='../S/258.html#L591'>disk</a>              591 src/disksim_disk.h struct disk *getdiskbyname(char *name);</span>
+<span class='curline'><a href='../S/258.html#L667'>disk</a>              667 src/disksim_disk.h int disk_setup_mapping(struct disk *d);</span>
+<span class='curline'><a href='../S/258.html#L670'>disk</a>              670 src/disksim_disk.h void disk_acctimestats (disk *currdisk, int distance, double seektime,</span>
+<span class='curline'><a href='../S/192.html#L224'>disk</a>              224 src/disksim_diskcache.c int disk_buffer_reusable_segment_check (disk *currdisk, segment *currseg)</span>
+<span class='curline'><a href='../S/192.html#L286'>disk</a>              286 src/disksim_diskcache.c static int disk_buffer_recyclable_segment_check (disk *currdisk, segment *currseg, int isread)</span>
+<span class='curline'><a href='../S/192.html#L354'>disk</a>              354 src/disksim_diskcache.c segment* disk_buffer_recyclable_segment (disk *currdisk, int isread)</span>
+<span class='curline'><a href='../S/192.html#L396'>disk</a>              396 src/disksim_diskcache.c int disk_buffer_block_available (disk *currdisk, segment *seg, int blkno)</span>
+<span class='curline'><a href='../S/192.html#L447'>disk</a>              447 src/disksim_diskcache.c void disk_interferestats (disk *currdisk, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/192.html#L464'>disk</a>              464 src/disksim_diskcache.c static void disk_buffer_stats (disk *currdisk, ioreq_event *curr, segment *seg, int hittype)</span>
+<span class='curline'><a href='../S/192.html#L581'>disk</a>              581 src/disksim_diskcache.c disk_buffer_select_read_segment(disk *currdisk, diskreq *currdiskreq)</span>
+<span class='curline'><a href='../S/192.html#L776'>disk</a>              776 src/disksim_diskcache.c static segment* disk_buffer_select_write_segment(disk *currdisk, diskreq *currdiskreq)</span>
+<span class='curline'><a href='../S/192.html#L1016'>disk</a>             1016 src/disksim_diskcache.c segment * disk_buffer_select_segment (disk *currdisk, diskreq *currdiskreq,</span>
+<span class='curline'><a href='../S/192.html#L1062'>disk</a>             1062 src/disksim_diskcache.c static int disk_buffer_check_read_segments (disk *currdisk, ioreq_event *currioreq, int* buffer_reading)</span>
+<span class='curline'><a href='../S/192.html#L1158'>disk</a>             1158 src/disksim_diskcache.c static int disk_buffer_check_write_segments (disk *currdisk, ioreq_event *currioreq)</span>
+<span class='curline'><a href='../S/192.html#L1252'>disk</a>             1252 src/disksim_diskcache.c int disk_buffer_check_segments (disk *currdisk, ioreq_event *currioreq,</span>
+<span class='curline'><a href='../S/192.html#L1263'>disk</a>             1263 src/disksim_diskcache.c void disk_buffer_set_segment (disk *currdisk, diskreq *currdiskreq)</span>
+<span class='curline'><a href='../S/192.html#L1482'>disk</a>             1482 src/disksim_diskcache.c int disk_buffer_attempt_seg_ownership (disk *currdisk, diskreq *currdiskreq)</span>
+<span class='curline'><a href='../S/192.html#L1638'>disk</a>             1638 src/disksim_diskcache.c int disk_buffer_get_max_readahead (disk *currdisk, segment *seg, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/196.html#L113'>disk</a>              113 src/disksim_diskctlr.c disk_buffer_sector_done (disk *currdisk, </span>
+<span class='curline'><a href='../S/196.html#L117'>disk</a>              117 src/disksim_diskctlr.c disk_buffer_seekdone (disk *currdisk, </span>
+<span class='curline'><a href='../S/196.html#L124'>disk</a>              124 src/disksim_diskctlr.c disk_got_remapped_sector (disk *currdisk, </span>
+<span class='curline'><a href='../S/196.html#L128'>disk</a>              128 src/disksim_diskctlr.c disk_check_bus (disk *currdisk, diskreq *currdiskreq);</span>
+<span class='curline'><a href='../S/196.html#L132'>disk</a>              132 src/disksim_diskctlr.c disk_release_hda (disk *currdisk, </span>
+<span class='curline'><a href='../S/196.html#L136'>disk</a>              136 src/disksim_diskctlr.c disk_check_hda (disk *currdisk, </span>
+<span class='curline'><a href='../S/196.html#L141'>disk</a>              141 src/disksim_diskctlr.c disk_buffer_transfer_size (disk *currdisk, </span>
+<span class='curline'><a href='../S/196.html#L146'>disk</a>              146 src/disksim_diskctlr.c disk_activate_read (disk *currdisk, </span>
+<span class='curline'><a href='../S/196.html#L152'>disk</a>              152 src/disksim_diskctlr.c disk_activate_write (disk *currdisk, </span>
+<span class='curline'><a href='../S/196.html#L158'>disk</a>              158 src/disksim_diskctlr.c disk_buffer_estimate_acctime(disk *currdisk, </span>
+<span class='curline'><a href='../S/196.html#L166'>disk</a>              166 src/disksim_diskctlr.c   disk *currdisk = getdisk (diskno);</span>
+<span class='curline'><a href='../S/196.html#L184'>disk</a>              184 src/disksim_diskctlr.c   disk *currdisk = getdisk (diskno);</span>
+<span class='curline'><a href='../S/196.html#L191'>disk</a>              191 src/disksim_diskctlr.c   disk *currdisk = getdisk (diskno);</span>
+<span class='curline'><a href='../S/196.html#L198'>disk</a>              198 src/disksim_diskctlr.c   disk *currdisk = getdisk (diskno);</span>
+<span class='curline'><a href='../S/196.html#L205'>disk</a>              205 src/disksim_diskctlr.c   disk *currdisk = getdisk (diskno);</span>
+<span class='curline'><a href='../S/196.html#L212'>disk</a>              212 src/disksim_diskctlr.c   disk *currdisk = getdisk (curr-&gt;devno);</span>
+<span class='curline'><a href='../S/196.html#L225'>disk</a>              225 src/disksim_diskctlr.c   disk *currdisk = getdisk (curr-&gt;devno);</span>
+<span class='curline'><a href='../S/196.html#L248'>disk</a>              248 src/disksim_diskctlr.c   disk *currdisk = getdisk (curr-&gt;devno);</span>
+<span class='curline'><a href='../S/196.html#L308'>disk</a>              308 src/disksim_diskctlr.c   disk *currdisk = getdisk (devno);</span>
+<span class='curline'><a href='../S/196.html#L333'>disk</a>              333 src/disksim_diskctlr.c   disk *currdisk = getdisk (devno);</span>
+<span class='curline'><a href='../S/196.html#L372'>disk</a>              372 src/disksim_diskctlr.c   disk *currdisk = getdisk(curr-&gt;devno);</span>
+<span class='curline'><a href='../S/196.html#L391'>disk</a>              391 src/disksim_diskctlr.c static void disk_check_prefetch_swap (disk *currdisk)</span>
+<span class='curline'><a href='../S/196.html#L435'>disk</a>              435 src/disksim_diskctlr.c static void disk_request_complete(disk *currdisk, </span>
+<span class='curline'><a href='../S/196.html#L568'>disk</a>              568 src/disksim_diskctlr.c   disk        *currdisk = getdisk(curr-&gt;devno);</span>
+<span class='curline'><a href='../S/196.html#L656'>disk</a>              656 src/disksim_diskctlr.c static void disk_find_new_seg_owner(disk *currdisk, segment *seg)</span>
+<span class='curline'><a href='../S/196.html#L714'>disk</a>              714 src/disksim_diskctlr.c static void disk_release_hda(disk *currdisk, diskreq *currdiskreq)</span>
+<span class='curline'><a href='../S/196.html#L886'>disk</a>              886 src/disksim_diskctlr.c disk_request_needs_bus(disk *currdisk, </span>
+<span class='curline'><a href='../S/196.html#L1042'>disk</a>             1042 src/disksim_diskctlr.c disk_select_bus_request(disk *currdisk, ioreq_event **busioreq)</span>
+<span class='curline'><a href='../S/196.html#L1258'>disk</a>             1258 src/disksim_diskctlr.c disk_check_bus (disk *currdisk, diskreq *currdiskreq)</span>
+<span class='curline'><a href='../S/196.html#L1390'>disk</a>             1390 src/disksim_diskctlr.c disk_get_remapped_sector(disk *currdisk, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/196.html#L1467'>disk</a>             1467 src/disksim_diskctlr.c static void disk_goto_remapped_sector (disk *currdisk, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/196.html#L1507'>disk</a>             1507 src/disksim_diskctlr.c disk_initiate_seek (disk *currdisk, </span>
+<span class='curline'><a href='../S/196.html#L1630'>disk</a>             1630 src/disksim_diskctlr.c disk_get_effectivehda(disk *currdisk,</span>
+<span class='curline'><a href='../S/196.html#L1744'>disk</a>             1744 src/disksim_diskctlr.c disk_check_hda_pending(disk *currdisk, </span>
+<span class='curline'><a href='../S/196.html#L1903'>disk</a>             1903 src/disksim_diskctlr.c static void disk_check_hda(disk *currdisk, </span>
+<span class='curline'><a href='../S/196.html#L2037'>disk</a>             2037 src/disksim_diskctlr.c static void disk_buffer_stop_access (disk *currdisk)</span>
+<span class='curline'><a href='../S/196.html#L2087'>disk</a>             2087 src/disksim_diskctlr.c disk_buffer_attempt_access_swap(disk *currdisk, </span>
+<span class='curline'><a href='../S/196.html#L2167'>disk</a>             2167 src/disksim_diskctlr.c disk_activate_read(disk *currdisk, </span>
+<span class='curline'><a href='../S/196.html#L2264'>disk</a>             2264 src/disksim_diskctlr.c disk_activate_write(disk *currdisk, </span>
+<span class='curline'><a href='../S/196.html#L2346'>disk</a>             2346 src/disksim_diskctlr.c   disk *currdisk;</span>
+<span class='curline'><a href='../S/196.html#L2444'>disk</a>             2444 src/disksim_diskctlr.c disk_read_arrive(disk *currdisk,</span>
+<span class='curline'><a href='../S/196.html#L2594'>disk</a>             2594 src/disksim_diskctlr.c static void disk_write_arrive(disk *currdisk,</span>
+<span class='curline'><a href='../S/196.html#L2749'>disk</a>             2749 src/disksim_diskctlr.c   disk        *currdisk = getdisk(curr-&gt;devno);</span>
+<span class='curline'><a href='../S/196.html#L2816'>disk</a>             2816 src/disksim_diskctlr.c   disk        *currdisk = getdisk(curr-&gt;devno);</span>
+<span class='curline'><a href='../S/196.html#L2969'>disk</a>             2969 src/disksim_diskctlr.c   disk *currdisk = getdisk (curr-&gt;devno);</span>
+<span class='curline'><a href='../S/196.html#L3060'>disk</a>             3060 src/disksim_diskctlr.c disk_buffer_request_complete(disk *currdisk, diskreq *currdiskreq)</span>
+<span class='curline'><a href='../S/196.html#L3248'>disk</a>             3248 src/disksim_diskctlr.c static void disk_got_remapped_sector (disk *currdisk, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/196.html#L3298'>disk</a>             3298 src/disksim_diskctlr.c disk_buffer_update_outbuffer(disk *currdisk, segment *seg)</span>
+<span class='curline'><a href='../S/196.html#L3389'>disk</a>             3389 src/disksim_diskctlr.c disk_buffer_transfer_size(disk *currdisk, </span>
+<span class='curline'><a href='../S/196.html#L3585'>disk</a>             3585 src/disksim_diskctlr.c   disk        *currdisk = (disk*) currioreq-&gt;ioreq_hold_disk;</span>
+<span class='curline'><a href='../S/196.html#L3724'>disk</a>             3724 src/disksim_diskctlr.c int disk_buffer_stopable_access (disk *currdisk, diskreq *currdiskreq)</span>
+<span class='curline'><a href='../S/196.html#L3989'>disk</a>             3989 src/disksim_diskctlr.c disk_buffer_seekdone(disk *currdisk, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/196.html#L4182'>disk</a>             4182 src/disksim_diskctlr.c dbsd_setup(disk *cd, </span>
+<span class='curline'><a href='../S/196.html#L4340'>disk</a>             4340 src/disksim_diskctlr.c disk_buffer_sector_done (disk *currdisk, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/196.html#L4710'>disk</a>             4710 src/disksim_diskctlr.c disk_buffer_estimate_servtime(disk *currdisk, </span>
+<span class='curline'><a href='../S/196.html#L4865'>disk</a>             4865 src/disksim_diskctlr.c disk_buffer_estimate_seektime(disk *currdisk, </span>
+<span class='curline'><a href='../S/196.html#L4950'>disk</a>             4950 src/disksim_diskctlr.c   disk *currdisk = getdisk (diskno);</span>
+<span class='curline'><a href='../S/196.html#L5006'>disk</a>             5006 src/disksim_diskctlr.c   disk *currdisk = getdisk (diskno);</span>
+<span class='curline'><a href='../S/196.html#L5024'>disk</a>             5024 src/disksim_diskctlr.c   disk *currdisk = getdisk (diskno);</span>
+<span class='curline'><a href='../S/196.html#L5042'>disk</a>             5042 src/disksim_diskctlr.c   disk *currdisk = getdisk (diskno);</span>
+<span class='curline'><a href='../S/196.html#L5051'>disk</a>             5051 src/disksim_diskctlr.c static double disk_buffer_estimate_acctime(disk *currdisk, ioreq_event *curr, double maxtime)</span>
+<span class='curline'><a href='../S/281.html#L160'>disk</a>              160 src/disksim_diskmap.h struct disk;</span>
+<span class='curline'><a href='../S/281.html#L162'>disk</a>              162 src/disksim_diskmap.h void diskmap_initialize (struct disk *currdisk);</span>
+<span class='curline'><a href='../S/281.html#L164'>disk</a>              164 src/disksim_diskmap.h struct band * disk_translate_lbn_to_pbn (struct disk *currdisk, int blkno, int maptype, int *cylptr, int *surfaceptr, int *blkptr);</span>
+<span class='curline'><a href='../S/281.html#L166'>disk</a>              166 src/disksim_diskmap.h int disk_translate_pbn_to_lbn (struct disk *currdisk, struct band *currband, int cylno, int surfaceno, int blkno);</span>
+<span class='curline'><a href='../S/281.html#L168'>disk</a>              168 src/disksim_diskmap.h double disk_map_pbn_skew (struct disk *currdisk, struct band *currband, int cylno, int surfaceno);</span>
+<span class='curline'><a href='../S/281.html#L170'>disk</a>              170 src/disksim_diskmap.h void disk_get_lbn_boundaries_for_track (struct disk *currdisk, </span>
+<span class='curline'><a href='../S/281.html#L177'>disk</a>              177 src/disksim_diskmap.h void disk_check_numblocks (struct disk *currdisk);</span>
+<span class='curline'><a href='../S/281.html#L179'>disk</a>              179 src/disksim_diskmap.h int disk_compute_blksinband (struct disk *currdisk, struct band *currband);</span>
+<span class='curline'><a href='../S/281.html#L182'>disk</a>              182 src/disksim_diskmap.h int disk_pbn_to_lbn_sectpertrackspare(struct disk *currdisk, </span>
+<span class='curline'><a href='../S/281.html#L187'>disk</a>              187 src/disksim_diskmap.h int disk_pbn_to_lbn_sectpercylspare(struct disk *currdisk, </span>
+<span class='curline'><a href='../S/281.html#L192'>disk</a>              192 src/disksim_diskmap.h int disk_pbn_to_lbn_sectperrangespare(struct disk *currdisk, </span>
+<span class='curline'><a href='../S/281.html#L197'>disk</a>              197 src/disksim_diskmap.h int disk_pbn_to_lbn_sectperzonespare(struct disk *currdisk, </span>
+<span class='curline'><a href='../S/281.html#L202'>disk</a>              202 src/disksim_diskmap.h int disk_pbn_to_lbn_trackspare(struct disk *currdisk, </span>
+<span class='curline'><a href='../S/281.html#L208'>disk</a>              208 src/disksim_diskmap.h int disk_pbn_to_lbn_nospare(struct disk *currdisk, </span>
+<span class='curline'><a href='../S/281.html#L213'>disk</a>              213 src/disksim_diskmap.h int disk_pbn_to_lbn_rawlayout(struct disk *currdisk, </span>
+<span class='curline'><a href='../S/254.html#L1400'>disk</a>             1400 src/disksim_ioqueue.c 	     disk *currdisk)</span>
+<span class='curline'><a href='../S/254.html#L1502'>disk</a>             1502 src/disksim_ioqueue.c   struct disk *singledisk;</span>
+<span class='curline'><a href='../S/264.html#L552'>disk</a>              552 src/disksim_iotrace.c    unsigned int disk, hyper;</span>
+<span class='curline'><a href='../S/264.html#L560'>disk</a>              560 src/disksim_iotrace.c               &amp;new-&gt;time, operation, &amp;director, &amp;hyper, &amp;new-&gt;blkno, &amp;new-&gt;bcount, bus, &amp;disk, &amp;new-&gt;devno) != 9) {</span>
+<span class='curline'><a href='../S/198.html#L105'>disk</a>              105 src/raw_layout.c determine_zones(disk *currdisk, sfreq_t *sectfreq, int capacity)</span>
+<span class='curline'><a href='../S/198.html#L239'>disk</a>              239 src/raw_layout.c read_raw_layout(disk *currdisk,char *rlfilename) {</span>
+<span class='curline'><a href='../S/8.html#L94'>disk</a>               94 utils/params/libparam_to_v3.c   struct lp_block disk, dmdisk, layout, mech;</span>
+<span class='curline'><a href='../S/8.html#L99'>disk</a>               99 utils/params/libparam_to_v3.c   bzero(&amp;disk, sizeof(struct lp_block));</span>
+<span class='curline'><a href='../S/8.html#L115'>disk</a>              115 utils/params/libparam_to_v3.c   lp_add_param(&amp;disk.params, &amp;disk.params_len, &amp;modelfile_p);</span>
+<span class='curline'><a href='../S/8.html#L142'>disk</a>              142 utils/params/libparam_to_v3.c       lp_add_param(&amp;disk.params, &amp;disk.params_len, b-&gt;params[c]);</span>
+<span class='curline'><a href='../S/8.html#L146'>disk</a>              146 utils/params/libparam_to_v3.c   lp_lookup_type("disksim_disk", &amp;disk.type);</span>
+<span class='curline'><a href='../S/8.html#L162'>disk</a>              162 utils/params/libparam_to_v3.c   disk.name = strdup(b-&gt;name);</span>
+<span class='curline'><a href='../S/8.html#L179'>disk</a>              179 utils/params/libparam_to_v3.c   unparse_block(&amp;disk, df);</span>
+<span class='curline'><a href='../S/8.html#L191'>disk</a>              191 utils/params/libparam_to_v3.c   struct lp_mod disk = { "disk", </span>
+<span class='curline'><a href='../S/8.html#L231'>disk</a>              231 utils/params/libparam_to_v3.c   nums[DISK] = lp_register_module(&amp;disk);</span>
+</pre>
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>utils/params/libparam_to_v3.c</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<a id='TOP' name='TOP'></a><h2 class='header'><a href='../mains.html'>root</a>/<a href='../files/408.html'>utils</a>/<a href='../files/409.html'>params</a>/libparam_to_v3.c</h2>
+<em class='comment'>/* [&lt;][&gt;]<a href='#L73'>[^]</a><a href='#L187'>[v]</a>[top]<a href='#BOTTOM'>[bottom]</a><a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</em>
+<hr />
+<h2 class='header'>DEFINITIONS</h2>
+This source file includes following definitions.
+<ol>
+<li><a href='#L73' title='Defined at 73.'>fix_zonelist</a></li>
+<li><a href='#L87' title='Defined at 87.'>noop</a></li>
+<li><a href='#L88' title='Defined at 88.'>loader</a></li>
+<li><a href='#L187' title='Defined at 187.'>main</a></li>
+</ol>
+<hr />
+<pre>
+<a id='L1' name='L1'></a>   1 
+<a id='L2' name='L2'></a>   2 <em class='comment'>/*</em>
+<a id='L3' name='L3'></a>   3 <em class='comment'> * DiskSim Storage Subsystem Simulation Environment (Version 4.0)</em>
+<a id='L4' name='L4'></a>   4 <em class='comment'> * Revision Authors: John Bucy, Greg Ganger</em>
+<a id='L5' name='L5'></a>   5 <em class='comment'> * Contributors: John Griffin, Jiri Schindler, Steve Schlosser</em>
+<a id='L6' name='L6'></a>   6 <em class='comment'> *</em>
+<a id='L7' name='L7'></a>   7 <em class='comment'> * Copyright (c) of Carnegie Mellon University, 2001-2008.</em>
+<a id='L8' name='L8'></a>   8 <em class='comment'> *</em>
+<a id='L9' name='L9'></a>   9 <em class='comment'> * This software is being provided by the copyright holders under the</em>
+<a id='L10' name='L10'></a>  10 <em class='comment'> * following license. By obtaining, using and/or copying this software,</em>
+<a id='L11' name='L11'></a>  11 <em class='comment'> * you agree that you have read, understood, and will comply with the</em>
+<a id='L12' name='L12'></a>  12 <em class='comment'> * following terms and conditions:</em>
+<a id='L13' name='L13'></a>  13 <em class='comment'> *</em>
+<a id='L14' name='L14'></a>  14 <em class='comment'> * Permission to reproduce, use, and prepare derivative works of this</em>
+<a id='L15' name='L15'></a>  15 <em class='comment'> * software is granted provided the copyright and "No Warranty" statements</em>
+<a id='L16' name='L16'></a>  16 <em class='comment'> * are included with all reproductions and derivative works and associated</em>
+<a id='L17' name='L17'></a>  17 <em class='comment'> * documentation. This software may also be redistributed without charge</em>
+<a id='L18' name='L18'></a>  18 <em class='comment'> * provided that the copyright and "No Warranty" statements are included</em>
+<a id='L19' name='L19'></a>  19 <em class='comment'> * in all redistributions.</em>
+<a id='L20' name='L20'></a>  20 <em class='comment'> *</em>
+<a id='L21' name='L21'></a>  21 <em class='comment'> * NO WARRANTY. THIS SOFTWARE IS FURNISHED ON AN "AS IS" BASIS.</em>
+<a id='L22' name='L22'></a>  22 <em class='comment'> * CARNEGIE MELLON UNIVERSITY MAKES NO WARRANTIES OF ANY KIND, EITHER</em>
+<a id='L23' name='L23'></a>  23 <em class='comment'> * EXPRESSED OR IMPLIED AS TO THE MATTER INCLUDING, BUT NOT LIMITED</em>
+<a id='L24' name='L24'></a>  24 <em class='comment'> * TO: WARRANTY OF FITNESS FOR PURPOSE OR MERCHANTABILITY, EXCLUSIVITY</em>
+<a id='L25' name='L25'></a>  25 <em class='comment'> * OF RESULTS OR RESULTS OBTAINED FROM USE OF THIS SOFTWARE. CARNEGIE</em>
+<a id='L26' name='L26'></a>  26 <em class='comment'> * MELLON UNIVERSITY DOES NOT MAKE ANY WARRANTY OF ANY KIND WITH RESPECT</em>
+<a id='L27' name='L27'></a>  27 <em class='comment'> * TO FREEDOM FROM PATENT, TRADEMARK, OR COPYRIGHT INFRINGEMENT.</em>
+<a id='L28' name='L28'></a>  28 <em class='comment'> * COPYRIGHT HOLDERS WILL BEAR NO LIABILITY FOR ANY USE OF THIS SOFTWARE</em>
+<a id='L29' name='L29'></a>  29 <em class='comment'> * OR DOCUMENTATION.</em>
+<a id='L30' name='L30'></a>  30 <em class='comment'> *</em>
+<a id='L31' name='L31'></a>  31 <em class='comment'> */</em>
+<a id='L32' name='L32'></a>  32 
+<a id='L33' name='L33'></a>  33 
+<a id='L34' name='L34'></a>  34 <em class='sharp'>#include</em> &lt;<a href='118.html'>libparam/libparam.h</a>&gt;
+<a id='L35' name='L35'></a>  35 
+<a id='L36' name='L36'></a>  36 <em class='sharp'>#include</em> &lt;modules/disksim_disk_param.h&gt;
+<a id='L37' name='L37'></a>  37 <em class='comment'>// #include &lt;disksim/src/modules/modules.h&gt;</em>
+<a id='L38' name='L38'></a>  38 
+<a id='L39' name='L39'></a>  39 <em class='comment'>//#include "modules/dm_disk_param.h"</em>
+<a id='L40' name='L40'></a>  40 <em class='comment'>//#include "modules/dm_layout_g1_param.h"</em>
+<a id='L41' name='L41'></a>  41 <em class='comment'>//#include "modules/dm_mech_g1_param.h"</em>
+<a id='L42' name='L42'></a>  42 
+<a id='L43' name='L43'></a>  43 <em class='sharp'>#include</em> &lt;diskmodel/modules/dm_disk_param.h&gt;
+<a id='L44' name='L44'></a>  44 <em class='sharp'>#include</em> &lt;diskmodel/modules/dm_layout_g1_param.h&gt;
+<a id='L45' name='L45'></a>  45 <em class='sharp'>#include</em> &lt;diskmodel/modules/dm_mech_g1_param.h&gt;
+<a id='L46' name='L46'></a>  46 
+<a id='L47' name='L47'></a>  47 <em class='comment'>// #include &lt;diskmodel/modules/modules.h&gt;</em>
+<a id='L48' name='L48'></a>  48 
+<a id='L49' name='L49'></a>  49 <em class='sharp'>#include</em> &lt;stdio.h&gt;
+<a id='L50' name='L50'></a>  50 <em class='sharp'>#include</em> &lt;stdlib.h&gt;
+<a id='L51' name='L51'></a>  51 <em class='sharp'>#include</em> &lt;string.h&gt;
+<a id='L52' name='L52'></a>  52 
+<a id='L53' name='L53'></a>  53 <em class='sharp'>#include</em> &lt;<a href='122.html'>libddbg/libddbg.h</a>&gt;
+<a id='L54' name='L54'></a>  54 
+<a id='L55' name='L55'></a>  55 
+<a id='L56' name='L56'></a>  56 
+<a id='L57' name='L57'></a>  57 <em class='sharp'>#define</em> <a href='../R/249.html' title='Multiple referred from 26 places.'>DISKSIM_drand48</a> drand48
+<a id='L58' name='L58'></a>  58 
+<a id='L59' name='L59'></a>  59 <strong class='reserved'>int</strong> nums[4];
+<a id='L60' name='L60'></a>  60 
+<a id='L61' name='L61'></a>  61 <strong class='reserved'>enum</strong> <a href='../R/2250.html' title='Multiple referred from 9 places.'>what</a> <em class='brace'>{</em>
+<a id='L62' name='L62'></a>  62   <a href='../R/130.html' title='Multiple referred from 2 places.'>DISK</a>,
+<a id='L63' name='L63'></a>  63   <a href='../R/260.html' title='Multiple referred from 3 places.'>DMDISK</a>,
+<a id='L64' name='L64'></a>  64   <a href='../R/261.html' title='Multiple referred from 3 places.'>DMLAYOUT</a>,
+<a id='L65' name='L65'></a>  65   <a href='../R/262.html' title='Multiple referred from 3 places.'>DMMECH</a>
+<a id='L66' name='L66'></a>  66 <em class='brace'>}</em>;
+<a id='L67' name='L67'></a>  67 
+<a id='L68' name='L68'></a>  68 <strong class='reserved'>char</strong> *oldspec;
+<a id='L69' name='L69'></a>  69 <strong class='reserved'>char</strong> *newspec;
+<a id='L70' name='L70'></a>  70 <strong class='reserved'>char</strong> *modelfile;
+<a id='L71' name='L71'></a>  71 
+<a id='L72' name='L72'></a>  72 
+<a id='L73' name='L73'></a>  73 <strong class='reserved'>void</strong> <a href='../S/8.html#L129' title='Referred from 129 in utils/params/libparam_to_v3.c.'>fix_zonelist</a>(<strong class='reserved'>struct</strong> <a href='../S/118.html#L80' title='Defined at 80 in libparam/libparam.h.'>lp_list</a> *l) <em class='brace'>{</em>
+<a id='L74' name='L74'></a>  74   <strong class='reserved'>int</strong> c;
+<a id='L75' name='L75'></a>  75   <strong class='reserved'>int</strong> zonetype;
+<a id='L76' name='L76'></a>  76   <a href='../D/1943.html' title='Multiple defined in 2 places.'>lp_lookup_type</a>("dm_layout_g1_zone", &amp;zonetype);
+<a id='L77' name='L77'></a>  77   
+<a id='L78' name='L78'></a>  78   <strong class='reserved'>for</strong>(c = 0; c &lt; l-&gt;values_len; c++) <em class='brace'>{</em>
+<a id='L79' name='L79'></a>  79     <strong class='reserved'>if</strong>(!l-&gt;values[c]) <em class='brace'>{</em> <strong class='reserved'>continue</strong>; <em class='brace'>}</em>
+<a id='L80' name='L80'></a>  80 
+<a id='L81' name='L81'></a>  81     l-&gt;values[c]-&gt;v.b-&gt;type = zonetype;
+<a id='L82' name='L82'></a>  82   <em class='brace'>}</em>
+<a id='L83' name='L83'></a>  83 <em class='brace'>}</em>
+<a id='L84' name='L84'></a>  84 
+<a id='L85' name='L85'></a>  85 
+<a id='L86' name='L86'></a>  86 
+<a id='L87' name='L87'></a>  87 <strong class='reserved'>int</strong> *<a href='../R/1794.html' title='Multiple referred from 4 places.'>noop</a>(<strong class='reserved'>struct</strong> <a href='../S/118.html#L245' title='Defined at 245 in libparam/libparam.h.'>lp_block</a> *junk1, <strong class='reserved'>int</strong> junk2) <em class='brace'>{</em> <strong class='reserved'>return</strong> 0; <em class='brace'>}</em>
+<a id='L88' name='L88'></a>  88 <strong class='reserved'>int</strong> *<a href='../R/1569.html' title='Multiple referred from 9 places.'>loader</a>(<strong class='reserved'>struct</strong> <a href='../S/118.html#L245' title='Defined at 245 in libparam/libparam.h.'>lp_block</a> *b, <strong class='reserved'>int</strong> <a href='../D/1541.html' title='Multiple defined in 2 places.'>foo</a>) <em class='brace'>{</em>
+<a id='L89' name='L89'></a>  89   <strong class='reserved'>int</strong> c;
+<a id='L90' name='L90'></a>  90   <strong class='reserved'>char</strong> modelfileparam[80];
+<a id='L91' name='L91'></a>  91   <strong class='reserved'>char</strong> modelname[80];
+<a id='L92' name='L92'></a>  92   FILE *df, *mf;
+<a id='L93' name='L93'></a>  93 
+<a id='L94' name='L94'></a>  94   <strong class='reserved'>struct</strong> <a href='../S/118.html#L245' title='Defined at 245 in libparam/libparam.h.'>lp_block</a> <a href='../D/1226.html' title='Multiple defined in 3 places.'>disk</a>, dmdisk, layout, mech;
+<a id='L95' name='L95'></a>  95   <strong class='reserved'>struct</strong> <a href='../S/118.html#L129' title='Defined at 129 in libparam/libparam.h.'>lp_param</a> layout_p, mech_p, modelfile_p;
+<a id='L96' name='L96'></a>  96   <strong class='reserved'>struct</strong> <a href='../S/118.html#L102' title='Defined at 102 in libparam/libparam.h.'>lp_value</a> layout_v, mech_v, modelfile_v;
+<a id='L97' name='L97'></a>  97 
+<a id='L98' name='L98'></a>  98   <a href='../D/957.html' title='Multiple defined in 2 places.'>bzero</a>(&amp;mech, <strong class='reserved'>sizeof</strong>(<strong class='reserved'>struct</strong> <a href='../S/118.html#L245' title='Defined at 245 in libparam/libparam.h.'>lp_block</a>));
+<a id='L99' name='L99'></a>  99   <a href='../D/957.html' title='Multiple defined in 2 places.'>bzero</a>(&amp;<a href='../D/1226.html' title='Multiple defined in 3 places.'>disk</a>, <strong class='reserved'>sizeof</strong>(<strong class='reserved'>struct</strong> <a href='../S/118.html#L245' title='Defined at 245 in libparam/libparam.h.'>lp_block</a>));
+<a id='L100' name='L100'></a> 100   <a href='../D/957.html' title='Multiple defined in 2 places.'>bzero</a>(&amp;dmdisk, <strong class='reserved'>sizeof</strong>(<strong class='reserved'>struct</strong> <a href='../S/118.html#L245' title='Defined at 245 in libparam/libparam.h.'>lp_block</a>));
+<a id='L101' name='L101'></a> 101   <a href='../D/957.html' title='Multiple defined in 2 places.'>bzero</a>(&amp;layout, <strong class='reserved'>sizeof</strong>(<strong class='reserved'>struct</strong> <a href='../S/118.html#L245' title='Defined at 245 in libparam/libparam.h.'>lp_block</a>));
+<a id='L102' name='L102'></a> 102 
+<a id='L103' name='L103'></a> 103   <a href='../D/957.html' title='Multiple defined in 2 places.'>bzero</a>(&amp;layout_p, <strong class='reserved'>sizeof</strong>(<strong class='reserved'>struct</strong> <a href='../S/118.html#L129' title='Defined at 129 in libparam/libparam.h.'>lp_param</a>));
+<a id='L104' name='L104'></a> 104   <a href='../D/957.html' title='Multiple defined in 2 places.'>bzero</a>(&amp;mech_p, <strong class='reserved'>sizeof</strong>(<strong class='reserved'>struct</strong> <a href='../S/118.html#L129' title='Defined at 129 in libparam/libparam.h.'>lp_param</a>));
+<a id='L105' name='L105'></a> 105   <a href='../D/957.html' title='Multiple defined in 2 places.'>bzero</a>(&amp;modelfile_p, <strong class='reserved'>sizeof</strong>(<strong class='reserved'>struct</strong> <a href='../S/118.html#L129' title='Defined at 129 in libparam/libparam.h.'>lp_param</a>));
+<a id='L106' name='L106'></a> 106 
+<a id='L107' name='L107'></a> 107   sprintf(modelfileparam, "source %s", modelfile);
+<a id='L108' name='L108'></a> 108 
+<a id='L109' name='L109'></a> 109   modelfile_p.name = <a href='../S/136.html#L7' title='Defined at 7 in w32build/deprecated/deprecated.c.'>strdup</a>("Model");
+<a id='L110' name='L110'></a> 110   modelfile_p.v = &amp;modelfile_v;
+<a id='L111' name='L111'></a> 111   modelfile_p.v-&gt;v.s = modelfileparam;
+<a id='L112' name='L112'></a> 112   modelfile_p.v-&gt;t = <a href='../S/118.html#L60' title='Defined at 60 in libparam/libparam.h.'>S</a>;
+<a id='L113' name='L113'></a> 113 
+<a id='L114' name='L114'></a> 114 
+<a id='L115' name='L115'></a> 115   <a href='../D/1927.html' title='Multiple defined in 2 places.'>lp_add_param</a>(&amp;<a href='../D/1226.html' title='Multiple defined in 3 places.'>disk</a>.params, &amp;<a href='../D/1226.html' title='Multiple defined in 3 places.'>disk</a>.params_len, &amp;modelfile_p);
+<a id='L116' name='L116'></a> 116 
+<a id='L117' name='L117'></a> 117   <strong class='reserved'>for</strong>(c = 0; c &lt; b-&gt;params_len; c++) <em class='brace'>{</em>
+<a id='L118' name='L118'></a> 118     <strong class='reserved'>if</strong>(!b-&gt;params[c]) <em class='brace'>{</em>
+<a id='L119' name='L119'></a> 119       <strong class='reserved'>continue</strong>;
+<a id='L120' name='L120'></a> 120     <em class='brace'>}</em>
+<a id='L121' name='L121'></a> 121 
+<a id='L122' name='L122'></a> 122     <em class='comment'>// top-level DM params</em>
+<a id='L123' name='L123'></a> 123     <strong class='reserved'>if</strong>(<a href='../D/1960.html' title='Multiple defined in 2 places.'>lp_param_name</a>(nums[<a href='../S/8.html#L63' title='Defined at 63 in utils/params/libparam_to_v3.c.'>DMDISK</a>], b-&gt;params[c]-&gt;name) != -1) <em class='brace'>{</em>
+<a id='L124' name='L124'></a> 124       <a href='../D/1927.html' title='Multiple defined in 2 places.'>lp_add_param</a>(&amp;dmdisk.params, &amp;dmdisk.params_len, b-&gt;params[c]);
+<a id='L125' name='L125'></a> 125     <em class='brace'>}</em>
+<a id='L126' name='L126'></a> 126     <em class='comment'>// DM layout params</em>
+<a id='L127' name='L127'></a> 127     <strong class='reserved'>else</strong> <strong class='reserved'>if</strong>(<a href='../D/1960.html' title='Multiple defined in 2 places.'>lp_param_name</a>(nums[<a href='../S/8.html#L64' title='Defined at 64 in utils/params/libparam_to_v3.c.'>DMLAYOUT</a>], b-&gt;params[c]-&gt;name) != -1) <em class='brace'>{</em>
+<a id='L128' name='L128'></a> 128       <strong class='reserved'>if</strong>(!strcmp(b-&gt;params[c]-&gt;name, "Zones")) <em class='brace'>{</em>
+<a id='L129' name='L129'></a> 129         <a href='../S/8.html#L73' title='Defined at 73 in utils/params/libparam_to_v3.c.'>fix_zonelist</a>(<a href='../S/118.html#L219' title='Defined at 219 in libparam/libparam.h.'>LVAL</a>(b-&gt;params[c]));
+<a id='L130' name='L130'></a> 130       <em class='brace'>}</em>
+<a id='L131' name='L131'></a> 131       <a href='../D/1927.html' title='Multiple defined in 2 places.'>lp_add_param</a>(&amp;layout.params, &amp;layout.params_len, b-&gt;params[c]);
+<a id='L132' name='L132'></a> 132     <em class='brace'>}</em>
+<a id='L133' name='L133'></a> 133     <em class='comment'>// DM mech params</em>
+<a id='L134' name='L134'></a> 134     <strong class='reserved'>else</strong> <strong class='reserved'>if</strong>(<a href='../D/1960.html' title='Multiple defined in 2 places.'>lp_param_name</a>(nums[<a href='../S/8.html#L65' title='Defined at 65 in utils/params/libparam_to_v3.c.'>DMMECH</a>], b-&gt;params[c]-&gt;name) != -1) <em class='brace'>{</em>
+<a id='L135' name='L135'></a> 135       <a href='../D/1927.html' title='Multiple defined in 2 places.'>lp_add_param</a>(&amp;mech.params, &amp;mech.params_len, b-&gt;params[c]);
+<a id='L136' name='L136'></a> 136     <em class='brace'>}</em>
+<a id='L137' name='L137'></a> 137     <em class='comment'>// must be a disksim_disk param</em>
+<a id='L138' name='L138'></a> 138     <strong class='reserved'>else</strong> <strong class='reserved'>if</strong>(<a href='../D/1960.html' title='Multiple defined in 2 places.'>lp_param_name</a>(nums[<a href='../S/8.html#L62' title='Defined at 62 in utils/params/libparam_to_v3.c.'>DISK</a>], b-&gt;params[c]-&gt;name) != -1) <em class='brace'>{</em>
+<a id='L139' name='L139'></a> 139       <strong class='reserved'>if</strong>(!strcmp(b-&gt;params[c]-&gt;name, "Scheduler")) <em class='brace'>{</em>
+<a id='L140' name='L140'></a> 140         <a href='../D/1943.html' title='Multiple defined in 2 places.'>lp_lookup_type</a>("disksim_ioqueue", &amp;b-&gt;params[c]-&gt;v-&gt;v.b-&gt;type);
+<a id='L141' name='L141'></a> 141       <em class='brace'>}</em>
+<a id='L142' name='L142'></a> 142       <a href='../D/1927.html' title='Multiple defined in 2 places.'>lp_add_param</a>(&amp;<a href='../D/1226.html' title='Multiple defined in 3 places.'>disk</a>.params, &amp;<a href='../D/1226.html' title='Multiple defined in 3 places.'>disk</a>.params_len, b-&gt;params[c]);
+<a id='L143' name='L143'></a> 143     <em class='brace'>}</em>
+<a id='L144' name='L144'></a> 144   <em class='brace'>}</em>
+<a id='L145' name='L145'></a> 145 
+<a id='L146' name='L146'></a> 146   <a href='../D/1943.html' title='Multiple defined in 2 places.'>lp_lookup_type</a>("disksim_disk", &amp;<a href='../D/1226.html' title='Multiple defined in 3 places.'>disk</a>.type);
+<a id='L147' name='L147'></a> 147 
+<a id='L148' name='L148'></a> 148 
+<a id='L149' name='L149'></a> 149   layout_p.name = <a href='../S/136.html#L7' title='Defined at 7 in w32build/deprecated/deprecated.c.'>strdup</a>("Layout Model");
+<a id='L150' name='L150'></a> 150   layout_p.v = &amp;layout_v;
+<a id='L151' name='L151'></a> 151   layout_p.v-&gt;v.b = &amp;layout;
+<a id='L152' name='L152'></a> 152   layout_p.v-&gt;t = <a href='../D/30.html' title='Multiple defined in 2 places.'>BLOCK</a>;
+<a id='L153' name='L153'></a> 153 
+<a id='L154' name='L154'></a> 154 
+<a id='L155' name='L155'></a> 155   mech_p.name = <a href='../S/136.html#L7' title='Defined at 7 in w32build/deprecated/deprecated.c.'>strdup</a>("Mechanical Model");
+<a id='L156' name='L156'></a> 156   mech_p.v = &amp;mech_v;
+<a id='L157' name='L157'></a> 157   mech_p.v-&gt;v.b = &amp;mech;
+<a id='L158' name='L158'></a> 158   mech_p.v-&gt;t = <a href='../D/30.html' title='Multiple defined in 2 places.'>BLOCK</a>; 
+<a id='L159' name='L159'></a> 159 
+<a id='L160' name='L160'></a> 160 
+<a id='L161' name='L161'></a> 161   dmdisk.name = <a href='../S/136.html#L7' title='Defined at 7 in w32build/deprecated/deprecated.c.'>strdup</a>(b-&gt;name);
+<a id='L162' name='L162'></a> 162   <a href='../D/1226.html' title='Multiple defined in 3 places.'>disk</a>.name = <a href='../S/136.html#L7' title='Defined at 7 in w32build/deprecated/deprecated.c.'>strdup</a>(b-&gt;name);
+<a id='L163' name='L163'></a> 163 <em class='comment'>/*    disk.type = nums[DISK]; */</em>
+<a id='L164' name='L164'></a> 164   sprintf(modelname, "%s_model", b-&gt;name);
+<a id='L165' name='L165'></a> 165   dmdisk.name = modelname;
+<a id='L166' name='L166'></a> 166   dmdisk.type = nums[<a href='../S/8.html#L63' title='Defined at 63 in utils/params/libparam_to_v3.c.'>DMDISK</a>];
+<a id='L167' name='L167'></a> 167   mech.type = nums[<a href='../S/8.html#L65' title='Defined at 65 in utils/params/libparam_to_v3.c.'>DMMECH</a>]; 
+<a id='L168' name='L168'></a> 168   layout.type = nums[<a href='../S/8.html#L64' title='Defined at 64 in utils/params/libparam_to_v3.c.'>DMLAYOUT</a>];
+<a id='L169' name='L169'></a> 169 
+<a id='L170' name='L170'></a> 170   <a href='../D/1927.html' title='Multiple defined in 2 places.'>lp_add_param</a>(&amp;dmdisk.params, &amp;dmdisk.params_len, &amp;layout_p);
+<a id='L171' name='L171'></a> 171   <a href='../D/1927.html' title='Multiple defined in 2 places.'>lp_add_param</a>(&amp;dmdisk.params, &amp;dmdisk.params_len, &amp;mech_p);
+<a id='L172' name='L172'></a> 172 
+<a id='L173' name='L173'></a> 173 
+<a id='L174' name='L174'></a> 174 
+<a id='L175' name='L175'></a> 175   <a href='../D/1151.html' title='Multiple defined in 2 places.'>ddbg_assert</a>(df = fopen(newspec, "w"));
+<a id='L176' name='L176'></a> 176   <a href='../D/1151.html' title='Multiple defined in 2 places.'>ddbg_assert</a>(mf = fopen(modelfile, "w"));
+<a id='L177' name='L177'></a> 177 
+<a id='L178' name='L178'></a> 178 
+<a id='L179' name='L179'></a> 179   <a href='../D/2561.html' title='Multiple defined in 2 places.'>unparse_block</a>(&amp;<a href='../D/1226.html' title='Multiple defined in 3 places.'>disk</a>, df);
+<a id='L180' name='L180'></a> 180   printf("\n\n\n");
+<a id='L181' name='L181'></a> 181   <a href='../D/2561.html' title='Multiple defined in 2 places.'>unparse_block</a>(&amp;dmdisk, mf);
+<a id='L182' name='L182'></a> 182 
+<a id='L183' name='L183'></a> 183   <strong class='reserved'>return</strong> 0;
+<a id='L184' name='L184'></a> 184 <em class='brace'>}</em>
+<a id='L185' name='L185'></a> 185 
+<a id='L186' name='L186'></a> 186 
+<a id='L187' name='L187'></a> 187 <strong class='reserved'>int</strong> main(<strong class='reserved'>int</strong> argc, <strong class='reserved'>char</strong> **argv) <em class='brace'>{</em>
+<a id='L188' name='L188'></a> 188 
+<a id='L189' name='L189'></a> 189   FILE *inputfile;
+<a id='L190' name='L190'></a> 190   <em class='comment'>// this is the pre3-28 disk</em>
+<a id='L191' name='L191'></a> 191   <strong class='reserved'>struct</strong> <a href='../S/118.html#L293' title='Defined at 293 in libparam/libparam.h.'>lp_mod</a> <a href='../D/1226.html' title='Multiple defined in 3 places.'>disk</a> = <em class='brace'>{</em> "disk", 
+<a id='L192' name='L192'></a> 192                          disksim_disk_params, 
+<a id='L193' name='L193'></a> 193                          DISKSIM_DISK_MAX, 
+<a id='L194' name='L194'></a> 194                          <a href='../S/8.html#L88' title='Defined at 88 in utils/params/libparam_to_v3.c.'>loader</a>, 
+<a id='L195' name='L195'></a> 195                          0, 
+<a id='L196' name='L196'></a> 196                          0<em class='brace'>}</em>;
+<a id='L197' name='L197'></a> 197 
+<a id='L198' name='L198'></a> 198   <em class='comment'>// this is the v3 disksim disk</em>
+<a id='L199' name='L199'></a> 199   <strong class='reserved'>struct</strong> <a href='../S/118.html#L293' title='Defined at 293 in libparam/libparam.h.'>lp_mod</a> dsdisk = <em class='brace'>{</em> "disksim_disk", 
+<a id='L200' name='L200'></a> 200                            disksim_disk_params, 
+<a id='L201' name='L201'></a> 201                            DISKSIM_DISK_MAX, 
+<a id='L202' name='L202'></a> 202                            <a href='../S/8.html#L88' title='Defined at 88 in utils/params/libparam_to_v3.c.'>loader</a>, 
+<a id='L203' name='L203'></a> 203                            0, 
+<a id='L204' name='L204'></a> 204                            0 <em class='brace'>}</em>;
+<a id='L205' name='L205'></a> 205 
+<a id='L206' name='L206'></a> 206   <em class='comment'>// disksim pre3 ioqueue</em>
+<a id='L207' name='L207'></a> 207   <strong class='reserved'>struct</strong> <a href='../S/118.html#L293' title='Defined at 293 in libparam/libparam.h.'>lp_mod</a> <a href='../S/259.html#L316' title='Defined at 316 in src/disksim_ioqueue.h.'>ioqueue</a> = <em class='brace'>{</em> "ioqueue", 0, 0, <a href='../S/8.html#L87' title='Defined at 87 in utils/params/libparam_to_v3.c.'>noop</a>, 0, 0, 0, 0 <em class='brace'>}</em>;
+<a id='L208' name='L208'></a> 208   <em class='comment'>// disksim v3 ioqueue</em>
+<a id='L209' name='L209'></a> 209   <strong class='reserved'>struct</strong> <a href='../S/118.html#L293' title='Defined at 293 in libparam/libparam.h.'>lp_mod</a> dsioqueue = <em class='brace'>{</em> "disksim_ioqueue", 0, 0, <a href='../S/8.html#L87' title='Defined at 87 in utils/params/libparam_to_v3.c.'>noop</a>, 0, 0, 0, 0 <em class='brace'>}</em>;
+<a id='L210' name='L210'></a> 210   <em class='comment'>// disksim pre3 zone</em>
+<a id='L211' name='L211'></a> 211   <strong class='reserved'>struct</strong> <a href='../S/118.html#L293' title='Defined at 293 in libparam/libparam.h.'>lp_mod</a> zone = <em class='brace'>{</em> "zone", 0, 0, <a href='../S/8.html#L87' title='Defined at 87 in utils/params/libparam_to_v3.c.'>noop</a>, 0, 0, 0, 0 <em class='brace'>}</em>;
+<a id='L212' name='L212'></a> 212   <em class='comment'>// diskmodel zone</em>
+<a id='L213' name='L213'></a> 213   <strong class='reserved'>struct</strong> <a href='../S/118.html#L293' title='Defined at 293 in libparam/libparam.h.'>lp_mod</a> dmzone = <em class='brace'>{</em> "dm_layout_g1_zone", 0, 0, <a href='../S/8.html#L87' title='Defined at 87 in utils/params/libparam_to_v3.c.'>noop</a>, 0, 0, 0, 0 <em class='brace'>}</em>;
+<a id='L214' name='L214'></a> 214   <strong class='reserved'>struct</strong> <a href='../S/118.html#L293' title='Defined at 293 in libparam/libparam.h.'>lp_mod</a> dm_disk = dm_disk_mod;
+<a id='L215' name='L215'></a> 215   <strong class='reserved'>struct</strong> <a href='../S/118.html#L293' title='Defined at 293 in libparam/libparam.h.'>lp_mod</a> <a href='../S/71.html#L157' title='Defined at 157 in diskmodel/layout_g1.h.'>dm_layout_g1</a> = dm_layout_g1_mod;
+<a id='L216' name='L216'></a> 216   <strong class='reserved'>struct</strong> <a href='../S/118.html#L293' title='Defined at 293 in libparam/libparam.h.'>lp_mod</a> <a href='../S/94.html#L129' title='Defined at 129 in diskmodel/mech_g1.h.'>dm_mech_g1</a> = dm_mech_g1_mod;
+<a id='L217' name='L217'></a> 217 
+<a id='L218' name='L218'></a> 218   <strong class='reserved'>if</strong>(argc != 5) <em class='brace'>{</em>
+<a id='L219' name='L219'></a> 219     fprintf(stderr, "usage: convert_diskspec &lt;oldspec&gt; &lt;diskname&gt; &lt;newspec&gt; &lt;model&gt;\n");
+<a id='L220' name='L220'></a> 220     exit(1);
+<a id='L221' name='L221'></a> 221   <em class='brace'>}</em>
+<a id='L222' name='L222'></a> 222 
+<a id='L223' name='L223'></a> 223   oldspec = argv[1];
+<a id='L224' name='L224'></a> 224   newspec = argv[3];
+<a id='L225' name='L225'></a> 225   modelfile = argv[4];
+<a id='L226' name='L226'></a> 226 
+<a id='L227' name='L227'></a> 227   <a href='../S/124.html#L49' title='Defined at 49 in libddbg/ddbg_assert.c.'>ddbg_assert_setfile</a>(stderr);
+<a id='L228' name='L228'></a> 228 
+<a id='L229' name='L229'></a> 229   inputfile = fopen(oldspec, "r");
+<a id='L230' name='L230'></a> 230 
+<a id='L231' name='L231'></a> 231   nums[<a href='../S/8.html#L62' title='Defined at 62 in utils/params/libparam_to_v3.c.'>DISK</a>] = <a href='../D/1961.html' title='Multiple defined in 2 places.'>lp_register_module</a>(&amp;<a href='../D/1226.html' title='Multiple defined in 3 places.'>disk</a>);
+<a id='L232' name='L232'></a> 232   <a href='../D/1961.html' title='Multiple defined in 2 places.'>lp_register_module</a>(&amp;dsdisk);
+<a id='L233' name='L233'></a> 233   <a href='../D/1961.html' title='Multiple defined in 2 places.'>lp_register_module</a>(&amp;<a href='../S/259.html#L316' title='Defined at 316 in src/disksim_ioqueue.h.'>ioqueue</a>);
+<a id='L234' name='L234'></a> 234   <a href='../D/1961.html' title='Multiple defined in 2 places.'>lp_register_module</a>(&amp;dsioqueue);
+<a id='L235' name='L235'></a> 235   <a href='../D/1961.html' title='Multiple defined in 2 places.'>lp_register_module</a>(&amp;zone);
+<a id='L236' name='L236'></a> 236   <a href='../D/1961.html' title='Multiple defined in 2 places.'>lp_register_module</a>(&amp;dmzone);
+<a id='L237' name='L237'></a> 237 
+<a id='L238' name='L238'></a> 238   nums[<a href='../S/8.html#L63' title='Defined at 63 in utils/params/libparam_to_v3.c.'>DMDISK</a>] = <a href='../D/1961.html' title='Multiple defined in 2 places.'>lp_register_module</a>(&amp;dm_disk);
+<a id='L239' name='L239'></a> 239   nums[<a href='../S/8.html#L64' title='Defined at 64 in utils/params/libparam_to_v3.c.'>DMLAYOUT</a>] = <a href='../D/1961.html' title='Multiple defined in 2 places.'>lp_register_module</a>(&amp;<a href='../S/71.html#L157' title='Defined at 157 in diskmodel/layout_g1.h.'>dm_layout_g1</a>);
+<a id='L240' name='L240'></a> 240   nums[<a href='../S/8.html#L65' title='Defined at 65 in utils/params/libparam_to_v3.c.'>DMMECH</a>] = <a href='../D/1961.html' title='Multiple defined in 2 places.'>lp_register_module</a>(&amp;<a href='../S/94.html#L129' title='Defined at 129 in diskmodel/mech_g1.h.'>dm_mech_g1</a>);
+<a id='L241' name='L241'></a> 241 
+<a id='L242' name='L242'></a> 242   <a href='../D/1932.html' title='Multiple defined in 2 places.'>lp_init_typetbl</a>();
+<a id='L243' name='L243'></a> 243   <a href='../D/1939.html' title='Multiple defined in 2 places.'>lp_loadfile</a>(inputfile, 
+<a id='L244' name='L244'></a> 244               0,  <em class='comment'>// tlts</em>
+<a id='L245' name='L245'></a> 245               0,  <em class='comment'>// tlts_len</em>
+<a id='L246' name='L246'></a> 246               oldspec, <em class='comment'>// source file</em>
+<a id='L247' name='L247'></a> 247               0, <em class='comment'>// overrides</em>
+<a id='L248' name='L248'></a> 248               0); <em class='comment'>// overrides_len</em>
+<a id='L249' name='L249'></a> 249 
+<a id='L250' name='L250'></a> 250   <a href='../D/1936.html' title='Multiple defined in 2 places.'>lp_instantiate</a>(argv[2], argv[2]);
+<a id='L251' name='L251'></a> 251 
+<a id='L252' name='L252'></a> 252   <strong class='reserved'>return</strong> 0;
+<a id='L253' name='L253'></a> 253 <em class='brace'>}</em>
+<a id='L254' name='L254'></a> 254 
+</pre>
+<hr />
+<a id='BOTTOM' name='BOTTOM'></a>
+<em class='comment'>/* [&lt;][&gt;]<a href='#L73'>[^]</a><a href='#L187'>[v]</a><a href='#TOP'>[top]</a>[bottom]<a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</em>
+</body>
+</html>

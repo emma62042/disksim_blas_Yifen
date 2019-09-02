@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>ioqueue</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/254.html#L200'>ioqueue</a>           200 src/disksim_ioqueue.c void ioqueue_print_contents (ioqueue *queue)</span>
+<span class='curline'><a href='../S/254.html#L243'>ioqueue</a>           243 src/disksim_ioqueue.c int ioqueue_get_number_in_queue (ioqueue *queue)</span>
+<span class='curline'><a href='../S/254.html#L249'>ioqueue</a>           249 src/disksim_ioqueue.c int ioqueue_get_number_pending (ioqueue *queue)</span>
+<span class='curline'><a href='../S/254.html#L260'>ioqueue</a>           260 src/disksim_ioqueue.c int ioqueue_get_reqoutstanding (ioqueue *queue)</span>
+<span class='curline'><a href='../S/254.html#L271'>ioqueue</a>           271 src/disksim_ioqueue.c int ioqueue_get_number_of_requests (ioqueue *queue)</span>
+<span class='curline'><a href='../S/254.html#L282'>ioqueue</a>           282 src/disksim_ioqueue.c int ioqueue_get_number_of_requests_initiated (ioqueue *queue)</span>
+<span class='curline'><a href='../S/254.html#L293'>ioqueue</a>           293 src/disksim_ioqueue.c int ioqueue_get_dist (ioqueue *queue, int blkno)</span>
+<span class='curline'><a href='../S/254.html#L312'>ioqueue</a>           312 src/disksim_ioqueue.c ioqueue_get_cylinder_mapping(ioqueue *queue, </span>
+<span class='curline'><a href='../S/254.html#L367'>ioqueue</a>           367 src/disksim_ioqueue.c void ioqueue_set_concatok_function (ioqueue *queue, int (**concatok)(void *,int,int,int,int), void *concatokparam)</span>
+<span class='curline'><a href='../S/254.html#L374'>ioqueue</a>           374 src/disksim_ioqueue.c void ioqueue_set_idlework_function (ioqueue *queue, void (**idlework)(void *,int), void *idleworkparam, double idledelay)</span>
+<span class='curline'><a href='../S/254.html#L383'>ioqueue</a>           383 src/disksim_ioqueue.c void ioqueue_set_enablement_function (ioqueue *queue, int (**enablement)(ioreq_event *))</span>
+<span class='curline'><a href='../S/254.html#L393'>ioqueue</a>           393 src/disksim_ioqueue.c    ioqueue *queue = (ioqueue *) timereq-&gt;ptr;</span>
+<span class='curline'><a href='../S/254.html#L401'>ioqueue</a>           401 src/disksim_ioqueue.c void ioqueue_reset_idledetecter (ioqueue *queue, int timechange)</span>
+<span class='curline'><a href='../S/254.html#L426'>ioqueue</a>           426 src/disksim_ioqueue.c static void ioqueue_update_arrival_stats (ioqueue *queue, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/254.html#L777'>ioqueue</a>           777 src/disksim_ioqueue.c static int ioqueue_seqstream_head (ioqueue *queue, iobuf *listhead, iobuf *current)</span>
+<span class='curline'><a href='../S/254.html#L852'>ioqueue</a>           852 src/disksim_ioqueue.c static int ioqueue_get_priority_level (ioqueue *ioqueue, iobuf *req)</span>
+<span class='curline'><a href='../S/254.html#L856'>ioqueue</a>           856 src/disksim_ioqueue.c    if (ioqueue-&gt;priority_mix == 1) {</span>
+<span class='curline'><a href='../S/254.html#L860'>ioqueue</a>           860 src/disksim_ioqueue.c    } else if (ioqueue-&gt;priority_mix == 2) {</span>
+<span class='curline'><a href='../S/254.html#L866'>ioqueue</a>           866 src/disksim_ioqueue.c    } else if (ioqueue-&gt;priority_mix == 3) {</span>
+<span class='curline'><a href='../S/254.html#L872'>ioqueue</a>           872 src/disksim_ioqueue.c    } else if (ioqueue-&gt;priority_mix == 4) {</span>
+<span class='curline'><a href='../S/254.html#L878'>ioqueue</a>           878 src/disksim_ioqueue.c    } else if (ioqueue-&gt;priority_mix == 5) {</span>
+<span class='curline'><a href='../S/254.html#L882'>ioqueue</a>           882 src/disksim_ioqueue.c    } else if (ioqueue-&gt;priority_mix == 6) {</span>
+<span class='curline'><a href='../S/254.html#L3046'>ioqueue</a>          3046 src/disksim_ioqueue.c ioreq_event *ioqueue_get_specific_request(ioqueue *queue, </span>
+<span class='curline'><a href='../S/254.html#L3100'>ioqueue</a>          3100 src/disksim_ioqueue.c ioreq_event * ioqueue_set_starttime (ioqueue *queue, ioreq_event *target)</span>
+<span class='curline'><a href='../S/254.html#L3126'>ioqueue</a>          3126 src/disksim_ioqueue.c ioreq_event * ioqueue_show_next_request (ioqueue *queue)</span>
+<span class='curline'><a href='../S/254.html#L3150'>ioqueue</a>          3150 src/disksim_ioqueue.c ioreq_event * ioqueue_get_next_request (ioqueue *queue)</span>
+<span class='curline'><a href='../S/254.html#L3186'>ioqueue</a>          3186 src/disksim_ioqueue.c double ioqueue_add_new_request (ioqueue *queue, ioreq_event *new)</span>
+<span class='curline'><a href='../S/254.html#L3361'>ioqueue</a>          3361 src/disksim_ioqueue.c int ioqueue_raise_priority (ioqueue *queue, int opid)</span>
+<span class='curline'><a href='../S/254.html#L3460'>ioqueue</a>          3460 src/disksim_ioqueue.c double ioqueue_tick (ioqueue *queue)</span>
+<span class='curline'><a href='../S/254.html#L3533'>ioqueue</a>          3533 src/disksim_ioqueue.c ioreq_event * ioqueue_physical_access_done (ioqueue *queue, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/254.html#L3585'>ioqueue</a>          3585 src/disksim_ioqueue.c ioqueue * ioqueue_copy (ioqueue *queue)</span>
+<span class='curline'><a href='../S/254.html#L3587'>ioqueue</a>          3587 src/disksim_ioqueue.c    ioqueue *new = (ioqueue *) malloc(sizeof(ioqueue));</span>
+<span class='curline'><a href='../S/254.html#L3588'>ioqueue</a>          3588 src/disksim_ioqueue.c    memcpy(new, queue, sizeof(ioqueue));</span>
+<span class='curline'><a href='../S/254.html#L3668'>ioqueue</a>          3668 src/disksim_ioqueue.c void ioqueue_resetstats (ioqueue *queue)</span>
+<span class='curline'><a href='../S/254.html#L3704'>ioqueue</a>          3704 src/disksim_ioqueue.c void ioqueue_initialize (ioqueue *queue, int devno)</span>
+<span class='curline'><a href='../S/254.html#L3738'>ioqueue</a>          3738 src/disksim_ioqueue.c void ioqueue_cleanstats (ioqueue *queue)</span>
+<span class='curline'><a href='../S/254.html#L3753'>ioqueue</a>          3753 src/disksim_ioqueue.c ioqueue * ioqueue_createdefaultqueue ()</span>
+<span class='curline'><a href='../S/254.html#L3755'>ioqueue</a>          3755 src/disksim_ioqueue.c    ioqueue * queue = (ioqueue *) malloc(sizeof(ioqueue));</span>
+<span class='curline'><a href='../S/254.html#L3756'>ioqueue</a>          3756 src/disksim_ioqueue.c    bzero(queue, sizeof(ioqueue));</span>
+<span class='curline'><a href='../S/254.html#L3807'>ioqueue</a>          3807 src/disksim_ioqueue.c   result = malloc(sizeof(ioqueue));</span>
+<span class='curline'><a href='../S/254.html#L3808'>ioqueue</a>          3808 src/disksim_ioqueue.c   bzero(result, sizeof(ioqueue));</span>
+<span class='curline'><a href='../S/254.html#L3829'>ioqueue</a>          3829 src/disksim_ioqueue.c static void ioqueue_printqueuestats (ioqueue **set, int setsize, char *prefix)</span>
+<span class='curline'><a href='../S/254.html#L3910'>ioqueue</a>          3910 src/disksim_ioqueue.c static void ioqueue_printintarrstats (ioqueue **set, int setsize, char *prefix)</span>
+<span class='curline'><a href='../S/254.html#L3939'>ioqueue</a>          3939 src/disksim_ioqueue.c static void ioqueue_printsizestats (ioqueue **set, int setsize, char *prefix)</span>
+<span class='curline'><a href='../S/254.html#L3968'>ioqueue</a>          3968 src/disksim_ioqueue.c static void ioqueue_printidlestats (ioqueue **set, int setsize, char *prefix)</span>
+<span class='curline'><a href='../S/254.html#L4099'>ioqueue</a>          4099 src/disksim_ioqueue.c void ioqueue_printstats (ioqueue **set, int setsize, char *sourcestr)</span>
+<span class='curline'><a href='../S/185.html#L432'>ioqueue</a>           432 ssdmodel/ssd_init.c           struct ioq *q = malloc(sizeof(ioqueue));</span>
+<span class='curline'><a href='../S/185.html#L433'>ioqueue</a>           433 ssdmodel/ssd_init.c           memcpy(q, t-&gt;queue, sizeof(ioqueue));</span>
+<span class='curline'><a href='../S/185.html#L439'>ioqueue</a>           439 ssdmodel/ssd_init.c           struct ioq *q = malloc(sizeof(ioqueue));</span>
+<span class='curline'><a href='../S/185.html#L440'>ioqueue</a>           440 ssdmodel/ssd_init.c           memcpy(q, t-&gt;queue, sizeof(ioqueue));</span>
+<span class='curline'><a href='../S/8.html#L207'>ioqueue</a>           207 utils/params/libparam_to_v3.c   struct lp_mod ioqueue = { "ioqueue", 0, 0, noop, 0, 0, 0, 0 };</span>
+<span class='curline'><a href='../S/8.html#L233'>ioqueue</a>           233 utils/params/libparam_to_v3.c   lp_register_module(&amp;ioqueue);</span>
+</pre>
+</body>
+</html>

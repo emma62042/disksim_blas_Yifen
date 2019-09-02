@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>cache_mem_event</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/222.html#L140'>cache_mem_event</a>   140 src/disksim_cachemem.c static int cache_read_continue (struct cache_mem *cache, struct cache_mem_event *readdesc);</span>
+<span class='curline'><a href='../S/222.html#L141'>cache_mem_event</a>   141 src/disksim_cachemem.c static int cache_write_continue (struct cache_mem *cache, struct cache_mem_event *writedesc);</span>
+<span class='curline'><a href='../S/222.html#L175'>cache_mem_event</a>   175 src/disksim_cachemem.c static void cache_waitfor_IO (struct cache_mem *cache, int waitcnt, struct cache_mem_event *cachereq, ioreq_event *ioacc)</span>
+<span class='curline'><a href='../S/222.html#L410'>cache_mem_event</a>   410 src/disksim_cachemem.c static void cache_replace_waitforline (struct cache_mem *cache, struct cache_mem_event *allocdesc)</span>
+<span class='curline'><a href='../S/222.html#L518'>cache_mem_event</a>   518 src/disksim_cachemem.c static void cache_give_lock_to_waiter (struct cache_mem *cache, cache_atom *target, struct cache_mem_event *rwdesc)</span>
+<span class='curline'><a href='../S/222.html#L549'>cache_mem_event</a>   549 src/disksim_cachemem.c          struct cache_mem_event *waiter = NULL;</span>
+<span class='curline'><a href='../S/222.html#L570'>cache_mem_event</a>   570 src/disksim_cachemem.c       struct cache_mem_event *allocdesc;</span>
+<span class='curline'><a href='../S/222.html#L595'>cache_mem_event</a>   595 src/disksim_cachemem.c static int cache_get_write_lock (struct cache_mem *cache, cache_atom *target, struct cache_mem_event *rwdesc)</span>
+<span class='curline'><a href='../S/222.html#L639'>cache_mem_event</a>   639 src/disksim_cachemem.c static int cache_get_read_lock (struct cache_mem *cache, cache_atom *target, struct cache_mem_event *rwdesc)</span>
+<span class='curline'><a href='../S/222.html#L714'>cache_mem_event</a>   714 src/disksim_cachemem.c static void cache_get_read_lock_range (struct cache_mem *cache, int start, int end, cache_atom *startatom, struct cache_mem_event *waiter)</span>
+<span class='curline'><a href='../S/222.html#L735'>cache_mem_event</a>   735 src/disksim_cachemem.c static int cache_issue_flushreq (struct cache_mem *cache, int start, int end, cache_atom *startatom, struct cache_mem_event *waiter)</span>
+<span class='curline'><a href='../S/222.html#L812'>cache_mem_event</a>   812 src/disksim_cachemem.c static int cache_initiate_dirty_block_flush (struct cache_mem *cache, cache_atom *dirtyline, struct cache_mem_event *allocdesc)</span>
+<span class='curline'><a href='../S/222.html#L862'>cache_mem_event</a>   862 src/disksim_cachemem.c static struct cache_mem_event *cache_get_flushdesc()</span>
+<span class='curline'><a href='../S/222.html#L864'>cache_mem_event</a>   864 src/disksim_cachemem.c    struct cache_mem_event *flushdesc = (struct cache_mem_event *) getfromextraq();</span>
+<span class='curline'><a href='../S/222.html#L872'>cache_mem_event</a>   872 src/disksim_cachemem.c static void cache_cleanup_flushdesc (struct cache_mem_event *flushdesc)</span>
+<span class='curline'><a href='../S/222.html#L896'>cache_mem_event</a>   896 src/disksim_cachemem.c    struct cache_mem_event *flushdesc = cache_get_flushdesc();</span>
+<span class='curline'><a href='../S/222.html#L934'>cache_mem_event</a>   934 src/disksim_cachemem.c    struct cache_mem_event *flushdesc;</span>
+<span class='curline'><a href='../S/222.html#L999'>cache_mem_event</a>   999 src/disksim_cachemem.c static int cache_replace (struct cache_mem *cache, int set, struct cache_mem_event *allocdesc)</span>
+<span class='curline'><a href='../S/222.html#L1007'>cache_mem_event</a>  1007 src/disksim_cachemem.c    struct cache_mem_event *flushdesc = (cache-&gt;allocatepolicy &amp; CACHE_ALLOCATE_NONDIRTY) ? NULL : allocdesc;</span>
+<span class='curline'><a href='../S/222.html#L1070'>cache_mem_event</a>  1070 src/disksim_cachemem.c static int cache_get_free_atom (struct cache_mem *cache, int lbn, cache_atom **ret, struct cache_mem_event *allocdesc)</span>
+<span class='curline'><a href='../S/222.html#L1090'>cache_mem_event</a>  1090 src/disksim_cachemem.c struct cache_mem_event *cache_allocate_space_continue (struct cache_mem *cache, struct cache_mem_event *allocdesc)</span>
+<span class='curline'><a href='../S/222.html#L1110'>cache_mem_event</a>  1110 src/disksim_cachemem.c       struct cache_mem_event *rwdesc = allocdesc-&gt;waitees;</span>
+<span class='curline'><a href='../S/222.html#L1189'>cache_mem_event</a>  1189 src/disksim_cachemem.c static struct cache_mem_event * cache_allocate_space (struct cache_mem *cache, int lbn, int size, struct cache_mem_event *rwdesc)</span>
+<span class='curline'><a href='../S/222.html#L1191'>cache_mem_event</a>  1191 src/disksim_cachemem.c    struct cache_mem_event *allocdesc = (struct cache_mem_event *) getfromextraq();</span>
+<span class='curline'><a href='../S/222.html#L1213'>cache_mem_event</a>  1213 src/disksim_cachemem.c static int cache_get_rw_lock (struct cache_mem *cache, int locktype, struct cache_mem_event *rwdesc, cache_atom *line, int i, int stop)</span>
+<span class='curline'><a href='../S/222.html#L1263'>cache_mem_event</a>  1263 src/disksim_cachemem.c static int cache_issue_fillreq (struct cache_mem *cache, int start, int end, struct cache_mem_event *rwdesc, int prefetchtype)</span>
+<span class='curline'><a href='../S/222.html#L1366'>cache_mem_event</a>  1366 src/disksim_cachemem.c static void cache_unlock_attached_prefetch (struct cache_mem *cache, struct cache_mem_event *rwdesc)</span>
+<span class='curline'><a href='../S/222.html#L1422'>cache_mem_event</a>  1422 src/disksim_cachemem.c static int cache_read_continue (struct cache_mem *cache, struct cache_mem_event *readdesc)</span>
+<span class='curline'><a href='../S/222.html#L1427'>cache_mem_event</a>  1427 src/disksim_cachemem.c    struct cache_mem_event *waitee;</span>
+<span class='curline'><a href='../S/222.html#L1568'>cache_mem_event</a>  1568 src/disksim_cachemem.c static int cache_write_continue (struct cache_mem *cache, struct cache_mem_event *writedesc)</span>
+<span class='curline'><a href='../S/222.html#L1571'>cache_mem_event</a>  1571 src/disksim_cachemem.c    struct cache_mem_event *waitee;</span>
+<span class='curline'><a href='../S/222.html#L1699'>cache_mem_event</a>  1699 src/disksim_cachemem.c    struct cache_mem_event *rwdesc = (struct cache_mem_event *) getfromextraq();</span>
+<span class='curline'><a href='../S/222.html#L1776'>cache_mem_event</a>  1776 src/disksim_cachemem.c 			  struct cache_mem_event *writedesc, </span>
+<span class='curline'><a href='../S/222.html#L1792'>cache_mem_event</a>  1792 src/disksim_cachemem.c    struct cache_mem_event *writedesc = 0;</span>
+<span class='curline'><a href='../S/222.html#L1806'>cache_mem_event</a>  1806 src/disksim_cachemem.c       writedesc = (struct cache_mem_event *) getfromextraq();</span>
+<span class='curline'><a href='../S/222.html#L1896'>cache_mem_event</a>  1896 src/disksim_cachemem.c 			  struct cache_mem_event *writedesc, </span>
+<span class='curline'><a href='../S/222.html#L1899'>cache_mem_event</a>  1899 src/disksim_cachemem.c    struct cache_mem_event *tmp = cache-&gt;partwrites;</span>
+<span class='curline'><a href='../S/222.html#L1909'>cache_mem_event</a>  1909 src/disksim_cachemem.c       tmp = (struct cache_mem_event *) getfromextraq();</span>
+<span class='curline'><a href='../S/222.html#L1963'>cache_mem_event</a>  1963 src/disksim_cachemem.c    struct cache_mem_event *tmp = cache-&gt;IOwaiters;</span>
+<span class='curline'><a href='../S/222.html#L2017'>cache_mem_event</a>  2017 src/disksim_cachemem.c          tmp = (type == -1) ? (struct cache_mem_event *) event_copy((event *)tmp) : NULL;</span>
+<span class='curline'><a href='../S/222.html#L2073'>cache_mem_event</a>  2073 src/disksim_cachemem.c   struct cache_mem_event *desc = (struct cache_mem_event *)d;</span>
+<span class='curline'><a href='../S/222.html#L2164'>cache_mem_event</a>  2164 src/disksim_cachemem.c    StaticAssert (sizeof(struct cache_mem_event) &lt;= DISKSIM_EVENT_SIZE);</span>
+<span class='curline'><a href='../S/210.html#L121'>cache_mem_event</a>   121 src/disksim_cachemem.h    struct cache_mem_event *entry[CACHE_LOCKSPERSTRUCT];</span>
+<span class='curline'><a href='../S/210.html#L145'>cache_mem_event</a>   145 src/disksim_cachemem.h    struct cache_mem_event *next;</span>
+<span class='curline'><a href='../S/210.html#L146'>cache_mem_event</a>   146 src/disksim_cachemem.h    struct cache_mem_event *prev;</span>
+<span class='curline'><a href='../S/210.html#L157'>cache_mem_event</a>   157 src/disksim_cachemem.h    struct cache_mem_event *waitees;</span>
+<span class='curline'><a href='../S/210.html#L233'>cache_mem_event</a>   233 src/disksim_cachemem.h    struct cache_mem_event *IOwaiters;</span>
+<span class='curline'><a href='../S/210.html#L234'>cache_mem_event</a>   234 src/disksim_cachemem.h    struct cache_mem_event *partwrites;</span>
+<span class='curline'><a href='../S/210.html#L235'>cache_mem_event</a>   235 src/disksim_cachemem.h    struct cache_mem_event *linewaiters;</span>
+</pre>
+</body>
+</html>

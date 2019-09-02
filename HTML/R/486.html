@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>READ</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/37.html#L360'>READ</a>              360 memsmodel/mems_disksim.c   tmptime = bus_get_transfer_time(mems_get_busno(curr), 1, (curr-&gt;flags &amp; READ));</span>
+<span class='curline'><a href='../S/36.html#L619'>READ</a>              619 memsmodel/mems_event.c 	 simtime, (curr-&gt;flags &amp; READ) ? "R" : "W", curr-&gt;blkno, curr-&gt;bcount, curr-&gt;batchno, curr-&gt;batch_complete);</span>
+<span class='curline'><a href='../S/36.html#L661'>READ</a>              661 memsmodel/mems_event.c       if (!(curr-&gt;flags &amp; READ))</span>
+<span class='curline'><a href='../S/36.html#L962'>READ</a>              962 memsmodel/mems_event.c 	  if (sled-&gt;active_request-&gt;flags &amp; READ)</span>
+<span class='curline'><a href='../S/36.html#L1064'>READ</a>             1064 memsmodel/mems_event.c 	      if (!(sled-&gt;active_request-&gt;flags &amp; READ) &amp;&amp;</span>
+<span class='curline'><a href='../S/36.html#L1349'>READ</a>             1349 memsmodel/mems_event.c 	  if (!(extent_ptr-&gt;request-&gt;flags &amp; READ) &amp;&amp;</span>
+<span class='curline'><a href='../S/36.html#L1441'>READ</a>             1441 memsmodel/mems_event.c 	  if (extent_ptr-&gt;request-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/36.html#L1448'>READ</a>             1448 memsmodel/mems_event.c 	  if ((extent_ptr-&gt;request-&gt;flags &amp; READ) &amp;&amp;</span>
+<span class='curline'><a href='../S/36.html#L1691'>READ</a>             1691 memsmodel/mems_event.c   isread = (bus_extent-&gt;request-&gt;flags &amp; READ);</span>
+<span class='curline'><a href='../S/36.html#L1827'>READ</a>             1827 memsmodel/mems_event.c   else if ((bus_extent-&gt;request-&gt;flags &amp; READ) &amp;&amp;</span>
+<span class='curline'><a href='../S/215.html#L311'>READ</a>              311 src/disksim_cachedev.c    flushreq-&gt;flags = READ;</span>
+<span class='curline'><a href='../S/215.html#L347'>READ</a>              347 src/disksim_cachedev.c    rwdesc-&gt;type = (req-&gt;flags &amp; READ) ? CACHE_EVENT_READ : CACHE_EVENT_WRITE;</span>
+<span class='curline'><a href='../S/215.html#L356'>READ</a>              356 src/disksim_cachedev.c    if (req-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/222.html#L1353'>READ</a>             1353 src/disksim_cachemem.c    fillreq-&gt;flags |= READ;</span>
+<span class='curline'><a href='../S/222.html#L1705'>READ</a>             1705 src/disksim_cachemem.c    rwdesc-&gt;type = (req-&gt;flags &amp; READ) ? CACHE_EVENT_READ : CACHE_EVENT_WRITE;</span>
+<span class='curline'><a href='../S/222.html#L1715'>READ</a>             1715 src/disksim_cachemem.c    if (req-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/220.html#L141'>READ</a>              141 src/disksim_ctlrdumb.c    int read = curr-&gt;flags &amp; READ;</span>
+<span class='curline'><a href='../S/220.html#L224'>READ</a>              224 src/disksim_ctlrdumb.c    currctlr-&gt;state = (curr-&gt;flags &amp; READ) ? READ_DATA_TRANSFER : WRITE_DATA_TRANSFER;</span>
+<span class='curline'><a href='../S/268.html#L216'>READ</a>              216 src/disksim_ctlrsmart.c    if (curr-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/273.html#L1032'>READ</a>             1032 src/disksim_disk.c      currdisk-&gt;lastflags = READ;</span>
+<span class='curline'><a href='../S/192.html#L199'>READ</a>              199 src/disksim_diskcache.c    if (effective &amp;&amp; seg-&gt;access &amp;&amp; (seg-&gt;access-&gt;flags &amp; READ)) {</span>
+<span class='curline'><a href='../S/192.html#L203'>READ</a>              203 src/disksim_diskcache.c 	      (tmpdiskreq-&gt;ioreqlist-&gt;flags &amp; READ))) {</span>
+<span class='curline'><a href='../S/192.html#L237'>READ</a>              237 src/disksim_diskcache.c       if (currdiskreq-&gt;ioreqlist-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/192.html#L299'>READ</a>              299 src/disksim_diskcache.c       if (currdiskreq-&gt;ioreqlist-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/192.html#L477'>READ</a>              477 src/disksim_diskcache.c          if (curr-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/192.html#L705'>READ</a>              705 src/disksim_diskcache.c 	      || (seg-&gt;access &amp;&amp; (seg-&gt;access-&gt;flags &amp; READ))) </span>
+<span class='curline'><a href='../S/192.html#L916'>READ</a>              916 src/disksim_diskcache.c 	    if (!(tmp_diskreq-&gt;ioreqlist-&gt;flags &amp; READ)) {</span>
+<span class='curline'><a href='../S/192.html#L938'>READ</a>              938 src/disksim_diskcache.c 	    while (holddiskreq-&gt;ioreqlist-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/192.html#L1027'>READ</a>             1027 src/disksim_diskcache.c    if(currdiskreq-&gt;ioreqlist-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/192.html#L1046'>READ</a>             1046 src/disksim_diskcache.c        &amp;&amp; !(currdiskreq-&gt;ioreqlist-&gt;flags &amp; READ) </span>
+<span class='curline'><a href='../S/192.html#L1051'>READ</a>             1051 src/disksim_diskcache.c        &amp;&amp; !(seg-&gt;access-&gt;flags &amp; READ) </span>
+<span class='curline'><a href='../S/192.html#L1127'>READ</a>             1127 src/disksim_diskcache.c 		   seg-&gt;access &amp;&amp; !(seg-&gt;access-&gt;flags &amp; READ)) {</span>
+<span class='curline'><a href='../S/192.html#L1216'>READ</a>             1216 src/disksim_diskcache.c 	    if (!(tmp_diskreq-&gt;ioreqlist-&gt;flags &amp; READ)) {</span>
+<span class='curline'><a href='../S/192.html#L1255'>READ</a>             1255 src/disksim_diskcache.c    if (currioreq-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/192.html#L1269'>READ</a>             1269 src/disksim_diskcache.c    int          is_read = (currdiskreq-&gt;ioreqlist-&gt;flags &amp; READ);</span>
+<span class='curline'><a href='../S/192.html#L1306'>READ</a>             1306 src/disksim_diskcache.c 	 if (is_read &amp;&amp; currdiskreq-&gt;hittype != BUFFER_NOMATCH &amp;&amp; !currdisk-&gt;readhitsonwritedata &amp;&amp; seg-&gt;access &amp;&amp; !(seg-&gt;access-&gt;flags &amp; READ)) {</span>
+<span class='curline'><a href='../S/192.html#L1331'>READ</a>             1331 src/disksim_diskcache.c 	    if (!(currdiskreq-&gt;ioreqlist-&gt;flags &amp; READ)) {</span>
+<span class='curline'><a href='../S/192.html#L1345'>READ</a>             1345 src/disksim_diskcache.c 	    if (currdiskreq-&gt;ioreqlist-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/192.html#L1533'>READ</a>             1533 src/disksim_diskcache.c 		 !(tmp_diskreq-&gt;ioreqlist-&gt;flags &amp; READ)) {</span>
+<span class='curline'><a href='../S/192.html#L1559'>READ</a>             1559 src/disksim_diskcache.c       if (!currioreq || (currioreq-&gt;flags &amp; READ)) {</span>
+<span class='curline'><a href='../S/192.html#L1642'>READ</a>             1642 src/disksim_diskcache.c    if (!(curr-&gt;flags &amp; READ)) {</span>
+<span class='curline'><a href='../S/196.html#L215'>READ</a>              215 src/disksim_diskctlr.c   tmptime = bus_get_transfer_time(disk_get_busno(curr), 1, (curr-&gt;flags &amp; READ));</span>
+<span class='curline'><a href='../S/196.html#L409'>READ</a>              409 src/disksim_diskctlr.c       &amp;&amp; (currdisk-&gt;effectivehda-&gt;seg-&gt;access-&gt;flags &amp; READ);</span>
+<span class='curline'><a href='../S/196.html#L423'>READ</a>              423 src/disksim_diskctlr.c     if(nextioreq-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/196.html#L487'>READ</a>              487 src/disksim_diskctlr.c       if(nextdiskreq-&gt;ioreqlist-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/196.html#L495'>READ</a>              495 src/disksim_diskctlr.c   else if(tmpioreq-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/196.html#L553'>READ</a>              553 src/disksim_diskctlr.c     if(curr-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/196.html#L626'>READ</a>              626 src/disksim_diskctlr.c     if(tmpioreq-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/196.html#L627'>READ</a>              627 src/disksim_diskctlr.c       delay = ((currdisk-&gt;lastflags &amp; READ) </span>
+<span class='curline'><a href='../S/196.html#L675'>READ</a>              675 src/disksim_diskctlr.c 	(currdiskreq-&gt;ioreqlist-&gt;flags &amp; READ)) {</span>
+<span class='curline'><a href='../S/196.html#L749'>READ</a>              749 src/disksim_diskctlr.c   else if(currdiskreq-&gt;ioreqlist-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/196.html#L783'>READ</a>              783 src/disksim_diskctlr.c 	  if(!(tmpioreq-&gt;flags &amp; READ)) {</span>
+<span class='curline'><a href='../S/196.html#L936'>READ</a>              936 src/disksim_diskctlr.c       if(currdiskreq-&gt;ioreqlist-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/196.html#L1094'>READ</a>             1094 src/disksim_diskctlr.c 	    &amp;&amp; (currdiskreq-&gt;ioreqlist-&gt;flags &amp; READ)) </span>
+<span class='curline'><a href='../S/196.html#L1130'>READ</a>             1130 src/disksim_diskctlr.c 			 (currdiskreq-&gt;ioreqlist-&gt;flags &amp; READ));</span>
+<span class='curline'><a href='../S/196.html#L1170'>READ</a>             1170 src/disksim_diskctlr.c 	    &amp;&amp; !(currdiskreq-&gt;ioreqlist-&gt;flags &amp; READ)) </span>
+<span class='curline'><a href='../S/196.html#L1349'>READ</a>             1349 src/disksim_diskctlr.c       if(nextdiskreq-&gt;ioreqlist-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/196.html#L1428'>READ</a>             1428 src/disksim_diskctlr.c 					      (curr-&gt;flags &amp; READ),</span>
+<span class='curline'><a href='../S/196.html#L1447'>READ</a>             1447 src/disksim_diskctlr.c      || ((curr-&gt;flags &amp; READ) &amp;&amp; (!currdisk-&gt;read_direct_to_buffer))) </span>
+<span class='curline'><a href='../S/196.html#L1571'>READ</a>             1571 src/disksim_diskctlr.c 					       (curr-&gt;flags &amp; READ));</span>
+<span class='curline'><a href='../S/196.html#L1582'>READ</a>             1582 src/disksim_diskctlr.c      &amp;&amp; (curr-&gt;flags &amp; READ)) </span>
+<span class='curline'><a href='../S/196.html#L1698'>READ</a>             1698 src/disksim_diskctlr.c 					   (nextdiskreq-&gt;ioreqlist-&gt;flags &amp; READ));</span>
+<span class='curline'><a href='../S/196.html#L1762'>READ</a>             1762 src/disksim_diskctlr.c   if(nextioreq-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/196.html#L1844'>READ</a>             1844 src/disksim_diskctlr.c        || (seg-&gt;access-&gt;flags &amp; READ) </span>
+<span class='curline'><a href='../S/196.html#L1979'>READ</a>             1979 src/disksim_diskctlr.c       seg-&gt;access-&gt;flags = READ | BUFFER_BACKGROUND;</span>
+<span class='curline'><a href='../S/196.html#L2054'>READ</a>             2054 src/disksim_diskctlr.c 	 (seg-&gt;access-&gt;flags &amp; READ));</span>
+<span class='curline'><a href='../S/196.html#L2104'>READ</a>             2104 src/disksim_diskctlr.c   ddbg_assert(seg-&gt;access-&gt;flags &amp; READ);</span>
+<span class='curline'><a href='../S/196.html#L2406'>READ</a>             2406 src/disksim_diskctlr.c 	    curr-&gt;devno, curr-&gt;blkno, curr-&gt;bcount, (READ &amp; curr-&gt;flags));</span>
+<span class='curline'><a href='../S/196.html#L2434'>READ</a>             2434 src/disksim_diskctlr.c   if(flags &amp; READ) {</span>
+<span class='curline'><a href='../S/196.html#L2460'>READ</a>             2460 src/disksim_diskctlr.c   if(currdisk-&gt;lastflags &amp; READ) {</span>
+<span class='curline'><a href='../S/196.html#L2542'>READ</a>             2542 src/disksim_diskctlr.c 	  if(currdisk-&gt;lastflags &amp; READ) {</span>
+<span class='curline'><a href='../S/196.html#L2550'>READ</a>             2550 src/disksim_diskctlr.c 	  if(currdisk-&gt;lastflags &amp; READ) {</span>
+<span class='curline'><a href='../S/196.html#L2569'>READ</a>             2569 src/disksim_diskctlr.c 	if(currdisk-&gt;lastflags &amp; READ) {</span>
+<span class='curline'><a href='../S/196.html#L2606'>READ</a>             2606 src/disksim_diskctlr.c     if(currdisk-&gt;lastflags &amp; READ) {</span>
+<span class='curline'><a href='../S/196.html#L2616'>READ</a>             2616 src/disksim_diskctlr.c     if(currdisk-&gt;lastflags &amp; READ) {</span>
+<span class='curline'><a href='../S/196.html#L2672'>READ</a>             2672 src/disksim_diskctlr.c 	    if(currdisk-&gt;lastflags &amp; READ) {</span>
+<span class='curline'><a href='../S/196.html#L2680'>READ</a>             2680 src/disksim_diskctlr.c 	    if(currdisk-&gt;lastflags &amp; READ) {</span>
+<span class='curline'><a href='../S/196.html#L2711'>READ</a>             2711 src/disksim_diskctlr.c       if(currdisk-&gt;lastflags &amp; READ) {</span>
+<span class='curline'><a href='../S/196.html#L2721'>READ</a>             2721 src/disksim_diskctlr.c 	if(currdisk-&gt;lastflags &amp; READ) {</span>
+<span class='curline'><a href='../S/196.html#L2870'>READ</a>             2870 src/disksim_diskctlr.c   else if(currdiskreq-&gt;ioreqlist-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/196.html#L3433'>READ</a>             3433 src/disksim_diskctlr.c   if(tmpioreq-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/196.html#L3603'>READ</a>             3603 src/disksim_diskctlr.c   if(currioreq-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/196.html#L3652'>READ</a>             3652 src/disksim_diskctlr.c 	  while (seg_owner-&gt;ioreqlist-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/196.html#L3763'>READ</a>             3763 src/disksim_diskctlr.c     fprintf (outputfile, "%f, Inside background read portion of stopable_access - read %d\n", simtime, (curr-&gt;flags &amp; READ));</span>
+<span class='curline'><a href='../S/196.html#L3773'>READ</a>             3773 src/disksim_diskctlr.c 	(!(currioreq-&gt;flags &amp; READ) || </span>
+<span class='curline'><a href='../S/196.html#L3780'>READ</a>             3780 src/disksim_diskctlr.c     if(!(currioreq-&gt;flags &amp; READ) &amp;&amp; (currdisk-&gt;write_hit_stop_readahead)) {</span>
+<span class='curline'><a href='../S/196.html#L3800'>READ</a>             3800 src/disksim_diskctlr.c     if((currioreq-&gt;flags &amp; READ) &amp;&amp; </span>
+<span class='curline'><a href='../S/196.html#L3890'>READ</a>             3890 src/disksim_diskctlr.c 			(seg-&gt;access-&gt;flags &amp; READ));</span>
+<span class='curline'><a href='../S/196.html#L3970'>READ</a>             3970 src/disksim_diskctlr.c 					  (curr-&gt;flags &amp; READ));</span>
+<span class='curline'><a href='../S/196.html#L4082'>READ</a>             4082 src/disksim_diskctlr.c      &amp;&amp; (curr-&gt;flags &amp; READ) </span>
+<span class='curline'><a href='../S/196.html#L4298'>READ</a>             4298 src/disksim_diskctlr.c 					       (curr-&gt;flags &amp; READ),</span>
+<span class='curline'><a href='../S/196.html#L4418'>READ</a>             4418 src/disksim_diskctlr.c      &amp;&amp; (curr-&gt;flags &amp; READ) </span>
+<span class='curline'><a href='../S/196.html#L4682'>READ</a>             4682 src/disksim_diskctlr.c 	   || !(curr-&gt;flags &amp; READ)) </span>
+<span class='curline'><a href='../S/196.html#L4765'>READ</a>             4765 src/disksim_diskctlr.c 					 (curr-&gt;flags &amp; READ));</span>
+<span class='curline'><a href='../S/196.html#L4798'>READ</a>             4798 src/disksim_diskctlr.c       if(curr-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/196.html#L4835'>READ</a>             4835 src/disksim_diskctlr.c 		   (curr-&gt;flags &amp; READ),  </span>
+<span class='curline'><a href='../S/196.html#L4849'>READ</a>             4849 src/disksim_diskctlr.c     if((!(curr-&gt;flags &amp; READ)) &amp;&amp; </span>
+<span class='curline'><a href='../S/196.html#L4922'>READ</a>             4922 src/disksim_diskctlr.c 		   (curr-&gt;flags &amp; READ));</span>
+<span class='curline'><a href='../S/196.html#L4929'>READ</a>             4929 src/disksim_diskctlr.c     if((!(curr-&gt;flags &amp; READ)) </span>
+<span class='curline'><a href='../S/205.html#L695'>READ</a>              695 src/disksim_iodriver.c       intrp-&gt;time = iodriver_get_time_to_handle_interrupt(iodrivers[iodriverno], infoptr-&gt;cause, (infoptr-&gt;flags &amp; READ));</span>
+<span class='curline'><a href='../S/254.html#L434'>READ</a>              434 src/disksim_ioqueue.c       if (curr-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/254.html#L446'>READ</a>              446 src/disksim_ioqueue.c       if (curr-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/254.html#L453'>READ</a>              453 src/disksim_ioqueue.c       if ((curr-&gt;flags &amp; READ) &amp;&amp; (queue-&gt;seqflags &amp; READ)) {</span>
+<span class='curline'><a href='../S/254.html#L455'>READ</a>              455 src/disksim_ioqueue.c       } else if (!(curr-&gt;flags &amp; READ) &amp;&amp; !(queue-&gt;seqflags &amp; READ)) {</span>
+<span class='curline'><a href='../S/254.html#L688'>READ</a>              688 src/disksim_ioqueue.c    if (req1-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/254.html#L689'>READ</a>              689 src/disksim_ioqueue.c       if (!(seqscheme &amp; IOQUEUE_CONCAT_READS) || !(req2-&gt;flags &amp; READ)) {</span>
+<span class='curline'><a href='../S/254.html#L693'>READ</a>              693 src/disksim_ioqueue.c       if (!(seqscheme &amp; IOQUEUE_CONCAT_WRITES) || (req2-&gt;flags &amp; READ)) {</span>
+<span class='curline'><a href='../S/254.html#L736'>READ</a>              736 src/disksim_ioqueue.c    if (temp-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/254.html#L790'>READ</a>              790 src/disksim_ioqueue.c       if (current-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/254.html#L791'>READ</a>              791 src/disksim_ioqueue.c          if (current-&gt;prev-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/254.html#L804'>READ</a>              804 src/disksim_ioqueue.c          if (current-&gt;prev-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/254.html#L857'>READ</a>              857 src/disksim_ioqueue.c       if ((req-&gt;flags &amp; TIME_CRITICAL) || (req-&gt;flags &amp; READ)) {</span>
+<span class='curline'><a href='../S/254.html#L863'>READ</a>              863 src/disksim_ioqueue.c       } else if (req-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/254.html#L867'>READ</a>              867 src/disksim_ioqueue.c       if (req-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/254.html#L874'>READ</a>              874 src/disksim_ioqueue.c 	 ret = (req-&gt;flags &amp; READ) ? 2 : 3;</span>
+<span class='curline'><a href='../S/254.html#L876'>READ</a>              876 src/disksim_ioqueue.c 	 ret = (req-&gt;flags &amp; READ) ? 1 : 0;</span>
+<span class='curline'><a href='../S/254.html#L879'>READ</a>              879 src/disksim_ioqueue.c       if (req-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/254.html#L1335'>READ</a>             1335 src/disksim_ioqueue.c 	 delay = (temp-&gt;flags &amp; READ) ? readdelay : writedelay;</span>
+<span class='curline'><a href='../S/254.html#L1537'>READ</a>             1537 src/disksim_ioqueue.c 			       (temp-&gt;flags &amp; READ),</span>
+<span class='curline'><a href='../S/254.html#L1654'>READ</a>             1654 src/disksim_ioqueue.c 		acc_time, best-&gt;cylinder, best-&gt;blkno, (best-&gt;flags &amp; READ), best-&gt;iolist-&gt;devno);     </span>
+<span class='curline'><a href='../S/254.html#L1758'>READ</a>             1758 src/disksim_ioqueue.c 		acc_time, best-&gt;cylinder, best-&gt;blkno, (best-&gt;flags &amp; READ), best-&gt;iolist-&gt;devno, min_time);      </span>
+<span class='curline'><a href='../S/254.html#L1804'>READ</a>             1804 src/disksim_ioqueue.c 	 delay = (temp-&gt;flags &amp; READ) ? readdelay : writedelay;</span>
+<span class='curline'><a href='../S/254.html#L1891'>READ</a>             1891 src/disksim_ioqueue.c 	 delay = (temp-&gt;flags &amp; READ) ? readdelay : writedelay;</span>
+<span class='curline'><a href='../S/254.html#L1942'>READ</a>             1942 src/disksim_ioqueue.c 	 delay = (temp-&gt;flags &amp; READ) ? readdelay : writedelay;</span>
+<span class='curline'><a href='../S/254.html#L2032'>READ</a>             2032 src/disksim_ioqueue.c 	 delay = (temp-&gt;flags &amp; READ) ? readdelay : writedelay;</span>
+<span class='curline'><a href='../S/254.html#L2089'>READ</a>             2089 src/disksim_ioqueue.c 	 delay = (temp-&gt;flags &amp; READ) ? readdelay : writedelay;</span>
+<span class='curline'><a href='../S/254.html#L2144'>READ</a>             2144 src/disksim_ioqueue.c 	 delay = (temp-&gt;flags &amp; READ) ? readdelay : writedelay;</span>
+<span class='curline'><a href='../S/254.html#L2729'>READ</a>             2729 src/disksim_ioqueue.c        if ((curr-&gt;blkno == wanted-&gt;blkno) &amp;&amp; (curr-&gt;opid == wanted-&gt;opid) &amp;&amp; ((curr-&gt;flags &amp; READ) == (wanted-&gt;flags &amp; READ))) {</span>
+<span class='curline'><a href='../S/254.html#L2917'>READ</a>             2917 src/disksim_ioqueue.c       if (tmp-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/254.html#L2926'>READ</a>             2926 src/disksim_ioqueue.c       if (tmp-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/254.html#L2948'>READ</a>             2948 src/disksim_ioqueue.c 	     ((batch_ptr-&gt;flags &amp; READ) == (done-&gt;flags &amp; READ))) {</span>
+<span class='curline'><a href='../S/254.html#L2972'>READ</a>             2972 src/disksim_ioqueue.c        if (trv-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/254.html#L2981'>READ</a>             2981 src/disksim_ioqueue.c        if (tmp-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/254.html#L3001'>READ</a>             3001 src/disksim_ioqueue.c       if (trv-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/254.html#L3013'>READ</a>             3013 src/disksim_ioqueue.c          if (trv-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/254.html#L3344'>READ</a>             3344 src/disksim_ioqueue.c             if (bump-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/254.html#L3409'>READ</a>             3409 src/disksim_ioqueue.c 	 if (done-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/254.html#L3446'>READ</a>             3446 src/disksim_ioqueue.c 	 if (done-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/254.html#L3507'>READ</a>             3507 src/disksim_ioqueue.c    int read = ret-&gt;flags &amp; READ;</span>
+<span class='curline'><a href='../S/254.html#L3509'>READ</a>             3509 src/disksim_ioqueue.c       if ((tmp-&gt;state != WAITING) || (tmp-&gt;blkno != ret-&gt;blkno) || (tmp-&gt;totalsize != ret-&gt;bcount) || ((read) &amp;&amp; !(tmp-&gt;flags &amp; READ)) || (tmp-&gt;iolist-&gt;time &gt; arrtimemax)) {</span>
+<span class='curline'><a href='../S/254.html#L3511'>READ</a>             3511 src/disksim_ioqueue.c          while ((tmp != queue-&gt;list) &amp;&amp; ((tmp-&gt;state != WAITING) || (tmp-&gt;blkno != ret-&gt;blkno) || (tmp-&gt;totalsize != ret-&gt;bcount) || ((read) &amp;&amp; !(tmp-&gt;flags &amp; READ)) || (tmp-&gt;iolist-&gt;time &gt; arrtimemax))) {</span>
+<span class='curline'><a href='../S/254.html#L3526'>READ</a>             3526 src/disksim_ioqueue.c       if (done-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/264.html#L258'>READ</a>              258 src/disksim_iotrace.c       new-&gt;flags = READ;</span>
+<span class='curline'><a href='../S/264.html#L274'>READ</a>              274 src/disksim_iotrace.c    validate_lastread = new-&gt;flags &amp; READ;</span>
+<span class='curline'><a href='../S/264.html#L294'>READ</a>              294 src/disksim_iotrace.c       curr-&gt;flags |= READ;</span>
+<span class='curline'><a href='../S/264.html#L301'>READ</a>              301 src/disksim_iotrace.c       if (curr-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/264.html#L308'>READ</a>              308 src/disksim_iotrace.c       if (curr-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/264.html#L500'>READ</a>              500 src/disksim_iotrace.c    new-&gt;flags = val &amp; READ;</span>
+<span class='curline'><a href='../S/264.html#L531'>READ</a>              531 src/disksim_iotrace.c       new-&gt;flags = READ;</span>
+<span class='curline'><a href='../S/264.html#L566'>READ</a>              566 src/disksim_iotrace.c       new-&gt;flags = READ;</span>
+<span class='curline'><a href='../S/264.html#L599'>READ</a>              599 src/disksim_iotrace.c       new-&gt;flags |= (new-&gt;flags &amp; READ) ? TIME_LIMITED : 0;</span>
+<span class='curline'><a href='../S/264.html#L625'>READ</a>              625 src/disksim_iotrace.c       new-&gt;flags |= (new-&gt;flags &amp; READ) ? TIME_LIMITED : 0;</span>
+<span class='curline'><a href='../S/278.html#L175'>READ</a>              175 src/disksim_logorg.c    if (curr-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/278.html#L327'>READ</a>              327 src/disksim_logorg.c       if (curr-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/278.html#L334'>READ</a>              334 src/disksim_logorg.c       if (curr-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/278.html#L342'>READ</a>              342 src/disksim_logorg.c       if (curr-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/278.html#L350'>READ</a>              350 src/disksim_logorg.c       if (curr-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/278.html#L359'>READ</a>              359 src/disksim_logorg.c       if (curr-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/278.html#L400'>READ</a>              400 src/disksim_logorg.c       fprintf (outputfile, "last request:  dev=%d, blk=%d, cnt=%d, %d (R==1)\n",curr-&gt;devno, curr-&gt;blkno, curr-&gt;bcount, (curr-&gt;flags &amp; READ));</span>
+<span class='curline'><a href='../S/278.html#L403'>READ</a>              403 src/disksim_logorg.c    if (req-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/278.html#L422'>READ</a>              422 src/disksim_logorg.c    if (req-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/278.html#L864'>READ</a>              864 src/disksim_logorg.c    if (curr-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/191.html#L349'>READ</a>              349 src/disksim_pfsim.c          if (tmp-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/191.html#L360'>READ</a>              360 src/disksim_pfsim.c fprintf (outputfile, "pf_iowait: chan %p, read %d, crit %d, opid %d, blkno %x\n", tmp-&gt;buf, (tmp-&gt;flags &amp; READ), (tmp-&gt;flags &amp; (TIME_LIMITED|TIME_CRITICAL)), tmp-&gt;opid, tmp-&gt;blkno);</span>
+<span class='curline'><a href='../S/191.html#L363'>READ</a>              363 src/disksim_pfsim.c       if (tmp-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/191.html#L589'>READ</a>              589 src/disksim_pfsim.c       if (curr-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/274.html#L147'>READ</a>              147 src/disksim_redun.c    if (curr-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/274.html#L158'>READ</a>              158 src/disksim_redun.c    if (curr-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/274.html#L271'>READ</a>              271 src/disksim_redun.c    if (curr-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/274.html#L322'>READ</a>              322 src/disksim_redun.c    if (curr-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/274.html#L355'>READ</a>              355 src/disksim_redun.c    curr-&gt;flags |= READ;</span>
+<span class='curline'><a href='../S/274.html#L398'>READ</a>              398 src/disksim_redun.c       if (!(curr-&gt;flags &amp; READ)) {</span>
+<span class='curline'><a href='../S/274.html#L417'>READ</a>              417 src/disksim_redun.c    if (curr-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/274.html#L461'>READ</a>              461 src/disksim_redun.c    curr-&gt;flags |= READ;</span>
+<span class='curline'><a href='../S/274.html#L474'>READ</a>              474 src/disksim_redun.c       temp-&gt;flags |= READ;</span>
+<span class='curline'><a href='../S/274.html#L496'>READ</a>              496 src/disksim_redun.c    curr-&gt;flags |= READ;</span>
+<span class='curline'><a href='../S/274.html#L512'>READ</a>              512 src/disksim_redun.c       temp-&gt;flags |= READ;</span>
+<span class='curline'><a href='../S/274.html#L548'>READ</a>              548 src/disksim_redun.c    if (curr-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/274.html#L577'>READ</a>              577 src/disksim_redun.c             fprintf(stderr, "Integrity check failure at logorg_join_seqreqs - blkno %d, bcount %d, blkno %d, read %d\n", temp-&gt;blkno, temp-&gt;bcount, temp-&gt;next-&gt;blkno, (temp-&gt;flags &amp; READ));</span>
+<span class='curline'><a href='../S/274.html#L580'>READ</a>              580 src/disksim_redun.c          if (((temp-&gt;flags &amp; READ) == (temp-&gt;next-&gt;flags &amp; READ)) &amp;&amp; (distance &lt;= seqgive)) {</span>
+<span class='curline'><a href='../S/274.html#L636'>READ</a>              636 src/disksim_redun.c       newreq-&gt;flags = temp-&gt;flags | READ;</span>
+<span class='curline'><a href='../S/274.html#L680'>READ</a>              680 src/disksim_redun.c       newreq-&gt;flags = rowhead-&gt;flags | READ;</span>
+<span class='curline'><a href='../S/274.html#L694'>READ</a>              694 src/disksim_redun.c          newreq-&gt;flags = temp-&gt;flags | READ;</span>
+<span class='curline'><a href='../S/274.html#L703'>READ</a>              703 src/disksim_redun.c          newreq-&gt;flags = temp-&gt;flags | READ;</span>
+<span class='curline'><a href='../S/274.html#L715'>READ</a>              715 src/disksim_redun.c       newreq-&gt;flags = rowhead-&gt;flags | READ;</span>
+<span class='curline'><a href='../S/274.html#L969'>READ</a>              969 src/disksim_redun.c 	 if (!(curr-&gt;flags &amp; READ)) {</span>
+<span class='curline'><a href='../S/274.html#L1018'>READ</a>             1018 src/disksim_redun.c 	    if (!(curr-&gt;flags &amp; READ)) {</span>
+<span class='curline'><a href='../S/274.html#L1063'>READ</a>             1063 src/disksim_redun.c    if (curr-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/201.html#L184'>READ</a>              184 src/disksim_simpledisk.c    tmptime = bus_get_transfer_time(simpledisk_get_busno(curr), 1, (curr-&gt;flags &amp; READ));</span>
+<span class='curline'><a href='../S/201.html#L359'>READ</a>              359 src/disksim_simpledisk.c    if (curr-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/201.html#L391'>READ</a>              391 src/disksim_simpledisk.c    if (curr-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/201.html#L444'>READ</a>              444 src/disksim_simpledisk.c       if (curr-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/201.html#L455'>READ</a>              455 src/disksim_simpledisk.c       if (curr-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/201.html#L483'>READ</a>              483 src/disksim_simpledisk.c       if (curr-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/201.html#L541'>READ</a>              541 src/disksim_simpledisk.c       if (curr-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/216.html#L337'>READ</a>              337 src/disksim_synthio.c       tmp-&gt;flags |= READ;</span>
+<span class='curline'><a href='../S/216.html#L390'>READ</a>              390 src/disksim_synthio.c      tmp-&gt;flags = SEQ | (tmp-&gt;flags &amp; READ);</span>
+<span class='curline'><a href='../S/216.html#L415'>READ</a>              415 src/disksim_synthio.c        tmp-&gt;flags |= READ;</span>
+<span class='curline'><a href='../S/216.html#L438'>READ</a>              438 src/disksim_synthio.c 	tmp-&gt;flags = READ;</span>
+<span class='curline'><a href='../S/187.html#L90'>READ</a>               90 ssdmodel/ssd.c    tmptime = bus_get_transfer_time(ssd_get_busno(curr), 1, (curr-&gt;flags &amp; READ));</span>
+<span class='curline'><a href='../S/187.html#L194'>READ</a>              194 ssdmodel/ssd.c                if (curr-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/187.html#L213'>READ</a>              213 ssdmodel/ssd.c                if (curr-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/187.html#L333'>READ</a>              333 ssdmodel/ssd.c    if (curr-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/187.html#L511'>READ</a>              511 ssdmodel/ssd.c             if (req-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/187.html#L522'>READ</a>              522 ssdmodel/ssd.c                 r-&gt;is_read = req-&gt;flags &amp; READ;</span>
+<span class='curline'><a href='../S/187.html#L526'>READ</a>              526 ssdmodel/ssd.c                 if (req-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/187.html#L688'>READ</a>              688 ssdmodel/ssd.c    if (curr-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/187.html#L739'>READ</a>              739 ssdmodel/ssd.c       if (curr-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/146.html#L103'>READ</a>              103 ssdmodel/ssd_gang.c             if (req-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/146.html#L114'>READ</a>              114 ssdmodel/ssd_gang.c                 r-&gt;is_read = req-&gt;flags &amp; READ;</span>
+<span class='curline'><a href='../S/146.html#L118'>READ</a>              118 ssdmodel/ssd_gang.c                 if (req-&gt;flags &amp; READ) {</span>
+<span class='curline'><a href='../S/146.html#L283'>READ</a>              283 ssdmodel/ssd_gang.c         if (req-&gt;flags &amp; READ) {</span>
+</pre>
+</body>
+</html>

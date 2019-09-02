@@ -1,0 +1,456 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>src/raw_layout.c</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<a id='TOP' name='TOP'></a><h2 class='header'><a href='../mains.html'>root</a>/<a href='../files/402.html'>src</a>/raw_layout.c</h2>
+<em class='comment'>/* [&lt;][&gt;]<a href='#L105'>[^]</a><a href='#L239'>[v]</a>[top]<a href='#BOTTOM'>[bottom]</a><a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</em>
+<hr />
+<h2 class='header'>DEFINITIONS</h2>
+This source file includes following definitions.
+<ol>
+<li><a href='#L105' title='Defined at 105.'>determine_zones</a></li>
+<li><a href='#L239' title='Defined at 239.'>read_raw_layout</a></li>
+</ol>
+<hr />
+<pre>
+<a id='L1' name='L1'></a>   1 <em class='comment'>/*</em>
+<a id='L2' name='L2'></a>   2 <em class='comment'> * DiskSim Storage Subsystem Simulation Environment (Version 4.0)</em>
+<a id='L3' name='L3'></a>   3 <em class='comment'> * Revision Authors: John Bucy, Greg Ganger</em>
+<a id='L4' name='L4'></a>   4 <em class='comment'> * Contributors: John Griffin, Jiri Schindler, Steve Schlosser</em>
+<a id='L5' name='L5'></a>   5 <em class='comment'> *</em>
+<a id='L6' name='L6'></a>   6 <em class='comment'> * Copyright (c) of Carnegie Mellon University, 2001-2008.</em>
+<a id='L7' name='L7'></a>   7 <em class='comment'> *</em>
+<a id='L8' name='L8'></a>   8 <em class='comment'> * This software is being provided by the copyright holders under the</em>
+<a id='L9' name='L9'></a>   9 <em class='comment'> * following license. By obtaining, using and/or copying this software,</em>
+<a id='L10' name='L10'></a>  10 <em class='comment'> * you agree that you have read, understood, and will comply with the</em>
+<a id='L11' name='L11'></a>  11 <em class='comment'> * following terms and conditions:</em>
+<a id='L12' name='L12'></a>  12 <em class='comment'> *</em>
+<a id='L13' name='L13'></a>  13 <em class='comment'> * Permission to reproduce, use, and prepare derivative works of this</em>
+<a id='L14' name='L14'></a>  14 <em class='comment'> * software is granted provided the copyright and "No Warranty" statements</em>
+<a id='L15' name='L15'></a>  15 <em class='comment'> * are included with all reproductions and derivative works and associated</em>
+<a id='L16' name='L16'></a>  16 <em class='comment'> * documentation. This software may also be redistributed without charge</em>
+<a id='L17' name='L17'></a>  17 <em class='comment'> * provided that the copyright and "No Warranty" statements are included</em>
+<a id='L18' name='L18'></a>  18 <em class='comment'> * in all redistributions.</em>
+<a id='L19' name='L19'></a>  19 <em class='comment'> *</em>
+<a id='L20' name='L20'></a>  20 <em class='comment'> * NO WARRANTY. THIS SOFTWARE IS FURNISHED ON AN "AS IS" BASIS.</em>
+<a id='L21' name='L21'></a>  21 <em class='comment'> * CARNEGIE MELLON UNIVERSITY MAKES NO WARRANTIES OF ANY KIND, EITHER</em>
+<a id='L22' name='L22'></a>  22 <em class='comment'> * EXPRESSED OR IMPLIED AS TO THE MATTER INCLUDING, BUT NOT LIMITED</em>
+<a id='L23' name='L23'></a>  23 <em class='comment'> * TO: WARRANTY OF FITNESS FOR PURPOSE OR MERCHANTABILITY, EXCLUSIVITY</em>
+<a id='L24' name='L24'></a>  24 <em class='comment'> * OF RESULTS OR RESULTS OBTAINED FROM USE OF THIS SOFTWARE. CARNEGIE</em>
+<a id='L25' name='L25'></a>  25 <em class='comment'> * MELLON UNIVERSITY DOES NOT MAKE ANY WARRANTY OF ANY KIND WITH RESPECT</em>
+<a id='L26' name='L26'></a>  26 <em class='comment'> * TO FREEDOM FROM PATENT, TRADEMARK, OR COPYRIGHT INFRINGEMENT.</em>
+<a id='L27' name='L27'></a>  27 <em class='comment'> * COPYRIGHT HOLDERS WILL BEAR NO LIABILITY FOR ANY USE OF THIS SOFTWARE</em>
+<a id='L28' name='L28'></a>  28 <em class='comment'> * OR DOCUMENTATION.</em>
+<a id='L29' name='L29'></a>  29 <em class='comment'> *</em>
+<a id='L30' name='L30'></a>  30 <em class='comment'> */</em>
+<a id='L31' name='L31'></a>  31 
+<a id='L32' name='L32'></a>  32 
+<a id='L33' name='L33'></a>  33 <em class='comment'>/*</em>
+<a id='L34' name='L34'></a>  34 <em class='comment'> * DIXtrac - Automated Disk Extraction Tool</em>
+<a id='L35' name='L35'></a>  35 <em class='comment'> * Authors: Jiri Schindler, Greg Ganger</em>
+<a id='L36' name='L36'></a>  36 <em class='comment'> *</em>
+<a id='L37' name='L37'></a>  37 <em class='comment'> * Copyright (c) of Carnegie Mellon University, 1999, 2000.</em>
+<a id='L38' name='L38'></a>  38 <em class='comment'> *</em>
+<a id='L39' name='L39'></a>  39 <em class='comment'> * Permission to reproduce, use, and prepare derivative works of</em>
+<a id='L40' name='L40'></a>  40 <em class='comment'> * this software for internal use is granted provided the copyright</em>
+<a id='L41' name='L41'></a>  41 <em class='comment'> * and "No Warranty" statements are included with all reproductions</em>
+<a id='L42' name='L42'></a>  42 <em class='comment'> * and derivative works. This software may also be redistributed</em>
+<a id='L43' name='L43'></a>  43 <em class='comment'> * without charge provided that the copyright and "No Warranty"</em>
+<a id='L44' name='L44'></a>  44 <em class='comment'> * statements are included in all redistributions.</em>
+<a id='L45' name='L45'></a>  45 <em class='comment'> *</em>
+<a id='L46' name='L46'></a>  46 <em class='comment'> * NO WARRANTY. THIS SOFTWARE IS FURNISHED ON AN "AS IS" BASIS.</em>
+<a id='L47' name='L47'></a>  47 <em class='comment'> * CARNEGIE MELLON UNIVERSITY MAKES NO WARRANTIES OF ANY KIND, EITHER</em>
+<a id='L48' name='L48'></a>  48 <em class='comment'> * EXPRESSED OR IMPLIED AS TO THE MATTER INCLUDING, BUT NOT LIMITED</em>
+<a id='L49' name='L49'></a>  49 <em class='comment'> * TO: WARRANTY OF FITNESS FOR PURPOSE OR MERCHANTABILITY, EXCLUSIVITY</em>
+<a id='L50' name='L50'></a>  50 <em class='comment'> * OF RESULTS OR RESULTS OBTAINED FROM USE OF THIS SOFTWARE. CARNEGIE</em>
+<a id='L51' name='L51'></a>  51 <em class='comment'> * MELLON UNIVERSITY DOES NOT MAKE ANY WARRANTY OF ANY KIND WITH RESPECT</em>
+<a id='L52' name='L52'></a>  52 <em class='comment'> * TO FREEDOM FROM PATENT, TRADEMARK, OR COPYRIGHT INFRINGEMENT.</em>
+<a id='L53' name='L53'></a>  53 <em class='comment'> */</em>
+<a id='L54' name='L54'></a>  54 
+<a id='L55' name='L55'></a>  55 <em class='comment'>/* uncomment the next line if compiling as part of DiskSim code */</em>
+<a id='L56' name='L56'></a>  56 <em class='sharp'>#define</em> <a href='../R/131.html' title='Multiple referred from 3 places.'>DISKSIM</a> 
+<a id='L57' name='L57'></a>  57 
+<a id='L58' name='L58'></a>  58 <em class='sharp'>#ifdef</em> <a href='../S/198.html#L56' title='Defined at 56 in src/raw_layout.c.'>DISKSIM</a>
+<a id='L59' name='L59'></a>  59 
+<a id='L60' name='L60'></a>  60 <em class='sharp'>#include</em> &lt;stdio.h&gt;
+<a id='L61' name='L61'></a>  61 <em class='sharp'>#include</em> &lt;stdlib.h&gt;
+<a id='L62' name='L62'></a>  62 
+<a id='L63' name='L63'></a>  63 <em class='sharp'>#include</em> "<a href='283.html'>disksim_global.h</a>"
+<a id='L64' name='L64'></a>  64 <em class='sharp'>#include</em> "<a href='255.html'>disksim_iosim.h</a>"
+<a id='L65' name='L65'></a>  65 <em class='sharp'>#include</em> "<a href='258.html'>disksim_disk.h</a>"
+<a id='L66' name='L66'></a>  66 <em class='sharp'>#define</em> <a href='../R/1364.html' title='Multiple referred from 5 places.'>internal_error</a>      printf
+<a id='L67' name='L67'></a>  67 <em class='sharp'>#define</em> <a href='../R/1234.html' title='Multiple referred from 4 places.'>error_handler</a>       printf
+<a id='L68' name='L68'></a>  68 
+<a id='L69' name='L69'></a>  69 <em class='sharp'>#else</em>
+<a id='L70' name='L70'></a>  70 
+<a id='L71' name='L71'></a>  71 <em class='sharp'>#include</em> "dixtrac.h"
+<a id='L72' name='L72'></a>  72 <em class='sharp'>#include</em> "handle_error.h"
+<a id='L73' name='L73'></a>  73 <em class='sharp'>#include</em> "extract_layout.h"
+<a id='L74' name='L74'></a>  74 <strong class='reserved'>typedef</strong> band_t <a href='../R/685.html' title='Multiple referred from 13 places.'>band</a>;
+<a id='L75' name='L75'></a>  75 <strong class='reserved'>typedef</strong> diskinfo_t <a href='../R/986.html' title='Multiple referred from 181 places.'>disk</a>;
+<a id='L76' name='L76'></a>  76 
+<a id='L77' name='L77'></a>  77 <em class='sharp'>#endif</em>
+<a id='L78' name='L78'></a>  78 
+<a id='L79' name='L79'></a>  79 <em class='sharp'>#ifdef</em> RAWLAYOUT_SUPPORT
+<a id='L80' name='L80'></a>  80 
+<a id='L81' name='L81'></a>  81 <em class='comment'>/*  #define PRINT_LAYOUT_INFO  1 */</em>
+<a id='L82' name='L82'></a>  82 
+<a id='L83' name='L83'></a>  83 <em class='sharp'>#define</em> <a href='../R/391.html' title='Multiple referred from 7 places.'>MAXSECTORS</a>     1000
+<a id='L84' name='L84'></a>  84 <em class='comment'>/* the threshold is multiplied by the capacity of the disk (in GB) */</em>
+<a id='L85' name='L85'></a>  85 <em class='comment'>//#define COUNT_THRSHLD  40</em>
+<a id='L86' name='L86'></a>  86 <em class='sharp'>#define</em> <a href='../S/198.html#L134' title='Referred from 134 in src/raw_layout.c.'>COUNT_THRSHLD</a>  19
+<a id='L87' name='L87'></a>  87 <em class='comment'>/* the difference in the number cylinders to distinguish different zones */</em>
+<a id='L88' name='L88'></a>  88 <em class='sharp'>#define</em> <a href='../S/198.html#L133' title='Referred from 133 in src/raw_layout.c.'>PERCENT</a>        0.04
+<a id='L89' name='L89'></a>  89 <em class='comment'>/* discard the cylinder with the same SPT if more than CYL_DISTANCE away */</em>
+<a id='L90' name='L90'></a>  90 <em class='comment'>/* allow for spare cylinders and "long enough defect */</em>
+<a id='L91' name='L91'></a>  91 <em class='sharp'>#define</em> <a href='../S/198.html#L340' title='Referred from 340 in src/raw_layout.c.'>MIN_CYL_DISTANCE</a> 20
+<a id='L92' name='L92'></a>  92 
+<a id='L93' name='L93'></a>  93 <em class='sharp'>#define</em> <a href='../R/426.html' title='Multiple referred from 10 places.'>NOVAL</a>          -9999
+<a id='L94' name='L94'></a>  94 
+<a id='L95' name='L95'></a>  95 <strong class='reserved'>typedef</strong> <strong class='reserved'>struct</strong> sfreq <em class='brace'>{</em>
+<a id='L96' name='L96'></a>  96   <strong class='reserved'>int</strong> count,cyls;
+<a id='L97' name='L97'></a>  97   <strong class='reserved'>int</strong> mincyl,maxcyl;
+<a id='L98' name='L98'></a>  98 <em class='brace'>}</em> <a href='../R/1920.html' title='Multiple referred from 3 places.'>sfreq_t</a>;
+<a id='L99' name='L99'></a>  99 
+<a id='L100' name='L100'></a> 100 
+<a id='L101' name='L101'></a> 101 <em class='comment'>/*---------------------------------------------------------------------------*</em>
+<a id='L102' name='L102'></a> 102 <em class='comment'> *                                                                           * </em>
+<a id='L103' name='L103'></a> 103 <em class='comment'> *---------------------------------------------------------------------------*/</em>
+<a id='L104' name='L104'></a> 104 <strong class='reserved'>static</strong> <strong class='reserved'>void</strong>
+<a id='L105' name='L105'></a> 105 <a href='../S/198.html#L420' title='Referred from 420 in src/raw_layout.c.'>determine_zones</a>(<a href='../D/1226.html' title='Multiple defined in 3 places.'>disk</a> *currdisk, <a href='../S/198.html#L98' title='Defined at 98 in src/raw_layout.c.'>sfreq_t</a> *sectfreq, <strong class='reserved'>int</strong> capacity)
+<a id='L106' name='L106'></a> 106 <em class='brace'>{</em>
+<a id='L107' name='L107'></a> 107   <strong class='reserved'>typedef</strong> <strong class='reserved'>struct</strong> <a href='../S/198.html#L111' title='Referred from 111 in src/raw_layout.c.'>sp</a> <em class='brace'>{</em>
+<a id='L108' name='L108'></a> 108     <strong class='reserved'>int</strong> spt;
+<a id='L109' name='L109'></a> 109     <strong class='reserved'>int</strong> count;
+<a id='L110' name='L110'></a> 110     <strong class='reserved'>int</strong> avgcyl;
+<a id='L111' name='L111'></a> 111     <strong class='reserved'>struct</strong> <a href='../S/198.html#L107' title='Defined at 107 in src/raw_layout.c.'>sp</a> *next;
+<a id='L112' name='L112'></a> 112   <em class='brace'>}</em> <a href='../R/1982.html' title='Multiple referred from 4 places.'>spt_t</a>;
+<a id='L113' name='L113'></a> 113 
+<a id='L114' name='L114'></a> 114   <a href='../S/198.html#L112' title='Defined at 112 in src/raw_layout.c.'>spt_t</a> *sectspertrk, *currspt, *temp;
+<a id='L115' name='L115'></a> 115   <a href='../S/198.html#L112' title='Defined at 112 in src/raw_layout.c.'>spt_t</a> *prev = 0;
+<a id='L116' name='L116'></a> 116   <strong class='reserved'>int</strong> i;
+<a id='L117' name='L117'></a> 117 
+<a id='L118' name='L118'></a> 118   <strong class='reserved'>int</strong> sectpercyl_sum = 0;
+<a id='L119' name='L119'></a> 119 
+<a id='L120' name='L120'></a> 120   <strong class='reserved'>if</strong> (!(sectspertrk = (<a href='../S/198.html#L112' title='Defined at 112 in src/raw_layout.c.'>spt_t</a> *) <a href='../S/73.html#L58' title='Defined at 58 in diskmodel/dm_config.h.'>malloc</a>(<strong class='reserved'>sizeof</strong>(<a href='../S/198.html#L112' title='Defined at 112 in src/raw_layout.c.'>spt_t</a>))))
+<a id='L121' name='L121'></a> 121     fprintf(stderr,"Could not allocate memory!\n");
+<a id='L122' name='L122'></a> 122 
+<a id='L123' name='L123'></a> 123   sectspertrk-&gt;spt = 0;
+<a id='L124' name='L124'></a> 124   sectspertrk-&gt;count = 0;
+<a id='L125' name='L125'></a> 125   sectspertrk-&gt;avgcyl = 0;
+<a id='L126' name='L126'></a> 126   sectspertrk-&gt;next = NULL;
+<a id='L127' name='L127'></a> 127 
+<a id='L128' name='L128'></a> 128   <strong class='reserved'>for</strong>(i=1;i&lt;<a href='../S/198.html#L83' title='Defined at 83 in src/raw_layout.c.'>MAXSECTORS</a>;i++) <em class='brace'>{</em>
+<a id='L129' name='L129'></a> 129     <strong class='reserved'>if</strong> (sectfreq[i].count &gt; 0) <em class='brace'>{</em>
+<a id='L130' name='L130'></a> 130       <strong class='reserved'>int</strong> avg = sectfreq[i].cyls / sectfreq[i].count;
+<a id='L131' name='L131'></a> 131       currspt = sectspertrk;
+<a id='L132' name='L132'></a> 132       <strong class='reserved'>do</strong> <em class='brace'>{</em>
+<a id='L133' name='L133'></a> 133         <strong class='reserved'>if</strong> (abs(avg - currspt-&gt;avgcyl) &gt; (currspt-&gt;avgcyl * <a href='../S/198.html#L88' title='Defined at 88 in src/raw_layout.c.'>PERCENT</a>)) <em class='brace'>{</em>
+<a id='L134' name='L134'></a> 134           <strong class='reserved'>if</strong> (sectfreq[i].count &gt;= (<a href='../S/198.html#L86' title='Defined at 86 in src/raw_layout.c.'>COUNT_THRSHLD</a> * capacity)) <em class='brace'>{</em>
+<a id='L135' name='L135'></a> 135             <strong class='reserved'>if</strong> (!(temp = (<a href='../S/198.html#L112' title='Defined at 112 in src/raw_layout.c.'>spt_t</a> *) <a href='../S/73.html#L58' title='Defined at 58 in diskmodel/dm_config.h.'>malloc</a>(<strong class='reserved'>sizeof</strong>(<a href='../S/198.html#L112' title='Defined at 112 in src/raw_layout.c.'>spt_t</a>)))) <em class='brace'>{</em>
+<a id='L136' name='L136'></a> 136               fprintf(stderr,"Could not allocate memory!\n");
+<a id='L137' name='L137'></a> 137             <em class='brace'>}</em>
+<a id='L138' name='L138'></a> 138             temp-&gt;spt = i;
+<a id='L139' name='L139'></a> 139             temp-&gt;count = sectfreq[i].count;
+<a id='L140' name='L140'></a> 140             temp-&gt;avgcyl = sectfreq[i].cyls / sectfreq[i].count;
+<a id='L141' name='L141'></a> 141             temp-&gt;next = currspt;
+<a id='L142' name='L142'></a> 142             <strong class='reserved'>if</strong> (currspt == sectspertrk) <em class='brace'>{</em>
+<a id='L143' name='L143'></a> 143               sectspertrk = temp;
+<a id='L144' name='L144'></a> 144             <em class='brace'>}</em>
+<a id='L145' name='L145'></a> 145             <strong class='reserved'>else</strong> <em class='brace'>{</em>
+<a id='L146' name='L146'></a> 146               prev-&gt;next = temp;
+<a id='L147' name='L147'></a> 147             <em class='brace'>}</em>
+<a id='L148' name='L148'></a> 148           <em class='brace'>}</em>
+<a id='L149' name='L149'></a> 149           <strong class='reserved'>break</strong>;
+<a id='L150' name='L150'></a> 150         <em class='brace'>}</em> 
+<a id='L151' name='L151'></a> 151         <strong class='reserved'>else</strong> <em class='brace'>{</em>  <em class='comment'>/* within an allowed limit*/</em>
+<a id='L152' name='L152'></a> 152           <strong class='reserved'>if</strong> (sectfreq[i].count &gt; currspt-&gt;count) <em class='brace'>{</em>
+<a id='L153' name='L153'></a> 153             currspt-&gt;spt = i;
+<a id='L154' name='L154'></a> 154             currspt-&gt;count = sectfreq[i].count;
+<a id='L155' name='L155'></a> 155             currspt-&gt;avgcyl = sectfreq[i].cyls / sectfreq[i].count;
+<a id='L156' name='L156'></a> 156             <strong class='reserved'>break</strong>;
+<a id='L157' name='L157'></a> 157           <em class='brace'>}</em>
+<a id='L158' name='L158'></a> 158         <em class='brace'>}</em>
+<a id='L159' name='L159'></a> 159         prev = currspt;
+<a id='L160' name='L160'></a> 160       <em class='brace'>}</em> <strong class='reserved'>while</strong> ((currspt = currspt-&gt;next));
+<a id='L161' name='L161'></a> 161     <em class='brace'>}</em>
+<a id='L162' name='L162'></a> 162 <em class='sharp'>#ifdef</em> PRINT_LAYOUT_INFO
+<a id='L163' name='L163'></a> 163     <strong class='reserved'>if</strong> (i == 1) <em class='brace'>{</em>
+<a id='L164' name='L164'></a> 164       printf("\tSPT\tCount\tAvg. Cyl\n");
+<a id='L165' name='L165'></a> 165       printf("=============================\n");
+<a id='L166' name='L166'></a> 166     <em class='brace'>}</em>
+<a id='L167' name='L167'></a> 167     <strong class='reserved'>if</strong> (sectfreq[i].count &gt; 0) <em class='brace'>{</em>
+<a id='L168' name='L168'></a> 168       printf("\t%d\t%d\t%d\n",i,sectfreq[i].count, 
+<a id='L169' name='L169'></a> 169              sectfreq[i].cyls / sectfreq[i].count);
+<a id='L170' name='L170'></a> 170     <em class='brace'>}</em>
+<a id='L171' name='L171'></a> 171 <em class='sharp'>#endif</em>
+<a id='L172' name='L172'></a> 172   <em class='brace'>}</em>
+<a id='L173' name='L173'></a> 173   
+<a id='L174' name='L174'></a> 174   currspt = sectspertrk;
+<a id='L175' name='L175'></a> 175 
+<a id='L176' name='L176'></a> 176 <em class='sharp'>#ifdef</em> PRINT_LAYOUT_INFO
+<a id='L177' name='L177'></a> 177   printf("\nSPT\tCount\tAvg. Cyl\tMin. Cyl\tMax. Cyl\n");
+<a id='L178' name='L178'></a> 178   printf("========================================================\n");
+<a id='L179' name='L179'></a> 179 <em class='sharp'>#endif</em>
+<a id='L180' name='L180'></a> 180 
+<a id='L181' name='L181'></a> 181   i = 0;
+<a id='L182' name='L182'></a> 182   <strong class='reserved'>do</strong> <em class='brace'>{</em>
+<a id='L183' name='L183'></a> 183     <strong class='reserved'>if</strong> (currspt-&gt;count &gt; 0) <em class='brace'>{</em>
+<a id='L184' name='L184'></a> 184       currdisk-&gt;bands[i].startcyl = sectfreq[currspt-&gt;spt].mincyl;
+<a id='L185' name='L185'></a> 185       currdisk-&gt;bands[i].endcyl = sectfreq[currspt-&gt;spt].maxcyl;
+<a id='L186' name='L186'></a> 186       currdisk-&gt;bands[i].blkspertrack = currspt-&gt;spt;
+<a id='L187' name='L187'></a> 187       currdisk-&gt;bands[i].blksinband = 
+<a id='L188' name='L188'></a> 188         currdisk-&gt;rlcyls[currdisk-&gt;bands[i].endcyl].lastlbn - 
+<a id='L189' name='L189'></a> 189         currdisk-&gt;rlcyls[currdisk-&gt;bands[i].startcyl].firstlbn + 1;
+<a id='L190' name='L190'></a> 190 
+<a id='L191' name='L191'></a> 191       currdisk-&gt;bands[i].firstblkno = 0.0;
+<a id='L192' name='L192'></a> 192       currdisk-&gt;bands[i].deadspace = 0;
+<a id='L193' name='L193'></a> 193       currdisk-&gt;bands[i].sparecnt = 0;
+<a id='L194' name='L194'></a> 194       currdisk-&gt;bands[i].numslips = 0;
+<a id='L195' name='L195'></a> 195 
+<a id='L196' name='L196'></a> 196       sectpercyl_sum += currspt-&gt;spt * currdisk-&gt;numsurfaces;
+<a id='L197' name='L197'></a> 197 
+<a id='L198' name='L198'></a> 198 <em class='sharp'>#ifdef</em> PRINT_LAYOUT_INFO
+<a id='L199' name='L199'></a> 199       printf("%3d\t%6d\t%6d",currspt-&gt;spt,currspt-&gt;count,currspt-&gt;avgcyl);
+<a id='L200' name='L200'></a> 200       printf("\t\t%6d\t\t%6d\n",sectfreq[currspt-&gt;spt].mincyl,
+<a id='L201' name='L201'></a> 201              sectfreq[currspt-&gt;spt].maxcyl);
+<a id='L202' name='L202'></a> 202 <em class='sharp'>#endif</em>
+<a id='L203' name='L203'></a> 203       i++;
+<a id='L204' name='L204'></a> 204     <em class='brace'>}</em>
+<a id='L205' name='L205'></a> 205     temp = currspt;
+<a id='L206' name='L206'></a> 206     free(temp);
+<a id='L207' name='L207'></a> 207     currspt = currspt-&gt;next;
+<a id='L208' name='L208'></a> 208   <em class='brace'>}</em> <strong class='reserved'>while</strong> (currspt);
+<a id='L209' name='L209'></a> 209   currdisk-&gt;numbands = i;
+<a id='L210' name='L210'></a> 210 
+<a id='L211' name='L211'></a> 211   currdisk-&gt;sectpercyl = sectpercyl_sum / currdisk-&gt;numbands;
+<a id='L212' name='L212'></a> 212 
+<a id='L213' name='L213'></a> 213 <em class='sharp'>#ifdef</em> PRINT_LAYOUT_INFO
+<a id='L214' name='L214'></a> 214   printf("\n\n");
+<a id='L215' name='L215'></a> 215   printf("SPT\tStart LBN\tEnd LBN  \tMin. Cyl\tMax. Cyl\n");
+<a id='L216' name='L216'></a> 216   printf("================================================================\n");
+<a id='L217' name='L217'></a> 217   <em class='brace'>{</em>
+<a id='L218' name='L218'></a> 218     <strong class='reserved'>int</strong> total = 0;
+<a id='L219' name='L219'></a> 219     <strong class='reserved'>for</strong>(i=0;i&lt; currdisk-&gt;numbands;i++) <em class='brace'>{</em>
+<a id='L220' name='L220'></a> 220       printf("%3d\t%8d\t%8d",currdisk-&gt;bands[i].blkspertrack,
+<a id='L221' name='L221'></a> 221              currdisk-&gt;rlcyls[currdisk-&gt;bands[i].startcyl].firstlbn,
+<a id='L222' name='L222'></a> 222              currdisk-&gt;rlcyls[currdisk-&gt;bands[i].startcyl].firstlbn +
+<a id='L223' name='L223'></a> 223              currdisk-&gt;bands[i].blksinband - 1);
+<a id='L224' name='L224'></a> 224       printf("\t%6d\t\t%6d\n",
+<a id='L225' name='L225'></a> 225              <em class='comment'>/*  currdisk-&gt;bands[i].blksinband, */</em>
+<a id='L226' name='L226'></a> 226              currdisk-&gt;bands[i].startcyl,
+<a id='L227' name='L227'></a> 227              currdisk-&gt;bands[i].endcyl);
+<a id='L228' name='L228'></a> 228       total += currdisk-&gt;bands[i].blksinband;
+<a id='L229' name='L229'></a> 229     <em class='brace'>}</em>
+<a id='L230' name='L230'></a> 230     printf("\nTotal = %d\n",total);
+<a id='L231' name='L231'></a> 231   <em class='brace'>}</em>
+<a id='L232' name='L232'></a> 232 <em class='sharp'>#endif</em>
+<a id='L233' name='L233'></a> 233 <em class='brace'>}</em>
+<a id='L234' name='L234'></a> 234 
+<a id='L235' name='L235'></a> 235 <em class='comment'>/*---------------------------------------------------------------------------*</em>
+<a id='L236' name='L236'></a> 236 <em class='comment'> * Zero on success, nonzero on failure                                       * </em>
+<a id='L237' name='L237'></a> 237 <em class='comment'> *---------------------------------------------------------------------------*/</em>
+<a id='L238' name='L238'></a> 238 <strong class='reserved'>int</strong>
+<a id='L239' name='L239'></a> 239 read_raw_layout(<a href='../D/1226.html' title='Multiple defined in 3 places.'>disk</a> *currdisk,<strong class='reserved'>char</strong> *rlfilename) <em class='brace'>{</em>
+<a id='L240' name='L240'></a> 240 <em class='sharp'>#define</em> <a href='../R/364.html' title='Multiple referred from 2 places.'>LINELEN</a>      100
+<a id='L241' name='L241'></a> 241   <strong class='reserved'>char</strong> line[<a href='../S/198.html#L240' title='Defined at 240 in src/raw_layout.c.'>LINELEN</a>];
+<a id='L242' name='L242'></a> 242   <strong class='reserved'>int</strong> rot, numsurfaces;
+<a id='L243' name='L243'></a> 243   <strong class='reserved'>int</strong> lbn, cyl, head, sect, seqcnt;
+<a id='L244' name='L244'></a> 244   <strong class='reserved'>int</strong> linenum,retval,currcyl,currhead,valid_idx,i,spt;
+<a id='L245' name='L245'></a> 245   <strong class='reserved'>int</strong> range = 0;
+<a id='L246' name='L246'></a> 246   FILE *fp;
+<a id='L247' name='L247'></a> 247   <strong class='reserved'>int</strong> maxlbn,blocksize,numcyls;
+<a id='L248' name='L248'></a> 248 
+<a id='L249' name='L249'></a> 249   <strong class='reserved'>int</strong> *sf_cyls;
+<a id='L250' name='L250'></a> 250   <a href='../S/198.html#L98' title='Defined at 98 in src/raw_layout.c.'>sfreq_t</a> *sectfreq;
+<a id='L251' name='L251'></a> 251 <em class='sharp'>#ifndef</em> <a href='../S/198.html#L56' title='Defined at 56 in src/raw_layout.c.'>DISKSIM</a>
+<a id='L252' name='L252'></a> 252   <strong class='reserved'>int</strong> cnt;
+<a id='L253' name='L253'></a> 253 <em class='sharp'>#endif</em>
+<a id='L254' name='L254'></a> 254 
+<a id='L255' name='L255'></a> 255   <strong class='reserved'>if</strong> (!(fp = fopen (rlfilename, "r"))) <em class='brace'>{</em>
+<a id='L256' name='L256'></a> 256     <a href='../S/198.html#L67' title='Defined at 67 in src/raw_layout.c.'>error_handler</a>("Error opening raw layout file %s!\n",rlfilename);
+<a id='L257' name='L257'></a> 257     <strong class='reserved'>return</strong> -1;
+<a id='L258' name='L258'></a> 258   <em class='brace'>}</em>
+<a id='L259' name='L259'></a> 259   
+<a id='L260' name='L260'></a> 260   <strong class='reserved'>if</strong> (!(sectfreq = (<a href='../S/198.html#L98' title='Defined at 98 in src/raw_layout.c.'>sfreq_t</a> *) <a href='../S/73.html#L58' title='Defined at 58 in diskmodel/dm_config.h.'>malloc</a>(<a href='../S/198.html#L83' title='Defined at 83 in src/raw_layout.c.'>MAXSECTORS</a>*<strong class='reserved'>sizeof</strong>(<a href='../S/198.html#L98' title='Defined at 98 in src/raw_layout.c.'>sfreq_t</a>)))) 
+<a id='L261' name='L261'></a> 261     <a href='../S/198.html#L66' title='Defined at 66 in src/raw_layout.c.'>internal_error</a>("Could not allocate sectfreq structure!\n");
+<a id='L262' name='L262'></a> 262   memset(sectfreq,0,<strong class='reserved'>sizeof</strong>(sectfreq));
+<a id='L263' name='L263'></a> 263   <strong class='reserved'>for</strong>(i=1;i&lt;<a href='../S/198.html#L83' title='Defined at 83 in src/raw_layout.c.'>MAXSECTORS</a>;i++)
+<a id='L264' name='L264'></a> 264     sectfreq[i].mincyl = <a href='../S/198.html#L93' title='Defined at 93 in src/raw_layout.c.'>NOVAL</a>;
+<a id='L265' name='L265'></a> 265 
+<a id='L266' name='L266'></a> 266   <strong class='reserved'>if</strong> (!(sf_cyls = (<strong class='reserved'>int</strong> *) <a href='../S/73.html#L58' title='Defined at 58 in diskmodel/dm_config.h.'>malloc</a>(<a href='../S/198.html#L83' title='Defined at 83 in src/raw_layout.c.'>MAXSECTORS</a>*<strong class='reserved'>sizeof</strong>(<strong class='reserved'>int</strong>)))) 
+<a id='L267' name='L267'></a> 267     <a href='../S/198.html#L66' title='Defined at 66 in src/raw_layout.c.'>internal_error</a>("Could not allocate sf_cyls structure!\n");
+<a id='L268' name='L268'></a> 268   <strong class='reserved'>for</strong>(i=0;i&lt;<a href='../S/198.html#L83' title='Defined at 83 in src/raw_layout.c.'>MAXSECTORS</a>;i++)
+<a id='L269' name='L269'></a> 269     sf_cyls[i] = <a href='../S/198.html#L93' title='Defined at 93 in src/raw_layout.c.'>NOVAL</a>;
+<a id='L270' name='L270'></a> 270 
+<a id='L271' name='L271'></a> 271   fgets(line,<a href='../S/198.html#L240' title='Defined at 240 in src/raw_layout.c.'>LINELEN</a>,fp);
+<a id='L272' name='L272'></a> 272   retval = fscanf(fp,"maxlbn %d, blocksize %d\n",&amp;maxlbn,&amp;blocksize);
+<a id='L273' name='L273'></a> 273   retval = fscanf (fp, "%d cylinders, %d rot, %d heads\n", &amp;numcyls,&amp;rot, 
+<a id='L274' name='L274'></a> 274                    &amp;numsurfaces);
+<a id='L275' name='L275'></a> 275 
+<a id='L276' name='L276'></a> 276   <strong class='reserved'>if</strong> (retval != 3) <em class='brace'>{</em>
+<a id='L277' name='L277'></a> 277     <a href='../S/198.html#L67' title='Defined at 67 in src/raw_layout.c.'>error_handler</a>("Cannot read .layout.mappings file!\n");
+<a id='L278' name='L278'></a> 278     <strong class='reserved'>return</strong> -1;
+<a id='L279' name='L279'></a> 279   <em class='brace'>}</em>
+<a id='L280' name='L280'></a> 280 
+<a id='L281' name='L281'></a> 281   linenum = 4;
+<a id='L282' name='L282'></a> 282 
+<a id='L283' name='L283'></a> 283   <em class='comment'>/*  currdisk-&gt;sectsize = blocksize; */</em>
+<a id='L284' name='L284'></a> 284   currdisk-&gt;numsurfaces = numsurfaces;
+<a id='L285' name='L285'></a> 285   currdisk-&gt;numblocks = maxlbn+1;
+<a id='L286' name='L286'></a> 286   currdisk-&gt;numcyls = numcyls;
+<a id='L287' name='L287'></a> 287   currdisk-&gt;mapping = <a href='../S/281.html#L135' title='Defined at 135 in src/disksim_diskmap.h.'>LAYOUT_RAWFILE</a>;
+<a id='L288' name='L288'></a> 288   currdisk-&gt;sparescheme = <a href='../D/581.html' title='Multiple defined in 2 places.'>NO_SPARING</a>;
+<a id='L289' name='L289'></a> 289 
+<a id='L290' name='L290'></a> 290   <strong class='reserved'>if</strong> (!(currdisk-&gt;lbnrange = (lbn_rawlayout_t *) <a href='../S/73.html#L58' title='Defined at 58 in diskmodel/dm_config.h.'>malloc</a>(currdisk-&gt;numcyls * 
+<a id='L291' name='L291'></a> 291         currdisk-&gt;numsurfaces * <strong class='reserved'>sizeof</strong>(lbn_rawlayout_t))))
+<a id='L292' name='L292'></a> 292     <a href='../S/198.html#L66' title='Defined at 66 in src/raw_layout.c.'>internal_error</a>("Could not allocate lbn_rawlayout_t structure!\n");
+<a id='L293' name='L293'></a> 293 
+<a id='L294' name='L294'></a> 294   <strong class='reserved'>if</strong> (!(currdisk-&gt;rlcyls = (cyl_rawlayout_t *)
+<a id='L295' name='L295'></a> 295         <a href='../S/73.html#L58' title='Defined at 58 in diskmodel/dm_config.h.'>malloc</a>(currdisk-&gt;numcyls * <strong class='reserved'>sizeof</strong>(cyl_rawlayout_t))))
+<a id='L296' name='L296'></a> 296     <a href='../S/198.html#L66' title='Defined at 66 in src/raw_layout.c.'>internal_error</a>("Could not allocate cyl_rawlayout_t structure!\n");
+<a id='L297' name='L297'></a> 297 
+<a id='L298' name='L298'></a> 298   memset(currdisk-&gt;rlcyls,0,currdisk-&gt;numcyls * <strong class='reserved'>sizeof</strong>(cyl_rawlayout_t));
+<a id='L299' name='L299'></a> 299   <strong class='reserved'>for</strong>(i=0;i&lt;currdisk-&gt;numcyls;i++)
+<a id='L300' name='L300'></a> 300     currdisk-&gt;rlcyls[i].firstlbn = <a href='../S/198.html#L93' title='Defined at 93 in src/raw_layout.c.'>NOVAL</a>;
+<a id='L301' name='L301'></a> 301 
+<a id='L302' name='L302'></a> 302   currcyl = <a href='../S/198.html#L93' title='Defined at 93 in src/raw_layout.c.'>NOVAL</a>;
+<a id='L303' name='L303'></a> 303   currhead = <a href='../S/198.html#L93' title='Defined at 93 in src/raw_layout.c.'>NOVAL</a>;
+<a id='L304' name='L304'></a> 304 
+<a id='L305' name='L305'></a> 305   <em class='comment'>/*  printf("Reading layout for %s %s\n", manufacturer, product); */</em>
+<a id='L306' name='L306'></a> 306 
+<a id='L307' name='L307'></a> 307   fscanf (fp, "lbn %d --&gt; cyl %d, head %d, sect %d, seqcnt %d\n", 
+<a id='L308' name='L308'></a> 308           &amp;lbn, &amp;cyl, &amp;head, &amp;sect, &amp;seqcnt);
+<a id='L309' name='L309'></a> 309   <strong class='reserved'>do</strong> <em class='brace'>{</em> 
+<a id='L310' name='L310'></a> 310     <em class='comment'>/* while (5 == fscanf (fp, "lbn %d --&gt; cyl %d, head %d, sect %d, seqcnt %d\n", </em>
+<a id='L311' name='L311'></a> 311 <em class='comment'>       &amp;lbn, &amp;cyl, &amp;head, &amp;sect, &amp;seqcnt)) { */</em>
+<a id='L312' name='L312'></a> 312     <strong class='reserved'>if</strong> (currdisk-&gt;numcyls &lt;= cyl) <em class='brace'>{</em>
+<a id='L313' name='L313'></a> 313       <a href='../S/198.html#L67' title='Defined at 67 in src/raw_layout.c.'>error_handler</a>("Cyl %d on line %d is bigger than the max value of %d!\n",
+<a id='L314' name='L314'></a> 314                     cyl,linenum,currdisk-&gt;numcyls-1);
+<a id='L315' name='L315'></a> 315       <strong class='reserved'>return</strong> -1;
+<a id='L316' name='L316'></a> 316     <em class='brace'>}</em>
+<a id='L317' name='L317'></a> 317     <strong class='reserved'>if</strong> (currdisk-&gt;numsurfaces &lt;= head) <em class='brace'>{</em>
+<a id='L318' name='L318'></a> 318       <a href='../S/198.html#L67' title='Defined at 67 in src/raw_layout.c.'>error_handler</a>("Head %d on line %d is bigger than the max value of %d!\n",
+<a id='L319' name='L319'></a> 319                     head,linenum,currdisk-&gt;numsurfaces-1);
+<a id='L320' name='L320'></a> 320       <strong class='reserved'>return</strong> -1;
+<a id='L321' name='L321'></a> 321     <em class='brace'>}</em>
+<a id='L322' name='L322'></a> 322 
+<a id='L323' name='L323'></a> 323     <strong class='reserved'>if</strong> ((currhead != head) || (currcyl != cyl))<em class='brace'>{</em>
+<a id='L324' name='L324'></a> 324       <strong class='reserved'>if</strong> (currhead != <a href='../S/198.html#L93' title='Defined at 93 in src/raw_layout.c.'>NOVAL</a>) <em class='brace'>{</em>
+<a id='L325' name='L325'></a> 325         <em class='comment'>/* record the last lbn for the the surface */</em>
+<a id='L326' name='L326'></a> 326         currdisk-&gt;rlcyls[currcyl].surface[currhead].lastlbn = lbn - 1;
+<a id='L327' name='L327'></a> 327 
+<a id='L328' name='L328'></a> 328         <em class='comment'>/* increment the count of tracks with # of sectors */</em>
+<a id='L329' name='L329'></a> 329         spt = currdisk-&gt;rlcyls[currcyl].surface[currhead].lastlbn - 
+<a id='L330' name='L330'></a> 330           currdisk-&gt;rlcyls[currcyl].surface[currhead].firstlbn + 1;
+<a id='L331' name='L331'></a> 331 
+<a id='L332' name='L332'></a> 332         <strong class='reserved'>if</strong> (spt &gt;= <a href='../S/198.html#L83' title='Defined at 83 in src/raw_layout.c.'>MAXSECTORS</a>) <em class='brace'>{</em>
+<a id='L333' name='L333'></a> 333           <a href='../S/198.html#L66' title='Defined at 66 in src/raw_layout.c.'>internal_error</a>("Sector count exceeds %d (MAXSECTORS).\n",<a href='../S/198.html#L83' title='Defined at 83 in src/raw_layout.c.'>MAXSECTORS</a>);
+<a id='L334' name='L334'></a> 334         <em class='brace'>}</em>
+<a id='L335' name='L335'></a> 335 
+<a id='L336' name='L336'></a> 336         sectfreq[spt].count++;
+<a id='L337' name='L337'></a> 337         sectfreq[spt].cyls += <em class='comment'>/*  currcyl */</em> cyl;
+<a id='L338' name='L338'></a> 338 
+<a id='L339' name='L339'></a> 339         <strong class='reserved'>if</strong> (sf_cyls[spt] != <a href='../S/198.html#L93' title='Defined at 93 in src/raw_layout.c.'>NOVAL</a>) <em class='brace'>{</em>
+<a id='L340' name='L340'></a> 340           <strong class='reserved'>if</strong> (abs(<em class='comment'>/*  currcyl */</em> cyl - sf_cyls[spt]) &gt; <a href='../S/198.html#L91' title='Defined at 91 in src/raw_layout.c.'>MIN_CYL_DISTANCE</a>) <em class='brace'>{</em>
+<a id='L341' name='L341'></a> 341             sectfreq[spt].mincyl = <em class='comment'>/*  currcyl */</em> cyl; 
+<a id='L342' name='L342'></a> 342 
+<a id='L343' name='L343'></a> 343             sectfreq[spt].count = 1;
+<a id='L344' name='L344'></a> 344             sectfreq[spt].cyls = <em class='comment'>/*  currcyl */</em> cyl;
+<a id='L345' name='L345'></a> 345           <em class='brace'>}</em>
+<a id='L346' name='L346'></a> 346         <em class='brace'>}</em>
+<a id='L347' name='L347'></a> 347         sf_cyls[spt] = <em class='comment'>/*  currcyl */</em> cyl;
+<a id='L348' name='L348'></a> 348 
+<a id='L349' name='L349'></a> 349         <em class='comment'>/* record min and max cylinder for the given number of blocks */</em>
+<a id='L350' name='L350'></a> 350         <strong class='reserved'>if</strong> ((sectfreq[spt].mincyl&gt;<em class='comment'>/*  currcyl */</em> cyl) || 
+<a id='L351' name='L351'></a> 351             (sectfreq[spt].mincyl==<a href='../S/198.html#L93' title='Defined at 93 in src/raw_layout.c.'>NOVAL</a>))<em class='brace'>{</em>
+<a id='L352' name='L352'></a> 352           sectfreq[spt].mincyl = <em class='comment'>/*  currcyl */</em> cyl;
+<a id='L353' name='L353'></a> 353         <em class='brace'>}</em>
+<a id='L354' name='L354'></a> 354         <strong class='reserved'>if</strong> (sectfreq[spt].maxcyl &lt; <em class='comment'>/*  currcyl */</em> cyl)
+<a id='L355' name='L355'></a> 355           sectfreq[spt].maxcyl = <em class='comment'>/*  currcyl */</em> cyl;
+<a id='L356' name='L356'></a> 356       <em class='brace'>}</em>
+<a id='L357' name='L357'></a> 357       currhead = head;
+<a id='L358' name='L358'></a> 358     <em class='brace'>}</em>
+<a id='L359' name='L359'></a> 359     <strong class='reserved'>if</strong> (currcyl != cyl) <em class='brace'>{</em>
+<a id='L360' name='L360'></a> 360       <strong class='reserved'>if</strong> (currcyl != <a href='../S/198.html#L93' title='Defined at 93 in src/raw_layout.c.'>NOVAL</a>) <em class='brace'>{</em>
+<a id='L361' name='L361'></a> 361         currdisk-&gt;rlcyls[currcyl].lastlbn = lbn-1;
+<a id='L362' name='L362'></a> 362         currdisk-&gt;lbnrange[range-1].lastlbn = lbn-1;
+<a id='L363' name='L363'></a> 363       <em class='brace'>}</em>
+<a id='L364' name='L364'></a> 364       currcyl = cyl;
+<a id='L365' name='L365'></a> 365       currdisk-&gt;rlcyls[currcyl].validcyl = 1;
+<a id='L366' name='L366'></a> 366 
+<a id='L367' name='L367'></a> 367       currdisk-&gt;lbnrange[range].firstlbn = lbn;
+<a id='L368' name='L368'></a> 368       currdisk-&gt;lbnrange[range].cyl = cyl;
+<a id='L369' name='L369'></a> 369       range++;
+<a id='L370' name='L370'></a> 370 
+<a id='L371' name='L371'></a> 371       <strong class='reserved'>if</strong> ((currdisk-&gt;rlcyls[currcyl].firstlbn &gt; lbn) || 
+<a id='L372' name='L372'></a> 372           (currdisk-&gt;rlcyls[currcyl].firstlbn == <a href='../S/198.html#L93' title='Defined at 93 in src/raw_layout.c.'>NOVAL</a>))<em class='brace'>{</em>
+<a id='L373' name='L373'></a> 373         currdisk-&gt;rlcyls[currcyl].firstlbn = lbn;
+<a id='L374' name='L374'></a> 374       <em class='brace'>}</em>
+<a id='L375' name='L375'></a> 375     <em class='brace'>}</em>
+<a id='L376' name='L376'></a> 376     <em class='comment'>/* !!! coalesce sequences if sect == 0 */</em>
+<a id='L377' name='L377'></a> 377     valid_idx = currdisk-&gt;rlcyls[currcyl].surface[head].valid++;
+<a id='L378' name='L378'></a> 378 
+<a id='L379' name='L379'></a> 379     <strong class='reserved'>if</strong> (!valid_idx) <em class='brace'>{</em>
+<a id='L380' name='L380'></a> 380       currdisk-&gt;rlcyls[currcyl].surface[head].firstlbn = lbn;
+<a id='L381' name='L381'></a> 381     <em class='brace'>}</em>
+<a id='L382' name='L382'></a> 382 <em class='sharp'>#ifdef</em> DETAILED_RAW_LAYOUT
+<a id='L383' name='L383'></a> 383     <em class='comment'>/* put in the sector and seqcnt values to the appropriate values */</em>
+<a id='L384' name='L384'></a> 384     currdisk-&gt;rlcyls[currcyl].surface[head].sect[valid_idx] = sect;
+<a id='L385' name='L385'></a> 385     currdisk-&gt;rlcyls[currcyl].surface[head].seqcnt[valid_idx] = seqcnt;
+<a id='L386' name='L386'></a> 386 <em class='sharp'>#endif</em>
+<a id='L387' name='L387'></a> 387     linenum++;
+<a id='L388' name='L388'></a> 388   <em class='brace'>}</em> <strong class='reserved'>while</strong> (5 == fscanf (fp, "lbn %d --&gt; cyl %d, head %d, sect %d, seqcnt %d\n",
+<a id='L389' name='L389'></a> 389                         &amp;lbn, &amp;cyl, &amp;head, &amp;sect, &amp;seqcnt));
+<a id='L390' name='L390'></a> 390 
+<a id='L391' name='L391'></a> 391   currdisk-&gt;rlcyls[currcyl].lastlbn = lbn+seqcnt;;
+<a id='L392' name='L392'></a> 392   currdisk-&gt;rlcyls[currcyl].surface[head].lastlbn = lbn+seqcnt;
+<a id='L393' name='L393'></a> 393 
+<a id='L394' name='L394'></a> 394   <em class='comment'>/* put in the values for range */</em>
+<a id='L395' name='L395'></a> 395   currdisk-&gt;lbnrange[range-1].lastlbn = lbn+seqcnt;
+<a id='L396' name='L396'></a> 396   currdisk-&gt;numlbnranges=range;
+<a id='L397' name='L397'></a> 397 <em class='sharp'>#ifndef</em> <a href='../S/198.html#L56' title='Defined at 56 in src/raw_layout.c.'>DISKSIM</a>
+<a id='L398' name='L398'></a> 398   currdisk-&gt;defect_lists = (defect_t *) <a href='../S/73.html#L58' title='Defined at 58 in diskmodel/dm_config.h.'>malloc</a> (0x80000);
+<a id='L399' name='L399'></a> 399   memset((<strong class='reserved'>void</strong> *)currdisk-&gt;defect_lists,0,0x80000);
+<a id='L400' name='L400'></a> 400   cnt = 1;
+<a id='L401' name='L401'></a> 401   <strong class='reserved'>do</strong> <em class='brace'>{</em>
+<a id='L402' name='L402'></a> 402     retval = fscanf (fp, "Defect at cyl %d, head %d, sect %d\n",
+<a id='L403' name='L403'></a> 403                      &amp;currdisk-&gt;defect_lists[cnt].cyl,
+<a id='L404' name='L404'></a> 404                      &amp;currdisk-&gt;defect_lists[cnt].head,
+<a id='L405' name='L405'></a> 405                      &amp;currdisk-&gt;defect_lists[cnt].sect);
+<a id='L406' name='L406'></a> 406     <strong class='reserved'>if</strong> (retval == 3) <em class='brace'>{</em>
+<a id='L407' name='L407'></a> 407       <em class='comment'>/*  printf ("Defect at cyl %d, head %d, sect %d\n", currdisk-&gt;defect_lists[cnt].cyl, currdisk-&gt;defect_lists[cnt].head, currdisk-&gt;defect_lists[cnt].sect); */</em>
+<a id='L408' name='L408'></a> 408       cnt++;
+<a id='L409' name='L409'></a> 409     <em class='brace'>}</em>
+<a id='L410' name='L410'></a> 410   <em class='comment'>/* prune duplicated list entries if they are in mappings file */</em>
+<a id='L411' name='L411'></a> 411     <strong class='reserved'>if</strong> ((cnt &gt; 2) &amp;&amp; (currdisk-&gt;defect_lists[cnt-1].cyl == currdisk-&gt;defect_lists[cnt-2].cyl) &amp;&amp;
+<a id='L412' name='L412'></a> 412         (currdisk-&gt;defect_lists[cnt-1].head == currdisk-&gt;defect_lists[cnt-2].head) &amp;&amp;
+<a id='L413' name='L413'></a> 413         (currdisk-&gt;defect_lists[cnt-1].sect == currdisk-&gt;defect_lists[cnt-2].sect)) <em class='brace'>{</em>
+<a id='L414' name='L414'></a> 414       cnt--;
+<a id='L415' name='L415'></a> 415     <em class='brace'>}</em>
+<a id='L416' name='L416'></a> 416   <em class='brace'>}</em> <strong class='reserved'>while</strong> (retval == 3);
+<a id='L417' name='L417'></a> 417   currdisk-&gt;defect_lists[0].cyl = cnt-1;
+<a id='L418' name='L418'></a> 418 <em class='sharp'>#endif</em>  
+<a id='L419' name='L419'></a> 419 
+<a id='L420' name='L420'></a> 420   <a href='../S/198.html#L105' title='Defined at 105 in src/raw_layout.c.'>determine_zones</a>(currdisk,sectfreq,(<strong class='reserved'>int</strong>) (((<strong class='reserved'>double</strong>) currdisk-&gt;numblocks) * 
+<a id='L421' name='L421'></a> 421                   ((<strong class='reserved'>double</strong>) blocksize) /1024 /1024 /1024));
+<a id='L422' name='L422'></a> 422   free(sectfreq);
+<a id='L423' name='L423'></a> 423   free(sf_cyls);
+<a id='L424' name='L424'></a> 424   fclose(fp);
+<a id='L425' name='L425'></a> 425 
+<a id='L426' name='L426'></a> 426 
+<a id='L427' name='L427'></a> 427   <strong class='reserved'>return</strong> 0;
+<a id='L428' name='L428'></a> 428 <em class='brace'>}</em>
+<a id='L429' name='L429'></a> 429 <em class='sharp'>#endif</em>
+</pre>
+<hr />
+<a id='BOTTOM' name='BOTTOM'></a>
+<em class='comment'>/* [&lt;][&gt;]<a href='#L105'>[^]</a><a href='#L239'>[v]</a><a href='#TOP'>[top]</a>[bottom]<a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</em>
+</body>
+</html>

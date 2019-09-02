@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>cells_per_cylinder</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/29.html#L161'>cells_per_cylinder</a>  161 memsmodel/mems_mapping.c   cylinder =  locallbn / cells_per_cylinder(sled);</span>
+<span class='curline'><a href='../S/29.html#L162'>cells_per_cylinder</a>  162 memsmodel/mems_mapping.c   column   = (locallbn % cells_per_cylinder(sled)) / cells_per_column(sled);</span>
+<span class='curline'><a href='../S/29.html#L251'>cells_per_cylinder</a>  251 memsmodel/mems_mapping.c   return cells_per_cylinder(sled);</span>
+<span class='curline'><a href='../S/29.html#L258'>cells_per_cylinder</a>  258 memsmodel/mems_mapping.c   int numblocks = cells_per_cylinder(&amp;dev-&gt;sled[0]) * numcylinders * dev-&gt;num_sleds;</span>
+<span class='curline'><a href='../S/29.html#L285'>cells_per_cylinder</a>  285 memsmodel/mems_mapping.c   int horiz_offset = (sled-&gt;x_length_nm / sled-&gt;bit_length_nm / 2) * cells_per_cylinder(sled);</span>
+<span class='curline'><a href='../S/29.html#L286'>cells_per_cylinder</a>  286 memsmodel/mems_mapping.c   int vert_offset = cells_per_cylinder(sled) / 2;</span>
+</pre>
+</body>
+</html>

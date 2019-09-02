@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>NUM_CHUNKS</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/23.html#L371'>NUM_CHUNKS</a>        371 memsmodel/mems_piecewise_seek.c   double x[2 * NUM_CHUNKS + 1];        /*  position values for each chunk of the seek  */</span>
+<span class='curline'><a href='../S/23.html#L372'>NUM_CHUNKS</a>        372 memsmodel/mems_piecewise_seek.c   double v[2 * NUM_CHUNKS + 1];        /*  velocity values for each chunk of the seek  */</span>
+<span class='curline'><a href='../S/23.html#L373'>NUM_CHUNKS</a>        373 memsmodel/mems_piecewise_seek.c   double a[2 * NUM_CHUNKS + 1];        /*  adjusted acceleration values for each chunk  */</span>
+<span class='curline'><a href='../S/23.html#L374'>NUM_CHUNKS</a>        374 memsmodel/mems_piecewise_seek.c   double t[2 * NUM_CHUNKS + 1];        /*  times at each x point  */</span>
+<span class='curline'><a href='../S/23.html#L438'>NUM_CHUNKS</a>        438 memsmodel/mems_piecewise_seek.c     phase1_chunk_length_nm = phase1_dist_nm / NUM_CHUNKS;</span>
+<span class='curline'><a href='../S/23.html#L439'>NUM_CHUNKS</a>        439 memsmodel/mems_piecewise_seek.c     phase2_chunk_length_nm = phase2_dist_nm / NUM_CHUNKS;</span>
+<span class='curline'><a href='../S/23.html#L461'>NUM_CHUNKS</a>        461 memsmodel/mems_piecewise_seek.c     for (i = SWITCH_POINT + 1; i &lt;= 2*NUM_CHUNKS; i++) {</span>
+<span class='curline'><a href='../S/23.html#L499'>NUM_CHUNKS</a>        499 memsmodel/mems_piecewise_seek.c     for (i = SWITCH_POINT + 1; i &lt;= 2*NUM_CHUNKS; i++) {</span>
+<span class='curline'><a href='../S/23.html#L552'>NUM_CHUNKS</a>        552 memsmodel/mems_piecewise_seek.c     t[2*NUM_CHUNKS] = 0.0;</span>
+<span class='curline'><a href='../S/23.html#L553'>NUM_CHUNKS</a>        553 memsmodel/mems_piecewise_seek.c     v[2*NUM_CHUNKS] = velocity_nm_s;</span>
+<span class='curline'><a href='../S/23.html#L558'>NUM_CHUNKS</a>        558 memsmodel/mems_piecewise_seek.c     for (i = 2*NUM_CHUNKS - 1; i &gt;= SWITCH_POINT; i--) {</span>
+<span class='curline'><a href='../S/23.html#L588'>NUM_CHUNKS</a>        588 memsmodel/mems_piecewise_seek.c       for (i = 0; i &lt;= 2 * NUM_CHUNKS; i++) {</span>
+<span class='curline'><a href='../S/34.html#L39'>NUM_CHUNKS</a>         39 memsmodel/mems_piecewise_seek.h #define SWITCH_POINT (2 * NUM_CHUNKS / 2)  // index of the switch point</span>
+</pre>
+</body>
+</html>

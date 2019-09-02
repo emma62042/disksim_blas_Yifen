@@ -1,0 +1,619 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>disksim</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/37.html#L523'>disksim</a>           523 memsmodel/mems_disksim.c   if (disksim-&gt;memsinfo == NULL) {</span>
+<span class='curline'><a href='../S/37.html#L528'>disksim</a>           528 memsmodel/mems_disksim.c   for (i = 0; i &lt; disksim-&gt;memsinfo-&gt;devices_len; i++) {</span>
+<span class='curline'><a href='../S/37.html#L551'>disksim</a>           551 memsmodel/mems_disksim.c   if (disksim-&gt;memsinfo == NULL) {</span>
+<span class='curline'><a href='../S/37.html#L555'>disksim</a>           555 memsmodel/mems_disksim.c   for (i = 0; i &lt; disksim-&gt;memsinfo-&gt;devices_len; i++) {</span>
+<span class='curline'><a href='../S/37.html#L1171'>disksim</a>          1171 memsmodel/mems_disksim.c   if (!disksim-&gt;memsinfo) {</span>
+<span class='curline'><a href='../S/37.html#L1177'>disksim</a>          1177 memsmodel/mems_disksim.c   for (i = 0; i &lt; disksim-&gt;memsinfo-&gt;devices_len; i++) {</span>
+<span class='curline'><a href='../S/37.html#L1187'>disksim</a>          1187 memsmodel/mems_disksim.c   assert(devcnt == disksim-&gt;memsinfo-&gt;numdevices);</span>
+<span class='curline'><a href='../S/37.html#L1199'>disksim</a>          1199 memsmodel/mems_disksim.c   for (i=0; i &lt; disksim-&gt;memsinfo-&gt;devices_len; i++) {</span>
+<span class='curline'><a href='../S/37.html#L1206'>disksim</a>          1206 memsmodel/mems_disksim.c   assert(devcnt == disksim-&gt;memsinfo-&gt;numdevices);</span>
+<span class='curline'><a href='../S/37.html#L1242'>disksim</a>          1242 memsmodel/mems_disksim.c   if (disksim-&gt;memsinfo == NULL) {</span>
+<span class='curline'><a href='../S/37.html#L1243'>disksim</a>          1243 memsmodel/mems_disksim.c     disksim-&gt;memsinfo = malloc(sizeof(struct mems_info));</span>
+<span class='curline'><a href='../S/37.html#L1244'>disksim</a>          1244 memsmodel/mems_disksim.c     ASSERT(disksim-&gt;memsinfo != NULL);</span>
+<span class='curline'><a href='../S/37.html#L1245'>disksim</a>          1245 memsmodel/mems_disksim.c     bzero((char *)disksim-&gt;memsinfo, sizeof(struct mems_info));</span>
+<span class='curline'><a href='../S/37.html#L1252'>disksim</a>          1252 memsmodel/mems_disksim.c   for(c = 0; c &lt; disksim-&gt;memsinfo-&gt;devices_len; c++) {</span>
+<span class='curline'><a href='../S/37.html#L1253'>disksim</a>          1253 memsmodel/mems_disksim.c     if(!disksim-&gt;memsinfo-&gt;devices[c]) {</span>
+<span class='curline'><a href='../S/37.html#L1258'>disksim</a>          1258 memsmodel/mems_disksim.c   if(c == disksim-&gt;memsinfo-&gt;devices_len) {</span>
+<span class='curline'><a href='../S/37.html#L1259'>disksim</a>          1259 memsmodel/mems_disksim.c     int newlen = disksim-&gt;memsinfo-&gt;devices_len ?</span>
+<span class='curline'><a href='../S/37.html#L1260'>disksim</a>          1260 memsmodel/mems_disksim.c       disksim-&gt;memsinfo-&gt;devices_len * 2 : 2;</span>
+<span class='curline'><a href='../S/37.html#L1263'>disksim</a>          1263 memsmodel/mems_disksim.c     disksim-&gt;memsinfo-&gt;devices = </span>
+<span class='curline'><a href='../S/37.html#L1264'>disksim</a>          1264 memsmodel/mems_disksim.c       realloc(disksim-&gt;memsinfo-&gt;devices, </span>
+<span class='curline'><a href='../S/37.html#L1267'>disksim</a>          1267 memsmodel/mems_disksim.c     bzero(disksim-&gt;memsinfo-&gt;devices + c, zerolen * sizeof(mems_t *));</span>
+<span class='curline'><a href='../S/37.html#L1268'>disksim</a>          1268 memsmodel/mems_disksim.c     disksim-&gt;memsinfo-&gt;devices_len = newlen;</span>
+<span class='curline'><a href='../S/37.html#L1271'>disksim</a>          1271 memsmodel/mems_disksim.c   disksim-&gt;memsinfo-&gt;devices[c] = result;</span>
+<span class='curline'><a href='../S/37.html#L1277'>disksim</a>          1277 memsmodel/mems_disksim.c   disksim-&gt;memsinfo-&gt;numdevices++;</span>
+<span class='curline'><a href='../S/37.html#L1321'>disksim</a>          1321 memsmodel/mems_disksim.c   if (disksim-&gt;memsinfo == NULL) return;</span>
+<span class='curline'><a href='../S/37.html#L1326'>disksim</a>          1326 memsmodel/mems_disksim.c   for (i = 0; i &lt; disksim-&gt;memsinfo-&gt;devices_len; i++) {</span>
+<span class='curline'><a href='../S/30.html#L43'>disksim</a>            43 memsmodel/mems_global.h #define getmems(d) (disksim-&gt;memsinfo-&gt;devices[d])</span>
+<span class='curline'><a href='../S/272.html#L120'>disksim</a>           120 src/disksim.c  disksim_t *disksim = NULL;</span>
+<span class='curline'><a href='../S/272.html#L151'>disksim</a>           151 src/disksim.c     temp[EXTRAEVENTS-1].next = disksim-&gt;extraq;</span>
+<span class='curline'><a href='../S/272.html#L152'>disksim</a>           152 src/disksim.c     disksim-&gt;extraq = temp;</span>
+<span class='curline'><a href='../S/272.html#L153'>disksim</a>           153 src/disksim.c     disksim-&gt;extraqlen += EXTRAEVENTS;</span>
+<span class='curline'><a href='../S/272.html#L162'>disksim</a>           162 src/disksim.c      event *temp = disksim-&gt;extraq;</span>
+<span class='curline'><a href='../S/272.html#L183'>disksim</a>           183 src/disksim.c     temp-&gt;next = disksim-&gt;extraq;</span>
+<span class='curline'><a href='../S/272.html#L185'>disksim</a>           185 src/disksim.c     disksim-&gt;extraq = temp;</span>
+<span class='curline'><a href='../S/272.html#L186'>disksim</a>           186 src/disksim.c     disksim-&gt;extraqlen++;</span>
+<span class='curline'><a href='../S/272.html#L197'>disksim</a>           197 src/disksim.c    if(disksim-&gt;extraqlen == 0) {</span>
+<span class='curline'><a href='../S/272.html#L199'>disksim</a>           199 src/disksim.c      temp = disksim-&gt;extraq;</span>
+<span class='curline'><a href='../S/272.html#L200'>disksim</a>           200 src/disksim.c      disksim-&gt;extraq = disksim-&gt;extraq-&gt;next;</span>
+<span class='curline'><a href='../S/272.html#L202'>disksim</a>           202 src/disksim.c    else if(disksim-&gt;extraqlen == 1) {</span>
+<span class='curline'><a href='../S/272.html#L203'>disksim</a>           203 src/disksim.c      temp = disksim-&gt;extraq;</span>
+<span class='curline'><a href='../S/272.html#L204'>disksim</a>           204 src/disksim.c      disksim-&gt;extraq = NULL;</span>
+<span class='curline'><a href='../S/272.html#L207'>disksim</a>           207 src/disksim.c      temp = disksim-&gt;extraq;</span>
+<span class='curline'><a href='../S/272.html#L208'>disksim</a>           208 src/disksim.c      disksim-&gt;extraq = disksim-&gt;extraq-&gt;next;</span>
+<span class='curline'><a href='../S/272.html#L211'>disksim</a>           211 src/disksim.c    disksim-&gt;extraqlen--;</span>
+<span class='curline'><a href='../S/272.html#L264'>disksim</a>           264 src/disksim.c     tmp = disksim-&gt;intq;</span>
+<span class='curline'><a href='../S/272.html#L296'>disksim</a>           296 src/disksim.c     switch(disksim-&gt;trace_mode) {</span>
+<span class='curline'><a href='../S/272.html#L298'>disksim</a>           298 src/disksim.c       if(write(disksim-&gt;tracepipes[1], (char *)newint, sizeof(event)) &lt;= 0)</span>
+<span class='curline'><a href='../S/272.html#L312'>disksim</a>           312 src/disksim.c         ddbg_assert(read(disksim-&gt;tracepipes[0], (char *)&amp;tmpevt, sizeof(event)) &gt; 0);</span>
+<span class='curline'><a href='../S/272.html#L339'>disksim</a>           339 src/disksim.c     if (disksim-&gt;intq == NULL) {</span>
+<span class='curline'><a href='../S/272.html#L340'>disksim</a>           340 src/disksim.c        disksim-&gt;intq = newint;</span>
+<span class='curline'><a href='../S/272.html#L344'>disksim</a>           344 src/disksim.c     else if (newint-&gt;time &lt; disksim-&gt;intq-&gt;time) {</span>
+<span class='curline'><a href='../S/272.html#L345'>disksim</a>           345 src/disksim.c        newint-&gt;next = disksim-&gt;intq;</span>
+<span class='curline'><a href='../S/272.html#L346'>disksim</a>           346 src/disksim.c        disksim-&gt;intq-&gt;prev = newint;</span>
+<span class='curline'><a href='../S/272.html#L347'>disksim</a>           347 src/disksim.c        disksim-&gt;intq = newint;</span>
+<span class='curline'><a href='../S/272.html#L350'>disksim</a>           350 src/disksim.c        event *run = disksim-&gt;intq;</span>
+<span class='curline'><a href='../S/272.html#L375'>disksim</a>           375 src/disksim.c     if (disksim-&gt;intq == NULL) {</span>
+<span class='curline'><a href='../S/272.html#L378'>disksim</a>           378 src/disksim.c     temp = disksim-&gt;intq;</span>
+<span class='curline'><a href='../S/272.html#L379'>disksim</a>           379 src/disksim.c     disksim-&gt;intq = disksim-&gt;intq-&gt;next;</span>
+<span class='curline'><a href='../S/272.html#L380'>disksim</a>           380 src/disksim.c     if (disksim-&gt;intq != NULL) {</span>
+<span class='curline'><a href='../S/272.html#L381'>disksim</a>           381 src/disksim.c        disksim-&gt;intq-&gt;prev = NULL;</span>
+<span class='curline'><a href='../S/272.html#L397'>disksim</a>           397 src/disksim.c     tmp = disksim-&gt;intq;</span>
+<span class='curline'><a href='../S/272.html#L411'>disksim</a>           411 src/disksim.c        disksim-&gt;intq = curr-&gt;next;</span>
+<span class='curline'><a href='../S/272.html#L496'>disksim</a>           496 src/disksim.c     if (disksim-&gt;external_control | disksim-&gt;synthgen | disksim-&gt;iotrace) {</span>
+<span class='curline'><a href='../S/272.html#L499'>disksim</a>           499 src/disksim.c     if (disksim-&gt;synthgen) {</span>
+<span class='curline'><a href='../S/272.html#L541'>disksim</a>           541 src/disksim.c     if (disksim-&gt;synthgen) {</span>
+<span class='curline'><a href='../S/272.html#L544'>disksim</a>           544 src/disksim.c     if (disksim-&gt;external_control | disksim-&gt;synthgen | disksim-&gt;iotrace) {</span>
+<span class='curline'><a href='../S/272.html#L552'>disksim</a>           552 src/disksim.c     disksim-&gt;issuefunc_ctlrsmart = NULL;</span>
+<span class='curline'><a href='../S/272.html#L553'>disksim</a>           553 src/disksim.c     disksim-&gt;queuefind_ctlrsmart = NULL;</span>
+<span class='curline'><a href='../S/272.html#L554'>disksim</a>           554 src/disksim.c     disksim-&gt;wakeupfunc_ctlrsmart = NULL;</span>
+<span class='curline'><a href='../S/272.html#L555'>disksim</a>           555 src/disksim.c     disksim-&gt;donefunc_ctlrsmart_read = NULL;</span>
+<span class='curline'><a href='../S/272.html#L556'>disksim</a>           556 src/disksim.c     disksim-&gt;donefunc_ctlrsmart_write = NULL;</span>
+<span class='curline'><a href='../S/272.html#L557'>disksim</a>           557 src/disksim.c     disksim-&gt;donefunc_cachemem_empty = NULL;</span>
+<span class='curline'><a href='../S/272.html#L558'>disksim</a>           558 src/disksim.c     disksim-&gt;donefunc_cachedev_empty = NULL;</span>
+<span class='curline'><a href='../S/272.html#L559'>disksim</a>           559 src/disksim.c     disksim-&gt;idlework_cachemem = NULL;</span>
+<span class='curline'><a href='../S/272.html#L560'>disksim</a>           560 src/disksim.c     disksim-&gt;idlework_cachedev = NULL;</span>
+<span class='curline'><a href='../S/272.html#L561'>disksim</a>           561 src/disksim.c     disksim-&gt;concatok_cachemem = NULL;</span>
+<span class='curline'><a href='../S/272.html#L562'>disksim</a>           562 src/disksim.c     disksim-&gt;enablement_disk = NULL;</span>
+<span class='curline'><a href='../S/272.html#L563'>disksim</a>           563 src/disksim.c     disksim-&gt;timerfunc_disksim = NULL;</span>
+<span class='curline'><a href='../S/272.html#L564'>disksim</a>           564 src/disksim.c     disksim-&gt;timerfunc_ioqueue = NULL;</span>
+<span class='curline'><a href='../S/272.html#L565'>disksim</a>           565 src/disksim.c     disksim-&gt;timerfunc_cachemem = NULL;</span>
+<span class='curline'><a href='../S/272.html#L566'>disksim</a>           566 src/disksim.c     disksim-&gt;timerfunc_cachedev = NULL;</span>
+<span class='curline'><a href='../S/272.html#L568'>disksim</a>           568 src/disksim.c     disksim-&gt;timerfunc_disksim = stat_warmup_done;</span>
+<span class='curline'><a href='../S/272.html#L569'>disksim</a>           569 src/disksim.c     disksim-&gt;external_io_done_notify = NULL;</span>
+<span class='curline'><a href='../S/272.html#L578'>disksim</a>           578 src/disksim.c     int val = (disksim-&gt;synthgen) ? 0 : 1;</span>
+<span class='curline'><a href='../S/272.html#L580'>disksim</a>           580 src/disksim.c     iotrace_initialize_file (disksim-&gt;iotracefile, disksim-&gt;traceformat, PRINT_TRACEFILE_HEADER);</span>
+<span class='curline'><a href='../S/272.html#L581'>disksim</a>           581 src/disksim.c     while (disksim-&gt;intq) {</span>
+<span class='curline'><a href='../S/272.html#L584'>disksim</a>           584 src/disksim.c     if (disksim-&gt;external_control | disksim-&gt;synthgen | disksim-&gt;iotrace) {</span>
+<span class='curline'><a href='../S/272.html#L587'>disksim</a>           587 src/disksim.c     if (disksim-&gt;synthgen) {</span>
+<span class='curline'><a href='../S/272.html#L588'>disksim</a>           588 src/disksim.c        pf_initialize(disksim-&gt;seedval);</span>
+<span class='curline'><a href='../S/272.html#L590'>disksim</a>           590 src/disksim.c        DISKSIM_srand48(disksim-&gt;seedval);</span>
+<span class='curline'><a href='../S/272.html#L598'>disksim</a>           598 src/disksim.c     if (disksim-&gt;external_control | disksim-&gt;synthgen | disksim-&gt;iotrace) {</span>
+<span class='curline'><a href='../S/272.html#L601'>disksim</a>           601 src/disksim.c     if (disksim-&gt;synthgen) {</span>
+<span class='curline'><a href='../S/272.html#L609'>disksim</a>           609 src/disksim.c     disksim-&gt;external_io_done_notify = fn;</span>
+<span class='curline'><a href='../S/272.html#L615'>disksim</a>           615 src/disksim.c     if (disksim-&gt;synthgen) {</span>
+<span class='curline'><a href='../S/272.html#L618'>disksim</a>           618 src/disksim.c     if (disksim-&gt;external_control) {</span>
+<span class='curline'><a href='../S/272.html#L619'>disksim</a>           619 src/disksim.c        disksim-&gt;external_io_done_notify (curr, disksim-&gt;notify_ctx);</span>
+<span class='curline'><a href='../S/272.html#L635'>disksim</a>           635 src/disksim.c  	if ((disksim-&gt;iotrace) &amp;&amp; io_using_external_event(curr)) {</span>
+<span class='curline'><a href='../S/272.html#L636'>disksim</a>           636 src/disksim.c  	  temp = io_get_next_external_event(disksim-&gt;iotracefile);</span>
+<span class='curline'><a href='../S/272.html#L638'>disksim</a>           638 src/disksim.c              disksim-&gt;stop_sim = TRUE;</span>
+<span class='curline'><a href='../S/272.html#L670'>disksim</a>           670 src/disksim.c     if (disksim-&gt;checkpoint_disable) {</span>
+<span class='curline'><a href='../S/272.html#L680'>disksim</a>           680 src/disksim.c     if (disksim-&gt;iotracefile) {</span>
+<span class='curline'><a href='../S/272.html#L681'>disksim</a>           681 src/disksim.c        if (strcmp (disksim-&gt;iotracefilename, "stdin") == 0) {</span>
+<span class='curline'><a href='../S/272.html#L685'>disksim</a>           685 src/disksim.c        fflush (disksim-&gt;iotracefile);</span>
+<span class='curline'><a href='../S/272.html#L686'>disksim</a>           686 src/disksim.c        fgetpos (disksim-&gt;iotracefile, &amp;disksim-&gt;iotracefileposition);</span>
+<span class='curline'><a href='../S/272.html#L691'>disksim</a>           691 src/disksim.c        fgetpos (outios, &amp;disksim-&gt;outiosfileposition);</span>
+<span class='curline'><a href='../S/272.html#L696'>disksim</a>           696 src/disksim.c        fgetpos (outputfile, &amp;disksim-&gt;outputfileposition);</span>
+<span class='curline'><a href='../S/272.html#L700'>disksim</a>           700 src/disksim.c     fwrite (disksim, disksim-&gt;totallength, 1, checkpointfile);</span>
+<span class='curline'><a href='../S/272.html#L708'>disksim</a>           708 src/disksim.c     disksim-&gt;stop_sim = TRUE;</span>
+<span class='curline'><a href='../S/272.html#L725'>disksim</a>           725 src/disksim.c     if (disksim-&gt;warmup_event) {</span>
+<span class='curline'><a href='../S/272.html#L726'>disksim</a>           726 src/disksim.c        addtointq((event *)disksim-&gt;warmup_event);</span>
+<span class='curline'><a href='../S/272.html#L727'>disksim</a>           727 src/disksim.c        disksim-&gt;warmup_event = NULL;</span>
+<span class='curline'><a href='../S/272.html#L729'>disksim</a>           729 src/disksim.c     if (disksim-&gt;checkpoint_interval &gt; 0.0) {</span>
+<span class='curline'><a href='../S/272.html#L730'>disksim</a>           730 src/disksim.c        disksim_register_checkpoint (disksim-&gt;checkpoint_interval);</span>
+<span class='curline'><a href='../S/272.html#L732'>disksim</a>           732 src/disksim.c     if (disksim-&gt;iotrace) {</span>
+<span class='curline'><a href='../S/272.html#L733'>disksim</a>           733 src/disksim.c        if ((curr = io_get_next_external_event(disksim-&gt;iotracefile)) == NULL) {</span>
+<span class='curline'><a href='../S/272.html#L737'>disksim</a>           737 src/disksim.c        if ((disksim-&gt;traceformat != VALIDATE) &amp;&amp; (disksim-&gt;closedios == 0)) {</span>
+<span class='curline'><a href='../S/272.html#L739'>disksim</a>           739 src/disksim.c        } else if (disksim-&gt;closedios) {</span>
+<span class='curline'><a href='../S/272.html#L742'>disksim</a>           742 src/disksim.c           curr-&gt;time = simtime + disksim-&gt;closedthinktime;</span>
+<span class='curline'><a href='../S/272.html#L743'>disksim</a>           743 src/disksim.c           for (iocnt=1; iocnt &lt; disksim-&gt;closedios; iocnt++) {</span>
+<span class='curline'><a href='../S/272.html#L744'>disksim</a>           744 src/disksim.c              curr-&gt;next = io_get_next_external_event(disksim-&gt;iotracefile);</span>
+<span class='curline'><a href='../S/272.html#L747'>disksim</a>           747 src/disksim.c                 curr-&gt;time = simtime + disksim-&gt;closedthinktime;</span>
+<span class='curline'><a href='../S/272.html#L754'>disksim</a>           754 src/disksim.c        if(disksim-&gt;traceformat == VALIDATE) {</span>
+<span class='curline'><a href='../S/272.html#L774'>disksim</a>           774 src/disksim.c      switch(disksim-&gt;trace_mode) {</span>
+<span class='curline'><a href='../S/272.html#L818'>disksim</a>           818 src/disksim.c        if (disksim-&gt;checkpoint_interval) {</span>
+<span class='curline'><a href='../S/272.html#L819'>disksim</a>           819 src/disksim.c  	disksim_register_checkpoint(simtime + disksim-&gt;checkpoint_interval);</span>
+<span class='curline'><a href='../S/272.html#L821'>disksim</a>           821 src/disksim.c        disksim_checkpoint (disksim-&gt;checkpointfilename);</span>
+<span class='curline'><a href='../S/272.html#L861'>disksim</a>           861 src/disksim.c        strcpy (disksim-&gt;outputfilename, filename);</span>
+<span class='curline'><a href='../S/272.html#L865'>disksim</a>           865 src/disksim.c       disksim-&gt;checkpoint_disable = 1;</span>
+<span class='curline'><a href='../S/272.html#L875'>disksim</a>           875 src/disksim.c        assert (disksim-&gt;external_control == 0);</span>
+<span class='curline'><a href='../S/272.html#L876'>disksim</a>           876 src/disksim.c        disksim-&gt;iotrace = 1;</span>
+<span class='curline'><a href='../S/272.html#L878'>disksim</a>           878 src/disksim.c  	 disksim-&gt;iotracefile = stdin;</span>
+<span class='curline'><a href='../S/272.html#L880'>disksim</a>           880 src/disksim.c  	 if ((disksim-&gt;iotracefile = fopen(filename,"rb")) == NULL) {</span>
+<span class='curline'><a href='../S/272.html#L886'>disksim</a>           886 src/disksim.c        disksim-&gt;iotracefile = NULL;</span>
+<span class='curline'><a href='../S/272.html#L890'>disksim</a>           890 src/disksim.c        strcpy (disksim-&gt;iotracefilename, filename);</span>
+<span class='curline'><a href='../S/272.html#L893'>disksim</a>           893 src/disksim.c        disksim-&gt;checkpoint_disable = 1;</span>
+<span class='curline'><a href='../S/272.html#L903'>disksim</a>           903 src/disksim.c      disksim-&gt;endian = _BIG_ENDIAN;</span>
+<span class='curline'><a href='../S/272.html#L906'>disksim</a>           906 src/disksim.c      disksim-&gt;endian = _LITTLE_ENDIAN;</span>
+<span class='curline'><a href='../S/272.html#L937'>disksim</a>           937 src/disksim.c      disksim-&gt;external_control = 1;</span>
+<span class='curline'><a href='../S/272.html#L951'>disksim</a>           951 src/disksim.c      disksim-&gt;synthgen = 1;</span>
+<span class='curline'><a href='../S/272.html#L952'>disksim</a>           952 src/disksim.c      disksim-&gt;iotrace = 0;</span>
+<span class='curline'><a href='../S/272.html#L956'>disksim</a>           956 src/disksim.c  	  disksim-&gt;synthgen); </span>
+<span class='curline'><a href='../S/272.html#L960'>disksim</a>           960 src/disksim.c    disksim-&gt;overrides = argv + 6;</span>
+<span class='curline'><a href='../S/272.html#L961'>disksim</a>           961 src/disksim.c    disksim-&gt;overrides_len = argc - 6;</span>
+<span class='curline'><a href='../S/272.html#L967'>disksim</a>           967 src/disksim.c    disksim-&gt;tracepipes[0] = 8; </span>
+<span class='curline'><a href='../S/272.html#L968'>disksim</a>           968 src/disksim.c    disksim-&gt;tracepipes[1] = 9; </span>
+<span class='curline'><a href='../S/272.html#L987'>disksim</a>           987 src/disksim.c      disksim-&gt;trace_mode = DISKSIM_NONE;</span>
+<span class='curline'><a href='../S/272.html#L990'>disksim</a>           990 src/disksim.c    if(disksim_loadparams(argv[1], disksim-&gt;synthgen)) {</span>
+<span class='curline'><a href='../S/272.html#L999'>disksim</a>           999 src/disksim.c    if(!disksim-&gt;iosim_info) {</span>
+<span class='curline'><a href='../S/272.html#L1032'>disksim</a>          1032 src/disksim.c     disksim = (disksim_t *) mmap (startaddr, totallength, (PROT_READ|PROT_WRITE), (MAP_PRIVATE), fd, 0);</span>
+<span class='curline'><a href='../S/272.html#L1035'>disksim</a>          1035 src/disksim.c     assert (disksim == startaddr);</span>
+<span class='curline'><a href='../S/272.html#L1037'>disksim</a>          1037 src/disksim.c     disksim_setup_outputfile (disksim-&gt;outputfilename, "r+");</span>
+<span class='curline'><a href='../S/272.html#L1039'>disksim</a>          1039 src/disksim.c        ret = fsetpos (outputfile, &amp;disksim-&gt;outputfileposition);</span>
+<span class='curline'><a href='../S/272.html#L1042'>disksim</a>          1042 src/disksim.c     disksim_setup_iotracefile (disksim-&gt;iotracefilename);</span>
+<span class='curline'><a href='../S/272.html#L1043'>disksim</a>          1043 src/disksim.c     if (disksim-&gt;iotracefile != NULL) {</span>
+<span class='curline'><a href='../S/272.html#L1044'>disksim</a>          1044 src/disksim.c        ret = fsetpos (disksim-&gt;iotracefile, &amp;disksim-&gt;iotracefileposition);</span>
+<span class='curline'><a href='../S/272.html#L1047'>disksim</a>          1047 src/disksim.c     if ((strcmp(disksim-&gt;outiosfilename, "0") != 0) &amp;&amp; (strcmp(disksim-&gt;outiosfilename, "null") != 0)) {</span>
+<span class='curline'><a href='../S/272.html#L1048'>disksim</a>          1048 src/disksim.c        if ((outios = fopen(disksim-&gt;outiosfilename, "r+")) == NULL) {</span>
+<span class='curline'><a href='../S/272.html#L1049'>disksim</a>          1049 src/disksim.c           fprintf(stderr, "Outios %s cannot be opened for write access\n", disksim-&gt;outiosfilename);</span>
+<span class='curline'><a href='../S/272.html#L1052'>disksim</a>          1052 src/disksim.c        ret = fsetpos (outios, &amp;disksim-&gt;outiosfileposition);</span>
+<span class='curline'><a href='../S/272.html#L1066'>disksim</a>          1066 src/disksim.c    while (disksim-&gt;stop_sim == FALSE) {</span>
+<span class='curline'><a href='../S/272.html#L1086'>disksim</a>          1086 src/disksim.c    if (disksim-&gt;iotracefile) </span>
+<span class='curline'><a href='../S/272.html#L1088'>disksim</a>          1088 src/disksim.c      fclose(disksim-&gt;iotracefile);</span>
+<span class='curline'><a href='../S/272.html#L1117'>disksim</a>          1117 src/disksim.c  disksim_initialize_disksim_structure (struct disksim *disksim)</span>
+<span class='curline'><a href='../S/272.html#L1124'>disksim</a>          1124 src/disksim.c     disksim-&gt;closedthinktime = 0.0;</span>
+<span class='curline'><a href='../S/272.html#L1127'>disksim</a>          1127 src/disksim.c     disksim-&gt;lastphystime = 0.0;</span>
+<span class='curline'><a href='../S/272.html#L1128'>disksim</a>          1128 src/disksim.c     disksim-&gt;checkpoint_interval = 0.0;</span>
+<span class='curline'><a href='../S/272.html#L1137'>disksim</a>          1137 src/disksim.c    if(disksim-&gt;exectrace) {</span>
+<span class='curline'><a href='../S/272.html#L1140'>disksim</a>          1140 src/disksim.c      vfprintf(disksim-&gt;exectrace, fmt, ap);</span>
+<span class='curline'><a href='../S/199.html#L120'>disksim</a>           120 src/disksim_assertlib.h     fprintf(stderr, "totalreqs\t = %d\n", disksim-&gt;totalreqs); \</span>
+<span class='curline'><a href='../S/199.html#L128'>disksim</a>           128 src/disksim_assertlib.h     fprintf(stderr, "totalreqs\t = %d\n", disksim-&gt;totalreqs); \</span>
+<span class='curline'><a href='../S/199.html#L137'>disksim</a>           137 src/disksim_assertlib.h     fprintf(stderr, "totalreqs\t = %d\n", disksim-&gt;totalreqs); \</span>
+<span class='curline'><a href='../S/199.html#L146'>disksim</a>           146 src/disksim_assertlib.h     fprintf(stderr, "totalreqs\t = %d\n", disksim-&gt;totalreqs); \</span>
+<span class='curline'><a href='../S/199.html#L156'>disksim</a>           156 src/disksim_assertlib.h     fprintf(stderr, "totalreqs\t = %d\n", disksim-&gt;totalreqs); \</span>
+<span class='curline'><a href='../S/200.html#L141'>disksim</a>           141 src/disksim_bus.c     return disksim-&gt;businfo-&gt;buses[busno];</span>
+<span class='curline'><a href='../S/200.html#L148'>disksim</a>           148 src/disksim_bus.c     if(disksim-&gt;businfo-&gt;buses[c])</span>
+<span class='curline'><a href='../S/200.html#L149'>disksim</a>           149 src/disksim_bus.c       if(!strcmp(disksim-&gt;businfo-&gt;buses[c]-&gt;name, name)) {</span>
+<span class='curline'><a href='../S/200.html#L151'>disksim</a>           151 src/disksim_bus.c 	return disksim-&gt;businfo-&gt;buses[c];</span>
+<span class='curline'><a href='../S/200.html#L571'>disksim</a>           571 src/disksim_bus.c   if(!disksim-&gt;businfo) {</span>
+<span class='curline'><a href='../S/200.html#L572'>disksim</a>           572 src/disksim_bus.c     disksim-&gt;businfo = malloc(sizeof(businfo_t));</span>
+<span class='curline'><a href='../S/200.html#L573'>disksim</a>           573 src/disksim_bus.c     bzero(disksim-&gt;businfo, sizeof(businfo_t));</span>
+<span class='curline'><a href='../S/200.html#L633'>disksim</a>           633 src/disksim_bus.c    for (i=0; i &lt; disksim-&gt;businfo-&gt;buses_len; i++) {</span>
+<span class='curline'><a href='../S/200.html#L639'>disksim</a>           639 src/disksim_bus.c          if (disksim-&gt;businfo-&gt;bus_printidlestats) {</span>
+<span class='curline'><a href='../S/200.html#L642'>disksim</a>           642 src/disksim_bus.c          if (disksim-&gt;businfo-&gt;bus_printarbwaitstats) {</span>
+<span class='curline'><a href='../S/200.html#L683'>disksim</a>           683 src/disksim_bus.c   if(!disksim-&gt;businfo) {</span>
+<span class='curline'><a href='../S/200.html#L684'>disksim</a>           684 src/disksim_bus.c     disksim-&gt;businfo = malloc(sizeof(businfo_t));</span>
+<span class='curline'><a href='../S/200.html#L685'>disksim</a>           685 src/disksim_bus.c     bzero(disksim-&gt;businfo, sizeof(businfo_t));</span>
+<span class='curline'><a href='../S/200.html#L693'>disksim</a>           693 src/disksim_bus.c      if(!disksim-&gt;businfo-&gt;buses[c]) { break; } </span>
+<span class='curline'><a href='../S/200.html#L696'>disksim</a>           696 src/disksim_bus.c    if(c == disksim-&gt;businfo-&gt;buses_len) {</span>
+<span class='curline'><a href='../S/200.html#L699'>disksim</a>           699 src/disksim_bus.c      disksim-&gt;businfo-&gt;buses = realloc(disksim-&gt;businfo-&gt;buses,</span>
+<span class='curline'><a href='../S/200.html#L702'>disksim</a>           702 src/disksim_bus.c        bzero(disksim-&gt;businfo-&gt;buses + c, (newlen/2)*sizeof(int *));</span>
+<span class='curline'><a href='../S/200.html#L704'>disksim</a>           704 src/disksim_bus.c        bzero(disksim-&gt;businfo-&gt;buses, 2 * sizeof(int *));</span>
+<span class='curline'><a href='../S/200.html#L706'>disksim</a>           706 src/disksim_bus.c      disksim-&gt;businfo-&gt;buses_len = newlen;</span>
+<span class='curline'><a href='../S/200.html#L713'>disksim</a>           713 src/disksim_bus.c    disksim-&gt;businfo-&gt;buses[c] = result;</span>
+<span class='curline'><a href='../S/262.html#L141'>disksim</a>           141 src/disksim_bus.h #define numbuses	(disksim-&gt;businfo-&gt;numbuses)</span>
+<span class='curline'><a href='../S/215.html#L644'>disksim</a>           644 src/disksim_cachedev.c   disksim-&gt;donefunc_cachedev_empty = cachedev_empty_donefunc;</span>
+<span class='curline'><a href='../S/215.html#L645'>disksim</a>           645 src/disksim_cachedev.c   disksim-&gt;idlework_cachedev = cachedev_idlework_callback;</span>
+<span class='curline'><a href='../S/215.html#L646'>disksim</a>           646 src/disksim_cachedev.c   disksim-&gt;timerfunc_cachedev = cachedev_periodic_callback;</span>
+<span class='curline'><a href='../S/215.html#L679'>disksim</a>           679 src/disksim_cachedev.c 				     &amp;disksim-&gt;idlework_cachedev, </span>
+<span class='curline'><a href='../S/222.html#L866'>disksim</a>           866 src/disksim_cachemem.c    flushdesc-&gt;donefunc = &amp;disksim-&gt;donefunc_cachemem_empty;</span>
+<span class='curline'><a href='../S/222.html#L1882'>disksim</a>          1882 src/disksim_cachemem.c          writedesc-&gt;donefunc = &amp;disksim-&gt;donefunc_cachemem_empty;</span>
+<span class='curline'><a href='../S/222.html#L2141'>disksim</a>          2141 src/disksim_cachemem.c    disksim-&gt;donefunc_cachemem_empty = cache_empty_donefunc;</span>
+<span class='curline'><a href='../S/222.html#L2142'>disksim</a>          2142 src/disksim_cachemem.c    disksim-&gt;idlework_cachemem = cache_idletime_detected;</span>
+<span class='curline'><a href='../S/222.html#L2143'>disksim</a>          2143 src/disksim_cachemem.c    disksim-&gt;concatok_cachemem = cache_concatok;</span>
+<span class='curline'><a href='../S/222.html#L2144'>disksim</a>          2144 src/disksim_cachemem.c    disksim-&gt;timerfunc_cachemem = cache_periodic_flush;</span>
+<span class='curline'><a href='../S/222.html#L2218'>disksim</a>          2218 src/disksim_cachemem.c       timereq-&gt;func = &amp;disksim-&gt;timerfunc_cachemem;</span>
+<span class='curline'><a href='../S/222.html#L2226'>disksim</a>          2226 src/disksim_cachemem.c 	 ioqueue_set_idlework_function(queue, &amp;disksim-&gt;idlework_cachemem, cache, cache-&gt;flush_idledelay);</span>
+<span class='curline'><a href='../S/222.html#L2229'>disksim</a>          2229 src/disksim_cachemem.c 	 ioqueue_set_concatok_function(queue, &amp;disksim-&gt;concatok_cachemem, cache);</span>
+<span class='curline'><a href='../S/204.html#L118'>disksim</a>           118 src/disksim_controller.c    ctlrinfo_t *ctlrinfo = disksim-&gt;ctlrinfo;</span>
+<span class='curline'><a href='../S/204.html#L125'>disksim</a>           125 src/disksim_controller.c   for(c = 0; c &lt; disksim-&gt;ctlrinfo-&gt;numcontrollers; c++) {</span>
+<span class='curline'><a href='../S/204.html#L126'>disksim</a>           126 src/disksim_controller.c     if(!strcmp(name, disksim-&gt;ctlrinfo-&gt;controllers[c]-&gt;name)) {</span>
+<span class='curline'><a href='../S/204.html#L128'>disksim</a>           128 src/disksim_controller.c       return disksim-&gt;ctlrinfo-&gt;controllers[c];</span>
+<span class='curline'><a href='../S/204.html#L432'>disksim</a>           432 src/disksim_controller.c   if(disksim-&gt;ctlrinfo == NULL) {</span>
+<span class='curline'><a href='../S/204.html#L433'>disksim</a>           433 src/disksim_controller.c     disksim-&gt;ctlrinfo = malloc(sizeof(ctlrinfo_t));</span>
+<span class='curline'><a href='../S/204.html#L434'>disksim</a>           434 src/disksim_controller.c     if(!disksim-&gt;ctlrinfo) return 0;</span>
+<span class='curline'><a href='../S/204.html#L435'>disksim</a>           435 src/disksim_controller.c     bzero((char *)disksim-&gt;ctlrinfo, sizeof(ctlrinfo_t));</span>
+<span class='curline'><a href='../S/204.html#L437'>disksim</a>           437 src/disksim_controller.c   ctlrinfo = disksim-&gt;ctlrinfo;</span>
+<span class='curline'><a href='../S/204.html#L475'>disksim</a>           475 src/disksim_controller.c   if (disksim-&gt;ctlrinfo == NULL) {</span>
+<span class='curline'><a href='../S/204.html#L476'>disksim</a>           476 src/disksim_controller.c     disksim-&gt;ctlrinfo = DISKSIM_malloc (sizeof(ctlrinfo_t));</span>
+<span class='curline'><a href='../S/204.html#L477'>disksim</a>           477 src/disksim_controller.c     bzero ((char *)disksim-&gt;ctlrinfo, sizeof(ctlrinfo_t));</span>
+<span class='curline'><a href='../S/204.html#L483'>disksim</a>           483 src/disksim_controller.c   for(c = 0; c &lt; disksim-&gt;ctlrinfo-&gt;ctlrs_len; c++) {</span>
+<span class='curline'><a href='../S/204.html#L484'>disksim</a>           484 src/disksim_controller.c     if(!disksim-&gt;ctlrinfo-&gt;controllers[c]) { goto foundslot; } </span>
+<span class='curline'><a href='../S/204.html#L493'>disksim</a>           493 src/disksim_controller.c     disksim-&gt;ctlrinfo-&gt;controllers = realloc(disksim-&gt;ctlrinfo-&gt;controllers,</span>
+<span class='curline'><a href='../S/204.html#L496'>disksim</a>           496 src/disksim_controller.c     bzero(disksim-&gt;ctlrinfo-&gt;controllers + zerooff, zerolen);</span>
+<span class='curline'><a href='../S/204.html#L497'>disksim</a>           497 src/disksim_controller.c     disksim-&gt;ctlrinfo-&gt;ctlrs_len = newlen;</span>
+<span class='curline'><a href='../S/204.html#L502'>disksim</a>           502 src/disksim_controller.c   disksim-&gt;ctlrinfo-&gt;numcontrollers++;</span>
+<span class='curline'><a href='../S/204.html#L509'>disksim</a>           509 src/disksim_controller.c   disksim-&gt;ctlrinfo-&gt;controllers[c] = result;</span>
+<span class='curline'><a href='../S/204.html#L622'>disksim</a>           622 src/disksim_controller.c    ctlrinfo_t *ctlrinfo = disksim-&gt;ctlrinfo;</span>
+<span class='curline'><a href='../S/204.html#L657'>disksim</a>           657 src/disksim_controller.c    ctlrinfo_t *ctlrinfo = disksim-&gt;ctlrinfo;</span>
+<span class='curline'><a href='../S/204.html#L698'>disksim</a>           698 src/disksim_controller.c    ctlrinfo_t *ctlrinfo = disksim-&gt;ctlrinfo;</span>
+<span class='curline'><a href='../S/204.html#L722'>disksim</a>           722 src/disksim_controller.c    ctlrinfo_t *ctlrinfo = disksim-&gt;ctlrinfo;</span>
+<span class='curline'><a href='../S/204.html#L737'>disksim</a>           737 src/disksim_controller.c    ctlrinfo_t *ctlrinfo = disksim-&gt;ctlrinfo;</span>
+<span class='curline'><a href='../S/268.html#L221'>disksim</a>           221 src/disksim_ctlrsmart.c       currctlr-&gt;cache-&gt;cache_free_block_dirty(currctlr-&gt;cache, curr, &amp;disksim-&gt;donefunc_ctlrsmart_write, currctlr);</span>
+<span class='curline'><a href='../S/268.html#L275'>disksim</a>           275 src/disksim_ctlrsmart.c    currctlr-&gt;cache-&gt;cache_get_block(currctlr-&gt;cache, curr, &amp;disksim-&gt;donefunc_ctlrsmart_read, currctlr);</span>
+<span class='curline'><a href='../S/268.html#L424'>disksim</a>           424 src/disksim_ctlrsmart.c    disksim-&gt;issuefunc_ctlrsmart = controller_smart_issue_access;</span>
+<span class='curline'><a href='../S/268.html#L425'>disksim</a>           425 src/disksim_ctlrsmart.c    disksim-&gt;queuefind_ctlrsmart = controller_smart_queuefind;</span>
+<span class='curline'><a href='../S/268.html#L426'>disksim</a>           426 src/disksim_ctlrsmart.c    disksim-&gt;wakeupfunc_ctlrsmart = controller_smart_wakeup;</span>
+<span class='curline'><a href='../S/268.html#L427'>disksim</a>           427 src/disksim_ctlrsmart.c    disksim-&gt;donefunc_ctlrsmart_read = controller_smart_host_data_transfer;</span>
+<span class='curline'><a href='../S/268.html#L428'>disksim</a>           428 src/disksim_ctlrsmart.c    disksim-&gt;donefunc_ctlrsmart_write = controller_smart_request_complete;</span>
+<span class='curline'><a href='../S/268.html#L454'>disksim</a>           454 src/disksim_ctlrsmart.c    currctlr-&gt;cache-&gt;cache_initialize(currctlr-&gt;cache, &amp;disksim-&gt;issuefunc_ctlrsmart, currctlr, &amp;disksim-&gt;queuefind_ctlrsmart, currctlr, &amp;disksim-&gt;wakeupfunc_ctlrsmart, currctlr, numdevs);</span>
+<span class='curline'><a href='../S/268.html#L474'>disksim</a>           474 src/disksim_ctlrsmart.c    ctlrinfo_t *ctlrinfo = disksim-&gt;ctlrinfo;</span>
+<span class='curline'><a href='../S/214.html#L82'>disksim</a>            82 src/disksim_device.c #define numdevices                  (disksim-&gt;deviceinfo-&gt;numdevices)</span>
+<span class='curline'><a href='../S/214.html#L84'>disksim</a>            84 src/disksim_device.c #define devicetypes                 (disksim-&gt;deviceinfo-&gt;devicetypes)</span>
+<span class='curline'><a href='../S/214.html#L86'>disksim</a>            86 src/disksim_device.c #define devicenos                   (disksim-&gt;deviceinfo-&gt;devicenos)</span>
+<span class='curline'><a href='../S/214.html#L88'>disksim</a>            88 src/disksim_device.c #define maxdeviceno                 (disksim-&gt;deviceinfo-&gt;maxdeviceno)</span>
+<span class='curline'><a href='../S/214.html#L98'>disksim</a>            98 src/disksim_device.c   for(c = 0; c &lt; disksim-&gt;deviceinfo-&gt;devs_len; c++) {</span>
+<span class='curline'><a href='../S/214.html#L99'>disksim</a>            99 src/disksim_device.c     if(!disksim-&gt;deviceinfo-&gt;devicenames[c]) continue;</span>
+<span class='curline'><a href='../S/214.html#L100'>disksim</a>           100 src/disksim_device.c     if(!strcmp(name, disksim-&gt;deviceinfo-&gt;devicenames[c])) {</span>
+<span class='curline'><a href='../S/214.html#L126'>disksim</a>           126 src/disksim_device.c    if (disksim-&gt;deviceinfo == NULL) {</span>
+<span class='curline'><a href='../S/214.html#L127'>disksim</a>           127 src/disksim_device.c       disksim-&gt;deviceinfo = malloc (sizeof(device_info_t));</span>
+<span class='curline'><a href='../S/214.html#L128'>disksim</a>           128 src/disksim_device.c       bzero ((char *)disksim-&gt;deviceinfo, sizeof(device_info_t));</span>
+<span class='curline'><a href='../S/214.html#L137'>disksim</a>           137 src/disksim_device.c   for(c = 0; c &lt; disksim-&gt;deviceinfo-&gt;devs_len; c++) {</span>
+<span class='curline'><a href='../S/214.html#L138'>disksim</a>           138 src/disksim_device.c     if(!disksim-&gt;deviceinfo-&gt;devicenames[c]) {</span>
+<span class='curline'><a href='../S/214.html#L146'>disksim</a>           146 src/disksim_device.c   disksim-&gt;deviceinfo-&gt;devicenames = </span>
+<span class='curline'><a href='../S/214.html#L147'>disksim</a>           147 src/disksim_device.c     realloc(disksim-&gt;deviceinfo-&gt;devicenames, newlen * sizeof(char *));</span>
+<span class='curline'><a href='../S/214.html#L148'>disksim</a>           148 src/disksim_device.c   bzero(disksim-&gt;deviceinfo-&gt;devicenames + c, zerocnt * sizeof(char *));</span>
+<span class='curline'><a href='../S/214.html#L164'>disksim</a>           164 src/disksim_device.c   disksim-&gt;deviceinfo-&gt;devices = realloc(disksim-&gt;deviceinfo-&gt;devices, </span>
+<span class='curline'><a href='../S/214.html#L167'>disksim</a>           167 src/disksim_device.c   bzero(disksim-&gt;deviceinfo-&gt;devices + c, zerocnt * sizeof(int));</span>
+<span class='curline'><a href='../S/214.html#L169'>disksim</a>           169 src/disksim_device.c   bzero(disksim-&gt;deviceinfo-&gt;devices + c, zerocnt * sizeof(*(disksim-&gt;deviceinfo-&gt;devices)));</span>
+<span class='curline'><a href='../S/214.html#L172'>disksim</a>           172 src/disksim_device.c   disksim-&gt;deviceinfo-&gt;devs_len = newlen;</span>
+<span class='curline'><a href='../S/214.html#L175'>disksim</a>           175 src/disksim_device.c   disksim-&gt;deviceinfo-&gt;devicenames[c] = d-&gt;device_name;</span>
+<span class='curline'><a href='../S/214.html#L181'>disksim</a>           181 src/disksim_device.c   disksim-&gt;deviceinfo-&gt;devices[c] = d;</span>
+<span class='curline'><a href='../S/214.html#L295'>disksim</a>           295 src/disksim_device.c    return disksim-&gt;deviceinfo-&gt;devices[devno]-&gt;set_depth(devicenos[devno], inbusno, depth, slotno);</span>
+<span class='curline'><a href='../S/214.html#L302'>disksim</a>           302 src/disksim_device.c    return disksim-&gt;deviceinfo-&gt;devices[devno]-&gt;get_depth(devno);</span>
+<span class='curline'><a href='../S/214.html#L309'>disksim</a>           309 src/disksim_device.c    return disksim-&gt;deviceinfo-&gt;devices[devno]-&gt;get_inbus(devno);</span>
+<span class='curline'><a href='../S/214.html#L316'>disksim</a>           316 src/disksim_device.c    return disksim-&gt;deviceinfo-&gt;devices[curr-&gt;devno]-&gt;get_busno(curr);</span>
+<span class='curline'><a href='../S/214.html#L323'>disksim</a>           323 src/disksim_device.c    return disksim-&gt;deviceinfo-&gt;devices[devno]-&gt;get_slotno(devno);</span>
+<span class='curline'><a href='../S/214.html#L330'>disksim</a>           330 src/disksim_device.c    return disksim-&gt;deviceinfo-&gt;devices[devno]-&gt;get_number_of_blocks(devno);</span>
+<span class='curline'><a href='../S/214.html#L337'>disksim</a>           337 src/disksim_device.c    return disksim-&gt;deviceinfo-&gt;devices[devno]-&gt;get_maxoutstanding(devno);</span>
+<span class='curline'><a href='../S/214.html#L350'>disksim</a>           350 src/disksim_device.c    return disksim-&gt;deviceinfo-&gt;devices[devno]-&gt;get_numcyls(devno);</span>
+<span class='curline'><a href='../S/214.html#L357'>disksim</a>           357 src/disksim_device.c    return disksim-&gt;deviceinfo-&gt;devices[curr-&gt;devno]-&gt;get_blktranstime(curr);</span>
+<span class='curline'><a href='../S/214.html#L364'>disksim</a>           364 src/disksim_device.c    return disksim-&gt;deviceinfo-&gt;devices[devno]-&gt;get_avg_sectpercyl(devno);</span>
+<span class='curline'><a href='../S/214.html#L376'>disksim</a>           376 src/disksim_device.c    return disksim-&gt;deviceinfo-&gt;devices[devno]-&gt;get_mapping(maptype, </span>
+<span class='curline'><a href='../S/214.html#L388'>disksim</a>           388 src/disksim_device.c    return disksim-&gt;deviceinfo-&gt;devices[curr-&gt;devno]-&gt;event_arrive(curr);</span>
+<span class='curline'><a href='../S/214.html#L398'>disksim</a>           398 src/disksim_device.c    return disksim-&gt;deviceinfo-&gt;devices[devno]-&gt;get_distance(devno,</span>
+<span class='curline'><a href='../S/214.html#L411'>disksim</a>           411 src/disksim_device.c    return disksim-&gt;deviceinfo-&gt;devices[devno]-&gt;get_servtime(devno,</span>
+<span class='curline'><a href='../S/214.html#L424'>disksim</a>           424 src/disksim_device.c    return disksim-&gt;deviceinfo-&gt;devices[devno]-&gt;get_seektime(devno,</span>
+<span class='curline'><a href='../S/214.html#L437'>disksim</a>           437 src/disksim_device.c    return disksim-&gt;deviceinfo-&gt;devices[devno]-&gt;get_acctime(devno,</span>
+<span class='curline'><a href='../S/214.html#L448'>disksim</a>           448 src/disksim_device.c    return disksim-&gt;deviceinfo-&gt;devices[devno]-&gt;bus_delay_complete(devno,</span>
+<span class='curline'><a href='../S/214.html#L460'>disksim</a>           460 src/disksim_device.c    return disksim-&gt;deviceinfo-&gt;devices[devno]-&gt;bus_ownership_grant(devno,</span>
+<span class='curline'><a href='../S/223.html#L125'>disksim</a>           125 src/disksim_device.h #define device_printqueuestats      (disksim-&gt;deviceinfo-&gt;device_printqueuestats)</span>
+<span class='curline'><a href='../S/223.html#L126'>disksim</a>           126 src/disksim_device.h #define device_printcritstats       (disksim-&gt;deviceinfo-&gt;device_printcritstats)</span>
+<span class='curline'><a href='../S/223.html#L127'>disksim</a>           127 src/disksim_device.h #define device_printidlestats       (disksim-&gt;deviceinfo-&gt;device_printidlestats)</span>
+<span class='curline'><a href='../S/223.html#L128'>disksim</a>           128 src/disksim_device.h #define device_printintarrstats     (disksim-&gt;deviceinfo-&gt;device_printintarrstats)</span>
+<span class='curline'><a href='../S/223.html#L129'>disksim</a>           129 src/disksim_device.h #define device_printsizestats       (disksim-&gt;deviceinfo-&gt;device_printsizestats)</span>
+<span class='curline'><a href='../S/223.html#L130'>disksim</a>           130 src/disksim_device.h #define device_printseekstats       (disksim-&gt;deviceinfo-&gt;device_printseekstats)</span>
+<span class='curline'><a href='../S/223.html#L131'>disksim</a>           131 src/disksim_device.h #define device_printlatencystats    (disksim-&gt;deviceinfo-&gt;device_printlatencystats)</span>
+<span class='curline'><a href='../S/223.html#L132'>disksim</a>           132 src/disksim_device.h #define device_printxferstats       (disksim-&gt;deviceinfo-&gt;device_printxferstats)</span>
+<span class='curline'><a href='../S/223.html#L133'>disksim</a>           133 src/disksim_device.h #define device_printacctimestats    (disksim-&gt;deviceinfo-&gt;device_printacctimestats)</span>
+<span class='curline'><a href='../S/223.html#L134'>disksim</a>           134 src/disksim_device.h #define device_printinterferestats  (disksim-&gt;deviceinfo-&gt;device_printinterferestats)</span>
+<span class='curline'><a href='../S/223.html#L135'>disksim</a>           135 src/disksim_device.h #define device_printbufferstats     (disksim-&gt;deviceinfo-&gt;device_printbufferstats)</span>
+<span class='curline'><a href='../S/273.html#L125'>disksim</a>           125 src/disksim_disk.c    currdisk = disksim-&gt;diskinfo-&gt;disks[diskno];</span>
+<span class='curline'><a href='../S/273.html#L136'>disksim</a>           136 src/disksim_disk.c   if(!disksim-&gt;diskinfo) disk_initialize_diskinfo();</span>
+<span class='curline'><a href='../S/273.html#L138'>disksim</a>           138 src/disksim_disk.c   for(c = 0; c &lt; disksim-&gt;diskinfo-&gt;disks_len; c++) {</span>
+<span class='curline'><a href='../S/273.html#L139'>disksim</a>           139 src/disksim_disk.c     if(!disksim-&gt;diskinfo-&gt;disks[c]) {</span>
+<span class='curline'><a href='../S/273.html#L140'>disksim</a>           140 src/disksim_disk.c       disksim-&gt;diskinfo-&gt;disks[c] = d;</span>
+<span class='curline'><a href='../S/273.html#L147'>disksim</a>           147 src/disksim_disk.c   disksim-&gt;diskinfo-&gt;disks = realloc(disksim-&gt;diskinfo-&gt;disks, </span>
+<span class='curline'><a href='../S/273.html#L149'>disksim</a>           149 src/disksim_disk.c   bzero(disksim-&gt;diskinfo-&gt;disks + NUMDISKS, NUMDISKS);</span>
+<span class='curline'><a href='../S/273.html#L150'>disksim</a>           150 src/disksim_disk.c   disksim-&gt;diskinfo-&gt;disks[c] = d;</span>
+<span class='curline'><a href='../S/273.html#L152'>disksim</a>           152 src/disksim_disk.c   disksim-&gt;diskinfo-&gt;disks_len *= 2;</span>
+<span class='curline'><a href='../S/273.html#L496'>disksim</a>           496 src/disksim_disk.c   disksim-&gt;enablement_disk = disk_enablement_function;</span>
+<span class='curline'><a href='../S/273.html#L503'>disksim</a>           503 src/disksim_disk.c   disksim-&gt;diskinfo = malloc (sizeof(disk_info_t));</span>
+<span class='curline'><a href='../S/273.html#L504'>disksim</a>           504 src/disksim_disk.c   bzero ((char *)disksim-&gt;diskinfo, sizeof(disk_info_t));</span>
+<span class='curline'><a href='../S/273.html#L506'>disksim</a>           506 src/disksim_disk.c   disksim-&gt;diskinfo-&gt;disks = (struct disk**) malloc(MAXDEVICES * sizeof(disk));</span>
+<span class='curline'><a href='../S/273.html#L507'>disksim</a>           507 src/disksim_disk.c   disksim-&gt;diskinfo-&gt;disks_len = MAXDEVICES;</span>
+<span class='curline'><a href='../S/273.html#L508'>disksim</a>           508 src/disksim_disk.c   bzero ((char *)disksim-&gt;diskinfo-&gt;disks, (MAXDEVICES * sizeof(disk)));</span>
+<span class='curline'><a href='../S/273.html#L867'>disksim</a>           867 src/disksim_disk.c   if(!disksim-&gt;diskinfo) disk_initialize_diskinfo();</span>
+<span class='curline'><a href='../S/273.html#L952'>disksim</a>           952 src/disksim_disk.c    if (disksim-&gt;diskinfo == NULL) {</span>
+<span class='curline'><a href='../S/273.html#L966'>disksim</a>           966 src/disksim_disk.c      ioqueue_set_enablement_function (currdisk-&gt;queue, &amp;disksim-&gt;enablement_disk);</span>
+<span class='curline'><a href='../S/273.html#L1115'>disksim</a>          1115 src/disksim_disk.c   return disksim-&gt;diskinfo-&gt;disks[n]-&gt;model-&gt;dm_sectors;</span>
+<span class='curline'><a href='../S/273.html#L1119'>disksim</a>          1119 src/disksim_disk.c   return disksim-&gt;diskinfo-&gt;disks[n]-&gt;model-&gt;dm_cyls;</span>
+<span class='curline'><a href='../S/273.html#L1132'>disksim</a>          1132 src/disksim_disk.c   struct dm_disk_if *d = disksim-&gt;diskinfo-&gt;disks[n]-&gt;model;</span>
+<span class='curline'><a href='../S/273.html#L1150'>disksim</a>          1150 src/disksim_disk.c   return disksim-&gt;diskinfo-&gt;disks[devno]-&gt;sectpercyl;</span>
+<span class='curline'><a href='../S/258.html#L508'>disksim</a>           508 src/disksim_disk.h #define multi_disk_last_seektime  (disksim-&gt;diskinfo-&gt;multi_disk_last_seektime)</span>
+<span class='curline'><a href='../S/258.html#L509'>disksim</a>           509 src/disksim_disk.h #define multi_disk_last_latency   (disksim-&gt;diskinfo-&gt;multi_disk_last_latency)</span>
+<span class='curline'><a href='../S/258.html#L510'>disksim</a>           510 src/disksim_disk.h #define multi_disk_last_cylno     (disksim-&gt;diskinfo-&gt;multi_disk_last_cylno)</span>
+<span class='curline'><a href='../S/258.html#L511'>disksim</a>           511 src/disksim_disk.h #define multi_disk_last_surface   (disksim-&gt;diskinfo-&gt;multi_disk_last_surface)</span>
+<span class='curline'><a href='../S/258.html#L512'>disksim</a>           512 src/disksim_disk.h #define multi_disk_last_angle     (disksim-&gt;diskinfo-&gt;multi_disk_last_angle)</span>
+<span class='curline'><a href='../S/258.html#L513'>disksim</a>           513 src/disksim_disk.h #define multi_disk_last_xfertime  (disksim-&gt;diskinfo-&gt;multi_disk_last_xfertime)</span>
+<span class='curline'><a href='../S/258.html#L514'>disksim</a>           514 src/disksim_disk.h #define multi_disk_last           (disksim-&gt;diskinfo-&gt;multi_disk_last)</span>
+<span class='curline'><a href='../S/258.html#L515'>disksim</a>           515 src/disksim_disk.h #define do_free_blocks            (disksim-&gt;diskinfo-&gt;do_free_blocks)</span>
+<span class='curline'><a href='../S/258.html#L516'>disksim</a>           516 src/disksim_disk.h #define disk_last_angle           (disksim-&gt;diskinfo-&gt;disk_last_angle)</span>
+<span class='curline'><a href='../S/258.html#L517'>disksim</a>           517 src/disksim_disk.h #define lastdisk                  (disksim-&gt;diskinfo-&gt;lastdisk)</span>
+<span class='curline'><a href='../S/258.html#L518'>disksim</a>           518 src/disksim_disk.h #define NUMDISKS                  (disksim-&gt;diskinfo-&gt;numdisks)</span>
+<span class='curline'><a href='../S/258.html#L519'>disksim</a>           519 src/disksim_disk.h #define disk_printhack            (disksim-&gt;diskinfo-&gt;disk_printhack)</span>
+<span class='curline'><a href='../S/258.html#L520'>disksim</a>           520 src/disksim_disk.h #define disk_printhacktime        (disksim-&gt;diskinfo-&gt;disk_printhacktime)</span>
+<span class='curline'><a href='../S/258.html#L521'>disksim</a>           521 src/disksim_disk.h #define numsyncsets               (disksim-&gt;diskinfo-&gt;numsyncsets)</span>
+<span class='curline'><a href='../S/258.html#L522'>disksim</a>           522 src/disksim_disk.h #define extra_write_disconnects   (disksim-&gt;diskinfo-&gt;extra_write_disconnects)</span>
+<span class='curline'><a href='../S/258.html#L524'>disksim</a>           524 src/disksim_disk.h #define bandstart                 (disksim-&gt;diskinfo-&gt;bandstart)</span>
+<span class='curline'><a href='../S/258.html#L525'>disksim</a>           525 src/disksim_disk.h #define swap_forward_only         (disksim-&gt;diskinfo-&gt;swap_forward_only)</span>
+<span class='curline'><a href='../S/258.html#L527'>disksim</a>           527 src/disksim_disk.h #define addtolatency              (disksim-&gt;diskinfo-&gt;addtolatency)</span>
+<span class='curline'><a href='../S/258.html#L529'>disksim</a>           529 src/disksim_disk.h #define disk_seek_stoptime        (disksim-&gt;diskinfo-&gt;disk_seek_stoptime)</span>
+<span class='curline'><a href='../S/258.html#L530'>disksim</a>           530 src/disksim_disk.h #define disk_last_distance        (disksim-&gt;diskinfo-&gt;disk_last_distance)</span>
+<span class='curline'><a href='../S/258.html#L531'>disksim</a>           531 src/disksim_disk.h #define disk_last_seektime        (disksim-&gt;diskinfo-&gt;disk_last_seektime)</span>
+<span class='curline'><a href='../S/258.html#L532'>disksim</a>           532 src/disksim_disk.h #define disk_last_latency         (disksim-&gt;diskinfo-&gt;disk_last_latency)</span>
+<span class='curline'><a href='../S/258.html#L533'>disksim</a>           533 src/disksim_disk.h #define disk_last_xfertime        (disksim-&gt;diskinfo-&gt;disk_last_xfertime)</span>
+<span class='curline'><a href='../S/258.html#L534'>disksim</a>           534 src/disksim_disk.h #define disk_last_acctime         (disksim-&gt;diskinfo-&gt;disk_last_acctime)</span>
+<span class='curline'><a href='../S/258.html#L535'>disksim</a>           535 src/disksim_disk.h #define disk_last_cylno           (disksim-&gt;diskinfo-&gt;disk_last_cylno)</span>
+<span class='curline'><a href='../S/258.html#L536'>disksim</a>           536 src/disksim_disk.h #define disk_last_surface         (disksim-&gt;diskinfo-&gt;disk_last_surface)</span>
+<span class='curline'><a href='../S/258.html#L537'>disksim</a>           537 src/disksim_disk.h #define LRU_at_seg_list_head      (disksim-&gt;diskinfo-&gt;LRU_at_seg_list_head)</span>
+<span class='curline'><a href='../S/258.html#L542'>disksim</a>           542 src/disksim_disk.h #define buffer_partial_servtime   (disksim-&gt;diskinfo-&gt;buffer_partial_servtime)</span>
+<span class='curline'><a href='../S/258.html#L543'>disksim</a>           543 src/disksim_disk.h #define reading_buffer_partial_servtime (disksim-&gt;diskinfo-&gt;reading_buffer_partial_servtime)</span>
+<span class='curline'><a href='../S/258.html#L544'>disksim</a>           544 src/disksim_disk.h #define buffer_whole_servtime     (disksim-&gt;diskinfo-&gt;buffer_whole_servtime)</span>
+<span class='curline'><a href='../S/258.html#L545'>disksim</a>           545 src/disksim_disk.h #define reading_buffer_whole_servtime (disksim-&gt;diskinfo-&gt;reading_buffer_whole_servtime)</span>
+<span class='curline'><a href='../S/283.html#L434'>disksim</a>           434 src/disksim_global.h extern disksim_t *disksim;</span>
+<span class='curline'><a href='../S/283.html#L437'>disksim</a>           437 src/disksim_global.h #define warmuptime       (disksim-&gt;warmuptime)</span>
+<span class='curline'><a href='../S/283.html#L438'>disksim</a>           438 src/disksim_global.h #define simtime	         (disksim-&gt;simtime)</span>
+<span class='curline'><a href='../S/283.html#L439'>disksim</a>           439 src/disksim_global.h #define statdeffile      (disksim-&gt;statdeffile)</span>
+<span class='curline'><a href='../S/283.html#L440'>disksim</a>           440 src/disksim_global.h #define outputfile       (disksim-&gt;outputfile)</span>
+<span class='curline'><a href='../S/283.html#L441'>disksim</a>           441 src/disksim_global.h #define outios           (disksim-&gt;outios)</span>
+<span class='curline'><a href='../S/283.html#L488'>disksim</a>           488 src/disksim_global.h int disksim_initialize_disksim_structure (struct disksim *);</span>
+<span class='curline'><a href='../S/195.html#L198'>disksim</a>           198 src/disksim_interface.c   disksim_initialize_disksim_structure(iface-&gt;disksim);</span>
+<span class='curline'><a href='../S/195.html#L276'>disksim</a>           276 src/disksim_interface.c   iface-&gt;disksim = calloc(1, sizeof(struct disksim));</span>
+<span class='curline'><a href='../S/195.html#L278'>disksim</a>           278 src/disksim_interface.c   disksim = iface-&gt;disksim;</span>
+<span class='curline'><a href='../S/195.html#L292'>disksim</a>           292 src/disksim_interface.c   disksim-&gt;notify_ctx = iface;</span>
+<span class='curline'><a href='../S/195.html#L307'>disksim</a>           307 src/disksim_interface.c    disksim = iface-&gt;disksim;</span>
+<span class='curline'><a href='../S/195.html#L334'>disksim</a>           334 src/disksim_interface.c    disksim = iface-&gt;disksim;</span>
+<span class='curline'><a href='../S/195.html#L338'>disksim</a>           338 src/disksim_interface.c    if ((disksim-&gt;intq) &amp;&amp; (disksim-&gt;intq-&gt;time &lt; curtime) &amp;&amp; ((disksim-&gt;intq-&gt;time + 0.0001) &gt;= curtime)) {</span>
+<span class='curline'><a href='../S/195.html#L339'>disksim</a>           339 src/disksim_interface.c       curtime = disksim-&gt;intq-&gt;time;</span>
+<span class='curline'><a href='../S/195.html#L342'>disksim</a>           342 src/disksim_interface.c        || ((disksim-&gt;intq) </span>
+<span class='curline'><a href='../S/195.html#L343'>disksim</a>           343 src/disksim_interface.c 	   &amp;&amp; (disksim-&gt;intq-&gt;time &lt; curtime))) </span>
+<span class='curline'><a href='../S/195.html#L345'>disksim</a>           345 src/disksim_interface.c      fprintf (stderr, "external time is mismatched with disksim time: %f vs. %f (%f)\n", curtime, simtime, ((disksim-&gt;intq) ? disksim-&gt;intq-&gt;time : 0.0));</span>
+<span class='curline'><a href='../S/195.html#L369'>disksim</a>           369 src/disksim_interface.c    disksim = iface-&gt;disksim;</span>
+<span class='curline'><a href='../S/195.html#L378'>disksim</a>           378 src/disksim_interface.c    if (disksim-&gt;intq != NULL </span>
+<span class='curline'><a href='../S/195.html#L379'>disksim</a>           379 src/disksim_interface.c        &amp;&amp; (disksim-&gt;intq-&gt;time + 0.0001) &lt; curtime) </span>
+<span class='curline'><a href='../S/195.html#L381'>disksim</a>           381 src/disksim_interface.c      fprintf (stderr, "external time is ahead of disksim time: %f &gt; %f\n", curtime, disksim-&gt;intq-&gt;time);</span>
+<span class='curline'><a href='../S/195.html#L388'>disksim</a>           388 src/disksim_interface.c    if(disksim-&gt;intq != NULL){</span>
+<span class='curline'><a href='../S/195.html#L389'>disksim</a>           389 src/disksim_interface.c      ASSERT (disksim-&gt;intq-&gt;time &gt;= simtime);</span>
+<span class='curline'><a href='../S/195.html#L392'>disksim</a>           392 src/disksim_interface.c    while ((disksim-&gt;intq != NULL) </span>
+<span class='curline'><a href='../S/195.html#L393'>disksim</a>           393 src/disksim_interface.c 	  &amp;&amp; (disksim-&gt;intq-&gt;time &lt;= (curtime + 0.0001))) </span>
+<span class='curline'><a href='../S/195.html#L401'>disksim</a>           401 src/disksim_interface.c    if (disksim-&gt;intq != NULL) {</span>
+<span class='curline'><a href='../S/195.html#L407'>disksim</a>           407 src/disksim_interface.c 		      disksim-&gt;intq-&gt;time,</span>
+<span class='curline'><a href='../S/195.html#L429'>disksim</a>           429 src/disksim_interface.c    disksim = iface-&gt;disksim;</span>
+<span class='curline'><a href='../S/195.html#L453'>disksim</a>           453 src/disksim_interface.c    if (disksim-&gt;intq) {</span>
+<span class='curline'><a href='../S/195.html#L459'>disksim</a>           459 src/disksim_interface.c    while ((disksim-&gt;intq != NULL) </span>
+<span class='curline'><a href='../S/195.html#L460'>disksim</a>           460 src/disksim_interface.c 	  &amp;&amp; (disksim-&gt;intq-&gt;time &lt;= (curtime + 0.0001))) </span>
+<span class='curline'><a href='../S/195.html#L465'>disksim</a>           465 src/disksim_interface.c    if (disksim-&gt;intq) {</span>
+<span class='curline'><a href='../S/195.html#L471'>disksim</a>           471 src/disksim_interface.c 		      disksim-&gt;intq-&gt;time,</span>
+<span class='curline'><a href='../S/195.html#L481'>disksim</a>           481 src/disksim_interface.c   free(iface-&gt;disksim);</span>
+<span class='curline'><a href='../S/195.html#L491'>disksim</a>           491 src/disksim_interface.c   return i-&gt;disksim-&gt;diskinfo-&gt;disks[disknum]-&gt;model;</span>
+<span class='curline'><a href='../S/260.html#L41'>disksim</a>            41 src/disksim_interface_private.h   struct disksim *disksim;</span>
+<span class='curline'><a href='../S/252.html#L127'>disksim</a>           127 src/disksim_intr.c    if (disksim-&gt;synthgen) {</span>
+<span class='curline'><a href='../S/205.html#L123'>disksim</a>           123 src/disksim_iodriver.c   if(!disksim-&gt;iodriver_info) return 0;</span>
+<span class='curline'><a href='../S/205.html#L481'>disksim</a>           481 src/disksim_iodriver.c    if (disksim-&gt;traceformat == VALIDATE) {</span>
+<span class='curline'><a href='../S/205.html#L484'>disksim</a>           484 src/disksim_iodriver.c       tmp = iotrace_validate_get_ioreq_event(disksim-&gt;iotracefile, tmp);</span>
+<span class='curline'><a href='../S/205.html#L497'>disksim</a>           497 src/disksim_iodriver.c    else if (disksim-&gt;closedios) {</span>
+<span class='curline'><a href='../S/205.html#L498'>disksim</a>           498 src/disksim_iodriver.c       tmp = (ioreq_event *) io_get_next_external_event(disksim-&gt;iotracefile);</span>
+<span class='curline'><a href='../S/205.html#L501'>disksim</a>           501 src/disksim_iodriver.c          tmp-&gt;time = simtime + disksim-&gt;closedthinktime;</span>
+<span class='curline'><a href='../S/205.html#L768'>disksim</a>           768 src/disksim_iodriver.c    disksim-&gt;totalreqs++;</span>
+<span class='curline'><a href='../S/205.html#L769'>disksim</a>           769 src/disksim_iodriver.c    if ((disksim-&gt;checkpoint_iocnt &gt; 0) &amp;&amp; ((disksim-&gt;totalreqs % disksim-&gt;checkpoint_iocnt) == 0)) {</span>
+<span class='curline'><a href='../S/205.html#L772'>disksim</a>           772 src/disksim_iodriver.c    if (disksim-&gt;totalreqs == disksim-&gt;warmup_iocnt) {</span>
+<span class='curline'><a href='../S/205.html#L1038'>disksim</a>          1038 src/disksim_iodriver.c   if (disksim-&gt;iodriver_info == NULL) {</span>
+<span class='curline'><a href='../S/205.html#L1039'>disksim</a>          1039 src/disksim_iodriver.c     disksim-&gt;iodriver_info = DISKSIM_malloc (sizeof(iodriver_info_t));</span>
+<span class='curline'><a href='../S/205.html#L1040'>disksim</a>          1040 src/disksim_iodriver.c     bzero ((char *)disksim-&gt;iodriver_info, sizeof(iodriver_info_t));</span>
+<span class='curline'><a href='../S/205.html#L1061'>disksim</a>          1061 src/disksim_iodriver.c   for(c = 0; c &lt; disksim-&gt;iodriver_info-&gt;iodrivers_len; c++) {</span>
+<span class='curline'><a href='../S/205.html#L1069'>disksim</a>          1069 src/disksim_iodriver.c   disksim-&gt;iodriver_info-&gt;iodrivers_len = newlen;</span>
+<span class='curline'><a href='../S/205.html#L1081'>disksim</a>          1081 src/disksim_iodriver.c   if (disksim-&gt;iodriver_info == NULL) {</span>
+<span class='curline'><a href='../S/205.html#L1082'>disksim</a>          1082 src/disksim_iodriver.c     disksim-&gt;iodriver_info = malloc (sizeof(iodriver_info_t));</span>
+<span class='curline'><a href='../S/205.html#L1083'>disksim</a>          1083 src/disksim_iodriver.c     bzero ((char *)disksim-&gt;iodriver_info, sizeof(iodriver_info_t));</span>
+<span class='curline'><a href='../S/205.html#L1122'>disksim</a>          1122 src/disksim_iodriver.c     if(disksim-&gt;verbosity &gt; 0) </span>
+<span class='curline'><a href='../S/205.html#L1173'>disksim</a>          1173 src/disksim_iodriver.c   newlen = disksim-&gt;iodriver_info-&gt;sysorgs_len ? </span>
+<span class='curline'><a href='../S/205.html#L1174'>disksim</a>          1174 src/disksim_iodriver.c     disksim-&gt;iodriver_info-&gt;sysorgs_len * 2 : 2;</span>
+<span class='curline'><a href='../S/205.html#L1181'>disksim</a>          1181 src/disksim_iodriver.c   for(c = 0; c &lt; disksim-&gt;iodriver_info-&gt;sysorgs_len; c++) {</span>
+<span class='curline'><a href='../S/205.html#L1192'>disksim</a>          1192 src/disksim_iodriver.c   disksim-&gt;iodriver_info-&gt;sysorgs_len = newlen;</span>
+<span class='curline'><a href='../S/218.html#L185'>disksim</a>           185 src/disksim_iodriver.h #define numiodrivers            (disksim-&gt;iodriver_info-&gt;numiodrivers)</span>
+<span class='curline'><a href='../S/218.html#L186'>disksim</a>           186 src/disksim_iodriver.h #define iodrivers               (disksim-&gt;iodriver_info-&gt;iodrivers)</span>
+<span class='curline'><a href='../S/218.html#L187'>disksim</a>           187 src/disksim_iodriver.h #define numsysorgs              (disksim-&gt;iodriver_info-&gt;numsysorgs)</span>
+<span class='curline'><a href='../S/218.html#L188'>disksim</a>           188 src/disksim_iodriver.h #define sysorgs                 (disksim-&gt;iodriver_info-&gt;sysorgs)</span>
+<span class='curline'><a href='../S/218.html#L189'>disksim</a>           189 src/disksim_iodriver.h #define overallqueue            (disksim-&gt;iodriver_info-&gt;overallqueue)</span>
+<span class='curline'><a href='../S/218.html#L190'>disksim</a>           190 src/disksim_iodriver.h #define drv_printsizestats      (disksim-&gt;iodriver_info-&gt;drv_printsizestats)</span>
+<span class='curline'><a href='../S/218.html#L191'>disksim</a>           191 src/disksim_iodriver.h #define drv_printlocalitystats  (disksim-&gt;iodriver_info-&gt;drv_printlocalitystats)</span>
+<span class='curline'><a href='../S/218.html#L192'>disksim</a>           192 src/disksim_iodriver.h #define drv_printblockingstats  (disksim-&gt;iodriver_info-&gt;drv_printblockingstats)</span>
+<span class='curline'><a href='../S/218.html#L193'>disksim</a>           193 src/disksim_iodriver.h #define drv_printinterferestats (disksim-&gt;iodriver_info-&gt;drv_printinterferestats)</span>
+<span class='curline'><a href='../S/218.html#L194'>disksim</a>           194 src/disksim_iodriver.h #define drv_printqueuestats     (disksim-&gt;iodriver_info-&gt;drv_printqueuestats)</span>
+<span class='curline'><a href='../S/218.html#L195'>disksim</a>           195 src/disksim_iodriver.h #define drv_printcritstats      (disksim-&gt;iodriver_info-&gt;drv_printcritstats)</span>
+<span class='curline'><a href='../S/218.html#L196'>disksim</a>           196 src/disksim_iodriver.h #define drv_printidlestats      (disksim-&gt;iodriver_info-&gt;drv_printidlestats)</span>
+<span class='curline'><a href='../S/218.html#L197'>disksim</a>           197 src/disksim_iodriver.h #define drv_printintarrstats    (disksim-&gt;iodriver_info-&gt;drv_printintarrstats)</span>
+<span class='curline'><a href='../S/218.html#L198'>disksim</a>           198 src/disksim_iodriver.h #define drv_printstreakstats    (disksim-&gt;iodriver_info-&gt;drv_printstreakstats)</span>
+<span class='curline'><a href='../S/218.html#L199'>disksim</a>           199 src/disksim_iodriver.h #define drv_printstampstats     (disksim-&gt;iodriver_info-&gt;drv_printstampstats)</span>
+<span class='curline'><a href='../S/218.html#L200'>disksim</a>           200 src/disksim_iodriver.h #define drv_printperdiskstats   (disksim-&gt;iodriver_info-&gt;drv_printperdiskstats)</span>
+<span class='curline'><a href='../S/218.html#L201'>disksim</a>           201 src/disksim_iodriver.h #define emptyqueuestats         (disksim-&gt;iodriver_info-&gt;emptyqueuestats)</span>
+<span class='curline'><a href='../S/218.html#L202'>disksim</a>           202 src/disksim_iodriver.h #define initiatenextstats       (disksim-&gt;iodriver_info-&gt;initiatenextstats)</span>
+<span class='curline'><a href='../S/254.html#L417'>disksim</a>           417 src/disksim_ioqueue.c       idledetect-&gt;func = &amp;disksim-&gt;timerfunc_ioqueue;</span>
+<span class='curline'><a href='../S/254.html#L2923'>disksim</a>          2923 src/disksim_ioqueue.c       disksim-&gt;lastphystime = simtime - tmp-&gt;starttime;</span>
+<span class='curline'><a href='../S/254.html#L2978'>disksim</a>          2978 src/disksim_ioqueue.c        disksim-&gt;lastphystime = simtime - tmp-&gt;starttime;</span>
+<span class='curline'><a href='../S/254.html#L3010'>disksim</a>          3010 src/disksim_ioqueue.c          disksim-&gt;lastphystime = simtime - tmp-&gt;starttime;</span>
+<span class='curline'><a href='../S/254.html#L3700'>disksim</a>          3700 src/disksim_ioqueue.c    disksim-&gt;timerfunc_ioqueue = ioqueue_idledetected;</span>
+<span class='curline'><a href='../S/194.html#L112'>disksim</a>           112 src/disksim_iosim.c    disksim-&gt;iosim_info = DISKSIM_malloc (sizeof(iosim_info_t));</span>
+<span class='curline'><a href='../S/194.html#L113'>disksim</a>           113 src/disksim_iosim.c    bzero ((char *)disksim-&gt;iosim_info, sizeof(iosim_info_t));</span>
+<span class='curline'><a href='../S/194.html#L413'>disksim</a>           413 src/disksim_iosim.c   if(!disksim-&gt;iosim_info) </span>
+<span class='curline'><a href='../S/194.html#L498'>disksim</a>           498 src/disksim_iosim.c       stat_update(tracestats3, (validate_lastserv - disksim-&gt;lastphystime));</span>
+<span class='curline'><a href='../S/194.html#L500'>disksim</a>           500 src/disksim_iosim.c          stat_update(tracestats5, (validate_lastserv - disksim-&gt;lastphystime));</span>
+<span class='curline'><a href='../S/194.html#L601'>disksim</a>           601 src/disksim_iosim.c    switch (disksim-&gt;traceformat) {</span>
+<span class='curline'><a href='../S/194.html#L608'>disksim</a>           608 src/disksim_iosim.c    temp = iotrace_get_ioreq_event(iotracefile, disksim-&gt;traceformat, temp);</span>
+<span class='curline'><a href='../S/194.html#L610'>disksim</a>           610 src/disksim_iosim.c       switch (disksim-&gt;traceformat) {</span>
+<span class='curline'><a href='../S/194.html#L620'>disksim</a>           620 src/disksim_iosim.c       if ((temp-&gt;time &lt; simtime) &amp;&amp; (!disksim-&gt;closedios)) {</span>
+<span class='curline'><a href='../S/194.html#L707'>disksim</a>           707 src/disksim_iosim.c    if (disksim-&gt;iosim_info == NULL) {</span>
+<span class='curline'><a href='../S/255.html#L297'>disksim</a>           297 src/disksim_iosim.h #define io_extq                  (disksim-&gt;iosim_info-&gt;io_extq)</span>
+<span class='curline'><a href='../S/255.html#L298'>disksim</a>           298 src/disksim_iosim.h #define io_extqlen               (disksim-&gt;iosim_info-&gt;io_extqlen)</span>
+<span class='curline'><a href='../S/255.html#L299'>disksim</a>           299 src/disksim_iosim.h #define io_extq_type             (disksim-&gt;iosim_info-&gt;io_extq_type)</span>
+<span class='curline'><a href='../S/255.html#L300'>disksim</a>           300 src/disksim_iosim.h #define ioscale                  (disksim-&gt;iosim_info-&gt;ioscale)</span>
+<span class='curline'><a href='../S/255.html#L301'>disksim</a>           301 src/disksim_iosim.h #define last_request_arrive      (disksim-&gt;iosim_info-&gt;last_request_arrive)</span>
+<span class='curline'><a href='../S/255.html#L302'>disksim</a>           302 src/disksim_iosim.h #define constintarrtime          (disksim-&gt;iosim_info-&gt;constintarrtime)</span>
+<span class='curline'><a href='../S/255.html#L303'>disksim</a>           303 src/disksim_iosim.h #define validatebuf              (disksim-&gt;iosim_info-&gt;validatebuf)</span>
+<span class='curline'><a href='../S/255.html#L304'>disksim</a>           304 src/disksim_iosim.h #define tracemappings            (disksim-&gt;iosim_info-&gt;tracemappings)</span>
+<span class='curline'><a href='../S/255.html#L305'>disksim</a>           305 src/disksim_iosim.h #define tracemap                 (disksim-&gt;iosim_info-&gt;tracemap)</span>
+<span class='curline'><a href='../S/255.html#L306'>disksim</a>           306 src/disksim_iosim.h #define tracemap1                (disksim-&gt;iosim_info-&gt;tracemap1)</span>
+<span class='curline'><a href='../S/255.html#L307'>disksim</a>           307 src/disksim_iosim.h #define tracemap2                (disksim-&gt;iosim_info-&gt;tracemap2)</span>
+<span class='curline'><a href='../S/255.html#L308'>disksim</a>           308 src/disksim_iosim.h #define tracemap3                (disksim-&gt;iosim_info-&gt;tracemap3)</span>
+<span class='curline'><a href='../S/255.html#L309'>disksim</a>           309 src/disksim_iosim.h #define tracemap4                (disksim-&gt;iosim_info-&gt;tracemap4)</span>
+<span class='curline'><a href='../S/255.html#L310'>disksim</a>           310 src/disksim_iosim.h #define tracestats               (disksim-&gt;iosim_info-&gt;tracestats)</span>
+<span class='curline'><a href='../S/255.html#L311'>disksim</a>           311 src/disksim_iosim.h #define tracestats1              (disksim-&gt;iosim_info-&gt;tracestats1)</span>
+<span class='curline'><a href='../S/255.html#L312'>disksim</a>           312 src/disksim_iosim.h #define tracestats2              (disksim-&gt;iosim_info-&gt;tracestats2)</span>
+<span class='curline'><a href='../S/255.html#L313'>disksim</a>           313 src/disksim_iosim.h #define tracestats3              (disksim-&gt;iosim_info-&gt;tracestats3)</span>
+<span class='curline'><a href='../S/255.html#L314'>disksim</a>           314 src/disksim_iosim.h #define tracestats4              (disksim-&gt;iosim_info-&gt;tracestats4)</span>
+<span class='curline'><a href='../S/255.html#L315'>disksim</a>           315 src/disksim_iosim.h #define tracestats5              (disksim-&gt;iosim_info-&gt;tracestats5)</span>
+<span class='curline'><a href='../S/264.html#L110'>disksim</a>           110 src/disksim_iotrace.c    disksim-&gt;iotrace_info = DISKSIM_malloc (sizeof(iotrace_info_t));</span>
+<span class='curline'><a href='../S/264.html#L111'>disksim</a>           111 src/disksim_iotrace.c    bzero ((char *)disksim-&gt;iotrace_info, sizeof(iotrace_info_t));</span>
+<span class='curline'><a href='../S/264.html#L128'>disksim</a>           128 src/disksim_iotrace.c    if (disksim-&gt;iotrace_info == NULL) {</span>
+<span class='curline'><a href='../S/264.html#L132'>disksim</a>           132 src/disksim_iotrace.c    disksim-&gt;traceendian = _LITTLE_ENDIAN;</span>
+<span class='curline'><a href='../S/264.html#L133'>disksim</a>           133 src/disksim_iotrace.c    disksim-&gt;traceheader = TRUE;</span>
+<span class='curline'><a href='../S/264.html#L135'>disksim</a>           135 src/disksim_iotrace.c       disksim-&gt;traceformat = DEFAULT;</span>
+<span class='curline'><a href='../S/264.html#L138'>disksim</a>           138 src/disksim_iotrace.c       disksim-&gt;traceformat = ASCII;</span>
+<span class='curline'><a href='../S/264.html#L141'>disksim</a>           141 src/disksim_iotrace.c       disksim-&gt;traceformat = RAW;</span>
+<span class='curline'><a href='../S/264.html#L144'>disksim</a>           144 src/disksim_iotrace.c       disksim-&gt;traceformat = VALIDATE;</span>
+<span class='curline'><a href='../S/264.html#L147'>disksim</a>           147 src/disksim_iotrace.c       disksim-&gt;traceformat = HPL;</span>
+<span class='curline'><a href='../S/264.html#L148'>disksim</a>           148 src/disksim_iotrace.c       disksim-&gt;traceendian = _BIG_ENDIAN;</span>
+<span class='curline'><a href='../S/264.html#L152'>disksim</a>           152 src/disksim_iotrace.c       disksim-&gt;traceformat = HPL;</span>
+<span class='curline'><a href='../S/264.html#L153'>disksim</a>           153 src/disksim_iotrace.c       disksim-&gt;traceendian = _BIG_ENDIAN;</span>
+<span class='curline'><a href='../S/264.html#L154'>disksim</a>           154 src/disksim_iotrace.c       disksim-&gt;traceheader = FALSE;</span>
+<span class='curline'><a href='../S/264.html#L157'>disksim</a>           157 src/disksim_iotrace.c       disksim-&gt;traceformat = DEC;</span>
+<span class='curline'><a href='../S/264.html#L160'>disksim</a>           160 src/disksim_iotrace.c       disksim-&gt;traceformat = EMCSYMM;</span>
+<span class='curline'><a href='../S/264.html#L164'>disksim</a>           164 src/disksim_iotrace.c       disksim-&gt;traceformat = EMCBACKEND;</span>
+<span class='curline'><a href='../S/264.html#L167'>disksim</a>           167 src/disksim_iotrace.c       disksim-&gt;traceformat = BATCH;</span>
+<span class='curline'><a href='../S/264.html#L200'>disksim</a>           200 src/disksim_iotrace.c    if (disksim-&gt;endian != disksim-&gt;traceendian) {</span>
+<span class='curline'><a href='../S/264.html#L217'>disksim</a>           217 src/disksim_iotrace.c    if (disksim-&gt;endian != disksim-&gt;traceendian) {</span>
+<span class='curline'><a href='../S/264.html#L348'>disksim</a>           348 src/disksim_iotrace.c       if ((disksim-&gt;traceheader == FALSE) &amp;&amp; (new-&gt;time == 0.0)) {</span>
+<span class='curline'><a href='../S/264.html#L727'>disksim</a>           727 src/disksim_iotrace.c    if (disksim-&gt;traceheader == FALSE) {</span>
+<span class='curline'><a href='../S/264.html#L763'>disksim</a>           763 src/disksim_iotrace.c    if (disksim-&gt;iotrace_info == NULL) {</span>
+<span class='curline'><a href='../S/280.html#L96'>disksim</a>            96 src/disksim_iotrace.h #define tracebasetime           (disksim-&gt;iotrace_info-&gt;tracebasetime)</span>
+<span class='curline'><a href='../S/280.html#L97'>disksim</a>            97 src/disksim_iotrace.h #define syncreads               (disksim-&gt;iotrace_info-&gt;syncreads)</span>
+<span class='curline'><a href='../S/280.html#L98'>disksim</a>            98 src/disksim_iotrace.h #define syncwrites              (disksim-&gt;iotrace_info-&gt;syncwrites)</span>
+<span class='curline'><a href='../S/280.html#L99'>disksim</a>            99 src/disksim_iotrace.h #define asyncreads              (disksim-&gt;iotrace_info-&gt;asyncreads)</span>
+<span class='curline'><a href='../S/280.html#L100'>disksim</a>           100 src/disksim_iotrace.h #define asyncwrites             (disksim-&gt;iotrace_info-&gt;asyncwrites)</span>
+<span class='curline'><a href='../S/280.html#L101'>disksim</a>           101 src/disksim_iotrace.h #define hpreads                 (disksim-&gt;iotrace_info-&gt;hpreads)</span>
+<span class='curline'><a href='../S/280.html#L102'>disksim</a>           102 src/disksim_iotrace.h #define hpwrites                (disksim-&gt;iotrace_info-&gt;hpwrites)</span>
+<span class='curline'><a href='../S/280.html#L103'>disksim</a>           103 src/disksim_iotrace.h #define firstio                 (disksim-&gt;iotrace_info-&gt;firstio)</span>
+<span class='curline'><a href='../S/280.html#L104'>disksim</a>           104 src/disksim_iotrace.h #define basehighshort           (disksim-&gt;iotrace_info-&gt;basehighshort)</span>
+<span class='curline'><a href='../S/280.html#L105'>disksim</a>           105 src/disksim_iotrace.h #define basehighshort2          (disksim-&gt;iotrace_info-&gt;basehighshort2)</span>
+<span class='curline'><a href='../S/280.html#L106'>disksim</a>           106 src/disksim_iotrace.h #define lasttime1               (disksim-&gt;iotrace_info-&gt;lasttime1)</span>
+<span class='curline'><a href='../S/280.html#L107'>disksim</a>           107 src/disksim_iotrace.h #define lasttime                (disksim-&gt;iotrace_info-&gt;lasttime)</span>
+<span class='curline'><a href='../S/280.html#L108'>disksim</a>           108 src/disksim_iotrace.h #define baseyear                (disksim-&gt;iotrace_info-&gt;baseyear)</span>
+<span class='curline'><a href='../S/280.html#L109'>disksim</a>           109 src/disksim_iotrace.h #define baseday                 (disksim-&gt;iotrace_info-&gt;baseday)</span>
+<span class='curline'><a href='../S/280.html#L110'>disksim</a>           110 src/disksim_iotrace.h #define basesecond              (disksim-&gt;iotrace_info-&gt;basesecond)</span>
+<span class='curline'><a href='../S/280.html#L111'>disksim</a>           111 src/disksim_iotrace.h #define basebigtime             (disksim-&gt;iotrace_info-&gt;basebigtime)</span>
+<span class='curline'><a href='../S/280.html#L112'>disksim</a>           112 src/disksim_iotrace.h #define basesmalltime           (disksim-&gt;iotrace_info-&gt;basesmalltime)</span>
+<span class='curline'><a href='../S/280.html#L113'>disksim</a>           113 src/disksim_iotrace.h #define basesimtime             (disksim-&gt;iotrace_info-&gt;basesimtime)</span>
+<span class='curline'><a href='../S/280.html#L114'>disksim</a>           114 src/disksim_iotrace.h #define validate_lastserv       (disksim-&gt;iotrace_info-&gt;validate_lastserv)</span>
+<span class='curline'><a href='../S/280.html#L115'>disksim</a>           115 src/disksim_iotrace.h #define validate_lastblkno      (disksim-&gt;iotrace_info-&gt;validate_lastblkno)</span>
+<span class='curline'><a href='../S/280.html#L116'>disksim</a>           116 src/disksim_iotrace.h #define validate_lastbcount     (disksim-&gt;iotrace_info-&gt;validate_lastbcount)</span>
+<span class='curline'><a href='../S/280.html#L117'>disksim</a>           117 src/disksim_iotrace.h #define validate_lastread       (disksim-&gt;iotrace_info-&gt;validate_lastread)</span>
+<span class='curline'><a href='../S/280.html#L118'>disksim</a>           118 src/disksim_iotrace.h #define validate_nextinter      (disksim-&gt;iotrace_info-&gt;validate_nextinter)</span>
+<span class='curline'><a href='../S/280.html#L119'>disksim</a>           119 src/disksim_iotrace.h #define validate_buffaction     (disksim-&gt;iotrace_info-&gt;validate_buffaction)</span>
+<span class='curline'><a href='../S/280.html#L120'>disksim</a>           120 src/disksim_iotrace.h #define accumulated_event_time  (disksim-&gt;iotrace_info-&gt;accumulated_event_time)</span>
+<span class='curline'><a href='../S/280.html#L121'>disksim</a>           121 src/disksim_iotrace.h #define lastaccesstime          (disksim-&gt;iotrace_info-&gt;lastaccesstime)</span>
+<span class='curline'><a href='../S/269.html#L90'>disksim</a>            90 src/disksim_loadparams.c   disksim-&gt;parfile = fopen(inputfile,"r");</span>
+<span class='curline'><a href='../S/269.html#L91'>disksim</a>            91 src/disksim_loadparams.c   ddbg_assert2(disksim-&gt;parfile != NULL, </span>
+<span class='curline'><a href='../S/269.html#L97'>disksim</a>            97 src/disksim_loadparams.c   rv = lp_loadfile(disksim-&gt;parfile, </span>
+<span class='curline'><a href='../S/269.html#L101'>disksim</a>           101 src/disksim_loadparams.c 		   disksim-&gt;overrides,</span>
+<span class='curline'><a href='../S/269.html#L102'>disksim</a>           102 src/disksim_loadparams.c 		   disksim-&gt;overrides_len);</span>
+<span class='curline'><a href='../S/269.html#L129'>disksim</a>           129 src/disksim_loadparams.c   fclose(disksim-&gt;parfile);</span>
+<span class='curline'><a href='../S/278.html#L397'>disksim</a>           397 src/disksim_logorg.c       fprintf(stderr,"Stopping simulation because of saturation: simtime %f, totalreqs %d\n", simtime, disksim-&gt;totalreqs);</span>
+<span class='curline'><a href='../S/278.html#L399'>disksim</a>           399 src/disksim_logorg.c       fprintf (outputfile, "Stopping simulation because of saturation: simtime %f, totalreqs %d\n", simtime, disksim-&gt;totalreqs);</span>
+<span class='curline'><a href='../S/263.html#L75'>disksim</a>            75 src/disksim_main.c     disksim = calloc(1, sizeof(struct disksim));</span>
+<span class='curline'><a href='../S/263.html#L76'>disksim</a>            76 src/disksim_main.c     disksim_initialize_disksim_structure(disksim);</span>
+<span class='curline'><a href='../S/191.html#L272'>disksim</a>           272 src/disksim_pfsim.c    if(disksim-&gt;external_control){</span>
+<span class='curline'><a href='../S/191.html#L273'>disksim</a>           273 src/disksim_pfsim.c      disksim-&gt;external_io_done_notify (curr, ctx);</span>
+<span class='curline'><a href='../S/191.html#L1029'>disksim</a>          1029 src/disksim_pfsim.c   if(!disksim-&gt;pf_info) {</span>
+<span class='curline'><a href='../S/191.html#L1033'>disksim</a>          1033 src/disksim_pfsim.c     disksim-&gt;pf_info = pf_info;</span>
+<span class='curline'><a href='../S/191.html#L1048'>disksim</a>          1048 src/disksim_pfsim.c   if(!disksim-&gt;pf_info) {</span>
+<span class='curline'><a href='../S/191.html#L1052'>disksim</a>          1052 src/disksim_pfsim.c     disksim-&gt;pf_info = pf_info;</span>
+<span class='curline'><a href='../S/208.html#L289'>disksim</a>           289 src/disksim_pfsim.h #define cpus                      (disksim-&gt;pf_info-&gt;cpus)</span>
+<span class='curline'><a href='../S/208.html#L290'>disksim</a>           290 src/disksim_pfsim.h #define numcpus                   (disksim-&gt;pf_info-&gt;numcpus)</span>
+<span class='curline'><a href='../S/208.html#L291'>disksim</a>           291 src/disksim_pfsim.h #define process_livelist          (disksim-&gt;pf_info-&gt;process_livelist)</span>
+<span class='curline'><a href='../S/208.html#L292'>disksim</a>           292 src/disksim_pfsim.h #define extra_process_q           (disksim-&gt;pf_info-&gt;extra_process_q)</span>
+<span class='curline'><a href='../S/208.html#L293'>disksim</a>           293 src/disksim_pfsim.h #define extra_process_qlen        (disksim-&gt;pf_info-&gt;extra_process_qlen)</span>
+<span class='curline'><a href='../S/208.html#L294'>disksim</a>           294 src/disksim_pfsim.h #define curlbolt                  (disksim-&gt;pf_info-&gt;curlbolt)</span>
+<span class='curline'><a href='../S/208.html#L295'>disksim</a>           295 src/disksim_pfsim.h #define pendiolist                (disksim-&gt;pf_info-&gt;pendiolist)</span>
+<span class='curline'><a href='../S/208.html#L296'>disksim</a>           296 src/disksim_pfsim.h #define doneiolist                (disksim-&gt;pf_info-&gt;doneiolist)</span>
+<span class='curline'><a href='../S/208.html#L297'>disksim</a>           297 src/disksim_pfsim.h #define synthlist                 (disksim-&gt;pf_info-&gt;synthlist)</span>
+<span class='curline'><a href='../S/208.html#L298'>disksim</a>           298 src/disksim_pfsim.h #define pfscale                   (disksim-&gt;pf_info-&gt;pfscale)</span>
+<span class='curline'><a href='../S/208.html#L299'>disksim</a>           299 src/disksim_pfsim.h #define lastuser                  (disksim-&gt;pf_info-&gt;lastuser)</span>
+<span class='curline'><a href='../S/208.html#L300'>disksim</a>           300 src/disksim_pfsim.h #define idlein                    (disksim-&gt;pf_info-&gt;idlein)</span>
+<span class='curline'><a href='../S/208.html#L301'>disksim</a>           301 src/disksim_pfsim.h #define idlereset                 (disksim-&gt;pf_info-&gt;idlereset)</span>
+<span class='curline'><a href='../S/208.html#L302'>disksim</a>           302 src/disksim_pfsim.h #define pf_printhack              (disksim-&gt;pf_info-&gt;pf_printhack)</span>
+<span class='curline'><a href='../S/208.html#L303'>disksim</a>           303 src/disksim_pfsim.h #define timecritrespstats         (disksim-&gt;pf_info-&gt;timecritrespstats)</span>
+<span class='curline'><a href='../S/208.html#L304'>disksim</a>           304 src/disksim_pfsim.h #define timelimitrespstats        (disksim-&gt;pf_info-&gt;timelimitrespstats)</span>
+<span class='curline'><a href='../S/208.html#L305'>disksim</a>           305 src/disksim_pfsim.h #define timenoncritrespstats      (disksim-&gt;pf_info-&gt;timenoncritrespstats)</span>
+<span class='curline'><a href='../S/208.html#L306'>disksim</a>           306 src/disksim_pfsim.h #define pf_print_perprocessstats  (disksim-&gt;pf_info-&gt;pf_print_perprocessstats)</span>
+<span class='curline'><a href='../S/208.html#L307'>disksim</a>           307 src/disksim_pfsim.h #define pf_print_percpustats      (disksim-&gt;pf_info-&gt;pf_print_percpustats)</span>
+<span class='curline'><a href='../S/208.html#L308'>disksim</a>           308 src/disksim_pfsim.h #define pf_print_intrstats        (disksim-&gt;pf_info-&gt;pf_print_intrstats)</span>
+<span class='curline'><a href='../S/208.html#L309'>disksim</a>           309 src/disksim_pfsim.h #define pf_print_sleepstats       (disksim-&gt;pf_info-&gt;pf_print_sleepstats)</span>
+<span class='curline'><a href='../S/208.html#L310'>disksim</a>           310 src/disksim_pfsim.h #define pf_dispq                  (disksim-&gt;pf_info-&gt;pf_dispq)</span>
+<span class='curline'><a href='../S/208.html#L311'>disksim</a>           311 src/disksim_pfsim.h #define sleepqueue                (disksim-&gt;pf_info-&gt;sleepqueue)</span>
+<span class='curline'><a href='../S/193.html#L96'>disksim</a>            96 src/disksim_rand48.c #define _rand48_seed   (disksim-&gt;rand48_info-&gt;_rand48_seed)</span>
+<span class='curline'><a href='../S/193.html#L97'>disksim</a>            97 src/disksim_rand48.c #define _rand48_mult   (disksim-&gt;rand48_info-&gt;_rand48_mult)</span>
+<span class='curline'><a href='../S/193.html#L98'>disksim</a>            98 src/disksim_rand48.c #define _rand48_add    (disksim-&gt;rand48_info-&gt;_rand48_add)</span>
+<span class='curline'><a href='../S/193.html#L103'>disksim</a>           103 src/disksim_rand48.c    if (disksim-&gt;rand48_info != NULL) {</span>
+<span class='curline'><a href='../S/193.html#L107'>disksim</a>           107 src/disksim_rand48.c    disksim-&gt;rand48_info = DISKSIM_malloc (sizeof(rand48_into_t));</span>
+<span class='curline'><a href='../S/193.html#L108'>disksim</a>           108 src/disksim_rand48.c    bzero ((char *)disksim-&gt;rand48_info, sizeof(rand48_into_t));</span>
+<span class='curline'><a href='../S/201.html#L114'>disksim</a>           114 src/disksim_simpledisk.c #define numsimpledisks         (disksim-&gt;simplediskinfo-&gt;numsimpledisks)</span>
+<span class='curline'><a href='../S/201.html#L122'>disksim</a>           122 src/disksim_simpledisk.c    return (disksim-&gt;simplediskinfo-&gt;simpledisks[devno]);</span>
+<span class='curline'><a href='../S/201.html#L744'>disksim</a>           744 src/disksim_simpledisk.c    disksim-&gt;simplediskinfo = malloc (sizeof(simplediskinfo_t));</span>
+<span class='curline'><a href='../S/201.html#L745'>disksim</a>           745 src/disksim_simpledisk.c    bzero ((char *)disksim-&gt;simplediskinfo, sizeof(simplediskinfo_t));</span>
+<span class='curline'><a href='../S/201.html#L746'>disksim</a>           746 src/disksim_simpledisk.c    disksim-&gt;simplediskinfo-&gt;simpledisks = malloc(MAXDEVICES * (sizeof(simpledisk_t)));</span>
+<span class='curline'><a href='../S/201.html#L747'>disksim</a>           747 src/disksim_simpledisk.c    disksim-&gt;simplediskinfo-&gt;simpledisks_len = MAXDEVICES;</span>
+<span class='curline'><a href='../S/201.html#L748'>disksim</a>           748 src/disksim_simpledisk.c    bzero ((char *)disksim-&gt;simplediskinfo-&gt;simpledisks, (MAXDEVICES * (sizeof(simpledisk_t))));</span>
+<span class='curline'><a href='../S/201.html#L756'>disksim</a>           756 src/disksim_simpledisk.c    if (disksim-&gt;simplediskinfo == NULL) {</span>
+<span class='curline'><a href='../S/201.html#L798'>disksim</a>           798 src/disksim_simpledisk.c   if(!disksim-&gt;simplediskinfo) simpledisk_initialize_diskinfo();</span>
+<span class='curline'><a href='../S/201.html#L800'>disksim</a>           800 src/disksim_simpledisk.c   for(c = 0; c &lt; disksim-&gt;simplediskinfo-&gt;simpledisks_len; c++) {</span>
+<span class='curline'><a href='../S/201.html#L801'>disksim</a>           801 src/disksim_simpledisk.c     if(!disksim-&gt;simplediskinfo-&gt;simpledisks[c]) {</span>
+<span class='curline'><a href='../S/201.html#L802'>disksim</a>           802 src/disksim_simpledisk.c       disksim-&gt;simplediskinfo-&gt;simpledisks[c] = d;</span>
+<span class='curline'><a href='../S/201.html#L809'>disksim</a>           809 src/disksim_simpledisk.c   disksim-&gt;simplediskinfo-&gt;simpledisks = </span>
+<span class='curline'><a href='../S/201.html#L810'>disksim</a>           810 src/disksim_simpledisk.c     realloc(disksim-&gt;simplediskinfo-&gt;simpledisks, </span>
+<span class='curline'><a href='../S/201.html#L813'>disksim</a>           813 src/disksim_simpledisk.c   bzero(disksim-&gt;simplediskinfo-&gt;simpledisks + numsimpledisks, </span>
+<span class='curline'><a href='../S/201.html#L816'>disksim</a>           816 src/disksim_simpledisk.c   disksim-&gt;simplediskinfo-&gt;simpledisks[c] = d;</span>
+<span class='curline'><a href='../S/201.html#L818'>disksim</a>           818 src/disksim_simpledisk.c   disksim-&gt;simplediskinfo-&gt;simpledisks_len *= 2;</span>
+<span class='curline'><a href='../S/201.html#L829'>disksim</a>           829 src/disksim_simpledisk.c   if(!disksim-&gt;simplediskinfo) simpledisk_initialize_diskinfo();</span>
+<span class='curline'><a href='../S/216.html#L367'>disksim</a>           367 src/disksim_synthio.c 					       disksim-&gt;traceformat, </span>
+<span class='curline'><a href='../S/216.html#L693'>disksim</a>           693 src/disksim_synthio.c   if(!disksim-&gt;synthio_info) {</span>
+<span class='curline'><a href='../S/216.html#L694'>disksim</a>           694 src/disksim_synthio.c     disksim-&gt;synthio_info = DISKSIM_malloc (sizeof(synthio_info_t));</span>
+<span class='curline'><a href='../S/216.html#L695'>disksim</a>           695 src/disksim_synthio.c     bzero ((char *)disksim-&gt;synthio_info, sizeof(synthio_info_t));</span>
+<span class='curline'><a href='../S/216.html#L725'>disksim</a>           725 src/disksim_synthio.c   disksim-&gt;synthio_info-&gt;synthio_gens_len = l-&gt;values_len;</span>
+<span class='curline'><a href='../S/213.html#L173'>disksim</a>           173 src/disksim_synthio.h #define synthio_gens            (disksim-&gt;synthio_info-&gt;synthio_gens)</span>
+<span class='curline'><a href='../S/213.html#L174'>disksim</a>           174 src/disksim_synthio.h #define synthio_gencnt          (disksim-&gt;synthio_info-&gt;synthio_gencnt)</span>
+<span class='curline'><a href='../S/213.html#L175'>disksim</a>           175 src/disksim_synthio.h #define synthio_iocnt           (disksim-&gt;synthio_info-&gt;synthio_iocnt)</span>
+<span class='curline'><a href='../S/213.html#L176'>disksim</a>           176 src/disksim_synthio.h #define synthio_endiocnt        (disksim-&gt;synthio_info-&gt;synthio_endiocnt)</span>
+<span class='curline'><a href='../S/213.html#L177'>disksim</a>           177 src/disksim_synthio.h #define synthio_endtime         (disksim-&gt;synthio_info-&gt;synthio_endtime)</span>
+<span class='curline'><a href='../S/213.html#L178'>disksim</a>           178 src/disksim_synthio.h #define synthio_syscalls        (disksim-&gt;synthio_info-&gt;synthio_syscalls)</span>
+<span class='curline'><a href='../S/213.html#L179'>disksim</a>           179 src/disksim_synthio.h #define synthio_syscall_time    (disksim-&gt;synthio_info-&gt;synthio_syscall_time)</span>
+<span class='curline'><a href='../S/213.html#L180'>disksim</a>           180 src/disksim_synthio.h #define synthio_sysret_time     (disksim-&gt;synthio_info-&gt;synthio_sysret_time)</span>
+<span class='curline'><a href='../S/251.html#L140'>disksim</a>           140 src/syssim_driver.c   struct disksim_interface *disksim;</span>
+<span class='curline'><a href='../S/251.html#L151'>disksim</a>           151 src/syssim_driver.c   disksim = disksim_interface_initialize(argv[1], </span>
+<span class='curline'><a href='../S/251.html#L172'>disksim</a>           172 src/syssim_driver.c     disksim_interface_request_arrive(disksim, now, &amp;r);</span>
+<span class='curline'><a href='../S/251.html#L178'>disksim</a>           178 src/syssim_driver.c       disksim_interface_internal_event(disksim, now, 0);</span>
+<span class='curline'><a href='../S/251.html#L189'>disksim</a>           189 src/syssim_driver.c   disksim_interface_shutdown(disksim, now);</span>
+<span class='curline'><a href='../S/156.html#L398'>disksim</a>           398 ssdmodel/include/ssdmodel/ssd.h #define numssds                         (disksim-&gt;ssdinfo-&gt;numssds)</span>
+<span class='curline'><a href='../S/187.html#L33'>disksim</a>            33 ssdmodel/ssd.c    s = disksim-&gt;ssdinfo-&gt;ssds[devno];</span>
+<span class='curline'><a href='../S/187.html#L34'>disksim</a>            34 ssdmodel/ssd.c    return (disksim-&gt;ssdinfo-&gt;ssds[devno]);</span>
+<span class='curline'><a href='../S/187.html#L1068'>disksim</a>          1068 ssdmodel/ssd.c   if(!disksim-&gt;ssdinfo) ssd_initialize_diskinfo();</span>
+<span class='curline'><a href='../S/187.html#L1070'>disksim</a>          1070 ssdmodel/ssd.c   for(c = 0; c &lt; disksim-&gt;ssdinfo-&gt;ssds_len; c++) {</span>
+<span class='curline'><a href='../S/187.html#L1071'>disksim</a>          1071 ssdmodel/ssd.c     if(!disksim-&gt;ssdinfo-&gt;ssds[c]) {</span>
+<span class='curline'><a href='../S/187.html#L1072'>disksim</a>          1072 ssdmodel/ssd.c       disksim-&gt;ssdinfo-&gt;ssds[c] = d;</span>
+<span class='curline'><a href='../S/187.html#L1079'>disksim</a>          1079 ssdmodel/ssd.c   disksim-&gt;ssdinfo-&gt;ssds =</span>
+<span class='curline'><a href='../S/187.html#L1080'>disksim</a>          1080 ssdmodel/ssd.c     realloc(disksim-&gt;ssdinfo-&gt;ssds,</span>
+<span class='curline'><a href='../S/187.html#L1083'>disksim</a>          1083 ssdmodel/ssd.c   bzero(disksim-&gt;ssdinfo-&gt;ssds + numssds,</span>
+<span class='curline'><a href='../S/187.html#L1086'>disksim</a>          1086 ssdmodel/ssd.c   disksim-&gt;ssdinfo-&gt;ssds[c] = d;</span>
+<span class='curline'><a href='../S/187.html#L1088'>disksim</a>          1088 ssdmodel/ssd.c   disksim-&gt;ssdinfo-&gt;ssds_len *= 2;</span>
+<span class='curline'><a href='../S/187.html#L1099'>disksim</a>          1099 ssdmodel/ssd.c   if(!disksim-&gt;ssdinfo) ssd_initialize_diskinfo();</span>
+<span class='curline'><a href='../S/147.html#L398'>disksim</a>           398 ssdmodel/ssd.h #define numssds                         (disksim-&gt;ssdinfo-&gt;numssds)</span>
+<span class='curline'><a href='../S/185.html#L31'>disksim</a>            31 ssdmodel/ssd_init.c    disksim-&gt;ssdinfo = malloc (sizeof(ssdinfo_t));</span>
+<span class='curline'><a href='../S/185.html#L32'>disksim</a>            32 ssdmodel/ssd_init.c    bzero ((char *)disksim-&gt;ssdinfo, sizeof(ssdinfo_t));</span>
+<span class='curline'><a href='../S/185.html#L33'>disksim</a>            33 ssdmodel/ssd_init.c    disksim-&gt;ssdinfo-&gt;ssds = malloc(MAXDEVICES * (sizeof(ssd_t)));</span>
+<span class='curline'><a href='../S/185.html#L34'>disksim</a>            34 ssdmodel/ssd_init.c    disksim-&gt;ssdinfo-&gt;ssds_len = MAXDEVICES;</span>
+<span class='curline'><a href='../S/185.html#L35'>disksim</a>            35 ssdmodel/ssd_init.c    bzero ((char *)disksim-&gt;ssdinfo-&gt;ssds, (MAXDEVICES * (sizeof(ssd_t))));</span>
+<span class='curline'><a href='../S/185.html#L451'>disksim</a>           451 ssdmodel/ssd_init.c    if (disksim-&gt;ssdinfo == NULL) {</span>
+</pre>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>CACHE_HASHMASK</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/222.html#L192'>CACHE_HASHMASK</a>    192 src/disksim_cachemem.c    new-&gt;hash_next = cache-&gt;hash[(new-&gt;lbn &amp; CACHE_HASHMASK)];</span>
+<span class='curline'><a href='../S/222.html#L193'>CACHE_HASHMASK</a>    193 src/disksim_cachemem.c    cache-&gt;hash[(new-&gt;lbn &amp; CACHE_HASHMASK)] = new;</span>
+<span class='curline'><a href='../S/222.html#L204'>CACHE_HASHMASK</a>    204 src/disksim_cachemem.c    ASSERT((old-&gt;hash_prev != NULL) || (old-&gt;hash_next != NULL) || (cache-&gt;hash[(old-&gt;lbn &amp; CACHE_HASHMASK)] == old));</span>
+<span class='curline'><a href='../S/222.html#L209'>CACHE_HASHMASK</a>    209 src/disksim_cachemem.c       cache-&gt;hash[(old-&gt;lbn &amp; CACHE_HASHMASK)] = old-&gt;hash_next;</span>
+<span class='curline'><a href='../S/222.html#L224'>CACHE_HASHMASK</a>    224 src/disksim_cachemem.c    for (i=0; i&lt;CACHE_HASHMASK; i++) {</span>
+<span class='curline'><a href='../S/222.html#L237'>CACHE_HASHMASK</a>    237 src/disksim_cachemem.c    cache_atom *tmp = cache-&gt;hash[(lbn &amp; CACHE_HASHMASK)];</span>
+</pre>
+</body>
+</html>

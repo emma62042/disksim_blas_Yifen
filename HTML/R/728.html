@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>businfo</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/200.html#L141'>businfo</a>           141 src/disksim_bus.c     return disksim-&gt;businfo-&gt;buses[busno];</span>
+<span class='curline'><a href='../S/200.html#L148'>businfo</a>           148 src/disksim_bus.c     if(disksim-&gt;businfo-&gt;buses[c])</span>
+<span class='curline'><a href='../S/200.html#L149'>businfo</a>           149 src/disksim_bus.c       if(!strcmp(disksim-&gt;businfo-&gt;buses[c]-&gt;name, name)) {</span>
+<span class='curline'><a href='../S/200.html#L151'>businfo</a>           151 src/disksim_bus.c 	return disksim-&gt;businfo-&gt;buses[c];</span>
+<span class='curline'><a href='../S/200.html#L571'>businfo</a>           571 src/disksim_bus.c   if(!disksim-&gt;businfo) {</span>
+<span class='curline'><a href='../S/200.html#L572'>businfo</a>           572 src/disksim_bus.c     disksim-&gt;businfo = malloc(sizeof(businfo_t));</span>
+<span class='curline'><a href='../S/200.html#L573'>businfo</a>           573 src/disksim_bus.c     bzero(disksim-&gt;businfo, sizeof(businfo_t));</span>
+<span class='curline'><a href='../S/200.html#L633'>businfo</a>           633 src/disksim_bus.c    for (i=0; i &lt; disksim-&gt;businfo-&gt;buses_len; i++) {</span>
+<span class='curline'><a href='../S/200.html#L639'>businfo</a>           639 src/disksim_bus.c          if (disksim-&gt;businfo-&gt;bus_printidlestats) {</span>
+<span class='curline'><a href='../S/200.html#L642'>businfo</a>           642 src/disksim_bus.c          if (disksim-&gt;businfo-&gt;bus_printarbwaitstats) {</span>
+<span class='curline'><a href='../S/200.html#L683'>businfo</a>           683 src/disksim_bus.c   if(!disksim-&gt;businfo) {</span>
+<span class='curline'><a href='../S/200.html#L684'>businfo</a>           684 src/disksim_bus.c     disksim-&gt;businfo = malloc(sizeof(businfo_t));</span>
+<span class='curline'><a href='../S/200.html#L685'>businfo</a>           685 src/disksim_bus.c     bzero(disksim-&gt;businfo, sizeof(businfo_t));</span>
+<span class='curline'><a href='../S/200.html#L693'>businfo</a>           693 src/disksim_bus.c      if(!disksim-&gt;businfo-&gt;buses[c]) { break; } </span>
+<span class='curline'><a href='../S/200.html#L696'>businfo</a>           696 src/disksim_bus.c    if(c == disksim-&gt;businfo-&gt;buses_len) {</span>
+<span class='curline'><a href='../S/200.html#L699'>businfo</a>           699 src/disksim_bus.c      disksim-&gt;businfo-&gt;buses = realloc(disksim-&gt;businfo-&gt;buses,</span>
+<span class='curline'><a href='../S/200.html#L702'>businfo</a>           702 src/disksim_bus.c        bzero(disksim-&gt;businfo-&gt;buses + c, (newlen/2)*sizeof(int *));</span>
+<span class='curline'><a href='../S/200.html#L704'>businfo</a>           704 src/disksim_bus.c        bzero(disksim-&gt;businfo-&gt;buses, 2 * sizeof(int *));</span>
+<span class='curline'><a href='../S/200.html#L706'>businfo</a>           706 src/disksim_bus.c      disksim-&gt;businfo-&gt;buses_len = newlen;</span>
+<span class='curline'><a href='../S/200.html#L713'>businfo</a>           713 src/disksim_bus.c    disksim-&gt;businfo-&gt;buses[c] = result;</span>
+<span class='curline'><a href='../S/262.html#L141'>businfo</a>           141 src/disksim_bus.h #define numbuses	(disksim-&gt;businfo-&gt;numbuses)</span>
+<span class='curline'><a href='../S/283.html#L333'>businfo</a>           333 src/disksim_global.h struct businfo;</span>
+<span class='curline'><a href='../S/283.html#L415'>businfo</a>           415 src/disksim_global.h    struct businfo *businfo;</span>
+</pre>
+</body>
+</html>

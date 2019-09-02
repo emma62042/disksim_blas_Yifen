@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>subqueue</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/254.html#L167'>subqueue</a>          167 src/disksim_ioqueue.c void print_batch_fcfs_queue(subqueue *queue)</span>
+<span class='curline'><a href='../S/254.html#L228'>subqueue</a>          228 src/disksim_ioqueue.c static void ioqueue_print_subqueue_state (subqueue *queue)</span>
+<span class='curline'><a href='../S/254.html#L464'>subqueue</a>          464 src/disksim_ioqueue.c static void ioqueue_update_subqueue_statistics (subqueue *queue)</span>
+<span class='curline'><a href='../S/254.html#L490'>subqueue</a>          490 src/disksim_ioqueue.c static void ioqueue_remove_from_subqueue (subqueue *queue, iobuf *tmp)</span>
+<span class='curline'><a href='../S/254.html#L509'>subqueue</a>          509 src/disksim_ioqueue.c static void ioqueue_remove_from_batch_fcfs_subqueue (subqueue *queue, iobuf *tmp, ioreq_event *done)</span>
+<span class='curline'><a href='../S/254.html#L528'>subqueue</a>          528 src/disksim_ioqueue.c static void ioqueue_insert_batch_fcfs_to_queue (subqueue *queue, iobuf *new_iobuf)</span>
+<span class='curline'><a href='../S/254.html#L618'>subqueue</a>          618 src/disksim_ioqueue.c static void ioqueue_insert_fcfs_to_queue (subqueue *queue, iobuf *temp)</span>
+<span class='curline'><a href='../S/254.html#L630'>subqueue</a>          630 src/disksim_ioqueue.c static void ioqueue_insert_ordered_to_queue (subqueue *queue, iobuf *temp)</span>
+<span class='curline'><a href='../S/254.html#L677'>subqueue</a>          677 src/disksim_ioqueue.c static int ioqueue_check_concat (subqueue *queue, iobuf *req1, iobuf *req2, int concatmax)</span>
+<span class='curline'><a href='../S/254.html#L727'>subqueue</a>          727 src/disksim_ioqueue.c static void ioqueue_insert_new_request (subqueue *queue, iobuf *temp)</span>
+<span class='curline'><a href='../S/254.html#L824'>subqueue</a>          824 src/disksim_ioqueue.c static iobuf * ioqueue_get_request_from_fcfs_queue (subqueue *queue)</span>
+<span class='curline'><a href='../S/254.html#L891'>subqueue</a>          891 src/disksim_ioqueue.c static iobuf * ioqueue_get_request_from_pri_lbn_vscan_queue (subqueue *queue, int numlbns, int vscan_value)</span>
+<span class='curline'><a href='../S/254.html#L945'>subqueue</a>          945 src/disksim_ioqueue.c static iobuf * ioqueue_get_request_from_lbn_scan_queue (subqueue *queue)</span>
+<span class='curline'><a href='../S/254.html#L971'>subqueue</a>          971 src/disksim_ioqueue.c static iobuf * ioqueue_get_request_from_lbn_vscan_queue (subqueue *queue, int value)</span>
+<span class='curline'><a href='../S/254.html#L1079'>subqueue</a>         1079 src/disksim_ioqueue.c static iobuf *ioqueue_identify_request_on_cylinder (subqueue *queue)</span>
+<span class='curline'><a href='../S/254.html#L1164'>subqueue</a>         1164 src/disksim_ioqueue.c static iobuf * ioqueue_get_request_from_cyl_scan_queue (subqueue *queue)</span>
+<span class='curline'><a href='../S/254.html#L1186'>subqueue</a>         1186 src/disksim_ioqueue.c static iobuf * ioqueue_get_request_from_cyl_vscan_queue (subqueue *queue, int value)</span>
+<span class='curline'><a href='../S/254.html#L1301'>subqueue</a>         1301 src/disksim_ioqueue.c static iobuf *ioqueue_get_request_from_opt_sptf_queue (subqueue *queue, int checkcache, int ageweight, int posonly)</span>
+<span class='curline'><a href='../S/254.html#L1498'>subqueue</a>         1498 src/disksim_ioqueue.c static void calc_sp(iobuf **array, subqueue *queue, int checkcache, int no_requests){</span>
+<span class='curline'><a href='../S/254.html#L1566'>subqueue</a>         1566 src/disksim_ioqueue.c 		 subqueue *queue,</span>
+<span class='curline'><a href='../S/254.html#L1595'>subqueue</a>         1595 src/disksim_ioqueue.c ioqueue_get_request_from_opt_tsps_queue(subqueue *queue, </span>
+<span class='curline'><a href='../S/254.html#L1772'>subqueue</a>         1772 src/disksim_ioqueue.c static iobuf *ioqueue_get_request_from_opt_sptf_rot_weight_queue (subqueue *queue, int checkcache, int ageweight, int posonly)</span>
+<span class='curline'><a href='../S/254.html#L1856'>subqueue</a>         1856 src/disksim_ioqueue.c static iobuf *ioqueue_get_request_from_opt_sptf_weight_queue (subqueue *queue, int checkcache, int ageweight, int posonly)</span>
+<span class='curline'><a href='../S/254.html#L1997'>subqueue</a>         1997 src/disksim_ioqueue.c static iobuf *ioqueue_get_request_from_opt_sptf_seek_weight_queue (subqueue *queue, int checkcache, int ageweight, int posonly)</span>
+<span class='curline'><a href='../S/254.html#L2216'>subqueue</a>         2216 src/disksim_ioqueue.c static iobuf *ioqueue_get_request_from_sdf_queue (subqueue *queue, int exact, int direction) {</span>
+<span class='curline'><a href='../S/254.html#L2274'>subqueue</a>         2274 src/disksim_ioqueue.c static iobuf *ioqueue_get_request_from_batch_fcfs_queue(subqueue *queue)</span>
+<span class='curline'><a href='../S/254.html#L2302'>subqueue</a>         2302 src/disksim_ioqueue.c static ioreq_event * ioqueue_show_next_request_from_subqueue (subqueue *queue)</span>
+<span class='curline'><a href='../S/254.html#L2462'>subqueue</a>         2462 src/disksim_ioqueue.c static ioreq_event * ioqueue_get_next_request_from_subqueue (subqueue *queue)</span>
+<span class='curline'><a href='../S/254.html#L2748'>subqueue</a>         2748 src/disksim_ioqueue.c static ioreq_event * ioqueue_get_specific_request_from_subqueue (subqueue *queue, ioreq_event *wanted)</span>
+<span class='curline'><a href='../S/254.html#L2851'>subqueue</a>         2851 src/disksim_ioqueue.c static ioreq_event * ioqueue_set_starttime_in_subqueue (subqueue *queue, ioreq_event *target)</span>
+<span class='curline'><a href='../S/254.html#L2875'>subqueue</a>         2875 src/disksim_ioqueue.c static ioreq_event * ioqueue_remove_completed_request (subqueue *queue, ioreq_event *done)</span>
+<span class='curline'><a href='../S/254.html#L3286'>subqueue</a>         3286 src/disksim_ioqueue.c static int ioqueue_raise_priority_subqueue (subqueue *queue, subqueue *priority, int opid, int pri_scheme)</span>
+<span class='curline'><a href='../S/254.html#L3374'>subqueue</a>         3374 src/disksim_ioqueue.c static int ioqueue_implement_timeouts (subqueue *queue, subqueue *timeout, int maxtime, u_int flag)</span>
+<span class='curline'><a href='../S/254.html#L3503'>subqueue</a>         3503 src/disksim_ioqueue.c static void ioqueue_clobber_overlaps_subqueue (subqueue *queue, ioreq_event *ret, double arrtimemax)</span>
+<span class='curline'><a href='../S/254.html#L3574'>subqueue</a>         3574 src/disksim_ioqueue.c static void ioqueue_subqueue_copy (subqueue *queue, subqueue *new)</span>
+<span class='curline'><a href='../S/254.html#L3600'>subqueue</a>         3600 src/disksim_ioqueue.c static void ioqueue_subqueue_resetstats (subqueue *queue)</span>
+<span class='curline'><a href='../S/254.html#L3631'>subqueue</a>         3631 src/disksim_ioqueue.c static void ioqueue_subqueue_initialize (subqueue *queue, int devno)</span>
+<span class='curline'><a href='../S/254.html#L3988'>subqueue</a>         3988 src/disksim_ioqueue.c static void ioqueue_printcritstats (subqueue **set, int setsize, char *prefix, int numreqs)</span>
+<span class='curline'><a href='../S/254.html#L4035'>subqueue</a>         4035 src/disksim_ioqueue.c static void ioqueue_subqueue_printstats (subqueue **set, int setsize, char *prefix, int printcritstats)</span>
+<span class='curline'><a href='../S/254.html#L4128'>subqueue</a>         4128 src/disksim_ioqueue.c    subqueue ** subset;</span>
+<span class='curline'><a href='../S/254.html#L4131'>subqueue</a>         4131 src/disksim_ioqueue.c    subset  = (subqueue **) DISKSIM_malloc (3*setsize*sizeof(subqueue *));</span>
+<span class='curline'><a href='../S/259.html#L256'>subqueue</a>          256 src/disksim_ioqueue.h    subqueue	base;</span>
+<span class='curline'><a href='../S/259.html#L257'>subqueue</a>          257 src/disksim_ioqueue.h    subqueue	timeout;</span>
+<span class='curline'><a href='../S/259.html#L258'>subqueue</a>          258 src/disksim_ioqueue.h    subqueue	priority;</span>
+</pre>
+</body>
+</html>

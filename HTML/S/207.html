@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>src/syssim_driver.h</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<a id='TOP' name='TOP'></a><h2 class='header'><a href='../mains.html'>root</a>/<a href='../files/402.html'>src</a>/syssim_driver.h</h2>
+<em class='comment'>/* [&lt;][&gt;][^][v][top]<a href='#BOTTOM'>[bottom]</a><a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</em>
+<hr />
+<h2 class='header'><a href='251.html#L50' title='Included from 50 in src/syssim_driver.c.'>INCLUDED FROM</a></h2>
+<hr />
+<pre>
+<a id='L1' name='L1'></a>   1 <em class='comment'>/*</em>
+<a id='L2' name='L2'></a>   2 <em class='comment'> * DiskSim Storage Subsystem Simulation Environment (Version 4.0)</em>
+<a id='L3' name='L3'></a>   3 <em class='comment'> * Revision Authors: John Bucy, Greg Ganger</em>
+<a id='L4' name='L4'></a>   4 <em class='comment'> * Contributors: John Griffin, Jiri Schindler, Steve Schlosser</em>
+<a id='L5' name='L5'></a>   5 <em class='comment'> *</em>
+<a id='L6' name='L6'></a>   6 <em class='comment'> * Copyright (c) of Carnegie Mellon University, 2001-2008.</em>
+<a id='L7' name='L7'></a>   7 <em class='comment'> *</em>
+<a id='L8' name='L8'></a>   8 <em class='comment'> * This software is being provided by the copyright holders under the</em>
+<a id='L9' name='L9'></a>   9 <em class='comment'> * following license. By obtaining, using and/or copying this software,</em>
+<a id='L10' name='L10'></a>  10 <em class='comment'> * you agree that you have read, understood, and will comply with the</em>
+<a id='L11' name='L11'></a>  11 <em class='comment'> * following terms and conditions:</em>
+<a id='L12' name='L12'></a>  12 <em class='comment'> *</em>
+<a id='L13' name='L13'></a>  13 <em class='comment'> * Permission to reproduce, use, and prepare derivative works of this</em>
+<a id='L14' name='L14'></a>  14 <em class='comment'> * software is granted provided the copyright and "No Warranty" statements</em>
+<a id='L15' name='L15'></a>  15 <em class='comment'> * are included with all reproductions and derivative works and associated</em>
+<a id='L16' name='L16'></a>  16 <em class='comment'> * documentation. This software may also be redistributed without charge</em>
+<a id='L17' name='L17'></a>  17 <em class='comment'> * provided that the copyright and "No Warranty" statements are included</em>
+<a id='L18' name='L18'></a>  18 <em class='comment'> * in all redistributions.</em>
+<a id='L19' name='L19'></a>  19 <em class='comment'> *</em>
+<a id='L20' name='L20'></a>  20 <em class='comment'> * NO WARRANTY. THIS SOFTWARE IS FURNISHED ON AN "AS IS" BASIS.</em>
+<a id='L21' name='L21'></a>  21 <em class='comment'> * CARNEGIE MELLON UNIVERSITY MAKES NO WARRANTIES OF ANY KIND, EITHER</em>
+<a id='L22' name='L22'></a>  22 <em class='comment'> * EXPRESSED OR IMPLIED AS TO THE MATTER INCLUDING, BUT NOT LIMITED</em>
+<a id='L23' name='L23'></a>  23 <em class='comment'> * TO: WARRANTY OF FITNESS FOR PURPOSE OR MERCHANTABILITY, EXCLUSIVITY</em>
+<a id='L24' name='L24'></a>  24 <em class='comment'> * OF RESULTS OR RESULTS OBTAINED FROM USE OF THIS SOFTWARE. CARNEGIE</em>
+<a id='L25' name='L25'></a>  25 <em class='comment'> * MELLON UNIVERSITY DOES NOT MAKE ANY WARRANTY OF ANY KIND WITH RESPECT</em>
+<a id='L26' name='L26'></a>  26 <em class='comment'> * TO FREEDOM FROM PATENT, TRADEMARK, OR COPYRIGHT INFRINGEMENT.</em>
+<a id='L27' name='L27'></a>  27 <em class='comment'> * COPYRIGHT HOLDERS WILL BEAR NO LIABILITY FOR ANY USE OF THIS SOFTWARE</em>
+<a id='L28' name='L28'></a>  28 <em class='comment'> * OR DOCUMENTATION.</em>
+<a id='L29' name='L29'></a>  29 <em class='comment'> *</em>
+<a id='L30' name='L30'></a>  30 <em class='comment'> */</em>
+<a id='L31' name='L31'></a>  31 
+<a id='L32' name='L32'></a>  32 
+<a id='L33' name='L33'></a>  33 <em class='sharp'>#include</em> "<a href='289.html'>disksim_interface.h</a>"
+<a id='L34' name='L34'></a>  34 
+<a id='L35' name='L35'></a>  35 <em class='comment'>/*</em>
+<a id='L36' name='L36'></a>  36 <em class='comment'> * Definitions for simple system simulator that uses DiskSim as a slave.</em>
+<a id='L37' name='L37'></a>  37 <em class='comment'> *</em>
+<a id='L38' name='L38'></a>  38 <em class='comment'> * Contributed by Eran Gabber of Lucent Technologies - Bell Laboratories</em>
+<a id='L39' name='L39'></a>  39 <em class='comment'> *</em>
+<a id='L40' name='L40'></a>  40 <em class='comment'> */</em>
+<a id='L41' name='L41'></a>  41 
+<a id='L42' name='L42'></a>  42 <strong class='reserved'>typedef</strong> <strong class='reserved'>double</strong> <a href='../R/586.html' title='Multiple referred from 6 places.'>SysTime</a>;         <em class='comment'>/* system time in seconds.usec */</em>
+<a id='L43' name='L43'></a>  43 
+<a id='L44' name='L44'></a>  44 
+<a id='L45' name='L45'></a>  45 <em class='comment'>/* routines for translating between the system-level simulation's simulated */</em>
+<a id='L46' name='L46'></a>  46 <em class='comment'>/* time format (whatever it is) and disksim's simulated time format (a      */</em>
+<a id='L47' name='L47'></a>  47 <em class='comment'>/* double, representing the number of milliseconds from the simulation's    */</em>
+<a id='L48' name='L48'></a>  48 <em class='comment'>/* initialization).                                                         */</em>
+<a id='L49' name='L49'></a>  49 
+<a id='L50' name='L50'></a>  50 <em class='comment'>/* In this example, system time is in seconds since initialization */</em>
+<a id='L51' name='L51'></a>  51 <em class='comment'>// #define SYSSIMTIME_TO_MS(syssimtime)    (syssimtime*1e3)</em>
+<a id='L52' name='L52'></a>  52 <em class='comment'>// #define MS_TO_SYSSIMTIME(curtime)       (curtime/1e3)</em>
+<a id='L53' name='L53'></a>  53 
+<a id='L54' name='L54'></a>  54 
+<a id='L55' name='L55'></a>  55 
+<a id='L56' name='L56'></a>  56 
+<a id='L57' name='L57'></a>  57 <em class='comment'>/* exported by syssim_driver.c */</em>
+<a id='L58' name='L58'></a>  58 <strong class='reserved'>void</strong> <a href='../S/251.html#L106' title='Defined at 106 in src/syssim_driver.c.'>syssim_schedule_callback</a>(disksim_interface_callback_t, <a href='../S/207.html#L42' title='Defined at 42 in src/syssim_driver.h.'>SysTime</a> t, <strong class='reserved'>void</strong> *);
+<a id='L59' name='L59'></a>  59 <strong class='reserved'>void</strong> <a href='../S/251.html#L125' title='Defined at 125 in src/syssim_driver.c.'>syssim_report_completion</a>(<a href='../S/207.html#L42' title='Defined at 42 in src/syssim_driver.h.'>SysTime</a> t, <strong class='reserved'>struct</strong> <a href='../S/289.html#L44' title='Defined at 44 in src/disksim_interface.h.'>disksim_request</a> *r, <strong class='reserved'>void</strong> *);
+<a id='L60' name='L60'></a>  60 <strong class='reserved'>void</strong> <a href='../S/251.html#L118' title='Defined at 118 in src/syssim_driver.c.'>syssim_deschedule_callback</a>(<strong class='reserved'>double</strong>, <strong class='reserved'>void</strong> *);
+<a id='L61' name='L61'></a>  61 
+<a id='L62' name='L62'></a>  62 <em class='comment'>/* YuCheng */</em>
+<a id='L63' name='L63'></a>  63 <strong class='reserved'>void</strong> syssim_print_systime();
+<a id='L64' name='L64'></a>  64 
+<a id='L65' name='L65'></a>  65 
+<a id='L66' name='L66'></a>  66 
+<a id='L67' name='L67'></a>  67 
+<a id='L68' name='L68'></a>  68 
+</pre>
+<hr />
+<a id='BOTTOM' name='BOTTOM'></a>
+<em class='comment'>/* [&lt;][&gt;][^][v]<a href='#TOP'>[top]</a>[bottom]<a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</em>
+</body>
+</html>

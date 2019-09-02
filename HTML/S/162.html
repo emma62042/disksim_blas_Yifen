@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>ssdmodel/old/ssd_param.h</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<a id='TOP' name='TOP'></a><h2 class='header'><a href='../mains.html'>root</a>/<a href='../files/403.html'>ssdmodel</a>/<a href='../files/407.html'>old</a>/ssd_param.h</h2>
+<em class='comment'>/* [&lt;][&gt;][^][v][top]<a href='#BOTTOM'>[bottom]</a><a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</em>
+<hr />
+<h2 class='header'><a href='161.html#L4' title='Included from 4 in ssdmodel/old/ssd_param.c.'>INCLUDED FROM</a></h2>
+<hr />
+<pre>
+<a id='L1' name='L1'></a>   1 <em class='comment'>// DiskSim SSD support</em>
+<a id='L2' name='L2'></a>   2 <em class='comment'>// ©2008 Microsoft Corporation. All Rights Reserved</em>
+<a id='L3' name='L3'></a>   3 
+<a id='L4' name='L4'></a>   4 <em class='sharp'>#include</em> &lt;<a href='118.html'>libparam/libparam.h</a>&gt;
+<a id='L5' name='L5'></a>   5 <em class='comment'>//vp - to remove compilation warnings</em>
+<a id='L6' name='L6'></a>   6 <em class='comment'>//#include &lt;src/modules/disksim_ioqueue_param.h&gt;</em>
+<a id='L7' name='L7'></a>   7 
+<a id='L8' name='L8'></a>   8 <em class='sharp'>#ifndef</em> <a href='../S/162.html#L9' title='Defined at 9 in ssdmodel/old/ssd_param.h.'>_DISKSIM_SSD_PARAM_H</a>
+<a id='L9' name='L9'></a>   9 <em class='sharp'>#define</em> <a href='../S/162.html#L8' title='Referred from 8 in ssdmodel/old/ssd_param.h.'>_DISKSIM_SSD_PARAM_H</a>
+<a id='L10' name='L10'></a>  10 
+<a id='L11' name='L11'></a>  11 <em class='sharp'>#ifdef</em> __cplusplus
+<a id='L12' name='L12'></a>  12 <strong class='reserved'>extern</strong>"C"<em class='brace'>{</em>
+<a id='L13' name='L13'></a>  13 <em class='sharp'>#endif</em>
+<a id='L14' name='L14'></a>  14 
+<a id='L15' name='L15'></a>  15 <em class='sharp'>#define</em> DISKSIM_SSD_MAX       10
+<a id='L16' name='L16'></a>  16 
+<a id='L17' name='L17'></a>  17 
+<a id='L18' name='L18'></a>  18 <em class='comment'>/* prototype for disksim_ssd param loader function */</em>
+<a id='L19' name='L19'></a>  19    <strong class='reserved'>struct</strong> <a href='../D/2303.html' title='Multiple defined in 2 places.'>ssd</a> *disksim_ssd_loadparams(<strong class='reserved'>struct</strong> <a href='../S/118.html#L245' title='Defined at 245 in libparam/libparam.h.'>lp_block</a> *b);
+<a id='L20' name='L20'></a>  20 
+<a id='L21' name='L21'></a>  21 <strong class='reserved'>typedef</strong> <strong class='reserved'>enum</strong> <em class='brace'>{</em>
+<a id='L22' name='L22'></a>  22    DISKSIM_SSD_SCHEDULER,
+<a id='L23' name='L23'></a>  23    DISKSIM_SSD_MAX_QUEUE_LENGTH,
+<a id='L24' name='L24'></a>  24    DISKSIM_SSD_BLOCK_COUNT,
+<a id='L25' name='L25'></a>  25    DISKSIM_SSD_BUS_TRANSACTION_LATENCY,
+<a id='L26' name='L26'></a>  26    DISKSIM_SSD_BULK_SECTOR_TRANSFER_TIME,
+<a id='L27' name='L27'></a>  27    DISKSIM_SSD_NEVER_DISCONNECT,
+<a id='L28' name='L28'></a>  28    DISKSIM_SSD_PRINT_STATS,
+<a id='L29' name='L29'></a>  29    DISKSIM_SSD_COMMAND_OVERHEAD,
+<a id='L30' name='L30'></a>  30    DISKSIM_SSD_MODEL_TYPE,
+<a id='L31' name='L31'></a>  31    DISKSIM_SSD_NELEMENTS,
+<a id='L32' name='L32'></a>  32    DISKSIM_SSD_FLASH_PAGE_SIZE,
+<a id='L33' name='L33'></a>  33    DISKSIM_SSD_PAGES_PER_BLOCK,
+<a id='L34' name='L34'></a>  34    DISKSIM_SSD_BLOCKS_PER_ELEMENT,
+<a id='L35' name='L35'></a>  35    DISKSIM_SSD_ELEMENT_STRIDE,
+<a id='L36' name='L36'></a>  36    DISKSIM_SSD_CHIP_XFER_LATENCY,
+<a id='L37' name='L37'></a>  37    DISKSIM_SSD_PAGE_READ_LATENCY,
+<a id='L38' name='L38'></a>  38    DISKSIM_SSD_PAGE_WRITE_LATENCY,
+<a id='L39' name='L39'></a>  39    DISKSIM_SSD_BLOCK_ERASE_LATENCY,
+<a id='L40' name='L40'></a>  40 
+<a id='L41' name='L41'></a>  41    <em class='comment'>//vp</em>
+<a id='L42' name='L42'></a>  42    DISKSIM_SSD_WRITE_POLICY,
+<a id='L43' name='L43'></a>  43    DISKSIM_SSD_RESERVE_BLOCKS,
+<a id='L44' name='L44'></a>  44    DISKSIM_SSD_MIN_FREEBLKS_PERCENTAGE,
+<a id='L45' name='L45'></a>  45    DISKSIM_SSD_CLEANING_POLICY,
+<a id='L46' name='L46'></a>  46    DISKSIM_SSD_PLANES_PER_PKG,
+<a id='L47' name='L47'></a>  47    DISKSIM_SSD_BLOCKS_PER_PLANE,
+<a id='L48' name='L48'></a>  48    DISKSIM_SSD_PLANE_BLOCK_MAPPING,
+<a id='L49' name='L49'></a>  49    DISKSIM_SSD_COPY_BACK,
+<a id='L50' name='L50'></a>  50    DISKSIM_SSD_NUM_PARALLEL_UNITS,
+<a id='L51' name='L51'></a>  51    DISKSIM_SSD_ELEMENTS_PER_GANG,
+<a id='L52' name='L52'></a>  52    DISKSIM_SSD_CLEANING_IN_BACKGROUND,
+<a id='L53' name='L53'></a>  53    DISKSIM_SSD_GANG_SHARE,
+<a id='L54' name='L54'></a>  54    <a href='../S/162.html#L58' title='Referred from 58 in ssdmodel/old/ssd_param.h.'>DISKSIM_SSD_ALLOC_POOL_LOGIC</a>
+<a id='L55' name='L55'></a>  55 <em class='brace'>}</em> disksim_ssd_param_t;
+<a id='L56' name='L56'></a>  56 
+<a id='L57' name='L57'></a>  57 
+<a id='L58' name='L58'></a>  58 <em class='sharp'>#define</em> <a href='../S/162.html#L99' title='Referred from 99 in ssdmodel/old/ssd_param.h.'>DISKSIM_SSD_MAX_PARAM</a>       (<a href='../S/162.html#L54' title='Defined at 54 in ssdmodel/old/ssd_param.h.'>DISKSIM_SSD_ALLOC_POOL_LOGIC</a> + 1)
+<a id='L59' name='L59'></a>  59 <strong class='reserved'>extern</strong> <strong class='reserved'>void</strong> * DISKSIM_SSD_loaders[];
+<a id='L60' name='L60'></a>  60 <strong class='reserved'>extern</strong> lp_paramdep_t DISKSIM_SSD_deps[];
+<a id='L61' name='L61'></a>  61 
+<a id='L62' name='L62'></a>  62 
+<a id='L63' name='L63'></a>  63 <strong class='reserved'>static</strong> <strong class='reserved'>struct</strong> <a href='../S/118.html#L49' title='Defined at 49 in libparam/libparam.h.'>lp_varspec</a> disksim_ssd_params [] = <em class='brace'>{</em>
+<a id='L64' name='L64'></a>  64    <em class='brace'>{</em>"Scheduler", <a href='../D/30.html' title='Multiple defined in 2 places.'>BLOCK</a>, 1 <em class='brace'>}</em>,
+<a id='L65' name='L65'></a>  65    <em class='brace'>{</em>"Max queue length", <a href='../S/118.html#L61' title='Defined at 61 in libparam/libparam.h.'>I</a>, 1 <em class='brace'>}</em>,
+<a id='L66' name='L66'></a>  66    <em class='brace'>{</em>"Block count", <a href='../S/118.html#L61' title='Defined at 61 in libparam/libparam.h.'>I</a>, 0 <em class='brace'>}</em>,
+<a id='L67' name='L67'></a>  67    <em class='brace'>{</em>"Bus transaction latency", <a href='../S/118.html#L62' title='Defined at 62 in libparam/libparam.h.'>D</a>, 0 <em class='brace'>}</em>,
+<a id='L68' name='L68'></a>  68    <em class='brace'>{</em>"Bulk sector transfer time", <a href='../S/118.html#L62' title='Defined at 62 in libparam/libparam.h.'>D</a>, 1 <em class='brace'>}</em>,
+<a id='L69' name='L69'></a>  69    <em class='brace'>{</em>"Never disconnect", <a href='../S/118.html#L61' title='Defined at 61 in libparam/libparam.h.'>I</a>, 1 <em class='brace'>}</em>,
+<a id='L70' name='L70'></a>  70    <em class='brace'>{</em>"Print stats", <a href='../S/118.html#L61' title='Defined at 61 in libparam/libparam.h.'>I</a>, 1 <em class='brace'>}</em>,
+<a id='L71' name='L71'></a>  71    <em class='brace'>{</em>"Command overhead", <a href='../S/118.html#L62' title='Defined at 62 in libparam/libparam.h.'>D</a>, 1 <em class='brace'>}</em>,
+<a id='L72' name='L72'></a>  72    <em class='brace'>{</em>"Timing model", <a href='../S/118.html#L61' title='Defined at 61 in libparam/libparam.h.'>I</a>, 1 <em class='brace'>}</em>,
+<a id='L73' name='L73'></a>  73    <em class='brace'>{</em>"Flash chip elements", <a href='../S/118.html#L61' title='Defined at 61 in libparam/libparam.h.'>I</a>, 1 <em class='brace'>}</em>,
+<a id='L74' name='L74'></a>  74    <em class='brace'>{</em>"Page size", <a href='../S/118.html#L61' title='Defined at 61 in libparam/libparam.h.'>I</a>, 1 <em class='brace'>}</em>,
+<a id='L75' name='L75'></a>  75    <em class='brace'>{</em>"Pages per block", <a href='../S/118.html#L61' title='Defined at 61 in libparam/libparam.h.'>I</a>, 1 <em class='brace'>}</em>,
+<a id='L76' name='L76'></a>  76    <em class='brace'>{</em>"Blocks per element", <a href='../S/118.html#L61' title='Defined at 61 in libparam/libparam.h.'>I</a>, 1 <em class='brace'>}</em>,
+<a id='L77' name='L77'></a>  77    <em class='brace'>{</em>"Element stride pages", <a href='../S/118.html#L61' title='Defined at 61 in libparam/libparam.h.'>I</a>, 1 <em class='brace'>}</em>,
+<a id='L78' name='L78'></a>  78    <em class='brace'>{</em>"Chip xfer latency", <a href='../S/118.html#L62' title='Defined at 62 in libparam/libparam.h.'>D</a>, 1 <em class='brace'>}</em>,
+<a id='L79' name='L79'></a>  79    <em class='brace'>{</em>"Page read latency", <a href='../S/118.html#L62' title='Defined at 62 in libparam/libparam.h.'>D</a>, 1 <em class='brace'>}</em>,
+<a id='L80' name='L80'></a>  80    <em class='brace'>{</em>"Page write latency", <a href='../S/118.html#L62' title='Defined at 62 in libparam/libparam.h.'>D</a>, 1 <em class='brace'>}</em>,
+<a id='L81' name='L81'></a>  81    <em class='brace'>{</em>"Block erase latency", <a href='../S/118.html#L62' title='Defined at 62 in libparam/libparam.h.'>D</a>, 1 <em class='brace'>}</em>,
+<a id='L82' name='L82'></a>  82 
+<a id='L83' name='L83'></a>  83    <em class='comment'>//vp - new parameters</em>
+<a id='L84' name='L84'></a>  84    <em class='brace'>{</em>"Write policy", <a href='../S/118.html#L61' title='Defined at 61 in libparam/libparam.h.'>I</a>, 1<em class='brace'>}</em>,
+<a id='L85' name='L85'></a>  85    <em class='brace'>{</em>"Reserve pages percentage", <a href='../S/118.html#L61' title='Defined at 61 in libparam/libparam.h.'>I</a>, 1<em class='brace'>}</em>,
+<a id='L86' name='L86'></a>  86    <em class='brace'>{</em>"Minimum free blocks percentage", <a href='../S/118.html#L61' title='Defined at 61 in libparam/libparam.h.'>I</a>, 1<em class='brace'>}</em>,
+<a id='L87' name='L87'></a>  87    <em class='brace'>{</em>"Cleaning policy", <a href='../S/118.html#L61' title='Defined at 61 in libparam/libparam.h.'>I</a>, 1<em class='brace'>}</em>,
+<a id='L88' name='L88'></a>  88    <em class='brace'>{</em>"Planes per package", <a href='../S/118.html#L61' title='Defined at 61 in libparam/libparam.h.'>I</a>, 1<em class='brace'>}</em>,
+<a id='L89' name='L89'></a>  89    <em class='brace'>{</em>"Blocks per plane", <a href='../S/118.html#L61' title='Defined at 61 in libparam/libparam.h.'>I</a>, 1<em class='brace'>}</em>,
+<a id='L90' name='L90'></a>  90    <em class='brace'>{</em>"Plane block mapping", <a href='../S/118.html#L61' title='Defined at 61 in libparam/libparam.h.'>I</a>, 1<em class='brace'>}</em>,
+<a id='L91' name='L91'></a>  91    <em class='brace'>{</em>"Copy back", <a href='../S/118.html#L61' title='Defined at 61 in libparam/libparam.h.'>I</a>, 1<em class='brace'>}</em>,
+<a id='L92' name='L92'></a>  92    <em class='brace'>{</em>"Number of parallel units", <a href='../S/118.html#L61' title='Defined at 61 in libparam/libparam.h.'>I</a>, 1<em class='brace'>}</em>,
+<a id='L93' name='L93'></a>  93    <em class='brace'>{</em>"Elements per gang", <a href='../S/118.html#L61' title='Defined at 61 in libparam/libparam.h.'>I</a>, 1<em class='brace'>}</em>,
+<a id='L94' name='L94'></a>  94    <em class='brace'>{</em>"Cleaning in background", <a href='../S/118.html#L61' title='Defined at 61 in libparam/libparam.h.'>I</a>, 1<em class='brace'>}</em>,
+<a id='L95' name='L95'></a>  95    <em class='brace'>{</em>"Gang share", <a href='../S/118.html#L61' title='Defined at 61 in libparam/libparam.h.'>I</a>, 1<em class='brace'>}</em>,
+<a id='L96' name='L96'></a>  96    <em class='brace'>{</em>"Allocation pool logic", <a href='../S/118.html#L61' title='Defined at 61 in libparam/libparam.h.'>I</a>, 1<em class='brace'>}</em>,
+<a id='L97' name='L97'></a>  97    <em class='brace'>{</em>0,0,0<em class='brace'>}</em>
+<a id='L98' name='L98'></a>  98 <em class='brace'>}</em>;
+<a id='L99' name='L99'></a>  99 <strong class='reserved'>static</strong> <strong class='reserved'>struct</strong> <a href='../S/118.html#L293' title='Defined at 293 in libparam/libparam.h.'>lp_mod</a> disksim_ssd_mod = <em class='brace'>{</em> "disksim_ssd", disksim_ssd_params, <a href='../S/162.html#L58' title='Defined at 58 in ssdmodel/old/ssd_param.h.'>DISKSIM_SSD_MAX_PARAM</a>, (lp_modloader_t)disksim_ssd_loadparams,  0, 0, DISKSIM_SSD_loaders, DISKSIM_SSD_deps <em class='brace'>}</em>;
+<a id='L100' name='L100'></a> 100 
+<a id='L101' name='L101'></a> 101 
+<a id='L102' name='L102'></a> 102 <em class='sharp'>#ifdef</em> __cplusplus
+<a id='L103' name='L103'></a> 103 <em class='brace'>}</em>
+<a id='L104' name='L104'></a> 104 <em class='sharp'>#endif</em>
+<a id='L105' name='L105'></a> 105 <em class='sharp'>#endif</em> <em class='comment'>// _DISKSIM_SSD_PARAM_H</em>
+</pre>
+<hr />
+<a id='BOTTOM' name='BOTTOM'></a>
+<em class='comment'>/* [&lt;][&gt;][^][v]<a href='#TOP'>[top]</a>[bottom]<a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</em>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>gen</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/278.html#L313'>gen</a>               313 src/disksim_logorg.c    int gen;</span>
+<span class='curline'><a href='../S/278.html#L357'>gen</a>               357 src/disksim_logorg.c    gen = curr-&gt;cause;</span>
+<span class='curline'><a href='../S/278.html#L364'>gen</a>               364 src/disksim_logorg.c       if (currlogorg-&gt;stat.gens[gen] != curr-&gt;devno) {</span>
+<span class='curline'><a href='../S/278.html#L371'>gen</a>               371 src/disksim_logorg.c       if (currlogorg-&gt;stat.gens[gen] != curr-&gt;devno) {</span>
+<span class='curline'><a href='../S/278.html#L376'>gen</a>               376 src/disksim_logorg.c    currlogorg-&gt;stat.gens[gen] = curr-&gt;devno;</span>
+<span class='curline'><a href='../S/216.html#L192'>gen</a>               192 src/disksim_synthio.c    synthio_generator *gen = (synthio_generator *) procp-&gt;space;</span>
+<span class='curline'><a href='../S/216.html#L202'>gen</a>               202 src/disksim_synthio.c    blocksize = gen-&gt;blocksize;</span>
+<span class='curline'><a href='../S/216.html#L203'>gen</a>               203 src/disksim_synthio.c    gennum = gen-&gt;number;</span>
+<span class='curline'><a href='../S/216.html#L249'>gen</a>               249 src/disksim_synthio.c 	  newsleep-&gt;time = synthio_getrand (&amp;gen-&gt;tmlimit);</span>
+<span class='curline'><a href='../S/216.html#L252'>gen</a>               252 src/disksim_synthio.c 	limittmp = gen-&gt;limits;</span>
+<span class='curline'><a href='../S/216.html#L254'>gen</a>               254 src/disksim_synthio.c 	  newsleep-&gt;next = (event *) gen-&gt;limits;</span>
+<span class='curline'><a href='../S/216.html#L255'>gen</a>               255 src/disksim_synthio.c 	  gen-&gt;limits = (sleep_event *) newsleep;</span>
+<span class='curline'><a href='../S/216.html#L280'>gen</a>               280 src/disksim_synthio.c    limittmp = gen-&gt;limits;</span>
+<span class='curline'><a href='../S/216.html#L282'>gen</a>               282 src/disksim_synthio.c       gen-&gt;limits = (sleep_event *) limittmp-&gt;next;</span>
+<span class='curline'><a href='../S/216.html#L291'>gen</a>               291 src/disksim_synthio.c       limittmp = gen-&gt;limits;</span>
+<span class='curline'><a href='../S/216.html#L294'>gen</a>               294 src/disksim_synthio.c    if ((newsleep) &amp;&amp; (gen-&gt;limits)) {</span>
+<span class='curline'><a href='../S/216.html#L309'>gen</a>               309 src/disksim_synthio.c    synthio_generator *gen;</span>
+<span class='curline'><a href='../S/216.html#L318'>gen</a>               318 src/disksim_synthio.c    gen = (synthio_generator *) procp-&gt;space;</span>
+<span class='curline'><a href='../S/216.html#L319'>gen</a>               319 src/disksim_synthio.c    if (gen == NULL) {</span>
+<span class='curline'><a href='../S/216.html#L326'>gen</a>               326 src/disksim_synthio.c       tmp-&gt;time = synthio_getrand(&amp;gen-&gt;genintr);</span>
+<span class='curline'><a href='../S/216.html#L329'>gen</a>               329 src/disksim_synthio.c    tmp-&gt;cause = gen-&gt;number;</span>
+<span class='curline'><a href='../S/216.html#L330'>gen</a>               330 src/disksim_synthio.c    tmp-&gt;devno = gen-&gt;devno[(int) (DISKSIM_drand48() * (double) gen-&gt;numdisks)];</span>
+<span class='curline'><a href='../S/216.html#L331'>gen</a>               331 src/disksim_synthio.c    tmp-&gt;blkno = tmp-&gt;bcount = gen-&gt;blksperdisk;</span>
+<span class='curline'><a href='../S/216.html#L332'>gen</a>               332 src/disksim_synthio.c    while (((tmp-&gt;blkno + tmp-&gt;bcount) &gt;= gen-&gt;blksperdisk) || (tmp-&gt;bcount == 0)) {</span>
+<span class='curline'><a href='../S/216.html#L333'>gen</a>               333 src/disksim_synthio.c       tmp-&gt;blkno = (int) (DISKSIM_drand48() * (double) gen-&gt;blksperdisk);</span>
+<span class='curline'><a href='../S/216.html#L334'>gen</a>               334 src/disksim_synthio.c       tmp-&gt;bcount = ((int) synthio_getrand(&amp;gen-&gt;sizedist) + gen-&gt;blocksize - 1) / gen-&gt;blocksize;</span>
+<span class='curline'><a href='../S/216.html#L336'>gen</a>               336 src/disksim_synthio.c    if (DISKSIM_drand48() &lt; gen-&gt;probread) {</span>
+<span class='curline'><a href='../S/216.html#L339'>gen</a>               339 src/disksim_synthio.c    reqclass = DISKSIM_drand48() - gen-&gt;probtmcrit;</span>
+<span class='curline'><a href='../S/216.html#L342'>gen</a>               342 src/disksim_synthio.c    } else if (reqclass &lt; gen-&gt;probtmlim) {</span>
+<span class='curline'><a href='../S/216.html#L345'>gen</a>               345 src/disksim_synthio.c    gen-&gt;pendio = tmp;</span>
+<span class='curline'><a href='../S/216.html#L353'>gen</a>               353 src/disksim_synthio.c static int synthio_generatenextio (synthio_generator *gen)</span>
+<span class='curline'><a href='../S/216.html#L363'>gen</a>               363 src/disksim_synthio.c    tmp = gen-&gt;pendio;</span>
+<span class='curline'><a href='../S/216.html#L364'>gen</a>               364 src/disksim_synthio.c    if (gen-&gt;tracefile) {</span>
+<span class='curline'><a href='../S/216.html#L365'>gen</a>               365 src/disksim_synthio.c       gen-&gt;pendio = </span>
+<span class='curline'><a href='../S/216.html#L366'>gen</a>               366 src/disksim_synthio.c 	(ioreq_event *)iotrace_get_ioreq_event(gen-&gt;tracefile, </span>
+<span class='curline'><a href='../S/216.html#L369'>gen</a>               369 src/disksim_synthio.c       if (gen-&gt;pendio) {</span>
+<span class='curline'><a href='../S/216.html#L370'>gen</a>               370 src/disksim_synthio.c 	 tmp-&gt;cause = gen-&gt;number;</span>
+<span class='curline'><a href='../S/216.html#L381'>gen</a>               381 src/disksim_synthio.c    if ((type &lt; gen-&gt;probseq) &amp;&amp; </span>
+<span class='curline'><a href='../S/216.html#L382'>gen</a>               382 src/disksim_synthio.c        ((tmp-&gt;blkno + 2*tmp-&gt;bcount) &lt; gen-&gt;blksperdisk)) {</span>
+<span class='curline'><a href='../S/216.html#L387'>gen</a>               387 src/disksim_synthio.c        tmp-&gt;time = synthio_getrand(&amp;gen-&gt;seqintr);</span>
+<span class='curline'><a href='../S/216.html#L391'>gen</a>               391 src/disksim_synthio.c      tmp-&gt;cause = gen-&gt;number;</span>
+<span class='curline'><a href='../S/216.html#L394'>gen</a>               394 src/disksim_synthio.c    else if ((type &lt; (gen-&gt;probseq + gen-&gt;probloc)) &amp;&amp; </span>
+<span class='curline'><a href='../S/216.html#L395'>gen</a>               395 src/disksim_synthio.c 	    (type &gt;= gen-&gt;probseq)) {</span>
+<span class='curline'><a href='../S/216.html#L399'>gen</a>               399 src/disksim_synthio.c        tmp-&gt;time = synthio_getrand(&amp;gen-&gt;locintr);</span>
+<span class='curline'><a href='../S/216.html#L402'>gen</a>               402 src/disksim_synthio.c      tmp-&gt;cause = gen-&gt;number;</span>
+<span class='curline'><a href='../S/216.html#L403'>gen</a>               403 src/disksim_synthio.c      blkno = gen-&gt;blksperdisk;</span>
+<span class='curline'><a href='../S/216.html#L404'>gen</a>               404 src/disksim_synthio.c      while (((blkno + tmp-&gt;bcount) &gt;= gen-&gt;blksperdisk) </span>
+<span class='curline'><a href='../S/216.html#L409'>gen</a>               409 src/disksim_synthio.c 	   (int)synthio_getrand(&amp;gen-&gt;locdist) / gen-&gt;blocksize;</span>
+<span class='curline'><a href='../S/216.html#L410'>gen</a>               410 src/disksim_synthio.c 	 tmp-&gt;bcount = ((int) synthio_getrand(&amp;gen-&gt;sizedist) + </span>
+<span class='curline'><a href='../S/216.html#L411'>gen</a>               411 src/disksim_synthio.c 			gen-&gt;blocksize - 1) / gen-&gt;blocksize;</span>
+<span class='curline'><a href='../S/216.html#L414'>gen</a>               414 src/disksim_synthio.c      if (DISKSIM_drand48() &lt; gen-&gt;probread) {</span>
+<span class='curline'><a href='../S/216.html#L421'>gen</a>               421 src/disksim_synthio.c 	tmp-&gt;time = synthio_getrand(&amp;gen-&gt;genintr);</span>
+<span class='curline'><a href='../S/216.html#L424'>gen</a>               424 src/disksim_synthio.c       tmp-&gt;cause = gen-&gt;number;</span>
+<span class='curline'><a href='../S/216.html#L425'>gen</a>               425 src/disksim_synthio.c       tmp-&gt;devno = gen-&gt;devno[(int)(DISKSIM_drand48() * </span>
+<span class='curline'><a href='../S/216.html#L426'>gen</a>               426 src/disksim_synthio.c 				    (double)gen-&gt;numdisks)];</span>
+<span class='curline'><a href='../S/216.html#L428'>gen</a>               428 src/disksim_synthio.c       tmp-&gt;blkno = tmp-&gt;bcount = gen-&gt;blksperdisk;</span>
+<span class='curline'><a href='../S/216.html#L429'>gen</a>               429 src/disksim_synthio.c       while (((tmp-&gt;blkno + tmp-&gt;bcount) &gt;= gen-&gt;blksperdisk) || </span>
+<span class='curline'><a href='../S/216.html#L432'>gen</a>               432 src/disksim_synthio.c 	tmp-&gt;blkno = (int) (DISKSIM_drand48() * (double)gen-&gt;blksperdisk);</span>
+<span class='curline'><a href='../S/216.html#L433'>gen</a>               433 src/disksim_synthio.c 	tmp-&gt;bcount = ((int) synthio_getrand(&amp;gen-&gt;sizedist) + </span>
+<span class='curline'><a href='../S/216.html#L434'>gen</a>               434 src/disksim_synthio.c 		       gen-&gt;blocksize - 1) / gen-&gt;blocksize;</span>
+<span class='curline'><a href='../S/216.html#L437'>gen</a>               437 src/disksim_synthio.c       if (DISKSIM_drand48() &lt; gen-&gt;probread) {</span>
+<span class='curline'><a href='../S/216.html#L441'>gen</a>               441 src/disksim_synthio.c    reqclass = DISKSIM_drand48() - gen-&gt;probtmcrit;</span>
+<span class='curline'><a href='../S/216.html#L446'>gen</a>               446 src/disksim_synthio.c    else if (reqclass &lt; gen-&gt;probtmlim) {</span>
+<span class='curline'><a href='../S/216.html#L455'>gen</a>               455 src/disksim_synthio.c    synthio_generator *gen;</span>
+<span class='curline'><a href='../S/216.html#L457'>gen</a>               457 src/disksim_synthio.c    gen = (synthio_generator *) procp-&gt;space;</span>
+<span class='curline'><a href='../S/216.html#L462'>gen</a>               462 src/disksim_synthio.c    if (synthio_generatenextio(gen)) {</span>
+<span class='curline'><a href='../S/216.html#L463'>gen</a>               463 src/disksim_synthio.c       synthio_appendio(procp, gen-&gt;pendio);</span>
+</pre>
+</body>
+</html>

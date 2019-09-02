@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>INTERFEREMAX</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/278.html#L198'>INTERFEREMAX</a>      198 src/disksim_logorg.c    first = stat_get_count(&amp;currlogorg-&gt;stat.intarrstats) % INTERFEREMAX;</span>
+<span class='curline'><a href='../S/278.html#L199'>INTERFEREMAX</a>      199 src/disksim_logorg.c    first = (INTERFEREMAX - first) % INTERFEREMAX;</span>
+<span class='curline'><a href='../S/278.html#L200'>INTERFEREMAX</a>      200 src/disksim_logorg.c    for (i=0; i&lt;INTERFEREMAX; i++) {</span>
+<span class='curline'><a href='../S/278.html#L201'>INTERFEREMAX</a>      201 src/disksim_logorg.c       if (curr-&gt;devno == lastreq[(((i+first)%INTERFEREMAX) &lt;&lt; 1)]) {</span>
+<span class='curline'><a href='../S/278.html#L202'>INTERFEREMAX</a>      202 src/disksim_logorg.c          diffblkno = curr-&gt;blkno - lastreq[((((i+first)%INTERFEREMAX) &lt;&lt; 1) + 1)];</span>
+<span class='curline'><a href='../S/278.html#L211'>INTERFEREMAX</a>      211 src/disksim_logorg.c       for (i=0; i&lt;INTERFEREMAX; i++) {</span>
+<span class='curline'><a href='../S/278.html#L212'>INTERFEREMAX</a>      212 src/disksim_logorg.c          if (curr-&gt;devno == lastreq[(((i+first)%INTERFEREMAX) &lt;&lt; 1)]) {</span>
+<span class='curline'><a href='../S/278.html#L213'>INTERFEREMAX</a>      213 src/disksim_logorg.c             diffblkno = curr-&gt;blkno - lastreq[((((i+first)%INTERFEREMAX) &lt;&lt; 1) + 1)];</span>
+<span class='curline'><a href='../S/278.html#L239'>INTERFEREMAX</a>      239 src/disksim_logorg.c    first = ((first - 1) % INTERFEREMAX) &lt;&lt; 1;</span>
+<span class='curline'><a href='../S/278.html#L1069'>INTERFEREMAX</a>     1069 src/disksim_logorg.c          for (j=0; j&lt;(INTERFEREMAX*INTDISTMAX); j++) {</span>
+<span class='curline'><a href='../S/278.html#L1213'>INTERFEREMAX</a>     1213 src/disksim_logorg.c 	   DISKSIM_malloc(2 * INTERFEREMAX*sizeof(int));</span>
+<span class='curline'><a href='../S/278.html#L1215'>INTERFEREMAX</a>     1215 src/disksim_logorg.c          for (j=0; j&lt;(2*INTERFEREMAX); j++) {</span>
+<span class='curline'><a href='../S/278.html#L1220'>INTERFEREMAX</a>     1220 src/disksim_logorg.c 	   DISKSIM_malloc(INTERFEREMAX*INTDISTMAX*sizeof(int));</span>
+<span class='curline'><a href='../S/278.html#L1387'>INTERFEREMAX</a>     1387 src/disksim_logorg.c    for (i=0; i&lt;(INTERFEREMAX*INTDISTMAX); i+=INTDISTMAX) {</span>
+<span class='curline'><a href='../S/278.html#L1393'>INTERFEREMAX</a>     1393 src/disksim_logorg.c    for (i=0; i&lt;(INTERFEREMAX*INTDISTMAX); i++) {</span>
+</pre>
+</body>
+</html>

@@ -1,0 +1,974 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>src/disksim_synthio.c</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<a id='TOP' name='TOP'></a><h2 class='header'><a href='../mains.html'>root</a>/<a href='../files/402.html'>src</a>/disksim_synthio.c</h2>
+<em class='comment'>/* [&lt;][&gt;]<a href='#L112'>[^]</a><a href='#L889'>[v]</a>[top]<a href='#BOTTOM'>[bottom]</a><a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</em>
+<hr />
+<h2 class='header'>DEFINITIONS</h2>
+This source file includes following definitions.
+<ol>
+<li><a href='#L112' title='Defined at 112.'>synthio_get_uniform</a></li>
+<li><a href='#L118' title='Defined at 118.'>synthio_get_normal</a></li>
+<li><a href='#L135' title='Defined at 135.'>synthio_get_exponential</a></li>
+<li><a href='#L144' title='Defined at 144.'>synthio_get_poisson</a></li>
+<li><a href='#L160' title='Defined at 160.'>synthio_get_twovalue</a></li>
+<li><a href='#L170' title='Defined at 170.'>synthio_getrand</a></li>
+<li><a href='#L190' title='Defined at 190.'>synthio_appendio</a></li>
+<li><a href='#L306' title='Defined at 306.'>synthio_initialize_generator</a></li>
+<li><a href='#L353' title='Defined at 353.'>synthio_generatenextio</a></li>
+<li><a href='#L453' title='Defined at 453.'>synthio_generate_io_activity</a></li>
+<li><a href='#L472' title='Defined at 472.'>synthio_resetstats</a></li>
+<li><a href='#L477' title='Defined at 477.'>synthio_cleanstats</a></li>
+<li><a href='#L482' title='Defined at 482.'>synthio_printstats</a></li>
+<li><a href='#L487' title='Defined at 487.'>synthio_read_uniform</a></li>
+<li><a href='#L509' title='Defined at 509.'>synthio_read_normal</a></li>
+<li><a href='#L531' title='Defined at 531.'>synthio_read_exponential</a></li>
+<li><a href='#L549' title='Defined at 549.'>synthio_read_poisson</a></li>
+<li><a href='#L567' title='Defined at 567.'>synthio_read_twovalue</a></li>
+<li><a href='#L594' title='Defined at 594.'>synthio_read_distr</a></li>
+<li><a href='#L627' title='Defined at 627.'>synthio_distrcopy</a></li>
+<li><a href='#L636' title='Defined at 636.'>synthio_gencopy</a></li>
+<li><a href='#L691' title='Defined at 691.'>disksim_synthio_loadparams</a></li>
+<li><a href='#L711' title='Defined at 711.'>loadsynthgenerators</a></li>
+<li><a href='#L761' title='Defined at 761.'>distname</a></li>
+<li><a href='#L769' title='Defined at 769.'>loaddistn</a></li>
+<li><a href='#L865' title='Defined at 865.'>disksim_synthgen_loadparams</a></li>
+<li><a href='#L872' title='Defined at 872.'>loadgen</a></li>
+<li><a href='#L889' title='Defined at 889.'>loadsynthdevs</a></li>
+</ol>
+<hr />
+<pre>
+<a id='L1' name='L1'></a>   1 <em class='comment'>/*</em>
+<a id='L2' name='L2'></a>   2 <em class='comment'> * DiskSim Storage Subsystem Simulation Environment (Version 4.0)</em>
+<a id='L3' name='L3'></a>   3 <em class='comment'> * Revision Authors: John Bucy, Greg Ganger</em>
+<a id='L4' name='L4'></a>   4 <em class='comment'> * Contributors: John Griffin, Jiri Schindler, Steve Schlosser</em>
+<a id='L5' name='L5'></a>   5 <em class='comment'> *</em>
+<a id='L6' name='L6'></a>   6 <em class='comment'> * Copyright (c) of Carnegie Mellon University, 2001-2008.</em>
+<a id='L7' name='L7'></a>   7 <em class='comment'> *</em>
+<a id='L8' name='L8'></a>   8 <em class='comment'> * This software is being provided by the copyright holders under the</em>
+<a id='L9' name='L9'></a>   9 <em class='comment'> * following license. By obtaining, using and/or copying this software,</em>
+<a id='L10' name='L10'></a>  10 <em class='comment'> * you agree that you have read, understood, and will comply with the</em>
+<a id='L11' name='L11'></a>  11 <em class='comment'> * following terms and conditions:</em>
+<a id='L12' name='L12'></a>  12 <em class='comment'> *</em>
+<a id='L13' name='L13'></a>  13 <em class='comment'> * Permission to reproduce, use, and prepare derivative works of this</em>
+<a id='L14' name='L14'></a>  14 <em class='comment'> * software is granted provided the copyright and "No Warranty" statements</em>
+<a id='L15' name='L15'></a>  15 <em class='comment'> * are included with all reproductions and derivative works and associated</em>
+<a id='L16' name='L16'></a>  16 <em class='comment'> * documentation. This software may also be redistributed without charge</em>
+<a id='L17' name='L17'></a>  17 <em class='comment'> * provided that the copyright and "No Warranty" statements are included</em>
+<a id='L18' name='L18'></a>  18 <em class='comment'> * in all redistributions.</em>
+<a id='L19' name='L19'></a>  19 <em class='comment'> *</em>
+<a id='L20' name='L20'></a>  20 <em class='comment'> * NO WARRANTY. THIS SOFTWARE IS FURNISHED ON AN "AS IS" BASIS.</em>
+<a id='L21' name='L21'></a>  21 <em class='comment'> * CARNEGIE MELLON UNIVERSITY MAKES NO WARRANTIES OF ANY KIND, EITHER</em>
+<a id='L22' name='L22'></a>  22 <em class='comment'> * EXPRESSED OR IMPLIED AS TO THE MATTER INCLUDING, BUT NOT LIMITED</em>
+<a id='L23' name='L23'></a>  23 <em class='comment'> * TO: WARRANTY OF FITNESS FOR PURPOSE OR MERCHANTABILITY, EXCLUSIVITY</em>
+<a id='L24' name='L24'></a>  24 <em class='comment'> * OF RESULTS OR RESULTS OBTAINED FROM USE OF THIS SOFTWARE. CARNEGIE</em>
+<a id='L25' name='L25'></a>  25 <em class='comment'> * MELLON UNIVERSITY DOES NOT MAKE ANY WARRANTY OF ANY KIND WITH RESPECT</em>
+<a id='L26' name='L26'></a>  26 <em class='comment'> * TO FREEDOM FROM PATENT, TRADEMARK, OR COPYRIGHT INFRINGEMENT.</em>
+<a id='L27' name='L27'></a>  27 <em class='comment'> * COPYRIGHT HOLDERS WILL BEAR NO LIABILITY FOR ANY USE OF THIS SOFTWARE</em>
+<a id='L28' name='L28'></a>  28 <em class='comment'> * OR DOCUMENTATION.</em>
+<a id='L29' name='L29'></a>  29 <em class='comment'> *</em>
+<a id='L30' name='L30'></a>  30 <em class='comment'> */</em>
+<a id='L31' name='L31'></a>  31 
+<a id='L32' name='L32'></a>  32 
+<a id='L33' name='L33'></a>  33 
+<a id='L34' name='L34'></a>  34 <em class='comment'>/*</em>
+<a id='L35' name='L35'></a>  35 <em class='comment'> * DiskSim Storage Subsystem Simulation Environment (Version 2.0)</em>
+<a id='L36' name='L36'></a>  36 <em class='comment'> * Revision Authors: Greg Ganger</em>
+<a id='L37' name='L37'></a>  37 <em class='comment'> * Contributors: Ross Cohen, John Griffin, Steve Schlosser</em>
+<a id='L38' name='L38'></a>  38 <em class='comment'> *</em>
+<a id='L39' name='L39'></a>  39 <em class='comment'> * Copyright (c) of Carnegie Mellon University, 1999.</em>
+<a id='L40' name='L40'></a>  40 <em class='comment'> *</em>
+<a id='L41' name='L41'></a>  41 <em class='comment'> * Permission to reproduce, use, and prepare derivative works of</em>
+<a id='L42' name='L42'></a>  42 <em class='comment'> * this software for internal use is granted provided the copyright</em>
+<a id='L43' name='L43'></a>  43 <em class='comment'> * and "No Warranty" statements are included with all reproductions</em>
+<a id='L44' name='L44'></a>  44 <em class='comment'> * and derivative works. This software may also be redistributed</em>
+<a id='L45' name='L45'></a>  45 <em class='comment'> * without charge provided that the copyright and "No Warranty"</em>
+<a id='L46' name='L46'></a>  46 <em class='comment'> * statements are included in all redistributions.</em>
+<a id='L47' name='L47'></a>  47 <em class='comment'> *</em>
+<a id='L48' name='L48'></a>  48 <em class='comment'> * NO WARRANTY. THIS SOFTWARE IS FURNISHED ON AN "AS IS" BASIS.</em>
+<a id='L49' name='L49'></a>  49 <em class='comment'> * CARNEGIE MELLON UNIVERSITY MAKES NO WARRANTIES OF ANY KIND, EITHER</em>
+<a id='L50' name='L50'></a>  50 <em class='comment'> * EXPRESSED OR IMPLIED AS TO THE MATTER INCLUDING, BUT NOT LIMITED</em>
+<a id='L51' name='L51'></a>  51 <em class='comment'> * TO: WARRANTY OF FITNESS FOR PURPOSE OR MERCHANTABILITY, EXCLUSIVITY</em>
+<a id='L52' name='L52'></a>  52 <em class='comment'> * OF RESULTS OR RESULTS OBTAINED FROM USE OF THIS SOFTWARE. CARNEGIE</em>
+<a id='L53' name='L53'></a>  53 <em class='comment'> * MELLON UNIVERSITY DOES NOT MAKE ANY WARRANTY OF ANY KIND WITH RESPECT</em>
+<a id='L54' name='L54'></a>  54 <em class='comment'> * TO FREEDOM FROM PATENT, TRADEMARK, OR COPYRIGHT INFRINGEMENT.</em>
+<a id='L55' name='L55'></a>  55 <em class='comment'> */</em>
+<a id='L56' name='L56'></a>  56 
+<a id='L57' name='L57'></a>  57 <em class='comment'>/*</em>
+<a id='L58' name='L58'></a>  58 <em class='comment'> * DiskSim Storage Subsystem Simulation Environment</em>
+<a id='L59' name='L59'></a>  59 <em class='comment'> * Authors: Greg Ganger, Bruce Worthington, Yale Patt</em>
+<a id='L60' name='L60'></a>  60 <em class='comment'> *</em>
+<a id='L61' name='L61'></a>  61 <em class='comment'> * Copyright (C) 1993, 1995, 1997 The Regents of the University of Michigan </em>
+<a id='L62' name='L62'></a>  62 <em class='comment'> *</em>
+<a id='L63' name='L63'></a>  63 <em class='comment'> * This software is being provided by the copyright holders under the</em>
+<a id='L64' name='L64'></a>  64 <em class='comment'> * following license. By obtaining, using and/or copying this software,</em>
+<a id='L65' name='L65'></a>  65 <em class='comment'> * you agree that you have read, understood, and will comply with the</em>
+<a id='L66' name='L66'></a>  66 <em class='comment'> * following terms and conditions:</em>
+<a id='L67' name='L67'></a>  67 <em class='comment'> *</em>
+<a id='L68' name='L68'></a>  68 <em class='comment'> * Permission to use, copy, modify, distribute, and sell this software</em>
+<a id='L69' name='L69'></a>  69 <em class='comment'> * and its documentation for any purpose and without fee or royalty is</em>
+<a id='L70' name='L70'></a>  70 <em class='comment'> * hereby granted, provided that the full text of this NOTICE appears on</em>
+<a id='L71' name='L71'></a>  71 <em class='comment'> * ALL copies of the software and documentation or portions thereof,</em>
+<a id='L72' name='L72'></a>  72 <em class='comment'> * including modifications, that you make.</em>
+<a id='L73' name='L73'></a>  73 <em class='comment'> *</em>
+<a id='L74' name='L74'></a>  74 <em class='comment'> * THIS SOFTWARE IS PROVIDED "AS IS," AND COPYRIGHT HOLDERS MAKE NO</em>
+<a id='L75' name='L75'></a>  75 <em class='comment'> * REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED. BY WAY OF EXAMPLE,</em>
+<a id='L76' name='L76'></a>  76 <em class='comment'> * BUT NOT LIMITATION, COPYRIGHT HOLDERS MAKE NO REPRESENTATIONS OR</em>
+<a id='L77' name='L77'></a>  77 <em class='comment'> * WARRANTIES OF MERCHANTABILITY OR FITNESS FOR ANY PARTICULAR PURPOSE OR</em>
+<a id='L78' name='L78'></a>  78 <em class='comment'> * THAT THE USE OF THE SOFTWARE OR DOCUMENTATION WILL NOT INFRINGE ANY</em>
+<a id='L79' name='L79'></a>  79 <em class='comment'> * THIRD PARTY PATENTS, COPYRIGHTS, TRADEMARKS OR OTHER RIGHTS. COPYRIGHT</em>
+<a id='L80' name='L80'></a>  80 <em class='comment'> * HOLDERS WILL BEAR NO LIABILITY FOR ANY USE OF THIS SOFTWARE OR</em>
+<a id='L81' name='L81'></a>  81 <em class='comment'> * DOCUMENTATION.</em>
+<a id='L82' name='L82'></a>  82 <em class='comment'> *</em>
+<a id='L83' name='L83'></a>  83 <em class='comment'> *  This software is provided AS IS, WITHOUT REPRESENTATION FROM THE</em>
+<a id='L84' name='L84'></a>  84 <em class='comment'> * UNIVERSITY OF MICHIGAN AS TO ITS FITNESS FOR ANY PURPOSE, AND</em>
+<a id='L85' name='L85'></a>  85 <em class='comment'> * WITHOUT WARRANTY BY THE UNIVERSITY OF MICHIGAN OF ANY KIND, EITHER</em>
+<a id='L86' name='L86'></a>  86 <em class='comment'> * EXPRESSED OR IMPLIED, INCLUDING WITHOUT LIMITATION THE IMPLIED</em>
+<a id='L87' name='L87'></a>  87 <em class='comment'> * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE REGENTS</em>
+<a id='L88' name='L88'></a>  88 <em class='comment'> * OF THE UNIVERSITY OF MICHIGAN SHALL NOT BE LIABLE FOR ANY DAMAGES,</em>
+<a id='L89' name='L89'></a>  89 <em class='comment'> * INCLUDING SPECIAL , INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES,</em>
+<a id='L90' name='L90'></a>  90 <em class='comment'> * WITH RESPECT TO ANY CLAIM ARISING OUT OF OR IN CONNECTION WITH THE</em>
+<a id='L91' name='L91'></a>  91 <em class='comment'> * USE OF OR IN CONNECTION WITH THE USE OF THE SOFTWARE, EVEN IF IT HAS</em>
+<a id='L92' name='L92'></a>  92 <em class='comment'> * BEEN OR IS HEREAFTER ADVISED OF THE POSSIBILITY OF SUCH DAMAGES</em>
+<a id='L93' name='L93'></a>  93 <em class='comment'> *</em>
+<a id='L94' name='L94'></a>  94 <em class='comment'> * The names and trademarks of copyright holders or authors may NOT be</em>
+<a id='L95' name='L95'></a>  95 <em class='comment'> * used in advertising or publicity pertaining to the software without</em>
+<a id='L96' name='L96'></a>  96 <em class='comment'> * specific, written prior permission. Title to copyright in this software</em>
+<a id='L97' name='L97'></a>  97 <em class='comment'> * and any associated documentation will at all times remain with copyright</em>
+<a id='L98' name='L98'></a>  98 <em class='comment'> * holders.</em>
+<a id='L99' name='L99'></a>  99 <em class='comment'> */</em>
+<a id='L100' name='L100'></a> 100 
+<a id='L101' name='L101'></a> 101 
+<a id='L102' name='L102'></a> 102 <em class='sharp'>#include</em> "<a href='213.html'>disksim_synthio.h</a>"
+<a id='L103' name='L103'></a> 103 <em class='sharp'>#include</em> "<a href='157.html'>modules/modules.h</a>"
+<a id='L104' name='L104'></a> 104 
+<a id='L105' name='L105'></a> 105 <em class='sharp'>#define</em> <a href='../R/583.html' title='Multiple referred from 4 places.'>SYNTHIO_UNIFORM</a>         0
+<a id='L106' name='L106'></a> 106 <em class='sharp'>#define</em> <a href='../R/580.html' title='Multiple referred from 3 places.'>SYNTHIO_NORMAL</a>          1
+<a id='L107' name='L107'></a> 107 <em class='sharp'>#define</em> <a href='../R/579.html' title='Multiple referred from 3 places.'>SYNTHIO_EXPONENTIAL</a>     2
+<a id='L108' name='L108'></a> 108 <em class='sharp'>#define</em> <a href='../R/581.html' title='Multiple referred from 3 places.'>SYNTHIO_POISSON</a>         3
+<a id='L109' name='L109'></a> 109 <em class='sharp'>#define</em> <a href='../R/582.html' title='Multiple referred from 4 places.'>SYNTHIO_TWOVALUE</a>        4
+<a id='L110' name='L110'></a> 110 
+<a id='L111' name='L111'></a> 111 
+<a id='L112' name='L112'></a> 112 <strong class='reserved'>static</strong> <strong class='reserved'>double</strong> <a href='../S/216.html#L174' title='Referred from 174 in src/disksim_synthio.c.'>synthio_get_uniform</a> (<a href='../S/213.html#L130' title='Defined at 130 in src/disksim_synthio.h.'>synthio_distr</a> *fromdistr)
+<a id='L113' name='L113'></a> 113 <em class='brace'>{</em>
+<a id='L114' name='L114'></a> 114    <strong class='reserved'>return</strong>(((fromdistr-&gt;var - fromdistr-&gt;base) * <a href='../D/323.html' title='Multiple defined in 2 places.'>DISKSIM_drand48</a>()) + fromdistr-&gt;base);
+<a id='L115' name='L115'></a> 115 <em class='brace'>}</em>
+<a id='L116' name='L116'></a> 116 
+<a id='L117' name='L117'></a> 117 
+<a id='L118' name='L118'></a> 118 <strong class='reserved'>static</strong> <strong class='reserved'>double</strong> <a href='../S/216.html#L176' title='Referred from 176 in src/disksim_synthio.c.'>synthio_get_normal</a> (<a href='../S/213.html#L130' title='Defined at 130 in src/disksim_synthio.h.'>synthio_distr</a> *fromdistr)
+<a id='L119' name='L119'></a> 119 <em class='brace'>{</em>
+<a id='L120' name='L120'></a> 120    <strong class='reserved'>double</strong> y1, y2;
+<a id='L121' name='L121'></a> 121    <strong class='reserved'>double</strong> y = 0;
+<a id='L122' name='L122'></a> 122 
+<a id='L123' name='L123'></a> 123    <strong class='reserved'>while</strong> (y &lt;= 0.0) <em class='brace'>{</em>
+<a id='L124' name='L124'></a> 124       y2 = - log((<strong class='reserved'>double</strong>) 1.0 - <a href='../D/323.html' title='Multiple defined in 2 places.'>DISKSIM_drand48</a>());
+<a id='L125' name='L125'></a> 125       y1 = - log((<strong class='reserved'>double</strong>) 1.0 - <a href='../D/323.html' title='Multiple defined in 2 places.'>DISKSIM_drand48</a>());
+<a id='L126' name='L126'></a> 126       y = y2 - ((y1 - (<strong class='reserved'>double</strong>) 1.0) * (y1 - (<strong class='reserved'>double</strong>) 1.0)) / 2;
+<a id='L127' name='L127'></a> 127    <em class='brace'>}</em>
+<a id='L128' name='L128'></a> 128    <strong class='reserved'>if</strong> (<a href='../D/323.html' title='Multiple defined in 2 places.'>DISKSIM_drand48</a>() &lt; 0.5) <em class='brace'>{</em>
+<a id='L129' name='L129'></a> 129       y1 = -y1;
+<a id='L130' name='L130'></a> 130    <em class='brace'>}</em>
+<a id='L131' name='L131'></a> 131    <strong class='reserved'>return</strong>((fromdistr-&gt;var * y1) + fromdistr-&gt;<a href='../S/102.html#L239' title='Defined at 239 in diskmodel/layout_g4_tools/g4_skews.c.'>mean</a>);
+<a id='L132' name='L132'></a> 132 <em class='brace'>}</em>
+<a id='L133' name='L133'></a> 133 
+<a id='L134' name='L134'></a> 134 
+<a id='L135' name='L135'></a> 135 <strong class='reserved'>static</strong> <strong class='reserved'>double</strong> <a href='../S/216.html#L178' title='Referred from 178 in src/disksim_synthio.c.'>synthio_get_exponential</a> (<a href='../S/213.html#L130' title='Defined at 130 in src/disksim_synthio.h.'>synthio_distr</a> *fromdistr)
+<a id='L136' name='L136'></a> 136 <em class='brace'>{</em>
+<a id='L137' name='L137'></a> 137    <strong class='reserved'>double</strong> dtmp;
+<a id='L138' name='L138'></a> 138 
+<a id='L139' name='L139'></a> 139    dtmp = log((<strong class='reserved'>double</strong>) 1.0 - <a href='../D/323.html' title='Multiple defined in 2 places.'>DISKSIM_drand48</a>());
+<a id='L140' name='L140'></a> 140    <strong class='reserved'>return</strong>((fromdistr-&gt;base - (fromdistr-&gt;<a href='../S/102.html#L239' title='Defined at 239 in diskmodel/layout_g4_tools/g4_skews.c.'>mean</a> * dtmp)));
+<a id='L141' name='L141'></a> 141 <em class='brace'>}</em>
+<a id='L142' name='L142'></a> 142 
+<a id='L143' name='L143'></a> 143 
+<a id='L144' name='L144'></a> 144 <strong class='reserved'>static</strong> <strong class='reserved'>double</strong> <a href='../S/216.html#L180' title='Referred from 180 in src/disksim_synthio.c.'>synthio_get_poisson</a> (<a href='../S/213.html#L130' title='Defined at 130 in src/disksim_synthio.h.'>synthio_distr</a> *fromdistr)
+<a id='L145' name='L145'></a> 145 <em class='brace'>{</em>
+<a id='L146' name='L146'></a> 146    <strong class='reserved'>double</strong> dtmp = 1.0;
+<a id='L147' name='L147'></a> 147    <strong class='reserved'>int</strong> count = 0;
+<a id='L148' name='L148'></a> 148    <strong class='reserved'>double</strong> stop;
+<a id='L149' name='L149'></a> 149 
+<a id='L150' name='L150'></a> 150    stop = exp(-fromdistr-&gt;<a href='../S/102.html#L239' title='Defined at 239 in diskmodel/layout_g4_tools/g4_skews.c.'>mean</a>);
+<a id='L151' name='L151'></a> 151    <strong class='reserved'>while</strong> (dtmp &gt;= stop) <em class='brace'>{</em>
+<a id='L152' name='L152'></a> 152       dtmp *= <a href='../D/323.html' title='Multiple defined in 2 places.'>DISKSIM_drand48</a>();
+<a id='L153' name='L153'></a> 153       count++;
+<a id='L154' name='L154'></a> 154    <em class='brace'>}</em>
+<a id='L155' name='L155'></a> 155    count--;
+<a id='L156' name='L156'></a> 156    <strong class='reserved'>return</strong>((<strong class='reserved'>double</strong>) count + fromdistr-&gt;base);
+<a id='L157' name='L157'></a> 157 <em class='brace'>}</em>
+<a id='L158' name='L158'></a> 158 
+<a id='L159' name='L159'></a> 159 
+<a id='L160' name='L160'></a> 160 <strong class='reserved'>static</strong> <strong class='reserved'>double</strong> <a href='../S/216.html#L182' title='Referred from 182 in src/disksim_synthio.c.'>synthio_get_twovalue</a> (<a href='../S/213.html#L130' title='Defined at 130 in src/disksim_synthio.h.'>synthio_distr</a> *fromdistr)
+<a id='L161' name='L161'></a> 161 <em class='brace'>{</em>
+<a id='L162' name='L162'></a> 162    <strong class='reserved'>if</strong> (<a href='../D/323.html' title='Multiple defined in 2 places.'>DISKSIM_drand48</a>() &lt; fromdistr-&gt;var) <em class='brace'>{</em>
+<a id='L163' name='L163'></a> 163       <strong class='reserved'>return</strong>(fromdistr-&gt;<a href='../S/102.html#L239' title='Defined at 239 in diskmodel/layout_g4_tools/g4_skews.c.'>mean</a>);
+<a id='L164' name='L164'></a> 164    <em class='brace'>}</em> <strong class='reserved'>else</strong> <em class='brace'>{</em>
+<a id='L165' name='L165'></a> 165       <strong class='reserved'>return</strong>(fromdistr-&gt;base);
+<a id='L166' name='L166'></a> 166    <em class='brace'>}</em>
+<a id='L167' name='L167'></a> 167 <em class='brace'>}</em>
+<a id='L168' name='L168'></a> 168 
+<a id='L169' name='L169'></a> 169 
+<a id='L170' name='L170'></a> 170 <strong class='reserved'>static</strong> <strong class='reserved'>double</strong> <a href='../R/2168.html' title='Multiple referred from 9 places.'>synthio_getrand</a> (<a href='../S/213.html#L130' title='Defined at 130 in src/disksim_synthio.h.'>synthio_distr</a> *fromdistr)
+<a id='L171' name='L171'></a> 171 <em class='brace'>{</em>
+<a id='L172' name='L172'></a> 172    <strong class='reserved'>switch</strong> (fromdistr-&gt;type) <em class='brace'>{</em>
+<a id='L173' name='L173'></a> 173       <strong class='reserved'>case</strong> <a href='../S/216.html#L105' title='Defined at 105 in src/disksim_synthio.c.'>SYNTHIO_UNIFORM</a>:
+<a id='L174' name='L174'></a> 174                         <strong class='reserved'>return</strong>(<a href='../S/216.html#L112' title='Defined at 112 in src/disksim_synthio.c.'>synthio_get_uniform</a>(fromdistr));
+<a id='L175' name='L175'></a> 175       <strong class='reserved'>case</strong> <a href='../S/216.html#L106' title='Defined at 106 in src/disksim_synthio.c.'>SYNTHIO_NORMAL</a>:
+<a id='L176' name='L176'></a> 176                         <strong class='reserved'>return</strong>(<a href='../S/216.html#L118' title='Defined at 118 in src/disksim_synthio.c.'>synthio_get_normal</a>(fromdistr));
+<a id='L177' name='L177'></a> 177       <strong class='reserved'>case</strong> <a href='../S/216.html#L107' title='Defined at 107 in src/disksim_synthio.c.'>SYNTHIO_EXPONENTIAL</a>:
+<a id='L178' name='L178'></a> 178                         <strong class='reserved'>return</strong>(<a href='../S/216.html#L135' title='Defined at 135 in src/disksim_synthio.c.'>synthio_get_exponential</a>(fromdistr));
+<a id='L179' name='L179'></a> 179       <strong class='reserved'>case</strong> <a href='../S/216.html#L108' title='Defined at 108 in src/disksim_synthio.c.'>SYNTHIO_POISSON</a>:
+<a id='L180' name='L180'></a> 180                         <strong class='reserved'>return</strong>(<a href='../S/216.html#L144' title='Defined at 144 in src/disksim_synthio.c.'>synthio_get_poisson</a>(fromdistr));
+<a id='L181' name='L181'></a> 181       <strong class='reserved'>case</strong> <a href='../S/216.html#L109' title='Defined at 109 in src/disksim_synthio.c.'>SYNTHIO_TWOVALUE</a>:
+<a id='L182' name='L182'></a> 182                         <strong class='reserved'>return</strong>(<a href='../S/216.html#L160' title='Defined at 160 in src/disksim_synthio.c.'>synthio_get_twovalue</a>(fromdistr));
+<a id='L183' name='L183'></a> 183       <strong class='reserved'>default</strong>:
+<a id='L184' name='L184'></a> 184                         fprintf(stderr, "Unrecognized distribution type - %d\n", fromdistr-&gt;type);
+<a id='L185' name='L185'></a> 185                         exit(1);
+<a id='L186' name='L186'></a> 186    <em class='brace'>}</em>
+<a id='L187' name='L187'></a> 187 <em class='brace'>}</em>
+<a id='L188' name='L188'></a> 188 
+<a id='L189' name='L189'></a> 189 
+<a id='L190' name='L190'></a> 190 <strong class='reserved'>static</strong> <strong class='reserved'>void</strong> <a href='../R/2152.html' title='Multiple referred from 2 places.'>synthio_appendio</a> (<a href='../D/2200.html' title='Multiple defined in 2 places.'>process</a> *procp, <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *tmp)
+<a id='L191' name='L191'></a> 191 <em class='brace'>{</em>
+<a id='L192' name='L192'></a> 192    <a href='../S/213.html#L155' title='Defined at 155 in src/disksim_synthio.h.'>synthio_generator</a> *<a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a> = (<a href='../S/213.html#L155' title='Defined at 155 in src/disksim_synthio.h.'>synthio_generator</a> *) procp-&gt;space;
+<a id='L193' name='L193'></a> 193    <a href='../S/208.html#L247' title='Defined at 247 in src/disksim_pfsim.h.'>sleep_event</a> *limittmp = NULL;
+<a id='L194' name='L194'></a> 194    <a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a> *prev = NULL;
+<a id='L195' name='L195'></a> 195    <a href='../S/208.html#L247' title='Defined at 247 in src/disksim_pfsim.h.'>sleep_event</a> *newsleep = NULL;
+<a id='L196' name='L196'></a> 196    <a href='../S/208.html#L247' title='Defined at 247 in src/disksim_pfsim.h.'>sleep_event</a> *callsleep = NULL;
+<a id='L197' name='L197'></a> 197    <a href='../S/208.html#L247' title='Defined at 247 in src/disksim_pfsim.h.'>sleep_event</a> *retsleep = NULL;
+<a id='L198' name='L198'></a> 198    <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *new;
+<a id='L199' name='L199'></a> 199    <strong class='reserved'>int</strong> blocksize;
+<a id='L200' name='L200'></a> 200    <strong class='reserved'>int</strong> gennum;
+<a id='L201' name='L201'></a> 201 
+<a id='L202' name='L202'></a> 202    blocksize = <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;blocksize;
+<a id='L203' name='L203'></a> 203    gennum = <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;number;
+<a id='L204' name='L204'></a> 204    new = (<a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *) <a href='../S/272.html#L193' title='Defined at 193 in src/disksim.c.'>getfromextraq</a>();
+<a id='L205' name='L205'></a> 205    new-&gt;type = <a href='../S/208.html#L110' title='Defined at 110 in src/disksim_pfsim.h.'>IOREQ_EVENT</a>;
+<a id='L206' name='L206'></a> 206    new-&gt;time = tmp-&gt;time;
+<a id='L207' name='L207'></a> 207    new-&gt;devno = tmp-&gt;devno;
+<a id='L208' name='L208'></a> 208    new-&gt;blkno = tmp-&gt;blkno * blocksize;
+<a id='L209' name='L209'></a> 209    new-&gt;bcount = tmp-&gt;bcount * blocksize;
+<a id='L210' name='L210'></a> 210    new-&gt;flags = tmp-&gt;flags;
+<a id='L211' name='L211'></a> 211    new-&gt;cause = tmp-&gt;cause;
+<a id='L212' name='L212'></a> 212    new-&gt;opid = (<a href='../S/213.html#L176' title='Defined at 176 in src/disksim_synthio.h.'>synthio_endiocnt</a> * gennum) + <a href='../S/213.html#L175' title='Defined at 175 in src/disksim_synthio.h.'>synthio_iocnt</a>;
+<a id='L213' name='L213'></a> 213    <em class='comment'>/* this is being considered "ok" under the assumption that opid will */</em>
+<a id='L214' name='L214'></a> 214    <em class='comment'>/* never exceed 2^32.....                                            */</em>
+<a id='L215' name='L215'></a> 215    new-&gt;buf = (<strong class='reserved'>void</strong> *) new-&gt;opid;
+<a id='L216' name='L216'></a> 216    <strong class='reserved'>if</strong>(<a href='../S/213.html#L178' title='Defined at 178 in src/disksim_synthio.h.'>synthio_syscalls</a>)<em class='brace'>{</em>
+<a id='L217' name='L217'></a> 217       retsleep = (<a href='../S/208.html#L247' title='Defined at 247 in src/disksim_pfsim.h.'>sleep_event</a> *) <a href='../S/272.html#L193' title='Defined at 193 in src/disksim.c.'>getfromextraq</a>();
+<a id='L218' name='L218'></a> 218       retsleep-&gt;type = <a href='../S/208.html#L108' title='Defined at 108 in src/disksim_pfsim.h.'>SLEEP_EVENT</a>;
+<a id='L219' name='L219'></a> 219       retsleep-&gt;time = <a href='../S/213.html#L180' title='Defined at 180 in src/disksim_synthio.h.'>synthio_sysret_time</a>;
+<a id='L220' name='L220'></a> 220       retsleep-&gt;chan = new-&gt;buf;
+<a id='L221' name='L221'></a> 221       retsleep-&gt;iosleep = 1;
+<a id='L222' name='L222'></a> 222       callsleep = (<a href='../S/208.html#L247' title='Defined at 247 in src/disksim_pfsim.h.'>sleep_event</a> *) <a href='../S/272.html#L193' title='Defined at 193 in src/disksim.c.'>getfromextraq</a>();
+<a id='L223' name='L223'></a> 223       callsleep-&gt;type = <a href='../S/208.html#L108' title='Defined at 108 in src/disksim_pfsim.h.'>SLEEP_EVENT</a>;
+<a id='L224' name='L224'></a> 224       callsleep-&gt;time = <a href='../S/213.html#L179' title='Defined at 179 in src/disksim_synthio.h.'>synthio_syscall_time</a>;
+<a id='L225' name='L225'></a> 225       callsleep-&gt;chan = new-&gt;buf;
+<a id='L226' name='L226'></a> 226       callsleep-&gt;iosleep = 1;
+<a id='L227' name='L227'></a> 227    <em class='brace'>}</em>
+<a id='L228' name='L228'></a> 228    <strong class='reserved'>if</strong> (new-&gt;flags &amp; (<a href='../S/283.html#L194' title='Defined at 194 in src/disksim_global.h.'>TIME_CRITICAL</a>|<a href='../S/283.html#L195' title='Defined at 195 in src/disksim_global.h.'>TIME_LIMITED</a>)) <em class='brace'>{</em>
+<a id='L229' name='L229'></a> 229       newsleep = (<a href='../S/208.html#L247' title='Defined at 247 in src/disksim_pfsim.h.'>sleep_event</a> *) <a href='../S/272.html#L193' title='Defined at 193 in src/disksim.c.'>getfromextraq</a>();
+<a id='L230' name='L230'></a> 230       newsleep-&gt;type = <a href='../S/208.html#L108' title='Defined at 108 in src/disksim_pfsim.h.'>SLEEP_EVENT</a>;
+<a id='L231' name='L231'></a> 231       newsleep-&gt;time = 0.0;
+<a id='L232' name='L232'></a> 232       newsleep-&gt;chan = new-&gt;buf;
+<a id='L233' name='L233'></a> 233       newsleep-&gt;iosleep = 1;
+<a id='L234' name='L234'></a> 234       <strong class='reserved'>if</strong> (new-&gt;flags &amp; <a href='../S/283.html#L194' title='Defined at 194 in src/disksim_global.h.'>TIME_CRITICAL</a>) <em class='brace'>{</em>
+<a id='L235' name='L235'></a> 235         <strong class='reserved'>if</strong>(<a href='../S/213.html#L178' title='Defined at 178 in src/disksim_synthio.h.'>synthio_syscalls</a>)<em class='brace'>{</em>
+<a id='L236' name='L236'></a> 236           retsleep-&gt;next = procp-&gt;eventlist;
+<a id='L237' name='L237'></a> 237           new-&gt;next = (<a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *) retsleep;
+<a id='L238' name='L238'></a> 238           callsleep-&gt;next = (<a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a> *) new;
+<a id='L239' name='L239'></a> 239           new = (<a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *) callsleep;
+<a id='L240' name='L240'></a> 240           newsleep = NULL;
+<a id='L241' name='L241'></a> 241         <em class='brace'>}</em><strong class='reserved'>else</strong><em class='brace'>{</em>
+<a id='L242' name='L242'></a> 242           newsleep-&gt;next = procp-&gt;eventlist;
+<a id='L243' name='L243'></a> 243           new-&gt;next = (<a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *) newsleep;
+<a id='L244' name='L244'></a> 244         <em class='brace'>}</em>
+<a id='L245' name='L245'></a> 245       <em class='brace'>}</em> <strong class='reserved'>else</strong> <em class='brace'>{</em>
+<a id='L246' name='L246'></a> 246         new-&gt;next = (<a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *) procp-&gt;eventlist;
+<a id='L247' name='L247'></a> 247         newsleep-&gt;time = -1.0;
+<a id='L248' name='L248'></a> 248         <strong class='reserved'>while</strong> (newsleep-&gt;time &lt; 0.0) <em class='brace'>{</em>
+<a id='L249' name='L249'></a> 249           newsleep-&gt;time = <a href='../S/216.html#L170' title='Defined at 170 in src/disksim_synthio.c.'>synthio_getrand</a> (&amp;<a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;tmlimit);
+<a id='L250' name='L250'></a> 250         <em class='brace'>}</em>
+<a id='L251' name='L251'></a> 251         newsleep-&gt;time += new-&gt;time;
+<a id='L252' name='L252'></a> 252         limittmp = <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;limits;
+<a id='L253' name='L253'></a> 253         <strong class='reserved'>if</strong> ((limittmp == NULL) || (newsleep-&gt;time &lt; limittmp-&gt;time)) <em class='brace'>{</em>
+<a id='L254' name='L254'></a> 254           newsleep-&gt;next = (<a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a> *) <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;limits;
+<a id='L255' name='L255'></a> 255           <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;limits = (<a href='../S/208.html#L247' title='Defined at 247 in src/disksim_pfsim.h.'>sleep_event</a> *) newsleep;
+<a id='L256' name='L256'></a> 256           <strong class='reserved'>if</strong> (limittmp) <em class='brace'>{</em>
+<a id='L257' name='L257'></a> 257             limittmp-&gt;time -= newsleep-&gt;time;
+<a id='L258' name='L258'></a> 258           <em class='brace'>}</em>
+<a id='L259' name='L259'></a> 259         <em class='brace'>}</em> <strong class='reserved'>else</strong> <em class='brace'>{</em>
+<a id='L260' name='L260'></a> 260           newsleep-&gt;time -= limittmp-&gt;time;
+<a id='L261' name='L261'></a> 261           <strong class='reserved'>while</strong> ((limittmp-&gt;next) &amp;&amp; (newsleep-&gt;time &gt;= limittmp-&gt;next-&gt;time)) <em class='brace'>{</em>
+<a id='L262' name='L262'></a> 262             limittmp = (<a href='../S/208.html#L247' title='Defined at 247 in src/disksim_pfsim.h.'>sleep_event</a> *) limittmp-&gt;next;
+<a id='L263' name='L263'></a> 263             newsleep-&gt;time -= limittmp-&gt;time;
+<a id='L264' name='L264'></a> 264           <em class='brace'>}</em>
+<a id='L265' name='L265'></a> 265           newsleep-&gt;next = limittmp-&gt;next;
+<a id='L266' name='L266'></a> 266           limittmp-&gt;next = (<a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a> *) newsleep;
+<a id='L267' name='L267'></a> 267           <strong class='reserved'>if</strong> (newsleep-&gt;next) <em class='brace'>{</em>
+<a id='L268' name='L268'></a> 268             newsleep-&gt;next-&gt;time -= newsleep-&gt;time;
+<a id='L269' name='L269'></a> 269           <em class='brace'>}</em>
+<a id='L270' name='L270'></a> 270         <em class='brace'>}</em>
+<a id='L271' name='L271'></a> 271         newsleep = NULL;
+<a id='L272' name='L272'></a> 272       <em class='brace'>}</em>
+<a id='L273' name='L273'></a> 273    <em class='brace'>}</em> <strong class='reserved'>else</strong> <em class='brace'>{</em>
+<a id='L274' name='L274'></a> 274      new-&gt;next = (<a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *) procp-&gt;eventlist;
+<a id='L275' name='L275'></a> 275    <em class='brace'>}</em>
+<a id='L276' name='L276'></a> 276    
+<a id='L277' name='L277'></a> 277    procp-&gt;eventlist = (<a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a> *) new;
+<a id='L278' name='L278'></a> 278 
+<a id='L279' name='L279'></a> 279 synthio_check_genlimits:
+<a id='L280' name='L280'></a> 280    limittmp = <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;limits;
+<a id='L281' name='L281'></a> 281    <strong class='reserved'>while</strong> ((limittmp) &amp;&amp; (limittmp-&gt;time &lt; new-&gt;time)) <em class='brace'>{</em>
+<a id='L282' name='L282'></a> 282       <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;limits = (<a href='../S/208.html#L247' title='Defined at 247 in src/disksim_pfsim.h.'>sleep_event</a> *) limittmp-&gt;next;
+<a id='L283' name='L283'></a> 283       new-&gt;time -= limittmp-&gt;time;
+<a id='L284' name='L284'></a> 284       limittmp-&gt;next = (<a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a> *) new;
+<a id='L285' name='L285'></a> 285       <strong class='reserved'>if</strong> (prev) <em class='brace'>{</em>
+<a id='L286' name='L286'></a> 286          prev-&gt;next = (<a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a> *) limittmp;
+<a id='L287' name='L287'></a> 287       <em class='brace'>}</em> <strong class='reserved'>else</strong> <em class='brace'>{</em>
+<a id='L288' name='L288'></a> 288          procp-&gt;eventlist = (<a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a> *) limittmp;
+<a id='L289' name='L289'></a> 289       <em class='brace'>}</em>
+<a id='L290' name='L290'></a> 290       prev = (<a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a> *) limittmp;
+<a id='L291' name='L291'></a> 291       limittmp = <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;limits;
+<a id='L292' name='L292'></a> 292    <em class='brace'>}</em>
+<a id='L293' name='L293'></a> 293 
+<a id='L294' name='L294'></a> 294    <strong class='reserved'>if</strong> ((newsleep) &amp;&amp; (<a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;limits)) <em class='brace'>{</em>
+<a id='L295' name='L295'></a> 295       prev = (<a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a> *) new;
+<a id='L296' name='L296'></a> 296       new = (<a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *) newsleep;
+<a id='L297' name='L297'></a> 297       newsleep = NULL;
+<a id='L298' name='L298'></a> 298       <strong class='reserved'>goto</strong> synthio_check_genlimits;
+<a id='L299' name='L299'></a> 299    <em class='brace'>}</em>
+<a id='L300' name='L300'></a> 300 
+<a id='L301' name='L301'></a> 301 
+<a id='L302' name='L302'></a> 302    <em class='comment'>//fprintf (stderr, "New request %d, time %f, devno %d, blkno %d, bcount %d, flags %x\n", synthio_iocnt, new-&gt;time, new-&gt;devno, new-&gt;blkno, new-&gt;bcount, new-&gt;flags);</em>
+<a id='L303' name='L303'></a> 303 <em class='brace'>}</em>
+<a id='L304' name='L304'></a> 304 
+<a id='L305' name='L305'></a> 305 
+<a id='L306' name='L306'></a> 306 <strong class='reserved'>void</strong> <a href='../R/2171.html' title='Multiple referred from 2 places.'>synthio_initialize_generator</a> (<a href='../D/2200.html' title='Multiple defined in 2 places.'>process</a> *procp)
+<a id='L307' name='L307'></a> 307 <em class='brace'>{</em>
+<a id='L308' name='L308'></a> 308    <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *tmp;
+<a id='L309' name='L309'></a> 309    <a href='../S/213.html#L155' title='Defined at 155 in src/disksim_synthio.h.'>synthio_generator</a> *<a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>;
+<a id='L310' name='L310'></a> 310    <a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a> *evptr;
+<a id='L311' name='L311'></a> 311    <strong class='reserved'>double</strong> reqclass;
+<a id='L312' name='L312'></a> 312 
+<a id='L313' name='L313'></a> 313    evptr = <a href='../S/272.html#L193' title='Defined at 193 in src/disksim.c.'>getfromextraq</a>();
+<a id='L314' name='L314'></a> 314    evptr-&gt;time = 0.0;
+<a id='L315' name='L315'></a> 315    evptr-&gt;type = <a href='../S/208.html#L114' title='Defined at 114 in src/disksim_pfsim.h.'>SYNTHIO_EVENT</a>;
+<a id='L316' name='L316'></a> 316    evptr-&gt;next = NULL;
+<a id='L317' name='L317'></a> 317    procp-&gt;eventlist = evptr;
+<a id='L318' name='L318'></a> 318    <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a> = (<a href='../S/213.html#L155' title='Defined at 155 in src/disksim_synthio.h.'>synthio_generator</a> *) procp-&gt;space;
+<a id='L319' name='L319'></a> 319    <strong class='reserved'>if</strong> (<a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a> == NULL) <em class='brace'>{</em>
+<a id='L320' name='L320'></a> 320       fprintf(stderr, "Process with no synthetic generator in synthio_initialize\n");
+<a id='L321' name='L321'></a> 321       exit(1);
+<a id='L322' name='L322'></a> 322    <em class='brace'>}</em>
+<a id='L323' name='L323'></a> 323    tmp = (<a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *) <a href='../S/272.html#L193' title='Defined at 193 in src/disksim.c.'>getfromextraq</a>();
+<a id='L324' name='L324'></a> 324    tmp-&gt;time = -1.0;
+<a id='L325' name='L325'></a> 325    <strong class='reserved'>while</strong> (tmp-&gt;time &lt; 0.0) <em class='brace'>{</em>
+<a id='L326' name='L326'></a> 326       tmp-&gt;time = <a href='../S/216.html#L170' title='Defined at 170 in src/disksim_synthio.c.'>synthio_getrand</a>(&amp;<a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;genintr);
+<a id='L327' name='L327'></a> 327    <em class='brace'>}</em>
+<a id='L328' name='L328'></a> 328    tmp-&gt;flags = 0;
+<a id='L329' name='L329'></a> 329    tmp-&gt;cause = <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;number;
+<a id='L330' name='L330'></a> 330    tmp-&gt;devno = <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;devno[(<strong class='reserved'>int</strong>) (<a href='../D/323.html' title='Multiple defined in 2 places.'>DISKSIM_drand48</a>() * (<strong class='reserved'>double</strong>) <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;numdisks)];
+<a id='L331' name='L331'></a> 331    tmp-&gt;blkno = tmp-&gt;bcount = <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;blksperdisk;
+<a id='L332' name='L332'></a> 332    <strong class='reserved'>while</strong> (((tmp-&gt;blkno + tmp-&gt;bcount) &gt;= <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;blksperdisk) || (tmp-&gt;bcount == 0)) <em class='brace'>{</em>
+<a id='L333' name='L333'></a> 333       tmp-&gt;blkno = (<strong class='reserved'>int</strong>) (<a href='../D/323.html' title='Multiple defined in 2 places.'>DISKSIM_drand48</a>() * (<strong class='reserved'>double</strong>) <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;blksperdisk);
+<a id='L334' name='L334'></a> 334       tmp-&gt;bcount = ((<strong class='reserved'>int</strong>) <a href='../S/216.html#L170' title='Defined at 170 in src/disksim_synthio.c.'>synthio_getrand</a>(&amp;<a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;sizedist) + <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;blocksize - 1) / <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;blocksize;
+<a id='L335' name='L335'></a> 335    <em class='brace'>}</em>
+<a id='L336' name='L336'></a> 336    <strong class='reserved'>if</strong> (<a href='../D/323.html' title='Multiple defined in 2 places.'>DISKSIM_drand48</a>() &lt; <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;probread) <em class='brace'>{</em>
+<a id='L337' name='L337'></a> 337       tmp-&gt;flags |= <a href='../S/283.html#L193' title='Defined at 193 in src/disksim_global.h.'>READ</a>;
+<a id='L338' name='L338'></a> 338    <em class='brace'>}</em>
+<a id='L339' name='L339'></a> 339    reqclass = <a href='../D/323.html' title='Multiple defined in 2 places.'>DISKSIM_drand48</a>() - <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;probtmcrit;
+<a id='L340' name='L340'></a> 340    <strong class='reserved'>if</strong> (reqclass &lt; 0.0) <em class='brace'>{</em>
+<a id='L341' name='L341'></a> 341       tmp-&gt;flags |= <a href='../S/283.html#L194' title='Defined at 194 in src/disksim_global.h.'>TIME_CRITICAL</a>;
+<a id='L342' name='L342'></a> 342    <em class='brace'>}</em> <strong class='reserved'>else</strong> <strong class='reserved'>if</strong> (reqclass &lt; <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;probtmlim) <em class='brace'>{</em>
+<a id='L343' name='L343'></a> 343       tmp-&gt;flags |= <a href='../S/283.html#L195' title='Defined at 195 in src/disksim_global.h.'>TIME_LIMITED</a>;
+<a id='L344' name='L344'></a> 344    <em class='brace'>}</em>
+<a id='L345' name='L345'></a> 345    <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;pendio = tmp;
+<a id='L346' name='L346'></a> 346    <a href='../S/216.html#L190' title='Defined at 190 in src/disksim_synthio.c.'>synthio_appendio</a>(procp, tmp);
+<a id='L347' name='L347'></a> 347 
+<a id='L348' name='L348'></a> 348 fprintf (<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "Initialized synthio process #%d, first event at time %f\n", procp-&gt;pid, procp-&gt;eventlist-&gt;time);
+<a id='L349' name='L349'></a> 349 
+<a id='L350' name='L350'></a> 350 <em class='brace'>}</em>
+<a id='L351' name='L351'></a> 351 
+<a id='L352' name='L352'></a> 352 
+<a id='L353' name='L353'></a> 353 <strong class='reserved'>static</strong> <strong class='reserved'>int</strong> <a href='../S/216.html#L462' title='Referred from 462 in src/disksim_synthio.c.'>synthio_generatenextio</a> (<a href='../S/213.html#L155' title='Defined at 155 in src/disksim_synthio.h.'>synthio_generator</a> *<a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>)
+<a id='L354' name='L354'></a> 354 <em class='brace'>{</em>
+<a id='L355' name='L355'></a> 355    <strong class='reserved'>double</strong> type;
+<a id='L356' name='L356'></a> 356    <strong class='reserved'>double</strong> reqclass;
+<a id='L357' name='L357'></a> 357    <strong class='reserved'>int</strong> blkno;
+<a id='L358' name='L358'></a> 358    <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *tmp;
+<a id='L359' name='L359'></a> 359 
+<a id='L360' name='L360'></a> 360    <strong class='reserved'>if</strong> ((<a href='../S/283.html#L438' title='Defined at 438 in src/disksim_global.h.'>simtime</a> &gt;= <a href='../S/213.html#L177' title='Defined at 177 in src/disksim_synthio.h.'>synthio_endtime</a>) || (<a href='../S/213.html#L175' title='Defined at 175 in src/disksim_synthio.h.'>synthio_iocnt</a> &gt;= <a href='../S/213.html#L176' title='Defined at 176 in src/disksim_synthio.h.'>synthio_endiocnt</a>))
+<a id='L361' name='L361'></a> 361       <strong class='reserved'>return</strong> 0;
+<a id='L362' name='L362'></a> 362 
+<a id='L363' name='L363'></a> 363    tmp = <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;pendio;
+<a id='L364' name='L364'></a> 364    <strong class='reserved'>if</strong> (<a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;tracefile) <em class='brace'>{</em>
+<a id='L365' name='L365'></a> 365       <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;pendio = 
+<a id='L366' name='L366'></a> 366         (<a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *)<a href='../S/264.html#L643' title='Defined at 643 in src/disksim_iotrace.c.'>iotrace_get_ioreq_event</a>(<a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;tracefile, 
+<a id='L367' name='L367'></a> 367                                                <a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;traceformat, 
+<a id='L368' name='L368'></a> 368                                                tmp);
+<a id='L369' name='L369'></a> 369       <strong class='reserved'>if</strong> (<a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;pendio) <em class='brace'>{</em>
+<a id='L370' name='L370'></a> 370          tmp-&gt;cause = <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;number;
+<a id='L371' name='L371'></a> 371          <em class='comment'>/* tmp-&gt;time = 0; */</em>
+<a id='L372' name='L372'></a> 372       <em class='brace'>}</em> <strong class='reserved'>else</strong> <em class='brace'>{</em>
+<a id='L373' name='L373'></a> 373          fprintf(stderr, "Returning NULL event in synthio_generatenextio\n");
+<a id='L374' name='L374'></a> 374          <strong class='reserved'>return</strong> 0;
+<a id='L375' name='L375'></a> 375       <em class='brace'>}</em>
+<a id='L376' name='L376'></a> 376       <strong class='reserved'>return</strong> 1;
+<a id='L377' name='L377'></a> 377    <em class='brace'>}</em>
+<a id='L378' name='L378'></a> 378 
+<a id='L379' name='L379'></a> 379    type = <a href='../D/323.html' title='Multiple defined in 2 places.'>DISKSIM_drand48</a>();
+<a id='L380' name='L380'></a> 380 
+<a id='L381' name='L381'></a> 381    <strong class='reserved'>if</strong> ((type &lt; <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;probseq) &amp;&amp; 
+<a id='L382' name='L382'></a> 382        ((tmp-&gt;blkno + 2*tmp-&gt;bcount) &lt; <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;blksperdisk)) <em class='brace'>{</em>
+<a id='L383' name='L383'></a> 383 
+<a id='L384' name='L384'></a> 384      tmp-&gt;time = -1.0;
+<a id='L385' name='L385'></a> 385 
+<a id='L386' name='L386'></a> 386      <strong class='reserved'>while</strong> (tmp-&gt;time &lt; 0.0) <em class='brace'>{</em>
+<a id='L387' name='L387'></a> 387        tmp-&gt;time = <a href='../S/216.html#L170' title='Defined at 170 in src/disksim_synthio.c.'>synthio_getrand</a>(&amp;<a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;seqintr);
+<a id='L388' name='L388'></a> 388      <em class='brace'>}</em>
+<a id='L389' name='L389'></a> 389 
+<a id='L390' name='L390'></a> 390      tmp-&gt;flags = <a href='../S/283.html#L203' title='Defined at 203 in src/disksim_global.h.'>SEQ</a> | (tmp-&gt;flags &amp; <a href='../S/283.html#L193' title='Defined at 193 in src/disksim_global.h.'>READ</a>);
+<a id='L391' name='L391'></a> 391      tmp-&gt;cause = <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;number;
+<a id='L392' name='L392'></a> 392      tmp-&gt;blkno += tmp-&gt;bcount;
+<a id='L393' name='L393'></a> 393    <em class='brace'>}</em> 
+<a id='L394' name='L394'></a> 394    <strong class='reserved'>else</strong> <strong class='reserved'>if</strong> ((type &lt; (<a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;probseq + <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;probloc)) &amp;&amp; 
+<a id='L395' name='L395'></a> 395             (type &gt;= <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;probseq)) <em class='brace'>{</em>
+<a id='L396' name='L396'></a> 396 
+<a id='L397' name='L397'></a> 397      tmp-&gt;time = -1.0;
+<a id='L398' name='L398'></a> 398      <strong class='reserved'>while</strong> (tmp-&gt;time &lt; 0.0) <em class='brace'>{</em>
+<a id='L399' name='L399'></a> 399        tmp-&gt;time = <a href='../S/216.html#L170' title='Defined at 170 in src/disksim_synthio.c.'>synthio_getrand</a>(&amp;<a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;locintr);
+<a id='L400' name='L400'></a> 400      <em class='brace'>}</em>
+<a id='L401' name='L401'></a> 401      tmp-&gt;flags = <a href='../S/283.html#L204' title='Defined at 204 in src/disksim_global.h.'>LOCAL</a>;
+<a id='L402' name='L402'></a> 402      tmp-&gt;cause = <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;number;
+<a id='L403' name='L403'></a> 403      blkno = <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;blksperdisk;
+<a id='L404' name='L404'></a> 404      <strong class='reserved'>while</strong> (((blkno + tmp-&gt;bcount) &gt;= <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;blksperdisk) 
+<a id='L405' name='L405'></a> 405             || (blkno &lt; 0) 
+<a id='L406' name='L406'></a> 406             || (tmp-&gt;bcount &lt;= 0)) 
+<a id='L407' name='L407'></a> 407        <em class='brace'>{</em>
+<a id='L408' name='L408'></a> 408          blkno = tmp-&gt;blkno + 
+<a id='L409' name='L409'></a> 409            (<strong class='reserved'>int</strong>)<a href='../S/216.html#L170' title='Defined at 170 in src/disksim_synthio.c.'>synthio_getrand</a>(&amp;<a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;locdist) / <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;blocksize;
+<a id='L410' name='L410'></a> 410          tmp-&gt;bcount = ((<strong class='reserved'>int</strong>) <a href='../S/216.html#L170' title='Defined at 170 in src/disksim_synthio.c.'>synthio_getrand</a>(&amp;<a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;sizedist) + 
+<a id='L411' name='L411'></a> 411                         <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;blocksize - 1) / <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;blocksize;
+<a id='L412' name='L412'></a> 412        <em class='brace'>}</em>
+<a id='L413' name='L413'></a> 413      tmp-&gt;blkno = blkno;
+<a id='L414' name='L414'></a> 414      <strong class='reserved'>if</strong> (<a href='../D/323.html' title='Multiple defined in 2 places.'>DISKSIM_drand48</a>() &lt; <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;probread) <em class='brace'>{</em>
+<a id='L415' name='L415'></a> 415        tmp-&gt;flags |= <a href='../S/283.html#L193' title='Defined at 193 in src/disksim_global.h.'>READ</a>;
+<a id='L416' name='L416'></a> 416      <em class='brace'>}</em>
+<a id='L417' name='L417'></a> 417    <em class='brace'>}</em> 
+<a id='L418' name='L418'></a> 418    <strong class='reserved'>else</strong> <em class='brace'>{</em>
+<a id='L419' name='L419'></a> 419       tmp-&gt;time = -1.0;
+<a id='L420' name='L420'></a> 420       <strong class='reserved'>while</strong> (tmp-&gt;time &lt; 0.0) <em class='brace'>{</em>
+<a id='L421' name='L421'></a> 421         tmp-&gt;time = <a href='../S/216.html#L170' title='Defined at 170 in src/disksim_synthio.c.'>synthio_getrand</a>(&amp;<a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;genintr);
+<a id='L422' name='L422'></a> 422       <em class='brace'>}</em>
+<a id='L423' name='L423'></a> 423       tmp-&gt;flags = 0;
+<a id='L424' name='L424'></a> 424       tmp-&gt;cause = <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;number;
+<a id='L425' name='L425'></a> 425       tmp-&gt;devno = <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;devno[(<strong class='reserved'>int</strong>)(<a href='../D/323.html' title='Multiple defined in 2 places.'>DISKSIM_drand48</a>() * 
+<a id='L426' name='L426'></a> 426                                     (<strong class='reserved'>double</strong>)<a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;numdisks)];
+<a id='L427' name='L427'></a> 427 
+<a id='L428' name='L428'></a> 428       tmp-&gt;blkno = tmp-&gt;bcount = <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;blksperdisk;
+<a id='L429' name='L429'></a> 429       <strong class='reserved'>while</strong> (((tmp-&gt;blkno + tmp-&gt;bcount) &gt;= <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;blksperdisk) || 
+<a id='L430' name='L430'></a> 430              (tmp-&gt;bcount &lt;= 0)) <em class='brace'>{</em>
+<a id='L431' name='L431'></a> 431 
+<a id='L432' name='L432'></a> 432         tmp-&gt;blkno = (<strong class='reserved'>int</strong>) (<a href='../D/323.html' title='Multiple defined in 2 places.'>DISKSIM_drand48</a>() * (<strong class='reserved'>double</strong>)<a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;blksperdisk);
+<a id='L433' name='L433'></a> 433         tmp-&gt;bcount = ((<strong class='reserved'>int</strong>) <a href='../S/216.html#L170' title='Defined at 170 in src/disksim_synthio.c.'>synthio_getrand</a>(&amp;<a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;sizedist) + 
+<a id='L434' name='L434'></a> 434                        <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;blocksize - 1) / <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;blocksize;
+<a id='L435' name='L435'></a> 435       <em class='brace'>}</em>
+<a id='L436' name='L436'></a> 436 
+<a id='L437' name='L437'></a> 437       <strong class='reserved'>if</strong> (<a href='../D/323.html' title='Multiple defined in 2 places.'>DISKSIM_drand48</a>() &lt; <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;probread) <em class='brace'>{</em>
+<a id='L438' name='L438'></a> 438         tmp-&gt;flags = <a href='../S/283.html#L193' title='Defined at 193 in src/disksim_global.h.'>READ</a>;
+<a id='L439' name='L439'></a> 439       <em class='brace'>}</em>
+<a id='L440' name='L440'></a> 440    <em class='brace'>}</em>
+<a id='L441' name='L441'></a> 441    reqclass = <a href='../D/323.html' title='Multiple defined in 2 places.'>DISKSIM_drand48</a>() - <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;probtmcrit;
+<a id='L442' name='L442'></a> 442 
+<a id='L443' name='L443'></a> 443    <strong class='reserved'>if</strong> (reqclass &lt; 0.0) <em class='brace'>{</em>
+<a id='L444' name='L444'></a> 444      tmp-&gt;flags |= <a href='../S/283.html#L194' title='Defined at 194 in src/disksim_global.h.'>TIME_CRITICAL</a>;
+<a id='L445' name='L445'></a> 445    <em class='brace'>}</em> 
+<a id='L446' name='L446'></a> 446    <strong class='reserved'>else</strong> <strong class='reserved'>if</strong> (reqclass &lt; <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;probtmlim) <em class='brace'>{</em>
+<a id='L447' name='L447'></a> 447      tmp-&gt;flags |= <a href='../S/283.html#L195' title='Defined at 195 in src/disksim_global.h.'>TIME_LIMITED</a>;
+<a id='L448' name='L448'></a> 448    <em class='brace'>}</em>
+<a id='L449' name='L449'></a> 449    <strong class='reserved'>return</strong> 1;
+<a id='L450' name='L450'></a> 450 <em class='brace'>}</em>
+<a id='L451' name='L451'></a> 451 
+<a id='L452' name='L452'></a> 452 
+<a id='L453' name='L453'></a> 453 <strong class='reserved'>void</strong> <a href='../R/2159.html' title='Multiple referred from 2 places.'>synthio_generate_io_activity</a> (<a href='../D/2200.html' title='Multiple defined in 2 places.'>process</a> *procp)
+<a id='L454' name='L454'></a> 454 <em class='brace'>{</em>
+<a id='L455' name='L455'></a> 455    <a href='../S/213.html#L155' title='Defined at 155 in src/disksim_synthio.h.'>synthio_generator</a> *<a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>;
+<a id='L456' name='L456'></a> 456 
+<a id='L457' name='L457'></a> 457    <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a> = (<a href='../S/213.html#L155' title='Defined at 155 in src/disksim_synthio.h.'>synthio_generator</a> *) procp-&gt;space;
+<a id='L458' name='L458'></a> 458 
+<a id='L459' name='L459'></a> 459    <em class='comment'>//   fprintf (stderr, "simtime %f, endtime %f, iocnt %d, endiocnt %d\n", simtime, synthio_endtime, synthio_iocnt, synthio_endiocnt);</em>
+<a id='L460' name='L460'></a> 460    
+<a id='L461' name='L461'></a> 461    <a href='../S/213.html#L175' title='Defined at 175 in src/disksim_synthio.h.'>synthio_iocnt</a>++;
+<a id='L462' name='L462'></a> 462    <strong class='reserved'>if</strong> (<a href='../S/216.html#L353' title='Defined at 353 in src/disksim_synthio.c.'>synthio_generatenextio</a>(<a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>)) <em class='brace'>{</em>
+<a id='L463' name='L463'></a> 463       <a href='../S/216.html#L190' title='Defined at 190 in src/disksim_synthio.c.'>synthio_appendio</a>(procp, <a href='../S/213.html#L133' title='Defined at 133 in src/disksim_synthio.h.'>gen</a>-&gt;pendio);
+<a id='L464' name='L464'></a> 464    <em class='brace'>}</em> <strong class='reserved'>else</strong> <em class='brace'>{</em>
+<a id='L465' name='L465'></a> 465       <a href='../S/272.html#L706' title='Defined at 706 in src/disksim.c.'>disksim_simstop</a>();
+<a id='L466' name='L466'></a> 466    <em class='brace'>}</em>
+<a id='L467' name='L467'></a> 467 <em class='brace'>}</em>
+<a id='L468' name='L468'></a> 468 
+<a id='L469' name='L469'></a> 469 
+<a id='L470' name='L470'></a> 470 
+<a id='L471' name='L471'></a> 471 
+<a id='L472' name='L472'></a> 472 <strong class='reserved'>void</strong> <a href='../S/213.html#L118' title='Referred from 118 in src/disksim_synthio.h.'>synthio_resetstats</a>()
+<a id='L473' name='L473'></a> 473 <em class='brace'>{</em>
+<a id='L474' name='L474'></a> 474 <em class='brace'>}</em>
+<a id='L475' name='L475'></a> 475 
+<a id='L476' name='L476'></a> 476 
+<a id='L477' name='L477'></a> 477 <strong class='reserved'>void</strong> <a href='../S/213.html#L119' title='Referred from 119 in src/disksim_synthio.h.'>synthio_cleanstats</a>()
+<a id='L478' name='L478'></a> 478 <em class='brace'>{</em>
+<a id='L479' name='L479'></a> 479 <em class='brace'>}</em>
+<a id='L480' name='L480'></a> 480 
+<a id='L481' name='L481'></a> 481 
+<a id='L482' name='L482'></a> 482 <strong class='reserved'>void</strong> <a href='../S/213.html#L120' title='Referred from 120 in src/disksim_synthio.h.'>synthio_printstats</a>()
+<a id='L483' name='L483'></a> 483 <em class='brace'>{</em>
+<a id='L484' name='L484'></a> 484 <em class='brace'>}</em>
+<a id='L485' name='L485'></a> 485 
+<a id='L486' name='L486'></a> 486 
+<a id='L487' name='L487'></a> 487 <strong class='reserved'>static</strong> <strong class='reserved'>void</strong> <a href='../S/216.html#L605' title='Referred from 605 in src/disksim_synthio.c.'>synthio_read_uniform</a> (FILE *parfile, <a href='../S/213.html#L130' title='Defined at 130 in src/disksim_synthio.h.'>synthio_distr</a> *newdistr, <strong class='reserved'>double</strong> mult)
+<a id='L488' name='L488'></a> 488 <em class='brace'>{</em>
+<a id='L489' name='L489'></a> 489    newdistr-&gt;type = <a href='../S/216.html#L105' title='Defined at 105 in src/disksim_synthio.c.'>SYNTHIO_UNIFORM</a>;
+<a id='L490' name='L490'></a> 490    <strong class='reserved'>if</strong> (fscanf(parfile, "Minimum value: %lf\n", &amp;newdistr-&gt;base) != 1) <em class='brace'>{</em>
+<a id='L491' name='L491'></a> 491       fprintf(stderr, "Error reading 'minimum value'\n");
+<a id='L492' name='L492'></a> 492       exit(1);
+<a id='L493' name='L493'></a> 493    <em class='brace'>}</em>
+<a id='L494' name='L494'></a> 494    fprintf (<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "Minimum value: %f\n", newdistr-&gt;base);
+<a id='L495' name='L495'></a> 495    newdistr-&gt;base *= mult;
+<a id='L496' name='L496'></a> 496    <strong class='reserved'>if</strong> (fscanf(parfile, "Maximum value: %lf\n", &amp;newdistr-&gt;var) != 1) <em class='brace'>{</em>
+<a id='L497' name='L497'></a> 497       fprintf(stderr, "Error reading 'maximum value'\n");
+<a id='L498' name='L498'></a> 498       exit(1);
+<a id='L499' name='L499'></a> 499    <em class='brace'>}</em>
+<a id='L500' name='L500'></a> 500    fprintf (<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "Maximum value: %f\n", newdistr-&gt;var);
+<a id='L501' name='L501'></a> 501    newdistr-&gt;var *= mult;
+<a id='L502' name='L502'></a> 502    <strong class='reserved'>if</strong> (newdistr-&gt;var &lt;= newdistr-&gt;base) <em class='brace'>{</em>
+<a id='L503' name='L503'></a> 503       fprintf(stderr, "'maximum value' is not greater than 'minimum value' - %f &lt;= %f\n", newdistr-&gt;var, newdistr-&gt;base);
+<a id='L504' name='L504'></a> 504       exit(1);
+<a id='L505' name='L505'></a> 505    <em class='brace'>}</em>
+<a id='L506' name='L506'></a> 506 <em class='brace'>}</em>
+<a id='L507' name='L507'></a> 507 
+<a id='L508' name='L508'></a> 508 
+<a id='L509' name='L509'></a> 509 <strong class='reserved'>static</strong> <strong class='reserved'>void</strong> <a href='../S/216.html#L608' title='Referred from 608 in src/disksim_synthio.c.'>synthio_read_normal</a> (FILE *parfile, <a href='../S/213.html#L130' title='Defined at 130 in src/disksim_synthio.h.'>synthio_distr</a> *newdistr, <strong class='reserved'>double</strong> mult)
+<a id='L510' name='L510'></a> 510 <em class='brace'>{</em>
+<a id='L511' name='L511'></a> 511    newdistr-&gt;type = <a href='../S/216.html#L106' title='Defined at 106 in src/disksim_synthio.c.'>SYNTHIO_NORMAL</a>;
+<a id='L512' name='L512'></a> 512    <strong class='reserved'>if</strong> (fscanf(parfile, "Mean: %lf\n", &amp;newdistr-&gt;<a href='../S/102.html#L239' title='Defined at 239 in diskmodel/layout_g4_tools/g4_skews.c.'>mean</a>) != 1) <em class='brace'>{</em>
+<a id='L513' name='L513'></a> 513       fprintf(stderr, "Error reading normal mean\n");
+<a id='L514' name='L514'></a> 514       exit(1);
+<a id='L515' name='L515'></a> 515    <em class='brace'>}</em>
+<a id='L516' name='L516'></a> 516    fprintf (<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "Mean: %f\n", newdistr-&gt;<a href='../S/102.html#L239' title='Defined at 239 in diskmodel/layout_g4_tools/g4_skews.c.'>mean</a>);
+<a id='L517' name='L517'></a> 517    newdistr-&gt;<a href='../S/102.html#L239' title='Defined at 239 in diskmodel/layout_g4_tools/g4_skews.c.'>mean</a> *= mult;
+<a id='L518' name='L518'></a> 518    <strong class='reserved'>if</strong> (fscanf(parfile, "Variance: %lf\n", &amp;newdistr-&gt;var) != 1) <em class='brace'>{</em>
+<a id='L519' name='L519'></a> 519       fprintf(stderr, "Error reading normal variance\n");
+<a id='L520' name='L520'></a> 520       exit(1);
+<a id='L521' name='L521'></a> 521    <em class='brace'>}</em>
+<a id='L522' name='L522'></a> 522    fprintf (<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "Variance: %f\n", newdistr-&gt;var);
+<a id='L523' name='L523'></a> 523    <strong class='reserved'>if</strong> (newdistr-&gt;var &lt; 0) <em class='brace'>{</em>
+<a id='L524' name='L524'></a> 524       fprintf(stderr, "Invalid value for 'variance' - %f\n", newdistr-&gt;var);
+<a id='L525' name='L525'></a> 525       exit(1);
+<a id='L526' name='L526'></a> 526    <em class='brace'>}</em>
+<a id='L527' name='L527'></a> 527    newdistr-&gt;var = mult * sqrt(newdistr-&gt;var);
+<a id='L528' name='L528'></a> 528 <em class='brace'>}</em>
+<a id='L529' name='L529'></a> 529 
+<a id='L530' name='L530'></a> 530 
+<a id='L531' name='L531'></a> 531 <strong class='reserved'>static</strong> <strong class='reserved'>void</strong> <a href='../S/216.html#L611' title='Referred from 611 in src/disksim_synthio.c.'>synthio_read_exponential</a> (FILE *parfile, <a href='../S/213.html#L130' title='Defined at 130 in src/disksim_synthio.h.'>synthio_distr</a> *newdistr, <strong class='reserved'>double</strong> mult)
+<a id='L532' name='L532'></a> 532 <em class='brace'>{</em>
+<a id='L533' name='L533'></a> 533    newdistr-&gt;type = <a href='../S/216.html#L107' title='Defined at 107 in src/disksim_synthio.c.'>SYNTHIO_EXPONENTIAL</a>;
+<a id='L534' name='L534'></a> 534    <strong class='reserved'>if</strong> (fscanf(parfile, "Base value: %lf\n", &amp;newdistr-&gt;base) != 1) <em class='brace'>{</em>
+<a id='L535' name='L535'></a> 535       fprintf(stderr, "Error reading exponential base\n");
+<a id='L536' name='L536'></a> 536       exit(1);
+<a id='L537' name='L537'></a> 537    <em class='brace'>}</em>
+<a id='L538' name='L538'></a> 538    fprintf (<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "Base value: %f\n", newdistr-&gt;base);
+<a id='L539' name='L539'></a> 539    newdistr-&gt;base *= mult;
+<a id='L540' name='L540'></a> 540    <strong class='reserved'>if</strong> (fscanf(parfile, "Mean: %lf\n", &amp;newdistr-&gt;<a href='../S/102.html#L239' title='Defined at 239 in diskmodel/layout_g4_tools/g4_skews.c.'>mean</a>) != 1) <em class='brace'>{</em>
+<a id='L541' name='L541'></a> 541       fprintf(stderr, "Error reading exponential mean\n");
+<a id='L542' name='L542'></a> 542       exit(1);
+<a id='L543' name='L543'></a> 543    <em class='brace'>}</em>
+<a id='L544' name='L544'></a> 544    fprintf (<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "Mean: %f\n", newdistr-&gt;<a href='../S/102.html#L239' title='Defined at 239 in diskmodel/layout_g4_tools/g4_skews.c.'>mean</a>);
+<a id='L545' name='L545'></a> 545    newdistr-&gt;<a href='../S/102.html#L239' title='Defined at 239 in diskmodel/layout_g4_tools/g4_skews.c.'>mean</a> *= mult;
+<a id='L546' name='L546'></a> 546 <em class='brace'>}</em>
+<a id='L547' name='L547'></a> 547 
+<a id='L548' name='L548'></a> 548 
+<a id='L549' name='L549'></a> 549 <strong class='reserved'>static</strong> <strong class='reserved'>void</strong> <a href='../S/216.html#L614' title='Referred from 614 in src/disksim_synthio.c.'>synthio_read_poisson</a> (FILE *parfile, <a href='../S/213.html#L130' title='Defined at 130 in src/disksim_synthio.h.'>synthio_distr</a> *newdistr, <strong class='reserved'>double</strong> mult)
+<a id='L550' name='L550'></a> 550 <em class='brace'>{</em>
+<a id='L551' name='L551'></a> 551    newdistr-&gt;type = <a href='../S/216.html#L108' title='Defined at 108 in src/disksim_synthio.c.'>SYNTHIO_POISSON</a>;
+<a id='L552' name='L552'></a> 552    <strong class='reserved'>if</strong> (fscanf(parfile, "Base value: %lf\n", &amp;newdistr-&gt;base) != 1) <em class='brace'>{</em>
+<a id='L553' name='L553'></a> 553       fprintf(stderr, "Error reading 'base value'\n");
+<a id='L554' name='L554'></a> 554       exit(1);
+<a id='L555' name='L555'></a> 555    <em class='brace'>}</em>
+<a id='L556' name='L556'></a> 556    fprintf (<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "Base value: %f\n", newdistr-&gt;base);
+<a id='L557' name='L557'></a> 557    newdistr-&gt;base *= mult;
+<a id='L558' name='L558'></a> 558    <strong class='reserved'>if</strong> (fscanf(parfile, "Mean: %lf\n", &amp;newdistr-&gt;<a href='../S/102.html#L239' title='Defined at 239 in diskmodel/layout_g4_tools/g4_skews.c.'>mean</a>) != 1) <em class='brace'>{</em>
+<a id='L559' name='L559'></a> 559       fprintf(stderr, "Error reading poisson mean\n");
+<a id='L560' name='L560'></a> 560       exit(1);
+<a id='L561' name='L561'></a> 561    <em class='brace'>}</em>
+<a id='L562' name='L562'></a> 562    fprintf (<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "Mean: %f\n", newdistr-&gt;<a href='../S/102.html#L239' title='Defined at 239 in diskmodel/layout_g4_tools/g4_skews.c.'>mean</a>);
+<a id='L563' name='L563'></a> 563    newdistr-&gt;<a href='../S/102.html#L239' title='Defined at 239 in diskmodel/layout_g4_tools/g4_skews.c.'>mean</a> *= mult;
+<a id='L564' name='L564'></a> 564 <em class='brace'>}</em>
+<a id='L565' name='L565'></a> 565 
+<a id='L566' name='L566'></a> 566 
+<a id='L567' name='L567'></a> 567 <strong class='reserved'>static</strong> <strong class='reserved'>void</strong> <a href='../S/216.html#L617' title='Referred from 617 in src/disksim_synthio.c.'>synthio_read_twovalue</a> (FILE *parfile, <a href='../S/213.html#L130' title='Defined at 130 in src/disksim_synthio.h.'>synthio_distr</a> *newdistr, <strong class='reserved'>double</strong> mult)
+<a id='L568' name='L568'></a> 568 <em class='brace'>{</em>
+<a id='L569' name='L569'></a> 569    newdistr-&gt;type = <a href='../S/216.html#L109' title='Defined at 109 in src/disksim_synthio.c.'>SYNTHIO_TWOVALUE</a>;
+<a id='L570' name='L570'></a> 570    <strong class='reserved'>if</strong> (fscanf(parfile, "Default value: %lf\n", &amp;newdistr-&gt;base) != 1) <em class='brace'>{</em>
+<a id='L571' name='L571'></a> 571       fprintf(stderr, "Error reading 'default value'\n");
+<a id='L572' name='L572'></a> 572       exit(1);
+<a id='L573' name='L573'></a> 573    <em class='brace'>}</em>
+<a id='L574' name='L574'></a> 574    fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "Default value: %f\n", newdistr-&gt;base);
+<a id='L575' name='L575'></a> 575    newdistr-&gt;base *= mult;
+<a id='L576' name='L576'></a> 576    <strong class='reserved'>if</strong> (fscanf(parfile, "Second value: %lf\n", &amp;newdistr-&gt;<a href='../S/102.html#L239' title='Defined at 239 in diskmodel/layout_g4_tools/g4_skews.c.'>mean</a>) != 1) <em class='brace'>{</em>
+<a id='L577' name='L577'></a> 577       fprintf(stderr, "Error reading 'second value'\n");
+<a id='L578' name='L578'></a> 578       exit(1);
+<a id='L579' name='L579'></a> 579    <em class='brace'>}</em>
+<a id='L580' name='L580'></a> 580    fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "Second value: %f\n", newdistr-&gt;<a href='../S/102.html#L239' title='Defined at 239 in diskmodel/layout_g4_tools/g4_skews.c.'>mean</a>);
+<a id='L581' name='L581'></a> 581    newdistr-&gt;<a href='../S/102.html#L239' title='Defined at 239 in diskmodel/layout_g4_tools/g4_skews.c.'>mean</a> *= mult;
+<a id='L582' name='L582'></a> 582    <strong class='reserved'>if</strong> (fscanf(parfile, "Probability of second value: %lf\n", &amp;newdistr-&gt;var) != 1) <em class='brace'>{</em>
+<a id='L583' name='L583'></a> 583       fprintf(stderr, "Error reading 'probability of second value'\n");
+<a id='L584' name='L584'></a> 584       exit(1);
+<a id='L585' name='L585'></a> 585    <em class='brace'>}</em>
+<a id='L586' name='L586'></a> 586    <strong class='reserved'>if</strong> ((newdistr-&gt;var &lt; 0) || (newdistr-&gt;var &gt; 1)) <em class='brace'>{</em>
+<a id='L587' name='L587'></a> 587       fprintf(stderr, "Invalid probability of second value - %f\n", newdistr-&gt;var);
+<a id='L588' name='L588'></a> 588       exit(1);
+<a id='L589' name='L589'></a> 589    <em class='brace'>}</em>
+<a id='L590' name='L590'></a> 590    fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "Probability of second value: %f\n", newdistr-&gt;var);
+<a id='L591' name='L591'></a> 591 <em class='brace'>}</em>
+<a id='L592' name='L592'></a> 592 
+<a id='L593' name='L593'></a> 593 
+<a id='L594' name='L594'></a> 594 <strong class='reserved'>static</strong> <strong class='reserved'>void</strong> synthio_read_distr (FILE *parfile, <a href='../S/213.html#L130' title='Defined at 130 in src/disksim_synthio.h.'>synthio_distr</a> *newdistr, <strong class='reserved'>double</strong> mult)
+<a id='L595' name='L595'></a> 595 <em class='brace'>{</em>
+<a id='L596' name='L596'></a> 596    <strong class='reserved'>char</strong> type[80];
+<a id='L597' name='L597'></a> 597 
+<a id='L598' name='L598'></a> 598    <strong class='reserved'>if</strong> (fscanf(parfile, "Type of distribution: %s\n", type) != 1) <em class='brace'>{</em>
+<a id='L599' name='L599'></a> 599       fprintf(stderr, "Error reading 'type of distribution'\n");
+<a id='L600' name='L600'></a> 600       exit(1);
+<a id='L601' name='L601'></a> 601    <em class='brace'>}</em>
+<a id='L602' name='L602'></a> 602    fprintf (<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "Type of distribution: %s\n", type);
+<a id='L603' name='L603'></a> 603    <strong class='reserved'>switch</strong> (type[0]) <em class='brace'>{</em>
+<a id='L604' name='L604'></a> 604       <strong class='reserved'>case</strong> 'u':
+<a id='L605' name='L605'></a> 605                 <a href='../S/216.html#L487' title='Defined at 487 in src/disksim_synthio.c.'>synthio_read_uniform</a>(parfile, newdistr, mult);
+<a id='L606' name='L606'></a> 606                 <strong class='reserved'>break</strong>;
+<a id='L607' name='L607'></a> 607       <strong class='reserved'>case</strong> 'n':
+<a id='L608' name='L608'></a> 608                 <a href='../S/216.html#L509' title='Defined at 509 in src/disksim_synthio.c.'>synthio_read_normal</a>(parfile, newdistr, mult);
+<a id='L609' name='L609'></a> 609                 <strong class='reserved'>break</strong>;
+<a id='L610' name='L610'></a> 610       <strong class='reserved'>case</strong> 'e':
+<a id='L611' name='L611'></a> 611                 <a href='../S/216.html#L531' title='Defined at 531 in src/disksim_synthio.c.'>synthio_read_exponential</a>(parfile, newdistr, mult);
+<a id='L612' name='L612'></a> 612                 <strong class='reserved'>break</strong>;
+<a id='L613' name='L613'></a> 613       <strong class='reserved'>case</strong> 'p':
+<a id='L614' name='L614'></a> 614                 <a href='../S/216.html#L549' title='Defined at 549 in src/disksim_synthio.c.'>synthio_read_poisson</a>(parfile, newdistr, mult);
+<a id='L615' name='L615'></a> 615                 <strong class='reserved'>break</strong>;
+<a id='L616' name='L616'></a> 616       <strong class='reserved'>case</strong> 't':
+<a id='L617' name='L617'></a> 617                 <a href='../S/216.html#L567' title='Defined at 567 in src/disksim_synthio.c.'>synthio_read_twovalue</a>(parfile, newdistr, mult);
+<a id='L618' name='L618'></a> 618                 <strong class='reserved'>break</strong>;
+<a id='L619' name='L619'></a> 619       <strong class='reserved'>default</strong>:
+<a id='L620' name='L620'></a> 620                 fprintf(stderr, "Invalid value for 'type of distribution' - %s\n", type);
+<a id='L621' name='L621'></a> 621                 exit(1);
+<a id='L622' name='L622'></a> 622    <em class='brace'>}</em>
+<a id='L623' name='L623'></a> 623 
+<a id='L624' name='L624'></a> 624 <em class='brace'>}</em>
+<a id='L625' name='L625'></a> 625 
+<a id='L626' name='L626'></a> 626 
+<a id='L627' name='L627'></a> 627 <strong class='reserved'>static</strong> <strong class='reserved'>void</strong> <a href='../R/2155.html' title='Multiple referred from 6 places.'>synthio_distrcopy</a> (<a href='../S/213.html#L130' title='Defined at 130 in src/disksim_synthio.h.'>synthio_distr</a> *distr1, <a href='../S/213.html#L130' title='Defined at 130 in src/disksim_synthio.h.'>synthio_distr</a> *distr2)
+<a id='L628' name='L628'></a> 628 <em class='brace'>{</em>
+<a id='L629' name='L629'></a> 629    distr2-&gt;base = distr1-&gt;base;
+<a id='L630' name='L630'></a> 630    distr2-&gt;<a href='../S/102.html#L239' title='Defined at 239 in diskmodel/layout_g4_tools/g4_skews.c.'>mean</a> = distr1-&gt;<a href='../S/102.html#L239' title='Defined at 239 in diskmodel/layout_g4_tools/g4_skews.c.'>mean</a>;
+<a id='L631' name='L631'></a> 631    distr2-&gt;var = distr1-&gt;var;
+<a id='L632' name='L632'></a> 632    distr2-&gt;type = distr1-&gt;type;
+<a id='L633' name='L633'></a> 633 <em class='brace'>}</em>
+<a id='L634' name='L634'></a> 634 
+<a id='L635' name='L635'></a> 635 
+<a id='L636' name='L636'></a> 636 <strong class='reserved'>static</strong> <strong class='reserved'>void</strong> synthio_gencopy (<a href='../S/213.html#L155' title='Defined at 155 in src/disksim_synthio.h.'>synthio_generator</a> *gen1, <a href='../S/213.html#L155' title='Defined at 155 in src/disksim_synthio.h.'>synthio_generator</a> *gen2)
+<a id='L637' name='L637'></a> 637 <em class='brace'>{</em>
+<a id='L638' name='L638'></a> 638    gen2-&gt;probseq = gen1-&gt;probseq;
+<a id='L639' name='L639'></a> 639    gen2-&gt;probloc = gen1-&gt;probloc;
+<a id='L640' name='L640'></a> 640    gen2-&gt;probread = gen1-&gt;probread;
+<a id='L641' name='L641'></a> 641    gen2-&gt;probtmcrit = gen1-&gt;probtmcrit;
+<a id='L642' name='L642'></a> 642    gen2-&gt;probtmlim = gen1-&gt;probtmlim;
+<a id='L643' name='L643'></a> 643    gen2-&gt;tracefile = NULL; <em class='comment'>/* No good way to copy the descriptor */</em>
+<a id='L644' name='L644'></a> 644    gen2-&gt;pendio = NULL;
+<a id='L645' name='L645'></a> 645    gen2-&gt;limits = NULL;
+<a id='L646' name='L646'></a> 646    gen2-&gt;numdisks = gen1-&gt;numdisks;
+<a id='L647' name='L647'></a> 647    memcpy(gen2-&gt;devno, gen1-&gt;devno, gen1-&gt;numdisks * <strong class='reserved'>sizeof</strong>(<strong class='reserved'>int</strong>));
+<a id='L648' name='L648'></a> 648    gen2-&gt;numblocks = gen1-&gt;numblocks;
+<a id='L649' name='L649'></a> 649    gen2-&gt;sectsperdisk = gen1-&gt;sectsperdisk;
+<a id='L650' name='L650'></a> 650    gen2-&gt;blksperdisk = gen1-&gt;blksperdisk;
+<a id='L651' name='L651'></a> 651    gen2-&gt;blocksize = gen1-&gt;blocksize;
+<a id='L652' name='L652'></a> 652    <a href='../S/216.html#L627' title='Defined at 627 in src/disksim_synthio.c.'>synthio_distrcopy</a>(&amp;gen1-&gt;tmlimit, &amp;gen2-&gt;tmlimit);
+<a id='L653' name='L653'></a> 653    <a href='../S/216.html#L627' title='Defined at 627 in src/disksim_synthio.c.'>synthio_distrcopy</a>(&amp;gen1-&gt;genintr, &amp;gen2-&gt;genintr);
+<a id='L654' name='L654'></a> 654    <a href='../S/216.html#L627' title='Defined at 627 in src/disksim_synthio.c.'>synthio_distrcopy</a>(&amp;gen1-&gt;seqintr, &amp;gen2-&gt;seqintr);
+<a id='L655' name='L655'></a> 655    <a href='../S/216.html#L627' title='Defined at 627 in src/disksim_synthio.c.'>synthio_distrcopy</a>(&amp;gen1-&gt;locintr, &amp;gen2-&gt;locintr);
+<a id='L656' name='L656'></a> 656    <a href='../S/216.html#L627' title='Defined at 627 in src/disksim_synthio.c.'>synthio_distrcopy</a>(&amp;gen1-&gt;locdist, &amp;gen2-&gt;locdist);
+<a id='L657' name='L657'></a> 657    <a href='../S/216.html#L627' title='Defined at 627 in src/disksim_synthio.c.'>synthio_distrcopy</a>(&amp;gen1-&gt;sizedist, &amp;gen2-&gt;sizedist);
+<a id='L658' name='L658'></a> 658 <em class='brace'>}</em>
+<a id='L659' name='L659'></a> 659 
+<a id='L660' name='L660'></a> 660 
+<a id='L661' name='L661'></a> 661 
+<a id='L662' name='L662'></a> 662 
+<a id='L663' name='L663'></a> 663 
+<a id='L664' name='L664'></a> 664 <strong class='reserved'>int</strong> <a href='../S/216.html#L711' title='Defined at 711 in src/disksim_synthio.c.'>loadsynthgenerators</a>(<a href='../S/213.html#L155' title='Defined at 155 in src/disksim_synthio.h.'>synthio_generator</a> *result,
+<a id='L665' name='L665'></a> 665                         <strong class='reserved'>struct</strong> <a href='../S/118.html#L80' title='Defined at 80 in libparam/libparam.h.'>lp_list</a> *l);
+<a id='L666' name='L666'></a> 666 
+<a id='L667' name='L667'></a> 667 
+<a id='L668' name='L668'></a> 668 <em class='comment'>/*  static void add_gen(synthio_generator **a, int *len,  */</em>
+<a id='L669' name='L669'></a> 669 <em class='comment'>/*                  synthio_generator *newgen) { */</em>
+<a id='L670' name='L670'></a> 670 <em class='comment'>/*    int c, newlen; */</em>
+<a id='L671' name='L671'></a> 671 
+<a id='L672' name='L672'></a> 672 <em class='comment'>/*    for(c = 0; c &lt; (*len); c++) { */</em>
+<a id='L673' name='L673'></a> 673 <em class='comment'>/*      if(!a[c]) goto foundslot; */</em>
+<a id='L674' name='L674'></a> 674 <em class='comment'>/*    } */</em>
+<a id='L675' name='L675'></a> 675 
+<a id='L676' name='L676'></a> 676 <em class='comment'>/*    newlen = (*len) ? 2 *(*len) : 2; */</em>
+<a id='L677' name='L677'></a> 677 <em class='comment'>/*    a = realloc(a, newlen * sizeof(synthio_generator *)); */</em>
+<a id='L678' name='L678'></a> 678 <em class='comment'>/*    if(*len) */</em>
+<a id='L679' name='L679'></a> 679 <em class='comment'>/*      bzero(a + c, c * sizeof(synthio_generator *)); */</em>
+<a id='L680' name='L680'></a> 680 <em class='comment'>/*    else */</em>
+<a id='L681' name='L681'></a> 681 <em class='comment'>/*      bzero(a, 2 * sizeof(synthio_generator *)); */</em>
+<a id='L682' name='L682'></a> 682 
+<a id='L683' name='L683'></a> 683 <em class='comment'>/*   *l = newlen; */</em>
+<a id='L684' name='L684'></a> 684 
+<a id='L685' name='L685'></a> 685 <em class='comment'>/*   foundslot: */</em>
+<a id='L686' name='L686'></a> 686 <em class='comment'>/*   a[c] = newgen; */</em>
+<a id='L687' name='L687'></a> 687 
+<a id='L688' name='L688'></a> 688 
+<a id='L689' name='L689'></a> 689 <em class='comment'>/*  } */</em>
+<a id='L690' name='L690'></a> 690 
+<a id='L691' name='L691'></a> 691 <strong class='reserved'>int</strong> disksim_synthio_loadparams(<strong class='reserved'>struct</strong> <a href='../S/118.html#L245' title='Defined at 245 in libparam/libparam.h.'>lp_block</a> *b) <em class='brace'>{</em>
+<a id='L692' name='L692'></a> 692 
+<a id='L693' name='L693'></a> 693   <strong class='reserved'>if</strong>(!<a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;<a href='../S/213.html#L158' title='Defined at 158 in src/disksim_synthio.h.'>synthio_info</a>) <em class='brace'>{</em>
+<a id='L694' name='L694'></a> 694     <a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;<a href='../S/213.html#L158' title='Defined at 158 in src/disksim_synthio.h.'>synthio_info</a> = <a href='../S/219.html#L64' title='Defined at 64 in src/disksim_malloc.c.'>DISKSIM_malloc</a> (<strong class='reserved'>sizeof</strong>(<a href='../S/213.html#L169' title='Defined at 169 in src/disksim_synthio.h.'>synthio_info_t</a>));
+<a id='L695' name='L695'></a> 695     <a href='../D/957.html' title='Multiple defined in 2 places.'>bzero</a> ((<strong class='reserved'>char</strong> *)<a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;<a href='../S/213.html#L158' title='Defined at 158 in src/disksim_synthio.h.'>synthio_info</a>, <strong class='reserved'>sizeof</strong>(<a href='../S/213.html#L169' title='Defined at 169 in src/disksim_synthio.h.'>synthio_info_t</a>));
+<a id='L696' name='L696'></a> 696   <em class='brace'>}</em>
+<a id='L697' name='L697'></a> 697 
+<a id='L698' name='L698'></a> 698     
+<a id='L699' name='L699'></a> 699 <em class='comment'>/*    unparse_block(b, outputfile); */</em>
+<a id='L700' name='L700'></a> 700 
+<a id='L701' name='L701'></a> 701   <em class='comment'>//#include "modules/disksim_synthio_param.c"</em>
+<a id='L702' name='L702'></a> 702   <a href='../D/1940.html' title='Multiple defined in 2 places.'>lp_loadparams</a>(0, b, &amp;disksim_synthio_mod);
+<a id='L703' name='L703'></a> 703 
+<a id='L704' name='L704'></a> 704   <strong class='reserved'>return</strong> 1;
+<a id='L705' name='L705'></a> 705 <em class='brace'>}</em>
+<a id='L706' name='L706'></a> 706 
+<a id='L707' name='L707'></a> 707 
+<a id='L708' name='L708'></a> 708 <strong class='reserved'>static</strong> <strong class='reserved'>int</strong> <a href='../S/216.html#L872' title='Defined at 872 in src/disksim_synthio.c.'>loadgen</a>(<strong class='reserved'>struct</strong> <a href='../S/118.html#L245' title='Defined at 245 in libparam/libparam.h.'>lp_block</a> *b, <a href='../S/213.html#L155' title='Defined at 155 in src/disksim_synthio.h.'>synthio_generator</a> **result);
+<a id='L709' name='L709'></a> 709 
+<a id='L710' name='L710'></a> 710 <strong class='reserved'>int</strong> 
+<a id='L711' name='L711'></a> 711 <a href='../S/216.html#L664' title='Referred from 664 in src/disksim_synthio.c.'>loadsynthgenerators</a>(<a href='../S/213.html#L155' title='Defined at 155 in src/disksim_synthio.h.'>synthio_generator</a> *junk,
+<a id='L712' name='L712'></a> 712                     <strong class='reserved'>struct</strong> <a href='../S/118.html#L80' title='Defined at 80 in libparam/libparam.h.'>lp_list</a> *l)
+<a id='L713' name='L713'></a> 713 <em class='brace'>{</em>
+<a id='L714' name='L714'></a> 714   <strong class='reserved'>int</strong> c;
+<a id='L715' name='L715'></a> 715   <a href='../D/2200.html' title='Multiple defined in 2 places.'>process</a> *procp;
+<a id='L716' name='L716'></a> 716   <strong class='reserved'>int</strong> <a href='../S/262.html#L116' title='Defined at 116 in src/disksim_bus.h.'>slot</a> = 0;
+<a id='L717' name='L717'></a> 717 
+<a id='L718' name='L718'></a> 718   <strong class='reserved'>if</strong>(<a href='../S/213.html#L173' title='Defined at 173 in src/disksim_synthio.h.'>synthio_gens</a>) <em class='brace'>{</em>
+<a id='L719' name='L719'></a> 719     fprintf(stderr, "*** error: tried to redefine synth. I/O generators.\n");
+<a id='L720' name='L720'></a> 720     <strong class='reserved'>return</strong> -1;
+<a id='L721' name='L721'></a> 721   <em class='brace'>}</em>
+<a id='L722' name='L722'></a> 722 
+<a id='L723' name='L723'></a> 723   <a href='../S/213.html#L173' title='Defined at 173 in src/disksim_synthio.h.'>synthio_gens</a> = <a href='../S/73.html#L58' title='Defined at 58 in diskmodel/dm_config.h.'>malloc</a>(l-&gt;values_len * <strong class='reserved'>sizeof</strong>(<a href='../S/213.html#L155' title='Defined at 155 in src/disksim_synthio.h.'>synthio_generator</a>));
+<a id='L724' name='L724'></a> 724   <a href='../D/957.html' title='Multiple defined in 2 places.'>bzero</a>(<a href='../S/213.html#L173' title='Defined at 173 in src/disksim_synthio.h.'>synthio_gens</a>, l-&gt;values_len * <strong class='reserved'>sizeof</strong>(<a href='../S/213.html#L155' title='Defined at 155 in src/disksim_synthio.h.'>synthio_generator</a>));
+<a id='L725' name='L725'></a> 725   <a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;<a href='../S/213.html#L158' title='Defined at 158 in src/disksim_synthio.h.'>synthio_info</a>-&gt;synthio_gens_len = l-&gt;values_len;
+<a id='L726' name='L726'></a> 726 
+<a id='L727' name='L727'></a> 727   <strong class='reserved'>for</strong>(c = 0; c &lt; l-&gt;values_len; c++) <em class='brace'>{</em>
+<a id='L728' name='L728'></a> 728     <strong class='reserved'>if</strong>(!l-&gt;values[c]) <strong class='reserved'>continue</strong>;
+<a id='L729' name='L729'></a> 729 
+<a id='L730' name='L730'></a> 730     <strong class='reserved'>if</strong>(l-&gt;values[c]-&gt;t != <a href='../D/30.html' title='Multiple defined in 2 places.'>BLOCK</a>) <em class='brace'>{</em>
+<a id='L731' name='L731'></a> 731       fprintf(stderr, "*** error: bad synthio io generator spec -- must be a block.\n");
+<a id='L732' name='L732'></a> 732       <strong class='reserved'>return</strong> -1;
+<a id='L733' name='L733'></a> 733     <em class='brace'>}</em>
+<a id='L734' name='L734'></a> 734 
+<a id='L735' name='L735'></a> 735     <strong class='reserved'>if</strong>(<a href='../S/216.html#L872' title='Defined at 872 in src/disksim_synthio.c.'>loadgen</a>(l-&gt;values[c]-&gt;v.b, &amp;<a href='../S/213.html#L173' title='Defined at 173 in src/disksim_synthio.h.'>synthio_gens</a>[<a href='../S/262.html#L116' title='Defined at 116 in src/disksim_bus.h.'>slot</a>]))
+<a id='L736' name='L736'></a> 736       <strong class='reserved'>return</strong> -1;
+<a id='L737' name='L737'></a> 737 
+<a id='L738' name='L738'></a> 738     <a href='../S/262.html#L116' title='Defined at 116 in src/disksim_bus.h.'>slot</a>++;
+<a id='L739' name='L739'></a> 739   <em class='brace'>}</em>
+<a id='L740' name='L740'></a> 740 
+<a id='L741' name='L741'></a> 741   <strong class='reserved'>for</strong>(c = 0; c &lt; <a href='../S/262.html#L116' title='Defined at 116 in src/disksim_bus.h.'>slot</a>; c++) <em class='brace'>{</em>
+<a id='L742' name='L742'></a> 742     procp = <a href='../S/191.html#L193' title='Defined at 193 in src/disksim_pfsim.c.'>pf_new_process</a>(); 
+<a id='L743' name='L743'></a> 743     <em class='comment'>// XXX ??</em>
+<a id='L744' name='L744'></a> 744     procp-&gt;space = (<strong class='reserved'>char</strong> *)<a href='../S/213.html#L173' title='Defined at 173 in src/disksim_synthio.h.'>synthio_gens</a>[c];
+<a id='L745' name='L745'></a> 745     <a href='../S/213.html#L173' title='Defined at 173 in src/disksim_synthio.h.'>synthio_gens</a>[c]-&gt;number = c;
+<a id='L746' name='L746'></a> 746   <em class='brace'>}</em>
+<a id='L747' name='L747'></a> 747 
+<a id='L748' name='L748'></a> 748   <a href='../S/213.html#L174' title='Defined at 174 in src/disksim_synthio.h.'>synthio_gencnt</a> = <a href='../S/262.html#L116' title='Defined at 116 in src/disksim_bus.h.'>slot</a>;
+<a id='L749' name='L749'></a> 749   <strong class='reserved'>return</strong> 0;
+<a id='L750' name='L750'></a> 750 <em class='brace'>}</em>
+<a id='L751' name='L751'></a> 751 
+<a id='L752' name='L752'></a> 752 
+<a id='L753' name='L753'></a> 753 <strong class='reserved'>static</strong> <strong class='reserved'>char</strong> *distnames[] = <em class='brace'>{</em>
+<a id='L754' name='L754'></a> 754   "uniform",
+<a id='L755' name='L755'></a> 755   "normal",
+<a id='L756' name='L756'></a> 756   "exponential",
+<a id='L757' name='L757'></a> 757   "poisson",
+<a id='L758' name='L758'></a> 758   "twovalue"
+<a id='L759' name='L759'></a> 759 <em class='brace'>}</em>;
+<a id='L760' name='L760'></a> 760 
+<a id='L761' name='L761'></a> 761 <strong class='reserved'>static</strong> <strong class='reserved'>int</strong> <a href='../R/1149.html' title='Multiple referred from 13 places.'>distname</a>(<strong class='reserved'>char</strong> *name) <em class='brace'>{</em>
+<a id='L762' name='L762'></a> 762   <strong class='reserved'>int</strong> c;
+<a id='L763' name='L763'></a> 763   <strong class='reserved'>for</strong>(c = <a href='../S/216.html#L105' title='Defined at 105 in src/disksim_synthio.c.'>SYNTHIO_UNIFORM</a>; c &lt;= <a href='../S/216.html#L109' title='Defined at 109 in src/disksim_synthio.c.'>SYNTHIO_TWOVALUE</a>; c++) <em class='brace'>{</em>
+<a id='L764' name='L764'></a> 764     <strong class='reserved'>if</strong>(!strcmp(name, distnames[c])) <strong class='reserved'>return</strong> c;
+<a id='L765' name='L765'></a> 765   <em class='brace'>}</em>
+<a id='L766' name='L766'></a> 766   <strong class='reserved'>return</strong> -1;
+<a id='L767' name='L767'></a> 767 <em class='brace'>}</em>
+<a id='L768' name='L768'></a> 768 
+<a id='L769' name='L769'></a> 769 <strong class='reserved'>int</strong> loaddistn(<strong class='reserved'>struct</strong> <a href='../S/118.html#L80' title='Defined at 80 in libparam/libparam.h.'>lp_list</a> *l, <strong class='reserved'>struct</strong> <a href='../S/213.html#L125' title='Defined at 125 in src/disksim_synthio.h.'>dist</a> *result) <em class='brace'>{</em>
+<a id='L770' name='L770'></a> 770   <strong class='reserved'>int</strong> d;
+<a id='L771' name='L771'></a> 771   <strong class='reserved'>char</strong> *type;
+<a id='L772' name='L772'></a> 772 
+<a id='L773' name='L773'></a> 773   <strong class='reserved'>if</strong>(!l-&gt;values[0]) <em class='brace'>{</em>
+<a id='L774' name='L774'></a> 774     <strong class='reserved'>return</strong> -1;
+<a id='L775' name='L775'></a> 775   <em class='brace'>}</em>
+<a id='L776' name='L776'></a> 776   <strong class='reserved'>else</strong> <strong class='reserved'>if</strong>(l-&gt;values[0]-&gt;t != <a href='../S/118.html#L60' title='Defined at 60 in libparam/libparam.h.'>S</a>) <em class='brace'>{</em>
+<a id='L777' name='L777'></a> 777     <strong class='reserved'>return</strong> -1;
+<a id='L778' name='L778'></a> 778   <em class='brace'>}</em>
+<a id='L779' name='L779'></a> 779   type = l-&gt;values[0]-&gt;v.s;
+<a id='L780' name='L780'></a> 780 
+<a id='L781' name='L781'></a> 781   result-&gt;type = <a href='../S/216.html#L761' title='Defined at 761 in src/disksim_synthio.c.'>distname</a>(type);
+<a id='L782' name='L782'></a> 782   <strong class='reserved'>switch</strong>(result-&gt;type) <em class='brace'>{</em>
+<a id='L783' name='L783'></a> 783 
+<a id='L784' name='L784'></a> 784   <strong class='reserved'>case</strong> <a href='../S/216.html#L105' title='Defined at 105 in src/disksim_synthio.c.'>SYNTHIO_UNIFORM</a>:
+<a id='L785' name='L785'></a> 785     <strong class='reserved'>if</strong>(l-&gt;values_len &lt; 3) <em class='brace'>{</em>
+<a id='L786' name='L786'></a> 786 
+<a id='L787' name='L787'></a> 787     <em class='brace'>}</em>
+<a id='L788' name='L788'></a> 788     <strong class='reserved'>for</strong>(d = 1; d &lt;= 3; d++) <em class='brace'>{</em>
+<a id='L789' name='L789'></a> 789       <strong class='reserved'>if</strong>(!l-&gt;values[d]) <em class='brace'>{</em> <em class='brace'>}</em>
+<a id='L790' name='L790'></a> 790       <strong class='reserved'>else</strong> <strong class='reserved'>if</strong>(l-&gt;values[d]-&gt;t != <a href='../S/118.html#L62' title='Defined at 62 in libparam/libparam.h.'>D</a>) <em class='brace'>{</em> <em class='brace'>}</em>
+<a id='L791' name='L791'></a> 791     <em class='brace'>}</em>
+<a id='L792' name='L792'></a> 792 
+<a id='L793' name='L793'></a> 793     result-&gt;base = l-&gt;values[1]-&gt;v.d;
+<a id='L794' name='L794'></a> 794     result-&gt;var = l-&gt;values[2]-&gt;v.d;
+<a id='L795' name='L795'></a> 795     <strong class='reserved'>break</strong>;
+<a id='L796' name='L796'></a> 796 
+<a id='L797' name='L797'></a> 797   <strong class='reserved'>case</strong> <a href='../S/216.html#L106' title='Defined at 106 in src/disksim_synthio.c.'>SYNTHIO_NORMAL</a>:
+<a id='L798' name='L798'></a> 798     <strong class='reserved'>if</strong>(l-&gt;values_len &lt; 3) <em class='brace'>{</em>
+<a id='L799' name='L799'></a> 799 
+<a id='L800' name='L800'></a> 800     <em class='brace'>}</em>
+<a id='L801' name='L801'></a> 801     <strong class='reserved'>for</strong>(d = 1; d &lt;= 3; d++) <em class='brace'>{</em>
+<a id='L802' name='L802'></a> 802       <strong class='reserved'>if</strong>(!l-&gt;values[d]) <em class='brace'>{</em> <em class='brace'>}</em>
+<a id='L803' name='L803'></a> 803       <strong class='reserved'>else</strong> <strong class='reserved'>if</strong>(l-&gt;values[d]-&gt;t != <a href='../S/118.html#L62' title='Defined at 62 in libparam/libparam.h.'>D</a>) <em class='brace'>{</em> <em class='brace'>}</em>
+<a id='L804' name='L804'></a> 804     <em class='brace'>}</em>
+<a id='L805' name='L805'></a> 805 
+<a id='L806' name='L806'></a> 806 <em class='comment'>/*      result-&gt;base = l-&gt;values[1]-&gt;v.d; */</em>
+<a id='L807' name='L807'></a> 807     result-&gt;<a href='../S/102.html#L239' title='Defined at 239 in diskmodel/layout_g4_tools/g4_skews.c.'>mean</a> = l-&gt;values[1]-&gt;v.d; 
+<a id='L808' name='L808'></a> 808     result-&gt;var = l-&gt;values[2]-&gt;v.d;
+<a id='L809' name='L809'></a> 809     <strong class='reserved'>break</strong>;
+<a id='L810' name='L810'></a> 810 
+<a id='L811' name='L811'></a> 811   <strong class='reserved'>case</strong> <a href='../S/216.html#L107' title='Defined at 107 in src/disksim_synthio.c.'>SYNTHIO_EXPONENTIAL</a>:
+<a id='L812' name='L812'></a> 812     <strong class='reserved'>if</strong>(l-&gt;values_len &lt; 3) <em class='brace'>{</em>
+<a id='L813' name='L813'></a> 813 
+<a id='L814' name='L814'></a> 814     <em class='brace'>}</em>
+<a id='L815' name='L815'></a> 815     <strong class='reserved'>for</strong>(d = 1; d &lt;= 3; d++) <em class='brace'>{</em>
+<a id='L816' name='L816'></a> 816       <strong class='reserved'>if</strong>(!l-&gt;values[d]) <em class='brace'>{</em> <em class='brace'>}</em>
+<a id='L817' name='L817'></a> 817       <strong class='reserved'>else</strong> <strong class='reserved'>if</strong>(l-&gt;values[d]-&gt;t != <a href='../S/118.html#L62' title='Defined at 62 in libparam/libparam.h.'>D</a>) <em class='brace'>{</em> <em class='brace'>}</em>
+<a id='L818' name='L818'></a> 818     <em class='brace'>}</em>
+<a id='L819' name='L819'></a> 819 
+<a id='L820' name='L820'></a> 820     result-&gt;base = l-&gt;values[1]-&gt;v.d;
+<a id='L821' name='L821'></a> 821     result-&gt;<a href='../S/102.html#L239' title='Defined at 239 in diskmodel/layout_g4_tools/g4_skews.c.'>mean</a> = l-&gt;values[2]-&gt;v.d;
+<a id='L822' name='L822'></a> 822     <strong class='reserved'>break</strong>;
+<a id='L823' name='L823'></a> 823 
+<a id='L824' name='L824'></a> 824   <strong class='reserved'>case</strong> <a href='../S/216.html#L108' title='Defined at 108 in src/disksim_synthio.c.'>SYNTHIO_POISSON</a>:
+<a id='L825' name='L825'></a> 825     <strong class='reserved'>if</strong>(l-&gt;values_len &lt; 3) <em class='brace'>{</em>
+<a id='L826' name='L826'></a> 826 
+<a id='L827' name='L827'></a> 827     <em class='brace'>}</em>
+<a id='L828' name='L828'></a> 828     <strong class='reserved'>for</strong>(d = 1; d &lt;= 3; d++) <em class='brace'>{</em>
+<a id='L829' name='L829'></a> 829       <strong class='reserved'>if</strong>(!l-&gt;values[d]) <em class='brace'>{</em> <em class='brace'>}</em>
+<a id='L830' name='L830'></a> 830       <strong class='reserved'>else</strong> <strong class='reserved'>if</strong>(l-&gt;values[d]-&gt;t != <a href='../S/118.html#L62' title='Defined at 62 in libparam/libparam.h.'>D</a>) <em class='brace'>{</em> <em class='brace'>}</em>
+<a id='L831' name='L831'></a> 831     <em class='brace'>}</em>
+<a id='L832' name='L832'></a> 832 
+<a id='L833' name='L833'></a> 833     result-&gt;base = l-&gt;values[1]-&gt;v.d;
+<a id='L834' name='L834'></a> 834     result-&gt;<a href='../S/102.html#L239' title='Defined at 239 in diskmodel/layout_g4_tools/g4_skews.c.'>mean</a> = l-&gt;values[2]-&gt;v.d;
+<a id='L835' name='L835'></a> 835     <strong class='reserved'>break</strong>;
+<a id='L836' name='L836'></a> 836 
+<a id='L837' name='L837'></a> 837   <strong class='reserved'>case</strong> <a href='../S/216.html#L109' title='Defined at 109 in src/disksim_synthio.c.'>SYNTHIO_TWOVALUE</a>:
+<a id='L838' name='L838'></a> 838     <strong class='reserved'>if</strong>(l-&gt;values_len &lt; 4) <em class='brace'>{</em>
+<a id='L839' name='L839'></a> 839 
+<a id='L840' name='L840'></a> 840     <em class='brace'>}</em>
+<a id='L841' name='L841'></a> 841     <strong class='reserved'>for</strong>(d = 1; d &lt;= 4; d++) <em class='brace'>{</em>
+<a id='L842' name='L842'></a> 842       <strong class='reserved'>if</strong>(!l-&gt;values[d]) <em class='brace'>{</em> <em class='brace'>}</em>
+<a id='L843' name='L843'></a> 843       <strong class='reserved'>else</strong> <strong class='reserved'>if</strong>(l-&gt;values[d]-&gt;t != <a href='../S/118.html#L62' title='Defined at 62 in libparam/libparam.h.'>D</a>) <em class='brace'>{</em> <em class='brace'>}</em>
+<a id='L844' name='L844'></a> 844     <em class='brace'>}</em>
+<a id='L845' name='L845'></a> 845 
+<a id='L846' name='L846'></a> 846     result-&gt;base = l-&gt;values[1]-&gt;v.d;
+<a id='L847' name='L847'></a> 847     result-&gt;<a href='../S/102.html#L239' title='Defined at 239 in diskmodel/layout_g4_tools/g4_skews.c.'>mean</a> = l-&gt;values[2]-&gt;v.d;
+<a id='L848' name='L848'></a> 848     result-&gt;var = l-&gt;values[3]-&gt;v.d;
+<a id='L849' name='L849'></a> 849     <strong class='reserved'>if</strong>(!<a href='../S/118.html#L227' title='Defined at 227 in libparam/libparam.h.'>RANGE</a>(result-&gt;var,0.0,1.0)) <em class='brace'>{</em>
+<a id='L850' name='L850'></a> 850 
+<a id='L851' name='L851'></a> 851     <em class='brace'>}</em>
+<a id='L852' name='L852'></a> 852     <strong class='reserved'>break</strong>;
+<a id='L853' name='L853'></a> 853 
+<a id='L854' name='L854'></a> 854   <strong class='reserved'>default</strong>:
+<a id='L855' name='L855'></a> 855     fprintf(stderr, "*** error: unknown distribution: %s\n", type);
+<a id='L856' name='L856'></a> 856     <strong class='reserved'>return</strong> -1;
+<a id='L857' name='L857'></a> 857     <strong class='reserved'>break</strong>;
+<a id='L858' name='L858'></a> 858   <em class='brace'>}</em>
+<a id='L859' name='L859'></a> 859 
+<a id='L860' name='L860'></a> 860 
+<a id='L861' name='L861'></a> 861   <strong class='reserved'>return</strong> 0;
+<a id='L862' name='L862'></a> 862 <em class='brace'>}</em>
+<a id='L863' name='L863'></a> 863 
+<a id='L864' name='L864'></a> 864 <em class='comment'>/* this is a dummy that should never be called */</em>
+<a id='L865' name='L865'></a> 865 <strong class='reserved'>int</strong> disksim_synthgen_loadparams(<strong class='reserved'>struct</strong> <a href='../S/118.html#L245' title='Defined at 245 in libparam/libparam.h.'>lp_block</a> *b) <em class='brace'>{</em> 
+<a id='L866' name='L866'></a> 866   <a href='../D/1152.html' title='Multiple defined in 2 places.'>ddbg_assert2</a>(0, "this is a dummy that isn't supposed to be called");
+<a id='L867' name='L867'></a> 867   <strong class='reserved'>return</strong> 0;
+<a id='L868' name='L868'></a> 868 <em class='brace'>}</em>
+<a id='L869' name='L869'></a> 869 
+<a id='L870' name='L870'></a> 870 <strong class='reserved'>int</strong> <a href='../S/216.html#L889' title='Defined at 889 in src/disksim_synthio.c.'>loadsynthdevs</a>(<a href='../S/213.html#L155' title='Defined at 155 in src/disksim_synthio.h.'>synthio_generator</a> *result, <strong class='reserved'>struct</strong> <a href='../S/118.html#L80' title='Defined at 80 in libparam/libparam.h.'>lp_list</a> *l);
+<a id='L871' name='L871'></a> 871 
+<a id='L872' name='L872'></a> 872 <strong class='reserved'>static</strong> <strong class='reserved'>int</strong> <a href='../R/1570.html' title='Multiple referred from 2 places.'>loadgen</a>(<strong class='reserved'>struct</strong> <a href='../S/118.html#L245' title='Defined at 245 in libparam/libparam.h.'>lp_block</a> *b, <a href='../S/213.html#L155' title='Defined at 155 in src/disksim_synthio.h.'>synthio_generator</a> **result) <em class='brace'>{</em>
+<a id='L873' name='L873'></a> 873 
+<a id='L874' name='L874'></a> 874   (*result) = <a href='../S/73.html#L58' title='Defined at 58 in diskmodel/dm_config.h.'>malloc</a>(<strong class='reserved'>sizeof</strong>(<a href='../S/213.html#L155' title='Defined at 155 in src/disksim_synthio.h.'>synthio_generator</a>));
+<a id='L875' name='L875'></a> 875   <a href='../D/957.html' title='Multiple defined in 2 places.'>bzero</a>((*result), <strong class='reserved'>sizeof</strong>(<a href='../S/213.html#L155' title='Defined at 155 in src/disksim_synthio.h.'>synthio_generator</a>));
+<a id='L876' name='L876'></a> 876 
+<a id='L877' name='L877'></a> 877   <em class='comment'>//#include "modules/disksim_synthgen_param.c"</em>
+<a id='L878' name='L878'></a> 878   <a href='../D/1940.html' title='Multiple defined in 2 places.'>lp_loadparams</a>(result, b, &amp;disksim_synthgen_mod);
+<a id='L879' name='L879'></a> 879 
+<a id='L880' name='L880'></a> 880   (*result)-&gt;numblocks = (*result)-&gt;sectsperdisk * (*result)-&gt;numdisks; 
+<a id='L881' name='L881'></a> 881   (*result)-&gt;blksperdisk = (*result)-&gt;sectsperdisk / (*result)-&gt;blocksize;
+<a id='L882' name='L882'></a> 882 
+<a id='L883' name='L883'></a> 883   <strong class='reserved'>return</strong> 0;
+<a id='L884' name='L884'></a> 884 <em class='brace'>}</em>
+<a id='L885' name='L885'></a> 885 
+<a id='L886' name='L886'></a> 886 
+<a id='L887' name='L887'></a> 887 
+<a id='L888' name='L888'></a> 888 <strong class='reserved'>int</strong> 
+<a id='L889' name='L889'></a> 889 <a href='../S/216.html#L870' title='Referred from 870 in src/disksim_synthio.c.'>loadsynthdevs</a>(<a href='../S/213.html#L155' title='Defined at 155 in src/disksim_synthio.h.'>synthio_generator</a> *result, <strong class='reserved'>struct</strong> <a href='../S/118.html#L80' title='Defined at 80 in libparam/libparam.h.'>lp_list</a> *l)
+<a id='L890' name='L890'></a> 890 <em class='brace'>{</em>
+<a id='L891' name='L891'></a> 891   <strong class='reserved'>int</strong> c;
+<a id='L892' name='L892'></a> 892   <strong class='reserved'>int</strong> num, type;
+<a id='L893' name='L893'></a> 893   <strong class='reserved'>char</strong> *name;
+<a id='L894' name='L894'></a> 894   <strong class='reserved'>int</strong> <a href='../S/262.html#L116' title='Defined at 116 in src/disksim_bus.h.'>slot</a> = 0;
+<a id='L895' name='L895'></a> 895 
+<a id='L896' name='L896'></a> 896   result-&gt;devno = <a href='../S/73.html#L58' title='Defined at 58 in diskmodel/dm_config.h.'>malloc</a>(l-&gt;values_len * <strong class='reserved'>sizeof</strong>(<strong class='reserved'>int</strong>));
+<a id='L897' name='L897'></a> 897   <a href='../D/957.html' title='Multiple defined in 2 places.'>bzero</a>(result-&gt;devno, l-&gt;values_len * <strong class='reserved'>sizeof</strong>(<strong class='reserved'>int</strong>));
+<a id='L898' name='L898'></a> 898   
+<a id='L899' name='L899'></a> 899   <strong class='reserved'>for</strong>(c = 0; c &lt; l-&gt;values_len; c++) <em class='brace'>{</em>
+<a id='L900' name='L900'></a> 900     <strong class='reserved'>if</strong>(!l-&gt;values[c]) <strong class='reserved'>continue</strong>;
+<a id='L901' name='L901'></a> 901     <strong class='reserved'>if</strong>(l-&gt;values[c]-&gt;t != <a href='../S/118.html#L60' title='Defined at 60 in libparam/libparam.h.'>S</a>) <em class='brace'>{</em>
+<a id='L902' name='L902'></a> 902       <em class='comment'>/* error */</em>
+<a id='L903' name='L903'></a> 903       <strong class='reserved'>return</strong> -1;
+<a id='L904' name='L904'></a> 904     <em class='brace'>}</em>
+<a id='L905' name='L905'></a> 905     name = l-&gt;values[c]-&gt;v.s;
+<a id='L906' name='L906'></a> 906     
+<a id='L907' name='L907'></a> 907     <strong class='reserved'>if</strong>(!<a href='../S/214.html#L92' title='Defined at 92 in src/disksim_device.c.'>getdevbyname</a>(name, &amp;num, 0, &amp;type)) <em class='brace'>{</em>
+<a id='L908' name='L908'></a> 908       <strong class='reserved'>if</strong>(!<a href='../S/278.html#L1680' title='Defined at 1680 in src/disksim_logorg.c.'>getlogorgbyname</a>(<a href='../S/218.html#L188' title='Defined at 188 in src/disksim_iodriver.h.'>sysorgs</a>, <a href='../S/218.html#L187' title='Defined at 187 in src/disksim_iodriver.h.'>numsysorgs</a>, name, &amp;num)) <em class='brace'>{</em>
+<a id='L909' name='L909'></a> 909         fprintf(stderr, "*** error: bad device %s in synthetic generator spec: no such device or logorg.\n", name);
+<a id='L910' name='L910'></a> 910         <strong class='reserved'>return</strong> -1;
+<a id='L911' name='L911'></a> 911       <em class='brace'>}</em>
+<a id='L912' name='L912'></a> 912     <em class='brace'>}</em>
+<a id='L913' name='L913'></a> 913 
+<a id='L914' name='L914'></a> 914     result-&gt;devno[<a href='../S/262.html#L116' title='Defined at 116 in src/disksim_bus.h.'>slot</a>++] = num;
+<a id='L915' name='L915'></a> 915   <em class='brace'>}</em>
+<a id='L916' name='L916'></a> 916 
+<a id='L917' name='L917'></a> 917 
+<a id='L918' name='L918'></a> 918   result-&gt;numdisks = <a href='../S/262.html#L116' title='Defined at 116 in src/disksim_bus.h.'>slot</a>;
+<a id='L919' name='L919'></a> 919 
+<a id='L920' name='L920'></a> 920   <strong class='reserved'>return</strong> 0;
+<a id='L921' name='L921'></a> 921 <em class='brace'>}</em>
+</pre>
+<hr />
+<a id='BOTTOM' name='BOTTOM'></a>
+<em class='comment'>/* [&lt;][&gt;]<a href='#L112'>[^]</a><a href='#L889'>[v]</a><a href='#TOP'>[top]</a>[bottom]<a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</em>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>INTDISTMAX</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/278.html#L204'>INTDISTMAX</a>        204 src/disksim_logorg.c             currlogorg-&gt;stat.intdist[(i*INTDISTMAX)]++;</span>
+<span class='curline'><a href='../S/278.html#L217'>INTDISTMAX</a>        217 src/disksim_logorg.c                      currlogorg-&gt;stat.intdist[((i*INTDISTMAX)+1)]++;</span>
+<span class='curline'><a href='../S/278.html#L219'>INTDISTMAX</a>        219 src/disksim_logorg.c                      currlogorg-&gt;stat.intdist[((i*INTDISTMAX)+2)]++;</span>
+<span class='curline'><a href='../S/278.html#L221'>INTDISTMAX</a>        221 src/disksim_logorg.c                      currlogorg-&gt;stat.intdist[((i*INTDISTMAX)+3)]++;</span>
+<span class='curline'><a href='../S/278.html#L223'>INTDISTMAX</a>        223 src/disksim_logorg.c                      currlogorg-&gt;stat.intdist[((i*INTDISTMAX)+4)]++;</span>
+<span class='curline'><a href='../S/278.html#L227'>INTDISTMAX</a>        227 src/disksim_logorg.c                      currlogorg-&gt;stat.intdist[((i*INTDISTMAX)+5)]++;</span>
+<span class='curline'><a href='../S/278.html#L229'>INTDISTMAX</a>        229 src/disksim_logorg.c                      currlogorg-&gt;stat.intdist[((i*INTDISTMAX)+6)]++;</span>
+<span class='curline'><a href='../S/278.html#L231'>INTDISTMAX</a>        231 src/disksim_logorg.c                      currlogorg-&gt;stat.intdist[((i*INTDISTMAX)+7)]++;</span>
+<span class='curline'><a href='../S/278.html#L1069'>INTDISTMAX</a>       1069 src/disksim_logorg.c          for (j=0; j&lt;(INTERFEREMAX*INTDISTMAX); j++) {</span>
+<span class='curline'><a href='../S/278.html#L1220'>INTDISTMAX</a>       1220 src/disksim_logorg.c 	   DISKSIM_malloc(INTERFEREMAX*INTDISTMAX*sizeof(int));</span>
+<span class='curline'><a href='../S/278.html#L1372'>INTDISTMAX</a>       1372 src/disksim_logorg.c    int localoff[INTDISTMAX];</span>
+<span class='curline'><a href='../S/278.html#L1387'>INTDISTMAX</a>       1387 src/disksim_logorg.c    for (i=0; i&lt;(INTERFEREMAX*INTDISTMAX); i+=INTDISTMAX) {</span>
+<span class='curline'><a href='../S/278.html#L1390'>INTDISTMAX</a>       1390 src/disksim_logorg.c          fprintf (outputfile, "%sSequential step %2d:  %6d \t%f\n", prefix, (i/INTDISTMAX), intdist[i], frac);</span>
+<span class='curline'><a href='../S/278.html#L1393'>INTDISTMAX</a>       1393 src/disksim_logorg.c    for (i=0; i&lt;(INTERFEREMAX*INTDISTMAX); i++) {</span>
+<span class='curline'><a href='../S/278.html#L1394'>INTDISTMAX</a>       1394 src/disksim_logorg.c       if (i % INTDISTMAX) {</span>
+<span class='curline'><a href='../S/278.html#L1397'>INTDISTMAX</a>       1397 src/disksim_logorg.c 	    fprintf (outputfile, "%sLocal (%3d) step %2d:  %6d \t%f\n", prefix, localoff[(i % INTDISTMAX)], (i/INTDISTMAX), intdist[i], frac);</span>
+</pre>
+</body>
+</html>

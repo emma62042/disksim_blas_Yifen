@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>iodriver_info</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/283.html#L332'>iodriver_info</a>     332 src/disksim_global.h struct iodriver_info;</span>
+<span class='curline'><a href='../S/283.html#L414'>iodriver_info</a>     414 src/disksim_global.h    struct iodriver_info *iodriver_info;</span>
+<span class='curline'><a href='../S/205.html#L123'>iodriver_info</a>     123 src/disksim_iodriver.c   if(!disksim-&gt;iodriver_info) return 0;</span>
+<span class='curline'><a href='../S/205.html#L1038'>iodriver_info</a>    1038 src/disksim_iodriver.c   if (disksim-&gt;iodriver_info == NULL) {</span>
+<span class='curline'><a href='../S/205.html#L1039'>iodriver_info</a>    1039 src/disksim_iodriver.c     disksim-&gt;iodriver_info = DISKSIM_malloc (sizeof(iodriver_info_t));</span>
+<span class='curline'><a href='../S/205.html#L1040'>iodriver_info</a>    1040 src/disksim_iodriver.c     bzero ((char *)disksim-&gt;iodriver_info, sizeof(iodriver_info_t));</span>
+<span class='curline'><a href='../S/205.html#L1061'>iodriver_info</a>    1061 src/disksim_iodriver.c   for(c = 0; c &lt; disksim-&gt;iodriver_info-&gt;iodrivers_len; c++) {</span>
+<span class='curline'><a href='../S/205.html#L1069'>iodriver_info</a>    1069 src/disksim_iodriver.c   disksim-&gt;iodriver_info-&gt;iodrivers_len = newlen;</span>
+<span class='curline'><a href='../S/205.html#L1081'>iodriver_info</a>    1081 src/disksim_iodriver.c   if (disksim-&gt;iodriver_info == NULL) {</span>
+<span class='curline'><a href='../S/205.html#L1082'>iodriver_info</a>    1082 src/disksim_iodriver.c     disksim-&gt;iodriver_info = malloc (sizeof(iodriver_info_t));</span>
+<span class='curline'><a href='../S/205.html#L1083'>iodriver_info</a>    1083 src/disksim_iodriver.c     bzero ((char *)disksim-&gt;iodriver_info, sizeof(iodriver_info_t));</span>
+<span class='curline'><a href='../S/205.html#L1173'>iodriver_info</a>    1173 src/disksim_iodriver.c   newlen = disksim-&gt;iodriver_info-&gt;sysorgs_len ? </span>
+<span class='curline'><a href='../S/205.html#L1174'>iodriver_info</a>    1174 src/disksim_iodriver.c     disksim-&gt;iodriver_info-&gt;sysorgs_len * 2 : 2;</span>
+<span class='curline'><a href='../S/205.html#L1181'>iodriver_info</a>    1181 src/disksim_iodriver.c   for(c = 0; c &lt; disksim-&gt;iodriver_info-&gt;sysorgs_len; c++) {</span>
+<span class='curline'><a href='../S/205.html#L1192'>iodriver_info</a>    1192 src/disksim_iodriver.c   disksim-&gt;iodriver_info-&gt;sysorgs_len = newlen;</span>
+<span class='curline'><a href='../S/218.html#L185'>iodriver_info</a>     185 src/disksim_iodriver.h #define numiodrivers            (disksim-&gt;iodriver_info-&gt;numiodrivers)</span>
+<span class='curline'><a href='../S/218.html#L186'>iodriver_info</a>     186 src/disksim_iodriver.h #define iodrivers               (disksim-&gt;iodriver_info-&gt;iodrivers)</span>
+<span class='curline'><a href='../S/218.html#L187'>iodriver_info</a>     187 src/disksim_iodriver.h #define numsysorgs              (disksim-&gt;iodriver_info-&gt;numsysorgs)</span>
+<span class='curline'><a href='../S/218.html#L188'>iodriver_info</a>     188 src/disksim_iodriver.h #define sysorgs                 (disksim-&gt;iodriver_info-&gt;sysorgs)</span>
+<span class='curline'><a href='../S/218.html#L189'>iodriver_info</a>     189 src/disksim_iodriver.h #define overallqueue            (disksim-&gt;iodriver_info-&gt;overallqueue)</span>
+<span class='curline'><a href='../S/218.html#L190'>iodriver_info</a>     190 src/disksim_iodriver.h #define drv_printsizestats      (disksim-&gt;iodriver_info-&gt;drv_printsizestats)</span>
+<span class='curline'><a href='../S/218.html#L191'>iodriver_info</a>     191 src/disksim_iodriver.h #define drv_printlocalitystats  (disksim-&gt;iodriver_info-&gt;drv_printlocalitystats)</span>
+<span class='curline'><a href='../S/218.html#L192'>iodriver_info</a>     192 src/disksim_iodriver.h #define drv_printblockingstats  (disksim-&gt;iodriver_info-&gt;drv_printblockingstats)</span>
+<span class='curline'><a href='../S/218.html#L193'>iodriver_info</a>     193 src/disksim_iodriver.h #define drv_printinterferestats (disksim-&gt;iodriver_info-&gt;drv_printinterferestats)</span>
+<span class='curline'><a href='../S/218.html#L194'>iodriver_info</a>     194 src/disksim_iodriver.h #define drv_printqueuestats     (disksim-&gt;iodriver_info-&gt;drv_printqueuestats)</span>
+<span class='curline'><a href='../S/218.html#L195'>iodriver_info</a>     195 src/disksim_iodriver.h #define drv_printcritstats      (disksim-&gt;iodriver_info-&gt;drv_printcritstats)</span>
+<span class='curline'><a href='../S/218.html#L196'>iodriver_info</a>     196 src/disksim_iodriver.h #define drv_printidlestats      (disksim-&gt;iodriver_info-&gt;drv_printidlestats)</span>
+<span class='curline'><a href='../S/218.html#L197'>iodriver_info</a>     197 src/disksim_iodriver.h #define drv_printintarrstats    (disksim-&gt;iodriver_info-&gt;drv_printintarrstats)</span>
+<span class='curline'><a href='../S/218.html#L198'>iodriver_info</a>     198 src/disksim_iodriver.h #define drv_printstreakstats    (disksim-&gt;iodriver_info-&gt;drv_printstreakstats)</span>
+<span class='curline'><a href='../S/218.html#L199'>iodriver_info</a>     199 src/disksim_iodriver.h #define drv_printstampstats     (disksim-&gt;iodriver_info-&gt;drv_printstampstats)</span>
+<span class='curline'><a href='../S/218.html#L200'>iodriver_info</a>     200 src/disksim_iodriver.h #define drv_printperdiskstats   (disksim-&gt;iodriver_info-&gt;drv_printperdiskstats)</span>
+<span class='curline'><a href='../S/218.html#L201'>iodriver_info</a>     201 src/disksim_iodriver.h #define emptyqueuestats         (disksim-&gt;iodriver_info-&gt;emptyqueuestats)</span>
+<span class='curline'><a href='../S/218.html#L202'>iodriver_info</a>     202 src/disksim_iodriver.h #define initiatenextstats       (disksim-&gt;iodriver_info-&gt;initiatenextstats)</span>
+</pre>
+</body>
+</html>

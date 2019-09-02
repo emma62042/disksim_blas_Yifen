@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>w32build/deprecated/deprecated.c</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<a id='TOP' name='TOP'></a><h2 class='header'><a href='../mains.html'>root</a>/<a href='../files/410.html'>w32build</a>/<a href='../files/411.html'>deprecated</a>/deprecated.c</h2>
+<em class='comment'>/* [&lt;][&gt;]<a href='#L7'>[^]</a><a href='#L72'>[v]</a>[top]<a href='#BOTTOM'>[bottom]</a><a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</em>
+<hr />
+<h2 class='header'>DEFINITIONS</h2>
+This source file includes following definitions.
+<ol>
+<li><a href='#L7' title='Defined at 7.'>strdup</a></li>
+<li><a href='#L12' title='Defined at 12.'>strcasecmp</a></li>
+<li><a href='#L17' title='Defined at 17.'>read</a></li>
+<li><a href='#L22' title='Defined at 22.'>write</a></li>
+<li><a href='#L27' title='Defined at 27.'>dup</a></li>
+<li><a href='#L32' title='Defined at 32.'>dup2</a></li>
+<li><a href='#L37' title='Defined at 37.'>open</a></li>
+<li><a href='#L42' title='Defined at 42.'>close</a></li>
+<li><a href='#L48' title='Defined at 48.'>bzero</a></li>
+<li><a href='#L61' title='Defined at 61.'>dirname</a></li>
+<li><a href='#L67' title='Defined at 67.'>basename</a></li>
+<li><a href='#L72' title='Defined at 72.'>snprintf</a></li>
+</ol>
+<hr />
+<pre>
+<a id='L1' name='L1'></a>   1 <em class='sharp'>#include</em> &lt;string.h&gt;
+<a id='L2' name='L2'></a>   2 <em class='sharp'>#include</em> &lt;stdio.h&gt;
+<a id='L3' name='L3'></a>   3 <em class='sharp'>#include</em> &lt;stdarg.h&gt;
+<a id='L4' name='L4'></a>   4 
+<a id='L5' name='L5'></a>   5 <em class='sharp'>#define</em> <a href='../R/439.html' title='Multiple referred from 2 places.'>O_RDONLY</a> _O_RDONLY
+<a id='L6' name='L6'></a>   6 
+<a id='L7' name='L7'></a>   7 <strong class='reserved'>char</strong> *<a href='../R/2147.html' title='Multiple referred from 52 places.'>strdup</a>(<strong class='reserved'>char</strong> *s)
+<a id='L8' name='L8'></a>   8 <em class='brace'>{</em>
+<a id='L9' name='L9'></a>   9         <strong class='reserved'>return</strong> <a href='../S/187.html#L22' title='Defined at 22 in ssdmodel/ssd.c.'>_strdup</a>(s);
+<a id='L10' name='L10'></a>  10 <em class='brace'>}</em>
+<a id='L11' name='L11'></a>  11  
+<a id='L12' name='L12'></a>  12 <strong class='reserved'>int</strong> <a href='../R/2146.html' title='Multiple referred from 4 places.'>strcasecmp</a>(<strong class='reserved'>char</strong> *s1, <strong class='reserved'>char</strong> *s2)
+<a id='L13' name='L13'></a>  13 <em class='brace'>{</em>
+<a id='L14' name='L14'></a>  14         <strong class='reserved'>return</strong> _stricmp(s1, s2);
+<a id='L15' name='L15'></a>  15 <em class='brace'>}</em>
+<a id='L16' name='L16'></a>  16 
+<a id='L17' name='L17'></a>  17 <strong class='reserved'>int</strong> <a href='../R/1895.html' title='Multiple referred from 15 places.'>read</a>(<strong class='reserved'>int</strong> fd, <strong class='reserved'>void</strong> *buf, <strong class='reserved'>int</strong> bufsiz)
+<a id='L18' name='L18'></a>  18 <em class='brace'>{</em>
+<a id='L19' name='L19'></a>  19         <strong class='reserved'>return</strong> _read(fd, buf, bufsiz);
+<a id='L20' name='L20'></a>  20 <em class='brace'>}</em>
+<a id='L21' name='L21'></a>  21 
+<a id='L22' name='L22'></a>  22 <strong class='reserved'>int</strong> <a href='../S/272.html#L298' title='Referred from 298 in src/disksim.c.'>write</a>(<strong class='reserved'>int</strong> fd, <strong class='reserved'>void</strong> *buf, <strong class='reserved'>int</strong> bufsiz)
+<a id='L23' name='L23'></a>  23 <em class='brace'>{</em>
+<a id='L24' name='L24'></a>  24         <strong class='reserved'>return</strong> _write(fd, buf, bufsiz);
+<a id='L25' name='L25'></a>  25 <em class='brace'>}</em>
+<a id='L26' name='L26'></a>  26 
+<a id='L27' name='L27'></a>  27 <strong class='reserved'>int</strong> <a href='../R/1231.html' title='Multiple referred from 2 places.'>dup</a>(<strong class='reserved'>int</strong> fd)
+<a id='L28' name='L28'></a>  28 <em class='brace'>{</em>
+<a id='L29' name='L29'></a>  29         <strong class='reserved'>return</strong> _dup(fd);
+<a id='L30' name='L30'></a>  30 <em class='brace'>}</em>
+<a id='L31' name='L31'></a>  31 
+<a id='L32' name='L32'></a>  32 <strong class='reserved'>int</strong> <a href='../R/1232.html' title='Multiple referred from 4 places.'>dup2</a>(<strong class='reserved'>int</strong> fd1, <strong class='reserved'>int</strong> fd2)
+<a id='L33' name='L33'></a>  33 <em class='brace'>{</em>
+<a id='L34' name='L34'></a>  34         <strong class='reserved'>return</strong> _dup2(fd1, fd2);
+<a id='L35' name='L35'></a>  35 <em class='brace'>}</em>
+<a id='L36' name='L36'></a>  36 
+<a id='L37' name='L37'></a>  37 <strong class='reserved'>int</strong> <a href='../R/1804.html' title='Multiple referred from 3 places.'>open</a>(<strong class='reserved'>char</strong> *filename, <strong class='reserved'>int</strong> oflag)
+<a id='L38' name='L38'></a>  38 <em class='brace'>{</em>
+<a id='L39' name='L39'></a>  39         <strong class='reserved'>return</strong> _open(filename, oflag);
+<a id='L40' name='L40'></a>  40 <em class='brace'>}</em>
+<a id='L41' name='L41'></a>  41 
+<a id='L42' name='L42'></a>  42 <strong class='reserved'>int</strong> <a href='../R/834.html' title='Multiple referred from 4 places.'>close</a>(<strong class='reserved'>int</strong> fd)
+<a id='L43' name='L43'></a>  43 <em class='brace'>{</em>
+<a id='L44' name='L44'></a>  44         <strong class='reserved'>return</strong> _close(fd);
+<a id='L45' name='L45'></a>  45 <em class='brace'>}</em>
+<a id='L46' name='L46'></a>  46 
+<a id='L47' name='L47'></a>  47 
+<a id='L48' name='L48'></a>  48 <strong class='reserved'>void</strong> <a href='../R/730.html' title='Multiple referred from 87 places.'>bzero</a>(<strong class='reserved'>void</strong> *ptr, size_t size)
+<a id='L49' name='L49'></a>  49 <em class='brace'>{</em>
+<a id='L50' name='L50'></a>  50         memset(ptr,0,size);
+<a id='L51' name='L51'></a>  51 <em class='brace'>}</em>
+<a id='L52' name='L52'></a>  52 
+<a id='L53' name='L53'></a>  53 <em class='sharp'>#define</em> <a href='../R/1689.html' title='Multiple referred from 91 places.'>max</a>(x, y) (((x) &gt; (y)) ? (x) : (y))
+<a id='L54' name='L54'></a>  54 
+<a id='L55' name='L55'></a>  55 <em class='comment'>/* We accept both forward and backward slash separators */</em>
+<a id='L56' name='L56'></a>  56 <em class='comment'>/* strrchr returns NULL on no match, and NULL should be &lt; any other pointer (???) */</em> 
+<a id='L57' name='L57'></a>  57 <em class='sharp'>#define</em> <a href='../R/1537.html' title='Multiple referred from 2 places.'>last_sep</a>(path) <a href='../D/1986.html' title='Multiple defined in 3 places.'>max</a>(path, 1+<a href='../D/1986.html' title='Multiple defined in 3 places.'>max</a>(strrchr(path, '\\'), strrchr(path, '/')))
+<a id='L58' name='L58'></a>  58 
+<a id='L59' name='L59'></a>  59         
+<a id='L60' name='L60'></a>  60 
+<a id='L61' name='L61'></a>  61 <strong class='reserved'>char</strong> *<a href='../R/985.html' title='Multiple referred from 4 places.'>dirname</a>(<strong class='reserved'>char</strong> *path)
+<a id='L62' name='L62'></a>  62 <em class='brace'>{</em>
+<a id='L63' name='L63'></a>  63         *(<a href='../S/136.html#L57' title='Defined at 57 in w32build/deprecated/deprecated.c.'>last_sep</a>(path)) = '\0';
+<a id='L64' name='L64'></a>  64         <strong class='reserved'>return</strong> path;
+<a id='L65' name='L65'></a>  65 <em class='brace'>}</em>
+<a id='L66' name='L66'></a>  66 
+<a id='L67' name='L67'></a>  67 <strong class='reserved'>char</strong> *basename(<strong class='reserved'>char</strong> *path)
+<a id='L68' name='L68'></a>  68 <em class='brace'>{</em>       
+<a id='L69' name='L69'></a>  69         <strong class='reserved'>return</strong> <a href='../S/136.html#L57' title='Defined at 57 in w32build/deprecated/deprecated.c.'>last_sep</a>(path);
+<a id='L70' name='L70'></a>  70 <em class='brace'>}</em>
+<a id='L71' name='L71'></a>  71 
+<a id='L72' name='L72'></a>  72 <strong class='reserved'>int</strong> <a href='../R/1977.html' title='Multiple referred from 7 places.'>snprintf</a>(<strong class='reserved'>char</strong> *str, <strong class='reserved'>int</strong> n, <strong class='reserved'>const</strong> <strong class='reserved'>char</strong> *format, ...)
+<a id='L73' name='L73'></a>  73 <em class='brace'>{</em>
+<a id='L74' name='L74'></a>  74         va_list args;
+<a id='L75' name='L75'></a>  75         va_start(args, format);
+<a id='L76' name='L76'></a>  76         <strong class='reserved'>return</strong> vsnprintf_s(str, n, _TRUNCATE, format, args);
+<a id='L77' name='L77'></a>  77 <em class='brace'>}</em>
+</pre>
+<hr />
+<a id='BOTTOM' name='BOTTOM'></a>
+<em class='comment'>/* [&lt;][&gt;]<a href='#L7'>[^]</a><a href='#L72'>[v]</a><a href='#TOP'>[top]</a>[bottom]<a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</em>
+</body>
+</html>

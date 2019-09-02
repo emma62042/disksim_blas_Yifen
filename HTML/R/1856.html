@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>pf_info</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/283.html#L335'>pf_info</a>           335 src/disksim_global.h struct pf_info;</span>
+<span class='curline'><a href='../S/283.html#L417'>pf_info</a>           417 src/disksim_global.h    struct pf_info *pf_info;</span>
+<span class='curline'><a href='../S/191.html#L1027'>pf_info</a>          1027 src/disksim_pfsim.c   pf_info_t *pf_info;</span>
+<span class='curline'><a href='../S/191.html#L1029'>pf_info</a>          1029 src/disksim_pfsim.c   if(!disksim-&gt;pf_info) {</span>
+<span class='curline'><a href='../S/191.html#L1030'>pf_info</a>          1030 src/disksim_pfsim.c     pf_info = DISKSIM_malloc (sizeof(pf_info_t));</span>
+<span class='curline'><a href='../S/191.html#L1031'>pf_info</a>          1031 src/disksim_pfsim.c     if(!pf_info) return 0;</span>
+<span class='curline'><a href='../S/191.html#L1032'>pf_info</a>          1032 src/disksim_pfsim.c     bzero ((char *)pf_info, sizeof(pf_info_t));</span>
+<span class='curline'><a href='../S/191.html#L1033'>pf_info</a>          1033 src/disksim_pfsim.c     disksim-&gt;pf_info = pf_info;</span>
+<span class='curline'><a href='../S/191.html#L1046'>pf_info</a>          1046 src/disksim_pfsim.c   pf_info_t *pf_info;</span>
+<span class='curline'><a href='../S/191.html#L1048'>pf_info</a>          1048 src/disksim_pfsim.c   if(!disksim-&gt;pf_info) {</span>
+<span class='curline'><a href='../S/191.html#L1049'>pf_info</a>          1049 src/disksim_pfsim.c     pf_info = DISKSIM_malloc (sizeof(pf_info_t));</span>
+<span class='curline'><a href='../S/191.html#L1050'>pf_info</a>          1050 src/disksim_pfsim.c     if(!pf_info) return 0;</span>
+<span class='curline'><a href='../S/191.html#L1051'>pf_info</a>          1051 src/disksim_pfsim.c     bzero ((char *)pf_info, sizeof(pf_info_t));</span>
+<span class='curline'><a href='../S/191.html#L1052'>pf_info</a>          1052 src/disksim_pfsim.c     disksim-&gt;pf_info = pf_info;</span>
+<span class='curline'><a href='../S/208.html#L289'>pf_info</a>           289 src/disksim_pfsim.h #define cpus                      (disksim-&gt;pf_info-&gt;cpus)</span>
+<span class='curline'><a href='../S/208.html#L290'>pf_info</a>           290 src/disksim_pfsim.h #define numcpus                   (disksim-&gt;pf_info-&gt;numcpus)</span>
+<span class='curline'><a href='../S/208.html#L291'>pf_info</a>           291 src/disksim_pfsim.h #define process_livelist          (disksim-&gt;pf_info-&gt;process_livelist)</span>
+<span class='curline'><a href='../S/208.html#L292'>pf_info</a>           292 src/disksim_pfsim.h #define extra_process_q           (disksim-&gt;pf_info-&gt;extra_process_q)</span>
+<span class='curline'><a href='../S/208.html#L293'>pf_info</a>           293 src/disksim_pfsim.h #define extra_process_qlen        (disksim-&gt;pf_info-&gt;extra_process_qlen)</span>
+<span class='curline'><a href='../S/208.html#L294'>pf_info</a>           294 src/disksim_pfsim.h #define curlbolt                  (disksim-&gt;pf_info-&gt;curlbolt)</span>
+<span class='curline'><a href='../S/208.html#L295'>pf_info</a>           295 src/disksim_pfsim.h #define pendiolist                (disksim-&gt;pf_info-&gt;pendiolist)</span>
+<span class='curline'><a href='../S/208.html#L296'>pf_info</a>           296 src/disksim_pfsim.h #define doneiolist                (disksim-&gt;pf_info-&gt;doneiolist)</span>
+<span class='curline'><a href='../S/208.html#L297'>pf_info</a>           297 src/disksim_pfsim.h #define synthlist                 (disksim-&gt;pf_info-&gt;synthlist)</span>
+<span class='curline'><a href='../S/208.html#L298'>pf_info</a>           298 src/disksim_pfsim.h #define pfscale                   (disksim-&gt;pf_info-&gt;pfscale)</span>
+<span class='curline'><a href='../S/208.html#L299'>pf_info</a>           299 src/disksim_pfsim.h #define lastuser                  (disksim-&gt;pf_info-&gt;lastuser)</span>
+<span class='curline'><a href='../S/208.html#L300'>pf_info</a>           300 src/disksim_pfsim.h #define idlein                    (disksim-&gt;pf_info-&gt;idlein)</span>
+<span class='curline'><a href='../S/208.html#L301'>pf_info</a>           301 src/disksim_pfsim.h #define idlereset                 (disksim-&gt;pf_info-&gt;idlereset)</span>
+<span class='curline'><a href='../S/208.html#L302'>pf_info</a>           302 src/disksim_pfsim.h #define pf_printhack              (disksim-&gt;pf_info-&gt;pf_printhack)</span>
+<span class='curline'><a href='../S/208.html#L303'>pf_info</a>           303 src/disksim_pfsim.h #define timecritrespstats         (disksim-&gt;pf_info-&gt;timecritrespstats)</span>
+<span class='curline'><a href='../S/208.html#L304'>pf_info</a>           304 src/disksim_pfsim.h #define timelimitrespstats        (disksim-&gt;pf_info-&gt;timelimitrespstats)</span>
+<span class='curline'><a href='../S/208.html#L305'>pf_info</a>           305 src/disksim_pfsim.h #define timenoncritrespstats      (disksim-&gt;pf_info-&gt;timenoncritrespstats)</span>
+<span class='curline'><a href='../S/208.html#L306'>pf_info</a>           306 src/disksim_pfsim.h #define pf_print_perprocessstats  (disksim-&gt;pf_info-&gt;pf_print_perprocessstats)</span>
+<span class='curline'><a href='../S/208.html#L307'>pf_info</a>           307 src/disksim_pfsim.h #define pf_print_percpustats      (disksim-&gt;pf_info-&gt;pf_print_percpustats)</span>
+<span class='curline'><a href='../S/208.html#L308'>pf_info</a>           308 src/disksim_pfsim.h #define pf_print_intrstats        (disksim-&gt;pf_info-&gt;pf_print_intrstats)</span>
+<span class='curline'><a href='../S/208.html#L309'>pf_info</a>           309 src/disksim_pfsim.h #define pf_print_sleepstats       (disksim-&gt;pf_info-&gt;pf_print_sleepstats)</span>
+<span class='curline'><a href='../S/208.html#L310'>pf_info</a>           310 src/disksim_pfsim.h #define pf_dispq                  (disksim-&gt;pf_info-&gt;pf_dispq)</span>
+<span class='curline'><a href='../S/208.html#L311'>pf_info</a>           311 src/disksim_pfsim.h #define sleepqueue                (disksim-&gt;pf_info-&gt;sleepqueue)</span>
+</pre>
+</body>
+</html>

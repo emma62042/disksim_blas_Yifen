@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>outios</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/272.html#L689'>outios</a>            689 src/disksim.c     if (outios) {</span>
+<span class='curline'><a href='../S/272.html#L690'>outios</a>            690 src/disksim.c        fflush (outios);</span>
+<span class='curline'><a href='../S/272.html#L691'>outios</a>            691 src/disksim.c        fgetpos (outios, &amp;disksim-&gt;outiosfileposition);</span>
+<span class='curline'><a href='../S/272.html#L1048'>outios</a>           1048 src/disksim.c        if ((outios = fopen(disksim-&gt;outiosfilename, "r+")) == NULL) {</span>
+<span class='curline'><a href='../S/272.html#L1052'>outios</a>           1052 src/disksim.c        ret = fsetpos (outios, &amp;disksim-&gt;outiosfileposition);</span>
+<span class='curline'><a href='../S/272.html#L1094'>outios</a>           1094 src/disksim.c    if(outios) </span>
+<span class='curline'><a href='../S/272.html#L1096'>outios</a>           1096 src/disksim.c      fclose(outios);</span>
+<span class='curline'><a href='../S/272.html#L1097'>outios</a>           1097 src/disksim.c      outios = NULL;</span>
+<span class='curline'><a href='../S/283.html#L372'>outios</a>            372 src/disksim_global.h    FILE * outios;</span>
+<span class='curline'><a href='../S/283.html#L441'>outios</a>            441 src/disksim_global.h #define outios           (disksim-&gt;outios)</span>
+<span class='curline'><a href='../S/205.html#L755'>outios</a>            755 src/disksim_iodriver.c    if (outios) {</span>
+<span class='curline'><a href='../S/205.html#L756'>outios</a>            756 src/disksim_iodriver.c       fprintf(outios, "%.6f\t%d\t%d\t%d\t%x\n", simtime, curr-&gt;devno, curr-&gt;blkno, curr-&gt;bcount, curr-&gt;flags);</span>
+</pre>
+</body>
+</html>

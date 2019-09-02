@@ -1,0 +1,767 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>ioreq_event</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/37.html#L73'>ioreq_event</a>        73 memsmodel/mems_disksim.c mems_get_busno (ioreq_event *curr)</span>
+<span class='curline'><a href='../S/37.html#L175'>ioreq_event</a>       175 memsmodel/mems_disksim.c mems_get_acctime (int devno, ioreq_event *req, double maxtime)</span>
+<span class='curline'><a href='../S/37.html#L189'>ioreq_event</a>       189 memsmodel/mems_disksim.c mems_get_seektime (int devno, ioreq_event *req, int checkcache, double maxtime)</span>
+<span class='curline'><a href='../S/37.html#L239'>ioreq_event</a>       239 memsmodel/mems_disksim.c mems_get_distance (int devno, ioreq_event *req, int exact, int direction)</span>
+<span class='curline'><a href='../S/37.html#L340'>ioreq_event</a>       340 memsmodel/mems_disksim.c mems_get_servtime (int devno, ioreq_event *req, int checkcache, double maxtime)</span>
+<span class='curline'><a href='../S/37.html#L354'>ioreq_event</a>       354 memsmodel/mems_disksim.c mems_get_blktranstime (ioreq_event *curr)</span>
+<span class='curline'><a href='../S/37.html#L1388'>ioreq_event</a>      1388 memsmodel/mems_disksim.c extern void mems_event_arrive (ioreq_event *curr);</span>
+<span class='curline'><a href='../S/37.html#L1389'>ioreq_event</a>      1389 memsmodel/mems_disksim.c extern void mems_bus_delay_complete (int devno, ioreq_event *curr, int sentbusno);</span>
+<span class='curline'><a href='../S/37.html#L1390'>ioreq_event</a>      1390 memsmodel/mems_disksim.c extern void mems_bus_ownership_grant (int devno, ioreq_event *curr, int busno, double arbdelay);</span>
+<span class='curline'><a href='../S/39.html#L42'>ioreq_event</a>        42 memsmodel/mems_disksim.h extern void mems_event_arrive (ioreq_event *curr);</span>
+<span class='curline'><a href='../S/39.html#L43'>ioreq_event</a>        43 memsmodel/mems_disksim.h extern void mems_bus_delay_complete (int devno, ioreq_event *curr, int sentbusno);</span>
+<span class='curline'><a href='../S/39.html#L44'>ioreq_event</a>        44 memsmodel/mems_disksim.h extern void mems_bus_ownership_grant (int devno, ioreq_event *curr, int busno, double arbdelay);</span>
+<span class='curline'><a href='../S/39.html#L47'>ioreq_event</a>        47 memsmodel/mems_disksim.h double mems_get_acctime (int devno, ioreq_event *req, double maxtime);</span>
+<span class='curline'><a href='../S/39.html#L49'>ioreq_event</a>        49 memsmodel/mems_disksim.h double mems_get_blktranstime (ioreq_event *curr);</span>
+<span class='curline'><a href='../S/39.html#L50'>ioreq_event</a>        50 memsmodel/mems_disksim.h int    mems_get_busno (ioreq_event *curr);</span>
+<span class='curline'><a href='../S/39.html#L57'>ioreq_event</a>        57 memsmodel/mems_disksim.h double mems_get_seektime (int devno, ioreq_event *req, int checkcache, double maxtime);</span>
+<span class='curline'><a href='../S/39.html#L58'>ioreq_event</a>        58 memsmodel/mems_disksim.h double mems_get_servtime (int devno, ioreq_event *req, int checkcache, double maxtime);</span>
+<span class='curline'><a href='../S/39.html#L68'>ioreq_event</a>        68 memsmodel/mems_disksim.h int    mems_get_distance (int devno, ioreq_event *req, int exact, int direction);</span>
+<span class='curline'><a href='../S/36.html#L64'>ioreq_event</a>        64 memsmodel/mems_event.c mems_send_event_up_path (ioreq_event * curr,</span>
+<span class='curline'><a href='../S/36.html#L106'>ioreq_event</a>       106 memsmodel/mems_event.c 			  ioreq_event *curr,</span>
+<span class='curline'><a href='../S/36.html#L111'>ioreq_event</a>       111 memsmodel/mems_event.c   ioreq_event *tmp = dev-&gt;buswait;</span>
+<span class='curline'><a href='../S/36.html#L139'>ioreq_event</a>       139 memsmodel/mems_event.c 			 ioreq_event *curr,</span>
+<span class='curline'><a href='../S/36.html#L165'>ioreq_event</a>       165 memsmodel/mems_event.c       ioreq_event *tmp = dev-&gt;buswait;</span>
+<span class='curline'><a href='../S/36.html#L191'>ioreq_event</a>       191 memsmodel/mems_event.c mems_get_new_extent(ioreq_event *curr)</span>
+<span class='curline'><a href='../S/36.html#L213'>ioreq_event</a>       213 memsmodel/mems_event.c mems_update_reqinfo(ioreq_event *curr)</span>
+<span class='curline'><a href='../S/36.html#L217'>ioreq_event</a>       217 memsmodel/mems_event.c   ioreq_event *event_ptr;</span>
+<span class='curline'><a href='../S/36.html#L218'>ioreq_event</a>       218 memsmodel/mems_event.c   ioreq_event *next_event_ptr;</span>
+<span class='curline'><a href='../S/36.html#L296'>ioreq_event</a>       296 memsmodel/mems_event.c mems_get_new_reqinfo (ioreq_event *curr)</span>
+<span class='curline'><a href='../S/36.html#L298'>ioreq_event</a>       298 memsmodel/mems_event.c   ioreq_event *event_ptr;</span>
+<span class='curline'><a href='../S/36.html#L335'>ioreq_event</a>       335 memsmodel/mems_event.c mems_get_prefetch_info (ioreq_event *curr)</span>
+<span class='curline'><a href='../S/36.html#L357'>ioreq_event</a>       357 memsmodel/mems_event.c send_disconnect (ioreq_event *curr,</span>
+<span class='curline'><a href='../S/36.html#L360'>ioreq_event</a>       360 memsmodel/mems_event.c   ioreq_event *intrp = ioreq_copy(curr);</span>
+<span class='curline'><a href='../S/36.html#L367'>ioreq_event</a>       367 memsmodel/mems_event.c send_completion (ioreq_event *curr,</span>
+<span class='curline'><a href='../S/36.html#L370'>ioreq_event</a>       370 memsmodel/mems_event.c   ioreq_event *intrp = ioreq_copy(curr);</span>
+<span class='curline'><a href='../S/36.html#L377'>ioreq_event</a>       377 memsmodel/mems_event.c send_reconnect (ioreq_event *curr,</span>
+<span class='curline'><a href='../S/36.html#L380'>ioreq_event</a>       380 memsmodel/mems_event.c   ioreq_event *intrp = ioreq_copy(curr);</span>
+<span class='curline'><a href='../S/36.html#L387'>ioreq_event</a>       387 memsmodel/mems_event.c mems_request_complete (ioreq_event *curr,</span>
+<span class='curline'><a href='../S/36.html#L392'>ioreq_event</a>       392 memsmodel/mems_event.c   ioreq_event *batch_ptr;</span>
+<span class='curline'><a href='../S/36.html#L393'>ioreq_event</a>       393 memsmodel/mems_event.c   ioreq_event *next_ptr;</span>
+<span class='curline'><a href='../S/36.html#L612'>ioreq_event</a>       612 memsmodel/mems_event.c mems_io_access_arrive(ioreq_event *curr)</span>
+<span class='curline'><a href='../S/36.html#L642'>ioreq_event</a>       642 memsmodel/mems_event.c mems_device_overhead_complete(ioreq_event *curr)</span>
+<span class='curline'><a href='../S/36.html#L663'>ioreq_event</a>       663 memsmodel/mems_event.c 	  ioreq_event *busreq = ioreq_copy(curr);</span>
+<span class='curline'><a href='../S/36.html#L701'>ioreq_event</a>       701 memsmodel/mems_event.c 	      ioreq_event *busreq = ioreq_copy(curr);</span>
+<span class='curline'><a href='../S/36.html#L750'>ioreq_event</a>       750 memsmodel/mems_event.c 	  ioreq_event *r = (ioreq_event *)getfromextraq();</span>
+<span class='curline'><a href='../S/36.html#L785'>ioreq_event</a>       785 memsmodel/mems_event.c 	  ioreq_event *r = (ioreq_event *)getfromextraq();</span>
+<span class='curline'><a href='../S/36.html#L861'>ioreq_event</a>       861 memsmodel/mems_event.c mems_sled_schedule(ioreq_event *curr)</span>
+<span class='curline'><a href='../S/36.html#L865'>ioreq_event</a>       865 memsmodel/mems_event.c   ioreq_event *old_active_request;</span>
+<span class='curline'><a href='../S/36.html#L1224'>ioreq_event</a>      1224 memsmodel/mems_event.c mems_sled_seek(ioreq_event *curr)</span>
+<span class='curline'><a href='../S/36.html#L1301'>ioreq_event</a>      1301 memsmodel/mems_event.c mems_sled_servo(ioreq_event *curr)</span>
+<span class='curline'><a href='../S/36.html#L1380'>ioreq_event</a>      1380 memsmodel/mems_event.c mems_sled_data(ioreq_event *curr)</span>
+<span class='curline'><a href='../S/36.html#L1410'>ioreq_event</a>      1410 memsmodel/mems_event.c mems_sled_update(ioreq_event *curr)</span>
+<span class='curline'><a href='../S/36.html#L1451'>ioreq_event</a>      1451 memsmodel/mems_event.c 	      ioreq_event *busreq = ioreq_copy(sled-&gt;active_request);</span>
+<span class='curline'><a href='../S/36.html#L1535'>ioreq_event</a>      1535 memsmodel/mems_event.c mems_io_interrupt_complete(ioreq_event *curr)</span>
+<span class='curline'><a href='../S/36.html#L1592'>ioreq_event</a>      1592 memsmodel/mems_event.c mems_bus_initiate(ioreq_event *curr)</span>
+<span class='curline'><a href='../S/36.html#L1640'>ioreq_event</a>      1640 memsmodel/mems_event.c       ioreq_event *tmp = dev-&gt;dataxfer_queue;</span>
+<span class='curline'><a href='../S/36.html#L1658'>ioreq_event</a>      1658 memsmodel/mems_event.c mems_bus_transfer(ioreq_event *curr)</span>
+<span class='curline'><a href='../S/36.html#L1674'>ioreq_event</a>      1674 memsmodel/mems_event.c mems_bus_update(ioreq_event *curr)</span>
+<span class='curline'><a href='../S/36.html#L1869'>ioreq_event</a>      1869 memsmodel/mems_event.c mems_io_qlen_maxcheck(ioreq_event *curr)</span>
+<span class='curline'><a href='../S/36.html#L1885'>ioreq_event</a>      1885 memsmodel/mems_event.c mems_event_arrive (ioreq_event *curr)</span>
+<span class='curline'><a href='../S/30.html#L150'>ioreq_event</a>       150 memsmodel/mems_global.h   ioreq_event 	*active_request;	/* Req currently being processed */</span>
+<span class='curline'><a href='../S/30.html#L216'>ioreq_event</a>       216 memsmodel/mems_global.h   ioreq_event *buswait;		/* Sleds waiting on bus access */</span>
+<span class='curline'><a href='../S/30.html#L218'>ioreq_event</a>       218 memsmodel/mems_global.h   ioreq_event *dataxfer_req;	/* Request currently owning bus for xfer */</span>
+<span class='curline'><a href='../S/30.html#L219'>ioreq_event</a>       219 memsmodel/mems_global.h   ioreq_event *dataxfer_queue;	/* Requests waiting to transfer data */</span>
+<span class='curline'><a href='../S/30.html#L268'>ioreq_event</a>       268 memsmodel/mems_global.h   ioreq_event *request;</span>
+<span class='curline'><a href='../S/272.html#L613'>ioreq_event</a>       613 src/disksim.c  event *io_done_notify (ioreq_event *curr)</span>
+<span class='curline'><a href='../S/272.html#L755'>ioreq_event</a>       755 src/disksim.c  	ioreq_event *tmp = (ioreq_event *)curr;</span>
+<span class='curline'><a href='../S/272.html#L794'>ioreq_event</a>       794 src/disksim.c        io_internal_event ((ioreq_event *)curr);</span>
+<span class='curline'><a href='../S/272.html#L808'>ioreq_event</a>       808 src/disksim.c        io_internal_event ((ioreq_event *)curr);</span>
+<span class='curline'><a href='../S/272.html#L814'>ioreq_event</a>       814 src/disksim.c        io_internal_event ((ioreq_event *)curr);</span>
+<span class='curline'><a href='../S/200.html#L265'>ioreq_event</a>       265 src/disksim_bus.c void bus_delay(int busno, int devtype, int devno, double delay, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/200.html#L278'>ioreq_event</a>       278 src/disksim_bus.c void bus_event_arrive(ioreq_event *ptr)</span>
+<span class='curline'><a href='../S/200.html#L396'>ioreq_event</a>       396 src/disksim_bus.c int bus_ownership_get(int busno, int slotno, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/200.html#L468'>ioreq_event</a>       468 src/disksim_bus.c void bus_remove_from_arbitration(int busno, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/200.html#L502'>ioreq_event</a>       502 src/disksim_bus.c void bus_deliver_event(int busno, int slotno, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/200.html#L532'>ioreq_event</a>       532 src/disksim_bus.c int bus_get_data_transfered(ioreq_event *curr, int depth)</span>
+<span class='curline'><a href='../S/262.html#L127'>ioreq_event</a>       127 src/disksim_bus.h    ioreq_event *delayed_event;</span>
+<span class='curline'><a href='../S/262.html#L170'>ioreq_event</a>       170 src/disksim_bus.h int     bus_ownership_get (int busno, int slotno, ioreq_event *curr);</span>
+<span class='curline'><a href='../S/262.html#L172'>ioreq_event</a>       172 src/disksim_bus.h void    bus_remove_from_arbitration (int busno, ioreq_event *curr);</span>
+<span class='curline'><a href='../S/262.html#L173'>ioreq_event</a>       173 src/disksim_bus.h void    bus_delay (int busno, int devtype, int devno, double delay, ioreq_event *curr);</span>
+<span class='curline'><a href='../S/262.html#L174'>ioreq_event</a>       174 src/disksim_bus.h void    bus_event_arrive (ioreq_event *curr);</span>
+<span class='curline'><a href='../S/262.html#L176'>ioreq_event</a>       176 src/disksim_bus.h int     bus_get_data_transfered (ioreq_event *curr, int depth);</span>
+<span class='curline'><a href='../S/262.html#L178'>ioreq_event</a>       178 src/disksim_bus.h void    bus_deliver_event (int busno, int slotno, ioreq_event *curr);</span>
+<span class='curline'><a href='../S/267.html#L113'>ioreq_event</a>       113 src/disksim_cache.h 			  void (**issuefunc)(void *, ioreq_event *), </span>
+<span class='curline'><a href='../S/267.html#L131'>ioreq_event</a>       131 src/disksim_cache.h 			 ioreq_event *req, </span>
+<span class='curline'><a href='../S/267.html#L132'>ioreq_event</a>       132 src/disksim_cache.h 			 void (**donefunc)(void *, ioreq_event *), </span>
+<span class='curline'><a href='../S/267.html#L136'>ioreq_event</a>       136 src/disksim_cache.h 				ioreq_event *req);</span>
+<span class='curline'><a href='../S/267.html#L139'>ioreq_event</a>       139 src/disksim_cache.h 			       ioreq_event *req, </span>
+<span class='curline'><a href='../S/267.html#L140'>ioreq_event</a>       140 src/disksim_cache.h 			       void (**donefunc)(void *, ioreq_event *), </span>
+<span class='curline'><a href='../S/267.html#L144'>ioreq_event</a>       144 src/disksim_cache.h 						   ioreq_event *curr);</span>
+<span class='curline'><a href='../S/215.html#L141'>ioreq_event</a>       141 src/disksim_cachedev.c static void cachedev_empty_donefunc (void *doneparam, ioreq_event *req)</span>
+<span class='curline'><a href='../S/215.html#L177'>ioreq_event</a>       177 src/disksim_cachedev.c static struct cache_dev_event * cachedev_find_ongoing_request (struct cache_dev *cache, ioreq_event *req)</span>
+<span class='curline'><a href='../S/215.html#L205'>ioreq_event</a>       205 src/disksim_cachedev.c static void cachedev_setbits (bitstr_t *bitmap, ioreq_event *req)</span>
+<span class='curline'><a href='../S/215.html#L211'>ioreq_event</a>       211 src/disksim_cachedev.c static void cachedev_clearbits (bitstr_t *bitmap, ioreq_event *req)</span>
+<span class='curline'><a href='../S/215.html#L217'>ioreq_event</a>       217 src/disksim_cachedev.c static int cachedev_isreadhit (struct cache_dev *cache, ioreq_event *req)</span>
+<span class='curline'><a href='../S/215.html#L236'>ioreq_event</a>       236 src/disksim_cachedev.c static int cachedev_iswritehit (struct cache_dev *cache, ioreq_event *req)</span>
+<span class='curline'><a href='../S/215.html#L277'>ioreq_event</a>       277 src/disksim_cachedev.c    ioreq_event *flushreq;</span>
+<span class='curline'><a href='../S/215.html#L305'>ioreq_event</a>       305 src/disksim_cachedev.c    flushreq = (ioreq_event *) getfromextraq();</span>
+<span class='curline'><a href='../S/215.html#L322'>ioreq_event</a>       322 src/disksim_cachedev.c 		    ioreq_event *req, </span>
+<span class='curline'><a href='../S/215.html#L323'>ioreq_event</a>       323 src/disksim_cachedev.c 		    void (**donefunc)(void *, ioreq_event *), </span>
+<span class='curline'><a href='../S/215.html#L328'>ioreq_event</a>       328 src/disksim_cachedev.c    ioreq_event *fillreq;</span>
+<span class='curline'><a href='../S/215.html#L394'>ioreq_event</a>       394 src/disksim_cachedev.c 			   ioreq_event *req)</span>
+<span class='curline'><a href='../S/215.html#L423'>ioreq_event</a>       423 src/disksim_cachedev.c 			   ioreq_event *req, </span>
+<span class='curline'><a href='../S/215.html#L424'>ioreq_event</a>       424 src/disksim_cachedev.c 			   void (**donefunc)(void *, ioreq_event *), </span>
+<span class='curline'><a href='../S/215.html#L428'>ioreq_event</a>       428 src/disksim_cachedev.c    ioreq_event *flushreq;</span>
+<span class='curline'><a href='../S/215.html#L480'>ioreq_event</a>       480 src/disksim_cachedev.c 			       ioreq_event *curr)</span>
+<span class='curline'><a href='../S/215.html#L494'>ioreq_event</a>       494 src/disksim_cachedev.c          ioreq_event *flushreq = ioreq_copy(rwdesc-&gt;req);</span>
+<span class='curline'><a href='../S/215.html#L516'>ioreq_event</a>       516 src/disksim_cachedev.c             ioreq_event *flushreq = ioreq_copy(rwdesc-&gt;req);</span>
+<span class='curline'><a href='../S/215.html#L558'>ioreq_event</a>       558 src/disksim_cachedev.c        ioreq_event *flushreq = ioreq_copy (curr);</span>
+<span class='curline'><a href='../S/215.html#L652'>ioreq_event</a>       652 src/disksim_cachedev.c 		     void (**issuefunc)(void *,ioreq_event *), </span>
+<span class='curline'><a href='../S/253.html#L143'>ioreq_event</a>       143 src/disksim_cachedev.h    void (**donefunc)(void *,ioreq_event *);	/* Function to call when complete */</span>
+<span class='curline'><a href='../S/253.html#L146'>ioreq_event</a>       146 src/disksim_cachedev.h    ioreq_event *req;</span>
+<span class='curline'><a href='../S/253.html#L172'>ioreq_event</a>       172 src/disksim_cachedev.h    void (**issuefunc)(void *,ioreq_event *);	/* to issue a disk access    */</span>
+<span class='curline'><a href='../S/222.html#L153'>ioreq_event</a>       153 src/disksim_cachemem.c static void cache_empty_donefunc (void *doneparam, ioreq_event *req)</span>
+<span class='curline'><a href='../S/222.html#L175'>ioreq_event</a>       175 src/disksim_cachemem.c static void cache_waitfor_IO (struct cache_mem *cache, int waitcnt, struct cache_mem_event *cachereq, ioreq_event *ioacc)</span>
+<span class='curline'><a href='../S/222.html#L618'>ioreq_event</a>       618 src/disksim_cachemem.c static int cache_free_write_lock (struct cache_mem *cache, cache_atom *target, ioreq_event *owner)</span>
+<span class='curline'><a href='../S/222.html#L667'>ioreq_event</a>       667 src/disksim_cachemem.c static int cache_free_read_lock (struct cache_mem *cache, cache_atom *target, ioreq_event *owner)</span>
+<span class='curline'><a href='../S/222.html#L737'>ioreq_event</a>       737 src/disksim_cachemem.c    ioreq_event *flushreq;</span>
+<span class='curline'><a href='../S/222.html#L738'>ioreq_event</a>       738 src/disksim_cachemem.c    ioreq_event *flushwait;</span>
+<span class='curline'><a href='../S/222.html#L743'>ioreq_event</a>       743 src/disksim_cachemem.c    flushreq = (ioreq_event *) getfromextraq();</span>
+<span class='curline'><a href='../S/222.html#L752'>ioreq_event</a>       752 src/disksim_cachemem.c    flushwait = (ioreq_event *) getfromextraq();</span>
+<span class='curline'><a href='../S/222.html#L1265'>ioreq_event</a>      1265 src/disksim_cachemem.c    ioreq_event *fillreq;</span>
+<span class='curline'><a href='../S/222.html#L1694'>ioreq_event</a>      1694 src/disksim_cachemem.c 		    ioreq_event *req, </span>
+<span class='curline'><a href='../S/222.html#L1695'>ioreq_event</a>      1695 src/disksim_cachemem.c 		    void (**donefunc)(void *, ioreq_event *), </span>
+<span class='curline'><a href='../S/222.html#L1740'>ioreq_event</a>      1740 src/disksim_cachemem.c 			   ioreq_event *req)</span>
+<span class='curline'><a href='../S/222.html#L1775'>ioreq_event</a>      1775 src/disksim_cachemem.c 			  ioreq_event *flushreq, </span>
+<span class='curline'><a href='../S/222.html#L1785'>ioreq_event</a>      1785 src/disksim_cachemem.c 			   ioreq_event *req, </span>
+<span class='curline'><a href='../S/222.html#L1786'>ioreq_event</a>      1786 src/disksim_cachemem.c 			   void (**donefunc)(void *, ioreq_event *), </span>
+<span class='curline'><a href='../S/222.html#L1791'>ioreq_event</a>      1791 src/disksim_cachemem.c    ioreq_event *flushreq = 0;</span>
+<span class='curline'><a href='../S/222.html#L1895'>ioreq_event</a>      1895 src/disksim_cachemem.c 			  ioreq_event *flushreq, </span>
+<span class='curline'><a href='../S/222.html#L1959'>ioreq_event</a>      1959 src/disksim_cachemem.c cachemem_disk_access_complete (struct cache_if *c, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/222.html#L1962'>ioreq_event</a>      1962 src/disksim_cachemem.c    ioreq_event *req;</span>
+<span class='curline'><a href='../S/222.html#L2095'>ioreq_event</a>      2095 src/disksim_cachemem.c       ioreq_event *flushreq = desc-&gt;req;</span>
+<span class='curline'><a href='../S/222.html#L2150'>ioreq_event</a>      2150 src/disksim_cachemem.c 		     void (**issuefunc)(void *,ioreq_event *), </span>
+<span class='curline'><a href='../S/210.html#L136'>ioreq_event</a>       136 src/disksim_cachemem.h    ioreq_event *writelock;</span>
+<span class='curline'><a href='../S/210.html#L147'>ioreq_event</a>       147 src/disksim_cachemem.h    void (**donefunc)(void *,ioreq_event *);	/* Function to call when complete */</span>
+<span class='curline'><a href='../S/210.html#L150'>ioreq_event</a>       150 src/disksim_cachemem.h    ioreq_event *req;</span>
+<span class='curline'><a href='../S/210.html#L200'>ioreq_event</a>       200 src/disksim_cachemem.h    void (**issuefunc)(void *,ioreq_event *);	/* to issue a disk access    */</span>
+<span class='curline'><a href='../S/204.html#L145'>ioreq_event</a>       145 src/disksim_controller.c int controller_get_downward_busno (controller *currctlr, ioreq_event *curr, int *slotnoptr)</span>
+<span class='curline'><a href='../S/204.html#L163'>ioreq_event</a>       163 src/disksim_controller.c static int controller_get_upward_busno (controller *currctlr, ioreq_event *curr, int *slotnoptr)</span>
+<span class='curline'><a href='../S/204.html#L183'>ioreq_event</a>       183 src/disksim_controller.c void controller_send_event_down_path (controller *currctlr, ioreq_event *curr, double delay)</span>
+<span class='curline'><a href='../S/204.html#L217'>ioreq_event</a>       217 src/disksim_controller.c void controller_send_event_up_path (controller *currctlr, ioreq_event *curr, double delay)</span>
+<span class='curline'><a href='../S/204.html#L257'>ioreq_event</a>       257 src/disksim_controller.c    ioreq_event *tmp = currctlr-&gt;datatransfers;</span>
+<span class='curline'><a href='../S/204.html#L263'>ioreq_event</a>       263 src/disksim_controller.c          tmptime = ((ioreq_event *) tmp-&gt;tempptr1)-&gt;time;</span>
+<span class='curline'><a href='../S/204.html#L265'>ioreq_event</a>       265 src/disksim_controller.c          tmpblks = ((ioreq_event *) tmp-&gt;tempptr1)-&gt;blkno - tmp-&gt;blkno;</span>
+<span class='curline'><a href='../S/204.html#L266'>ioreq_event</a>       266 src/disksim_controller.c          tmpblks += ((ioreq_event *) tmp-&gt;tempptr1)-&gt;bcount;</span>
+<span class='curline'><a href='../S/204.html#L287'>ioreq_event</a>       287 src/disksim_controller.c void controller_bus_ownership_grant (int ctlno, ioreq_event *curr, int busno, double arbdelay)</span>
+<span class='curline'><a href='../S/204.html#L290'>ioreq_event</a>       290 src/disksim_controller.c    ioreq_event *tmp;</span>
+<span class='curline'><a href='../S/204.html#L322'>ioreq_event</a>       322 src/disksim_controller.c    ioreq_event *tmp;</span>
+<span class='curline'><a href='../S/204.html#L323'>ioreq_event</a>       323 src/disksim_controller.c    ioreq_event *trv;</span>
+<span class='curline'><a href='../S/204.html#L350'>ioreq_event</a>       350 src/disksim_controller.c void controller_bus_delay_complete(int ctlno, ioreq_event *curr, int busno)</span>
+<span class='curline'><a href='../S/204.html#L353'>ioreq_event</a>       353 src/disksim_controller.c    ioreq_event *trv;</span>
+<span class='curline'><a href='../S/204.html#L396'>ioreq_event</a>       396 src/disksim_controller.c void controller_event_arrive (int ctlno, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/257.html#L125'>ioreq_event</a>       125 src/disksim_controller.h void  controller_event_arrive (int ctlno, ioreq_event *curr);</span>
+<span class='curline'><a href='../S/257.html#L127'>ioreq_event</a>       127 src/disksim_controller.h void  controller_bus_delay_complete (int ctlno, ioreq_event *curr, int busno);</span>
+<span class='curline'><a href='../S/257.html#L128'>ioreq_event</a>       128 src/disksim_controller.h void  controller_bus_ownership_grant (int ctlno, ioreq_event *curr, int busno, double arbdelay);</span>
+<span class='curline'><a href='../S/284.html#L155'>ioreq_event</a>       155 src/disksim_ctlr.h    ioreq_event *connections;</span>
+<span class='curline'><a href='../S/284.html#L156'>ioreq_event</a>       156 src/disksim_ctlr.h    ioreq_event *datatransfers;</span>
+<span class='curline'><a href='../S/284.html#L158'>ioreq_event</a>       158 src/disksim_ctlr.h    ioreq_event *hostwaiters;</span>
+<span class='curline'><a href='../S/284.html#L163'>ioreq_event</a>       163 src/disksim_ctlr.h    ioreq_event *buswait;</span>
+<span class='curline'><a href='../S/284.html#L199'>ioreq_event</a>       199 src/disksim_ctlr.h void controller_passthru_event_arrive (controller *currctlr, ioreq_event *curr);</span>
+<span class='curline'><a href='../S/284.html#L201'>ioreq_event</a>       201 src/disksim_ctlr.h void controller_53c700_event_arrive (controller *currctlr, ioreq_event *curr);</span>
+<span class='curline'><a href='../S/284.html#L206'>ioreq_event</a>       206 src/disksim_ctlr.h void controller_smart_event_arrive (controller *currctlr, ioreq_event *curr);</span>
+<span class='curline'><a href='../S/284.html#L220'>ioreq_event</a>       220 src/disksim_ctlr.h void controller_send_event_up_path (controller *currctlr, ioreq_event *curr, double delay);</span>
+<span class='curline'><a href='../S/284.html#L221'>ioreq_event</a>       221 src/disksim_ctlr.h void controller_send_event_down_path (controller *currctlr, ioreq_event *curr, double delay);</span>
+<span class='curline'><a href='../S/284.html#L223'>ioreq_event</a>       223 src/disksim_ctlr.h int  controller_get_downward_busno (controller *currctlr, ioreq_event *curr, int *slotnoptr);</span>
+<span class='curline'><a href='../S/220.html#L113'>ioreq_event</a>       113 src/disksim_ctlrdumb.c static void controller_53c700_reset_complete (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/220.html#L115'>ioreq_event</a>       115 src/disksim_ctlrdumb.c    ioreq_event *tmp;</span>
+<span class='curline'><a href='../S/220.html#L139'>ioreq_event</a>       139 src/disksim_ctlrdumb.c static void controller_53c700_reconnection_complete (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/220.html#L151'>ioreq_event</a>       151 src/disksim_ctlrdumb.c static void controller_53c700_reconnect_to_transfer (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/220.html#L176'>ioreq_event</a>       176 src/disksim_ctlrdumb.c static void controller_53c700_request_complete (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/220.html#L178'>ioreq_event</a>       178 src/disksim_ctlrdumb.c    ioreq_event *ret;</span>
+<span class='curline'><a href='../S/220.html#L198'>ioreq_event</a>       198 src/disksim_ctlrdumb.c static void controller_53c700_disconnect (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/220.html#L200'>ioreq_event</a>       200 src/disksim_ctlrdumb.c    ioreq_event *ret;</span>
+<span class='curline'><a href='../S/220.html#L221'>ioreq_event</a>       221 src/disksim_ctlrdumb.c static void controller_53c700_ready_to_transfer (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/220.html#L234'>ioreq_event</a>       234 src/disksim_ctlrdumb.c static void controller_53c700_request_arrive (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/220.html#L254'>ioreq_event</a>       254 src/disksim_ctlrdumb.c static void controller_53c700_interrupt_arrive (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/220.html#L281'>ioreq_event</a>       281 src/disksim_ctlrdumb.c static void controller_53c700_interrupt_complete (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/220.html#L301'>ioreq_event</a>       301 src/disksim_ctlrdumb.c static void controller_53c700_data_transfer (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/220.html#L303'>ioreq_event</a>       303 src/disksim_ctlrdumb.c    ioreq_event *tmp;</span>
+<span class='curline'><a href='../S/220.html#L322'>ioreq_event</a>       322 src/disksim_ctlrdumb.c    tmp = (ioreq_event *) getfromextraq();</span>
+<span class='curline'><a href='../S/220.html#L334'>ioreq_event</a>       334 src/disksim_ctlrdumb.c static void controller_53c700_data_transfer_complete (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/220.html#L336'>ioreq_event</a>       336 src/disksim_ctlrdumb.c    ioreq_event *tmp;</span>
+<span class='curline'><a href='../S/220.html#L338'>ioreq_event</a>       338 src/disksim_ctlrdumb.c    tmp = (ioreq_event *) curr-&gt;tempptr1;</span>
+<span class='curline'><a href='../S/220.html#L362'>ioreq_event</a>       362 src/disksim_ctlrdumb.c void controller_53c700_event_arrive (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/220.html#L401'>ioreq_event</a>       401 src/disksim_ctlrdumb.c void controller_passthru_event_arrive (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/268.html#L127'>ioreq_event</a>       127 src/disksim_ctlrsmart.c static void controller_smart_issue_access (void *issuefuncparam, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/268.html#L140'>ioreq_event</a>       140 src/disksim_ctlrsmart.c       ioreq_event *sched = ioqueue_get_next_request(queue);</span>
+<span class='curline'><a href='../S/268.html#L146'>ioreq_event</a>       146 src/disksim_ctlrsmart.c static void controller_smart_disk_data_transfer (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/268.html#L148'>ioreq_event</a>       148 src/disksim_ctlrsmart.c    ioreq_event *tmp = (ioreq_event *) getfromextraq();</span>
+<span class='curline'><a href='../S/268.html#L174'>ioreq_event</a>       174 src/disksim_ctlrsmart.c static void controller_smart_disk_data_transfer_complete (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/268.html#L176'>ioreq_event</a>       176 src/disksim_ctlrsmart.c    ioreq_event *tmp = (ioreq_event *) curr-&gt;tempptr1;</span>
+<span class='curline'><a href='../S/268.html#L199'>ioreq_event</a>       199 src/disksim_ctlrsmart.c static void controller_smart_request_complete (void *donefuncparam, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/268.html#L212'>ioreq_event</a>       212 src/disksim_ctlrsmart.c static void controller_smart_host_data_transfer_complete (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/268.html#L240'>ioreq_event</a>       240 src/disksim_ctlrsmart.c static void controller_smart_host_data_transfer (void *donefuncparam, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/268.html#L267'>ioreq_event</a>       267 src/disksim_ctlrsmart.c static void controller_smart_request_arrive (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/268.html#L279'>ioreq_event</a>       279 src/disksim_ctlrsmart.c static void controller_smart_access_complete (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/268.html#L282'>ioreq_event</a>       282 src/disksim_ctlrsmart.c    ioreq_event *done = ioreq_copy(curr);</span>
+<span class='curline'><a href='../S/268.html#L311'>ioreq_event</a>       311 src/disksim_ctlrsmart.c static void controller_smart_ready_to_transfer (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/268.html#L321'>ioreq_event</a>       321 src/disksim_ctlrsmart.c static void controller_smart_disconnect (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/268.html#L330'>ioreq_event</a>       330 src/disksim_ctlrsmart.c static void controller_smart_reconnect_to_transfer (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/268.html#L339'>ioreq_event</a>       339 src/disksim_ctlrsmart.c static void controller_smart_interrupt_arrive (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/268.html#L366'>ioreq_event</a>       366 src/disksim_ctlrsmart.c static void controller_smart_interrupt_complete (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/268.html#L381'>ioreq_event</a>       381 src/disksim_ctlrsmart.c void controller_smart_event_arrive (controller *currctlr, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/214.html#L313'>ioreq_event</a>       313 src/disksim_device.c INLINE int device_get_busno (ioreq_event *curr)</span>
+<span class='curline'><a href='../S/214.html#L354'>ioreq_event</a>       354 src/disksim_device.c INLINE double device_get_blktranstime (ioreq_event *curr)</span>
+<span class='curline'><a href='../S/214.html#L385'>ioreq_event</a>       385 src/disksim_device.c INLINE void device_event_arrive (ioreq_event *curr)</span>
+<span class='curline'><a href='../S/214.html#L393'>ioreq_event</a>       393 src/disksim_device.c 				ioreq_event *req, </span>
+<span class='curline'><a href='../S/214.html#L406'>ioreq_event</a>       406 src/disksim_device.c 				   ioreq_event *req, </span>
+<span class='curline'><a href='../S/214.html#L418'>ioreq_event</a>       418 src/disksim_device.c 			    ioreq_event *req, </span>
+<span class='curline'><a href='../S/214.html#L432'>ioreq_event</a>       432 src/disksim_device.c 				  ioreq_event *req, </span>
+<span class='curline'><a href='../S/214.html#L444'>ioreq_event</a>       444 src/disksim_device.c 				       ioreq_event *curr, </span>
+<span class='curline'><a href='../S/214.html#L455'>ioreq_event</a>       455 src/disksim_device.c 					ioreq_event *curr, </span>
+<span class='curline'><a href='../S/223.html#L179'>ioreq_event</a>       179 src/disksim_device.h   int     (*get_busno)(ioreq_event *curr);</span>
+<span class='curline'><a href='../S/223.html#L186'>ioreq_event</a>       186 src/disksim_device.h   double  (*get_blktranstime)(ioreq_event *curr);</span>
+<span class='curline'><a href='../S/223.html#L196'>ioreq_event</a>       196 src/disksim_device.h   void    (*event_arrive)(ioreq_event *curr);</span>
+<span class='curline'><a href='../S/223.html#L199'>ioreq_event</a>       199 src/disksim_device.h 			  ioreq_event *req, </span>
+<span class='curline'><a href='../S/223.html#L204'>ioreq_event</a>       204 src/disksim_device.h 			  ioreq_event *req, </span>
+<span class='curline'><a href='../S/223.html#L210'>ioreq_event</a>       210 src/disksim_device.h 			  ioreq_event *req, </span>
+<span class='curline'><a href='../S/223.html#L215'>ioreq_event</a>       215 src/disksim_device.h 			 ioreq_event *req, </span>
+<span class='curline'><a href='../S/223.html#L219'>ioreq_event</a>       219 src/disksim_device.h 				ioreq_event *curr, </span>
+<span class='curline'><a href='../S/223.html#L223'>ioreq_event</a>       223 src/disksim_device.h 				 ioreq_event *curr, </span>
+<span class='curline'><a href='../S/223.html#L233'>ioreq_event</a>       233 src/disksim_device.h int     device_get_busno (ioreq_event *curr);</span>
+<span class='curline'><a href='../S/223.html#L240'>ioreq_event</a>       240 src/disksim_device.h double  device_get_blktranstime (ioreq_event *curr);</span>
+<span class='curline'><a href='../S/223.html#L250'>ioreq_event</a>       250 src/disksim_device.h void    device_event_arrive (ioreq_event *curr);</span>
+<span class='curline'><a href='../S/223.html#L253'>ioreq_event</a>       253 src/disksim_device.h 			     ioreq_event *req, </span>
+<span class='curline'><a href='../S/223.html#L258'>ioreq_event</a>       258 src/disksim_device.h 			     ioreq_event *req, </span>
+<span class='curline'><a href='../S/223.html#L264'>ioreq_event</a>       264 src/disksim_device.h 			     ioreq_event *req, </span>
+<span class='curline'><a href='../S/223.html#L269'>ioreq_event</a>       269 src/disksim_device.h 			    ioreq_event *req, </span>
+<span class='curline'><a href='../S/223.html#L273'>ioreq_event</a>       273 src/disksim_device.h 				   ioreq_event *curr, </span>
+<span class='curline'><a href='../S/223.html#L277'>ioreq_event</a>       277 src/disksim_device.h 				    ioreq_event *curr, </span>
+<span class='curline'><a href='../S/258.html#L213'>ioreq_event</a>       213 src/disksim_disk.h    ioreq_event *access;                 /* copy of the active ioreq</span>
+<span class='curline'><a href='../S/258.html#L223'>ioreq_event</a>       223 src/disksim_disk.h    ioreq_event 	       *ioreqlist;	/* sorted by ascending blkno */</span>
+<span class='curline'><a href='../S/258.html#L444'>ioreq_event</a>       444 src/disksim_disk.h   ioreq_event *buswait;</span>
+<span class='curline'><a href='../S/258.html#L445'>ioreq_event</a>       445 src/disksim_disk.h   ioreq_event *outwait;</span>
+<span class='curline'><a href='../S/258.html#L554'>ioreq_event</a>       554 src/disksim_disk.h int  disk_enablement_function (ioreq_event *);</span>
+<span class='curline'><a href='../S/258.html#L571'>ioreq_event</a>       571 src/disksim_disk.h 				   ioreq_event *curr);</span>
+<span class='curline'><a href='../S/258.html#L575'>ioreq_event</a>       575 src/disksim_disk.h int  disk_buffer_overlap(segment *seg, ioreq_event *curr);</span>
+<span class='curline'><a href='../S/258.html#L577'>ioreq_event</a>       577 src/disksim_disk.h 				ioreq_event *currioreq, </span>
+<span class='curline'><a href='../S/258.html#L583'>ioreq_event</a>       583 src/disksim_disk.h void disk_interferestats(disk *currdisk, ioreq_event *curr);</span>
+<span class='curline'><a href='../S/258.html#L605'>ioreq_event</a>       605 src/disksim_disk.h INLINE int     disk_get_busno(ioreq_event *curr);</span>
+<span class='curline'><a href='../S/258.html#L614'>ioreq_event</a>       614 src/disksim_disk.h double  disk_get_blktranstime(ioreq_event *curr);</span>
+<span class='curline'><a href='../S/258.html#L629'>ioreq_event</a>       629 src/disksim_disk.h void    disk_event_arrive(ioreq_event *curr);</span>
+<span class='curline'><a href='../S/258.html#L632'>ioreq_event</a>       632 src/disksim_disk.h 			  ioreq_event *req, </span>
+<span class='curline'><a href='../S/258.html#L637'>ioreq_event</a>       637 src/disksim_disk.h 			  ioreq_event *req, </span>
+<span class='curline'><a href='../S/258.html#L642'>ioreq_event</a>       642 src/disksim_disk.h 			  ioreq_event *req, </span>
+<span class='curline'><a href='../S/258.html#L647'>ioreq_event</a>       647 src/disksim_disk.h 			 ioreq_event *req, </span>
+<span class='curline'><a href='../S/258.html#L653'>ioreq_event</a>       653 src/disksim_disk.h 				ioreq_event *curr, </span>
+<span class='curline'><a href='../S/258.html#L657'>ioreq_event</a>       657 src/disksim_disk.h 				 ioreq_event *curr, </span>
+<span class='curline'><a href='../S/192.html#L130'>ioreq_event</a>       130 src/disksim_diskcache.c int disk_buffer_overlap (segment *seg, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/192.html#L227'>ioreq_event</a>       227 src/disksim_diskcache.c    ioreq_event *currioreq;</span>
+<span class='curline'><a href='../S/192.html#L289'>ioreq_event</a>       289 src/disksim_diskcache.c    ioreq_event *currioreq;</span>
+<span class='curline'><a href='../S/192.html#L447'>ioreq_event</a>       447 src/disksim_diskcache.c void disk_interferestats (disk *currdisk, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/192.html#L464'>ioreq_event</a>       464 src/disksim_diskcache.c static void disk_buffer_stats (disk *currdisk, ioreq_event *curr, segment *seg, int hittype)</span>
+<span class='curline'><a href='../S/192.html#L584'>ioreq_event</a>       584 src/disksim_diskcache.c    ioreq_event *first_ioreq = currdiskreq-&gt;ioreqlist;</span>
+<span class='curline'><a href='../S/192.html#L585'>ioreq_event</a>       585 src/disksim_diskcache.c    ioreq_event *tmpioreq;</span>
+<span class='curline'><a href='../S/192.html#L781'>ioreq_event</a>       781 src/disksim_diskcache.c    ioreq_event *first_ioreq;</span>
+<span class='curline'><a href='../S/192.html#L782'>ioreq_event</a>       782 src/disksim_diskcache.c    ioreq_event *last_ioreq;</span>
+<span class='curline'><a href='../S/192.html#L783'>ioreq_event</a>       783 src/disksim_diskcache.c    ioreq_event *tmpioreq;</span>
+<span class='curline'><a href='../S/192.html#L1062'>ioreq_event</a>      1062 src/disksim_diskcache.c static int disk_buffer_check_read_segments (disk *currdisk, ioreq_event *currioreq, int* buffer_reading)</span>
+<span class='curline'><a href='../S/192.html#L1158'>ioreq_event</a>      1158 src/disksim_diskcache.c static int disk_buffer_check_write_segments (disk *currdisk, ioreq_event *currioreq)</span>
+<span class='curline'><a href='../S/192.html#L1164'>ioreq_event</a>      1164 src/disksim_diskcache.c    ioreq_event *last_ioreq;</span>
+<span class='curline'><a href='../S/192.html#L1252'>ioreq_event</a>      1252 src/disksim_diskcache.c int disk_buffer_check_segments (disk *currdisk, ioreq_event *currioreq,</span>
+<span class='curline'><a href='../S/192.html#L1268'>ioreq_event</a>      1268 src/disksim_diskcache.c    ioreq_event *tmp_ioreq;</span>
+<span class='curline'><a href='../S/192.html#L1486'>ioreq_event</a>      1486 src/disksim_diskcache.c    ioreq_event *currioreq = currdiskreq-&gt;ioreqlist;</span>
+<span class='curline'><a href='../S/192.html#L1490'>ioreq_event</a>      1490 src/disksim_diskcache.c    ioreq_event *tmpioreq;</span>
+<span class='curline'><a href='../S/192.html#L1638'>ioreq_event</a>      1638 src/disksim_diskcache.c int disk_buffer_get_max_readahead (disk *currdisk, segment *seg, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/196.html#L114'>ioreq_event</a>       114 src/disksim_diskctlr.c 			 ioreq_event *curr);</span>
+<span class='curline'><a href='../S/196.html#L118'>ioreq_event</a>       118 src/disksim_diskctlr.c 		      ioreq_event *curr);</span>
+<span class='curline'><a href='../S/196.html#L121'>ioreq_event</a>       121 src/disksim_diskctlr.c disk_enablement_function (ioreq_event *currioreq);</span>
+<span class='curline'><a href='../S/196.html#L125'>ioreq_event</a>       125 src/disksim_diskctlr.c 			  ioreq_event *curr);</span>
+<span class='curline'><a href='../S/196.html#L140'>ioreq_event</a>       140 src/disksim_diskctlr.c static ioreq_event * </span>
+<span class='curline'><a href='../S/196.html#L143'>ioreq_event</a>       143 src/disksim_diskctlr.c 			   ioreq_event *curr);</span>
+<span class='curline'><a href='../S/196.html#L159'>ioreq_event</a>       159 src/disksim_diskctlr.c 			     ioreq_event *curr, </span>
+<span class='curline'><a href='../S/196.html#L210'>ioreq_event</a>       210 src/disksim_diskctlr.c double disk_get_blktranstime (ioreq_event *curr)</span>
+<span class='curline'><a href='../S/196.html#L223'>ioreq_event</a>       223 src/disksim_diskctlr.c INLINE int disk_get_busno (ioreq_event *curr)</span>
+<span class='curline'><a href='../S/196.html#L246'>ioreq_event</a>       246 src/disksim_diskctlr.c static void disk_send_event_up_path (ioreq_event *curr, double delay)</span>
+<span class='curline'><a href='../S/196.html#L304'>ioreq_event</a>       304 src/disksim_diskctlr.c 			 ioreq_event *curr, </span>
+<span class='curline'><a href='../S/196.html#L309'>ioreq_event</a>       309 src/disksim_diskctlr.c   ioreq_event *tmp;</span>
+<span class='curline'><a href='../S/196.html#L330'>ioreq_event</a>       330 src/disksim_diskctlr.c 			ioreq_event *curr, </span>
+<span class='curline'><a href='../S/196.html#L344'>ioreq_event</a>       344 src/disksim_diskctlr.c     ioreq_event *tmp = currdisk-&gt;buswait;</span>
+<span class='curline'><a href='../S/196.html#L370'>ioreq_event</a>       370 src/disksim_diskctlr.c disk_prepare_for_data_transfer(ioreq_event *curr)</span>
+<span class='curline'><a href='../S/196.html#L393'>ioreq_event</a>       393 src/disksim_diskctlr.c   ioreq_event *nextioreq;</span>
+<span class='curline'><a href='../S/196.html#L437'>ioreq_event</a>       437 src/disksim_diskctlr.c 				  ioreq_event *curr)</span>
+<span class='curline'><a href='../S/196.html#L439'>ioreq_event</a>       439 src/disksim_diskctlr.c   ioreq_event *tmpioreq = currdiskreq-&gt;ioreqlist;</span>
+<span class='curline'><a href='../S/196.html#L566'>ioreq_event</a>       566 src/disksim_diskctlr.c static void disk_reconnection_or_transfer_complete (ioreq_event *curr)</span>
+<span class='curline'><a href='../S/196.html#L570'>ioreq_event</a>       570 src/disksim_diskctlr.c   ioreq_event *tmpioreq;</span>
+<span class='curline'><a href='../S/196.html#L716'>ioreq_event</a>       716 src/disksim_diskctlr.c   ioreq_event *tmpioreq;</span>
+<span class='curline'><a href='../S/196.html#L717'>ioreq_event</a>       717 src/disksim_diskctlr.c   ioreq_event *holdioreq;</span>
+<span class='curline'><a href='../S/196.html#L885'>ioreq_event</a>       885 src/disksim_diskctlr.c static ioreq_event * </span>
+<span class='curline'><a href='../S/196.html#L890'>ioreq_event</a>       890 src/disksim_diskctlr.c   ioreq_event *busioreq = NULL;</span>
+<span class='curline'><a href='../S/196.html#L891'>ioreq_event</a>       891 src/disksim_diskctlr.c   ioreq_event *tmpioreq = currdiskreq-&gt;ioreqlist;</span>
+<span class='curline'><a href='../S/196.html#L1042'>ioreq_event</a>      1042 src/disksim_diskctlr.c disk_select_bus_request(disk *currdisk, ioreq_event **busioreq)</span>
+<span class='curline'><a href='../S/196.html#L1046'>ioreq_event</a>      1046 src/disksim_diskctlr.c   ioreq_event *currioreq = 0;</span>
+<span class='curline'><a href='../S/196.html#L1047'>ioreq_event</a>      1047 src/disksim_diskctlr.c   ioreq_event *tmpioreq;</span>
+<span class='curline'><a href='../S/196.html#L1262'>ioreq_event</a>      1262 src/disksim_diskctlr.c   ioreq_event *busioreq = NULL;</span>
+<span class='curline'><a href='../S/196.html#L1390'>ioreq_event</a>      1390 src/disksim_diskctlr.c disk_get_remapped_sector(disk *currdisk, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/196.html#L1467'>ioreq_event</a>      1467 src/disksim_diskctlr.c static void disk_goto_remapped_sector (disk *currdisk, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/196.html#L1509'>ioreq_event</a>      1509 src/disksim_diskctlr.c 		    ioreq_event *curr, </span>
+<span class='curline'><a href='../S/196.html#L1634'>ioreq_event</a>      1634 src/disksim_diskctlr.c   ioreq_event *nextioreq;</span>
+<span class='curline'><a href='../S/196.html#L1745'>ioreq_event</a>      1745 src/disksim_diskctlr.c 		       ioreq_event *nextioreq, </span>
+<span class='curline'><a href='../S/196.html#L1909'>ioreq_event</a>      1909 src/disksim_diskctlr.c   ioreq_event *nextioreq = 0;</span>
+<span class='curline'><a href='../S/196.html#L2091'>ioreq_event</a>      2091 src/disksim_diskctlr.c   ioreq_event *currioreq;</span>
+<span class='curline'><a href='../S/196.html#L2172'>ioreq_event</a>      2172 src/disksim_diskctlr.c   ioreq_event *currioreq;</span>
+<span class='curline'><a href='../S/196.html#L2269'>ioreq_event</a>      2269 src/disksim_diskctlr.c   ioreq_event *currioreq;</span>
+<span class='curline'><a href='../S/196.html#L2343'>ioreq_event</a>      2343 src/disksim_diskctlr.c disk_request_arrive(ioreq_event *curr)</span>
+<span class='curline'><a href='../S/196.html#L2345'>ioreq_event</a>      2345 src/disksim_diskctlr.c   ioreq_event *intrp;</span>
+<span class='curline'><a href='../S/196.html#L2445'>ioreq_event</a>      2445 src/disksim_diskctlr.c 		 ioreq_event *curr,</span>
+<span class='curline'><a href='../S/196.html#L2448'>ioreq_event</a>      2448 src/disksim_diskctlr.c 		 ioreq_event *intrp)</span>
+<span class='curline'><a href='../S/196.html#L2595'>ioreq_event</a>      2595 src/disksim_diskctlr.c 			     ioreq_event *curr,</span>
+<span class='curline'><a href='../S/196.html#L2598'>ioreq_event</a>      2598 src/disksim_diskctlr.c 			     ioreq_event *intrp)</span>
+<span class='curline'><a href='../S/196.html#L2747'>ioreq_event</a>      2747 src/disksim_diskctlr.c static void disk_disconnect (ioreq_event *curr)</span>
+<span class='curline'><a href='../S/196.html#L2751'>ioreq_event</a>      2751 src/disksim_diskctlr.c   ioreq_event *tmpioreq;</span>
+<span class='curline'><a href='../S/196.html#L2814'>ioreq_event</a>      2814 src/disksim_diskctlr.c static void disk_completion (ioreq_event *curr)</span>
+<span class='curline'><a href='../S/196.html#L2818'>ioreq_event</a>      2818 src/disksim_diskctlr.c   ioreq_event *tmpioreq;</span>
+<span class='curline'><a href='../S/196.html#L2942'>ioreq_event</a>      2942 src/disksim_diskctlr.c static void disk_interrupt_complete (ioreq_event *curr)</span>
+<span class='curline'><a href='../S/196.html#L2967'>ioreq_event</a>      2967 src/disksim_diskctlr.c void disk_event_arrive (ioreq_event *curr)</span>
+<span class='curline'><a href='../S/196.html#L3068'>ioreq_event</a>      3068 src/disksim_diskctlr.c   ioreq_event *tmpioreq = currdiskreq-&gt;ioreqlist;</span>
+<span class='curline'><a href='../S/196.html#L3248'>ioreq_event</a>      3248 src/disksim_diskctlr.c static void disk_got_remapped_sector (disk *currdisk, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/196.html#L3303'>ioreq_event</a>      3303 src/disksim_diskctlr.c   ioreq_event *tmpioreq;</span>
+<span class='curline'><a href='../S/196.html#L3388'>ioreq_event</a>      3388 src/disksim_diskctlr.c static ioreq_event * </span>
+<span class='curline'><a href='../S/196.html#L3391'>ioreq_event</a>      3391 src/disksim_diskctlr.c 			  ioreq_event *curr)</span>
+<span class='curline'><a href='../S/196.html#L3395'>ioreq_event</a>      3395 src/disksim_diskctlr.c   ioreq_event *tmpioreq;</span>
+<span class='curline'><a href='../S/196.html#L3582'>ioreq_event</a>      3582 src/disksim_diskctlr.c int disk_enablement_function(ioreq_event *currioreq)</span>
+<span class='curline'><a href='../S/196.html#L3586'>ioreq_event</a>      3586 src/disksim_diskctlr.c   ioreq_event *tmpioreq;</span>
+<span class='curline'><a href='../S/196.html#L3728'>ioreq_event</a>      3728 src/disksim_diskctlr.c   ioreq_event *currioreq;</span>
+<span class='curline'><a href='../S/196.html#L3806'>ioreq_event</a>      3806 src/disksim_diskctlr.c       ioreq_event *bestioreq = ioqueue_show_next_request(currdisk-&gt;queue);</span>
+<span class='curline'><a href='../S/196.html#L3920'>ioreq_event</a>      3920 src/disksim_diskctlr.c       ioreq_event *bestioreq = ioqueue_show_next_request(currdisk-&gt;queue);</span>
+<span class='curline'><a href='../S/196.html#L3989'>ioreq_event</a>      3989 src/disksim_diskctlr.c disk_buffer_seekdone(disk *currdisk, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/196.html#L4183'>ioreq_event</a>      4183 src/disksim_diskctlr.c 	   ioreq_event *curr, </span>
+<span class='curline'><a href='../S/196.html#L4340'>ioreq_event</a>      4340 src/disksim_diskctlr.c disk_buffer_sector_done (disk *currdisk, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/196.html#L4344'>ioreq_event</a>      4344 src/disksim_diskctlr.c   ioreq_event *tmpioreq;</span>
+<span class='curline'><a href='../S/196.html#L4711'>ioreq_event</a>      4711 src/disksim_diskctlr.c 			      ioreq_event *curr, </span>
+<span class='curline'><a href='../S/196.html#L4866'>ioreq_event</a>      4866 src/disksim_diskctlr.c 			      ioreq_event *curr, </span>
+<span class='curline'><a href='../S/196.html#L4948'>ioreq_event</a>      4948 src/disksim_diskctlr.c int disk_get_distance(int diskno, ioreq_event *req, int exact, int direction)</span>
+<span class='curline'><a href='../S/196.html#L5001'>ioreq_event</a>      5001 src/disksim_diskctlr.c 		  ioreq_event *req, </span>
+<span class='curline'><a href='../S/196.html#L5019'>ioreq_event</a>      5019 src/disksim_diskctlr.c 		  ioreq_event *req, </span>
+<span class='curline'><a href='../S/196.html#L5039'>ioreq_event</a>      5039 src/disksim_diskctlr.c double disk_get_acctime (int diskno, ioreq_event *req, double maxtime)</span>
+<span class='curline'><a href='../S/196.html#L5051'>ioreq_event</a>      5051 src/disksim_diskctlr.c static double disk_buffer_estimate_acctime(disk *currdisk, ioreq_event *curr, double maxtime)</span>
+<span class='curline'><a href='../S/283.html#L340'>ioreq_event</a>       340 src/disksim_global.h typedef event*(*disksim_iodone_notify_t)(ioreq_event *, void *ctx);</span>
+<span class='curline'><a href='../S/283.html#L391'>ioreq_event</a>       391 src/disksim_global.h    void         (*issuefunc_ctlrsmart)     (void *, ioreq_event *);</span>
+<span class='curline'><a href='../S/283.html#L394'>ioreq_event</a>       394 src/disksim_global.h    void         (*donefunc_ctlrsmart_read) (void *, ioreq_event *);</span>
+<span class='curline'><a href='../S/283.html#L395'>ioreq_event</a>       395 src/disksim_global.h    void         (*donefunc_ctlrsmart_write)(void *, ioreq_event *);</span>
+<span class='curline'><a href='../S/283.html#L396'>ioreq_event</a>       396 src/disksim_global.h    void         (*donefunc_cachemem_empty) (void *, ioreq_event *);</span>
+<span class='curline'><a href='../S/283.html#L397'>ioreq_event</a>       397 src/disksim_global.h    void         (*donefunc_cachedev_empty) (void *, ioreq_event *);</span>
+<span class='curline'><a href='../S/283.html#L401'>ioreq_event</a>       401 src/disksim_global.h    int          (*enablement_disk)         (ioreq_event *);</span>
+<span class='curline'><a href='../S/283.html#L481'>ioreq_event</a>       481 src/disksim_global.h event * io_done_notify (ioreq_event *curr);</span>
+<span class='curline'><a href='../S/195.html#L167'>ioreq_event</a>       167 src/disksim_interface.c disksim_interface_io_done_notify (ioreq_event *curr, void *ctx)</span>
+<span class='curline'><a href='../S/195.html#L426'>ioreq_event</a>       426 src/disksim_interface.c    ioreq_event *new;</span>
+<span class='curline'><a href='../S/195.html#L431'>ioreq_event</a>       431 src/disksim_interface.c    new = (ioreq_event *) getfromextraq();</span>
+<span class='curline'><a href='../S/252.html#L112'>ioreq_event</a>       112 src/disksim_intr.c       io_catch_stray_events((ioreq_event *) curr);</span>
+<span class='curline'><a href='../S/252.html#L130'>ioreq_event</a>       130 src/disksim_intr.c       io_interrupt_arrive ((ioreq_event *)intrp);</span>
+<span class='curline'><a href='../S/205.html#L137'>ioreq_event</a>       137 src/disksim_iodriver.c static void iodriver_send_event_down_path (ioreq_event *curr)</span>
+<span class='curline'><a href='../S/205.html#L159'>ioreq_event</a>       159 src/disksim_iodriver.c static void schedule_disk_access (iodriver *curriodriver, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/205.html#L194'>ioreq_event</a>       194 src/disksim_iodriver.c static ioreq_event * handle_new_request (iodriver *curriodriver, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/205.html#L197'>ioreq_event</a>       197 src/disksim_iodriver.c    ioreq_event *ret = NULL;</span>
+<span class='curline'><a href='../S/205.html#L221'>ioreq_event</a>       221 src/disksim_iodriver.c void iodriver_schedule (int iodriverno, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/205.html#L272'>ioreq_event</a>       272 src/disksim_iodriver.c          ioreq_event *totalreq = ioreq_copy(curr);</span>
+<span class='curline'><a href='../S/205.html#L301'>ioreq_event</a>       301 src/disksim_iodriver.c    ioreq_event *tmp;</span>
+<span class='curline'><a href='../S/205.html#L396'>ioreq_event</a>       396 src/disksim_iodriver.c    ioreq_event *tmp;</span>
+<span class='curline'><a href='../S/205.html#L397'>ioreq_event</a>       397 src/disksim_iodriver.c    ioreq_event *del;</span>
+<span class='curline'><a href='../S/205.html#L398'>ioreq_event</a>       398 src/disksim_iodriver.c    ioreq_event *req;</span>
+<span class='curline'><a href='../S/205.html#L404'>ioreq_event</a>       404 src/disksim_iodriver.c       req = ioreq_copy((ioreq_event *) intrp-&gt;infoptr);</span>
+<span class='curline'><a href='../S/205.html#L407'>ioreq_event</a>       407 src/disksim_iodriver.c       req = (ioreq_event *) intrp-&gt;infoptr;</span>
+<span class='curline'><a href='../S/205.html#L482'>ioreq_event</a>       482 src/disksim_iodriver.c       tmp = (ioreq_event *) getfromextraq();</span>
+<span class='curline'><a href='../S/205.html#L498'>ioreq_event</a>       498 src/disksim_iodriver.c       tmp = (ioreq_event *) io_get_next_external_event(disksim-&gt;iotracefile);</span>
+<span class='curline'><a href='../S/205.html#L519'>ioreq_event</a>       519 src/disksim_iodriver.c 	ioreq_event *temp = ioqueue_get_specific_request (overallqueue, tmp);</span>
+<span class='curline'><a href='../S/205.html#L520'>ioreq_event</a>       520 src/disksim_iodriver.c 	ioreq_event *temp2 = ioqueue_physical_access_done (overallqueue, temp);</span>
+<span class='curline'><a href='../S/205.html#L605'>ioreq_event</a>       605 src/disksim_iodriver.c    ioreq_event *req = NULL;</span>
+<span class='curline'><a href='../S/205.html#L615'>ioreq_event</a>       615 src/disksim_iodriver.c    req = (ioreq_event *) intrp-&gt;infoptr;</span>
+<span class='curline'><a href='../S/205.html#L625'>ioreq_event</a>       625 src/disksim_iodriver.c                               req = ioreq_copy((ioreq_event *) intrp-&gt;infoptr);</span>
+<span class='curline'><a href='../S/205.html#L648'>ioreq_event</a>       648 src/disksim_iodriver.c       if (((ioreq_event *) intrp-&gt;infoptr)-&gt;cause == COMPLETION) {</span>
+<span class='curline'><a href='../S/205.html#L690'>ioreq_event</a>       690 src/disksim_iodriver.c    ioreq_event *infoptr = (ioreq_event *) intrp-&gt;infoptr;</span>
+<span class='curline'><a href='../S/205.html#L717'>ioreq_event</a>       717 src/disksim_iodriver.c          ((ioreq_event *)tmp)-&gt;tempptr1 = intrp;</span>
+<span class='curline'><a href='../S/205.html#L724'>ioreq_event</a>       724 src/disksim_iodriver.c       ((ioreq_event *)tmp)-&gt;tempptr1 = intrp;</span>
+<span class='curline'><a href='../S/205.html#L744'>ioreq_event</a>       744 src/disksim_iodriver.c event * iodriver_request (int iodriverno, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/205.html#L746'>ioreq_event</a>       746 src/disksim_iodriver.c    ioreq_event *temp = NULL;</span>
+<span class='curline'><a href='../S/205.html#L747'>ioreq_event</a>       747 src/disksim_iodriver.c    ioreq_event *ret = NULL;</span>
+<span class='curline'><a href='../S/205.html#L748'>ioreq_event</a>       748 src/disksim_iodriver.c    ioreq_event *retlist = NULL;</span>
+<span class='curline'><a href='../S/205.html#L824'>ioreq_event</a>       824 src/disksim_iodriver.c void iodriver_trace_request_start (int iodriverno, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/205.html#L826'>ioreq_event</a>       826 src/disksim_iodriver.c    ioreq_event *tmp;</span>
+<span class='curline'><a href='../S/205.html#L877'>ioreq_event</a>       877 src/disksim_iodriver.c    ioreq_event *chk = (ioreq_event *) getfromextraq();</span>
+<span class='curline'><a href='../S/218.html#L220'>ioreq_event</a>       220 src/disksim_iodriver.h event * iodriver_request (int iodriverno, ioreq_event *curr);</span>
+<span class='curline'><a href='../S/218.html#L221'>ioreq_event</a>       221 src/disksim_iodriver.h void    iodriver_schedule (int iodriverno, ioreq_event *curr);</span>
+<span class='curline'><a href='../S/218.html#L228'>ioreq_event</a>       228 src/disksim_iodriver.h void    iodriver_trace_request_start (int iodriverno, ioreq_event *curr);</span>
+<span class='curline'><a href='../S/287.html#L132'>ioreq_event</a>       132 src/disksim_ioface.h void    io_internal_event (ioreq_event *curr);</span>
+<span class='curline'><a href='../S/287.html#L135'>ioreq_event</a>       135 src/disksim_ioface.h event * io_request (ioreq_event *curr);</span>
+<span class='curline'><a href='../S/287.html#L136'>ioreq_event</a>       136 src/disksim_ioface.h void    io_schedule (ioreq_event *curr);</span>
+<span class='curline'><a href='../S/287.html#L139'>ioreq_event</a>       139 src/disksim_ioface.h void    io_interrupt_arrive (ioreq_event *intrp);</span>
+<span class='curline'><a href='../S/287.html#L140'>ioreq_event</a>       140 src/disksim_ioface.h void    io_interrupt_complete (ioreq_event *intrp);</span>
+<span class='curline'><a href='../S/287.html#L141'>ioreq_event</a>       141 src/disksim_ioface.h void    io_catch_stray_events (ioreq_event *curr);</span>
+<span class='curline'><a href='../S/287.html#L143'>ioreq_event</a>       143 src/disksim_ioface.h void    io_map_trace_request (ioreq_event *temp);</span>
+<span class='curline'><a href='../S/254.html#L188'>ioreq_event</a>       188 src/disksim_ioqueue.c       ioreq_event *event_ptr = tmp-&gt;batch_list;</span>
+<span class='curline'><a href='../S/254.html#L383'>ioreq_event</a>       383 src/disksim_ioqueue.c void ioqueue_set_enablement_function (ioqueue *queue, int (**enablement)(ioreq_event *))</span>
+<span class='curline'><a href='../S/254.html#L426'>ioreq_event</a>       426 src/disksim_ioqueue.c static void ioqueue_update_arrival_stats (ioqueue *queue, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/254.html#L509'>ioreq_event</a>       509 src/disksim_ioqueue.c static void ioqueue_remove_from_batch_fcfs_subqueue (subqueue *queue, iobuf *tmp, ioreq_event *done)</span>
+<span class='curline'><a href='../S/254.html#L532'>ioreq_event</a>       532 src/disksim_ioqueue.c   ioreq_event *event_ptr;</span>
+<span class='curline'><a href='../S/254.html#L679'>ioreq_event</a>       679 src/disksim_ioqueue.c    ioreq_event *tmp;</span>
+<span class='curline'><a href='../S/254.html#L1306'>ioreq_event</a>      1306 src/disksim_ioqueue.c    ioreq_event *test;</span>
+<span class='curline'><a href='../S/254.html#L1313'>ioreq_event</a>      1313 src/disksim_ioqueue.c    ioreq_event *tmp;</span>
+<span class='curline'><a href='../S/254.html#L1323'>ioreq_event</a>      1323 src/disksim_ioqueue.c    test = (ioreq_event *) getfromextraq();</span>
+<span class='curline'><a href='../S/254.html#L1501'>ioreq_event</a>      1501 src/disksim_ioqueue.c   ioreq_event *test;</span>
+<span class='curline'><a href='../S/254.html#L1514'>ioreq_event</a>      1514 src/disksim_ioqueue.c   test = (ioreq_event *) getfromextraq();</span>
+<span class='curline'><a href='../S/254.html#L1603'>ioreq_event</a>      1603 src/disksim_ioqueue.c    ioreq_event *test;</span>
+<span class='curline'><a href='../S/254.html#L1643'>ioreq_event</a>      1643 src/disksim_ioqueue.c        test = (ioreq_event *) getfromextraq();</span>
+<span class='curline'><a href='../S/254.html#L1746'>ioreq_event</a>      1746 src/disksim_ioqueue.c        test = (ioreq_event *) getfromextraq();</span>
+<span class='curline'><a href='../S/254.html#L1776'>ioreq_event</a>      1776 src/disksim_ioqueue.c    ioreq_event *test;</span>
+<span class='curline'><a href='../S/254.html#L1781'>ioreq_event</a>      1781 src/disksim_ioqueue.c    ioreq_event *tmp;</span>
+<span class='curline'><a href='../S/254.html#L1796'>ioreq_event</a>      1796 src/disksim_ioqueue.c    test = (ioreq_event *) getfromextraq();</span>
+<span class='curline'><a href='../S/254.html#L1860'>ioreq_event</a>      1860 src/disksim_ioqueue.c    ioreq_event *test;</span>
+<span class='curline'><a href='../S/254.html#L1864'>ioreq_event</a>      1864 src/disksim_ioqueue.c    ioreq_event *tmp;</span>
+<span class='curline'><a href='../S/254.html#L1883'>ioreq_event</a>      1883 src/disksim_ioqueue.c    test = (ioreq_event *) getfromextraq();</span>
+<span class='curline'><a href='../S/254.html#L1934'>ioreq_event</a>      1934 src/disksim_ioqueue.c    test = (ioreq_event *) getfromextraq();</span>
+<span class='curline'><a href='../S/254.html#L2003'>ioreq_event</a>      2003 src/disksim_ioqueue.c    ioreq_event *test;</span>
+<span class='curline'><a href='../S/254.html#L2016'>ioreq_event</a>      2016 src/disksim_ioqueue.c    ioreq_event *tmp;</span>
+<span class='curline'><a href='../S/254.html#L2023'>ioreq_event</a>      2023 src/disksim_ioqueue.c    test = (ioreq_event *) getfromextraq();</span>
+<span class='curline'><a href='../S/254.html#L2136'>ioreq_event</a>      2136 src/disksim_ioqueue.c    test = (ioreq_event *) getfromextraq();</span>
+<span class='curline'><a href='../S/254.html#L2221'>ioreq_event</a>      2221 src/disksim_ioqueue.c   ioreq_event *test;</span>
+<span class='curline'><a href='../S/254.html#L2231'>ioreq_event</a>      2231 src/disksim_ioqueue.c   test = (ioreq_event *) getfromextraq();</span>
+<span class='curline'><a href='../S/254.html#L2302'>ioreq_event</a>      2302 src/disksim_ioqueue.c static ioreq_event * ioqueue_show_next_request_from_subqueue (subqueue *queue)</span>
+<span class='curline'><a href='../S/254.html#L2305'>ioreq_event</a>      2305 src/disksim_ioqueue.c    ioreq_event *ret;</span>
+<span class='curline'><a href='../S/254.html#L2440'>ioreq_event</a>      2440 src/disksim_ioqueue.c       ret = (ioreq_event *) getfromextraq();</span>
+<span class='curline'><a href='../S/254.html#L2462'>ioreq_event</a>      2462 src/disksim_ioqueue.c static ioreq_event * ioqueue_get_next_request_from_subqueue (subqueue *queue)</span>
+<span class='curline'><a href='../S/254.html#L2470'>ioreq_event</a>      2470 src/disksim_ioqueue.c    ioreq_event *ret;</span>
+<span class='curline'><a href='../S/254.html#L2690'>ioreq_event</a>      2690 src/disksim_ioqueue.c       ret = (ioreq_event *) getfromextraq();</span>
+<span class='curline'><a href='../S/254.html#L2713'>ioreq_event</a>      2713 src/disksim_ioqueue.c static int ioqueue_request_match (ioreq_event *wanted, iobuf *curr)</span>
+<span class='curline'><a href='../S/254.html#L2715'>ioreq_event</a>      2715 src/disksim_ioqueue.c    ioreq_event *tmp;</span>
+<span class='curline'><a href='../S/254.html#L2748'>ioreq_event</a>      2748 src/disksim_ioqueue.c static ioreq_event * ioqueue_get_specific_request_from_subqueue (subqueue *queue, ioreq_event *wanted)</span>
+<span class='curline'><a href='../S/254.html#L2751'>ioreq_event</a>      2751 src/disksim_ioqueue.c    ioreq_event *ret;</span>
+<span class='curline'><a href='../S/254.html#L2831'>ioreq_event</a>      2831 src/disksim_ioqueue.c       ret = (ioreq_event *) getfromextraq();</span>
+<span class='curline'><a href='../S/254.html#L2851'>ioreq_event</a>      2851 src/disksim_ioqueue.c static ioreq_event * ioqueue_set_starttime_in_subqueue (subqueue *queue, ioreq_event *target)</span>
+<span class='curline'><a href='../S/254.html#L2854'>ioreq_event</a>      2854 src/disksim_ioqueue.c    ioreq_event *ret;</span>
+<span class='curline'><a href='../S/254.html#L2875'>ioreq_event</a>      2875 src/disksim_ioqueue.c static ioreq_event * ioqueue_remove_completed_request (subqueue *queue, ioreq_event *done)</span>
+<span class='curline'><a href='../S/254.html#L2879'>ioreq_event</a>      2879 src/disksim_ioqueue.c    ioreq_event *trv;</span>
+<span class='curline'><a href='../S/254.html#L2941'>ioreq_event</a>      2941 src/disksim_ioqueue.c        ioreq_event *batch_ptr = tmp-&gt;batch_list;</span>
+<span class='curline'><a href='../S/254.html#L3046'>ioreq_event</a>      3046 src/disksim_ioqueue.c ioreq_event *ioqueue_get_specific_request(ioqueue *queue, </span>
+<span class='curline'><a href='../S/254.html#L3047'>ioreq_event</a>      3047 src/disksim_ioqueue.c 					  ioreq_event *wanted)</span>
+<span class='curline'><a href='../S/254.html#L3049'>ioreq_event</a>      3049 src/disksim_ioqueue.c   ioreq_event *tmp = NULL;</span>
+<span class='curline'><a href='../S/254.html#L3100'>ioreq_event</a>      3100 src/disksim_ioqueue.c ioreq_event * ioqueue_set_starttime (ioqueue *queue, ioreq_event *target)</span>
+<span class='curline'><a href='../S/254.html#L3102'>ioreq_event</a>      3102 src/disksim_ioqueue.c    ioreq_event *tmp = NULL;</span>
+<span class='curline'><a href='../S/254.html#L3126'>ioreq_event</a>      3126 src/disksim_ioqueue.c ioreq_event * ioqueue_show_next_request (ioqueue *queue)</span>
+<span class='curline'><a href='../S/254.html#L3128'>ioreq_event</a>      3128 src/disksim_ioqueue.c    ioreq_event *tmp = NULL;</span>
+<span class='curline'><a href='../S/254.html#L3150'>ioreq_event</a>      3150 src/disksim_ioqueue.c ioreq_event * ioqueue_get_next_request (ioqueue *queue)</span>
+<span class='curline'><a href='../S/254.html#L3152'>ioreq_event</a>      3152 src/disksim_ioqueue.c    ioreq_event *tmp = NULL;</span>
+<span class='curline'><a href='../S/254.html#L3186'>ioreq_event</a>      3186 src/disksim_ioqueue.c double ioqueue_add_new_request (ioqueue *queue, ioreq_event *new)</span>
+<span class='curline'><a href='../S/254.html#L3290'>ioreq_event</a>      3290 src/disksim_ioqueue.c    ioreq_event *trv;</span>
+<span class='curline'><a href='../S/254.html#L3378'>ioreq_event</a>      3378 src/disksim_ioqueue.c    ioreq_event *trv;</span>
+<span class='curline'><a href='../S/254.html#L3503'>ioreq_event</a>      3503 src/disksim_ioqueue.c static void ioqueue_clobber_overlaps_subqueue (subqueue *queue, ioreq_event *ret, double arrtimemax)</span>
+<span class='curline'><a href='../S/254.html#L3506'>ioreq_event</a>      3506 src/disksim_ioqueue.c    ioreq_event *done;</span>
+<span class='curline'><a href='../S/254.html#L3533'>ioreq_event</a>      3533 src/disksim_ioqueue.c ioreq_event * ioqueue_physical_access_done (ioqueue *queue, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/254.html#L3535'>ioreq_event</a>      3535 src/disksim_ioqueue.c    ioreq_event *ret;</span>
+<span class='curline'><a href='../S/259.html#L123'>ioreq_event</a>       123 src/disksim_ioqueue.h double		ioqueue_add_new_request (struct ioq *queue, ioreq_event *new);</span>
+<span class='curline'><a href='../S/259.html#L124'>ioreq_event</a>       124 src/disksim_ioqueue.h ioreq_event *	ioqueue_get_next_request (struct ioq *queue);</span>
+<span class='curline'><a href='../S/259.html#L125'>ioreq_event</a>       125 src/disksim_ioqueue.h ioreq_event *	ioqueue_show_next_request (struct ioq *queue);</span>
+<span class='curline'><a href='../S/259.html#L126'>ioreq_event</a>       126 src/disksim_ioqueue.h ioreq_event *   ioqueue_set_starttime (struct ioq *queue, ioreq_event *target);</span>
+<span class='curline'><a href='../S/259.html#L127'>ioreq_event</a>       127 src/disksim_ioqueue.h ioreq_event *	ioqueue_get_specific_request (struct ioq *queue, ioreq_event *wanted);</span>
+<span class='curline'><a href='../S/259.html#L128'>ioreq_event</a>       128 src/disksim_ioqueue.h ioreq_event *	ioqueue_physical_access_done (struct ioq *queue, ioreq_event *curr);</span>
+<span class='curline'><a href='../S/259.html#L137'>ioreq_event</a>       137 src/disksim_ioqueue.h void		ioqueue_set_enablement_function (struct ioq *queue, int (**enablement)(ioreq_event *));</span>
+<span class='curline'><a href='../S/259.html#L191'>ioreq_event</a>       191 src/disksim_ioqueue.h          ioreq_event *concat;</span>
+<span class='curline'><a href='../S/259.html#L195'>ioreq_event</a>       195 src/disksim_ioqueue.h    ioreq_event *iolist;</span>
+<span class='curline'><a href='../S/259.html#L196'>ioreq_event</a>       196 src/disksim_ioqueue.h    ioreq_event *batch_list;</span>
+<span class='curline'><a href='../S/259.html#L210'>ioreq_event</a>       210 src/disksim_ioqueue.h    int		(**enablement)(ioreq_event *);</span>
+<span class='curline'><a href='../S/194.html#L122'>ioreq_event</a>       122 src/disksim_iosim.c ioreq_event * ioreq_copy (ioreq_event *old)</span>
+<span class='curline'><a href='../S/194.html#L124'>ioreq_event</a>       124 src/disksim_iosim.c    ioreq_event *new = (ioreq_event *) getfromextraq();</span>
+<span class='curline'><a href='../S/194.html#L125'>ioreq_event</a>       125 src/disksim_iosim.c    memmove ((char *)new, (char *)old, sizeof(ioreq_event));</span>
+<span class='curline'><a href='../S/194.html#L131'>ioreq_event</a>       131 src/disksim_iosim.c int ioreq_compare (ioreq_event *first, ioreq_event *second)</span>
+<span class='curline'><a href='../S/194.html#L155'>ioreq_event</a>       155 src/disksim_iosim.c void io_catch_stray_events (ioreq_event *curr)</span>
+<span class='curline'><a href='../S/194.html#L171'>ioreq_event</a>       171 src/disksim_iosim.c event * io_request (ioreq_event *curr)</span>
+<span class='curline'><a href='../S/194.html#L178'>ioreq_event</a>       178 src/disksim_iosim.c void io_schedule (ioreq_event *curr)</span>
+<span class='curline'><a href='../S/194.html#L197'>ioreq_event</a>       197 src/disksim_iosim.c void io_interrupt_arrive (ioreq_event *intrp)</span>
+<span class='curline'><a href='../S/194.html#L204'>ioreq_event</a>       204 src/disksim_iosim.c void io_interrupt_complete (ioreq_event *intrp)</span>
+<span class='curline'><a href='../S/194.html#L211'>ioreq_event</a>       211 src/disksim_iosim.c void io_internal_event(ioreq_event *curr)</span>
+<span class='curline'><a href='../S/194.html#L506'>ioreq_event</a>       506 src/disksim_iosim.c void io_validate_do_stats2 (ioreq_event *new)</span>
+<span class='curline'><a href='../S/194.html#L549'>ioreq_event</a>       549 src/disksim_iosim.c void io_map_trace_request (ioreq_event *temp)</span>
+<span class='curline'><a href='../S/194.html#L593'>ioreq_event</a>       593 src/disksim_iosim.c    ioreq_event *temp;</span>
+<span class='curline'><a href='../S/194.html#L599'>ioreq_event</a>       599 src/disksim_iosim.c    temp = (ioreq_event *) getfromextraq();</span>
+<span class='curline'><a href='../S/194.html#L714'>ioreq_event</a>       714 src/disksim_iosim.c    StaticAssert (sizeof(ioreq_event) &lt;= DISKSIM_EVENT_SIZE);</span>
+<span class='curline'><a href='../S/255.html#L217'>ioreq_event</a>       217 src/disksim_iosim.h    ioreq_event *pendio;</span>
+<span class='curline'><a href='../S/255.html#L218'>ioreq_event</a>       218 src/disksim_iosim.h    ioreq_event *oversized;</span>
+<span class='curline'><a href='../S/255.html#L239'>ioreq_event</a>       239 src/disksim_iosim.h void io_validate_do_stats2 (ioreq_event *new);</span>
+<span class='curline'><a href='../S/255.html#L240'>ioreq_event</a>       240 src/disksim_iosim.h ioreq_event * ioreq_copy (ioreq_event *old);</span>
+<span class='curline'><a href='../S/255.html#L241'>ioreq_event</a>       241 src/disksim_iosim.h int ioreq_compare (ioreq_event *first, ioreq_event *second);</span>
+<span class='curline'><a href='../S/264.html#L234'>ioreq_event</a>       234 src/disksim_iotrace.c ioreq_event * iotrace_validate_get_ioreq_event (FILE *tracefile, ioreq_event *new)</span>
+<span class='curline'><a href='../S/264.html#L279'>ioreq_event</a>       279 src/disksim_iotrace.c static ioreq_event * iotrace_dec_get_ioreq_event (FILE *tracefile, ioreq_event *new)</span>
+<span class='curline'><a href='../S/264.html#L287'>ioreq_event</a>       287 src/disksim_iotrace.c static void iotrace_hpl_srt_convert_flags (ioreq_event *curr)</span>
+<span class='curline'><a href='../S/264.html#L318'>ioreq_event</a>       318 src/disksim_iotrace.c static ioreq_event * iotrace_hpl_get_ioreq_event (FILE *tracefile, ioreq_event *new)</span>
+<span class='curline'><a href='../S/264.html#L463'>ioreq_event</a>       463 src/disksim_iotrace.c static ioreq_event * iotrace_raw_get_ioreq_event (FILE *tracefile, ioreq_event *new)</span>
+<span class='curline'><a href='../S/264.html#L515'>ioreq_event</a>       515 src/disksim_iotrace.c static ioreq_event * iotrace_emcsymm_get_ioreq_event (FILE *tracefile, ioreq_event *new)</span>
+<span class='curline'><a href='../S/264.html#L546'>ioreq_event</a>       546 src/disksim_iotrace.c static ioreq_event * iotrace_emcbackend_get_ioreq_event (FILE *tracefile, ioreq_event *new)</span>
+<span class='curline'><a href='../S/264.html#L585'>ioreq_event</a>       585 src/disksim_iotrace.c static ioreq_event * iotrace_ascii_get_ioreq_event (FILE *tracefile, ioreq_event *new)</span>
+<span class='curline'><a href='../S/264.html#L611'>ioreq_event</a>       611 src/disksim_iotrace.c static ioreq_event * iotrace_batch_get_ioreq_event (FILE *tracefile, ioreq_event *new)</span>
+<span class='curline'><a href='../S/264.html#L643'>ioreq_event</a>       643 src/disksim_iotrace.c ioreq_event * iotrace_get_ioreq_event (FILE *tracefile, int traceformat, ioreq_event *temp)</span>
+<span class='curline'><a href='../S/264.html#L684'>ioreq_event</a>       684 src/disksim_iotrace.c    return ((ioreq_event *)temp);</span>
+<span class='curline'><a href='../S/280.html#L128'>ioreq_event</a>       128 src/disksim_iotrace.h ioreq_event * iotrace_get_ioreq_event (FILE *tracefile, int traceformat, ioreq_event *temp);</span>
+<span class='curline'><a href='../S/280.html#L129'>ioreq_event</a>       129 src/disksim_iotrace.h ioreq_event * iotrace_validate_get_ioreq_event(FILE *tracefile, ioreq_event *new);</span>
+<span class='curline'><a href='../S/278.html#L123'>ioreq_event</a>       123 src/disksim_logorg.c static int logorg_overlap (logorg *currlogorg, int devno, ioreq_event *curr, int blksperpart)</span>
+<span class='curline'><a href='../S/278.html#L164'>ioreq_event</a>       164 src/disksim_logorg.c static void logorg_update_intarr_stats (logorg *currlogorg, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/278.html#L187'>ioreq_event</a>       187 src/disksim_logorg.c static void logorg_update_interfere_stats (logorg *currlogorg, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/278.html#L248'>ioreq_event</a>       248 src/disksim_logorg.c static void logorg_update_blocking_stats (logorg *currlogorg, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/278.html#L309'>ioreq_event</a>       309 src/disksim_logorg.c static void logorg_maprequest_update_stats (logorg *currlogorg, ioreq_event *curr, outstand *req, int numreqs)</span>
+<span class='curline'><a href='../S/278.html#L312'>ioreq_event</a>       312 src/disksim_logorg.c    ioreq_event *temp;</span>
+<span class='curline'><a href='../S/278.html#L416'>ioreq_event</a>       416 src/disksim_logorg.c static void logorg_mapcomplete_update_stats (logorg *currlogorg, ioreq_event *curr, outstand *req)</span>
+<span class='curline'><a href='../S/278.html#L429'>ioreq_event</a>       429 src/disksim_logorg.c void logorg_timestamp (ioreq_event *curr)</span>
+<span class='curline'><a href='../S/278.html#L555'>ioreq_event</a>       555 src/disksim_logorg.c static void logorg_mapideal (logorg *currlogorg, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/278.html#L564'>ioreq_event</a>       564 src/disksim_logorg.c static void logorg_maprandom (logorg *currlogorg, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/278.html#L572'>ioreq_event</a>       572 src/disksim_logorg.c static int logorg_mapinterleaved (logorg *currlogorg, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/278.html#L577'>ioreq_event</a>       577 src/disksim_logorg.c    ioreq_event *temp;</span>
+<span class='curline'><a href='../S/278.html#L596'>ioreq_event</a>       596 src/disksim_logorg.c static int logorg_mapstriped (logorg *currlogorg, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/278.html#L608'>ioreq_event</a>       608 src/disksim_logorg.c    ioreq_event *newreq;</span>
+<span class='curline'><a href='../S/278.html#L609'>ioreq_event</a>       609 src/disksim_logorg.c    ioreq_event *temp;</span>
+<span class='curline'><a href='../S/278.html#L674'>ioreq_event</a>       674 src/disksim_logorg.c          newreq = (ioreq_event *) getfromextraq();</span>
+<span class='curline'><a href='../S/278.html#L695'>ioreq_event</a>       695 src/disksim_logorg.c int logorg_maprequest (logorg **logorgs, int numlogorgs, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/278.html#L703'>ioreq_event</a>       703 src/disksim_logorg.c    ioreq_event *temp;</span>
+<span class='curline'><a href='../S/278.html#L833'>ioreq_event</a>       833 src/disksim_logorg.c int logorg_mapcomplete (logorg **logorgs, int numlogorgs, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/278.html#L839'>ioreq_event</a>       839 src/disksim_logorg.c    ioreq_event *temp;</span>
+<span class='curline'><a href='../S/278.html#L1267'>ioreq_event</a>      1267 src/disksim_logorg.c          ioreq_event *tmp = (ioreq_event *) getfromextraq();</span>
+<span class='curline'><a href='../S/248.html#L158'>ioreq_event</a>       158 src/disksim_logorg.h    ioreq_event *deps[10];</span>
+<span class='curline'><a href='../S/248.html#L290'>ioreq_event</a>       290 src/disksim_logorg.h int  logorg_shadowed (logorg *currlogorg, ioreq_event *curr, int numreqs);</span>
+<span class='curline'><a href='../S/248.html#L291'>ioreq_event</a>       291 src/disksim_logorg.h int  logorg_parity_disk (logorg *currlogorg, ioreq_event *curr, int numreqs);</span>
+<span class='curline'><a href='../S/248.html#L292'>ioreq_event</a>       292 src/disksim_logorg.h int  logorg_parity_rotate (logorg *currlogorg, ioreq_event *curr, int numreqs);</span>
+<span class='curline'><a href='../S/248.html#L293'>ioreq_event</a>       293 src/disksim_logorg.h int  logorg_parity_table (logorg *currlogorg, ioreq_event *curr, int numreqs);</span>
+<span class='curline'><a href='../S/248.html#L296'>ioreq_event</a>       296 src/disksim_logorg.h int  logorg_check_dependencies (logorg *currlogorg, outstand *req, ioreq_event *curr);</span>
+<span class='curline'><a href='../S/189.html#L132'>ioreq_event</a>       132 src/disksim_orgface.h int   logorg_maprequest (struct logorg **logorgs, int numlogorgs, ioreq_event *curr);</span>
+<span class='curline'><a href='../S/189.html#L133'>ioreq_event</a>       133 src/disksim_orgface.h int   logorg_mapcomplete (struct logorg **logorgs, int numlogorgs, ioreq_event *curr);</span>
+<span class='curline'><a href='../S/189.html#L135'>ioreq_event</a>       135 src/disksim_orgface.h void  logorg_timestamp (ioreq_event *curr);</span>
+<span class='curline'><a href='../S/271.html#L119'>ioreq_event</a>       119 src/disksim_pfface.h event * pf_io_done_notify (ioreq_event *curr, void *ctx);</span>
+<span class='curline'><a href='../S/191.html#L249'>ioreq_event</a>       249 src/disksim_pfsim.c static void pf_add_to_pendiolist (process *procp, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/191.html#L251'>ioreq_event</a>       251 src/disksim_pfsim.c    ioreq_event *new = (ioreq_event *)getfromextraq();</span>
+<span class='curline'><a href='../S/191.html#L266'>ioreq_event</a>       266 src/disksim_pfsim.c event * pf_io_done_notify (ioreq_event *curr, void *ctx)</span>
+<span class='curline'><a href='../S/191.html#L268'>ioreq_event</a>       268 src/disksim_pfsim.c    ioreq_event *tmp = pendiolist;</span>
+<span class='curline'><a href='../S/191.html#L269'>ioreq_event</a>       269 src/disksim_pfsim.c    ioreq_event *tmp2;</span>
+<span class='curline'><a href='../S/191.html#L331'>ioreq_event</a>       331 src/disksim_pfsim.c    ioreq_event *tmp = pendiolist;</span>
+<span class='curline'><a href='../S/191.html#L337'>ioreq_event</a>       337 src/disksim_pfsim.c       ioreq_event *prev = 0;</span>
+<span class='curline'><a href='../S/191.html#L571'>ioreq_event</a>       571 src/disksim_pfsim.c static void pf_handle_ioreq_event (ioreq_event *curr, cpu_event *cpu_ev)</span>
+<span class='curline'><a href='../S/191.html#L574'>ioreq_event</a>       574 src/disksim_pfsim.c    ioreq_event *new;</span>
+<span class='curline'><a href='../S/191.html#L575'>ioreq_event</a>       575 src/disksim_pfsim.c    ioreq_event *tmp;</span>
+<span class='curline'><a href='../S/191.html#L594'>ioreq_event</a>       594 src/disksim_pfsim.c    new = (ioreq_event *) io_request(curr);</span>
+<span class='curline'><a href='../S/191.html#L596'>ioreq_event</a>       596 src/disksim_pfsim.c       tmp = (ioreq_event *) procp-&gt;eventlist;</span>
+<span class='curline'><a href='../S/191.html#L606'>ioreq_event</a>       606 src/disksim_pfsim.c static void pf_handle_ioacc_event (ioreq_event *curr, cpu_event *cpu_ev)</span>
+<span class='curline'><a href='../S/191.html#L615'>ioreq_event</a>       615 src/disksim_pfsim.c static void pf_handle_io_internal_event (ioreq_event *curr, cpu_event *cpu_ev)</span>
+<span class='curline'><a href='../S/191.html#L621'>ioreq_event</a>       621 src/disksim_pfsim.c       ioreq_event *new = (ioreq_event *) io_request (curr);</span>
+<span class='curline'><a href='../S/191.html#L624'>ioreq_event</a>       624 src/disksim_pfsim.c          ioreq_event *tmp;</span>
+<span class='curline'><a href='../S/191.html#L627'>ioreq_event</a>       627 src/disksim_pfsim.c          tmp = (ioreq_event *) intrp-&gt;eventlist;</span>
+<span class='curline'><a href='../S/191.html#L662'>ioreq_event</a>       662 src/disksim_pfsim.c       io_interrupt_complete ((ioreq_event *) intrp);</span>
+<span class='curline'><a href='../S/191.html#L721'>ioreq_event</a>       721 src/disksim_pfsim.c     pf_handle_ioreq_event((ioreq_event *)curr, cpu_ev);</span>
+<span class='curline'><a href='../S/191.html#L725'>ioreq_event</a>       725 src/disksim_pfsim.c     pf_handle_ioacc_event((ioreq_event *)curr, cpu_ev);</span>
+<span class='curline'><a href='../S/191.html#L737'>ioreq_event</a>       737 src/disksim_pfsim.c       pf_handle_io_internal_event((ioreq_event *)curr, cpu_ev);</span>
+<span class='curline'><a href='../S/191.html#L751'>ioreq_event</a>       751 src/disksim_pfsim.c    ioreq_event *tmp = (ioreq_event *) intrp-&gt;infoptr;</span>
+<span class='curline'><a href='../S/191.html#L755'>ioreq_event</a>       755 src/disksim_pfsim.c    io_interrupt_arrive ((ioreq_event *)intrp);</span>
+<span class='curline'><a href='../S/208.html#L173'>ioreq_event</a>       173 src/disksim_pfsim.h    ioreq_event *ioreq;</span>
+<span class='curline'><a href='../S/208.html#L267'>ioreq_event</a>       267 src/disksim_pfsim.h    ioreq_event *pendiolist;</span>
+<span class='curline'><a href='../S/208.html#L268'>ioreq_event</a>       268 src/disksim_pfsim.h    ioreq_event *doneiolist;</span>
+<span class='curline'><a href='../S/274.html#L145'>ioreq_event</a>       145 src/disksim_redun.c static void logorg_parity_rotate_ideal (logorg *currlogorg, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/274.html#L156'>ioreq_event</a>       156 src/disksim_redun.c static void logorg_parity_rotate_random (logorg *currlogorg, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/274.html#L168'>ioreq_event</a>       168 src/disksim_redun.c static int logorg_shadowed_get_short_dist (logorg *currlogorg, ioreq_event *curr, int numtocheck, int *checklist)</span>
+<span class='curline'><a href='../S/274.html#L212'>ioreq_event</a>       212 src/disksim_redun.c static int logorg_shadowed_get_short_queue (logorg *currlogorg, ioreq_event *curr, int def)</span>
+<span class='curline'><a href='../S/274.html#L263'>ioreq_event</a>       263 src/disksim_redun.c int logorg_shadowed (logorg *currlogorg, ioreq_event *curr, int numreqs)</span>
+<span class='curline'><a href='../S/274.html#L266'>ioreq_event</a>       266 src/disksim_redun.c    ioreq_event *temp;</span>
+<span class='curline'><a href='../S/274.html#L267'>ioreq_event</a>       267 src/disksim_redun.c    ioreq_event *newreq;</span>
+<span class='curline'><a href='../S/274.html#L318'>ioreq_event</a>       318 src/disksim_redun.c int logorg_parity_disk (logorg *currlogorg, ioreq_event *curr, int numreqs)</span>
+<span class='curline'><a href='../S/274.html#L358'>ioreq_event</a>       358 src/disksim_redun.c    curr-&gt;prev = (ioreq_event *) depend;</span>
+<span class='curline'><a href='../S/274.html#L363'>ioreq_event</a>       363 src/disksim_redun.c static int logorg_parity_rotate_updates (logorg *currlogorg, ioreq_event *curr, int inc)</span>
+<span class='curline'><a href='../S/274.html#L369'>ioreq_event</a>       369 src/disksim_redun.c    ioreq_event *newreq;</span>
+<span class='curline'><a href='../S/274.html#L434'>ioreq_event</a>       434 src/disksim_redun.c static void logorg_parity_read_old_sync (logorg *currlogorg, ioreq_event *curr, int numreqs)</span>
+<span class='curline'><a href='../S/274.html#L439'>ioreq_event</a>       439 src/disksim_redun.c    ioreq_event *temp;</span>
+<span class='curline'><a href='../S/274.html#L447'>ioreq_event</a>       447 src/disksim_redun.c    curr-&gt;prev = (ioreq_event *) depend;</span>
+<span class='curline'><a href='../S/274.html#L465'>ioreq_event</a>       465 src/disksim_redun.c       curr-&gt;prev = (ioreq_event *) depend;</span>
+<span class='curline'><a href='../S/274.html#L470'>ioreq_event</a>       470 src/disksim_redun.c 	 depend-&gt;cont = (depends *) ioreq_copy((ioreq_event *) tmpdep);</span>
+<span class='curline'><a href='../S/274.html#L480'>ioreq_event</a>       480 src/disksim_redun.c static void logorg_parity_read_old_nosync (logorg *currlogorg, ioreq_event *curr, int numreqs)</span>
+<span class='curline'><a href='../S/274.html#L485'>ioreq_event</a>       485 src/disksim_redun.c    ioreq_event *temp;</span>
+<span class='curline'><a href='../S/274.html#L495'>ioreq_event</a>       495 src/disksim_redun.c    curr-&gt;prev = (ioreq_event *) depend;</span>
+<span class='curline'><a href='../S/274.html#L508'>ioreq_event</a>       508 src/disksim_redun.c       curr-&gt;prev = (ioreq_event *) tmpdep;</span>
+<span class='curline'><a href='../S/274.html#L519'>ioreq_event</a>       519 src/disksim_redun.c int logorg_parity_rotate (logorg *currlogorg, ioreq_event *curr, int numreqs)</span>
+<span class='curline'><a href='../S/274.html#L562'>ioreq_event</a>       562 src/disksim_redun.c static int logorg_join_seqreqs (ioreq_event *reqlist, ioreq_event *curr, int seqgive)</span>
+<span class='curline'><a href='../S/274.html#L564'>ioreq_event</a>       564 src/disksim_redun.c    ioreq_event *temp;</span>
+<span class='curline'><a href='../S/274.html#L565'>ioreq_event</a>       565 src/disksim_redun.c    ioreq_event *del;</span>
+<span class='curline'><a href='../S/274.html#L606'>ioreq_event</a>       606 src/disksim_redun.c static void logorg_parity_table_insert (ioreq_event **head, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/274.html#L608'>ioreq_event</a>       608 src/disksim_redun.c    ioreq_event *temp;</span>
+<span class='curline'><a href='../S/274.html#L624'>ioreq_event</a>       624 src/disksim_redun.c static void logorg_parity_table_read_old (logorg *currlogorg, ioreq_event *rowhead, ioreq_event **reqlist, int opid)</span>
+<span class='curline'><a href='../S/274.html#L626'>ioreq_event</a>       626 src/disksim_redun.c    ioreq_event *temp;</span>
+<span class='curline'><a href='../S/274.html#L627'>ioreq_event</a>       627 src/disksim_redun.c    ioreq_event *newreq;</span>
+<span class='curline'><a href='../S/274.html#L628'>ioreq_event</a>       628 src/disksim_redun.c    ioreq_event *prev = NULL;</span>
+<span class='curline'><a href='../S/274.html#L632'>ioreq_event</a>       632 src/disksim_redun.c       newreq = (ioreq_event *) getfromextraq();</span>
+<span class='curline'><a href='../S/274.html#L650'>ioreq_event</a>       650 src/disksim_redun.c static void logorg_parity_table_recon (logorg *currlogorg, ioreq_event *rowhead, ioreq_event **reqlist, int stripeno, int unitno, int tableadd, int opid)</span>
+<span class='curline'><a href='../S/274.html#L652'>ioreq_event</a>       652 src/disksim_redun.c    ioreq_event *temp;</span>
+<span class='curline'><a href='../S/274.html#L653'>ioreq_event</a>       653 src/disksim_redun.c    ioreq_event *newreq;</span>
+<span class='curline'><a href='../S/274.html#L676'>ioreq_event</a>       676 src/disksim_redun.c       newreq = (ioreq_event *) getfromextraq();</span>
+<span class='curline'><a href='../S/274.html#L690'>ioreq_event</a>       690 src/disksim_redun.c          newreq = (ioreq_event *) getfromextraq();</span>
+<span class='curline'><a href='../S/274.html#L699'>ioreq_event</a>       699 src/disksim_redun.c          newreq = (ioreq_event *) getfromextraq();</span>
+<span class='curline'><a href='../S/274.html#L711'>ioreq_event</a>       711 src/disksim_redun.c       newreq = (ioreq_event *) getfromextraq();</span>
+<span class='curline'><a href='../S/274.html#L722'>ioreq_event</a>       722 src/disksim_redun.c static void logorg_parity_table_dodeps_sync (logorg *currlogorg, ioreq_event *curr, ioreq_event **redunlist, ioreq_event **reqlist)</span>
+<span class='curline'><a href='../S/274.html#L729'>ioreq_event</a>       729 src/disksim_redun.c    ioreq_event *temp;</span>
+<span class='curline'><a href='../S/274.html#L730'>ioreq_event</a>       730 src/disksim_redun.c    ioreq_event *deplist = NULL;</span>
+<span class='curline'><a href='../S/274.html#L769'>ioreq_event</a>       769 src/disksim_redun.c    curr-&gt;prev = (ioreq_event *) depend;</span>
+<span class='curline'><a href='../S/274.html#L787'>ioreq_event</a>       787 src/disksim_redun.c       curr-&gt;prev = (ioreq_event *) depend;</span>
+<span class='curline'><a href='../S/274.html#L792'>ioreq_event</a>       792 src/disksim_redun.c 	 depend-&gt;cont = (depends *) ioreq_copy((ioreq_event *) tmpdep);</span>
+<span class='curline'><a href='../S/274.html#L801'>ioreq_event</a>       801 src/disksim_redun.c static void logorg_parity_table_dodeps_nosync (logorg *currlogorg, ioreq_event *curr, ioreq_event **redunlist, ioreq_event **reqlist)</span>
+<span class='curline'><a href='../S/274.html#L806'>ioreq_event</a>       806 src/disksim_redun.c    ioreq_event *temp;</span>
+<span class='curline'><a href='../S/274.html#L807'>ioreq_event</a>       807 src/disksim_redun.c    ioreq_event *del;</span>
+<span class='curline'><a href='../S/274.html#L808'>ioreq_event</a>       808 src/disksim_redun.c    ioreq_event *tmpread;</span>
+<span class='curline'><a href='../S/274.html#L809'>ioreq_event</a>       809 src/disksim_redun.c    ioreq_event *readlist = NULL;</span>
+<span class='curline'><a href='../S/274.html#L810'>ioreq_event</a>       810 src/disksim_redun.c    ioreq_event *deplist = NULL;</span>
+<span class='curline'><a href='../S/274.html#L821'>ioreq_event</a>       821 src/disksim_redun.c 	 temp-&gt;prev = (ioreq_event *) depend;</span>
+<span class='curline'><a href='../S/274.html#L882'>ioreq_event</a>       882 src/disksim_redun.c       curr-&gt;prev = (ioreq_event *) depend;</span>
+<span class='curline'><a href='../S/274.html#L893'>ioreq_event</a>       893 src/disksim_redun.c int logorg_parity_table (logorg *currlogorg, ioreq_event *curr, int numreqs)</span>
+<span class='curline'><a href='../S/274.html#L896'>ioreq_event</a>       896 src/disksim_redun.c    ioreq_event *reqs[MAXDEVICES];</span>
+<span class='curline'><a href='../S/274.html#L897'>ioreq_event</a>       897 src/disksim_redun.c    ioreq_event *redunreqs[MAXDEVICES];</span>
+<span class='curline'><a href='../S/274.html#L899'>ioreq_event</a>       899 src/disksim_redun.c    ioreq_event *lastrow = NULL;</span>
+<span class='curline'><a href='../S/274.html#L901'>ioreq_event</a>       901 src/disksim_redun.c    ioreq_event *temp;</span>
+<span class='curline'><a href='../S/274.html#L902'>ioreq_event</a>       902 src/disksim_redun.c    ioreq_event *newreq;</span>
+<span class='curline'><a href='../S/274.html#L970'>ioreq_event</a>       970 src/disksim_redun.c 	    newreq = (ioreq_event *) getfromextraq();</span>
+<span class='curline'><a href='../S/274.html#L1000'>ioreq_event</a>      1000 src/disksim_redun.c 	 newreq = (ioreq_event *) getfromextraq();</span>
+<span class='curline'><a href='../S/274.html#L1019'>ioreq_event</a>      1019 src/disksim_redun.c 	       newreq = (ioreq_event *) getfromextraq();</span>
+<span class='curline'><a href='../S/274.html#L1046'>ioreq_event</a>      1046 src/disksim_redun.c       newreq = (ioreq_event *) getfromextraq();</span>
+<span class='curline'><a href='../S/274.html#L1071'>ioreq_event</a>      1071 src/disksim_redun.c       newreq = (ioreq_event *) getfromextraq();</span>
+<span class='curline'><a href='../S/274.html#L1083'>ioreq_event</a>      1083 src/disksim_redun.c 	    newreq = (ioreq_event *) getfromextraq();</span>
+<span class='curline'><a href='../S/274.html#L1236'>ioreq_event</a>      1236 src/disksim_redun.c int logorg_check_dependencies (logorg *currlogorg, outstand *req, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/274.html#L1244'>ioreq_event</a>      1244 src/disksim_redun.c    ioreq_event *temp;</span>
+<span class='curline'><a href='../S/201.html#L178'>ioreq_event</a>       178 src/disksim_simpledisk.c double simpledisk_get_blktranstime (ioreq_event *curr)</span>
+<span class='curline'><a href='../S/201.html#L192'>ioreq_event</a>       192 src/disksim_simpledisk.c int simpledisk_get_busno (ioreq_event *curr)</span>
+<span class='curline'><a href='../S/201.html#L216'>ioreq_event</a>       216 src/disksim_simpledisk.c static void simpledisk_send_event_up_path (ioreq_event *curr, double delay)</span>
+<span class='curline'><a href='../S/201.html#L269'>ioreq_event</a>       269 src/disksim_simpledisk.c void simpledisk_bus_ownership_grant (int devno, ioreq_event *curr, int busno, double arbdelay)</span>
+<span class='curline'><a href='../S/201.html#L272'>ioreq_event</a>       272 src/disksim_simpledisk.c    ioreq_event *tmp;</span>
+<span class='curline'><a href='../S/201.html#L292'>ioreq_event</a>       292 src/disksim_simpledisk.c void simpledisk_bus_delay_complete (int devno, ioreq_event *curr, int sentbusno)</span>
+<span class='curline'><a href='../S/201.html#L306'>ioreq_event</a>       306 src/disksim_simpledisk.c       ioreq_event *tmp = currdisk-&gt;buswait;</span>
+<span class='curline'><a href='../S/201.html#L331'>ioreq_event</a>       331 src/disksim_simpledisk.c static void simpledisk_request_complete(ioreq_event *curr)</span>
+<span class='curline'><a href='../S/201.html#L351'>ioreq_event</a>       351 src/disksim_simpledisk.c static void simpledisk_bustransfer_complete (ioreq_event *curr)</span>
+<span class='curline'><a href='../S/201.html#L367'>ioreq_event</a>       367 src/disksim_simpledisk.c          ioreq_event *tmp = ioreq_copy (curr);</span>
+<span class='curline'><a href='../S/201.html#L383'>ioreq_event</a>       383 src/disksim_simpledisk.c static void simpledisk_reconnect_done (ioreq_event *curr)</span>
+<span class='curline'><a href='../S/201.html#L418'>ioreq_event</a>       418 src/disksim_simpledisk.c static void simpledisk_request_arrive (ioreq_event *curr)</span>
+<span class='curline'><a href='../S/201.html#L420'>ioreq_event</a>       420 src/disksim_simpledisk.c    ioreq_event *intrp;</span>
+<span class='curline'><a href='../S/201.html#L445'>ioreq_event</a>       445 src/disksim_simpledisk.c          ioreq_event *tmp = ioreq_copy (curr);</span>
+<span class='curline'><a href='../S/201.html#L472'>ioreq_event</a>       472 src/disksim_simpledisk.c static void simpledisk_access_complete (ioreq_event *curr)</span>
+<span class='curline'><a href='../S/201.html#L505'>ioreq_event</a>       505 src/disksim_simpledisk.c static void simpledisk_disconnect_done (ioreq_event *curr)</span>
+<span class='curline'><a href='../S/201.html#L524'>ioreq_event</a>       524 src/disksim_simpledisk.c static void simpledisk_completion_done (ioreq_event *curr)</span>
+<span class='curline'><a href='../S/201.html#L558'>ioreq_event</a>       558 src/disksim_simpledisk.c static void simpledisk_interrupt_complete (ioreq_event *curr)</span>
+<span class='curline'><a href='../S/201.html#L582'>ioreq_event</a>       582 src/disksim_simpledisk.c void simpledisk_event_arrive (ioreq_event *curr)</span>
+<span class='curline'><a href='../S/201.html#L672'>ioreq_event</a>       672 src/disksim_simpledisk.c int simpledisk_get_distance (int devno, ioreq_event *req, int exact, int direction)</span>
+<span class='curline'><a href='../S/201.html#L679'>ioreq_event</a>       679 src/disksim_simpledisk.c double  simpledisk_get_servtime (int devno, ioreq_event *req, int checkcache, double maxtime)</span>
+<span class='curline'><a href='../S/201.html#L686'>ioreq_event</a>       686 src/disksim_simpledisk.c double  simpledisk_get_acctime (int devno, ioreq_event *req, double maxtime)</span>
+<span class='curline'><a href='../S/201.html#L991'>ioreq_event</a>       991 src/disksim_simpledisk.c 				ioreq_event *req, </span>
+<span class='curline'><a href='../S/275.html#L83'>ioreq_event</a>        83 src/disksim_simpledisk.h int     simpledisk_get_busno (ioreq_event *curr);</span>
+<span class='curline'><a href='../S/275.html#L89'>ioreq_event</a>        89 src/disksim_simpledisk.h double  simpledisk_get_blktranstime (ioreq_event *curr);</span>
+<span class='curline'><a href='../S/275.html#L92'>ioreq_event</a>        92 src/disksim_simpledisk.h void    simpledisk_event_arrive (ioreq_event *curr);</span>
+<span class='curline'><a href='../S/275.html#L93'>ioreq_event</a>        93 src/disksim_simpledisk.h int     simpledisk_get_distance (int devno, ioreq_event *req, int exact, int direction);</span>
+<span class='curline'><a href='../S/275.html#L94'>ioreq_event</a>        94 src/disksim_simpledisk.h double  simpledisk_get_servtime (int devno, ioreq_event *req, int checkcache, double maxtime);</span>
+<span class='curline'><a href='../S/275.html#L95'>ioreq_event</a>        95 src/disksim_simpledisk.h double  simpledisk_get_acctime (int devno, ioreq_event *req, double maxtime);</span>
+<span class='curline'><a href='../S/275.html#L96'>ioreq_event</a>        96 src/disksim_simpledisk.h void    simpledisk_bus_delay_complete (int devno, ioreq_event *curr, int sentbusno);</span>
+<span class='curline'><a href='../S/275.html#L97'>ioreq_event</a>        97 src/disksim_simpledisk.h void    simpledisk_bus_ownership_grant (int devno, ioreq_event *curr, int busno, double arbdelay);</span>
+<span class='curline'><a href='../S/275.html#L129'>ioreq_event</a>       129 src/disksim_simpledisk.h    ioreq_event *buswait;</span>
+<span class='curline'><a href='../S/216.html#L190'>ioreq_event</a>       190 src/disksim_synthio.c static void synthio_appendio (process *procp, ioreq_event *tmp)</span>
+<span class='curline'><a href='../S/216.html#L198'>ioreq_event</a>       198 src/disksim_synthio.c    ioreq_event *new;</span>
+<span class='curline'><a href='../S/216.html#L204'>ioreq_event</a>       204 src/disksim_synthio.c    new = (ioreq_event *) getfromextraq();</span>
+<span class='curline'><a href='../S/216.html#L237'>ioreq_event</a>       237 src/disksim_synthio.c 	  new-&gt;next = (ioreq_event *) retsleep;</span>
+<span class='curline'><a href='../S/216.html#L239'>ioreq_event</a>       239 src/disksim_synthio.c 	  new = (ioreq_event *) callsleep;</span>
+<span class='curline'><a href='../S/216.html#L243'>ioreq_event</a>       243 src/disksim_synthio.c 	  new-&gt;next = (ioreq_event *) newsleep;</span>
+<span class='curline'><a href='../S/216.html#L246'>ioreq_event</a>       246 src/disksim_synthio.c 	new-&gt;next = (ioreq_event *) procp-&gt;eventlist;</span>
+<span class='curline'><a href='../S/216.html#L274'>ioreq_event</a>       274 src/disksim_synthio.c      new-&gt;next = (ioreq_event *) procp-&gt;eventlist;</span>
+<span class='curline'><a href='../S/216.html#L296'>ioreq_event</a>       296 src/disksim_synthio.c       new = (ioreq_event *) newsleep;</span>
+<span class='curline'><a href='../S/216.html#L308'>ioreq_event</a>       308 src/disksim_synthio.c    ioreq_event *tmp;</span>
+<span class='curline'><a href='../S/216.html#L323'>ioreq_event</a>       323 src/disksim_synthio.c    tmp = (ioreq_event *) getfromextraq();</span>
+<span class='curline'><a href='../S/216.html#L358'>ioreq_event</a>       358 src/disksim_synthio.c    ioreq_event *tmp;</span>
+<span class='curline'><a href='../S/216.html#L366'>ioreq_event</a>       366 src/disksim_synthio.c 	(ioreq_event *)iotrace_get_ioreq_event(gen-&gt;tracefile, </span>
+<span class='curline'><a href='../S/213.html#L141'>ioreq_event</a>       141 src/disksim_synthio.h    ioreq_event *  pendio;</span>
+<span class='curline'><a href='../S/156.html#L346'>ioreq_event</a>       346 ssdmodel/include/ssdmodel/ssd.h    ioreq_event *channel_activity;</span>
+<span class='curline'><a href='../S/156.html#L347'>ioreq_event</a>       347 ssdmodel/include/ssdmodel/ssd.h    ioreq_event *completion_queue;</span>
+<span class='curline'><a href='../S/156.html#L359'>ioreq_event</a>       359 ssdmodel/include/ssdmodel/ssd.h    ioreq_event *buswait;</span>
+<span class='curline'><a href='../S/156.html#L382'>ioreq_event</a>       382 ssdmodel/include/ssdmodel/ssd.h     ioreq_event *org_req;</span>
+<span class='curline'><a href='../S/156.html#L424'>ioreq_event</a>       424 ssdmodel/include/ssdmodel/ssd.h int     ssd_get_busno (ioreq_event *curr);</span>
+<span class='curline'><a href='../S/156.html#L430'>ioreq_event</a>       430 ssdmodel/include/ssdmodel/ssd.h double  ssd_get_blktranstime (ioreq_event *curr);</span>
+<span class='curline'><a href='../S/156.html#L433'>ioreq_event</a>       433 ssdmodel/include/ssdmodel/ssd.h void    ssd_event_arrive (ioreq_event *curr);</span>
+<span class='curline'><a href='../S/156.html#L434'>ioreq_event</a>       434 ssdmodel/include/ssdmodel/ssd.h int     ssd_get_distance (int devno, ioreq_event *req, int exact, int direction);</span>
+<span class='curline'><a href='../S/156.html#L435'>ioreq_event</a>       435 ssdmodel/include/ssdmodel/ssd.h double  ssd_get_servtime (int devno, ioreq_event *req, int checkcache, double maxtime);</span>
+<span class='curline'><a href='../S/156.html#L436'>ioreq_event</a>       436 ssdmodel/include/ssdmodel/ssd.h double  ssd_get_acctime (int devno, ioreq_event *req, double maxtime);</span>
+<span class='curline'><a href='../S/156.html#L437'>ioreq_event</a>       437 ssdmodel/include/ssdmodel/ssd.h void    ssd_bus_delay_complete (int devno, ioreq_event *curr, int sentbusno);</span>
+<span class='curline'><a href='../S/156.html#L438'>ioreq_event</a>       438 ssdmodel/include/ssdmodel/ssd.h void    ssd_bus_ownership_grant (int devno, ioreq_event *curr, int busno, double arbdelay);</span>
+<span class='curline'><a href='../S/156.html#L452'>ioreq_event</a>       452 ssdmodel/include/ssdmodel/ssd.h void    ssd_complete_parent(ioreq_event *curr, ssd_t *currdisk);</span>
+<span class='curline'><a href='../S/156.html#L454'>ioreq_event</a>       454 ssdmodel/include/ssdmodel/ssd.h int     ssd_already_present(ssd_req **reqs, int total, ioreq_event *req);</span>
+<span class='curline'><a href='../S/187.html#L25'>ioreq_event</a>        25 ssdmodel/ssd.c static void ssd_request_complete(ioreq_event *curr);</span>
+<span class='curline'><a href='../S/187.html#L26'>ioreq_event</a>        26 ssdmodel/ssd.c static void ssd_media_access_request(ioreq_event *curr);</span>
+<span class='curline'><a href='../S/187.html#L84'>ioreq_event</a>        84 ssdmodel/ssd.c double ssd_get_blktranstime (ioreq_event *curr)</span>
+<span class='curline'><a href='../S/187.html#L97'>ioreq_event</a>        97 ssdmodel/ssd.c int ssd_get_busno (ioreq_event *curr)</span>
+<span class='curline'><a href='../S/187.html#L109'>ioreq_event</a>       109 ssdmodel/ssd.c static void ssd_assert_current_activity(ssd_t *currdisk, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/187.html#L127'>ioreq_event</a>       127 ssdmodel/ssd.c static void ssd_send_event_up_path (ioreq_event *curr, double delay)</span>
+<span class='curline'><a href='../S/187.html#L188'>ioreq_event</a>       188 ssdmodel/ssd.c        ioreq_event *curr = currdisk-&gt;completion_queue;</span>
+<span class='curline'><a href='../S/187.html#L240'>ioreq_event</a>       240 ssdmodel/ssd.c void ssd_bus_ownership_grant (int devno, ioreq_event *curr, int busno, double arbdelay)</span>
+<span class='curline'><a href='../S/187.html#L243'>ioreq_event</a>       243 ssdmodel/ssd.c    ioreq_event *tmp;</span>
+<span class='curline'><a href='../S/187.html#L263'>ioreq_event</a>       263 ssdmodel/ssd.c void ssd_bus_delay_complete (int devno, ioreq_event *curr, int sentbusno)</span>
+<span class='curline'><a href='../S/187.html#L280'>ioreq_event</a>       280 ssdmodel/ssd.c       ioreq_event *tmp = currdisk-&gt;buswait;</span>
+<span class='curline'><a href='../S/187.html#L308'>ioreq_event</a>       308 ssdmodel/ssd.c static void ssd_request_complete(ioreq_event *curr)</span>
+<span class='curline'><a href='../S/187.html#L311'>ioreq_event</a>       311 ssdmodel/ssd.c    ioreq_event *x;</span>
+<span class='curline'><a href='../S/187.html#L329'>ioreq_event</a>       329 ssdmodel/ssd.c static void ssd_bustransfer_complete (ioreq_event *curr)</span>
+<span class='curline'><a href='../S/187.html#L340'>ioreq_event</a>       340 ssdmodel/ssd.c           ioreq_event *tmp = ioreq_copy (curr);</span>
+<span class='curline'><a href='../S/187.html#L376'>ioreq_event</a>       376 ssdmodel/ssd.c int ssd_already_present(ssd_req **reqs, int total, ioreq_event *req)</span>
+<span class='curline'><a href='../S/187.html#L413'>ioreq_event</a>       413 ssdmodel/ssd.c         ioreq_event *tmp;</span>
+<span class='curline'><a href='../S/187.html#L419'>ioreq_event</a>       419 ssdmodel/ssd.c         tmp = (ioreq_event *)getfromextraq();</span>
+<span class='curline'><a href='../S/187.html#L440'>ioreq_event</a>       440 ssdmodel/ssd.c     ioreq_event *req;</span>
+<span class='curline'><a href='../S/187.html#L620'>ioreq_event</a>       620 ssdmodel/ssd.c static void ssd_media_access_request_element (ioreq_event *curr)</span>
+<span class='curline'><a href='../S/187.html#L635'>ioreq_event</a>       635 ssdmodel/ssd.c        ioreq_event *tmp = (ioreq_event *)getfromextraq();</span>
+<span class='curline'><a href='../S/187.html#L650'>ioreq_event</a>       650 ssdmodel/ssd.c        ioqueue_add_new_request(elem-&gt;queue, (ioreq_event *)tmp);</span>
+<span class='curline'><a href='../S/187.html#L655'>ioreq_event</a>       655 ssdmodel/ssd.c static void ssd_media_access_request (ioreq_event *curr)</span>
+<span class='curline'><a href='../S/187.html#L679'>ioreq_event</a>       679 ssdmodel/ssd.c static void ssd_reconnect_done (ioreq_event *curr)</span>
+<span class='curline'><a href='../S/187.html#L714'>ioreq_event</a>       714 ssdmodel/ssd.c static void ssd_request_arrive (ioreq_event *curr)</span>
+<span class='curline'><a href='../S/187.html#L760'>ioreq_event</a>       760 ssdmodel/ssd.c static void ssd_clean_element_complete(ioreq_event *curr)</span>
+<span class='curline'><a href='../S/187.html#L777'>ioreq_event</a>       777 ssdmodel/ssd.c void ssd_complete_parent(ioreq_event *curr, ssd_t *currdisk)</span>
+<span class='curline'><a href='../S/187.html#L779'>ioreq_event</a>       779 ssdmodel/ssd.c     ioreq_event *parent;</span>
+<span class='curline'><a href='../S/187.html#L786'>ioreq_event</a>       786 ssdmodel/ssd.c       ioreq_event *prev;</span>
+<span class='curline'><a href='../S/187.html#L805'>ioreq_event</a>       805 ssdmodel/ssd.c static void ssd_access_complete_element(ioreq_event *curr)</span>
+<span class='curline'><a href='../S/187.html#L810'>ioreq_event</a>       810 ssdmodel/ssd.c    ioreq_event *x;</span>
+<span class='curline'><a href='../S/187.html#L832'>ioreq_event</a>       832 ssdmodel/ssd.c static void ssd_access_complete(ioreq_event *curr)</span>
+<span class='curline'><a href='../S/187.html#L857'>ioreq_event</a>       857 ssdmodel/ssd.c static void ssd_disconnect_done (ioreq_event *curr)</span>
+<span class='curline'><a href='../S/187.html#L876'>ioreq_event</a>       876 ssdmodel/ssd.c static void ssd_completion_done (ioreq_event *curr)</span>
+<span class='curline'><a href='../S/187.html#L893'>ioreq_event</a>       893 ssdmodel/ssd.c static void ssd_interrupt_complete (ioreq_event *curr)</span>
+<span class='curline'><a href='../S/187.html#L917'>ioreq_event</a>       917 ssdmodel/ssd.c void ssd_event_arrive (ioreq_event *curr)</span>
+<span class='curline'><a href='../S/187.html#L1015'>ioreq_event</a>      1015 ssdmodel/ssd.c int ssd_get_distance (int devno, ioreq_event *req, int exact, int direction)</span>
+<span class='curline'><a href='../S/187.html#L1023'>ioreq_event</a>      1023 ssdmodel/ssd.c double  ssd_get_servtime (int devno, ioreq_event *req, int checkcache, double maxtime)</span>
+<span class='curline'><a href='../S/187.html#L1032'>ioreq_event</a>      1032 ssdmodel/ssd.c double  ssd_get_acctime (int devno, ioreq_event *req, double maxtime)</span>
+<span class='curline'><a href='../S/187.html#L1476'>ioreq_event</a>      1476 ssdmodel/ssd.c                 ioreq_event *req,</span>
+<span class='curline'><a href='../S/147.html#L346'>ioreq_event</a>       346 ssdmodel/ssd.h    ioreq_event *channel_activity;</span>
+<span class='curline'><a href='../S/147.html#L347'>ioreq_event</a>       347 ssdmodel/ssd.h    ioreq_event *completion_queue;</span>
+<span class='curline'><a href='../S/147.html#L359'>ioreq_event</a>       359 ssdmodel/ssd.h    ioreq_event *buswait;</span>
+<span class='curline'><a href='../S/147.html#L382'>ioreq_event</a>       382 ssdmodel/ssd.h     ioreq_event *org_req;</span>
+<span class='curline'><a href='../S/147.html#L424'>ioreq_event</a>       424 ssdmodel/ssd.h int     ssd_get_busno (ioreq_event *curr);</span>
+<span class='curline'><a href='../S/147.html#L430'>ioreq_event</a>       430 ssdmodel/ssd.h double  ssd_get_blktranstime (ioreq_event *curr);</span>
+<span class='curline'><a href='../S/147.html#L433'>ioreq_event</a>       433 ssdmodel/ssd.h void    ssd_event_arrive (ioreq_event *curr);</span>
+<span class='curline'><a href='../S/147.html#L434'>ioreq_event</a>       434 ssdmodel/ssd.h int     ssd_get_distance (int devno, ioreq_event *req, int exact, int direction);</span>
+<span class='curline'><a href='../S/147.html#L435'>ioreq_event</a>       435 ssdmodel/ssd.h double  ssd_get_servtime (int devno, ioreq_event *req, int checkcache, double maxtime);</span>
+<span class='curline'><a href='../S/147.html#L436'>ioreq_event</a>       436 ssdmodel/ssd.h double  ssd_get_acctime (int devno, ioreq_event *req, double maxtime);</span>
+<span class='curline'><a href='../S/147.html#L437'>ioreq_event</a>       437 ssdmodel/ssd.h void    ssd_bus_delay_complete (int devno, ioreq_event *curr, int sentbusno);</span>
+<span class='curline'><a href='../S/147.html#L438'>ioreq_event</a>       438 ssdmodel/ssd.h void    ssd_bus_ownership_grant (int devno, ioreq_event *curr, int busno, double arbdelay);</span>
+<span class='curline'><a href='../S/147.html#L452'>ioreq_event</a>       452 ssdmodel/ssd.h void    ssd_complete_parent(ioreq_event *curr, ssd_t *currdisk);</span>
+<span class='curline'><a href='../S/147.html#L454'>ioreq_event</a>       454 ssdmodel/ssd.h int     ssd_already_present(ssd_req **reqs, int total, ioreq_event *req);</span>
+<span class='curline'><a href='../S/146.html#L38'>ioreq_event</a>        38 ssdmodel/ssd_gang.c         ioreq_event *tmp;</span>
+<span class='curline'><a href='../S/146.html#L45'>ioreq_event</a>        45 ssdmodel/ssd_gang.c         tmp = (ioreq_event *)getfromextraq();</span>
+<span class='curline'><a href='../S/146.html#L88'>ioreq_event</a>        88 ssdmodel/ssd_gang.c         ioreq_event *req;</span>
+<span class='curline'><a href='../S/146.html#L184'>ioreq_event</a>       184 ssdmodel/ssd_gang.c void choose_gang_and_element(int blk, ioreq_event *req, ssd_t *s, int *gang_num, int *elem_num)</span>
+<span class='curline'><a href='../S/146.html#L249'>ioreq_event</a>       249 ssdmodel/ssd_gang.c     ioreq_event *req;</span>
+<span class='curline'><a href='../S/146.html#L568'>ioreq_event</a>       568 ssdmodel/ssd_gang.c void ssd_media_access_request_gang_sync(ioreq_event *curr)</span>
+<span class='curline'><a href='../S/146.html#L582'>ioreq_event</a>       582 ssdmodel/ssd_gang.c         ioreq_event *tmp;</span>
+<span class='curline'><a href='../S/146.html#L592'>ioreq_event</a>       592 ssdmodel/ssd_gang.c         tmp = (ioreq_event *)getfromextraq();</span>
+<span class='curline'><a href='../S/146.html#L605'>ioreq_event</a>       605 ssdmodel/ssd_gang.c         ioqueue_add_new_request(g-&gt;queue, (ioreq_event *)tmp);</span>
+<span class='curline'><a href='../S/146.html#L624'>ioreq_event</a>       624 ssdmodel/ssd_gang.c void ssd_media_access_request_gang (ioreq_event *curr)</span>
+<span class='curline'><a href='../S/146.html#L640'>ioreq_event</a>       640 ssdmodel/ssd_gang.c         ioreq_event *tmp;</span>
+<span class='curline'><a href='../S/146.html#L653'>ioreq_event</a>       653 ssdmodel/ssd_gang.c        tmp = (ioreq_event *)getfromextraq();</span>
+<span class='curline'><a href='../S/146.html#L666'>ioreq_event</a>       666 ssdmodel/ssd_gang.c        ioqueue_add_new_request(elem-&gt;queue, (ioreq_event *)tmp);</span>
+<span class='curline'><a href='../S/146.html#L688'>ioreq_event</a>       688 ssdmodel/ssd_gang.c void ssd_clean_gang_complete(ioreq_event *curr)</span>
+<span class='curline'><a href='../S/146.html#L720'>ioreq_event</a>       720 ssdmodel/ssd_gang.c void ssd_access_complete_gang_sync(ioreq_event *curr)</span>
+<span class='curline'><a href='../S/146.html#L746'>ioreq_event</a>       746 ssdmodel/ssd_gang.c void ssd_access_complete_gang (ioreq_event *curr)</span>
+<span class='curline'><a href='../S/146.html#L751'>ioreq_event</a>       751 ssdmodel/ssd_gang.c    ioreq_event *x;</span>
+<span class='curline'><a href='../S/150.html#L10'>ioreq_event</a>        10 ssdmodel/ssd_gang.h void ssd_media_access_request_gang_sync(ioreq_event *curr);</span>
+<span class='curline'><a href='../S/150.html#L11'>ioreq_event</a>        11 ssdmodel/ssd_gang.h void ssd_media_access_request_gang(ioreq_event *curr);</span>
+<span class='curline'><a href='../S/150.html#L12'>ioreq_event</a>        12 ssdmodel/ssd_gang.h void ssd_clean_gang_complete(ioreq_event *curr);</span>
+<span class='curline'><a href='../S/150.html#L13'>ioreq_event</a>        13 ssdmodel/ssd_gang.h void ssd_access_complete_gang_sync(ioreq_event *curr);</span>
+<span class='curline'><a href='../S/150.html#L14'>ioreq_event</a>        14 ssdmodel/ssd_gang.h void ssd_access_complete_gang(ioreq_event *curr);</span>
+</pre>
+</body>
+</html>

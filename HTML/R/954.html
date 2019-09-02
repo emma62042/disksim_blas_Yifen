@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>device_get_number_of_blocks</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/215.html#L684'>device_get_number_of_blocks</a>  684 src/disksim_cachedev.c    if (device_get_number_of_blocks(cache-&gt;cache_devno) &lt; cache-&gt;size) {</span>
+<span class='curline'><a href='../S/215.html#L685'>device_get_number_of_blocks</a>  685 src/disksim_cachedev.c       fprintf (stderr, "Size of cachedev exceeds that of actual cache device (devno %d): %d &gt; %d\n", cache-&gt;cache_devno, cache-&gt;size, device_get_number_of_blocks(cache-&gt;cache_devno));</span>
+<span class='curline'><a href='../S/223.html#L237'>device_get_number_of_blocks</a>  237 src/disksim_device.h int     device_get_number_of_blocks (int diskno);</span>
+<span class='curline'><a href='../S/254.html#L2327'>device_get_number_of_blocks</a> 2327 src/disksim_ioqueue.c          temp = ioqueue_get_request_from_pri_lbn_vscan_queue(queue, device_get_number_of_blocks(queue-&gt;list-&gt;devno), queue-&gt;vscan_cyls);</span>
+<span class='curline'><a href='../S/254.html#L2329'>device_get_number_of_blocks</a> 2329 src/disksim_ioqueue.c          temp = ioqueue_get_request_from_lbn_vscan_queue(queue, device_get_number_of_blocks(queue-&gt;list-&gt;devno));</span>
+<span class='curline'><a href='../S/254.html#L2514'>device_get_number_of_blocks</a> 2514 src/disksim_ioqueue.c          temp = ioqueue_get_request_from_pri_lbn_vscan_queue(queue, device_get_number_of_blocks(queue-&gt;list-&gt;devno), queue-&gt;vscan_cyls);</span>
+<span class='curline'><a href='../S/254.html#L2516'>device_get_number_of_blocks</a> 2516 src/disksim_ioqueue.c          temp = ioqueue_get_request_from_lbn_vscan_queue(queue, device_get_number_of_blocks(queue-&gt;list-&gt;devno));</span>
+<span class='curline'><a href='../S/254.html#L2648'>device_get_number_of_blocks</a> 2648 src/disksim_ioqueue.c 			    if (queue-&gt;lastblkno != device_get_number_of_blocks(temp-&gt;iolist-&gt;devno)) {</span>
+<span class='curline'><a href='../S/254.html#L2785'>device_get_number_of_blocks</a> 2785 src/disksim_ioqueue.c                             if (queue-&gt;lastblkno != device_get_number_of_blocks(temp-&gt;iolist-&gt;devno)) {</span>
+<span class='curline'><a href='../S/278.html#L970'>device_get_number_of_blocks</a>  970 src/disksim_logorg.c    currlogorg-&gt;blksperpart = device_get_number_of_blocks(currlogorg-&gt;devs[0].devno);</span>
+</pre>
+</body>
+</html>

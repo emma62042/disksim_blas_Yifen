@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>bzero</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/76.html#L234'>bzero</a>             234 diskmodel/dm_testsuite.c   bzero(&amp;bacc, sizeof(bacc));</span>
+<span class='curline'><a href='../S/76.html#L235'>bzero</a>             235 diskmodel/dm_testsuite.c   bzero(&amp;bpos, sizeof(bpos));</span>
+<span class='curline'><a href='../S/57.html#L320'>bzero</a>             320 diskmodel/layout_g1_load.c   bzero(layout-&gt;bands, layout-&gt;bands_len * sizeof(struct dm_layout_g1_band));</span>
+<span class='curline'><a href='../S/117.html#L160'>bzero</a>             160 libparam/libparam.y   bzero($$, sizeof(struct lp_block));</span>
+<span class='curline'><a href='../S/117.html#L192'>bzero</a>             192 libparam/libparam.y   bzero($$, sizeof(struct lp_block));</span>
+<span class='curline'><a href='../S/117.html#L215'>bzero</a>             215 libparam/libparam.y   bzero($$.p, 8*sizeof(int *)); </span>
+<span class='curline'><a href='../S/117.html#L227'>bzero</a>             227 libparam/libparam.y   bzero($$.p, $1-&gt;values_len * (sizeof(int *)));</span>
+<span class='curline'><a href='../S/110.html#L726'>bzero</a>             726 libparam/myutil.c   bzero(l-&gt;values + c, newlen / 2);</span>
+<span class='curline'><a href='../S/110.html#L909'>bzero</a>             909 libparam/myutil.c     bzero(lp_typetbl + c, c * sizeof(int *));</span>
+<span class='curline'><a href='../S/110.html#L945'>bzero</a>             945 libparam/myutil.c     bzero((int *)(*b) + *plen, ((*plen) + 1) * sizeof(int*));</span>
+<span class='curline'><a href='../S/110.html#L986'>bzero</a>             986 libparam/myutil.c     bzero(lp_typetbl[c], sizeof(struct lp_subtype));</span>
+<span class='curline'><a href='../S/115.html#L730'>bzero</a>             730 libparam/util.c   bzero(l-&gt;values + c, newlen / 2);</span>
+<span class='curline'><a href='../S/115.html#L913'>bzero</a>             913 libparam/util.c     bzero(lp_typetbl + c, c * sizeof(int *));</span>
+<span class='curline'><a href='../S/115.html#L949'>bzero</a>             949 libparam/util.c     bzero((int *)(*b) + *plen, ((*plen) + 1) * sizeof(int*));</span>
+<span class='curline'><a href='../S/115.html#L990'>bzero</a>             990 libparam/util.c     bzero(lp_typetbl[c], sizeof(struct lp_subtype));</span>
+<span class='curline'><a href='../S/37.html#L1233'>bzero</a>            1233 memsmodel/mems_disksim.c   bzero(&amp;tmpsled, sizeof(tmpsled));</span>
+<span class='curline'><a href='../S/37.html#L1237'>bzero</a>            1237 memsmodel/mems_disksim.c   bzero(result, sizeof(mems_t));</span>
+<span class='curline'><a href='../S/37.html#L1245'>bzero</a>            1245 memsmodel/mems_disksim.c     bzero((char *)disksim-&gt;memsinfo, sizeof(struct mems_info));</span>
+<span class='curline'><a href='../S/37.html#L1267'>bzero</a>            1267 memsmodel/mems_disksim.c     bzero(disksim-&gt;memsinfo-&gt;devices + c, zerolen * sizeof(mems_t *));</span>
+<span class='curline'><a href='../S/37.html#L1302'>bzero</a>            1302 memsmodel/mems_disksim.c   bzero(result, sizeof(mems_t));</span>
+<span class='curline'><a href='../S/200.html#L573'>bzero</a>             573 src/disksim_bus.c     bzero(disksim-&gt;businfo, sizeof(businfo_t));</span>
+<span class='curline'><a href='../S/200.html#L685'>bzero</a>             685 src/disksim_bus.c     bzero(disksim-&gt;businfo, sizeof(businfo_t));</span>
+<span class='curline'><a href='../S/200.html#L702'>bzero</a>             702 src/disksim_bus.c        bzero(disksim-&gt;businfo-&gt;buses + c, (newlen/2)*sizeof(int *));</span>
+<span class='curline'><a href='../S/200.html#L704'>bzero</a>             704 src/disksim_bus.c        bzero(disksim-&gt;businfo-&gt;buses, 2 * sizeof(int *));</span>
+<span class='curline'><a href='../S/200.html#L714'>bzero</a>             714 src/disksim_bus.c    bzero(result, sizeof(struct bus));</span>
+<span class='curline'><a href='../S/200.html#L762'>bzero</a>             762 src/disksim_bus.c   bzero(b-&gt;slots, b-&gt;numslots * sizeof(slot));</span>
+<span class='curline'><a href='../S/215.html#L671'>bzero</a>             671 src/disksim_cachedev.c    bzero (cache-&gt;validmap, bitstr_size(cache-&gt;size));</span>
+<span class='curline'><a href='../S/215.html#L672'>bzero</a>             672 src/disksim_cachedev.c    bzero (cache-&gt;dirtymap, bitstr_size(cache-&gt;size));</span>
+<span class='curline'><a href='../S/215.html#L753'>bzero</a>             753 src/disksim_cachedev.c   bzero (new, sizeof(struct cache_dev));</span>
+<span class='curline'><a href='../S/222.html#L2315'>bzero</a>            2315 src/disksim_cachemem.c    bzero(new, sizeof(struct cache_mem));</span>
+<span class='curline'><a href='../S/222.html#L2318'>bzero</a>            2318 src/disksim_cachemem.c    bzero(mapentry, sizeof(cache_mapentry));</span>
+<span class='curline'><a href='../S/222.html#L2377'>bzero</a>            2377 src/disksim_cachemem.c   bzero(result-&gt;map, (result-&gt;mapmask+1)*sizeof(cache_mapentry));</span>
+<span class='curline'><a href='../S/204.html#L435'>bzero</a>             435 src/disksim_controller.c     bzero((char *)disksim-&gt;ctlrinfo, sizeof(ctlrinfo_t));</span>
+<span class='curline'><a href='../S/204.html#L477'>bzero</a>             477 src/disksim_controller.c     bzero ((char *)disksim-&gt;ctlrinfo, sizeof(ctlrinfo_t));</span>
+<span class='curline'><a href='../S/204.html#L496'>bzero</a>             496 src/disksim_controller.c     bzero(disksim-&gt;ctlrinfo-&gt;controllers + zerooff, zerolen);</span>
+<span class='curline'><a href='../S/204.html#L507'>bzero</a>             507 src/disksim_controller.c   bzero(result, sizeof(controller));</span>
+<span class='curline'><a href='../S/204.html#L510'>bzero</a>             510 src/disksim_controller.c   bzero(result, sizeof(controller));</span>
+<span class='curline'><a href='../S/204.html#L804'>bzero</a>             804 src/disksim_controller.c     bzero(ctlr-&gt;outbuses, slots * sizeof(int));</span>
+<span class='curline'><a href='../S/214.html#L128'>bzero</a>             128 src/disksim_device.c       bzero ((char *)disksim-&gt;deviceinfo, sizeof(device_info_t));</span>
+<span class='curline'><a href='../S/214.html#L148'>bzero</a>             148 src/disksim_device.c   bzero(disksim-&gt;deviceinfo-&gt;devicenames + c, zerocnt * sizeof(char *));</span>
+<span class='curline'><a href='../S/214.html#L152'>bzero</a>             152 src/disksim_device.c   bzero(devicenos + c, zerocnt * sizeof(int));</span>
+<span class='curline'><a href='../S/214.html#L154'>bzero</a>             154 src/disksim_device.c   bzero(devicenos + c, zerocnt * sizeof(*(devicenos)));</span>
+<span class='curline'><a href='../S/214.html#L159'>bzero</a>             159 src/disksim_device.c   bzero(devicetypes + c, zerocnt * sizeof(int));</span>
+<span class='curline'><a href='../S/214.html#L161'>bzero</a>             161 src/disksim_device.c   bzero(devicetypes + c, zerocnt * sizeof(*(devicetypes)));</span>
+<span class='curline'><a href='../S/214.html#L167'>bzero</a>             167 src/disksim_device.c   bzero(disksim-&gt;deviceinfo-&gt;devices + c, zerocnt * sizeof(int));</span>
+<span class='curline'><a href='../S/214.html#L169'>bzero</a>             169 src/disksim_device.c   bzero(disksim-&gt;deviceinfo-&gt;devices + c, zerocnt * sizeof(*(disksim-&gt;deviceinfo-&gt;devices)));</span>
+<span class='curline'><a href='../S/273.html#L149'>bzero</a>             149 src/disksim_disk.c   bzero(disksim-&gt;diskinfo-&gt;disks + NUMDISKS, NUMDISKS);</span>
+<span class='curline'><a href='../S/273.html#L504'>bzero</a>             504 src/disksim_disk.c   bzero ((char *)disksim-&gt;diskinfo, sizeof(disk_info_t));</span>
+<span class='curline'><a href='../S/273.html#L508'>bzero</a>             508 src/disksim_disk.c   bzero ((char *)disksim-&gt;diskinfo-&gt;disks, (MAXDEVICES * sizeof(disk)));</span>
+<span class='curline'><a href='../S/205.html#L1040'>bzero</a>            1040 src/disksim_iodriver.c     bzero ((char *)disksim-&gt;iodriver_info, sizeof(iodriver_info_t));</span>
+<span class='curline'><a href='../S/205.html#L1072'>bzero</a>            1072 src/disksim_iodriver.c   bzero((struct iodriver*)iodrivers + c, zerocnt * sizeof(iodriver *));</span>
+<span class='curline'><a href='../S/205.html#L1083'>bzero</a>            1083 src/disksim_iodriver.c     bzero ((char *)disksim-&gt;iodriver_info, sizeof(iodriver_info_t));</span>
+<span class='curline'><a href='../S/205.html#L1088'>bzero</a>            1088 src/disksim_iodriver.c   bzero(result, sizeof(iodriver));</span>
+<span class='curline'><a href='../S/205.html#L1159'>bzero</a>            1159 src/disksim_iodriver.c   bzero(result, sizeof(iodriver));</span>
+<span class='curline'><a href='../S/205.html#L1189'>bzero</a>            1189 src/disksim_iodriver.c   bzero(sysorgs + zeroOff, </span>
+<span class='curline'><a href='../S/254.html#L3756'>bzero</a>            3756 src/disksim_ioqueue.c    bzero(queue, sizeof(ioqueue));</span>
+<span class='curline'><a href='../S/254.html#L3808'>bzero</a>            3808 src/disksim_ioqueue.c   bzero(result, sizeof(ioqueue));</span>
+<span class='curline'><a href='../S/194.html#L113'>bzero</a>             113 src/disksim_iosim.c    bzero ((char *)disksim-&gt;iosim_info, sizeof(iosim_info_t));</span>
+<span class='curline'><a href='../S/264.html#L111'>bzero</a>             111 src/disksim_iotrace.c    bzero ((char *)disksim-&gt;iotrace_info, sizeof(iotrace_info_t));</span>
+<span class='curline'><a href='../S/278.html#L1594'>bzero</a>            1594 src/disksim_logorg.c   bzero(result-&gt;devs, l-&gt;values_len * sizeof(logorgdev));</span>
+<span class='curline'><a href='../S/278.html#L1651'>bzero</a>            1651 src/disksim_logorg.c   bzero(result, sizeof(struct logorg));</span>
+<span class='curline'><a href='../S/191.html#L1032'>bzero</a>            1032 src/disksim_pfsim.c     bzero ((char *)pf_info, sizeof(pf_info_t));</span>
+<span class='curline'><a href='../S/191.html#L1051'>bzero</a>            1051 src/disksim_pfsim.c     bzero ((char *)pf_info, sizeof(pf_info_t));</span>
+<span class='curline'><a href='../S/193.html#L108'>bzero</a>             108 src/disksim_rand48.c    bzero ((char *)disksim-&gt;rand48_info, sizeof(rand48_into_t));</span>
+<span class='curline'><a href='../S/201.html#L745'>bzero</a>             745 src/disksim_simpledisk.c    bzero ((char *)disksim-&gt;simplediskinfo, sizeof(simplediskinfo_t));</span>
+<span class='curline'><a href='../S/201.html#L748'>bzero</a>             748 src/disksim_simpledisk.c    bzero ((char *)disksim-&gt;simplediskinfo-&gt;simpledisks, (MAXDEVICES * (sizeof(simpledisk_t))));</span>
+<span class='curline'><a href='../S/201.html#L813'>bzero</a>             813 src/disksim_simpledisk.c   bzero(disksim-&gt;simplediskinfo-&gt;simpledisks + numsimpledisks, </span>
+<span class='curline'><a href='../S/201.html#L833'>bzero</a>             833 src/disksim_simpledisk.c   bzero(result, sizeof(struct simpledisk));</span>
+<span class='curline'><a href='../S/201.html#L853'>bzero</a>             853 src/disksim_simpledisk.c   bzero(result, sizeof(struct simpledisk));</span>
+<span class='curline'><a href='../S/216.html#L695'>bzero</a>             695 src/disksim_synthio.c     bzero ((char *)disksim-&gt;synthio_info, sizeof(synthio_info_t));</span>
+<span class='curline'><a href='../S/216.html#L724'>bzero</a>             724 src/disksim_synthio.c   bzero(synthio_gens, l-&gt;values_len * sizeof(synthio_generator));</span>
+<span class='curline'><a href='../S/216.html#L875'>bzero</a>             875 src/disksim_synthio.c   bzero((*result), sizeof(synthio_generator));</span>
+<span class='curline'><a href='../S/216.html#L897'>bzero</a>             897 src/disksim_synthio.c   bzero(result-&gt;devno, l-&gt;values_len * sizeof(int));</span>
+<span class='curline'><a href='../S/187.html#L1083'>bzero</a>            1083 ssdmodel/ssd.c   bzero(disksim-&gt;ssdinfo-&gt;ssds + numssds,</span>
+<span class='curline'><a href='../S/187.html#L1103'>bzero</a>            1103 ssdmodel/ssd.c   bzero(result, sizeof(struct ssd));</span>
+<span class='curline'><a href='../S/187.html#L1123'>bzero</a>            1123 ssdmodel/ssd.c   bzero(result, sizeof(struct ssd));</span>
+<span class='curline'><a href='../S/185.html#L32'>bzero</a>              32 ssdmodel/ssd_init.c    bzero ((char *)disksim-&gt;ssdinfo, sizeof(ssdinfo_t));</span>
+<span class='curline'><a href='../S/185.html#L35'>bzero</a>              35 ssdmodel/ssd_init.c    bzero ((char *)disksim-&gt;ssdinfo-&gt;ssds, (MAXDEVICES * (sizeof(ssd_t))));</span>
+<span class='curline'><a href='../S/185.html#L202'>bzero</a>             202 ssdmodel/ssd_init.c     bzero(metadata-&gt;free_blocks, bytes_to_alloc);</span>
+<span class='curline'><a href='../S/185.html#L211'>bzero</a>             211 ssdmodel/ssd_init.c     bzero(metadata-&gt;block_usage, tot_blocks * sizeof(block_metadata));</span>
+<span class='curline'><a href='../S/8.html#L98'>bzero</a>              98 utils/params/libparam_to_v3.c   bzero(&amp;mech, sizeof(struct lp_block));</span>
+<span class='curline'><a href='../S/8.html#L99'>bzero</a>              99 utils/params/libparam_to_v3.c   bzero(&amp;disk, sizeof(struct lp_block));</span>
+<span class='curline'><a href='../S/8.html#L100'>bzero</a>             100 utils/params/libparam_to_v3.c   bzero(&amp;dmdisk, sizeof(struct lp_block));</span>
+<span class='curline'><a href='../S/8.html#L101'>bzero</a>             101 utils/params/libparam_to_v3.c   bzero(&amp;layout, sizeof(struct lp_block));</span>
+<span class='curline'><a href='../S/8.html#L103'>bzero</a>             103 utils/params/libparam_to_v3.c   bzero(&amp;layout_p, sizeof(struct lp_param));</span>
+<span class='curline'><a href='../S/8.html#L104'>bzero</a>             104 utils/params/libparam_to_v3.c   bzero(&amp;mech_p, sizeof(struct lp_param));</span>
+<span class='curline'><a href='../S/8.html#L105'>bzero</a>             105 utils/params/libparam_to_v3.c   bzero(&amp;modelfile_p, sizeof(struct lp_param));</span>
+</pre>
+</body>
+</html>

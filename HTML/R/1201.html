@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>dm_time_t</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/91.html#L40'>dm_time_t</a>          40 diskmodel/convert.c INLINE dm_time_t dm_time_dtoi(double t)</span>
+<span class='curline'><a href='../S/91.html#L43'>dm_time_t</a>          43 diskmodel/convert.c   return (dm_time_t)(t * (double)(DM_TIME_MSEC));</span>
+<span class='curline'><a href='../S/91.html#L46'>dm_time_t</a>          46 diskmodel/convert.c INLINE double    dm_time_itod(dm_time_t t)</span>
+<span class='curline'><a href='../S/77.html#L63'>dm_time_t</a>          63 diskmodel/dm.h dm_time_t dm_time_dtoi(double);</span>
+<span class='curline'><a href='../S/77.html#L64'>dm_time_t</a>          64 diskmodel/dm.h double    dm_time_itod(dm_time_t);</span>
+<span class='curline'><a href='../S/77.html#L338'>dm_time_t</a>         338 diskmodel/dm.h    dm_time_t seektime;</span>
+<span class='curline'><a href='../S/77.html#L339'>dm_time_t</a>         339 diskmodel/dm.h    dm_time_t initial_latency;</span>
+<span class='curline'><a href='../S/77.html#L340'>dm_time_t</a>         340 diskmodel/dm.h    dm_time_t initial_xfer;</span>
+<span class='curline'><a href='../S/77.html#L341'>dm_time_t</a>         341 diskmodel/dm.h    dm_time_t addl_latency;</span>
+<span class='curline'><a href='../S/77.html#L342'>dm_time_t</a>         342 diskmodel/dm.h    dm_time_t addl_xfer;</span>
+<span class='curline'><a href='../S/77.html#L351'>dm_time_t</a>         351 diskmodel/dm.h   dm_time_t(*dm_seek_time)(struct dm_disk_if *, </span>
+<span class='curline'><a href='../S/77.html#L379'>dm_time_t</a>         379 diskmodel/dm.h   dm_time_t(*dm_latency)(struct dm_disk_if *,</span>
+<span class='curline'><a href='../S/77.html#L384'>dm_time_t</a>         384 diskmodel/dm.h 			 dm_time_t *addtolatency);</span>
+<span class='curline'><a href='../S/77.html#L395'>dm_time_t</a>         395 diskmodel/dm.h   dm_time_t(*dm_latency_seq)(struct dm_disk_if *,</span>
+<span class='curline'><a href='../S/77.html#L400'>dm_time_t</a>         400 diskmodel/dm.h 			     dm_time_t *addtolatency);</span>
+<span class='curline'><a href='../S/77.html#L406'>dm_time_t</a>         406 diskmodel/dm.h   dm_time_t(*dm_pos_time)(struct dm_disk_if *,</span>
+<span class='curline'><a href='../S/77.html#L425'>dm_time_t</a>         425 diskmodel/dm.h   dm_time_t(*dm_acctime)(struct dm_disk_if *, </span>
+<span class='curline'><a href='../S/77.html#L436'>dm_time_t</a>         436 diskmodel/dm.h   dm_time_t(*dm_rottime)(struct dm_disk_if *,</span>
+<span class='curline'><a href='../S/77.html#L444'>dm_time_t</a>         444 diskmodel/dm.h   dm_time_t(*dm_xfertime)(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/77.html#L450'>dm_time_t</a>         450 diskmodel/dm.h   dm_time_t(*dm_headswitch_time)(struct dm_disk_if *, </span>
+<span class='curline'><a href='../S/77.html#L458'>dm_time_t</a>         458 diskmodel/dm.h 			 dm_time_t *time);</span>
+<span class='curline'><a href='../S/77.html#L461'>dm_time_t</a>         461 diskmodel/dm.h   dm_time_t(*dm_period)(struct dm_disk_if *);</span>
+<span class='curline'><a href='../S/76.html#L81'>dm_time_t</a>          81 diskmodel/dm_testsuite.c   dm_time_t t2;</span>
+<span class='curline'><a href='../S/76.html#L123'>dm_time_t</a>         123 diskmodel/dm_testsuite.c   dm_time_t result;</span>
+<span class='curline'><a href='../S/76.html#L146'>dm_time_t</a>         146 diskmodel/dm_testsuite.c   dm_time_t result;</span>
+<span class='curline'><a href='../S/76.html#L165'>dm_time_t</a>         165 diskmodel/dm_testsuite.c   dm_time_t xfertime;</span>
+<span class='curline'><a href='../S/76.html#L187'>dm_time_t</a>         187 diskmodel/dm_testsuite.c   dm_time_t result;</span>
+<span class='curline'><a href='../S/76.html#L217'>dm_time_t</a>         217 diskmodel/dm_testsuite.c   dm_time_t postime, acctime;</span>
+<span class='curline'><a href='../S/76.html#L251'>dm_time_t</a>         251 diskmodel/dm_testsuite.c   dm_time_t result;</span>
+<span class='curline'><a href='../S/76.html#L280'>dm_time_t</a>         280 diskmodel/dm_testsuite.c   dm_time_t result;</span>
+<span class='curline'><a href='../S/76.html#L310'>dm_time_t</a>         310 diskmodel/dm_testsuite.c   dm_time_t result;</span>
+<span class='curline'><a href='../S/76.html#L362'>dm_time_t</a>         362 diskmodel/dm_testsuite.c   dm_time_t result;</span>
+<span class='curline'><a href='../S/76.html#L409'>dm_time_t</a>         409 diskmodel/dm_testsuite.c     dm_time_t nsecs;</span>
+<span class='curline'><a href='../S/76.html#L441'>dm_time_t</a>         441 diskmodel/dm_testsuite.c   dm_time_t nsecs1, nsecs2;</span>
+<span class='curline'><a href='../S/76.html#L474'>dm_time_t</a>         474 diskmodel/dm_testsuite.c   dm_time_t result;</span>
+<span class='curline'><a href='../S/76.html#L475'>dm_time_t</a>         475 diskmodel/dm_testsuite.c   dm_time_t checkres;</span>
+<span class='curline'><a href='../S/76.html#L512'>dm_time_t</a>         512 diskmodel/dm_testsuite.c   dm_time_t result;</span>
+<span class='curline'><a href='../S/93.html#L65'>dm_time_t</a>          65 diskmodel/dm_types.h #define DM_TIME_PSEC ((dm_time_t)1)      // pico</span>
+<span class='curline'><a href='../S/57.html#L252'>dm_time_t</a>         252 diskmodel/layout_g1_load.c     dm_time_t t1 = d-&gt;mech-&gt;dm_seek_time(d, &amp;s1, &amp;s2, 0);</span>
+<span class='curline'><a href='../S/57.html#L253'>dm_time_t</a>         253 diskmodel/layout_g1_load.c     dm_time_t t2 = d-&gt;mech-&gt;dm_seek_time(d, &amp;s1, &amp;s2, 1);</span>
+<span class='curline'><a href='../S/72.html#L112'>dm_time_t</a>         112 diskmodel/mech_g1.c static dm_time_t </span>
+<span class='curline'><a href='../S/72.html#L119'>dm_time_t</a>         119 diskmodel/mech_g1.c   dm_time_t seektime, hst, result = 0;</span>
+<span class='curline'><a href='../S/72.html#L139'>dm_time_t</a>         139 diskmodel/mech_g1.c static dm_time_t </span>
+<span class='curline'><a href='../S/72.html#L150'>dm_time_t</a>         150 diskmodel/mech_g1.c   dm_time_t seektime = 0;</span>
+<span class='curline'><a href='../S/72.html#L151'>dm_time_t</a>         151 diskmodel/mech_g1.c   dm_time_t result = 0;</span>
+<span class='curline'><a href='../S/72.html#L152'>dm_time_t</a>         152 diskmodel/mech_g1.c   dm_time_t latency = 0;</span>
+<span class='curline'><a href='../S/72.html#L189'>dm_time_t</a>         189 diskmodel/mech_g1.c static dm_time_t </span>
+<span class='curline'><a href='../S/72.html#L203'>dm_time_t</a>         203 diskmodel/mech_g1.c   dm_time_t seektime, latency, xfertime, initxfer;</span>
+<span class='curline'><a href='../S/72.html#L204'>dm_time_t</a>         204 diskmodel/mech_g1.c   dm_time_t addtolatency = 0, result = 0, *atlp;</span>
+<span class='curline'><a href='../S/72.html#L277'>dm_time_t</a>         277 diskmodel/mech_g1.c static dm_time_t </span>
+<span class='curline'><a href='../S/72.html#L296'>dm_time_t</a>         296 diskmodel/mech_g1.c   dm_time_t result = 0;</span>
+<span class='curline'><a href='../S/72.html#L380'>dm_time_t</a>         380 diskmodel/mech_g1.c static dm_time_t </span>
+<span class='curline'><a href='../S/72.html#L386'>dm_time_t</a>         386 diskmodel/mech_g1.c 	      dm_time_t *addtolatency)</span>
+<span class='curline'><a href='../S/72.html#L393'>dm_time_t</a>         393 diskmodel/mech_g1.c   dm_time_t result;</span>
+<span class='curline'><a href='../S/72.html#L481'>dm_time_t</a>         481 diskmodel/mech_g1.c static dm_time_t </span>
+<span class='curline'><a href='../S/72.html#L487'>dm_time_t</a>         487 diskmodel/mech_g1.c 		  dm_time_t *addtolatency)</span>
+<span class='curline'><a href='../S/72.html#L589'>dm_time_t</a>         589 diskmodel/mech_g1.c static dm_time_t</span>
+<span class='curline'><a href='../S/72.html#L596'>dm_time_t</a>         596 diskmodel/mech_g1.c   dm_time_t result;</span>
+<span class='curline'><a href='../S/72.html#L607'>dm_time_t</a>         607 diskmodel/mech_g1.c static dm_time_t </span>
+<span class='curline'><a href='../S/72.html#L612'>dm_time_t</a>         612 diskmodel/mech_g1.c   dm_time_t result;</span>
+<span class='curline'><a href='../S/72.html#L618'>dm_time_t</a>         618 diskmodel/mech_g1.c static dm_time_t </span>
+<span class='curline'><a href='../S/72.html#L647'>dm_time_t</a>         647 diskmodel/mech_g1.c static dm_time_t </span>
+<span class='curline'><a href='../S/72.html#L682'>dm_time_t</a>         682 diskmodel/mech_g1.c static dm_time_t </span>
+<span class='curline'><a href='../S/72.html#L701'>dm_time_t</a>         701 diskmodel/mech_g1.c 	     dm_time_t *time)</span>
+<span class='curline'><a href='../S/72.html#L735'>dm_time_t</a>         735 diskmodel/mech_g1.c 	       dm_time_t time,</span>
+<span class='curline'><a href='../S/72.html#L741'>dm_time_t</a>         741 diskmodel/mech_g1.c static dm_time_t</span>
+<span class='curline'><a href='../S/72.html#L754'>dm_time_t</a>         754 diskmodel/mech_g1.c   result += m-&gt;xseekcnt * (sizeof(int) + sizeof(dm_time_t));</span>
+<span class='curline'><a href='../S/72.html#L839'>dm_time_t</a>         839 diskmodel/mech_g1.c     int timesize = m-&gt;xseekcnt * sizeof(dm_time_t);</span>
+<span class='curline'><a href='../S/72.html#L874'>dm_time_t</a>         874 diskmodel/mech_g1.c     int timesize = m-&gt;xseekcnt * sizeof(dm_time_t);</span>
+<span class='curline'><a href='../S/94.html#L124'>dm_time_t</a>         124 diskmodel/mech_g1.h typedef dm_time_t(*dm_mech_g1_seekfn)(struct dm_disk_if *d,</span>
+<span class='curline'><a href='../S/94.html#L143'>dm_time_t</a>         143 diskmodel/mech_g1.h   dm_time_t       acctime;</span>
+<span class='curline'><a href='../S/94.html#L147'>dm_time_t</a>         147 diskmodel/mech_g1.h   dm_time_t       seektime;</span>
+<span class='curline'><a href='../S/94.html#L150'>dm_time_t</a>         150 diskmodel/mech_g1.h   dm_time_t       seekone; // only used by non-extracted algs</span>
+<span class='curline'><a href='../S/94.html#L153'>dm_time_t</a>         153 diskmodel/mech_g1.h   dm_time_t       seekavg;</span>
+<span class='curline'><a href='../S/94.html#L156'>dm_time_t</a>         156 diskmodel/mech_g1.h   dm_time_t       seekfull; // only used by non-extracted algs</span>
+<span class='curline'><a href='../S/94.html#L159'>dm_time_t</a>         159 diskmodel/mech_g1.h   dm_time_t       seekwritedelta;</span>
+<span class='curline'><a href='../S/94.html#L162'>dm_time_t</a>         162 diskmodel/mech_g1.h   dm_time_t       hpseek[6]; // v_2..v_6 .. in 1..6 (0 not used)</span>
+<span class='curline'><a href='../S/94.html#L163'>dm_time_t</a>         163 diskmodel/mech_g1.h   dm_time_t       first10seeks[10];</span>
+<span class='curline'><a href='../S/94.html#L168'>dm_time_t</a>         168 diskmodel/mech_g1.h   dm_time_t    *xseektimes;</span>
+<span class='curline'><a href='../S/94.html#L171'>dm_time_t</a>         171 diskmodel/mech_g1.h   dm_time_t       headswitch;</span>
+<span class='curline'><a href='../S/94.html#L178'>dm_time_t</a>         178 diskmodel/mech_g1.h   dm_time_t       rotatetime;</span>
+<span class='curline'><a href='../S/94.html#L191'>dm_time_t</a>         191 diskmodel/mech_g1.h   dm_time_t     blktranstime;</span>
+<span class='curline'><a href='../S/74.html#L121'>dm_time_t</a>         121 diskmodel/mech_g1_load.c 				     dm_time_t **timesptr);</span>
+<span class='curline'><a href='../S/74.html#L147'>dm_time_t</a>         147 diskmodel/mech_g1_load.c 				      dm_time_t **timesptr)</span>
+<span class='curline'><a href='../S/74.html#L153'>dm_time_t</a>         153 diskmodel/mech_g1_load.c    dm_time_t *times;</span>
+<span class='curline'><a href='../S/96.html#L36'>dm_time_t</a>          36 diskmodel/mech_g1_private.h dm_time_t </span>
+<span class='curline'><a href='../S/96.html#L42'>dm_time_t</a>          42 diskmodel/mech_g1_private.h dm_time_t </span>
+<span class='curline'><a href='../S/96.html#L48'>dm_time_t</a>          48 diskmodel/mech_g1_private.h dm_time_t </span>
+<span class='curline'><a href='../S/96.html#L54'>dm_time_t</a>          54 diskmodel/mech_g1_private.h dm_time_t </span>
+<span class='curline'><a href='../S/96.html#L60'>dm_time_t</a>          60 diskmodel/mech_g1_private.h dm_time_t </span>
+<span class='curline'><a href='../S/96.html#L66'>dm_time_t</a>          66 diskmodel/mech_g1_private.h dm_time_t </span>
+<span class='curline'><a href='../S/60.html#L106'>dm_time_t</a>         106 diskmodel/mech_g1_seektime.c dm_time_t </span>
+<span class='curline'><a href='../S/60.html#L118'>dm_time_t</a>         118 diskmodel/mech_g1_seektime.c dm_time_t </span>
+<span class='curline'><a href='../S/60.html#L125'>dm_time_t</a>         125 diskmodel/mech_g1_seektime.c   dm_time_t result;</span>
+<span class='curline'><a href='../S/60.html#L143'>dm_time_t</a>         143 diskmodel/mech_g1_seektime.c dm_time_t </span>
+<span class='curline'><a href='../S/60.html#L153'>dm_time_t</a>         153 diskmodel/mech_g1_seektime.c   dm_time_t result;</span>
+<span class='curline'><a href='../S/60.html#L192'>dm_time_t</a>         192 diskmodel/mech_g1_seektime.c dm_time_t </span>
+<span class='curline'><a href='../S/60.html#L198'>dm_time_t</a>         198 diskmodel/mech_g1_seektime.c   dm_time_t *hpseek;</span>
+<span class='curline'><a href='../S/60.html#L200'>dm_time_t</a>         200 diskmodel/mech_g1_seektime.c   dm_time_t result;</span>
+<span class='curline'><a href='../S/60.html#L230'>dm_time_t</a>         230 diskmodel/mech_g1_seektime.c dm_time_t </span>
+<span class='curline'><a href='../S/60.html#L237'>dm_time_t</a>         237 diskmodel/mech_g1_seektime.c   dm_time_t *hpseek;</span>
+<span class='curline'><a href='../S/60.html#L238'>dm_time_t</a>         238 diskmodel/mech_g1_seektime.c   dm_time_t result;</span>
+<span class='curline'><a href='../S/60.html#L273'>dm_time_t</a>         273 diskmodel/mech_g1_seektime.c dm_time_t </span>
+<span class='curline'><a href='../S/60.html#L283'>dm_time_t</a>         283 diskmodel/mech_g1_seektime.c dm_time_t </span>
+<span class='curline'><a href='../S/60.html#L296'>dm_time_t</a>         296 diskmodel/mech_g1_seektime.c dm_time_t </span>
+<span class='curline'><a href='../S/60.html#L303'>dm_time_t</a>         303 diskmodel/mech_g1_seektime.c   dm_time_t result = 0;</span>
+<span class='curline'><a href='../S/60.html#L308'>dm_time_t</a>         308 diskmodel/mech_g1_seektime.c   dm_time_t t1,t2;</span>
+<span class='curline'><a href='../S/85.html#L46'>dm_time_t</a>          46 diskmodel/tests/mech_seek.c     dm_time_t st;</span>
+<span class='curline'><a href='../S/258.html#L272'>dm_time_t</a>         272 src/disksim_disk.h   dm_time_t t;</span>
+<span class='curline'><a href='../S/258.html#L415'>dm_time_t</a>         415 src/disksim_disk.h   dm_time_t    currtime_i;</span>
+<span class='curline'><a href='../S/196.html#L4100'>dm_time_t</a>        4100 src/disksim_diskctlr.c     dm_time_t isimtime = dm_time_dtoi(seg-&gt;time) - currdisk-&gt;currtime_i;</span>
+<span class='curline'><a href='../S/196.html#L4101'>dm_time_t</a>        4101 src/disksim_diskctlr.c     dm_time_t residtime = </span>
+<span class='curline'><a href='../S/196.html#L4277'>dm_time_t</a>        4277 src/disksim_diskctlr.c     dm_time_t reqtime = dm_time_dtoi(seg-&gt;time) - currdisk-&gt;currtime_i;</span>
+<span class='curline'><a href='../S/196.html#L4280'>dm_time_t</a>        4280 src/disksim_diskctlr.c     dm_time_t residtime = </span>
+<span class='curline'><a href='../S/196.html#L4357'>dm_time_t</a>        4357 src/disksim_diskctlr.c   dm_time_t diff_i;</span>
+<span class='curline'><a href='../S/196.html#L4788'>dm_time_t</a>        4788 src/disksim_diskctlr.c       dm_time_t nsecs;</span>
+<span class='curline'><a href='../S/196.html#L4909'>dm_time_t</a>        4909 src/disksim_diskctlr.c     dm_time_t nsecs;</span>
+</pre>
+</body>
+</html>

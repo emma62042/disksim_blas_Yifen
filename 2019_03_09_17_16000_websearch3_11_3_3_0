@@ -1,0 +1,8 @@
+initial with striping allocation
+./ssdmodel/valid/ssd-iozone.parv ./src/iozone 16000 16000_websearch3 11_3 3
+initial with locality allocation
+./ssdmodel/valid/ssd-iozone.parv ./src/iozone 16000 16000_websearch3 11_3 3
+initial with striping allocation
+./ssdmodel/valid/ssd-iozone.parv ./src/iozone 16000 16000_websearch3 11_3 3
+initial with locality allocation
+./ssdmodel/valid/ssd-iozone.parv ./src/iozone 16000 16000_websearch3 11_3 3

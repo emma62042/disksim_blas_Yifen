@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>logorg</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/284.html#L181'>logorg</a>            181 src/disksim_ctlr.h    struct logorg *ctlorgs;</span>
+<span class='curline'><a href='../S/205.html#L1171'>logorg</a>           1171 src/disksim_iodriver.c   struct logorg *l = 0;</span>
+<span class='curline'><a href='../S/205.html#L1187'>logorg</a>           1187 src/disksim_iodriver.c   sysorgs = realloc(sysorgs, newlen * sizeof(struct logorg *));</span>
+<span class='curline'><a href='../S/205.html#L1190'>logorg</a>           1190 src/disksim_iodriver.c 	(zeroOff ? numsysorgs : 2) * sizeof(struct logorg *));</span>
+<span class='curline'><a href='../S/218.html#L165'>logorg</a>            165 src/disksim_iodriver.h    struct logorg **sysorgs;</span>
+<span class='curline'><a href='../S/278.html#L123'>logorg</a>            123 src/disksim_logorg.c static int logorg_overlap (logorg *currlogorg, int devno, ioreq_event *curr, int blksperpart)</span>
+<span class='curline'><a href='../S/278.html#L137'>logorg</a>            137 src/disksim_logorg.c static void logorg_streakstat (logorg *currlogorg, int diskno)</span>
+<span class='curline'><a href='../S/278.html#L164'>logorg</a>            164 src/disksim_logorg.c static void logorg_update_intarr_stats (logorg *currlogorg, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/278.html#L187'>logorg</a>            187 src/disksim_logorg.c static void logorg_update_interfere_stats (logorg *currlogorg, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/278.html#L248'>logorg</a>            248 src/disksim_logorg.c static void logorg_update_blocking_stats (logorg *currlogorg, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/278.html#L309'>logorg</a>            309 src/disksim_logorg.c static void logorg_maprequest_update_stats (logorg *currlogorg, ioreq_event *curr, outstand *req, int numreqs)</span>
+<span class='curline'><a href='../S/278.html#L416'>logorg</a>            416 src/disksim_logorg.c static void logorg_mapcomplete_update_stats (logorg *currlogorg, ioreq_event *curr, outstand *req)</span>
+<span class='curline'><a href='../S/278.html#L431'>logorg</a>            431 src/disksim_logorg.c    logorg *currlogorg = (logorg *) curr-&gt;tempptr1;</span>
+<span class='curline'><a href='../S/278.html#L473'>logorg</a>            473 src/disksim_logorg.c static void logorg_addnewtooutstandq (logorg *currlogorg, outstand *temp)</span>
+<span class='curline'><a href='../S/278.html#L490'>logorg</a>            490 src/disksim_logorg.c static void logorg_addtooutstandq (logorg *currlogorg, outstand *temp)</span>
+<span class='curline'><a href='../S/278.html#L498'>logorg</a>            498 src/disksim_logorg.c static outstand *logorg_show_buf_from_outstandq (logorg *currlogorg, void *buf, int opid)</span>
+<span class='curline'><a href='../S/278.html#L516'>logorg</a>            516 src/disksim_logorg.c static outstand * logorg_getfromoutstandq (logorg *currlogorg, int requestno)</span>
+<span class='curline'><a href='../S/278.html#L555'>logorg</a>            555 src/disksim_logorg.c static void logorg_mapideal (logorg *currlogorg, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/278.html#L564'>logorg</a>            564 src/disksim_logorg.c static void logorg_maprandom (logorg *currlogorg, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/278.html#L572'>logorg</a>            572 src/disksim_logorg.c static int logorg_mapinterleaved (logorg *currlogorg, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/278.html#L596'>logorg</a>            596 src/disksim_logorg.c static int logorg_mapstriped (logorg *currlogorg, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/278.html#L695'>logorg</a>            695 src/disksim_logorg.c int logorg_maprequest (logorg **logorgs, int numlogorgs, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/278.html#L833'>logorg</a>            833 src/disksim_logorg.c int logorg_mapcomplete (logorg **logorgs, int numlogorgs, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/278.html#L912'>logorg</a>            912 src/disksim_logorg.c void logorg_raise_priority (logorg **logorgs, int numlogorgs, int opid, int devno, int blkno, void *buf)</span>
+<span class='curline'><a href='../S/278.html#L958'>logorg</a>            958 src/disksim_logorg.c static void logorg_postpass_per(logorg *currlogorg, int orgno)</span>
+<span class='curline'><a href='../S/278.html#L1033'>logorg</a>           1033 src/disksim_logorg.c static void logorg_postpass(struct logorg **logorgs, int numlogorgs)</span>
+<span class='curline'><a href='../S/278.html#L1046'>logorg</a>           1046 src/disksim_logorg.c void logorg_resetstats (logorg **logorgs, int numlogorgs)</span>
+<span class='curline'><a href='../S/278.html#L1104'>logorg</a>           1104 src/disksim_logorg.c void logorg_initialize (logorg **logorgs, </span>
+<span class='curline'><a href='../S/278.html#L1279'>logorg</a>           1279 src/disksim_logorg.c void logorg_cleanstats (logorg **logorgs, int numlogorgs)</span>
+<span class='curline'><a href='../S/278.html#L1299'>logorg</a>           1299 src/disksim_logorg.c static void logorg_printreqtimestats (logorg *currlogorg, char *prefix)</span>
+<span class='curline'><a href='../S/278.html#L1326'>logorg</a>           1326 src/disksim_logorg.c static void logorg_printlocalitystats (logorg *currlogorg, char *prefix)</span>
+<span class='curline'><a href='../S/278.html#L1366'>logorg</a>           1366 src/disksim_logorg.c static void logorg_printinterferestats (logorg *currlogorg, char *prefix)</span>
+<span class='curline'><a href='../S/278.html#L1404'>logorg</a>           1404 src/disksim_logorg.c static void logorg_printblockingstats (logorg *currlogorg, char *prefix)</span>
+<span class='curline'><a href='../S/278.html#L1432'>logorg</a>           1432 src/disksim_logorg.c static void logorg_printstampstats (logorg *currlogorg, char *prefix)</span>
+<span class='curline'><a href='../S/278.html#L1473'>logorg</a>           1473 src/disksim_logorg.c void logorg_printstats (logorg **logorgs, int numlogorgs, char *sourcestr)</span>
+<span class='curline'><a href='../S/278.html#L1529'>logorg</a>           1529 src/disksim_logorg.c int logorg_distn(logorg *result, char *s) {</span>
+<span class='curline'><a href='../S/278.html#L1553'>logorg</a>           1553 src/disksim_logorg.c int logorg_addr(logorg *result, char *s) {</span>
+<span class='curline'><a href='../S/278.html#L1567'>logorg</a>           1567 src/disksim_logorg.c int logorg_redun(logorg *result, char *s) {</span>
+<span class='curline'><a href='../S/278.html#L1588'>logorg</a>           1588 src/disksim_logorg.c int getlogorgdevs(logorg *result, struct lp_list *l) {</span>
+<span class='curline'><a href='../S/278.html#L1643'>logorg</a>           1643 src/disksim_logorg.c struct logorg *disksim_logorg_loadparams(struct lp_block *b) </span>
+<span class='curline'><a href='../S/278.html#L1646'>logorg</a>           1646 src/disksim_logorg.c   struct logorg *result;</span>
+<span class='curline'><a href='../S/278.html#L1650'>logorg</a>           1650 src/disksim_logorg.c   result = malloc(sizeof(struct logorg));</span>
+<span class='curline'><a href='../S/278.html#L1651'>logorg</a>           1651 src/disksim_logorg.c   bzero(result, sizeof(struct logorg));</span>
+<span class='curline'><a href='../S/278.html#L1675'>logorg</a>           1675 src/disksim_logorg.c INLINE void logorg_set_arraydisk(struct logorg *l, int n) {</span>
+<span class='curline'><a href='../S/278.html#L1680'>logorg</a>           1680 src/disksim_logorg.c logorg *getlogorgbyname(logorg **logorgs, </span>
+<span class='curline'><a href='../S/278.html#L1704'>logorg</a>           1704 src/disksim_logorg.c void logorg_cleanup(logorg *l) {</span>
+<span class='curline'><a href='../S/248.html#L290'>logorg</a>            290 src/disksim_logorg.h int  logorg_shadowed (logorg *currlogorg, ioreq_event *curr, int numreqs);</span>
+<span class='curline'><a href='../S/248.html#L291'>logorg</a>            291 src/disksim_logorg.h int  logorg_parity_disk (logorg *currlogorg, ioreq_event *curr, int numreqs);</span>
+<span class='curline'><a href='../S/248.html#L292'>logorg</a>            292 src/disksim_logorg.h int  logorg_parity_rotate (logorg *currlogorg, ioreq_event *curr, int numreqs);</span>
+<span class='curline'><a href='../S/248.html#L293'>logorg</a>            293 src/disksim_logorg.h int  logorg_parity_table (logorg *currlogorg, ioreq_event *curr, int numreqs);</span>
+<span class='curline'><a href='../S/248.html#L294'>logorg</a>            294 src/disksim_logorg.h void logorg_create_table (logorg *currlogorg);</span>
+<span class='curline'><a href='../S/248.html#L296'>logorg</a>            296 src/disksim_logorg.h int  logorg_check_dependencies (logorg *currlogorg, outstand *req, ioreq_event *curr);</span>
+<span class='curline'><a href='../S/248.html#L300'>logorg</a>            300 src/disksim_logorg.h logorg *getlogorgbyname(logorg **, int, char *name, int *n);</span>
+<span class='curline'><a href='../S/248.html#L302'>logorg</a>            302 src/disksim_logorg.h INLINE void logorg_set_arraydisk(struct logorg *l, int n);</span>
+<span class='curline'><a href='../S/248.html#L304'>logorg</a>            304 src/disksim_logorg.h logorg *getlogorgbyname(logorg **logorgs, </span>
+<span class='curline'><a href='../S/248.html#L309'>logorg</a>            309 src/disksim_logorg.h void logorg_cleanup(logorg *);</span>
+<span class='curline'><a href='../S/189.html#L111'>logorg</a>            111 src/disksim_orgface.h struct logorg;</span>
+<span class='curline'><a href='../S/189.html#L115'>logorg</a>            115 src/disksim_orgface.h void  logorg_param_override (struct logorg **logorgs, int numlogorgs, char *paramname, char *paramval, int first, int last);</span>
+<span class='curline'><a href='../S/189.html#L117'>logorg</a>            117 src/disksim_orgface.h void logorg_initialize (struct logorg **logorgs, </span>
+<span class='curline'><a href='../S/189.html#L129'>logorg</a>            129 src/disksim_orgface.h void  logorg_resetstats (struct logorg **logorgs, int numlogorgs);</span>
+<span class='curline'><a href='../S/189.html#L130'>logorg</a>            130 src/disksim_orgface.h void  logorg_printstats (struct logorg **logorgs, int numlogorgs, char *sourcestr);</span>
+<span class='curline'><a href='../S/189.html#L131'>logorg</a>            131 src/disksim_orgface.h void  logorg_cleanstats (struct logorg **logorgs, int numlogorgs);</span>
+<span class='curline'><a href='../S/189.html#L132'>logorg</a>            132 src/disksim_orgface.h int   logorg_maprequest (struct logorg **logorgs, int numlogorgs, ioreq_event *curr);</span>
+<span class='curline'><a href='../S/189.html#L133'>logorg</a>            133 src/disksim_orgface.h int   logorg_mapcomplete (struct logorg **logorgs, int numlogorgs, ioreq_event *curr);</span>
+<span class='curline'><a href='../S/189.html#L134'>logorg</a>            134 src/disksim_orgface.h void  logorg_raise_priority (struct logorg **logorgs, int numlogorgs, int opid, int devno, int blkno, void *buf);</span>
+<span class='curline'><a href='../S/274.html#L145'>logorg</a>            145 src/disksim_redun.c static void logorg_parity_rotate_ideal (logorg *currlogorg, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/274.html#L156'>logorg</a>            156 src/disksim_redun.c static void logorg_parity_rotate_random (logorg *currlogorg, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/274.html#L168'>logorg</a>            168 src/disksim_redun.c static int logorg_shadowed_get_short_dist (logorg *currlogorg, ioreq_event *curr, int numtocheck, int *checklist)</span>
+<span class='curline'><a href='../S/274.html#L212'>logorg</a>            212 src/disksim_redun.c static int logorg_shadowed_get_short_queue (logorg *currlogorg, ioreq_event *curr, int def)</span>
+<span class='curline'><a href='../S/274.html#L263'>logorg</a>            263 src/disksim_redun.c int logorg_shadowed (logorg *currlogorg, ioreq_event *curr, int numreqs)</span>
+<span class='curline'><a href='../S/274.html#L318'>logorg</a>            318 src/disksim_redun.c int logorg_parity_disk (logorg *currlogorg, ioreq_event *curr, int numreqs)</span>
+<span class='curline'><a href='../S/274.html#L363'>logorg</a>            363 src/disksim_redun.c static int logorg_parity_rotate_updates (logorg *currlogorg, ioreq_event *curr, int inc)</span>
+<span class='curline'><a href='../S/274.html#L434'>logorg</a>            434 src/disksim_redun.c static void logorg_parity_read_old_sync (logorg *currlogorg, ioreq_event *curr, int numreqs)</span>
+<span class='curline'><a href='../S/274.html#L480'>logorg</a>            480 src/disksim_redun.c static void logorg_parity_read_old_nosync (logorg *currlogorg, ioreq_event *curr, int numreqs)</span>
+<span class='curline'><a href='../S/274.html#L519'>logorg</a>            519 src/disksim_redun.c int logorg_parity_rotate (logorg *currlogorg, ioreq_event *curr, int numreqs)</span>
+<span class='curline'><a href='../S/274.html#L624'>logorg</a>            624 src/disksim_redun.c static void logorg_parity_table_read_old (logorg *currlogorg, ioreq_event *rowhead, ioreq_event **reqlist, int opid)</span>
+<span class='curline'><a href='../S/274.html#L650'>logorg</a>            650 src/disksim_redun.c static void logorg_parity_table_recon (logorg *currlogorg, ioreq_event *rowhead, ioreq_event **reqlist, int stripeno, int unitno, int tableadd, int opid)</span>
+<span class='curline'><a href='../S/274.html#L722'>logorg</a>            722 src/disksim_redun.c static void logorg_parity_table_dodeps_sync (logorg *currlogorg, ioreq_event *curr, ioreq_event **redunlist, ioreq_event **reqlist)</span>
+<span class='curline'><a href='../S/274.html#L801'>logorg</a>            801 src/disksim_redun.c static void logorg_parity_table_dodeps_nosync (logorg *currlogorg, ioreq_event *curr, ioreq_event **redunlist, ioreq_event **reqlist)</span>
+<span class='curline'><a href='../S/274.html#L893'>logorg</a>            893 src/disksim_redun.c int logorg_parity_table (logorg *currlogorg, ioreq_event *curr, int numreqs)</span>
+<span class='curline'><a href='../S/274.html#L1153'>logorg</a>           1153 src/disksim_redun.c static void logorg_create_table_left_sym (logorg *currlogorg)</span>
+<span class='curline'><a href='../S/274.html#L1186'>logorg</a>           1186 src/disksim_redun.c void logorg_create_table (logorg *currlogorg)</span>
+<span class='curline'><a href='../S/274.html#L1236'>logorg</a>           1236 src/disksim_redun.c int logorg_check_dependencies (logorg *currlogorg, outstand *req, ioreq_event *curr)</span>
+</pre>
+</body>
+</html>

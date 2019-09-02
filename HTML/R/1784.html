@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>min</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/70.html#L291'>min</a>               291 diskmodel/layout_g4.c 	  max = min(max, e-&gt;lbn + e-&gt;runlen - 1);</span>
+<span class='curline'><a href='../S/70.html#L298'>min</a>               298 diskmodel/layout_g4.c 	  max = min(max, (quot+1) * e-&gt;len - 1);</span>
+<span class='curline'><a href='../S/70.html#L767'>min</a>               767 diskmodel/layout_g4.c   z-&gt;lbn_high = min(d-&gt;dm_sectors, e-&gt;lbn + e-&gt;runlen);</span>
+<span class='curline'><a href='../S/70.html#L769'>min</a>               769 diskmodel/layout_g4.c   z-&gt;cyl_high = min(d-&gt;dm_cyls, e-&gt;cyl + e-&gt;cylrunlen);</span>
+<span class='curline'><a href='../S/37.html#L204'>min</a>               204 memsmodel/mems_disksim.c   return min(up_time, dn_time);</span>
+<span class='curline'><a href='../S/222.html#L1464'>min</a>              1464 src/disksim_cachemem.c       stop = min(rounduptomult((size - i), cache-&gt;atomsperbit), (linesize - ((lbn + i) % linesize)));</span>
+<span class='curline'><a href='../S/222.html#L1613'>min</a>              1613 src/disksim_cachemem.c       stop = min(rounduptomult((size - i), cache-&gt;atomsperbit), (linesize - ((lbn + i) % linesize)));</span>
+<span class='curline'><a href='../S/192.html#L426'>min</a>               426 src/disksim_diskcache.c 		min(currdisk-&gt;effectivehda-&gt;ioreqlist-&gt;bcount, 10)) {</span>
+<span class='curline'><a href='../S/192.html#L1468'>min</a>              1468 src/disksim_diskcache.c          currdiskreq-&gt;watermark = max(1, (int) ((double) min(seg-&gt;size, tmp_ioreq-&gt;bcount) * currdisk-&gt;readwater));</span>
+<span class='curline'><a href='../S/192.html#L1474'>min</a>              1474 src/disksim_diskcache.c          currdiskreq-&gt;watermark = max(1, (int) ((double) min(seg-&gt;size, tmp_ioreq-&gt;bcount) * currdisk-&gt;writewater));</span>
+<span class='curline'><a href='../S/192.html#L1589'>min</a>              1589 src/disksim_diskcache.c 	    seg-&gt;minreadaheadblkno = max(seg-&gt;minreadaheadblkno, min((currioreq-&gt;blkno + currioreq-&gt;bcount + currdisk-&gt;minreadahead), currdisk-&gt;model-&gt;dm_sectors));</span>
+<span class='curline'><a href='../S/192.html#L1591'>min</a>              1591 src/disksim_diskcache.c 	    seg-&gt;maxreadaheadblkno = max(seg-&gt;maxreadaheadblkno, min(disk_buffer_get_max_readahead(currdisk,seg,currioreq), currdisk-&gt;model-&gt;dm_sectors));</span>
+<span class='curline'><a href='../S/196.html#L959'>min</a>               959 src/disksim_diskctlr.c 	    busioreq-&gt;bcount = min(seg-&gt;endblkno,(tmpioreq-&gt;blkno + tmpioreq-&gt;bcount)) - currdiskreq-&gt;outblkno;</span>
+<span class='curline'><a href='../S/196.html#L991'>min</a>               991 src/disksim_diskctlr.c 		busioreq-&gt;bcount = min(tmpioreq-&gt;bcount,seg-&gt;size);</span>
+<span class='curline'><a href='../S/196.html#L999'>min</a>               999 src/disksim_diskctlr.c 	      busioreq-&gt;bcount = min(i1, i2);</span>
+<span class='curline'><a href='../S/196.html#L1149'>min</a>              1149 src/disksim_diskctlr.c 		currdiskreq-&gt;watermark = max(1, (int) ((double) min(currdiskreq-&gt;seg-&gt;size, currdiskreq-&gt;ioreqlist-&gt;bcount) * currdisk-&gt;readwater));</span>
+<span class='curline'><a href='../S/196.html#L1196'>min</a>              1196 src/disksim_diskctlr.c 	      currdiskreq-&gt;watermark = max(1, (int) ((double) min(currdiskreq-&gt;seg-&gt;size, currdiskreq-&gt;ioreqlist-&gt;bcount) * currdisk-&gt;writewater));</span>
+<span class='curline'><a href='../S/196.html#L1784'>min</a>              1784 src/disksim_diskctlr.c 	    min((nextioreq-&gt;blkno + </span>
+<span class='curline'><a href='../S/196.html#L1791'>min</a>              1791 src/disksim_diskctlr.c 	    min(disk_buffer_get_max_readahead(currdisk,seg,nextioreq),</span>
+<span class='curline'><a href='../S/196.html#L2131'>min</a>              2131 src/disksim_diskctlr.c       seg-&gt;minreadaheadblkno = max(seg-&gt;minreadaheadblkno, min((currioreq-&gt;blkno + currioreq-&gt;bcount + currdisk-&gt;minreadahead), currdisk-&gt;model-&gt;dm_sectors));</span>
+<span class='curline'><a href='../S/196.html#L2133'>min</a>              2133 src/disksim_diskctlr.c       seg-&gt;maxreadaheadblkno = max(seg-&gt;maxreadaheadblkno, min(disk_buffer_get_max_readahead(currdisk,seg,currioreq), currdisk-&gt;model-&gt;dm_sectors));</span>
+<span class='curline'><a href='../S/196.html#L2477'>min</a>              2477 src/disksim_diskctlr.c 	readwater = max(1, (int)((double)min(seg-&gt;size,curr-&gt;bcount) </span>
+<span class='curline'><a href='../S/196.html#L2484'>min</a>              2484 src/disksim_diskctlr.c 	 || ((seg-&gt;endblkno - curr-&gt;blkno) &lt; min(readwater,curr-&gt;bcount))) </span>
+<span class='curline'><a href='../S/196.html#L3350'>min</a>              3350 src/disksim_diskctlr.c   blks = min(seg-&gt;outbcount, (blks - currdisk-&gt;blksdone));</span>
+<span class='curline'><a href='../S/196.html#L3455'>min</a>              3455 src/disksim_diskctlr.c       curr-&gt;bcount = seg-&gt;outbcount = min(seg-&gt;endblkno,(tmpioreq-&gt;blkno + tmpioreq-&gt;bcount)) - currdiskreq-&gt;outblkno;</span>
+<span class='curline'><a href='../S/196.html#L3534'>min</a>              3534 src/disksim_diskctlr.c       min((seg-&gt;size - (currdiskreq-&gt;outblkno - seg_owner-&gt;inblkno)), </span>
+<span class='curline'><a href='../S/196.html#L4441'>min</a>              4441 src/disksim_diskctlr.c     lastblkno = min((tmpioreq-&gt;blkno + tmpioreq-&gt;bcount), next);</span>
+<span class='curline'><a href='../S/196.html#L4446'>min</a>              4446 src/disksim_diskctlr.c       lastblkno = min(seg-&gt;maxreadaheadblkno, next);</span>
+<span class='curline'><a href='../S/196.html#L4453'>min</a>              4453 src/disksim_diskctlr.c       lastblkno = min((tmpioreq-&gt;blkno + tmpioreq-&gt;bcount), next);</span>
+<span class='curline'><a href='../S/196.html#L4458'>min</a>              4458 src/disksim_diskctlr.c     lastblkno = min(seg-&gt;endblkno, next);</span>
+<span class='curline'><a href='../S/196.html#L4783'>min</a>              4783 src/disksim_diskctlr.c     curr-&gt;bcount = min(curr-&gt;bcount, (lastontrack - curr-&gt;blkno));</span>
+<span class='curline'><a href='../S/205.html#L450'>min</a>               450 src/disksim_iodriver.c 	  req-&gt;bcount = min(ctl-&gt;maxreqsize, </span>
+<span class='curline'><a href='../S/278.html#L257'>min</a>               257 src/disksim_logorg.c    maxval = min(BLOCKINGMAX, curr-&gt;bcount);</span>
+<span class='curline'><a href='../S/278.html#L263'>min</a>               263 src/disksim_logorg.c    maxval = min(BLOCKINGMAX, curr-&gt;blkno);</span>
+<span class='curline'><a href='../S/278.html#L274'>min</a>               274 src/disksim_logorg.c    int i = min(numout, 9);</span>
+<span class='curline'><a href='../S/278.html#L672'>min</a>               672 src/disksim_logorg.c       numreqs = min(numstripes, numdisks);</span>
+</pre>
+</body>
+</html>

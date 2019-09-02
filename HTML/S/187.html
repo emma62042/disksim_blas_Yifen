@@ -1,0 +1,1587 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>ssdmodel/ssd.c</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<a id='TOP' name='TOP'></a><h2 class='header'><a href='../mains.html'>root</a>/<a href='../files/403.html'>ssdmodel</a>/ssd.c</h2>
+<em class='comment'>/* [&lt;][&gt;]<a href='#L28'>[^]</a><a href='#L1475'>[v]</a>[top]<a href='#BOTTOM'>[bottom]</a><a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</em>
+<hr />
+<h2 class='header'>DEFINITIONS</h2>
+This source file includes following definitions.
+<ol>
+<li><a href='#L28' title='Defined at 28.'>getssd</a></li>
+<li><a href='#L37' title='Defined at 37.'>ssd_set_depth</a></li>
+<li><a href='#L56' title='Defined at 56.'>ssd_get_depth</a></li>
+<li><a href='#L63' title='Defined at 63.'>ssd_get_slotno</a></li>
+<li><a href='#L70' title='Defined at 70.'>ssd_get_inbus</a></li>
+<li><a href='#L77' title='Defined at 77.'>ssd_get_maxoutstanding</a></li>
+<li><a href='#L84' title='Defined at 84.'>ssd_get_blktranstime</a></li>
+<li><a href='#L97' title='Defined at 97.'>ssd_get_busno</a></li>
+<li><a href='#L109' title='Defined at 109.'>ssd_assert_current_activity</a></li>
+<li><a href='#L127' title='Defined at 127.'>ssd_send_event_up_path</a></li>
+<li><a href='#L185' title='Defined at 185.'>ssd_check_channel_activity</a></li>
+<li><a href='#L240' title='Defined at 240.'>ssd_bus_ownership_grant</a></li>
+<li><a href='#L263' title='Defined at 263.'>ssd_bus_delay_complete</a></li>
+<li><a href='#L308' title='Defined at 308.'>ssd_request_complete</a></li>
+<li><a href='#L329' title='Defined at 329.'>ssd_bustransfer_complete</a></li>
+<li><a href='#L356' title='Defined at 356.'>ssd_logical_pageno</a></li>
+<li><a href='#L376' title='Defined at 376.'>ssd_already_present</a></li>
+<li><a href='#L392' title='Defined at 392.'>_ssd_invoke_element_cleaning</a></li>
+<li><a href='#L398' title='Defined at 398.'>ssd_invoke_element_cleaning</a></li>
+<li><a href='#L438' title='Defined at 438.'>ssd_activate_elem</a></li>
+<li><a href='#L620' title='Defined at 620.'>ssd_media_access_request_element</a></li>
+<li><a href='#L655' title='Defined at 655.'>ssd_media_access_request</a></li>
+<li><a href='#L679' title='Defined at 679.'>ssd_reconnect_done</a></li>
+<li><a href='#L714' title='Defined at 714.'>ssd_request_arrive</a></li>
+<li><a href='#L760' title='Defined at 760.'>ssd_clean_element_complete</a></li>
+<li><a href='#L777' title='Defined at 777.'>ssd_complete_parent</a></li>
+<li><a href='#L805' title='Defined at 805.'>ssd_access_complete_element</a></li>
+<li><a href='#L832' title='Defined at 832.'>ssd_access_complete</a></li>
+<li><a href='#L857' title='Defined at 857.'>ssd_disconnect_done</a></li>
+<li><a href='#L876' title='Defined at 876.'>ssd_completion_done</a></li>
+<li><a href='#L893' title='Defined at 893.'>ssd_interrupt_complete</a></li>
+<li><a href='#L917' title='Defined at 917.'>ssd_event_arrive</a></li>
+<li><a href='#L974' title='Defined at 974.'>ssd_get_number_of_blocks</a></li>
+<li><a href='#L981' title='Defined at 981.'>ssd_get_numcyls</a></li>
+<li><a href='#L988' title='Defined at 988.'>ssd_get_mapping</a></li>
+<li><a href='#L1009' title='Defined at 1009.'>ssd_get_avg_sectpercyl</a></li>
+<li><a href='#L1015' title='Defined at 1015.'>ssd_get_distance</a></li>
+<li><a href='#L1023' title='Defined at 1023.'>ssd_get_servtime</a></li>
+<li><a href='#L1032' title='Defined at 1032.'>ssd_get_acctime</a></li>
+<li><a href='#L1040' title='Defined at 1040.'>ssd_get_numdisks</a></li>
+<li><a href='#L1046' title='Defined at 1046.'>ssd_cleanstats</a></li>
+<li><a href='#L1060' title='Defined at 1060.'>ssd_setcallbacks</a></li>
+<li><a href='#L1065' title='Defined at 1065.'>ssd_add</a></li>
+<li><a href='#L1093' title='Defined at 1093.'>ssdmodel_ssd_loadparams</a></li>
+<li><a href='#L1120' title='Defined at 1120.'>ssd_copy</a></li>
+<li><a href='#L1131' title='Defined at 1131.'>ssd_set_syncset</a></li>
+<li><a href='#L1136' title='Defined at 1136.'>ssd_acctime_printstats</a></li>
+<li><a href='#L1151' title='Defined at 1151.'>ssd_other_printstats</a></li>
+<li><a href='#L1167' title='Defined at 1167.'>ssd_print_block_lifetime_distribution</a></li>
+<li><a href='#L1246' title='Defined at 1246.'>ssd_printcleanstats</a></li>
+<li><a href='#L1359' title='Defined at 1359.'>ssd_printsetstats</a></li>
+<li><a href='#L1387' title='Defined at 1387.'>ssd_printstats</a></li>
+<li><a href='#L1475' title='Defined at 1475.'>ssd_get_seektime</a></li>
+</ol>
+<hr />
+<pre>
+<a id='L1' name='L1'></a>   1 <em class='comment'>// DiskSim SSD support</em>
+<a id='L2' name='L2'></a>   2 <em class='comment'>// ©2008 Microsoft Corporation. All Rights Reserved</em>
+<a id='L3' name='L3'></a>   3 
+<a id='L4' name='L4'></a>   4 <em class='sharp'>#include</em> "<a href='../I/132.html'>ssd.h</a>"
+<a id='L5' name='L5'></a>   5 <em class='sharp'>#include</em> "<a href='143.html'>ssd_timing.h</a>"
+<a id='L6' name='L6'></a>   6 <em class='sharp'>#include</em> "<a href='144.html'>ssd_clean.h</a>"
+<a id='L7' name='L7'></a>   7 <em class='sharp'>#include</em> "<a href='150.html'>ssd_gang.h</a>"
+<a id='L8' name='L8'></a>   8 <em class='sharp'>#include</em> "<a href='160.html'>ssd_init.h</a>"
+<a id='L9' name='L9'></a>   9 <em class='sharp'>#include</em> "<a href='158.html'>modules/ssdmodel_ssd_param.h</a>"
+<a id='L10' name='L10'></a>  10 
+<a id='L11' name='L11'></a>  11 <em class='sharp'>#ifndef</em> sprintf_s
+<a id='L12' name='L12'></a>  12 <em class='sharp'>#define</em> <a href='../S/187.html#L1400' title='Referred from 1400 in ssdmodel/ssd.c.'>sprintf_s3</a>(x,y,z) sprintf(x,z)
+<a id='L13' name='L13'></a>  13 <em class='sharp'>#define</em> <a href='../R/1980.html' title='Multiple referred from 2 places.'>sprintf_s4</a>(x,y,z,w) sprintf(x,z,w)
+<a id='L14' name='L14'></a>  14 <em class='sharp'>#define</em> <a href='../S/187.html#L1464' title='Referred from 1464 in ssdmodel/ssd.c.'>sprintf_s5</a>(x,y,z,w,s) sprintf(x,z,w,s)
+<a id='L15' name='L15'></a>  15 <em class='sharp'>#else</em>
+<a id='L16' name='L16'></a>  16 <em class='sharp'>#define</em> <a href='../S/187.html#L1400' title='Referred from 1400 in ssdmodel/ssd.c.'>sprintf_s3</a>(x,y,z) sprintf_s(x,z)
+<a id='L17' name='L17'></a>  17 <em class='sharp'>#define</em> <a href='../R/1980.html' title='Multiple referred from 2 places.'>sprintf_s4</a>(x,y,z,w) sprintf_s(x,z,w)
+<a id='L18' name='L18'></a>  18 <em class='sharp'>#define</em> <a href='../S/187.html#L1464' title='Referred from 1464 in ssdmodel/ssd.c.'>sprintf_s5</a>(x,y,z,w,s) sprintf_s(x,z,w,s)
+<a id='L19' name='L19'></a>  19 <em class='sharp'>#endif</em>
+<a id='L20' name='L20'></a>  20 
+<a id='L21' name='L21'></a>  21 <em class='sharp'>#ifndef</em> <a href='../S/187.html#L22' title='Defined at 22 in ssdmodel/ssd.c.'>_strdup</a>
+<a id='L22' name='L22'></a>  22 <em class='sharp'>#define</em> <a href='../R/668.html' title='Multiple referred from 3 places.'>_strdup</a> <a href='../S/136.html#L7' title='Defined at 7 in w32build/deprecated/deprecated.c.'>strdup</a>
+<a id='L23' name='L23'></a>  23 <em class='sharp'>#endif</em>
+<a id='L24' name='L24'></a>  24 
+<a id='L25' name='L25'></a>  25 <strong class='reserved'>static</strong> <strong class='reserved'>void</strong> <a href='../S/187.html#L308' title='Defined at 308 in ssdmodel/ssd.c.'>ssd_request_complete</a>(<a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr);
+<a id='L26' name='L26'></a>  26 <strong class='reserved'>static</strong> <strong class='reserved'>void</strong> <a href='../S/187.html#L655' title='Defined at 655 in ssdmodel/ssd.c.'>ssd_media_access_request</a>(<a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr);
+<a id='L27' name='L27'></a>  27 
+<a id='L28' name='L28'></a>  28 <strong class='reserved'>struct</strong> <a href='../D/2303.html' title='Multiple defined in 2 places.'>ssd</a> *<a href='../R/1343.html' title='Multiple referred from 44 places.'>getssd</a> (<strong class='reserved'>int</strong> devno)
+<a id='L29' name='L29'></a>  29 <em class='brace'>{</em>
+<a id='L30' name='L30'></a>  30    <strong class='reserved'>struct</strong> <a href='../D/2303.html' title='Multiple defined in 2 places.'>ssd</a> *s;
+<a id='L31' name='L31'></a>  31    <a href='../D/13.html' title='Multiple defined in 2 places.'>ASSERT1</a>((devno &gt;= 0) &amp;&amp; (devno &lt; <a href='../S/255.html#L110' title='Defined at 110 in src/disksim_iosim.h.'>MAXDEVICES</a>), "devno", devno);
+<a id='L32' name='L32'></a>  32 
+<a id='L33' name='L33'></a>  33    s = <a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;ssdinfo-&gt;ssds[devno];
+<a id='L34' name='L34'></a>  34    <strong class='reserved'>return</strong> (<a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;ssdinfo-&gt;ssds[devno]);
+<a id='L35' name='L35'></a>  35 <em class='brace'>}</em>
+<a id='L36' name='L36'></a>  36 
+<a id='L37' name='L37'></a>  37 <strong class='reserved'>int</strong> <a href='../R/2109.html' title='Multiple referred from 3 places.'>ssd_set_depth</a> (<strong class='reserved'>int</strong> devno, <strong class='reserved'>int</strong> inbusno, <strong class='reserved'>int</strong> depth, <strong class='reserved'>int</strong> slotno)
+<a id='L38' name='L38'></a>  38 <em class='brace'>{</em>
+<a id='L39' name='L39'></a>  39    <a href='../D/2435.html' title='Multiple defined in 2 places.'>ssd_t</a> *currdisk;
+<a id='L40' name='L40'></a>  40    <strong class='reserved'>int</strong> cnt;
+<a id='L41' name='L41'></a>  41 
+<a id='L42' name='L42'></a>  42    currdisk = <a href='../S/187.html#L28' title='Defined at 28 in ssdmodel/ssd.c.'>getssd</a> (devno);
+<a id='L43' name='L43'></a>  43    assert(currdisk);
+<a id='L44' name='L44'></a>  44    cnt = currdisk-&gt;numinbuses;
+<a id='L45' name='L45'></a>  45    currdisk-&gt;numinbuses++;
+<a id='L46' name='L46'></a>  46    <strong class='reserved'>if</strong> ((cnt + 1) &gt; <a href='../S/255.html#L112' title='Defined at 112 in src/disksim_iosim.h.'>MAXINBUSES</a>) <em class='brace'>{</em>
+<a id='L47' name='L47'></a>  47       fprintf(stderr, "Too many inbuses specified for ssd %d - %d\n", devno, (cnt+1));
+<a id='L48' name='L48'></a>  48       exit(1);
+<a id='L49' name='L49'></a>  49    <em class='brace'>}</em>
+<a id='L50' name='L50'></a>  50    currdisk-&gt;inbuses[cnt] = inbusno;
+<a id='L51' name='L51'></a>  51    currdisk-&gt;depth[cnt] = depth;
+<a id='L52' name='L52'></a>  52    currdisk-&gt;slotno[cnt] = slotno;
+<a id='L53' name='L53'></a>  53    <strong class='reserved'>return</strong>(0);
+<a id='L54' name='L54'></a>  54 <em class='brace'>}</em>
+<a id='L55' name='L55'></a>  55 
+<a id='L56' name='L56'></a>  56 <strong class='reserved'>int</strong> <a href='../R/2057.html' title='Multiple referred from 3 places.'>ssd_get_depth</a> (<strong class='reserved'>int</strong> devno)
+<a id='L57' name='L57'></a>  57 <em class='brace'>{</em>
+<a id='L58' name='L58'></a>  58    <a href='../D/2435.html' title='Multiple defined in 2 places.'>ssd_t</a> *currdisk;
+<a id='L59' name='L59'></a>  59    currdisk = <a href='../S/187.html#L28' title='Defined at 28 in ssdmodel/ssd.c.'>getssd</a> (devno);
+<a id='L60' name='L60'></a>  60    <strong class='reserved'>return</strong>(currdisk-&gt;depth[0]);
+<a id='L61' name='L61'></a>  61 <em class='brace'>}</em>
+<a id='L62' name='L62'></a>  62 
+<a id='L63' name='L63'></a>  63 <strong class='reserved'>int</strong> <a href='../R/2067.html' title='Multiple referred from 3 places.'>ssd_get_slotno</a> (<strong class='reserved'>int</strong> devno)
+<a id='L64' name='L64'></a>  64 <em class='brace'>{</em>
+<a id='L65' name='L65'></a>  65    <a href='../D/2435.html' title='Multiple defined in 2 places.'>ssd_t</a> *currdisk;
+<a id='L66' name='L66'></a>  66    currdisk = <a href='../S/187.html#L28' title='Defined at 28 in ssdmodel/ssd.c.'>getssd</a> (devno);
+<a id='L67' name='L67'></a>  67    <strong class='reserved'>return</strong>(currdisk-&gt;slotno[0]);
+<a id='L68' name='L68'></a>  68 <em class='brace'>}</em>
+<a id='L69' name='L69'></a>  69 
+<a id='L70' name='L70'></a>  70 <strong class='reserved'>int</strong> <a href='../R/2059.html' title='Multiple referred from 3 places.'>ssd_get_inbus</a> (<strong class='reserved'>int</strong> devno)
+<a id='L71' name='L71'></a>  71 <em class='brace'>{</em>
+<a id='L72' name='L72'></a>  72    <a href='../D/2435.html' title='Multiple defined in 2 places.'>ssd_t</a> *currdisk;
+<a id='L73' name='L73'></a>  73    currdisk = <a href='../S/187.html#L28' title='Defined at 28 in ssdmodel/ssd.c.'>getssd</a> (devno);
+<a id='L74' name='L74'></a>  74    <strong class='reserved'>return</strong>(currdisk-&gt;inbuses[0]);
+<a id='L75' name='L75'></a>  75 <em class='brace'>}</em>
+<a id='L76' name='L76'></a>  76 
+<a id='L77' name='L77'></a>  77 <strong class='reserved'>int</strong> <a href='../R/2061.html' title='Multiple referred from 4 places.'>ssd_get_maxoutstanding</a> (<strong class='reserved'>int</strong> devno)
+<a id='L78' name='L78'></a>  78 <em class='brace'>{</em>
+<a id='L79' name='L79'></a>  79    <a href='../D/2435.html' title='Multiple defined in 2 places.'>ssd_t</a> *currdisk;
+<a id='L80' name='L80'></a>  80    currdisk = <a href='../S/187.html#L28' title='Defined at 28 in ssdmodel/ssd.c.'>getssd</a> (devno);
+<a id='L81' name='L81'></a>  81    <strong class='reserved'>return</strong>(currdisk-&gt;maxqlen);
+<a id='L82' name='L82'></a>  82 <em class='brace'>}</em>
+<a id='L83' name='L83'></a>  83 
+<a id='L84' name='L84'></a>  84 <strong class='reserved'>double</strong> <a href='../R/2055.html' title='Multiple referred from 3 places.'>ssd_get_blktranstime</a> (<a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr)
+<a id='L85' name='L85'></a>  85 <em class='brace'>{</em>
+<a id='L86' name='L86'></a>  86    <a href='../D/2435.html' title='Multiple defined in 2 places.'>ssd_t</a> *currdisk;
+<a id='L87' name='L87'></a>  87    <strong class='reserved'>double</strong> tmptime;
+<a id='L88' name='L88'></a>  88 
+<a id='L89' name='L89'></a>  89    currdisk = <a href='../S/187.html#L28' title='Defined at 28 in ssdmodel/ssd.c.'>getssd</a> (curr-&gt;devno);
+<a id='L90' name='L90'></a>  90    tmptime = <a href='../S/200.html#L250' title='Defined at 250 in src/disksim_bus.c.'>bus_get_transfer_time</a>(<a href='../S/187.html#L97' title='Defined at 97 in ssdmodel/ssd.c.'>ssd_get_busno</a>(curr), 1, (curr-&gt;flags &amp; <a href='../S/283.html#L193' title='Defined at 193 in src/disksim_global.h.'>READ</a>));
+<a id='L91' name='L91'></a>  91    <strong class='reserved'>if</strong> (tmptime &lt; currdisk-&gt;blktranstime) <em class='brace'>{</em>
+<a id='L92' name='L92'></a>  92       tmptime = currdisk-&gt;blktranstime;
+<a id='L93' name='L93'></a>  93    <em class='brace'>}</em>
+<a id='L94' name='L94'></a>  94    <strong class='reserved'>return</strong>(tmptime);
+<a id='L95' name='L95'></a>  95 <em class='brace'>}</em>
+<a id='L96' name='L96'></a>  96 
+<a id='L97' name='L97'></a>  97 <strong class='reserved'>int</strong> <a href='../R/2056.html' title='Multiple referred from 6 places.'>ssd_get_busno</a> (<a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr)
+<a id='L98' name='L98'></a>  98 <em class='brace'>{</em>
+<a id='L99' name='L99'></a>  99    <a href='../D/2435.html' title='Multiple defined in 2 places.'>ssd_t</a> *currdisk;
+<a id='L100' name='L100'></a> 100    <a href='../D/1649.html' title='Multiple defined in 2 places.'>intchar</a> busno;
+<a id='L101' name='L101'></a> 101    <strong class='reserved'>int</strong> depth;
+<a id='L102' name='L102'></a> 102 
+<a id='L103' name='L103'></a> 103    currdisk = <a href='../S/187.html#L28' title='Defined at 28 in ssdmodel/ssd.c.'>getssd</a> (curr-&gt;devno);
+<a id='L104' name='L104'></a> 104    busno.value = curr-&gt;busno;
+<a id='L105' name='L105'></a> 105    depth = currdisk-&gt;depth[0];
+<a id='L106' name='L106'></a> 106    <strong class='reserved'>return</strong>(busno.byte[depth]);
+<a id='L107' name='L107'></a> 107 <em class='brace'>}</em>
+<a id='L108' name='L108'></a> 108 
+<a id='L109' name='L109'></a> 109 <strong class='reserved'>static</strong> <strong class='reserved'>void</strong> <a href='../R/1998.html' title='Multiple referred from 8 places.'>ssd_assert_current_activity</a>(<a href='../D/2435.html' title='Multiple defined in 2 places.'>ssd_t</a> *currdisk, <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr)
+<a id='L110' name='L110'></a> 110 <em class='brace'>{</em>
+<a id='L111' name='L111'></a> 111     assert(currdisk-&gt;channel_activity != NULL &amp;&amp;
+<a id='L112' name='L112'></a> 112         currdisk-&gt;channel_activity-&gt;devno == curr-&gt;devno &amp;&amp;
+<a id='L113' name='L113'></a> 113         currdisk-&gt;channel_activity-&gt;blkno == curr-&gt;blkno &amp;&amp;
+<a id='L114' name='L114'></a> 114         currdisk-&gt;channel_activity-&gt;bcount == curr-&gt;bcount);
+<a id='L115' name='L115'></a> 115 <em class='brace'>}</em>
+<a id='L116' name='L116'></a> 116 
+<a id='L117' name='L117'></a> 117 <em class='comment'>/*</em>
+<a id='L118' name='L118'></a> 118 <em class='comment'> * ssd_send_event_up_path()</em>
+<a id='L119' name='L119'></a> 119 <em class='comment'> *</em>
+<a id='L120' name='L120'></a> 120 <em class='comment'> * Acquires the bus (if not already acquired), then uses bus_delay to</em>
+<a id='L121' name='L121'></a> 121 <em class='comment'> * send the event up the path.</em>
+<a id='L122' name='L122'></a> 122 <em class='comment'> *</em>
+<a id='L123' name='L123'></a> 123 <em class='comment'> * If the bus is already owned by this device or can be acquired</em>
+<a id='L124' name='L124'></a> 124 <em class='comment'> * immediately (interleaved bus), the event is sent immediately.</em>
+<a id='L125' name='L125'></a> 125 <em class='comment'> * Otherwise, ssd_bus_ownership_grant will later send the event.</em>
+<a id='L126' name='L126'></a> 126 <em class='comment'> */</em>
+<a id='L127' name='L127'></a> 127 <strong class='reserved'>static</strong> <strong class='reserved'>void</strong> <a href='../R/2107.html' title='Multiple referred from 10 places.'>ssd_send_event_up_path</a> (<a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr, <strong class='reserved'>double</strong> delay)
+<a id='L128' name='L128'></a> 128 <em class='brace'>{</em>
+<a id='L129' name='L129'></a> 129    <a href='../D/2435.html' title='Multiple defined in 2 places.'>ssd_t</a> *currdisk;
+<a id='L130' name='L130'></a> 130    <strong class='reserved'>int</strong> busno;
+<a id='L131' name='L131'></a> 131    <strong class='reserved'>int</strong> slotno;
+<a id='L132' name='L132'></a> 132 
+<a id='L133' name='L133'></a> 133    <em class='comment'>// fprintf (outputfile, "ssd_send_event_up_path - devno %d, type %d, cause %d, blkno %d\n", curr-&gt;devno, curr-&gt;type, curr-&gt;cause, curr-&gt;blkno);</em>
+<a id='L134' name='L134'></a> 134 
+<a id='L135' name='L135'></a> 135    currdisk = <a href='../S/187.html#L28' title='Defined at 28 in ssdmodel/ssd.c.'>getssd</a> (curr-&gt;devno);
+<a id='L136' name='L136'></a> 136 
+<a id='L137' name='L137'></a> 137    <a href='../S/187.html#L109' title='Defined at 109 in ssdmodel/ssd.c.'>ssd_assert_current_activity</a>(currdisk, curr);
+<a id='L138' name='L138'></a> 138 
+<a id='L139' name='L139'></a> 139    busno = <a href='../S/187.html#L97' title='Defined at 97 in ssdmodel/ssd.c.'>ssd_get_busno</a>(curr);
+<a id='L140' name='L140'></a> 140    slotno = currdisk-&gt;slotno[0];
+<a id='L141' name='L141'></a> 141 
+<a id='L142' name='L142'></a> 142    <em class='comment'>/* Put new request at head of buswait queue */</em>
+<a id='L143' name='L143'></a> 143    curr-&gt;next = currdisk-&gt;buswait;
+<a id='L144' name='L144'></a> 144    currdisk-&gt;buswait = curr;
+<a id='L145' name='L145'></a> 145 
+<a id='L146' name='L146'></a> 146    curr-&gt;tempint1 = busno;
+<a id='L147' name='L147'></a> 147    curr-&gt;time = delay;
+<a id='L148' name='L148'></a> 148    <strong class='reserved'>if</strong> (currdisk-&gt;busowned == -1) <em class='brace'>{</em>
+<a id='L149' name='L149'></a> 149 
+<a id='L150' name='L150'></a> 150       <em class='comment'>// fprintf (outputfile, "Must get ownership of the bus first\n");</em>
+<a id='L151' name='L151'></a> 151 
+<a id='L152' name='L152'></a> 152       <strong class='reserved'>if</strong> (curr-&gt;next) <em class='brace'>{</em>
+<a id='L153' name='L153'></a> 153          <em class='comment'>//fprintf(stderr,"Multiple bus requestors detected in ssd_send_event_up_path\n");</em>
+<a id='L154' name='L154'></a> 154          <em class='comment'>/* This should be ok -- counting on the bus module to sequence 'em */</em>
+<a id='L155' name='L155'></a> 155       <em class='brace'>}</em>
+<a id='L156' name='L156'></a> 156       <strong class='reserved'>if</strong> (<a href='../S/200.html#L396' title='Defined at 396 in src/disksim_bus.c.'>bus_ownership_get</a>(busno, slotno, curr) == <a href='../D/374.html' title='Multiple defined in 2 places.'>FALSE</a>) <em class='brace'>{</em>
+<a id='L157' name='L157'></a> 157          <em class='comment'>/* Remember when we started waiting (only place this is written) */</em>
+<a id='L158' name='L158'></a> 158          currdisk-&gt;stat.requestedbus = <a href='../S/283.html#L438' title='Defined at 438 in src/disksim_global.h.'>simtime</a>;
+<a id='L159' name='L159'></a> 159       <em class='brace'>}</em> <strong class='reserved'>else</strong> <em class='brace'>{</em>
+<a id='L160' name='L160'></a> 160          currdisk-&gt;busowned = busno;
+<a id='L161' name='L161'></a> 161          <a href='../S/200.html#L265' title='Defined at 265 in src/disksim_bus.c.'>bus_delay</a>(busno, <a href='../D/148.html' title='Multiple defined in 2 places.'>DEVICE</a>, curr-&gt;devno, delay, curr); <em class='comment'>/* Never for SCSI */</em>
+<a id='L162' name='L162'></a> 162       <em class='brace'>}</em>
+<a id='L163' name='L163'></a> 163    <em class='brace'>}</em> <strong class='reserved'>else</strong> <strong class='reserved'>if</strong> (currdisk-&gt;busowned == busno) <em class='brace'>{</em>
+<a id='L164' name='L164'></a> 164 
+<a id='L165' name='L165'></a> 165       <em class='comment'>//fprintf (outputfile, "Already own bus - so send it on up\n");</em>
+<a id='L166' name='L166'></a> 166 
+<a id='L167' name='L167'></a> 167       <a href='../S/200.html#L265' title='Defined at 265 in src/disksim_bus.c.'>bus_delay</a>(busno, <a href='../D/148.html' title='Multiple defined in 2 places.'>DEVICE</a>, curr-&gt;devno, delay, curr);
+<a id='L168' name='L168'></a> 168    <em class='brace'>}</em> <strong class='reserved'>else</strong> <em class='brace'>{</em>
+<a id='L169' name='L169'></a> 169       fprintf(stderr, "Wrong bus owned for transfer desired\n");
+<a id='L170' name='L170'></a> 170       exit(1);
+<a id='L171' name='L171'></a> 171    <em class='brace'>}</em>
+<a id='L172' name='L172'></a> 172 <em class='brace'>}</em>
+<a id='L173' name='L173'></a> 173 
+<a id='L174' name='L174'></a> 174 <em class='comment'>/* The idea here is that only one request can "possess" the channel back to the</em>
+<a id='L175' name='L175'></a> 175 <em class='comment'>   controller at a time. All others are enqueued on queue of pending activities.</em>
+<a id='L176' name='L176'></a> 176 <em class='comment'>   "Completions" ... those operations that need only be signaled as done to the</em>
+<a id='L177' name='L177'></a> 177 <em class='comment'>   controller ... are given on this queue.  The "channel_activity" field indicates</em>
+<a id='L178' name='L178'></a> 178 <em class='comment'>   whether any operation currently possesses the channel.</em>
+<a id='L179' name='L179'></a> 179 <em class='comment'></em>
+<a id='L180' name='L180'></a> 180 <em class='comment'>   It is our hope that new requests cannot enter the system when the channel is</em>
+<a id='L181' name='L181'></a> 181 <em class='comment'>   possessed by another operation.  This would not model reality!!  However, this</em>
+<a id='L182' name='L182'></a> 182 <em class='comment'>   code (and that in ssd_request_arrive) will handle this case "properly" by enqueuing</em>
+<a id='L183' name='L183'></a> 183 <em class='comment'>   the incoming request.  */</em>
+<a id='L184' name='L184'></a> 184 
+<a id='L185' name='L185'></a> 185 <strong class='reserved'>static</strong> <strong class='reserved'>void</strong> <a href='../R/2012.html' title='Multiple referred from 6 places.'>ssd_check_channel_activity</a> (<a href='../D/2435.html' title='Multiple defined in 2 places.'>ssd_t</a> *currdisk)
+<a id='L186' name='L186'></a> 186 <em class='brace'>{</em>
+<a id='L187' name='L187'></a> 187    <strong class='reserved'>while</strong> (1) <em class='brace'>{</em>
+<a id='L188' name='L188'></a> 188        <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr = currdisk-&gt;completion_queue;
+<a id='L189' name='L189'></a> 189        currdisk-&gt;channel_activity = curr;
+<a id='L190' name='L190'></a> 190        <strong class='reserved'>if</strong> (curr != NULL) <em class='brace'>{</em>
+<a id='L191' name='L191'></a> 191            currdisk-&gt;completion_queue = curr-&gt;next;
+<a id='L192' name='L192'></a> 192            <strong class='reserved'>if</strong> (currdisk-&gt;neverdisconnect) <em class='brace'>{</em>
+<a id='L193' name='L193'></a> 193                <em class='comment'>/* already connected */</em>
+<a id='L194' name='L194'></a> 194                <strong class='reserved'>if</strong> (curr-&gt;flags &amp; <a href='../S/283.html#L193' title='Defined at 193 in src/disksim_global.h.'>READ</a>) <em class='brace'>{</em>
+<a id='L195' name='L195'></a> 195                    <em class='comment'>/* transfer data up the line: curr-&gt;bcount, which is still set to */</em>
+<a id='L196' name='L196'></a> 196                    <em class='comment'>/* original requested value, indicates how many blks to transfer. */</em>
+<a id='L197' name='L197'></a> 197                    curr-&gt;type = <a href='../S/255.html#L132' title='Defined at 132 in src/disksim_iosim.h.'>DEVICE_DATA_TRANSFER_COMPLETE</a>;
+<a id='L198' name='L198'></a> 198                    <a href='../S/187.html#L127' title='Defined at 127 in ssdmodel/ssd.c.'>ssd_send_event_up_path</a>(curr, (<strong class='reserved'>double</strong>) 0.0);
+<a id='L199' name='L199'></a> 199                <em class='brace'>}</em> <strong class='reserved'>else</strong> <em class='brace'>{</em>
+<a id='L200' name='L200'></a> 200                    <a href='../S/187.html#L308' title='Defined at 308 in ssdmodel/ssd.c.'>ssd_request_complete</a> (curr);
+<a id='L201' name='L201'></a> 201                <em class='brace'>}</em>
+<a id='L202' name='L202'></a> 202            <em class='brace'>}</em> <strong class='reserved'>else</strong> <em class='brace'>{</em>
+<a id='L203' name='L203'></a> 203                <em class='comment'>/* reconnect to controller */</em>
+<a id='L204' name='L204'></a> 204                curr-&gt;type = <a href='../S/255.html#L125' title='Defined at 125 in src/disksim_iosim.h.'>IO_INTERRUPT_ARRIVE</a>;
+<a id='L205' name='L205'></a> 205                curr-&gt;cause = <a href='../S/255.html#L165' title='Defined at 165 in src/disksim_iosim.h.'>RECONNECT</a>;
+<a id='L206' name='L206'></a> 206                <a href='../S/187.html#L127' title='Defined at 127 in ssdmodel/ssd.c.'>ssd_send_event_up_path</a> (curr, currdisk-&gt;bus_transaction_latency);
+<a id='L207' name='L207'></a> 207                currdisk-&gt;reconnect_reason = <a href='../S/255.html#L130' title='Defined at 130 in src/disksim_iosim.h.'>DEVICE_ACCESS_COMPLETE</a>;
+<a id='L208' name='L208'></a> 208            <em class='brace'>}</em>
+<a id='L209' name='L209'></a> 209        <em class='brace'>}</em> <strong class='reserved'>else</strong> <em class='brace'>{</em>
+<a id='L210' name='L210'></a> 210            curr = <a href='../S/254.html#L3150' title='Defined at 3150 in src/disksim_ioqueue.c.'>ioqueue_get_next_request</a>(currdisk-&gt;queue);
+<a id='L211' name='L211'></a> 211            currdisk-&gt;channel_activity = curr;
+<a id='L212' name='L212'></a> 212            <strong class='reserved'>if</strong> (curr != NULL) <em class='brace'>{</em>
+<a id='L213' name='L213'></a> 213                <strong class='reserved'>if</strong> (curr-&gt;flags &amp; <a href='../S/283.html#L193' title='Defined at 193 in src/disksim_global.h.'>READ</a>) <em class='brace'>{</em>
+<a id='L214' name='L214'></a> 214                    <strong class='reserved'>if</strong> (!currdisk-&gt;neverdisconnect) <em class='brace'>{</em>
+<a id='L215' name='L215'></a> 215                        <a href='../S/187.html#L655' title='Defined at 655 in ssdmodel/ssd.c.'>ssd_media_access_request</a>(<a href='../S/194.html#L122' title='Defined at 122 in src/disksim_iosim.c.'>ioreq_copy</a>(curr));
+<a id='L216' name='L216'></a> 216                        curr-&gt;type = <a href='../S/255.html#L125' title='Defined at 125 in src/disksim_iosim.h.'>IO_INTERRUPT_ARRIVE</a>;
+<a id='L217' name='L217'></a> 217                        curr-&gt;cause = <a href='../S/255.html#L166' title='Defined at 166 in src/disksim_iosim.h.'>DISCONNECT</a>;
+<a id='L218' name='L218'></a> 218                        <a href='../S/187.html#L127' title='Defined at 127 in ssdmodel/ssd.c.'>ssd_send_event_up_path</a> (curr, currdisk-&gt;bus_transaction_latency);
+<a id='L219' name='L219'></a> 219                    <em class='brace'>}</em> <strong class='reserved'>else</strong> <em class='brace'>{</em>
+<a id='L220' name='L220'></a> 220                        <a href='../S/187.html#L655' title='Defined at 655 in ssdmodel/ssd.c.'>ssd_media_access_request</a>(curr);
+<a id='L221' name='L221'></a> 221                        <strong class='reserved'>continue</strong>;
+<a id='L222' name='L222'></a> 222                    <em class='brace'>}</em>
+<a id='L223' name='L223'></a> 223                <em class='brace'>}</em> <strong class='reserved'>else</strong> <em class='brace'>{</em>
+<a id='L224' name='L224'></a> 224                    curr-&gt;cause = <a href='../S/255.html#L165' title='Defined at 165 in src/disksim_iosim.h.'>RECONNECT</a>;
+<a id='L225' name='L225'></a> 225                    curr-&gt;type = <a href='../S/255.html#L125' title='Defined at 125 in src/disksim_iosim.h.'>IO_INTERRUPT_ARRIVE</a>;
+<a id='L226' name='L226'></a> 226                    currdisk-&gt;reconnect_reason = <a href='../S/255.html#L125' title='Defined at 125 in src/disksim_iosim.h.'>IO_INTERRUPT_ARRIVE</a>;
+<a id='L227' name='L227'></a> 227                    <a href='../S/187.html#L127' title='Defined at 127 in ssdmodel/ssd.c.'>ssd_send_event_up_path</a> (curr, currdisk-&gt;bus_transaction_latency);
+<a id='L228' name='L228'></a> 228                <em class='brace'>}</em>
+<a id='L229' name='L229'></a> 229            <em class='brace'>}</em>
+<a id='L230' name='L230'></a> 230        <em class='brace'>}</em>
+<a id='L231' name='L231'></a> 231        <strong class='reserved'>break</strong>;
+<a id='L232' name='L232'></a> 232    <em class='brace'>}</em>
+<a id='L233' name='L233'></a> 233 <em class='brace'>}</em>
+<a id='L234' name='L234'></a> 234 
+<a id='L235' name='L235'></a> 235 <em class='comment'>/*</em>
+<a id='L236' name='L236'></a> 236 <em class='comment'> * ssd_bus_ownership_grant</em>
+<a id='L237' name='L237'></a> 237 <em class='comment'> * Calls bus_delay to handle the event that the disk has been granted the bus.  I believe</em>
+<a id='L238' name='L238'></a> 238 <em class='comment'> * this is always initiated by a call to ssd_send_even_up_path.</em>
+<a id='L239' name='L239'></a> 239 <em class='comment'> */</em>
+<a id='L240' name='L240'></a> 240 <strong class='reserved'>void</strong> <a href='../R/2009.html' title='Multiple referred from 3 places.'>ssd_bus_ownership_grant</a> (<strong class='reserved'>int</strong> devno, <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr, <strong class='reserved'>int</strong> busno, <strong class='reserved'>double</strong> arbdelay)
+<a id='L241' name='L241'></a> 241 <em class='brace'>{</em>
+<a id='L242' name='L242'></a> 242    <a href='../D/2435.html' title='Multiple defined in 2 places.'>ssd_t</a> *currdisk;
+<a id='L243' name='L243'></a> 243    <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *tmp;
+<a id='L244' name='L244'></a> 244 
+<a id='L245' name='L245'></a> 245    currdisk = <a href='../S/187.html#L28' title='Defined at 28 in ssdmodel/ssd.c.'>getssd</a> (devno);
+<a id='L246' name='L246'></a> 246 
+<a id='L247' name='L247'></a> 247    <a href='../S/187.html#L109' title='Defined at 109 in ssdmodel/ssd.c.'>ssd_assert_current_activity</a>(currdisk, curr);
+<a id='L248' name='L248'></a> 248    tmp = currdisk-&gt;buswait;
+<a id='L249' name='L249'></a> 249    <strong class='reserved'>while</strong> ((tmp != NULL) &amp;&amp; (tmp != curr)) <em class='brace'>{</em>
+<a id='L250' name='L250'></a> 250       tmp = tmp-&gt;next;
+<a id='L251' name='L251'></a> 251    <em class='brace'>}</em>
+<a id='L252' name='L252'></a> 252    <strong class='reserved'>if</strong> (tmp == NULL) <em class='brace'>{</em>
+<a id='L253' name='L253'></a> 253       fprintf(stderr, "Bus ownership granted to unknown ssd request - devno %d, busno %d\n", devno, busno);
+<a id='L254' name='L254'></a> 254       exit(1);
+<a id='L255' name='L255'></a> 255    <em class='brace'>}</em>
+<a id='L256' name='L256'></a> 256    currdisk-&gt;busowned = busno;
+<a id='L257' name='L257'></a> 257    currdisk-&gt;stat.waitingforbus += arbdelay;
+<a id='L258' name='L258'></a> 258    <em class='comment'>//ASSERT (arbdelay == (simtime - currdisk-&gt;stat.requestedbus));</em>
+<a id='L259' name='L259'></a> 259    currdisk-&gt;stat.numbuswaits++;
+<a id='L260' name='L260'></a> 260    <a href='../S/200.html#L265' title='Defined at 265 in src/disksim_bus.c.'>bus_delay</a>(busno, <a href='../D/148.html' title='Multiple defined in 2 places.'>DEVICE</a>, devno, tmp-&gt;time, tmp);
+<a id='L261' name='L261'></a> 261 <em class='brace'>}</em>
+<a id='L262' name='L262'></a> 262 
+<a id='L263' name='L263'></a> 263 <strong class='reserved'>void</strong> <a href='../R/2008.html' title='Multiple referred from 3 places.'>ssd_bus_delay_complete</a> (<strong class='reserved'>int</strong> devno, <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr, <strong class='reserved'>int</strong> sentbusno)
+<a id='L264' name='L264'></a> 264 <em class='brace'>{</em>
+<a id='L265' name='L265'></a> 265    <a href='../D/2435.html' title='Multiple defined in 2 places.'>ssd_t</a> *currdisk;
+<a id='L266' name='L266'></a> 266    <a href='../D/1649.html' title='Multiple defined in 2 places.'>intchar</a> slotno;
+<a id='L267' name='L267'></a> 267    <a href='../D/1649.html' title='Multiple defined in 2 places.'>intchar</a> busno;
+<a id='L268' name='L268'></a> 268    <strong class='reserved'>int</strong> depth;
+<a id='L269' name='L269'></a> 269 
+<a id='L270' name='L270'></a> 270    currdisk = <a href='../S/187.html#L28' title='Defined at 28 in ssdmodel/ssd.c.'>getssd</a> (devno);
+<a id='L271' name='L271'></a> 271    <a href='../S/187.html#L109' title='Defined at 109 in ssdmodel/ssd.c.'>ssd_assert_current_activity</a>(currdisk, curr);
+<a id='L272' name='L272'></a> 272 
+<a id='L273' name='L273'></a> 273    <em class='comment'>// fprintf (outputfile, "Entered ssd_bus_delay_complete\n");</em>
+<a id='L274' name='L274'></a> 274 
+<a id='L275' name='L275'></a> 275    <em class='comment'>// EPW: I think the buswait logic doesn't do anything, is confusing, and risks</em>
+<a id='L276' name='L276'></a> 276    <em class='comment'>// overusing the "next" field, although an item shouldn't currently be a queue.</em>
+<a id='L277' name='L277'></a> 277    <strong class='reserved'>if</strong> (curr == currdisk-&gt;buswait) <em class='brace'>{</em>
+<a id='L278' name='L278'></a> 278       currdisk-&gt;buswait = curr-&gt;next;
+<a id='L279' name='L279'></a> 279    <em class='brace'>}</em> <strong class='reserved'>else</strong> <em class='brace'>{</em>
+<a id='L280' name='L280'></a> 280       <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *tmp = currdisk-&gt;buswait;
+<a id='L281' name='L281'></a> 281       <strong class='reserved'>while</strong> ((tmp-&gt;next != NULL) &amp;&amp; (tmp-&gt;next != curr)) <em class='brace'>{</em>
+<a id='L282' name='L282'></a> 282          tmp = tmp-&gt;next;
+<a id='L283' name='L283'></a> 283       <em class='brace'>}</em>
+<a id='L284' name='L284'></a> 284       <strong class='reserved'>if</strong> (tmp-&gt;next != curr) <em class='brace'>{</em>
+<a id='L285' name='L285'></a> 285           <em class='comment'>// fixed a warning here</em>
+<a id='L286' name='L286'></a> 286           <em class='comment'>//fprintf(stderr, "Bus delay complete for unknown ssd request - devno %d, busno %d\n", devno, busno.value);</em>
+<a id='L287' name='L287'></a> 287           fprintf(stderr, "Bus delay complete for unknown ssd request - devno %d, busno %d\n", devno, curr-&gt;busno);
+<a id='L288' name='L288'></a> 288          exit(1);
+<a id='L289' name='L289'></a> 289       <em class='brace'>}</em>
+<a id='L290' name='L290'></a> 290       tmp-&gt;next = curr-&gt;next;
+<a id='L291' name='L291'></a> 291    <em class='brace'>}</em>
+<a id='L292' name='L292'></a> 292    busno.value = curr-&gt;busno;
+<a id='L293' name='L293'></a> 293    slotno.value = curr-&gt;slotno;
+<a id='L294' name='L294'></a> 294    depth = currdisk-&gt;depth[0];
+<a id='L295' name='L295'></a> 295    slotno.byte[depth] = slotno.byte[depth] &gt;&gt; 4;
+<a id='L296' name='L296'></a> 296    curr-&gt;time = 0.0;
+<a id='L297' name='L297'></a> 297    <strong class='reserved'>if</strong> (depth == 0) <em class='brace'>{</em>
+<a id='L298' name='L298'></a> 298       <a href='../S/252.html#L106' title='Defined at 106 in src/disksim_intr.c.'>intr_request</a> ((<a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a> *)curr);
+<a id='L299' name='L299'></a> 299    <em class='brace'>}</em> <strong class='reserved'>else</strong> <em class='brace'>{</em>
+<a id='L300' name='L300'></a> 300       <a href='../S/200.html#L502' title='Defined at 502 in src/disksim_bus.c.'>bus_deliver_event</a>(busno.byte[depth], slotno.byte[depth], curr);
+<a id='L301' name='L301'></a> 301    <em class='brace'>}</em>
+<a id='L302' name='L302'></a> 302 <em class='brace'>}</em>
+<a id='L303' name='L303'></a> 303 
+<a id='L304' name='L304'></a> 304 
+<a id='L305' name='L305'></a> 305 <em class='comment'>/*</em>
+<a id='L306' name='L306'></a> 306 <em class='comment'> * send completion up the line</em>
+<a id='L307' name='L307'></a> 307 <em class='comment'> */</em>
+<a id='L308' name='L308'></a> 308 <strong class='reserved'>static</strong> <strong class='reserved'>void</strong> <a href='../R/2104.html' title='Multiple referred from 4 places.'>ssd_request_complete</a>(<a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr)
+<a id='L309' name='L309'></a> 309 <em class='brace'>{</em>
+<a id='L310' name='L310'></a> 310    <a href='../D/2435.html' title='Multiple defined in 2 places.'>ssd_t</a> *currdisk;
+<a id='L311' name='L311'></a> 311    <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *x;
+<a id='L312' name='L312'></a> 312 
+<a id='L313' name='L313'></a> 313    <em class='comment'>// fprintf (outputfile, "Entering ssd_request_complete: %12.6f\n", simtime);</em>
+<a id='L314' name='L314'></a> 314 
+<a id='L315' name='L315'></a> 315    currdisk = <a href='../S/187.html#L28' title='Defined at 28 in ssdmodel/ssd.c.'>getssd</a> (curr-&gt;devno);
+<a id='L316' name='L316'></a> 316    <a href='../S/187.html#L109' title='Defined at 109 in ssdmodel/ssd.c.'>ssd_assert_current_activity</a>(currdisk, curr);
+<a id='L317' name='L317'></a> 317 
+<a id='L318' name='L318'></a> 318    <strong class='reserved'>if</strong> ((x = <a href='../S/254.html#L3533' title='Defined at 3533 in src/disksim_ioqueue.c.'>ioqueue_physical_access_done</a>(currdisk-&gt;queue,curr)) == NULL) <em class='brace'>{</em>
+<a id='L319' name='L319'></a> 319       fprintf(stderr, "ssd_request_complete:  ioreq_event not found by ioqueue_physical_access_done call\n");
+<a id='L320' name='L320'></a> 320       exit(1);
+<a id='L321' name='L321'></a> 321    <em class='brace'>}</em>
+<a id='L322' name='L322'></a> 322 
+<a id='L323' name='L323'></a> 323    <em class='comment'>/* send completion interrupt */</em>
+<a id='L324' name='L324'></a> 324    curr-&gt;type = <a href='../S/255.html#L125' title='Defined at 125 in src/disksim_iosim.h.'>IO_INTERRUPT_ARRIVE</a>;
+<a id='L325' name='L325'></a> 325    curr-&gt;cause = <a href='../S/255.html#L164' title='Defined at 164 in src/disksim_iosim.h.'>COMPLETION</a>;
+<a id='L326' name='L326'></a> 326    <a href='../S/187.html#L127' title='Defined at 127 in ssdmodel/ssd.c.'>ssd_send_event_up_path</a>(curr, currdisk-&gt;bus_transaction_latency);
+<a id='L327' name='L327'></a> 327 <em class='brace'>}</em>
+<a id='L328' name='L328'></a> 328 
+<a id='L329' name='L329'></a> 329 <strong class='reserved'>static</strong> <strong class='reserved'>void</strong> <a href='../S/187.html#L943' title='Referred from 943 in ssdmodel/ssd.c.'>ssd_bustransfer_complete</a> (<a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr)
+<a id='L330' name='L330'></a> 330 <em class='brace'>{</em>
+<a id='L331' name='L331'></a> 331    <em class='comment'>// fprintf (outputfile, "Entering ssd_bustransfer_complete for disk %d: %12.6f\n", curr-&gt;devno, simtime);</em>
+<a id='L332' name='L332'></a> 332 
+<a id='L333' name='L333'></a> 333    <strong class='reserved'>if</strong> (curr-&gt;flags &amp; <a href='../S/283.html#L193' title='Defined at 193 in src/disksim_global.h.'>READ</a>) <em class='brace'>{</em>
+<a id='L334' name='L334'></a> 334       <a href='../S/187.html#L308' title='Defined at 308 in ssdmodel/ssd.c.'>ssd_request_complete</a> (curr);
+<a id='L335' name='L335'></a> 335    <em class='brace'>}</em> <strong class='reserved'>else</strong> <em class='brace'>{</em>
+<a id='L336' name='L336'></a> 336       <a href='../D/2435.html' title='Multiple defined in 2 places.'>ssd_t</a> *currdisk = <a href='../S/187.html#L28' title='Defined at 28 in ssdmodel/ssd.c.'>getssd</a> (curr-&gt;devno);
+<a id='L337' name='L337'></a> 337       <a href='../S/187.html#L109' title='Defined at 109 in ssdmodel/ssd.c.'>ssd_assert_current_activity</a>(currdisk, curr);
+<a id='L338' name='L338'></a> 338       <strong class='reserved'>if</strong> (currdisk-&gt;neverdisconnect == <a href='../D/374.html' title='Multiple defined in 2 places.'>FALSE</a>) <em class='brace'>{</em>
+<a id='L339' name='L339'></a> 339           <em class='comment'>/* disconnect from bus */</em>
+<a id='L340' name='L340'></a> 340           <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *tmp = <a href='../S/194.html#L122' title='Defined at 122 in src/disksim_iosim.c.'>ioreq_copy</a> (curr);
+<a id='L341' name='L341'></a> 341           tmp-&gt;type = <a href='../S/255.html#L125' title='Defined at 125 in src/disksim_iosim.h.'>IO_INTERRUPT_ARRIVE</a>;
+<a id='L342' name='L342'></a> 342           tmp-&gt;cause = <a href='../S/255.html#L166' title='Defined at 166 in src/disksim_iosim.h.'>DISCONNECT</a>;
+<a id='L343' name='L343'></a> 343           <a href='../S/187.html#L127' title='Defined at 127 in ssdmodel/ssd.c.'>ssd_send_event_up_path</a> (tmp, currdisk-&gt;bus_transaction_latency);
+<a id='L344' name='L344'></a> 344           <a href='../S/187.html#L655' title='Defined at 655 in ssdmodel/ssd.c.'>ssd_media_access_request</a> (curr);
+<a id='L345' name='L345'></a> 345       <em class='brace'>}</em> <strong class='reserved'>else</strong> <em class='brace'>{</em>
+<a id='L346' name='L346'></a> 346           <a href='../S/187.html#L655' title='Defined at 655 in ssdmodel/ssd.c.'>ssd_media_access_request</a> (curr);
+<a id='L347' name='L347'></a> 347           <a href='../S/187.html#L185' title='Defined at 185 in ssdmodel/ssd.c.'>ssd_check_channel_activity</a> (currdisk);
+<a id='L348' name='L348'></a> 348       <em class='brace'>}</em>
+<a id='L349' name='L349'></a> 349    <em class='brace'>}</em>
+<a id='L350' name='L350'></a> 350 <em class='brace'>}</em>
+<a id='L351' name='L351'></a> 351 
+<a id='L352' name='L352'></a> 352 <em class='comment'>/*</em>
+<a id='L353' name='L353'></a> 353 <em class='comment'> * returns the logical page number within an element given a block number as</em>
+<a id='L354' name='L354'></a> 354 <em class='comment'> * issued by the file system</em>
+<a id='L355' name='L355'></a> 355 <em class='comment'> */</em>
+<a id='L356' name='L356'></a> 356 <strong class='reserved'>int</strong> <a href='../R/2076.html' title='Multiple referred from 6 places.'>ssd_logical_pageno</a>(<strong class='reserved'>int</strong> blkno, <a href='../D/2435.html' title='Multiple defined in 2 places.'>ssd_t</a> *s)
+<a id='L357' name='L357'></a> 357 <em class='brace'>{</em>
+<a id='L358' name='L358'></a> 358     <strong class='reserved'>int</strong> apn;
+<a id='L359' name='L359'></a> 359     <strong class='reserved'>int</strong> lpn;
+<a id='L360' name='L360'></a> 360 
+<a id='L361' name='L361'></a> 361     <em class='comment'>// absolute page number is the block number as written by the above layer</em>
+<a id='L362' name='L362'></a> 362     apn = blkno/s-&gt;params.page_size;
+<a id='L363' name='L363'></a> 363 
+<a id='L364' name='L364'></a> 364     <em class='comment'>// find the logical page number within the ssd element. we maintain the</em>
+<a id='L365' name='L365'></a> 365     <em class='comment'>// mapping between the logical page number and the actual physical page</em>
+<a id='L366' name='L366'></a> 366     <em class='comment'>// number. an alternative is that we could maintain the mapping between</em>
+<a id='L367' name='L367'></a> 367     <em class='comment'>// apn we calculated above and the physical page number. but the range</em>
+<a id='L368' name='L368'></a> 368     <em class='comment'>// of apn is several times bigger and so we chose to go with the mapping</em>
+<a id='L369' name='L369'></a> 369     <em class='comment'>// b/w lpn --&gt; physical page number</em>
+<a id='L370' name='L370'></a> 370     lpn = ((apn - (apn % (s-&gt;params.element_stride_pages * s-&gt;params.nelements)))/
+<a id='L371' name='L371'></a> 371                       s-&gt;params.nelements) + (apn % s-&gt;params.element_stride_pages);
+<a id='L372' name='L372'></a> 372 
+<a id='L373' name='L373'></a> 373     <strong class='reserved'>return</strong> lpn;
+<a id='L374' name='L374'></a> 374 <em class='brace'>}</em>
+<a id='L375' name='L375'></a> 375 
+<a id='L376' name='L376'></a> 376 <strong class='reserved'>int</strong> <a href='../R/1997.html' title='Multiple referred from 6 places.'>ssd_already_present</a>(<a href='../D/2420.html' title='Multiple defined in 2 places.'>ssd_req</a> **reqs, <strong class='reserved'>int</strong> total, <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *req)
+<a id='L377' name='L377'></a> 377 <em class='brace'>{</em>
+<a id='L378' name='L378'></a> 378     <strong class='reserved'>int</strong> i;
+<a id='L379' name='L379'></a> 379     <strong class='reserved'>int</strong> found = 0;
+<a id='L380' name='L380'></a> 380 
+<a id='L381' name='L381'></a> 381     <strong class='reserved'>for</strong> (i = 0; i &lt; total; i ++) <em class='brace'>{</em>
+<a id='L382' name='L382'></a> 382         <strong class='reserved'>if</strong> ((req-&gt;blkno == reqs[i]-&gt;org_req-&gt;blkno) &amp;&amp;
+<a id='L383' name='L383'></a> 383             (req-&gt;flags == reqs[i]-&gt;org_req-&gt;flags)) <em class='brace'>{</em>
+<a id='L384' name='L384'></a> 384             found = 1;
+<a id='L385' name='L385'></a> 385             <strong class='reserved'>break</strong>;
+<a id='L386' name='L386'></a> 386         <em class='brace'>}</em>
+<a id='L387' name='L387'></a> 387     <em class='brace'>}</em>
+<a id='L388' name='L388'></a> 388 
+<a id='L389' name='L389'></a> 389     <strong class='reserved'>return</strong> found;
+<a id='L390' name='L390'></a> 390 <em class='brace'>}</em>
+<a id='L391' name='L391'></a> 391 
+<a id='L392' name='L392'></a> 392 <strong class='reserved'>double</strong> <a href='../R/664.html' title='Multiple referred from 4 places.'>_ssd_invoke_element_cleaning</a>(<strong class='reserved'>int</strong> elem_num, <a href='../D/2435.html' title='Multiple defined in 2 places.'>ssd_t</a> *s)
+<a id='L393' name='L393'></a> 393 <em class='brace'>{</em>
+<a id='L394' name='L394'></a> 394     <strong class='reserved'>double</strong> clean_cost = <a href='../S/151.html#L1005' title='Defined at 1005 in ssdmodel/ssd_clean.c.'>ssd_clean_element</a>(s, elem_num);
+<a id='L395' name='L395'></a> 395     <strong class='reserved'>return</strong> clean_cost;
+<a id='L396' name='L396'></a> 396 <em class='brace'>}</em>
+<a id='L397' name='L397'></a> 397 
+<a id='L398' name='L398'></a> 398 <strong class='reserved'>static</strong> <strong class='reserved'>int</strong> <a href='../R/2072.html' title='Multiple referred from 2 places.'>ssd_invoke_element_cleaning</a>(<strong class='reserved'>int</strong> elem_num, <a href='../D/2435.html' title='Multiple defined in 2 places.'>ssd_t</a> *s)
+<a id='L399' name='L399'></a> 399 <em class='brace'>{</em>
+<a id='L400' name='L400'></a> 400     <strong class='reserved'>double</strong> max_cost = 0;
+<a id='L401' name='L401'></a> 401     <strong class='reserved'>int</strong> cleaning_invoked = 0;
+<a id='L402' name='L402'></a> 402     <a href='../D/2359.html' title='Multiple defined in 2 places.'>ssd_element</a> *elem = &amp;s-&gt;elements[elem_num];
+<a id='L403' name='L403'></a> 403 
+<a id='L404' name='L404'></a> 404     <em class='comment'>// element must be free</em>
+<a id='L405' name='L405'></a> 405     <a href='../D/12.html' title='Multiple defined in 2 places.'>ASSERT</a>(elem-&gt;media_busy == <a href='../D/374.html' title='Multiple defined in 2 places.'>FALSE</a>);
+<a id='L406' name='L406'></a> 406 
+<a id='L407' name='L407'></a> 407     max_cost = <a href='../S/187.html#L392' title='Defined at 392 in ssdmodel/ssd.c.'>_ssd_invoke_element_cleaning</a>(elem_num, s);
+<a id='L408' name='L408'></a> 408 
+<a id='L409' name='L409'></a> 409     <em class='comment'>// cleaning was invoked on this element. we can start</em>
+<a id='L410' name='L410'></a> 410     <em class='comment'>// the next operation on this elem only after the cleaning</em>
+<a id='L411' name='L411'></a> 411     <em class='comment'>// gets over.</em>
+<a id='L412' name='L412'></a> 412     <strong class='reserved'>if</strong> (max_cost &gt; 0) <em class='brace'>{</em>
+<a id='L413' name='L413'></a> 413         <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *tmp;
+<a id='L414' name='L414'></a> 414 
+<a id='L415' name='L415'></a> 415         elem-&gt;media_busy = 1;
+<a id='L416' name='L416'></a> 416         cleaning_invoked = 1;
+<a id='L417' name='L417'></a> 417 
+<a id='L418' name='L418'></a> 418         <em class='comment'>// we use the 'blkno' field to store the element number</em>
+<a id='L419' name='L419'></a> 419         tmp = (<a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *)<a href='../S/272.html#L193' title='Defined at 193 in src/disksim.c.'>getfromextraq</a>();
+<a id='L420' name='L420'></a> 420         tmp-&gt;devno = s-&gt;devno;
+<a id='L421' name='L421'></a> 421         tmp-&gt;time = <a href='../S/283.html#L438' title='Defined at 438 in src/disksim_global.h.'>simtime</a> + max_cost;
+<a id='L422' name='L422'></a> 422         tmp-&gt;blkno = elem_num;
+<a id='L423' name='L423'></a> 423         tmp-&gt;ssd_elem_num = elem_num;
+<a id='L424' name='L424'></a> 424         tmp-&gt;type = <a href='../S/255.html#L158' title='Defined at 158 in src/disksim_iosim.h.'>SSD_CLEAN_ELEMENT</a>;
+<a id='L425' name='L425'></a> 425         tmp-&gt;flags = <a href='../S/255.html#L158' title='Defined at 158 in src/disksim_iosim.h.'>SSD_CLEAN_ELEMENT</a>;
+<a id='L426' name='L426'></a> 426         tmp-&gt;busno = -1;
+<a id='L427' name='L427'></a> 427         tmp-&gt;bcount = -1;
+<a id='L428' name='L428'></a> 428         <a href='../S/285.html#L130' title='Defined at 130 in src/disksim_stat.c.'>stat_update</a> (&amp;s-&gt;stat.acctimestats, max_cost);
+<a id='L429' name='L429'></a> 429         <a href='../S/272.html#L280' title='Defined at 280 in src/disksim.c.'>addtointq</a> ((<a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a> *)tmp);
+<a id='L430' name='L430'></a> 430 
+<a id='L431' name='L431'></a> 431         <em class='comment'>// stat</em>
+<a id='L432' name='L432'></a> 432         elem-&gt;stat.tot_clean_time += max_cost;
+<a id='L433' name='L433'></a> 433     <em class='brace'>}</em>
+<a id='L434' name='L434'></a> 434 
+<a id='L435' name='L435'></a> 435     <strong class='reserved'>return</strong> cleaning_invoked;
+<a id='L436' name='L436'></a> 436 <em class='brace'>}</em>
+<a id='L437' name='L437'></a> 437 
+<a id='L438' name='L438'></a> 438 <strong class='reserved'>static</strong> <strong class='reserved'>void</strong> <a href='../R/1992.html' title='Multiple referred from 3 places.'>ssd_activate_elem</a>(<a href='../D/2435.html' title='Multiple defined in 2 places.'>ssd_t</a> *currdisk, <strong class='reserved'>int</strong> elem_num)
+<a id='L439' name='L439'></a> 439 <em class='brace'>{</em>
+<a id='L440' name='L440'></a> 440     <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *req;
+<a id='L441' name='L441'></a> 441     <a href='../D/2420.html' title='Multiple defined in 2 places.'>ssd_req</a> **read_reqs;
+<a id='L442' name='L442'></a> 442     <a href='../D/2420.html' title='Multiple defined in 2 places.'>ssd_req</a> **write_reqs;
+<a id='L443' name='L443'></a> 443     <strong class='reserved'>int</strong> i;
+<a id='L444' name='L444'></a> 444     <strong class='reserved'>int</strong> read_total = 0;
+<a id='L445' name='L445'></a> 445     <strong class='reserved'>int</strong> write_total = 0;
+<a id='L446' name='L446'></a> 446     <strong class='reserved'>double</strong> schtime = 0;
+<a id='L447' name='L447'></a> 447     <strong class='reserved'>int</strong> max_reqs;
+<a id='L448' name='L448'></a> 448     <strong class='reserved'>int</strong> tot_reqs_issued;
+<a id='L449' name='L449'></a> 449     <strong class='reserved'>double</strong> max_time_taken = 0;
+<a id='L450' name='L450'></a> 450 
+<a id='L451' name='L451'></a> 451 
+<a id='L452' name='L452'></a> 452     <a href='../D/2359.html' title='Multiple defined in 2 places.'>ssd_element</a> *elem = &amp;currdisk-&gt;elements[elem_num];
+<a id='L453' name='L453'></a> 453 
+<a id='L454' name='L454'></a> 454     <em class='comment'>// if the media is busy, we can't do anything, so return</em>
+<a id='L455' name='L455'></a> 455     <strong class='reserved'>if</strong> (elem-&gt;media_busy == <a href='../D/803.html' title='Multiple defined in 2 places.'>TRUE</a>) <em class='brace'>{</em>
+<a id='L456' name='L456'></a> 456         <strong class='reserved'>return</strong>;
+<a id='L457' name='L457'></a> 457     <em class='brace'>}</em>
+<a id='L458' name='L458'></a> 458 
+<a id='L459' name='L459'></a> 459     <a href='../D/12.html' title='Multiple defined in 2 places.'>ASSERT</a>(<a href='../S/254.html#L260' title='Defined at 260 in src/disksim_ioqueue.c.'>ioqueue_get_reqoutstanding</a>(elem-&gt;queue) == 0);
+<a id='L460' name='L460'></a> 460 
+<a id='L461' name='L461'></a> 461     <em class='comment'>// we can invoke cleaning in the background whether there</em>
+<a id='L462' name='L462'></a> 462     <em class='comment'>// is request waiting or not</em>
+<a id='L463' name='L463'></a> 463     <strong class='reserved'>if</strong> (currdisk-&gt;params.cleaning_in_background) <em class='brace'>{</em>
+<a id='L464' name='L464'></a> 464         <em class='comment'>// if cleaning was invoked, wait until</em>
+<a id='L465' name='L465'></a> 465         <em class='comment'>// it is over ...</em>
+<a id='L466' name='L466'></a> 466         <strong class='reserved'>if</strong> (<a href='../S/187.html#L398' title='Defined at 398 in ssdmodel/ssd.c.'>ssd_invoke_element_cleaning</a>(elem_num, currdisk)) <em class='brace'>{</em>
+<a id='L467' name='L467'></a> 467             <strong class='reserved'>return</strong>;
+<a id='L468' name='L468'></a> 468         <em class='brace'>}</em>
+<a id='L469' name='L469'></a> 469     <em class='brace'>}</em>
+<a id='L470' name='L470'></a> 470 
+<a id='L471' name='L471'></a> 471     <a href='../D/12.html' title='Multiple defined in 2 places.'>ASSERT</a>(elem-&gt;metadata.reqs_waiting == <a href='../S/254.html#L243' title='Defined at 243 in src/disksim_ioqueue.c.'>ioqueue_get_number_in_queue</a>(elem-&gt;queue));
+<a id='L472' name='L472'></a> 472 
+<a id='L473' name='L473'></a> 473     <strong class='reserved'>if</strong> (elem-&gt;metadata.reqs_waiting &gt; 0) <em class='brace'>{</em>
+<a id='L474' name='L474'></a> 474 
+<a id='L475' name='L475'></a> 475         <em class='comment'>// invoke cleaning in foreground when there are requests waiting</em>
+<a id='L476' name='L476'></a> 476         <strong class='reserved'>if</strong> (!currdisk-&gt;params.cleaning_in_background) <em class='brace'>{</em>
+<a id='L477' name='L477'></a> 477             <em class='comment'>// if cleaning was invoked, wait until</em>
+<a id='L478' name='L478'></a> 478             <em class='comment'>// it is over ...</em>
+<a id='L479' name='L479'></a> 479             <strong class='reserved'>if</strong> (<a href='../S/187.html#L398' title='Defined at 398 in ssdmodel/ssd.c.'>ssd_invoke_element_cleaning</a>(elem_num, currdisk)) <em class='brace'>{</em>
+<a id='L480' name='L480'></a> 480                 <strong class='reserved'>return</strong>;
+<a id='L481' name='L481'></a> 481             <em class='brace'>}</em>
+<a id='L482' name='L482'></a> 482         <em class='brace'>}</em>
+<a id='L483' name='L483'></a> 483 
+<a id='L484' name='L484'></a> 484         <em class='comment'>// how many reqs can we issue at once</em>
+<a id='L485' name='L485'></a> 485         <strong class='reserved'>if</strong> (currdisk-&gt;params.copy_back == <a href='../D/738.html' title='Multiple defined in 2 places.'>SSD_COPY_BACK_DISABLE</a>) <em class='brace'>{</em>
+<a id='L486' name='L486'></a> 486             max_reqs = 1;
+<a id='L487' name='L487'></a> 487         <em class='brace'>}</em> <strong class='reserved'>else</strong> <em class='brace'>{</em>
+<a id='L488' name='L488'></a> 488             <strong class='reserved'>if</strong> (currdisk-&gt;params.num_parunits == 1) <em class='brace'>{</em>
+<a id='L489' name='L489'></a> 489                 max_reqs = 1;
+<a id='L490' name='L490'></a> 490             <em class='brace'>}</em> <strong class='reserved'>else</strong> <em class='brace'>{</em>
+<a id='L491' name='L491'></a> 491                 max_reqs = <a href='../D/537.html' title='Multiple defined in 2 places.'>MAX_REQS_ELEM_QUEUE</a>;
+<a id='L492' name='L492'></a> 492             <em class='brace'>}</em>
+<a id='L493' name='L493'></a> 493         <em class='brace'>}</em>
+<a id='L494' name='L494'></a> 494 
+<a id='L495' name='L495'></a> 495         <em class='comment'>// ideally, we should issue one req per plane, overlapping them all.</em>
+<a id='L496' name='L496'></a> 496         <em class='comment'>// in order to simplify the overlapping strategy, let's issue</em>
+<a id='L497' name='L497'></a> 497         <em class='comment'>// requests of the same type together.</em>
+<a id='L498' name='L498'></a> 498 
+<a id='L499' name='L499'></a> 499         read_reqs = (<a href='../D/2420.html' title='Multiple defined in 2 places.'>ssd_req</a> **) <a href='../S/73.html#L58' title='Defined at 58 in diskmodel/dm_config.h.'>malloc</a>(max_reqs * <strong class='reserved'>sizeof</strong>(<a href='../D/2420.html' title='Multiple defined in 2 places.'>ssd_req</a> *));
+<a id='L500' name='L500'></a> 500         write_reqs = (<a href='../D/2420.html' title='Multiple defined in 2 places.'>ssd_req</a> **) <a href='../S/73.html#L58' title='Defined at 58 in diskmodel/dm_config.h.'>malloc</a>(max_reqs * <strong class='reserved'>sizeof</strong>(<a href='../D/2420.html' title='Multiple defined in 2 places.'>ssd_req</a> *));
+<a id='L501' name='L501'></a> 501 
+<a id='L502' name='L502'></a> 502         <em class='comment'>// collect the requests</em>
+<a id='L503' name='L503'></a> 503         <strong class='reserved'>while</strong> ((req = <a href='../S/254.html#L3150' title='Defined at 3150 in src/disksim_ioqueue.c.'>ioqueue_get_next_request</a>(elem-&gt;queue)) != NULL) <em class='brace'>{</em>
+<a id='L504' name='L504'></a> 504             <strong class='reserved'>int</strong> found = 0;
+<a id='L505' name='L505'></a> 505 
+<a id='L506' name='L506'></a> 506             elem-&gt;metadata.reqs_waiting --;
+<a id='L507' name='L507'></a> 507 
+<a id='L508' name='L508'></a> 508             <em class='comment'>// see if we already have the same request in the list.</em>
+<a id='L509' name='L509'></a> 509             <em class='comment'>// this usually doesn't happen -- but on synthetic traces</em>
+<a id='L510' name='L510'></a> 510             <em class='comment'>// this weird case can occur.</em>
+<a id='L511' name='L511'></a> 511             <strong class='reserved'>if</strong> (req-&gt;flags &amp; <a href='../S/283.html#L193' title='Defined at 193 in src/disksim_global.h.'>READ</a>) <em class='brace'>{</em>
+<a id='L512' name='L512'></a> 512                 found = <a href='../S/187.html#L376' title='Defined at 376 in ssdmodel/ssd.c.'>ssd_already_present</a>(read_reqs, read_total, req);
+<a id='L513' name='L513'></a> 513             <em class='brace'>}</em> <strong class='reserved'>else</strong> <em class='brace'>{</em>
+<a id='L514' name='L514'></a> 514                 found = <a href='../S/187.html#L376' title='Defined at 376 in ssdmodel/ssd.c.'>ssd_already_present</a>(write_reqs, write_total, req);
+<a id='L515' name='L515'></a> 515             <em class='brace'>}</em>
+<a id='L516' name='L516'></a> 516 
+<a id='L517' name='L517'></a> 517             <strong class='reserved'>if</strong> (!found) <em class='brace'>{</em>
+<a id='L518' name='L518'></a> 518                 <em class='comment'>// this is a valid request</em>
+<a id='L519' name='L519'></a> 519                 <a href='../D/2420.html' title='Multiple defined in 2 places.'>ssd_req</a> *r = <a href='../S/73.html#L58' title='Defined at 58 in diskmodel/dm_config.h.'>malloc</a>(<strong class='reserved'>sizeof</strong>(<a href='../D/2420.html' title='Multiple defined in 2 places.'>ssd_req</a>));
+<a id='L520' name='L520'></a> 520                 r-&gt;blk = req-&gt;blkno;
+<a id='L521' name='L521'></a> 521                 r-&gt;count = req-&gt;bcount;
+<a id='L522' name='L522'></a> 522                 r-&gt;is_read = req-&gt;flags &amp; <a href='../S/283.html#L193' title='Defined at 193 in src/disksim_global.h.'>READ</a>;
+<a id='L523' name='L523'></a> 523                 r-&gt;org_req = req;
+<a id='L524' name='L524'></a> 524                 r-&gt;plane_num = -1; <em class='comment'>// we don't know to which plane this req will be directed at</em>
+<a id='L525' name='L525'></a> 525 
+<a id='L526' name='L526'></a> 526                 <strong class='reserved'>if</strong> (req-&gt;flags &amp; <a href='../S/283.html#L193' title='Defined at 193 in src/disksim_global.h.'>READ</a>) <em class='brace'>{</em>
+<a id='L527' name='L527'></a> 527                     read_reqs[read_total] = r;
+<a id='L528' name='L528'></a> 528                     read_total ++;
+<a id='L529' name='L529'></a> 529                 <em class='brace'>}</em> <strong class='reserved'>else</strong> <em class='brace'>{</em>
+<a id='L530' name='L530'></a> 530                     write_reqs[write_total] = r;
+<a id='L531' name='L531'></a> 531                     write_total ++;
+<a id='L532' name='L532'></a> 532                 <em class='brace'>}</em>
+<a id='L533' name='L533'></a> 533 
+<a id='L534' name='L534'></a> 534                 <em class='comment'>// if we have more reqs than we can handle, quit</em>
+<a id='L535' name='L535'></a> 535                 <strong class='reserved'>if</strong> ((read_total &gt;= max_reqs) ||
+<a id='L536' name='L536'></a> 536                     (write_total &gt;= max_reqs)) <em class='brace'>{</em>
+<a id='L537' name='L537'></a> 537                     <strong class='reserved'>break</strong>;
+<a id='L538' name='L538'></a> 538                 <em class='brace'>}</em>
+<a id='L539' name='L539'></a> 539             <em class='brace'>}</em> <strong class='reserved'>else</strong> <em class='brace'>{</em>
+<a id='L540' name='L540'></a> 540                 <em class='comment'>// throw this request -- it doesn't make sense</em>
+<a id='L541' name='L541'></a> 541                 <a href='../S/285.html#L130' title='Defined at 130 in src/disksim_stat.c.'>stat_update</a> (&amp;currdisk-&gt;stat.acctimestats, 0);
+<a id='L542' name='L542'></a> 542                 req-&gt;time = <a href='../S/283.html#L438' title='Defined at 438 in src/disksim_global.h.'>simtime</a>;
+<a id='L543' name='L543'></a> 543                 req-&gt;ssd_elem_num = elem_num;
+<a id='L544' name='L544'></a> 544                 req-&gt;type = <a href='../S/255.html#L130' title='Defined at 130 in src/disksim_iosim.h.'>DEVICE_ACCESS_COMPLETE</a>;
+<a id='L545' name='L545'></a> 545                 <a href='../S/272.html#L280' title='Defined at 280 in src/disksim.c.'>addtointq</a> ((<a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a> *)req);
+<a id='L546' name='L546'></a> 546             <em class='brace'>}</em>
+<a id='L547' name='L547'></a> 547         <em class='brace'>}</em>
+<a id='L548' name='L548'></a> 548 
+<a id='L549' name='L549'></a> 549         <strong class='reserved'>if</strong> (read_total &gt; 0) <em class='brace'>{</em>
+<a id='L550' name='L550'></a> 550             <em class='comment'>// first issue all the read requests (it doesn't matter what we</em>
+<a id='L551' name='L551'></a> 551             <em class='comment'>// issue first). i chose read because reads are mostly synchronous.</em>
+<a id='L552' name='L552'></a> 552             <em class='comment'>// find the time taken to serve these requests.</em>
+<a id='L553' name='L553'></a> 553             <a href='../S/159.html#L880' title='Defined at 880 in ssdmodel/ssd_timing.c.'>ssd_compute_access_time</a>(currdisk, elem_num, read_reqs, read_total);
+<a id='L554' name='L554'></a> 554 
+<a id='L555' name='L555'></a> 555             <em class='comment'>// add an event for each request completion</em>
+<a id='L556' name='L556'></a> 556             <strong class='reserved'>for</strong> (i = 0; i &lt; read_total; i ++) <em class='brace'>{</em>
+<a id='L557' name='L557'></a> 557               elem-&gt;media_busy = <a href='../D/803.html' title='Multiple defined in 2 places.'>TRUE</a>;
+<a id='L558' name='L558'></a> 558 
+<a id='L559' name='L559'></a> 559               <em class='comment'>// find the maximum time taken by a request</em>
+<a id='L560' name='L560'></a> 560               <strong class='reserved'>if</strong> (schtime &lt; read_reqs[i]-&gt;schtime) <em class='brace'>{</em>
+<a id='L561' name='L561'></a> 561                   schtime = read_reqs[i]-&gt;schtime;
+<a id='L562' name='L562'></a> 562               <em class='brace'>}</em>
+<a id='L563' name='L563'></a> 563 
+<a id='L564' name='L564'></a> 564               <a href='../S/285.html#L130' title='Defined at 130 in src/disksim_stat.c.'>stat_update</a> (&amp;currdisk-&gt;stat.acctimestats, read_reqs[i]-&gt;acctime);
+<a id='L565' name='L565'></a> 565               read_reqs[i]-&gt;org_req-&gt;time = <a href='../S/283.html#L438' title='Defined at 438 in src/disksim_global.h.'>simtime</a> + read_reqs[i]-&gt;schtime;
+<a id='L566' name='L566'></a> 566               read_reqs[i]-&gt;org_req-&gt;ssd_elem_num = elem_num;
+<a id='L567' name='L567'></a> 567               read_reqs[i]-&gt;org_req-&gt;type = <a href='../S/255.html#L130' title='Defined at 130 in src/disksim_iosim.h.'>DEVICE_ACCESS_COMPLETE</a>;
+<a id='L568' name='L568'></a> 568 
+<a id='L569' name='L569'></a> 569               <em class='comment'>//printf("R: blk %d elem %d acctime %f simtime %f\n", read_reqs[i]-&gt;blk,</em>
+<a id='L570' name='L570'></a> 570                 <em class='comment'>//  elem_num, read_reqs[i]-&gt;acctime, read_reqs[i]-&gt;org_req-&gt;time);</em>
+<a id='L571' name='L571'></a> 571 
+<a id='L572' name='L572'></a> 572               <a href='../S/272.html#L280' title='Defined at 280 in src/disksim.c.'>addtointq</a> ((<a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a> *)read_reqs[i]-&gt;org_req);
+<a id='L573' name='L573'></a> 573               free(read_reqs[i]);
+<a id='L574' name='L574'></a> 574             <em class='brace'>}</em>
+<a id='L575' name='L575'></a> 575         <em class='brace'>}</em>
+<a id='L576' name='L576'></a> 576 
+<a id='L577' name='L577'></a> 577         free(read_reqs);
+<a id='L578' name='L578'></a> 578 
+<a id='L579' name='L579'></a> 579         max_time_taken = schtime;
+<a id='L580' name='L580'></a> 580 
+<a id='L581' name='L581'></a> 581         <strong class='reserved'>if</strong> (write_total &gt; 0) <em class='brace'>{</em>
+<a id='L582' name='L582'></a> 582             <em class='comment'>// next issue the write requests</em>
+<a id='L583' name='L583'></a> 583             <a href='../S/159.html#L880' title='Defined at 880 in ssdmodel/ssd_timing.c.'>ssd_compute_access_time</a>(currdisk, elem_num, write_reqs, write_total);
+<a id='L584' name='L584'></a> 584 
+<a id='L585' name='L585'></a> 585             <em class='comment'>// add an event for each request completion.</em>
+<a id='L586' name='L586'></a> 586             <em class='comment'>// note that we can issue the writes only after all the reads above are</em>
+<a id='L587' name='L587'></a> 587             <em class='comment'>// over. so, include the maximum read time when creating the event.</em>
+<a id='L588' name='L588'></a> 588             <strong class='reserved'>for</strong> (i = 0; i &lt; write_total; i ++) <em class='brace'>{</em>
+<a id='L589' name='L589'></a> 589               elem-&gt;media_busy = <a href='../D/803.html' title='Multiple defined in 2 places.'>TRUE</a>;
+<a id='L590' name='L590'></a> 590 
+<a id='L591' name='L591'></a> 591               <a href='../S/285.html#L130' title='Defined at 130 in src/disksim_stat.c.'>stat_update</a> (&amp;currdisk-&gt;stat.acctimestats, write_reqs[i]-&gt;acctime);
+<a id='L592' name='L592'></a> 592               write_reqs[i]-&gt;org_req-&gt;time = <a href='../S/283.html#L438' title='Defined at 438 in src/disksim_global.h.'>simtime</a> + schtime + write_reqs[i]-&gt;schtime;
+<a id='L593' name='L593'></a> 593               <em class='comment'>//printf("blk %d elem %d acc time %f\n", write_reqs[i]-&gt;blk, elem_num, write_reqs[i]-&gt;acctime);</em>
+<a id='L594' name='L594'></a> 594 
+<a id='L595' name='L595'></a> 595               <strong class='reserved'>if</strong> (max_time_taken &lt; (schtime+write_reqs[i]-&gt;schtime)) <em class='brace'>{</em>
+<a id='L596' name='L596'></a> 596                   max_time_taken = (schtime+write_reqs[i]-&gt;schtime);
+<a id='L597' name='L597'></a> 597               <em class='brace'>}</em>
+<a id='L598' name='L598'></a> 598 
+<a id='L599' name='L599'></a> 599               write_reqs[i]-&gt;org_req-&gt;ssd_elem_num = elem_num;
+<a id='L600' name='L600'></a> 600               write_reqs[i]-&gt;org_req-&gt;type = <a href='../S/255.html#L130' title='Defined at 130 in src/disksim_iosim.h.'>DEVICE_ACCESS_COMPLETE</a>;
+<a id='L601' name='L601'></a> 601               <em class='comment'>//printf("W: blk %d elem %d acctime %f simtime %f\n", write_reqs[i]-&gt;blk,</em>
+<a id='L602' name='L602'></a> 602                 <em class='comment'>//  elem_num, write_reqs[i]-&gt;acctime, write_reqs[i]-&gt;org_req-&gt;time);</em>
+<a id='L603' name='L603'></a> 603 
+<a id='L604' name='L604'></a> 604               <a href='../S/272.html#L280' title='Defined at 280 in src/disksim.c.'>addtointq</a> ((<a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a> *)write_reqs[i]-&gt;org_req);
+<a id='L605' name='L605'></a> 605               free(write_reqs[i]);
+<a id='L606' name='L606'></a> 606             <em class='brace'>}</em>
+<a id='L607' name='L607'></a> 607         <em class='brace'>}</em>
+<a id='L608' name='L608'></a> 608 
+<a id='L609' name='L609'></a> 609         free(write_reqs);
+<a id='L610' name='L610'></a> 610 
+<a id='L611' name='L611'></a> 611         <em class='comment'>// statistics</em>
+<a id='L612' name='L612'></a> 612         tot_reqs_issued = read_total + write_total;
+<a id='L613' name='L613'></a> 613         <a href='../D/12.html' title='Multiple defined in 2 places.'>ASSERT</a>(tot_reqs_issued &gt; 0);
+<a id='L614' name='L614'></a> 614         currdisk-&gt;elements[elem_num].stat.tot_reqs_issued += tot_reqs_issued;
+<a id='L615' name='L615'></a> 615         currdisk-&gt;elements[elem_num].stat.tot_time_taken += max_time_taken;
+<a id='L616' name='L616'></a> 616     <em class='brace'>}</em>
+<a id='L617' name='L617'></a> 617 <em class='brace'>}</em>
+<a id='L618' name='L618'></a> 618 
+<a id='L619' name='L619'></a> 619 
+<a id='L620' name='L620'></a> 620 <strong class='reserved'>static</strong> <strong class='reserved'>void</strong> <a href='../S/187.html#L662' title='Referred from 662 in ssdmodel/ssd.c.'>ssd_media_access_request_element</a> (<a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr)
+<a id='L621' name='L621'></a> 621 <em class='brace'>{</em>
+<a id='L622' name='L622'></a> 622    <a href='../D/2435.html' title='Multiple defined in 2 places.'>ssd_t</a> *currdisk = <a href='../S/187.html#L28' title='Defined at 28 in ssdmodel/ssd.c.'>getssd</a>(curr-&gt;devno);
+<a id='L623' name='L623'></a> 623    <strong class='reserved'>int</strong> blkno = curr-&gt;blkno;
+<a id='L624' name='L624'></a> 624    <strong class='reserved'>int</strong> count = curr-&gt;bcount;
+<a id='L625' name='L625'></a> 625 
+<a id='L626' name='L626'></a> 626    <em class='comment'>/* **** CAREFUL ... HIJACKING tempint2 and tempptr2 fields here **** */</em>
+<a id='L627' name='L627'></a> 627    curr-&gt;tempint2 = count;
+<a id='L628' name='L628'></a> 628    <strong class='reserved'>while</strong> (count != 0) <em class='brace'>{</em>
+<a id='L629' name='L629'></a> 629 
+<a id='L630' name='L630'></a> 630        <em class='comment'>// find the element (package) to direct the request</em>
+<a id='L631' name='L631'></a> 631        <strong class='reserved'>int</strong> elem_num = currdisk-&gt;timing_t-&gt;choose_element(currdisk-&gt;timing_t, blkno);
+<a id='L632' name='L632'></a> 632        <a href='../D/2359.html' title='Multiple defined in 2 places.'>ssd_element</a> *elem = &amp;currdisk-&gt;elements[elem_num];
+<a id='L633' name='L633'></a> 633 
+<a id='L634' name='L634'></a> 634        <em class='comment'>// create a new sub-request for the element</em>
+<a id='L635' name='L635'></a> 635        <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *tmp = (<a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *)<a href='../S/272.html#L193' title='Defined at 193 in src/disksim.c.'>getfromextraq</a>();
+<a id='L636' name='L636'></a> 636        tmp-&gt;devno = curr-&gt;devno;
+<a id='L637' name='L637'></a> 637        tmp-&gt;busno = curr-&gt;busno;
+<a id='L638' name='L638'></a> 638        tmp-&gt;flags = curr-&gt;flags;
+<a id='L639' name='L639'></a> 639        tmp-&gt;blkno = blkno;
+<a id='L640' name='L640'></a> 640        tmp-&gt;bcount = <a href='../S/159.html#L23' title='Defined at 23 in ssdmodel/ssd_timing.c.'>ssd_choose_aligned_count</a>(currdisk-&gt;params.page_size, blkno, count);
+<a id='L641' name='L641'></a> 641        <a href='../D/12.html' title='Multiple defined in 2 places.'>ASSERT</a>(tmp-&gt;bcount == currdisk-&gt;params.page_size);
+<a id='L642' name='L642'></a> 642 
+<a id='L643' name='L643'></a> 643        tmp-&gt;tempptr2 = curr;
+<a id='L644' name='L644'></a> 644        blkno += tmp-&gt;bcount;
+<a id='L645' name='L645'></a> 645        count -= tmp-&gt;bcount;
+<a id='L646' name='L646'></a> 646 
+<a id='L647' name='L647'></a> 647        elem-&gt;metadata.reqs_waiting ++;
+<a id='L648' name='L648'></a> 648 
+<a id='L649' name='L649'></a> 649        <em class='comment'>// add the request to the corresponding element's queue</em>
+<a id='L650' name='L650'></a> 650        <a href='../S/254.html#L3186' title='Defined at 3186 in src/disksim_ioqueue.c.'>ioqueue_add_new_request</a>(elem-&gt;queue, (<a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *)tmp);
+<a id='L651' name='L651'></a> 651        <a href='../S/187.html#L438' title='Defined at 438 in ssdmodel/ssd.c.'>ssd_activate_elem</a>(currdisk, elem_num);
+<a id='L652' name='L652'></a> 652    <em class='brace'>}</em>
+<a id='L653' name='L653'></a> 653 <em class='brace'>}</em>
+<a id='L654' name='L654'></a> 654 
+<a id='L655' name='L655'></a> 655 <strong class='reserved'>static</strong> <strong class='reserved'>void</strong> <a href='../R/2077.html' title='Multiple referred from 7 places.'>ssd_media_access_request</a> (<a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr)
+<a id='L656' name='L656'></a> 656 <em class='brace'>{</em>
+<a id='L657' name='L657'></a> 657     <a href='../D/2435.html' title='Multiple defined in 2 places.'>ssd_t</a> *currdisk = <a href='../S/187.html#L28' title='Defined at 28 in ssdmodel/ssd.c.'>getssd</a>(curr-&gt;devno);
+<a id='L658' name='L658'></a> 658 
+<a id='L659' name='L659'></a> 659     <strong class='reserved'>switch</strong>(currdisk-&gt;params.alloc_pool_logic) <em class='brace'>{</em>
+<a id='L660' name='L660'></a> 660         <strong class='reserved'>case</strong> <a href='../D/729.html' title='Multiple defined in 2 places.'>SSD_ALLOC_POOL_PLANE</a>:
+<a id='L661' name='L661'></a> 661         <strong class='reserved'>case</strong> <a href='../D/727.html' title='Multiple defined in 2 places.'>SSD_ALLOC_POOL_CHIP</a>:
+<a id='L662' name='L662'></a> 662             <a href='../S/187.html#L620' title='Defined at 620 in ssdmodel/ssd.c.'>ssd_media_access_request_element</a>(curr);
+<a id='L663' name='L663'></a> 663         <strong class='reserved'>break</strong>;
+<a id='L664' name='L664'></a> 664 
+<a id='L665' name='L665'></a> 665         <strong class='reserved'>case</strong> <a href='../D/728.html' title='Multiple defined in 2 places.'>SSD_ALLOC_POOL_GANG</a>:
+<a id='L666' name='L666'></a> 666 <em class='sharp'>#if</em> <a href='../D/777.html' title='Multiple defined in 2 places.'>SYNC_GANG</a>
+<a id='L667' name='L667'></a> 667             <a href='../S/146.html#L568' title='Defined at 568 in ssdmodel/ssd_gang.c.'>ssd_media_access_request_gang_sync</a>(curr);
+<a id='L668' name='L668'></a> 668 <em class='sharp'>#else</em>
+<a id='L669' name='L669'></a> 669             <a href='../S/146.html#L624' title='Defined at 624 in ssdmodel/ssd_gang.c.'>ssd_media_access_request_gang</a>(curr);
+<a id='L670' name='L670'></a> 670 <em class='sharp'>#endif</em>
+<a id='L671' name='L671'></a> 671         <strong class='reserved'>break</strong>;
+<a id='L672' name='L672'></a> 672 
+<a id='L673' name='L673'></a> 673         <strong class='reserved'>default</strong>:
+<a id='L674' name='L674'></a> 674             printf("Unknown alloc pool logic %d\n", currdisk-&gt;params.alloc_pool_logic);
+<a id='L675' name='L675'></a> 675             <a href='../D/12.html' title='Multiple defined in 2 places.'>ASSERT</a>(0);
+<a id='L676' name='L676'></a> 676     <em class='brace'>}</em>
+<a id='L677' name='L677'></a> 677 <em class='brace'>}</em>
+<a id='L678' name='L678'></a> 678 
+<a id='L679' name='L679'></a> 679 <strong class='reserved'>static</strong> <strong class='reserved'>void</strong> <a href='../S/187.html#L900' title='Referred from 900 in ssdmodel/ssd.c.'>ssd_reconnect_done</a> (<a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr)
+<a id='L680' name='L680'></a> 680 <em class='brace'>{</em>
+<a id='L681' name='L681'></a> 681    <a href='../D/2435.html' title='Multiple defined in 2 places.'>ssd_t</a> *currdisk;
+<a id='L682' name='L682'></a> 682 
+<a id='L683' name='L683'></a> 683    <em class='comment'>// fprintf (outputfile, "Entering ssd_reconnect_done for disk %d: %12.6f\n", curr-&gt;devno, simtime);</em>
+<a id='L684' name='L684'></a> 684 
+<a id='L685' name='L685'></a> 685    currdisk = <a href='../S/187.html#L28' title='Defined at 28 in ssdmodel/ssd.c.'>getssd</a> (curr-&gt;devno);
+<a id='L686' name='L686'></a> 686    <a href='../S/187.html#L109' title='Defined at 109 in ssdmodel/ssd.c.'>ssd_assert_current_activity</a>(currdisk, curr);
+<a id='L687' name='L687'></a> 687 
+<a id='L688' name='L688'></a> 688    <strong class='reserved'>if</strong> (curr-&gt;flags &amp; <a href='../S/283.html#L193' title='Defined at 193 in src/disksim_global.h.'>READ</a>) <em class='brace'>{</em>
+<a id='L689' name='L689'></a> 689       <strong class='reserved'>if</strong> (currdisk-&gt;neverdisconnect) <em class='brace'>{</em>
+<a id='L690' name='L690'></a> 690          <em class='comment'>/* Just holding on to bus; data transfer will be initiated when */</em>
+<a id='L691' name='L691'></a> 691          <em class='comment'>/* media access is complete.                                    */</em>
+<a id='L692' name='L692'></a> 692          <a href='../S/272.html#L176' title='Defined at 176 in src/disksim.c.'>addtoextraq</a>((<a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a> *) curr);
+<a id='L693' name='L693'></a> 693          <a href='../S/187.html#L185' title='Defined at 185 in ssdmodel/ssd.c.'>ssd_check_channel_activity</a> (currdisk);
+<a id='L694' name='L694'></a> 694       <em class='brace'>}</em> <strong class='reserved'>else</strong> <em class='brace'>{</em>
+<a id='L695' name='L695'></a> 695          <em class='comment'>/* data transfer: curr-&gt;bcount, which is still set to original */</em>
+<a id='L696' name='L696'></a> 696          <em class='comment'>/* requested value, indicates how many blks to transfer.       */</em>
+<a id='L697' name='L697'></a> 697          curr-&gt;type = <a href='../S/255.html#L132' title='Defined at 132 in src/disksim_iosim.h.'>DEVICE_DATA_TRANSFER_COMPLETE</a>;
+<a id='L698' name='L698'></a> 698          <a href='../S/187.html#L127' title='Defined at 127 in ssdmodel/ssd.c.'>ssd_send_event_up_path</a>(curr, (<strong class='reserved'>double</strong>) 0.0);
+<a id='L699' name='L699'></a> 699       <em class='brace'>}</em>
+<a id='L700' name='L700'></a> 700 
+<a id='L701' name='L701'></a> 701    <em class='brace'>}</em> <strong class='reserved'>else</strong> <em class='brace'>{</em>
+<a id='L702' name='L702'></a> 702       <strong class='reserved'>if</strong> (currdisk-&gt;reconnect_reason == <a href='../S/255.html#L130' title='Defined at 130 in src/disksim_iosim.h.'>DEVICE_ACCESS_COMPLETE</a>) <em class='brace'>{</em>
+<a id='L703' name='L703'></a> 703          <a href='../S/187.html#L308' title='Defined at 308 in ssdmodel/ssd.c.'>ssd_request_complete</a> (curr);
+<a id='L704' name='L704'></a> 704 
+<a id='L705' name='L705'></a> 705       <em class='brace'>}</em> <strong class='reserved'>else</strong> <em class='brace'>{</em>
+<a id='L706' name='L706'></a> 706          <em class='comment'>/* data transfer: curr-&gt;bcount, which is still set to original */</em>
+<a id='L707' name='L707'></a> 707          <em class='comment'>/* requested value, indicates how many blks to transfer.       */</em>
+<a id='L708' name='L708'></a> 708          curr-&gt;type = <a href='../S/255.html#L132' title='Defined at 132 in src/disksim_iosim.h.'>DEVICE_DATA_TRANSFER_COMPLETE</a>;
+<a id='L709' name='L709'></a> 709          <a href='../S/187.html#L127' title='Defined at 127 in ssdmodel/ssd.c.'>ssd_send_event_up_path</a>(curr, (<strong class='reserved'>double</strong>) 0.0);
+<a id='L710' name='L710'></a> 710       <em class='brace'>}</em>
+<a id='L711' name='L711'></a> 711    <em class='brace'>}</em>
+<a id='L712' name='L712'></a> 712 <em class='brace'>}</em>
+<a id='L713' name='L713'></a> 713 
+<a id='L714' name='L714'></a> 714 <strong class='reserved'>static</strong> <strong class='reserved'>void</strong> <a href='../S/187.html#L935' title='Referred from 935 in ssdmodel/ssd.c.'>ssd_request_arrive</a> (<a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr)
+<a id='L715' name='L715'></a> 715 <em class='brace'>{</em>
+<a id='L716' name='L716'></a> 716    <a href='../D/2435.html' title='Multiple defined in 2 places.'>ssd_t</a> *currdisk;
+<a id='L717' name='L717'></a> 717 
+<a id='L718' name='L718'></a> 718    <em class='comment'>// fprintf (outputfile, "Entering ssd_request_arrive: %12.6f\n", simtime);</em>
+<a id='L719' name='L719'></a> 719    <em class='comment'>// fprintf (outputfile, "ssd = %d, blkno = %d, bcount = %d, read = %d\n",curr-&gt;devno, curr-&gt;blkno, curr-&gt;bcount, (READ &amp; curr-&gt;flags));</em>
+<a id='L720' name='L720'></a> 720 
+<a id='L721' name='L721'></a> 721    currdisk = <a href='../S/187.html#L28' title='Defined at 28 in ssdmodel/ssd.c.'>getssd</a>(curr-&gt;devno);
+<a id='L722' name='L722'></a> 722 
+<a id='L723' name='L723'></a> 723    <em class='comment'>/* verify that request is valid. */</em>
+<a id='L724' name='L724'></a> 724    <strong class='reserved'>if</strong> ((curr-&gt;blkno &lt; 0) || (curr-&gt;bcount &lt;= 0) ||
+<a id='L725' name='L725'></a> 725        ((curr-&gt;blkno + curr-&gt;bcount) &gt; currdisk-&gt;numblocks)) <em class='brace'>{</em>
+<a id='L726' name='L726'></a> 726       fprintf(stderr, "Invalid set of blocks requested from ssd - blkno %d, bcount %d, numblocks %d\n", curr-&gt;blkno, curr-&gt;bcount, currdisk-&gt;numblocks);
+<a id='L727' name='L727'></a> 727       exit(1);
+<a id='L728' name='L728'></a> 728    <em class='brace'>}</em>
+<a id='L729' name='L729'></a> 729 
+<a id='L730' name='L730'></a> 730    <em class='comment'>/* create a new request, set it up for initial interrupt */</em>
+<a id='L731' name='L731'></a> 731    <a href='../S/254.html#L3186' title='Defined at 3186 in src/disksim_ioqueue.c.'>ioqueue_add_new_request</a>(currdisk-&gt;queue, curr);
+<a id='L732' name='L732'></a> 732    <strong class='reserved'>if</strong> (currdisk-&gt;channel_activity == NULL) <em class='brace'>{</em>
+<a id='L733' name='L733'></a> 733 
+<a id='L734' name='L734'></a> 734       curr = <a href='../S/254.html#L3150' title='Defined at 3150 in src/disksim_ioqueue.c.'>ioqueue_get_next_request</a>(currdisk-&gt;queue);
+<a id='L735' name='L735'></a> 735       currdisk-&gt;busowned = <a href='../S/187.html#L97' title='Defined at 97 in ssdmodel/ssd.c.'>ssd_get_busno</a>(curr);
+<a id='L736' name='L736'></a> 736       currdisk-&gt;channel_activity = curr;
+<a id='L737' name='L737'></a> 737       currdisk-&gt;reconnect_reason = <a href='../S/255.html#L125' title='Defined at 125 in src/disksim_iosim.h.'>IO_INTERRUPT_ARRIVE</a>;
+<a id='L738' name='L738'></a> 738 
+<a id='L739' name='L739'></a> 739       <strong class='reserved'>if</strong> (curr-&gt;flags &amp; <a href='../S/283.html#L193' title='Defined at 193 in src/disksim_global.h.'>READ</a>) <em class='brace'>{</em>
+<a id='L740' name='L740'></a> 740           <strong class='reserved'>if</strong> (!currdisk-&gt;neverdisconnect) <em class='brace'>{</em>
+<a id='L741' name='L741'></a> 741               <a href='../S/187.html#L655' title='Defined at 655 in ssdmodel/ssd.c.'>ssd_media_access_request</a> (<a href='../S/194.html#L122' title='Defined at 122 in src/disksim_iosim.c.'>ioreq_copy</a>(curr));
+<a id='L742' name='L742'></a> 742               curr-&gt;cause = <a href='../S/255.html#L166' title='Defined at 166 in src/disksim_iosim.h.'>DISCONNECT</a>;
+<a id='L743' name='L743'></a> 743               curr-&gt;type = <a href='../S/255.html#L125' title='Defined at 125 in src/disksim_iosim.h.'>IO_INTERRUPT_ARRIVE</a>;
+<a id='L744' name='L744'></a> 744               <a href='../S/187.html#L127' title='Defined at 127 in ssdmodel/ssd.c.'>ssd_send_event_up_path</a>(curr, currdisk-&gt;bus_transaction_latency);
+<a id='L745' name='L745'></a> 745           <em class='brace'>}</em> <strong class='reserved'>else</strong> <em class='brace'>{</em>
+<a id='L746' name='L746'></a> 746               <a href='../S/187.html#L655' title='Defined at 655 in ssdmodel/ssd.c.'>ssd_media_access_request</a> (curr);
+<a id='L747' name='L747'></a> 747               <a href='../S/187.html#L185' title='Defined at 185 in ssdmodel/ssd.c.'>ssd_check_channel_activity</a>(currdisk);
+<a id='L748' name='L748'></a> 748           <em class='brace'>}</em>
+<a id='L749' name='L749'></a> 749       <em class='brace'>}</em> <strong class='reserved'>else</strong> <em class='brace'>{</em>
+<a id='L750' name='L750'></a> 750          curr-&gt;cause = <a href='../S/255.html#L167' title='Defined at 167 in src/disksim_iosim.h.'>READY_TO_TRANSFER</a>;
+<a id='L751' name='L751'></a> 751          curr-&gt;type = <a href='../S/255.html#L125' title='Defined at 125 in src/disksim_iosim.h.'>IO_INTERRUPT_ARRIVE</a>;
+<a id='L752' name='L752'></a> 752          <a href='../S/187.html#L127' title='Defined at 127 in ssdmodel/ssd.c.'>ssd_send_event_up_path</a>(curr, currdisk-&gt;bus_transaction_latency);
+<a id='L753' name='L753'></a> 753       <em class='brace'>}</em>
+<a id='L754' name='L754'></a> 754    <em class='brace'>}</em>
+<a id='L755' name='L755'></a> 755 <em class='brace'>}</em>
+<a id='L756' name='L756'></a> 756 
+<a id='L757' name='L757'></a> 757 <em class='comment'>/*</em>
+<a id='L758' name='L758'></a> 758 <em class='comment'> * cleaning in an element is over.</em>
+<a id='L759' name='L759'></a> 759 <em class='comment'> */</em>
+<a id='L760' name='L760'></a> 760 <strong class='reserved'>static</strong> <strong class='reserved'>void</strong> <a href='../S/187.html#L962' title='Referred from 962 in ssdmodel/ssd.c.'>ssd_clean_element_complete</a>(<a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr)
+<a id='L761' name='L761'></a> 761 <em class='brace'>{</em>
+<a id='L762' name='L762'></a> 762    <a href='../D/2435.html' title='Multiple defined in 2 places.'>ssd_t</a> *currdisk;
+<a id='L763' name='L763'></a> 763    <strong class='reserved'>int</strong> elem_num;
+<a id='L764' name='L764'></a> 764 
+<a id='L765' name='L765'></a> 765    currdisk = <a href='../S/187.html#L28' title='Defined at 28 in ssdmodel/ssd.c.'>getssd</a> (curr-&gt;devno);
+<a id='L766' name='L766'></a> 766    elem_num = curr-&gt;ssd_elem_num;
+<a id='L767' name='L767'></a> 767    <a href='../D/12.html' title='Multiple defined in 2 places.'>ASSERT</a>(currdisk-&gt;elements[elem_num].media_busy == <a href='../D/803.html' title='Multiple defined in 2 places.'>TRUE</a>);
+<a id='L768' name='L768'></a> 768 
+<a id='L769' name='L769'></a> 769    <em class='comment'>// release this event</em>
+<a id='L770' name='L770'></a> 770    <a href='../S/272.html#L176' title='Defined at 176 in src/disksim.c.'>addtoextraq</a>((<a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a> *) curr);
+<a id='L771' name='L771'></a> 771 
+<a id='L772' name='L772'></a> 772    <em class='comment'>// activate the gang to serve the next set of requests</em>
+<a id='L773' name='L773'></a> 773    currdisk-&gt;elements[elem_num].media_busy = 0;
+<a id='L774' name='L774'></a> 774    <a href='../S/187.html#L438' title='Defined at 438 in ssdmodel/ssd.c.'>ssd_activate_elem</a>(currdisk, elem_num);
+<a id='L775' name='L775'></a> 775 <em class='brace'>}</em>
+<a id='L776' name='L776'></a> 776 
+<a id='L777' name='L777'></a> 777 <strong class='reserved'>void</strong> <a href='../R/2029.html' title='Multiple referred from 5 places.'>ssd_complete_parent</a>(<a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr, <a href='../D/2435.html' title='Multiple defined in 2 places.'>ssd_t</a> *currdisk)
+<a id='L778' name='L778'></a> 778 <em class='brace'>{</em>
+<a id='L779' name='L779'></a> 779     <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *parent;
+<a id='L780' name='L780'></a> 780 
+<a id='L781' name='L781'></a> 781     <em class='comment'>/* **** CAREFUL ... HIJACKING tempint2 and tempptr2 fields here **** */</em>
+<a id='L782' name='L782'></a> 782     parent = curr-&gt;tempptr2;
+<a id='L783' name='L783'></a> 783     parent-&gt;tempint2 -= curr-&gt;bcount;
+<a id='L784' name='L784'></a> 784 
+<a id='L785' name='L785'></a> 785     <strong class='reserved'>if</strong> (parent-&gt;tempint2 == 0) <em class='brace'>{</em>
+<a id='L786' name='L786'></a> 786       <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *prev;
+<a id='L787' name='L787'></a> 787 
+<a id='L788' name='L788'></a> 788       assert(parent != currdisk-&gt;channel_activity);
+<a id='L789' name='L789'></a> 789       prev = currdisk-&gt;completion_queue;
+<a id='L790' name='L790'></a> 790       <strong class='reserved'>if</strong> (prev == NULL) <em class='brace'>{</em>
+<a id='L791' name='L791'></a> 791          currdisk-&gt;completion_queue = parent;
+<a id='L792' name='L792'></a> 792          parent-&gt;next = prev;
+<a id='L793' name='L793'></a> 793       <em class='brace'>}</em> <strong class='reserved'>else</strong> <em class='brace'>{</em>
+<a id='L794' name='L794'></a> 794          <strong class='reserved'>while</strong> (prev-&gt;next != NULL)
+<a id='L795' name='L795'></a> 795             prev = prev-&gt;next;
+<a id='L796' name='L796'></a> 796             parent-&gt;next = prev-&gt;next;
+<a id='L797' name='L797'></a> 797             prev-&gt;next = parent;
+<a id='L798' name='L798'></a> 798       <em class='brace'>}</em>
+<a id='L799' name='L799'></a> 799       <strong class='reserved'>if</strong> (currdisk-&gt;channel_activity == NULL) <em class='brace'>{</em>
+<a id='L800' name='L800'></a> 800          <a href='../S/187.html#L185' title='Defined at 185 in ssdmodel/ssd.c.'>ssd_check_channel_activity</a> (currdisk);
+<a id='L801' name='L801'></a> 801       <em class='brace'>}</em>
+<a id='L802' name='L802'></a> 802     <em class='brace'>}</em>
+<a id='L803' name='L803'></a> 803 <em class='brace'>}</em>
+<a id='L804' name='L804'></a> 804 
+<a id='L805' name='L805'></a> 805 <strong class='reserved'>static</strong> <strong class='reserved'>void</strong> <a href='../S/187.html#L839' title='Referred from 839 in ssdmodel/ssd.c.'>ssd_access_complete_element</a>(<a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr)
+<a id='L806' name='L806'></a> 806 <em class='brace'>{</em>
+<a id='L807' name='L807'></a> 807    <a href='../D/2435.html' title='Multiple defined in 2 places.'>ssd_t</a> *currdisk;
+<a id='L808' name='L808'></a> 808    <strong class='reserved'>int</strong> elem_num;
+<a id='L809' name='L809'></a> 809    <a href='../D/2359.html' title='Multiple defined in 2 places.'>ssd_element</a>  *elem;
+<a id='L810' name='L810'></a> 810    <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *x;
+<a id='L811' name='L811'></a> 811 
+<a id='L812' name='L812'></a> 812    currdisk = <a href='../S/187.html#L28' title='Defined at 28 in ssdmodel/ssd.c.'>getssd</a> (curr-&gt;devno);
+<a id='L813' name='L813'></a> 813    elem_num = currdisk-&gt;timing_t-&gt;choose_element(currdisk-&gt;timing_t, curr-&gt;blkno);
+<a id='L814' name='L814'></a> 814    <a href='../D/12.html' title='Multiple defined in 2 places.'>ASSERT</a>(elem_num == curr-&gt;ssd_elem_num);
+<a id='L815' name='L815'></a> 815    elem = &amp;currdisk-&gt;elements[elem_num];
+<a id='L816' name='L816'></a> 816 
+<a id='L817' name='L817'></a> 817    <strong class='reserved'>if</strong> ((x = <a href='../S/254.html#L3533' title='Defined at 3533 in src/disksim_ioqueue.c.'>ioqueue_physical_access_done</a>(elem-&gt;queue,curr)) == NULL) <em class='brace'>{</em>
+<a id='L818' name='L818'></a> 818       fprintf(stderr, "ssd_access_complete:  ioreq_event not found by ioqueue_physical_access_done call\n");
+<a id='L819' name='L819'></a> 819       exit(1);
+<a id='L820' name='L820'></a> 820    <em class='brace'>}</em>
+<a id='L821' name='L821'></a> 821 
+<a id='L822' name='L822'></a> 822    <em class='comment'>// all the reqs are over</em>
+<a id='L823' name='L823'></a> 823    <strong class='reserved'>if</strong> (<a href='../S/254.html#L260' title='Defined at 260 in src/disksim_ioqueue.c.'>ioqueue_get_reqoutstanding</a>(elem-&gt;queue) == 0) <em class='brace'>{</em>
+<a id='L824' name='L824'></a> 824     elem-&gt;media_busy = <a href='../D/374.html' title='Multiple defined in 2 places.'>FALSE</a>;
+<a id='L825' name='L825'></a> 825    <em class='brace'>}</em>
+<a id='L826' name='L826'></a> 826 
+<a id='L827' name='L827'></a> 827    <a href='../S/187.html#L777' title='Defined at 777 in ssdmodel/ssd.c.'>ssd_complete_parent</a>(curr, currdisk);
+<a id='L828' name='L828'></a> 828    <a href='../S/272.html#L176' title='Defined at 176 in src/disksim.c.'>addtoextraq</a>((<a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a> *) curr);
+<a id='L829' name='L829'></a> 829    <a href='../S/187.html#L438' title='Defined at 438 in ssdmodel/ssd.c.'>ssd_activate_elem</a>(currdisk, elem_num);
+<a id='L830' name='L830'></a> 830 <em class='brace'>}</em>
+<a id='L831' name='L831'></a> 831 
+<a id='L832' name='L832'></a> 832 <strong class='reserved'>static</strong> <strong class='reserved'>void</strong> <a href='../S/187.html#L939' title='Referred from 939 in ssdmodel/ssd.c.'>ssd_access_complete</a>(<a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr)
+<a id='L833' name='L833'></a> 833 <em class='brace'>{</em>
+<a id='L834' name='L834'></a> 834     <a href='../D/2435.html' title='Multiple defined in 2 places.'>ssd_t</a> *currdisk = <a href='../S/187.html#L28' title='Defined at 28 in ssdmodel/ssd.c.'>getssd</a> (curr-&gt;devno);;
+<a id='L835' name='L835'></a> 835 
+<a id='L836' name='L836'></a> 836     <strong class='reserved'>switch</strong>(currdisk-&gt;params.alloc_pool_logic) <em class='brace'>{</em>
+<a id='L837' name='L837'></a> 837         <strong class='reserved'>case</strong> <a href='../D/729.html' title='Multiple defined in 2 places.'>SSD_ALLOC_POOL_PLANE</a>:
+<a id='L838' name='L838'></a> 838         <strong class='reserved'>case</strong> <a href='../D/727.html' title='Multiple defined in 2 places.'>SSD_ALLOC_POOL_CHIP</a>:
+<a id='L839' name='L839'></a> 839             <a href='../S/187.html#L805' title='Defined at 805 in ssdmodel/ssd.c.'>ssd_access_complete_element</a>(curr);
+<a id='L840' name='L840'></a> 840         <strong class='reserved'>break</strong>;
+<a id='L841' name='L841'></a> 841 
+<a id='L842' name='L842'></a> 842         <strong class='reserved'>case</strong> <a href='../D/728.html' title='Multiple defined in 2 places.'>SSD_ALLOC_POOL_GANG</a>:
+<a id='L843' name='L843'></a> 843 <em class='sharp'>#if</em> <a href='../D/777.html' title='Multiple defined in 2 places.'>SYNC_GANG</a>
+<a id='L844' name='L844'></a> 844             <a href='../S/146.html#L720' title='Defined at 720 in ssdmodel/ssd_gang.c.'>ssd_access_complete_gang_sync</a>(curr);
+<a id='L845' name='L845'></a> 845 <em class='sharp'>#else</em>
+<a id='L846' name='L846'></a> 846             <a href='../S/146.html#L746' title='Defined at 746 in ssdmodel/ssd_gang.c.'>ssd_access_complete_gang</a>(curr);
+<a id='L847' name='L847'></a> 847 <em class='sharp'>#endif</em>
+<a id='L848' name='L848'></a> 848         <strong class='reserved'>break</strong>;
+<a id='L849' name='L849'></a> 849 
+<a id='L850' name='L850'></a> 850         <strong class='reserved'>default</strong>:
+<a id='L851' name='L851'></a> 851             printf("Unknown alloc pool logic %d\n", currdisk-&gt;params.alloc_pool_logic);
+<a id='L852' name='L852'></a> 852             <a href='../D/12.html' title='Multiple defined in 2 places.'>ASSERT</a>(0);
+<a id='L853' name='L853'></a> 853     <em class='brace'>}</em>
+<a id='L854' name='L854'></a> 854 <em class='brace'>}</em>
+<a id='L855' name='L855'></a> 855 
+<a id='L856' name='L856'></a> 856 <em class='comment'>/* intermediate disconnect done */</em>
+<a id='L857' name='L857'></a> 857 <strong class='reserved'>static</strong> <strong class='reserved'>void</strong> <a href='../S/187.html#L904' title='Referred from 904 in ssdmodel/ssd.c.'>ssd_disconnect_done</a> (<a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr)
+<a id='L858' name='L858'></a> 858 <em class='brace'>{</em>
+<a id='L859' name='L859'></a> 859    <a href='../D/2435.html' title='Multiple defined in 2 places.'>ssd_t</a> *currdisk;
+<a id='L860' name='L860'></a> 860 
+<a id='L861' name='L861'></a> 861    currdisk = <a href='../S/187.html#L28' title='Defined at 28 in ssdmodel/ssd.c.'>getssd</a> (curr-&gt;devno);
+<a id='L862' name='L862'></a> 862    <a href='../S/187.html#L109' title='Defined at 109 in ssdmodel/ssd.c.'>ssd_assert_current_activity</a>(currdisk, curr);
+<a id='L863' name='L863'></a> 863 
+<a id='L864' name='L864'></a> 864    <em class='comment'>// fprintf (outputfile, "Entering ssd_disconnect for disk %d: %12.6f\n", currdisk-&gt;devno, simtime);</em>
+<a id='L865' name='L865'></a> 865 
+<a id='L866' name='L866'></a> 866    <a href='../S/272.html#L176' title='Defined at 176 in src/disksim.c.'>addtoextraq</a>((<a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a> *) curr);
+<a id='L867' name='L867'></a> 867 
+<a id='L868' name='L868'></a> 868    <strong class='reserved'>if</strong> (currdisk-&gt;busowned != -1) <em class='brace'>{</em>
+<a id='L869' name='L869'></a> 869       <a href='../S/200.html#L441' title='Defined at 441 in src/disksim_bus.c.'>bus_ownership_release</a>(currdisk-&gt;busowned);
+<a id='L870' name='L870'></a> 870       currdisk-&gt;busowned = -1;
+<a id='L871' name='L871'></a> 871    <em class='brace'>}</em>
+<a id='L872' name='L872'></a> 872    <a href='../S/187.html#L185' title='Defined at 185 in ssdmodel/ssd.c.'>ssd_check_channel_activity</a> (currdisk);
+<a id='L873' name='L873'></a> 873 <em class='brace'>}</em>
+<a id='L874' name='L874'></a> 874 
+<a id='L875' name='L875'></a> 875 <em class='comment'>/* completion disconnect done */</em>
+<a id='L876' name='L876'></a> 876 <strong class='reserved'>static</strong> <strong class='reserved'>void</strong> <a href='../S/187.html#L908' title='Referred from 908 in ssdmodel/ssd.c.'>ssd_completion_done</a> (<a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr)
+<a id='L877' name='L877'></a> 877 <em class='brace'>{</em>
+<a id='L878' name='L878'></a> 878    <a href='../D/2435.html' title='Multiple defined in 2 places.'>ssd_t</a> *currdisk = <a href='../S/187.html#L28' title='Defined at 28 in ssdmodel/ssd.c.'>getssd</a> (curr-&gt;devno);
+<a id='L879' name='L879'></a> 879    <a href='../S/187.html#L109' title='Defined at 109 in ssdmodel/ssd.c.'>ssd_assert_current_activity</a>(currdisk, curr);
+<a id='L880' name='L880'></a> 880 
+<a id='L881' name='L881'></a> 881    <em class='comment'>// fprintf (outputfile, "Entering ssd_completion for disk %d: %12.6f\n", currdisk-&gt;devno, simtime);</em>
+<a id='L882' name='L882'></a> 882 
+<a id='L883' name='L883'></a> 883    <a href='../S/272.html#L176' title='Defined at 176 in src/disksim.c.'>addtoextraq</a>((<a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a> *) curr);
+<a id='L884' name='L884'></a> 884 
+<a id='L885' name='L885'></a> 885    <strong class='reserved'>if</strong> (currdisk-&gt;busowned != -1) <em class='brace'>{</em>
+<a id='L886' name='L886'></a> 886       <a href='../S/200.html#L441' title='Defined at 441 in src/disksim_bus.c.'>bus_ownership_release</a>(currdisk-&gt;busowned);
+<a id='L887' name='L887'></a> 887       currdisk-&gt;busowned = -1;
+<a id='L888' name='L888'></a> 888    <em class='brace'>}</em>
+<a id='L889' name='L889'></a> 889 
+<a id='L890' name='L890'></a> 890    <a href='../S/187.html#L185' title='Defined at 185 in ssdmodel/ssd.c.'>ssd_check_channel_activity</a> (currdisk);
+<a id='L891' name='L891'></a> 891 <em class='brace'>}</em>
+<a id='L892' name='L892'></a> 892 
+<a id='L893' name='L893'></a> 893 <strong class='reserved'>static</strong> <strong class='reserved'>void</strong> <a href='../S/187.html#L947' title='Referred from 947 in ssdmodel/ssd.c.'>ssd_interrupt_complete</a> (<a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr)
+<a id='L894' name='L894'></a> 894 <em class='brace'>{</em>
+<a id='L895' name='L895'></a> 895    <em class='comment'>// fprintf (outputfile, "Entered ssd_interrupt_complete - cause %d\n", curr-&gt;cause);</em>
+<a id='L896' name='L896'></a> 896 
+<a id='L897' name='L897'></a> 897    <strong class='reserved'>switch</strong> (curr-&gt;cause) <em class='brace'>{</em>
+<a id='L898' name='L898'></a> 898 
+<a id='L899' name='L899'></a> 899       <strong class='reserved'>case</strong> <a href='../S/255.html#L165' title='Defined at 165 in src/disksim_iosim.h.'>RECONNECT</a>:
+<a id='L900' name='L900'></a> 900          <a href='../S/187.html#L679' title='Defined at 679 in ssdmodel/ssd.c.'>ssd_reconnect_done</a>(curr);
+<a id='L901' name='L901'></a> 901      <strong class='reserved'>break</strong>;
+<a id='L902' name='L902'></a> 902 
+<a id='L903' name='L903'></a> 903       <strong class='reserved'>case</strong> <a href='../S/255.html#L166' title='Defined at 166 in src/disksim_iosim.h.'>DISCONNECT</a>:
+<a id='L904' name='L904'></a> 904      <a href='../S/187.html#L857' title='Defined at 857 in ssdmodel/ssd.c.'>ssd_disconnect_done</a>(curr);
+<a id='L905' name='L905'></a> 905      <strong class='reserved'>break</strong>;
+<a id='L906' name='L906'></a> 906 
+<a id='L907' name='L907'></a> 907       <strong class='reserved'>case</strong> <a href='../S/255.html#L164' title='Defined at 164 in src/disksim_iosim.h.'>COMPLETION</a>:
+<a id='L908' name='L908'></a> 908      <a href='../S/187.html#L876' title='Defined at 876 in ssdmodel/ssd.c.'>ssd_completion_done</a>(curr);
+<a id='L909' name='L909'></a> 909      <strong class='reserved'>break</strong>;
+<a id='L910' name='L910'></a> 910 
+<a id='L911' name='L911'></a> 911       <strong class='reserved'>default</strong>:
+<a id='L912' name='L912'></a> 912          <a href='../D/1152.html' title='Multiple defined in 2 places.'>ddbg_assert2</a>(0, "bad event type");
+<a id='L913' name='L913'></a> 913    <em class='brace'>}</em>
+<a id='L914' name='L914'></a> 914 <em class='brace'>}</em>
+<a id='L915' name='L915'></a> 915 
+<a id='L916' name='L916'></a> 916 
+<a id='L917' name='L917'></a> 917 <strong class='reserved'>void</strong> <a href='../R/2046.html' title='Multiple referred from 3 places.'>ssd_event_arrive</a> (<a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr)
+<a id='L918' name='L918'></a> 918 <em class='brace'>{</em>
+<a id='L919' name='L919'></a> 919    <a href='../D/2435.html' title='Multiple defined in 2 places.'>ssd_t</a> *currdisk;
+<a id='L920' name='L920'></a> 920 
+<a id='L921' name='L921'></a> 921    <em class='comment'>// fprintf (outputfile, "Entered ssd_event_arrive: time %f (simtime %f)\n", curr-&gt;time, simtime);</em>
+<a id='L922' name='L922'></a> 922    <em class='comment'>// fprintf (outputfile, " - devno %d, blkno %d, type %d, cause %d, read = %d\n", curr-&gt;devno, curr-&gt;blkno, curr-&gt;type, curr-&gt;cause, curr-&gt;flags &amp; READ);</em>
+<a id='L923' name='L923'></a> 923 
+<a id='L924' name='L924'></a> 924    currdisk = <a href='../S/187.html#L28' title='Defined at 28 in ssdmodel/ssd.c.'>getssd</a> (curr-&gt;devno);
+<a id='L925' name='L925'></a> 925 
+<a id='L926' name='L926'></a> 926    <strong class='reserved'>switch</strong> (curr-&gt;type) <em class='brace'>{</em>
+<a id='L927' name='L927'></a> 927 
+<a id='L928' name='L928'></a> 928       <strong class='reserved'>case</strong> <a href='../S/255.html#L124' title='Defined at 124 in src/disksim_iosim.h.'>IO_ACCESS_ARRIVE</a>:
+<a id='L929' name='L929'></a> 929          curr-&gt;time = <a href='../S/283.html#L438' title='Defined at 438 in src/disksim_global.h.'>simtime</a> + currdisk-&gt;overhead;
+<a id='L930' name='L930'></a> 930          curr-&gt;type = <a href='../S/255.html#L129' title='Defined at 129 in src/disksim_iosim.h.'>DEVICE_OVERHEAD_COMPLETE</a>;
+<a id='L931' name='L931'></a> 931          <a href='../S/272.html#L280' title='Defined at 280 in src/disksim.c.'>addtointq</a>((<a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a> *) curr);
+<a id='L932' name='L932'></a> 932          <strong class='reserved'>break</strong>;
+<a id='L933' name='L933'></a> 933 
+<a id='L934' name='L934'></a> 934       <strong class='reserved'>case</strong> <a href='../S/255.html#L129' title='Defined at 129 in src/disksim_iosim.h.'>DEVICE_OVERHEAD_COMPLETE</a>:
+<a id='L935' name='L935'></a> 935          <a href='../S/187.html#L714' title='Defined at 714 in ssdmodel/ssd.c.'>ssd_request_arrive</a>(curr);
+<a id='L936' name='L936'></a> 936          <strong class='reserved'>break</strong>;
+<a id='L937' name='L937'></a> 937 
+<a id='L938' name='L938'></a> 938       <strong class='reserved'>case</strong> <a href='../S/255.html#L130' title='Defined at 130 in src/disksim_iosim.h.'>DEVICE_ACCESS_COMPLETE</a>:
+<a id='L939' name='L939'></a> 939          <a href='../S/187.html#L832' title='Defined at 832 in ssdmodel/ssd.c.'>ssd_access_complete</a> (curr);
+<a id='L940' name='L940'></a> 940          <strong class='reserved'>break</strong>;
+<a id='L941' name='L941'></a> 941 
+<a id='L942' name='L942'></a> 942       <strong class='reserved'>case</strong> <a href='../S/255.html#L132' title='Defined at 132 in src/disksim_iosim.h.'>DEVICE_DATA_TRANSFER_COMPLETE</a>:
+<a id='L943' name='L943'></a> 943          <a href='../S/187.html#L329' title='Defined at 329 in ssdmodel/ssd.c.'>ssd_bustransfer_complete</a>(curr);
+<a id='L944' name='L944'></a> 944          <strong class='reserved'>break</strong>;
+<a id='L945' name='L945'></a> 945 
+<a id='L946' name='L946'></a> 946       <strong class='reserved'>case</strong> <a href='../S/255.html#L128' title='Defined at 128 in src/disksim_iosim.h.'>IO_INTERRUPT_COMPLETE</a>:
+<a id='L947' name='L947'></a> 947          <a href='../S/187.html#L893' title='Defined at 893 in ssdmodel/ssd.c.'>ssd_interrupt_complete</a>(curr);
+<a id='L948' name='L948'></a> 948          <strong class='reserved'>break</strong>;
+<a id='L949' name='L949'></a> 949 
+<a id='L950' name='L950'></a> 950       <strong class='reserved'>case</strong> <a href='../S/255.html#L143' title='Defined at 143 in src/disksim_iosim.h.'>IO_QLEN_MAXCHECK</a>:
+<a id='L951' name='L951'></a> 951          <em class='comment'>/* Used only at initialization time to set up queue stuff */</em>
+<a id='L952' name='L952'></a> 952          curr-&gt;tempint1 = -1;
+<a id='L953' name='L953'></a> 953          curr-&gt;tempint2 = <a href='../S/187.html#L77' title='Defined at 77 in ssdmodel/ssd.c.'>ssd_get_maxoutstanding</a>(curr-&gt;devno);
+<a id='L954' name='L954'></a> 954          curr-&gt;bcount = 0;
+<a id='L955' name='L955'></a> 955          <strong class='reserved'>break</strong>;
+<a id='L956' name='L956'></a> 956 
+<a id='L957' name='L957'></a> 957       <strong class='reserved'>case</strong> <a href='../S/255.html#L159' title='Defined at 159 in src/disksim_iosim.h.'>SSD_CLEAN_GANG</a>:
+<a id='L958' name='L958'></a> 958           <a href='../S/146.html#L688' title='Defined at 688 in ssdmodel/ssd_gang.c.'>ssd_clean_gang_complete</a>(curr);
+<a id='L959' name='L959'></a> 959           <strong class='reserved'>break</strong>;
+<a id='L960' name='L960'></a> 960 
+<a id='L961' name='L961'></a> 961       <strong class='reserved'>case</strong> <a href='../S/255.html#L158' title='Defined at 158 in src/disksim_iosim.h.'>SSD_CLEAN_ELEMENT</a>:
+<a id='L962' name='L962'></a> 962           <a href='../S/187.html#L760' title='Defined at 760 in ssdmodel/ssd.c.'>ssd_clean_element_complete</a>(curr);
+<a id='L963' name='L963'></a> 963           <strong class='reserved'>break</strong>;
+<a id='L964' name='L964'></a> 964 
+<a id='L965' name='L965'></a> 965         <strong class='reserved'>default</strong>:
+<a id='L966' name='L966'></a> 966          fprintf(stderr, "Unrecognized event type at ssd_event_arrive\n");
+<a id='L967' name='L967'></a> 967          exit(1);
+<a id='L968' name='L968'></a> 968    <em class='brace'>}</em>
+<a id='L969' name='L969'></a> 969 
+<a id='L970' name='L970'></a> 970    <em class='comment'>// fprintf (outputfile, "Exiting ssd_event_arrive\n");</em>
+<a id='L971' name='L971'></a> 971 <em class='brace'>}</em>
+<a id='L972' name='L972'></a> 972 
+<a id='L973' name='L973'></a> 973 
+<a id='L974' name='L974'></a> 974 <strong class='reserved'>int</strong> <a href='../R/2062.html' title='Multiple referred from 3 places.'>ssd_get_number_of_blocks</a> (<strong class='reserved'>int</strong> devno)
+<a id='L975' name='L975'></a> 975 <em class='brace'>{</em>
+<a id='L976' name='L976'></a> 976    <a href='../D/2435.html' title='Multiple defined in 2 places.'>ssd_t</a> *currdisk = <a href='../S/187.html#L28' title='Defined at 28 in ssdmodel/ssd.c.'>getssd</a> (devno);
+<a id='L977' name='L977'></a> 977    <strong class='reserved'>return</strong> (currdisk-&gt;numblocks);
+<a id='L978' name='L978'></a> 978 <em class='brace'>}</em>
+<a id='L979' name='L979'></a> 979 
+<a id='L980' name='L980'></a> 980 
+<a id='L981' name='L981'></a> 981 <strong class='reserved'>int</strong> <a href='../R/2063.html' title='Multiple referred from 3 places.'>ssd_get_numcyls</a> (<strong class='reserved'>int</strong> devno)
+<a id='L982' name='L982'></a> 982 <em class='brace'>{</em>
+<a id='L983' name='L983'></a> 983    <a href='../D/2435.html' title='Multiple defined in 2 places.'>ssd_t</a> *currdisk = <a href='../S/187.html#L28' title='Defined at 28 in ssdmodel/ssd.c.'>getssd</a> (devno);
+<a id='L984' name='L984'></a> 984    <strong class='reserved'>return</strong> (currdisk-&gt;numblocks);
+<a id='L985' name='L985'></a> 985 <em class='brace'>}</em>
+<a id='L986' name='L986'></a> 986 
+<a id='L987' name='L987'></a> 987 
+<a id='L988' name='L988'></a> 988 <strong class='reserved'>void</strong> <a href='../R/2060.html' title='Multiple referred from 3 places.'>ssd_get_mapping</a> (<strong class='reserved'>int</strong> maptype, <strong class='reserved'>int</strong> devno, <strong class='reserved'>int</strong> blkno, <strong class='reserved'>int</strong> *cylptr, <strong class='reserved'>int</strong> *surfaceptr, <strong class='reserved'>int</strong> *blkptr)
+<a id='L989' name='L989'></a> 989 <em class='brace'>{</em>
+<a id='L990' name='L990'></a> 990    <a href='../D/2435.html' title='Multiple defined in 2 places.'>ssd_t</a> *currdisk = <a href='../S/187.html#L28' title='Defined at 28 in ssdmodel/ssd.c.'>getssd</a> (devno);
+<a id='L991' name='L991'></a> 991 
+<a id='L992' name='L992'></a> 992    <strong class='reserved'>if</strong> ((blkno &lt; 0) || (blkno &gt;= currdisk-&gt;numblocks)) <em class='brace'>{</em>
+<a id='L993' name='L993'></a> 993       fprintf(stderr, "Invalid blkno at ssd_get_mapping: %d\n", blkno);
+<a id='L994' name='L994'></a> 994       exit(1);
+<a id='L995' name='L995'></a> 995    <em class='brace'>}</em>
+<a id='L996' name='L996'></a> 996 
+<a id='L997' name='L997'></a> 997    <strong class='reserved'>if</strong> (cylptr) <em class='brace'>{</em>
+<a id='L998' name='L998'></a> 998       *cylptr = blkno;
+<a id='L999' name='L999'></a> 999    <em class='brace'>}</em>
+<a id='L1000' name='L1000'></a>1000    <strong class='reserved'>if</strong> (surfaceptr) <em class='brace'>{</em>
+<a id='L1001' name='L1001'></a>1001       *surfaceptr = 0;
+<a id='L1002' name='L1002'></a>1002    <em class='brace'>}</em>
+<a id='L1003' name='L1003'></a>1003    <strong class='reserved'>if</strong> (blkptr) <em class='brace'>{</em>
+<a id='L1004' name='L1004'></a>1004       *blkptr = 0;
+<a id='L1005' name='L1005'></a>1005    <em class='brace'>}</em>
+<a id='L1006' name='L1006'></a>1006 <em class='brace'>}</em>
+<a id='L1007' name='L1007'></a>1007 
+<a id='L1008' name='L1008'></a>1008 
+<a id='L1009' name='L1009'></a>1009 <strong class='reserved'>int</strong> <a href='../R/2054.html' title='Multiple referred from 3 places.'>ssd_get_avg_sectpercyl</a> (<strong class='reserved'>int</strong> devno)
+<a id='L1010' name='L1010'></a>1010 <em class='brace'>{</em>
+<a id='L1011' name='L1011'></a>1011    <strong class='reserved'>return</strong> (1);
+<a id='L1012' name='L1012'></a>1012 <em class='brace'>}</em>
+<a id='L1013' name='L1013'></a>1013 
+<a id='L1014' name='L1014'></a>1014 
+<a id='L1015' name='L1015'></a>1015 <strong class='reserved'>int</strong> <a href='../R/2058.html' title='Multiple referred from 3 places.'>ssd_get_distance</a> (<strong class='reserved'>int</strong> devno, <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *req, <strong class='reserved'>int</strong> exact, <strong class='reserved'>int</strong> direction)
+<a id='L1016' name='L1016'></a>1016 <em class='brace'>{</em>
+<a id='L1017' name='L1017'></a>1017    <em class='comment'>/* just return an arbitrary constant, since acctime is constant */</em>
+<a id='L1018' name='L1018'></a>1018    <strong class='reserved'>return</strong> 1;
+<a id='L1019' name='L1019'></a>1019 <em class='brace'>}</em>
+<a id='L1020' name='L1020'></a>1020 
+<a id='L1021' name='L1021'></a>1021 
+<a id='L1022' name='L1022'></a>1022 <em class='comment'>// returning 0 to remove warning</em>
+<a id='L1023' name='L1023'></a>1023 <strong class='reserved'>double</strong>  <a href='../R/2066.html' title='Multiple referred from 3 places.'>ssd_get_servtime</a> (<strong class='reserved'>int</strong> devno, <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *req, <strong class='reserved'>int</strong> checkcache, <strong class='reserved'>double</strong> maxtime)
+<a id='L1024' name='L1024'></a>1024 <em class='brace'>{</em>
+<a id='L1025' name='L1025'></a>1025    fprintf(stderr, "device_get_seektime not supported for ssd devno %d\n",  devno);
+<a id='L1026' name='L1026'></a>1026    assert(0);
+<a id='L1027' name='L1027'></a>1027    <strong class='reserved'>return</strong> 0;
+<a id='L1028' name='L1028'></a>1028 <em class='brace'>}</em>
+<a id='L1029' name='L1029'></a>1029 
+<a id='L1030' name='L1030'></a>1030 
+<a id='L1031' name='L1031'></a>1031 <em class='comment'>// returning 0 to remove warning</em>
+<a id='L1032' name='L1032'></a>1032 <strong class='reserved'>double</strong>  <a href='../R/2053.html' title='Multiple referred from 3 places.'>ssd_get_acctime</a> (<strong class='reserved'>int</strong> devno, <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *req, <strong class='reserved'>double</strong> maxtime)
+<a id='L1033' name='L1033'></a>1033 <em class='brace'>{</em>
+<a id='L1034' name='L1034'></a>1034    fprintf(stderr, "device_get_seektime not supported for ssd devno %d\n",  devno);
+<a id='L1035' name='L1035'></a>1035    assert(0);
+<a id='L1036' name='L1036'></a>1036    <strong class='reserved'>return</strong> 0;
+<a id='L1037' name='L1037'></a>1037 <em class='brace'>}</em>
+<a id='L1038' name='L1038'></a>1038 
+<a id='L1039' name='L1039'></a>1039 
+<a id='L1040' name='L1040'></a>1040 <strong class='reserved'>int</strong> <a href='../R/2064.html' title='Multiple referred from 2 places.'>ssd_get_numdisks</a> (<strong class='reserved'>void</strong>)
+<a id='L1041' name='L1041'></a>1041 <em class='brace'>{</em>
+<a id='L1042' name='L1042'></a>1042    <strong class='reserved'>return</strong>(<a href='../D/2111.html' title='Multiple defined in 2 places.'>numssds</a>);
+<a id='L1043' name='L1043'></a>1043 <em class='brace'>}</em>
+<a id='L1044' name='L1044'></a>1044 
+<a id='L1045' name='L1045'></a>1045 
+<a id='L1046' name='L1046'></a>1046 <strong class='reserved'>void</strong> <a href='../R/2026.html' title='Multiple referred from 2 places.'>ssd_cleanstats</a> (<strong class='reserved'>void</strong>)
+<a id='L1047' name='L1047'></a>1047 <em class='brace'>{</em>
+<a id='L1048' name='L1048'></a>1048    <strong class='reserved'>int</strong> i, j;
+<a id='L1049' name='L1049'></a>1049 
+<a id='L1050' name='L1050'></a>1050    <strong class='reserved'>for</strong> (i=0; i&lt;<a href='../S/255.html#L110' title='Defined at 110 in src/disksim_iosim.h.'>MAXDEVICES</a>; i++) <em class='brace'>{</em>
+<a id='L1051' name='L1051'></a>1051       <a href='../D/2435.html' title='Multiple defined in 2 places.'>ssd_t</a> *currdisk = <a href='../S/187.html#L28' title='Defined at 28 in ssdmodel/ssd.c.'>getssd</a> (i);
+<a id='L1052' name='L1052'></a>1052       <strong class='reserved'>if</strong> (currdisk) <em class='brace'>{</em>
+<a id='L1053' name='L1053'></a>1053           <a href='../S/254.html#L3738' title='Defined at 3738 in src/disksim_ioqueue.c.'>ioqueue_cleanstats</a>(currdisk-&gt;queue);
+<a id='L1054' name='L1054'></a>1054           <strong class='reserved'>for</strong> (j=0; j&lt;currdisk-&gt;params.nelements; j++)
+<a id='L1055' name='L1055'></a>1055               <a href='../S/254.html#L3738' title='Defined at 3738 in src/disksim_ioqueue.c.'>ioqueue_cleanstats</a>(currdisk-&gt;elements[j].queue);
+<a id='L1056' name='L1056'></a>1056       <em class='brace'>}</em>
+<a id='L1057' name='L1057'></a>1057    <em class='brace'>}</em>
+<a id='L1058' name='L1058'></a>1058 <em class='brace'>}</em>
+<a id='L1059' name='L1059'></a>1059 
+<a id='L1060' name='L1060'></a>1060 <strong class='reserved'>void</strong> <a href='../R/2111.html' title='Multiple referred from 3 places.'>ssd_setcallbacks</a> ()
+<a id='L1061' name='L1061'></a>1061 <em class='brace'>{</em>
+<a id='L1062' name='L1062'></a>1062    <a href='../S/254.html#L3698' title='Defined at 3698 in src/disksim_ioqueue.c.'>ioqueue_setcallbacks</a>();
+<a id='L1063' name='L1063'></a>1063 <em class='brace'>}</em>
+<a id='L1064' name='L1064'></a>1064 
+<a id='L1065' name='L1065'></a>1065 <strong class='reserved'>int</strong> <a href='../S/187.html#L1105' title='Referred from 1105 in ssdmodel/ssd.c.'>ssd_add</a>(<strong class='reserved'>struct</strong> <a href='../D/2303.html' title='Multiple defined in 2 places.'>ssd</a> *d) <em class='brace'>{</em>
+<a id='L1066' name='L1066'></a>1066   <strong class='reserved'>int</strong> c;
+<a id='L1067' name='L1067'></a>1067 
+<a id='L1068' name='L1068'></a>1068   <strong class='reserved'>if</strong>(!<a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;ssdinfo) <a href='../S/185.html#L29' title='Defined at 29 in ssdmodel/ssd_init.c.'>ssd_initialize_diskinfo</a>();
+<a id='L1069' name='L1069'></a>1069 
+<a id='L1070' name='L1070'></a>1070   <strong class='reserved'>for</strong>(c = 0; c &lt; <a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;ssdinfo-&gt;ssds_len; c++) <em class='brace'>{</em>
+<a id='L1071' name='L1071'></a>1071     <strong class='reserved'>if</strong>(!<a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;ssdinfo-&gt;ssds[c]) <em class='brace'>{</em>
+<a id='L1072' name='L1072'></a>1072       <a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;ssdinfo-&gt;ssds[c] = d;
+<a id='L1073' name='L1073'></a>1073       <a href='../D/2111.html' title='Multiple defined in 2 places.'>numssds</a>++;
+<a id='L1074' name='L1074'></a>1074       <strong class='reserved'>return</strong> c;
+<a id='L1075' name='L1075'></a>1075     <em class='brace'>}</em>
+<a id='L1076' name='L1076'></a>1076   <em class='brace'>}</em>
+<a id='L1077' name='L1077'></a>1077 
+<a id='L1078' name='L1078'></a>1078   <em class='comment'>/* note that numdisks must be equal to diskinfo-&gt;disks_len */</em>
+<a id='L1079' name='L1079'></a>1079   <a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;ssdinfo-&gt;ssds =
+<a id='L1080' name='L1080'></a>1080     realloc(<a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;ssdinfo-&gt;ssds,
+<a id='L1081' name='L1081'></a>1081         2 * c * <strong class='reserved'>sizeof</strong>(<strong class='reserved'>struct</strong> <a href='../D/2303.html' title='Multiple defined in 2 places.'>ssd</a> *));
+<a id='L1082' name='L1082'></a>1082 
+<a id='L1083' name='L1083'></a>1083   <a href='../D/957.html' title='Multiple defined in 2 places.'>bzero</a>(<a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;ssdinfo-&gt;ssds + <a href='../D/2111.html' title='Multiple defined in 2 places.'>numssds</a>,
+<a id='L1084' name='L1084'></a>1084     <a href='../D/2111.html' title='Multiple defined in 2 places.'>numssds</a>);
+<a id='L1085' name='L1085'></a>1085 
+<a id='L1086' name='L1086'></a>1086   <a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;ssdinfo-&gt;ssds[c] = d;
+<a id='L1087' name='L1087'></a>1087   <a href='../D/2111.html' title='Multiple defined in 2 places.'>numssds</a>++;
+<a id='L1088' name='L1088'></a>1088   <a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;ssdinfo-&gt;ssds_len *= 2;
+<a id='L1089' name='L1089'></a>1089   <strong class='reserved'>return</strong> c;
+<a id='L1090' name='L1090'></a>1090 <em class='brace'>}</em>
+<a id='L1091' name='L1091'></a>1091 
+<a id='L1092' name='L1092'></a>1092 
+<a id='L1093' name='L1093'></a>1093 <strong class='reserved'>struct</strong> <a href='../D/2303.html' title='Multiple defined in 2 places.'>ssd</a> *<a href='../R/2126.html' title='Multiple referred from 2 places.'>ssdmodel_ssd_loadparams</a>(<strong class='reserved'>struct</strong> <a href='../S/118.html#L245' title='Defined at 245 in libparam/libparam.h.'>lp_block</a> *b, <strong class='reserved'>int</strong> *num)
+<a id='L1094' name='L1094'></a>1094 <em class='brace'>{</em>
+<a id='L1095' name='L1095'></a>1095   <em class='comment'>/* temp vars for parameters */</em>
+<a id='L1096' name='L1096'></a>1096   <strong class='reserved'>int</strong> n;
+<a id='L1097' name='L1097'></a>1097   <strong class='reserved'>struct</strong> <a href='../D/2303.html' title='Multiple defined in 2 places.'>ssd</a> *result;
+<a id='L1098' name='L1098'></a>1098 
+<a id='L1099' name='L1099'></a>1099   <strong class='reserved'>if</strong>(!<a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;ssdinfo) <a href='../S/185.html#L29' title='Defined at 29 in ssdmodel/ssd_init.c.'>ssd_initialize_diskinfo</a>();
+<a id='L1100' name='L1100'></a>1100 
+<a id='L1101' name='L1101'></a>1101   result = <a href='../S/73.html#L58' title='Defined at 58 in diskmodel/dm_config.h.'>malloc</a>(<strong class='reserved'>sizeof</strong>(<strong class='reserved'>struct</strong> <a href='../D/2303.html' title='Multiple defined in 2 places.'>ssd</a>));
+<a id='L1102' name='L1102'></a>1102   <strong class='reserved'>if</strong>(!result) <strong class='reserved'>return</strong> 0;
+<a id='L1103' name='L1103'></a>1103   <a href='../D/957.html' title='Multiple defined in 2 places.'>bzero</a>(result, <strong class='reserved'>sizeof</strong>(<strong class='reserved'>struct</strong> <a href='../D/2303.html' title='Multiple defined in 2 places.'>ssd</a>));
+<a id='L1104' name='L1104'></a>1104 
+<a id='L1105' name='L1105'></a>1105   n = <a href='../S/187.html#L1065' title='Defined at 1065 in ssdmodel/ssd.c.'>ssd_add</a>(result);
+<a id='L1106' name='L1106'></a>1106 
+<a id='L1107' name='L1107'></a>1107   result-&gt;hdr = ssd_hdr_initializer;
+<a id='L1108' name='L1108'></a>1108   <strong class='reserved'>if</strong>(b-&gt;name)
+<a id='L1109' name='L1109'></a>1109     result-&gt;hdr.device_name = <a href='../S/187.html#L22' title='Defined at 22 in ssdmodel/ssd.c.'>_strdup</a>(b-&gt;name);
+<a id='L1110' name='L1110'></a>1110 
+<a id='L1111' name='L1111'></a>1111   <a href='../D/1940.html' title='Multiple defined in 2 places.'>lp_loadparams</a>(result, b, &amp;ssdmodel_ssd_mod);
+<a id='L1112' name='L1112'></a>1112 
+<a id='L1113' name='L1113'></a>1113   <a href='../S/214.html#L132' title='Defined at 132 in src/disksim_device.c.'>device_add</a>((<strong class='reserved'>struct</strong> <a href='../S/223.html#L170' title='Defined at 170 in src/disksim_device.h.'>device_header</a> *)result, n);
+<a id='L1114' name='L1114'></a>1114   <strong class='reserved'>if</strong> (num != NULL)
+<a id='L1115' name='L1115'></a>1115           *num = n;
+<a id='L1116' name='L1116'></a>1116   <strong class='reserved'>return</strong> result;
+<a id='L1117' name='L1117'></a>1117 <em class='brace'>}</em>
+<a id='L1118' name='L1118'></a>1118 
+<a id='L1119' name='L1119'></a>1119 
+<a id='L1120' name='L1120'></a>1120 <strong class='reserved'>struct</strong> <a href='../D/2303.html' title='Multiple defined in 2 places.'>ssd</a> *<a href='../S/187.html#L1490' title='Referred from 1490 in ssdmodel/ssd.c.'>ssd_copy</a>(<strong class='reserved'>struct</strong> <a href='../D/2303.html' title='Multiple defined in 2 places.'>ssd</a> *orig) <em class='brace'>{</em>
+<a id='L1121' name='L1121'></a>1121   <strong class='reserved'>int</strong> i;
+<a id='L1122' name='L1122'></a>1122   <strong class='reserved'>struct</strong> <a href='../D/2303.html' title='Multiple defined in 2 places.'>ssd</a> *result = <a href='../S/73.html#L58' title='Defined at 58 in diskmodel/dm_config.h.'>malloc</a>(<strong class='reserved'>sizeof</strong>(<strong class='reserved'>struct</strong> <a href='../D/2303.html' title='Multiple defined in 2 places.'>ssd</a>));
+<a id='L1123' name='L1123'></a>1123   <a href='../D/957.html' title='Multiple defined in 2 places.'>bzero</a>(result, <strong class='reserved'>sizeof</strong>(<strong class='reserved'>struct</strong> <a href='../D/2303.html' title='Multiple defined in 2 places.'>ssd</a>));
+<a id='L1124' name='L1124'></a>1124   memcpy(result, orig, <strong class='reserved'>sizeof</strong>(<strong class='reserved'>struct</strong> <a href='../D/2303.html' title='Multiple defined in 2 places.'>ssd</a>));
+<a id='L1125' name='L1125'></a>1125   result-&gt;queue = <a href='../S/254.html#L3585' title='Defined at 3585 in src/disksim_ioqueue.c.'>ioqueue_copy</a>(orig-&gt;queue);
+<a id='L1126' name='L1126'></a>1126   <strong class='reserved'>for</strong> (i=0;i&lt;orig-&gt;params.nelements;i++)
+<a id='L1127' name='L1127'></a>1127       result-&gt;elements[i].queue = <a href='../S/254.html#L3585' title='Defined at 3585 in src/disksim_ioqueue.c.'>ioqueue_copy</a>(orig-&gt;elements[i].queue);
+<a id='L1128' name='L1128'></a>1128   <strong class='reserved'>return</strong> result;
+<a id='L1129' name='L1129'></a>1129 <em class='brace'>}</em>
+<a id='L1130' name='L1130'></a>1130 
+<a id='L1131' name='L1131'></a>1131 <strong class='reserved'>void</strong> <a href='../R/2110.html' title='Multiple referred from 2 places.'>ssd_set_syncset</a> (<strong class='reserved'>int</strong> setstart, <strong class='reserved'>int</strong> setend)
+<a id='L1132' name='L1132'></a>1132 <em class='brace'>{</em>
+<a id='L1133' name='L1133'></a>1133 <em class='brace'>}</em>
+<a id='L1134' name='L1134'></a>1134 
+<a id='L1135' name='L1135'></a>1135 
+<a id='L1136' name='L1136'></a>1136 <strong class='reserved'>static</strong> <strong class='reserved'>void</strong> <a href='../R/1991.html' title='Multiple referred from 3 places.'>ssd_acctime_printstats</a> (<strong class='reserved'>int</strong> *set, <strong class='reserved'>int</strong> setsize, <strong class='reserved'>char</strong> *prefix)
+<a id='L1137' name='L1137'></a>1137 <em class='brace'>{</em>
+<a id='L1138' name='L1138'></a>1138    <strong class='reserved'>int</strong> i;
+<a id='L1139' name='L1139'></a>1139    <a href='../S/288.html#L123' title='Defined at 123 in src/disksim_stat.h.'>statgen</a> * statset[<a href='../S/255.html#L110' title='Defined at 110 in src/disksim_iosim.h.'>MAXDEVICES</a>];
+<a id='L1140' name='L1140'></a>1140 
+<a id='L1141' name='L1141'></a>1141    <strong class='reserved'>if</strong> (<a href='../S/223.html#L133' title='Defined at 133 in src/disksim_device.h.'>device_printacctimestats</a>) <em class='brace'>{</em>
+<a id='L1142' name='L1142'></a>1142       <strong class='reserved'>for</strong> (i=0; i&lt;setsize; i++) <em class='brace'>{</em>
+<a id='L1143' name='L1143'></a>1143          <a href='../D/2435.html' title='Multiple defined in 2 places.'>ssd_t</a> *currdisk = <a href='../S/187.html#L28' title='Defined at 28 in ssdmodel/ssd.c.'>getssd</a> (set[i]);
+<a id='L1144' name='L1144'></a>1144          statset[i] = &amp;currdisk-&gt;stat.acctimestats;
+<a id='L1145' name='L1145'></a>1145       <em class='brace'>}</em>
+<a id='L1146' name='L1146'></a>1146       <a href='../S/285.html#L295' title='Defined at 295 in src/disksim_stat.c.'>stat_print_set</a>(statset, setsize, prefix);
+<a id='L1147' name='L1147'></a>1147    <em class='brace'>}</em>
+<a id='L1148' name='L1148'></a>1148 <em class='brace'>}</em>
+<a id='L1149' name='L1149'></a>1149 
+<a id='L1150' name='L1150'></a>1150 
+<a id='L1151' name='L1151'></a>1151 <strong class='reserved'>static</strong> <strong class='reserved'>void</strong> <a href='../R/2086.html' title='Multiple referred from 3 places.'>ssd_other_printstats</a> (<strong class='reserved'>int</strong> *set, <strong class='reserved'>int</strong> setsize, <strong class='reserved'>char</strong> *prefix)
+<a id='L1152' name='L1152'></a>1152 <em class='brace'>{</em>
+<a id='L1153' name='L1153'></a>1153    <strong class='reserved'>int</strong> i;
+<a id='L1154' name='L1154'></a>1154    <strong class='reserved'>int</strong> numbuswaits = 0;
+<a id='L1155' name='L1155'></a>1155    <strong class='reserved'>double</strong> waitingforbus = 0.0;
+<a id='L1156' name='L1156'></a>1156 
+<a id='L1157' name='L1157'></a>1157    <strong class='reserved'>for</strong> (i=0; i&lt;setsize; i++) <em class='brace'>{</em>
+<a id='L1158' name='L1158'></a>1158       <a href='../D/2435.html' title='Multiple defined in 2 places.'>ssd_t</a> *currdisk = <a href='../S/187.html#L28' title='Defined at 28 in ssdmodel/ssd.c.'>getssd</a> (set[i]);
+<a id='L1159' name='L1159'></a>1159       numbuswaits += currdisk-&gt;stat.numbuswaits;
+<a id='L1160' name='L1160'></a>1160       waitingforbus += currdisk-&gt;stat.waitingforbus;
+<a id='L1161' name='L1161'></a>1161    <em class='brace'>}</em>
+<a id='L1162' name='L1162'></a>1162 
+<a id='L1163' name='L1163'></a>1163    fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "%sTotal bus wait time: %f\n", prefix, waitingforbus);
+<a id='L1164' name='L1164'></a>1164    fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "%sNumber of bus waits: %d\n", prefix, numbuswaits);
+<a id='L1165' name='L1165'></a>1165 <em class='brace'>}</em>
+<a id='L1166' name='L1166'></a>1166 
+<a id='L1167' name='L1167'></a>1167 <strong class='reserved'>void</strong> <a href='../S/187.html#L1334' title='Referred from 1334 in ssdmodel/ssd.c.'>ssd_print_block_lifetime_distribution</a>(<strong class='reserved'>int</strong> elem_num, <a href='../D/2435.html' title='Multiple defined in 2 places.'>ssd_t</a> *s, <strong class='reserved'>int</strong> ssdno, <strong class='reserved'>double</strong> avg_lifetime, <strong class='reserved'>char</strong> *sourcestr)
+<a id='L1168' name='L1168'></a>1168 <em class='brace'>{</em>
+<a id='L1169' name='L1169'></a>1169     <strong class='reserved'>const</strong> <strong class='reserved'>int</strong> bucket_size = 20;
+<a id='L1170' name='L1170'></a>1170     <strong class='reserved'>int</strong> no_buckets = (100/bucket_size + 1);
+<a id='L1171' name='L1171'></a>1171     <strong class='reserved'>int</strong> i;
+<a id='L1172' name='L1172'></a>1172     <strong class='reserved'>int</strong> *hist;
+<a id='L1173' name='L1173'></a>1173     <strong class='reserved'>int</strong> dead_blocks = 0;
+<a id='L1174' name='L1174'></a>1174     <strong class='reserved'>int</strong> n;
+<a id='L1175' name='L1175'></a>1175     <strong class='reserved'>double</strong> sum;
+<a id='L1176' name='L1176'></a>1176     <strong class='reserved'>double</strong> sum_sqr;
+<a id='L1177' name='L1177'></a>1177     <strong class='reserved'>double</strong> <a href='../S/102.html#L239' title='Defined at 239 in diskmodel/layout_g4_tools/g4_skews.c.'>mean</a>;
+<a id='L1178' name='L1178'></a>1178     <strong class='reserved'>double</strong> variance;
+<a id='L1179' name='L1179'></a>1179     <a href='../D/2360.html' title='Multiple defined in 2 places.'>ssd_element_metadata</a> *metadata = &amp;(s-&gt;elements[elem_num].metadata);
+<a id='L1180' name='L1180'></a>1180 
+<a id='L1181' name='L1181'></a>1181     <em class='comment'>// allocate the buckets</em>
+<a id='L1182' name='L1182'></a>1182     hist = (<strong class='reserved'>int</strong> *) <a href='../S/73.html#L58' title='Defined at 58 in diskmodel/dm_config.h.'>malloc</a>(no_buckets * <strong class='reserved'>sizeof</strong>(<strong class='reserved'>int</strong>));
+<a id='L1183' name='L1183'></a>1183     memset(hist, 0, no_buckets * <strong class='reserved'>sizeof</strong>(<strong class='reserved'>int</strong>));
+<a id='L1184' name='L1184'></a>1184 
+<a id='L1185' name='L1185'></a>1185     <em class='comment'>// to calc the variance</em>
+<a id='L1186' name='L1186'></a>1186     n = s-&gt;params.blocks_per_element;
+<a id='L1187' name='L1187'></a>1187     sum = 0;
+<a id='L1188' name='L1188'></a>1188     sum_sqr = 0;
+<a id='L1189' name='L1189'></a>1189 
+<a id='L1190' name='L1190'></a>1190     <strong class='reserved'>for</strong> (i = 0; i &lt; s-&gt;params.blocks_per_element; i ++) <em class='brace'>{</em>
+<a id='L1191' name='L1191'></a>1191         <strong class='reserved'>int</strong> bucket;
+<a id='L1192' name='L1192'></a>1192         <strong class='reserved'>int</strong> rem_lifetime = metadata-&gt;block_usage[i].rem_lifetime;
+<a id='L1193' name='L1193'></a>1193         <strong class='reserved'>double</strong> perc = (rem_lifetime * 100.0) / avg_lifetime;
+<a id='L1194' name='L1194'></a>1194 
+<a id='L1195' name='L1195'></a>1195         <em class='comment'>// find out how many blocks have completely been erased.</em>
+<a id='L1196' name='L1196'></a>1196         <strong class='reserved'>if</strong> (metadata-&gt;block_usage[i].rem_lifetime == 0) <em class='brace'>{</em>
+<a id='L1197' name='L1197'></a>1197             dead_blocks ++;
+<a id='L1198' name='L1198'></a>1198         <em class='brace'>}</em>
+<a id='L1199' name='L1199'></a>1199 
+<a id='L1200' name='L1200'></a>1200         <strong class='reserved'>if</strong> (perc &gt;= 100) <em class='brace'>{</em>
+<a id='L1201' name='L1201'></a>1201             <em class='comment'>// this can happen if a particular block was not</em>
+<a id='L1202' name='L1202'></a>1202             <em class='comment'>// cleaned at all and so its remaining life time</em>
+<a id='L1203' name='L1203'></a>1203             <em class='comment'>// is greater than the average life time. put these</em>
+<a id='L1204' name='L1204'></a>1204             <em class='comment'>// blocks in the last bucket.</em>
+<a id='L1205' name='L1205'></a>1205             bucket = no_buckets - 1;
+<a id='L1206' name='L1206'></a>1206         <em class='brace'>}</em> <strong class='reserved'>else</strong> <em class='brace'>{</em>
+<a id='L1207' name='L1207'></a>1207             bucket = (<strong class='reserved'>int</strong>) perc / bucket_size;
+<a id='L1208' name='L1208'></a>1208         <em class='brace'>}</em>
+<a id='L1209' name='L1209'></a>1209 
+<a id='L1210' name='L1210'></a>1210         hist[bucket] ++;
+<a id='L1211' name='L1211'></a>1211 
+<a id='L1212' name='L1212'></a>1212         <em class='comment'>// calculate the variance</em>
+<a id='L1213' name='L1213'></a>1213         sum = sum + rem_lifetime;
+<a id='L1214' name='L1214'></a>1214         sum_sqr = sum_sqr + (rem_lifetime*rem_lifetime);
+<a id='L1215' name='L1215'></a>1215     <em class='brace'>}</em>
+<a id='L1216' name='L1216'></a>1216 
+<a id='L1217' name='L1217'></a>1217 
+<a id='L1218' name='L1218'></a>1218     fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "%s #%d elem #%d   ", sourcestr, ssdno, elem_num);
+<a id='L1219' name='L1219'></a>1219     fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "Block Lifetime Distribution\n");
+<a id='L1220' name='L1220'></a>1220 
+<a id='L1221' name='L1221'></a>1221     <em class='comment'>// print the bucket size</em>
+<a id='L1222' name='L1222'></a>1222     fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "%s #%d elem #%d   ", sourcestr, ssdno, elem_num);
+<a id='L1223' name='L1223'></a>1223     <strong class='reserved'>for</strong> (i = bucket_size; i &lt;= 100; i += bucket_size) <em class='brace'>{</em>
+<a id='L1224' name='L1224'></a>1224         fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "&lt; %d\t", i);
+<a id='L1225' name='L1225'></a>1225     <em class='brace'>}</em>
+<a id='L1226' name='L1226'></a>1226     fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "&gt;= 100\t\n");
+<a id='L1227' name='L1227'></a>1227 
+<a id='L1228' name='L1228'></a>1228     <em class='comment'>// print the histogram bar lengths</em>
+<a id='L1229' name='L1229'></a>1229     fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "%s #%d elem #%d   ", sourcestr, ssdno, elem_num);
+<a id='L1230' name='L1230'></a>1230     <strong class='reserved'>for</strong> (i = bucket_size; i &lt;= 100; i += bucket_size) <em class='brace'>{</em>
+<a id='L1231' name='L1231'></a>1231         fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "%d\t", hist[i/bucket_size - 1]);
+<a id='L1232' name='L1232'></a>1232     <em class='brace'>}</em>
+<a id='L1233' name='L1233'></a>1233     fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "%d\t\n", hist[no_buckets - 1]);
+<a id='L1234' name='L1234'></a>1234 
+<a id='L1235' name='L1235'></a>1235     <a href='../S/102.html#L239' title='Defined at 239 in diskmodel/layout_g4_tools/g4_skews.c.'>mean</a> = sum/n;
+<a id='L1236' name='L1236'></a>1236     variance = (sum_sqr - sum*<a href='../S/102.html#L239' title='Defined at 239 in diskmodel/layout_g4_tools/g4_skews.c.'>mean</a>)/(n - 1);
+<a id='L1237' name='L1237'></a>1237     fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "%s #%d elem #%d   Average of life time:\t%f\n",
+<a id='L1238' name='L1238'></a>1238         sourcestr, ssdno, elem_num, <a href='../S/102.html#L239' title='Defined at 239 in diskmodel/layout_g4_tools/g4_skews.c.'>mean</a>);
+<a id='L1239' name='L1239'></a>1239     fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "%s #%d elem #%d   Variance of life time:\t%f\n",
+<a id='L1240' name='L1240'></a>1240         sourcestr, ssdno, elem_num, variance);
+<a id='L1241' name='L1241'></a>1241     fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "%s #%d elem #%d   Total dead blocks:\t%d\n",
+<a id='L1242' name='L1242'></a>1242         sourcestr, ssdno, elem_num, dead_blocks);
+<a id='L1243' name='L1243'></a>1243 <em class='brace'>}</em>
+<a id='L1244' name='L1244'></a>1244 
+<a id='L1245' name='L1245'></a>1245 <em class='comment'>//prints the cleaning algo statistics</em>
+<a id='L1246' name='L1246'></a>1246 <strong class='reserved'>void</strong> <a href='../S/187.html#L1436' title='Referred from 1436 in ssdmodel/ssd.c.'>ssd_printcleanstats</a>(<strong class='reserved'>int</strong> *set, <strong class='reserved'>int</strong> setsize, <strong class='reserved'>char</strong> *sourcestr)
+<a id='L1247' name='L1247'></a>1247 <em class='brace'>{</em>
+<a id='L1248' name='L1248'></a>1248     <strong class='reserved'>int</strong> i;
+<a id='L1249' name='L1249'></a>1249     <strong class='reserved'>int</strong> tot_ssd = 0;
+<a id='L1250' name='L1250'></a>1250     <strong class='reserved'>int</strong> elts_count = 0;
+<a id='L1251' name='L1251'></a>1251     <strong class='reserved'>double</strong> iops = 0;
+<a id='L1252' name='L1252'></a>1252 
+<a id='L1253' name='L1253'></a>1253     fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "\n\nSSD CLEANING STATISTICS\n");
+<a id='L1254' name='L1254'></a>1254     fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "---------------------------------------------\n\n");
+<a id='L1255' name='L1255'></a>1255     <strong class='reserved'>for</strong> (i = 0; i &lt; setsize; i ++) <em class='brace'>{</em>
+<a id='L1256' name='L1256'></a>1256         <strong class='reserved'>int</strong> j;
+<a id='L1257' name='L1257'></a>1257         <strong class='reserved'>int</strong> tot_elts = 0;
+<a id='L1258' name='L1258'></a>1258         <a href='../D/2435.html' title='Multiple defined in 2 places.'>ssd_t</a> *s = <a href='../S/187.html#L28' title='Defined at 28 in ssdmodel/ssd.c.'>getssd</a>(set[i]);
+<a id='L1259' name='L1259'></a>1259 
+<a id='L1260' name='L1260'></a>1260         <strong class='reserved'>if</strong> (s-&gt;params.write_policy == <a href='../D/310.html' title='Multiple defined in 2 places.'>DISKSIM_SSD_WRITE_POLICY_OSR</a>) <em class='brace'>{</em>
+<a id='L1261' name='L1261'></a>1261 
+<a id='L1262' name='L1262'></a>1262             elts_count += s-&gt;params.nelements;
+<a id='L1263' name='L1263'></a>1263 
+<a id='L1264' name='L1264'></a>1264             <strong class='reserved'>for</strong> (j = 0; j &lt; s-&gt;params.nelements; j ++) <em class='brace'>{</em>
+<a id='L1265' name='L1265'></a>1265                 <strong class='reserved'>int</strong> plane_num;
+<a id='L1266' name='L1266'></a>1266                 <strong class='reserved'>double</strong> avg_lifetime;
+<a id='L1267' name='L1267'></a>1267                 <strong class='reserved'>double</strong> elem_iops = 0;
+<a id='L1268' name='L1268'></a>1268                 <strong class='reserved'>double</strong> elem_clean_iops = 0;
+<a id='L1269' name='L1269'></a>1269 
+<a id='L1270' name='L1270'></a>1270                 <a href='../D/2362.html' title='Multiple defined in 2 places.'>ssd_element_stat</a> *stat = &amp;(s-&gt;elements[j].stat);
+<a id='L1271' name='L1271'></a>1271 
+<a id='L1272' name='L1272'></a>1272                 avg_lifetime = <a href='../S/151.html#L229' title='Defined at 229 in ssdmodel/ssd_clean.c.'>ssd_compute_avg_lifetime</a>(-1, j, s);
+<a id='L1273' name='L1273'></a>1273 
+<a id='L1274' name='L1274'></a>1274                 fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "%s #%d elem #%d   Total reqs issued:\t%d\n",
+<a id='L1275' name='L1275'></a>1275                     sourcestr, set[i], j, s-&gt;elements[j].stat.tot_reqs_issued);
+<a id='L1276' name='L1276'></a>1276                 fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "%s #%d elem #%d   Total time taken:\t%f\n",
+<a id='L1277' name='L1277'></a>1277                     sourcestr, set[i], j, s-&gt;elements[j].stat.tot_time_taken);
+<a id='L1278' name='L1278'></a>1278                 <strong class='reserved'>if</strong> (s-&gt;elements[j].stat.tot_time_taken &gt; 0) <em class='brace'>{</em>
+<a id='L1279' name='L1279'></a>1279                     elem_iops = ((s-&gt;elements[j].stat.tot_reqs_issued*1000.0)/s-&gt;elements[j].stat.tot_time_taken);
+<a id='L1280' name='L1280'></a>1280                     fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "%s #%d elem #%d   IOPS:\t%f\n",
+<a id='L1281' name='L1281'></a>1281                         sourcestr, set[i], j, elem_iops);
+<a id='L1282' name='L1282'></a>1282                 <em class='brace'>}</em>
+<a id='L1283' name='L1283'></a>1283 
+<a id='L1284' name='L1284'></a>1284                 fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "%s #%d elem #%d   Total cleaning reqs issued:\t%d\n",
+<a id='L1285' name='L1285'></a>1285                     sourcestr, set[i], j, s-&gt;elements[j].stat.num_clean);
+<a id='L1286' name='L1286'></a>1286                 fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "%s #%d elem #%d   Total cleaning time taken:\t%f\n",
+<a id='L1287' name='L1287'></a>1287                     sourcestr, set[i], j, s-&gt;elements[j].stat.tot_clean_time);
+<a id='L1288' name='L1288'></a>1288                 fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "%s #%d elem #%d   Total migrations:\t%d\n",
+<a id='L1289' name='L1289'></a>1289                     sourcestr, set[i], j, s-&gt;elements[j].metadata.tot_migrations);
+<a id='L1290' name='L1290'></a>1290                 fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "%s #%d elem #%d   Total pages migrated:\t%d\n",
+<a id='L1291' name='L1291'></a>1291                     sourcestr, set[i], j, s-&gt;elements[j].metadata.tot_pgs_migrated);
+<a id='L1292' name='L1292'></a>1292                 fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "%s #%d elem #%d   Total migrations cost:\t%f\n",
+<a id='L1293' name='L1293'></a>1293                     sourcestr, set[i], j, s-&gt;elements[j].metadata.mig_cost);
+<a id='L1294' name='L1294'></a>1294 
+<a id='L1295' name='L1295'></a>1295 
+<a id='L1296' name='L1296'></a>1296                 <strong class='reserved'>if</strong> (s-&gt;elements[j].stat.tot_clean_time &gt; 0) <em class='brace'>{</em>
+<a id='L1297' name='L1297'></a>1297                     elem_clean_iops = ((s-&gt;elements[j].stat.num_clean*1000.0)/s-&gt;elements[j].stat.tot_clean_time);
+<a id='L1298' name='L1298'></a>1298                     fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "%s #%d elem #%d   clean IOPS:\t%f\n",
+<a id='L1299' name='L1299'></a>1299                         sourcestr, set[i], j, elem_clean_iops);
+<a id='L1300' name='L1300'></a>1300                 <em class='brace'>}</em>
+<a id='L1301' name='L1301'></a>1301 
+<a id='L1302' name='L1302'></a>1302                 fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "%s #%d elem #%d   Overall IOPS:\t%f\n",
+<a id='L1303' name='L1303'></a>1303                     sourcestr, set[i], j, ((s-&gt;elements[j].stat.num_clean+s-&gt;elements[j].stat.tot_reqs_issued)*1000.0)/(s-&gt;elements[j].stat.tot_clean_time+s-&gt;elements[j].stat.tot_time_taken));
+<a id='L1304' name='L1304'></a>1304 
+<a id='L1305' name='L1305'></a>1305                 iops += elem_iops;
+<a id='L1306' name='L1306'></a>1306 
+<a id='L1307' name='L1307'></a>1307                 fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "%s #%d elem #%d   Number of free blocks:\t%d\n",
+<a id='L1308' name='L1308'></a>1308                     sourcestr, set[i], j, s-&gt;elements[j].metadata.tot_free_blocks);
+<a id='L1309' name='L1309'></a>1309                 fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "%s #%d elem #%d   Number of cleans:\t%d\n",
+<a id='L1310' name='L1310'></a>1310                     sourcestr, set[i], j, stat-&gt;num_clean);
+<a id='L1311' name='L1311'></a>1311                 fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "%s #%d elem #%d   Pages moved:\t%d\n",
+<a id='L1312' name='L1312'></a>1312                     sourcestr, set[i], j, stat-&gt;pages_moved);
+<a id='L1313' name='L1313'></a>1313                 fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "%s #%d elem #%d   Total xfer time:\t%f\n",
+<a id='L1314' name='L1314'></a>1314                     sourcestr, set[i], j, stat-&gt;tot_xfer_cost);
+<a id='L1315' name='L1315'></a>1315                 <strong class='reserved'>if</strong> (stat-&gt;tot_xfer_cost &gt; 0) <em class='brace'>{</em>
+<a id='L1316' name='L1316'></a>1316                     fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "%s #%d elem #%d   Xfer time per page:\t%f\n",
+<a id='L1317' name='L1317'></a>1317                         sourcestr, set[i], j, stat-&gt;tot_xfer_cost/(1.0*stat-&gt;pages_moved));
+<a id='L1318' name='L1318'></a>1318                 <em class='brace'>}</em> <strong class='reserved'>else</strong> <em class='brace'>{</em>
+<a id='L1319' name='L1319'></a>1319                     fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "%s #%d elem #%d   Xfer time per page:\t0\n",
+<a id='L1320' name='L1320'></a>1320                         sourcestr, set[i], j);
+<a id='L1321' name='L1321'></a>1321                 <em class='brace'>}</em>
+<a id='L1322' name='L1322'></a>1322                 fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "%s #%d elem #%d   Average lifetime:\t%f\n",
+<a id='L1323' name='L1323'></a>1323                     sourcestr, set[i], j, avg_lifetime);
+<a id='L1324' name='L1324'></a>1324                 fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "%s #%d elem #%d   Plane Level Statistics\n",
+<a id='L1325' name='L1325'></a>1325                     sourcestr, set[i], j);
+<a id='L1326' name='L1326'></a>1326                 fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "%s #%d elem #%d   ", sourcestr, set[i], j);
+<a id='L1327' name='L1327'></a>1327                 <strong class='reserved'>for</strong> (plane_num = 0; plane_num &lt; s-&gt;params.planes_per_pkg; plane_num ++) <em class='brace'>{</em>
+<a id='L1328' name='L1328'></a>1328                     fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "%d:(%d)  ",
+<a id='L1329' name='L1329'></a>1329                         plane_num, s-&gt;elements[j].metadata.plane_meta[plane_num].num_cleans);
+<a id='L1330' name='L1330'></a>1330                 <em class='brace'>}</em>
+<a id='L1331' name='L1331'></a>1331                 fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "\n");
+<a id='L1332' name='L1332'></a>1332 
+<a id='L1333' name='L1333'></a>1333 
+<a id='L1334' name='L1334'></a>1334                 <a href='../S/187.html#L1167' title='Defined at 1167 in ssdmodel/ssd.c.'>ssd_print_block_lifetime_distribution</a>(j, s, set[i], avg_lifetime, sourcestr);
+<a id='L1335' name='L1335'></a>1335                 fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "\n");
+<a id='L1336' name='L1336'></a>1336 
+<a id='L1337' name='L1337'></a>1337                 tot_elts += stat-&gt;pages_moved;
+<a id='L1338' name='L1338'></a>1338             <em class='brace'>}</em>
+<a id='L1339' name='L1339'></a>1339 
+<a id='L1340' name='L1340'></a>1340             <em class='comment'>//fprintf(outputfile, "%s SSD %d average # of pages moved per element %d\n",</em>
+<a id='L1341' name='L1341'></a>1341             <em class='comment'>//  sourcestr, set[i], tot_elts / s-&gt;params.nelements);</em>
+<a id='L1342' name='L1342'></a>1342 
+<a id='L1343' name='L1343'></a>1343             tot_ssd += tot_elts;
+<a id='L1344' name='L1344'></a>1344             fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "\n");
+<a id='L1345' name='L1345'></a>1345         <em class='brace'>}</em>
+<a id='L1346' name='L1346'></a>1346     <em class='brace'>}</em>
+<a id='L1347' name='L1347'></a>1347 
+<a id='L1348' name='L1348'></a>1348     <strong class='reserved'>if</strong> (elts_count &gt; 0) <em class='brace'>{</em>
+<a id='L1349' name='L1349'></a>1349         fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "%s   Total SSD IOPS:\t%f\n",
+<a id='L1350' name='L1350'></a>1350             sourcestr, iops);
+<a id='L1351' name='L1351'></a>1351         fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "%s   Average SSD element IOPS:\t%f\n",
+<a id='L1352' name='L1352'></a>1352             sourcestr, iops/elts_count);
+<a id='L1353' name='L1353'></a>1353     <em class='brace'>}</em>
+<a id='L1354' name='L1354'></a>1354 
+<a id='L1355' name='L1355'></a>1355     <em class='comment'>//fprintf(outputfile, "%s SSD average # of pages moved per ssd %d\n\n",</em>
+<a id='L1356' name='L1356'></a>1356     <em class='comment'>//  sourcestr, tot_ssd / setsize);</em>
+<a id='L1357' name='L1357'></a>1357 <em class='brace'>}</em>
+<a id='L1358' name='L1358'></a>1358 
+<a id='L1359' name='L1359'></a>1359 <strong class='reserved'>void</strong> <a href='../R/2096.html' title='Multiple referred from 3 places.'>ssd_printsetstats</a> (<strong class='reserved'>int</strong> *set, <strong class='reserved'>int</strong> setsize, <strong class='reserved'>char</strong> *sourcestr)
+<a id='L1360' name='L1360'></a>1360 <em class='brace'>{</em>
+<a id='L1361' name='L1361'></a>1361    <strong class='reserved'>int</strong> i;
+<a id='L1362' name='L1362'></a>1362    <strong class='reserved'>struct</strong> <a href='../S/259.html#L255' title='Defined at 255 in src/disksim_ioqueue.h.'>ioq</a> * queueset[<a href='../S/255.html#L110' title='Defined at 110 in src/disksim_iosim.h.'>MAXDEVICES</a>*<a href='../D/747.html' title='Multiple defined in 2 places.'>SSD_MAX_ELEMENTS</a>];
+<a id='L1363' name='L1363'></a>1363    <strong class='reserved'>int</strong> queuecnt = 0;
+<a id='L1364' name='L1364'></a>1364    <strong class='reserved'>int</strong> reqcnt = 0;
+<a id='L1365' name='L1365'></a>1365    <strong class='reserved'>char</strong> prefix[80];
+<a id='L1366' name='L1366'></a>1366 
+<a id='L1367' name='L1367'></a>1367    <em class='comment'>//using more secure functions</em>
+<a id='L1368' name='L1368'></a>1368    <a href='../D/2297.html' title='Multiple defined in 2 places.'>sprintf_s4</a>(prefix, 80, "%sssd ", sourcestr);
+<a id='L1369' name='L1369'></a>1369    <strong class='reserved'>for</strong> (i=0; i&lt;setsize; i++) <em class='brace'>{</em>
+<a id='L1370' name='L1370'></a>1370       <a href='../D/2435.html' title='Multiple defined in 2 places.'>ssd_t</a> *currdisk = <a href='../S/187.html#L28' title='Defined at 28 in ssdmodel/ssd.c.'>getssd</a> (set[i]);
+<a id='L1371' name='L1371'></a>1371       <strong class='reserved'>struct</strong> <a href='../S/259.html#L255' title='Defined at 255 in src/disksim_ioqueue.h.'>ioq</a> *q = currdisk-&gt;queue;
+<a id='L1372' name='L1372'></a>1372       queueset[queuecnt] = q;
+<a id='L1373' name='L1373'></a>1373       queuecnt++;
+<a id='L1374' name='L1374'></a>1374       reqcnt += <a href='../S/254.html#L271' title='Defined at 271 in src/disksim_ioqueue.c.'>ioqueue_get_number_of_requests</a>(q);
+<a id='L1375' name='L1375'></a>1375    <em class='brace'>}</em>
+<a id='L1376' name='L1376'></a>1376    <strong class='reserved'>if</strong> (reqcnt == 0) <em class='brace'>{</em>
+<a id='L1377' name='L1377'></a>1377       fprintf (<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "\nNo ssd requests for members of this set\n\n");
+<a id='L1378' name='L1378'></a>1378       <strong class='reserved'>return</strong>;
+<a id='L1379' name='L1379'></a>1379    <em class='brace'>}</em>
+<a id='L1380' name='L1380'></a>1380    <a href='../S/254.html#L4099' title='Defined at 4099 in src/disksim_ioqueue.c.'>ioqueue_printstats</a>(queueset, queuecnt, prefix);
+<a id='L1381' name='L1381'></a>1381 
+<a id='L1382' name='L1382'></a>1382    <a href='../S/187.html#L1136' title='Defined at 1136 in ssdmodel/ssd.c.'>ssd_acctime_printstats</a>(set, setsize, prefix);
+<a id='L1383' name='L1383'></a>1383    <a href='../S/187.html#L1151' title='Defined at 1151 in ssdmodel/ssd.c.'>ssd_other_printstats</a>(set, setsize, prefix);
+<a id='L1384' name='L1384'></a>1384 <em class='brace'>}</em>
+<a id='L1385' name='L1385'></a>1385 
+<a id='L1386' name='L1386'></a>1386 
+<a id='L1387' name='L1387'></a>1387 <strong class='reserved'>void</strong> <a href='../R/2097.html' title='Multiple referred from 3 places.'>ssd_printstats</a> (<strong class='reserved'>void</strong>)
+<a id='L1388' name='L1388'></a>1388 <em class='brace'>{</em>
+<a id='L1389' name='L1389'></a>1389    <strong class='reserved'>struct</strong> <a href='../S/259.html#L255' title='Defined at 255 in src/disksim_ioqueue.h.'>ioq</a> * queueset[<a href='../S/255.html#L110' title='Defined at 110 in src/disksim_iosim.h.'>MAXDEVICES</a>*<a href='../D/747.html' title='Multiple defined in 2 places.'>SSD_MAX_ELEMENTS</a>];
+<a id='L1390' name='L1390'></a>1390    <strong class='reserved'>int</strong> set[<a href='../S/255.html#L110' title='Defined at 110 in src/disksim_iosim.h.'>MAXDEVICES</a>];
+<a id='L1391' name='L1391'></a>1391    <strong class='reserved'>int</strong> i,j;
+<a id='L1392' name='L1392'></a>1392    <strong class='reserved'>int</strong> reqcnt = 0;
+<a id='L1393' name='L1393'></a>1393    <strong class='reserved'>char</strong> prefix[80];
+<a id='L1394' name='L1394'></a>1394    <strong class='reserved'>int</strong> diskcnt;
+<a id='L1395' name='L1395'></a>1395    <strong class='reserved'>int</strong> queuecnt;
+<a id='L1396' name='L1396'></a>1396 
+<a id='L1397' name='L1397'></a>1397    fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "\nSSD STATISTICS\n");
+<a id='L1398' name='L1398'></a>1398    fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "---------------------\n\n");
+<a id='L1399' name='L1399'></a>1399 
+<a id='L1400' name='L1400'></a>1400    <a href='../D/2296.html' title='Multiple defined in 2 places.'>sprintf_s3</a>(prefix, 80, "ssd ");
+<a id='L1401' name='L1401'></a>1401 
+<a id='L1402' name='L1402'></a>1402    diskcnt = 0;
+<a id='L1403' name='L1403'></a>1403    queuecnt = 0;
+<a id='L1404' name='L1404'></a>1404    <strong class='reserved'>for</strong> (i=0; i&lt;<a href='../S/255.html#L110' title='Defined at 110 in src/disksim_iosim.h.'>MAXDEVICES</a>; i++) <em class='brace'>{</em>
+<a id='L1405' name='L1405'></a>1405       <a href='../D/2435.html' title='Multiple defined in 2 places.'>ssd_t</a> *currdisk = <a href='../S/187.html#L28' title='Defined at 28 in ssdmodel/ssd.c.'>getssd</a> (i);
+<a id='L1406' name='L1406'></a>1406       <strong class='reserved'>if</strong> (currdisk) <em class='brace'>{</em>
+<a id='L1407' name='L1407'></a>1407          <strong class='reserved'>struct</strong> <a href='../S/259.html#L255' title='Defined at 255 in src/disksim_ioqueue.h.'>ioq</a> *q = currdisk-&gt;queue;
+<a id='L1408' name='L1408'></a>1408          queueset[queuecnt] = q;
+<a id='L1409' name='L1409'></a>1409          queuecnt++;
+<a id='L1410' name='L1410'></a>1410          reqcnt += <a href='../S/254.html#L271' title='Defined at 271 in src/disksim_ioqueue.c.'>ioqueue_get_number_of_requests</a>(q);
+<a id='L1411' name='L1411'></a>1411          diskcnt++;
+<a id='L1412' name='L1412'></a>1412       <em class='brace'>}</em>
+<a id='L1413' name='L1413'></a>1413    <em class='brace'>}</em>
+<a id='L1414' name='L1414'></a>1414    assert (diskcnt == <a href='../D/2111.html' title='Multiple defined in 2 places.'>numssds</a>);
+<a id='L1415' name='L1415'></a>1415 
+<a id='L1416' name='L1416'></a>1416    <strong class='reserved'>if</strong> (reqcnt == 0) <em class='brace'>{</em>
+<a id='L1417' name='L1417'></a>1417       fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "No ssd requests encountered\n");
+<a id='L1418' name='L1418'></a>1418       <strong class='reserved'>return</strong>;
+<a id='L1419' name='L1419'></a>1419    <em class='brace'>}</em>
+<a id='L1420' name='L1420'></a>1420 
+<a id='L1421' name='L1421'></a>1421    <a href='../S/254.html#L4099' title='Defined at 4099 in src/disksim_ioqueue.c.'>ioqueue_printstats</a>(queueset, queuecnt, prefix);
+<a id='L1422' name='L1422'></a>1422 
+<a id='L1423' name='L1423'></a>1423    diskcnt = 0;
+<a id='L1424' name='L1424'></a>1424    <strong class='reserved'>for</strong> (i=0; i&lt;<a href='../S/255.html#L110' title='Defined at 110 in src/disksim_iosim.h.'>MAXDEVICES</a>; i++) <em class='brace'>{</em>
+<a id='L1425' name='L1425'></a>1425       <a href='../D/2435.html' title='Multiple defined in 2 places.'>ssd_t</a> *currdisk = <a href='../S/187.html#L28' title='Defined at 28 in ssdmodel/ssd.c.'>getssd</a> (i);
+<a id='L1426' name='L1426'></a>1426       <strong class='reserved'>if</strong> (currdisk) <em class='brace'>{</em>
+<a id='L1427' name='L1427'></a>1427          set[diskcnt] = i;
+<a id='L1428' name='L1428'></a>1428          diskcnt++;
+<a id='L1429' name='L1429'></a>1429       <em class='brace'>}</em>
+<a id='L1430' name='L1430'></a>1430    <em class='brace'>}</em>
+<a id='L1431' name='L1431'></a>1431    assert (diskcnt == <a href='../D/2111.html' title='Multiple defined in 2 places.'>numssds</a>);
+<a id='L1432' name='L1432'></a>1432 
+<a id='L1433' name='L1433'></a>1433    <a href='../S/187.html#L1136' title='Defined at 1136 in ssdmodel/ssd.c.'>ssd_acctime_printstats</a>(set, <a href='../D/2111.html' title='Multiple defined in 2 places.'>numssds</a>, prefix);
+<a id='L1434' name='L1434'></a>1434    <a href='../S/187.html#L1151' title='Defined at 1151 in ssdmodel/ssd.c.'>ssd_other_printstats</a>(set, <a href='../D/2111.html' title='Multiple defined in 2 places.'>numssds</a>, prefix);
+<a id='L1435' name='L1435'></a>1435 
+<a id='L1436' name='L1436'></a>1436    <a href='../S/187.html#L1246' title='Defined at 1246 in ssdmodel/ssd.c.'>ssd_printcleanstats</a>(set, <a href='../D/2111.html' title='Multiple defined in 2 places.'>numssds</a>, prefix);
+<a id='L1437' name='L1437'></a>1437 
+<a id='L1438' name='L1438'></a>1438    fprintf (<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "\n\n");
+<a id='L1439' name='L1439'></a>1439 
+<a id='L1440' name='L1440'></a>1440    <strong class='reserved'>for</strong> (i=0; i&lt;<a href='../D/2111.html' title='Multiple defined in 2 places.'>numssds</a>; i++) <em class='brace'>{</em>
+<a id='L1441' name='L1441'></a>1441       <a href='../D/2435.html' title='Multiple defined in 2 places.'>ssd_t</a> *currdisk = <a href='../S/187.html#L28' title='Defined at 28 in ssdmodel/ssd.c.'>getssd</a> (set[i]);
+<a id='L1442' name='L1442'></a>1442       <strong class='reserved'>if</strong> (currdisk-&gt;printstats == <a href='../D/374.html' title='Multiple defined in 2 places.'>FALSE</a>) <em class='brace'>{</em>
+<a id='L1443' name='L1443'></a>1443           <strong class='reserved'>continue</strong>;
+<a id='L1444' name='L1444'></a>1444       <em class='brace'>}</em>
+<a id='L1445' name='L1445'></a>1445       reqcnt = 0;
+<a id='L1446' name='L1446'></a>1446       <em class='brace'>{</em>
+<a id='L1447' name='L1447'></a>1447           <strong class='reserved'>struct</strong> <a href='../S/259.html#L255' title='Defined at 255 in src/disksim_ioqueue.h.'>ioq</a> *q = currdisk-&gt;queue;
+<a id='L1448' name='L1448'></a>1448           reqcnt += <a href='../S/254.html#L271' title='Defined at 271 in src/disksim_ioqueue.c.'>ioqueue_get_number_of_requests</a>(q);
+<a id='L1449' name='L1449'></a>1449       <em class='brace'>}</em>
+<a id='L1450' name='L1450'></a>1450       <strong class='reserved'>if</strong> (reqcnt == 0) <em class='brace'>{</em>
+<a id='L1451' name='L1451'></a>1451           fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "No requests for ssd #%d\n\n\n", set[i]);
+<a id='L1452' name='L1452'></a>1452           <strong class='reserved'>continue</strong>;
+<a id='L1453' name='L1453'></a>1453       <em class='brace'>}</em>
+<a id='L1454' name='L1454'></a>1454       fprintf(<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "ssd #%d:\n\n", set[i]);
+<a id='L1455' name='L1455'></a>1455       <a href='../D/2297.html' title='Multiple defined in 2 places.'>sprintf_s4</a>(prefix, 80, "ssd #%d ", set[i]);
+<a id='L1456' name='L1456'></a>1456       <em class='brace'>{</em>
+<a id='L1457' name='L1457'></a>1457           <strong class='reserved'>struct</strong> <a href='../S/259.html#L255' title='Defined at 255 in src/disksim_ioqueue.h.'>ioq</a> *q;
+<a id='L1458' name='L1458'></a>1458           q = currdisk-&gt;queue;
+<a id='L1459' name='L1459'></a>1459           <a href='../S/254.html#L4099' title='Defined at 4099 in src/disksim_ioqueue.c.'>ioqueue_printstats</a>(&amp;q, 1, prefix);
+<a id='L1460' name='L1460'></a>1460       <em class='brace'>}</em>
+<a id='L1461' name='L1461'></a>1461       <strong class='reserved'>for</strong> (j=0;j&lt;currdisk-&gt;params.nelements;j++) <em class='brace'>{</em>
+<a id='L1462' name='L1462'></a>1462           <strong class='reserved'>char</strong> pprefix[100];
+<a id='L1463' name='L1463'></a>1463           <strong class='reserved'>struct</strong> <a href='../S/259.html#L255' title='Defined at 255 in src/disksim_ioqueue.h.'>ioq</a> *q;
+<a id='L1464' name='L1464'></a>1464           <a href='../D/2298.html' title='Multiple defined in 2 places.'>sprintf_s5</a>(pprefix, 100, "%s elem #%d ", prefix, j);
+<a id='L1465' name='L1465'></a>1465           q = currdisk-&gt;elements[j].queue;
+<a id='L1466' name='L1466'></a>1466           <a href='../S/254.html#L4099' title='Defined at 4099 in src/disksim_ioqueue.c.'>ioqueue_printstats</a>(&amp;q, 1, pprefix);
+<a id='L1467' name='L1467'></a>1467       <em class='brace'>}</em>
+<a id='L1468' name='L1468'></a>1468       <a href='../S/187.html#L1136' title='Defined at 1136 in ssdmodel/ssd.c.'>ssd_acctime_printstats</a>(&amp;set[i], 1, prefix);
+<a id='L1469' name='L1469'></a>1469       <a href='../S/187.html#L1151' title='Defined at 1151 in ssdmodel/ssd.c.'>ssd_other_printstats</a>(&amp;set[i], 1, prefix);
+<a id='L1470' name='L1470'></a>1470       fprintf (<a href='../D/2118.html' title='Multiple defined in 3 places.'>outputfile</a>, "\n\n");
+<a id='L1471' name='L1471'></a>1471    <em class='brace'>}</em>
+<a id='L1472' name='L1472'></a>1472 <em class='brace'>}</em>
+<a id='L1473' name='L1473'></a>1473 
+<a id='L1474' name='L1474'></a>1474 <em class='comment'>// returning 0 to remove warning</em>
+<a id='L1475' name='L1475'></a>1475 <strong class='reserved'>double</strong> <a href='../S/187.html#L1505' title='Referred from 1505 in ssdmodel/ssd.c.'>ssd_get_seektime</a> (<strong class='reserved'>int</strong> devno,
+<a id='L1476' name='L1476'></a>1476                 <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *req,
+<a id='L1477' name='L1477'></a>1477                 <strong class='reserved'>int</strong> checkcache,
+<a id='L1478' name='L1478'></a>1478                 <strong class='reserved'>double</strong> maxtime)
+<a id='L1479' name='L1479'></a>1479 <em class='brace'>{</em>
+<a id='L1480' name='L1480'></a>1480   fprintf(stderr, "device_get_seektime not supported for ssd devno %d\n",  devno);
+<a id='L1481' name='L1481'></a>1481   assert(0);
+<a id='L1482' name='L1482'></a>1482   <strong class='reserved'>return</strong> 0;
+<a id='L1483' name='L1483'></a>1483 <em class='brace'>}</em>
+<a id='L1484' name='L1484'></a>1484 
+<a id='L1485' name='L1485'></a>1485 <em class='comment'>/* default ssd dev header */</em>
+<a id='L1486' name='L1486'></a>1486 <strong class='reserved'>struct</strong> <a href='../S/223.html#L170' title='Defined at 170 in src/disksim_device.h.'>device_header</a> ssd_hdr_initializer = <em class='brace'>{</em>
+<a id='L1487' name='L1487'></a>1487   <a href='../S/223.html#L69' title='Defined at 69 in src/disksim_device.h.'>DEVICETYPE_SSD</a>,
+<a id='L1488' name='L1488'></a>1488   <strong class='reserved'>sizeof</strong>(<strong class='reserved'>struct</strong> <a href='../D/2303.html' title='Multiple defined in 2 places.'>ssd</a>),
+<a id='L1489' name='L1489'></a>1489   "unnamed ssd",
+<a id='L1490' name='L1490'></a>1490   (<strong class='reserved'>void</strong> *)<a href='../S/187.html#L1120' title='Defined at 1120 in ssdmodel/ssd.c.'>ssd_copy</a>,
+<a id='L1491' name='L1491'></a>1491   <a href='../S/187.html#L37' title='Defined at 37 in ssdmodel/ssd.c.'>ssd_set_depth</a>,
+<a id='L1492' name='L1492'></a>1492   <a href='../S/187.html#L56' title='Defined at 56 in ssdmodel/ssd.c.'>ssd_get_depth</a>,
+<a id='L1493' name='L1493'></a>1493   <a href='../S/187.html#L70' title='Defined at 70 in ssdmodel/ssd.c.'>ssd_get_inbus</a>,
+<a id='L1494' name='L1494'></a>1494   <a href='../S/187.html#L97' title='Defined at 97 in ssdmodel/ssd.c.'>ssd_get_busno</a>,
+<a id='L1495' name='L1495'></a>1495   <a href='../S/187.html#L63' title='Defined at 63 in ssdmodel/ssd.c.'>ssd_get_slotno</a>,
+<a id='L1496' name='L1496'></a>1496   <a href='../S/187.html#L974' title='Defined at 974 in ssdmodel/ssd.c.'>ssd_get_number_of_blocks</a>,
+<a id='L1497' name='L1497'></a>1497   <a href='../S/187.html#L77' title='Defined at 77 in ssdmodel/ssd.c.'>ssd_get_maxoutstanding</a>,
+<a id='L1498' name='L1498'></a>1498   <a href='../S/187.html#L981' title='Defined at 981 in ssdmodel/ssd.c.'>ssd_get_numcyls</a>,
+<a id='L1499' name='L1499'></a>1499   <a href='../S/187.html#L84' title='Defined at 84 in ssdmodel/ssd.c.'>ssd_get_blktranstime</a>,
+<a id='L1500' name='L1500'></a>1500   <a href='../S/187.html#L1009' title='Defined at 1009 in ssdmodel/ssd.c.'>ssd_get_avg_sectpercyl</a>,
+<a id='L1501' name='L1501'></a>1501   <a href='../S/187.html#L988' title='Defined at 988 in ssdmodel/ssd.c.'>ssd_get_mapping</a>,
+<a id='L1502' name='L1502'></a>1502   <a href='../S/187.html#L917' title='Defined at 917 in ssdmodel/ssd.c.'>ssd_event_arrive</a>,
+<a id='L1503' name='L1503'></a>1503   <a href='../S/187.html#L1015' title='Defined at 1015 in ssdmodel/ssd.c.'>ssd_get_distance</a>,
+<a id='L1504' name='L1504'></a>1504   <a href='../S/187.html#L1023' title='Defined at 1023 in ssdmodel/ssd.c.'>ssd_get_servtime</a>,
+<a id='L1505' name='L1505'></a>1505   <a href='../S/187.html#L1475' title='Defined at 1475 in ssdmodel/ssd.c.'>ssd_get_seektime</a>,
+<a id='L1506' name='L1506'></a>1506   <a href='../S/187.html#L1032' title='Defined at 1032 in ssdmodel/ssd.c.'>ssd_get_acctime</a>,
+<a id='L1507' name='L1507'></a>1507   <a href='../S/187.html#L263' title='Defined at 263 in ssdmodel/ssd.c.'>ssd_bus_delay_complete</a>,
+<a id='L1508' name='L1508'></a>1508   <a href='../S/187.html#L240' title='Defined at 240 in ssdmodel/ssd.c.'>ssd_bus_ownership_grant</a>
+<a id='L1509' name='L1509'></a>1509 <em class='brace'>}</em>;
+</pre>
+<hr />
+<a id='BOTTOM' name='BOTTOM'></a>
+<em class='comment'>/* [&lt;][&gt;]<a href='#L28'>[^]</a><a href='#L1475'>[v]</a><a href='#TOP'>[top]</a>[bottom]<a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</em>
+</body>
+</html>

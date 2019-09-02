@@ -1,0 +1,200 @@
+initial with striping allocation
+./ssdmodel/valid/ssd-iozone.parv ./iozone 16000 16000_websearch3 11_3 3
+1:ytc94u trace file = ./iozone
+2:ytc94u striping threshold  = 11_3
+3:ytc94u clear stastistic data in request = 0 
+4:ytc94u buffer no parallel policy turn on= 0 
+5:ytc94u the striping threshold method = 3 
+5993:ytc94u 468262 total_live_page_cp_count2 = 0 W resp time = 0.168536 R resp time = 0.095108 resp time = 0.146800 				 	striping count = 0 striping page = 0
+5994:ytc94u w_multiple = 0.000000 ,cache_size = 16000
+5995: ytc94u total_live_page_cp_count2 = 0,total_gc_count = 0
+5996:ytc94u write hit count = 138679 write miss count = 191117 write hit rate = 0.420499
+5997:ytc94u read hit count = 41308 read miss count = 97302 read hit rate = 0.298016
+5998:ytc94u kick_read_intensive_page_count = 175117 kick_write_intensive_page_count = 0
+5999:ytc94u handle_write_count_in_activity_elem = 175117
+6000:ytc94u write request average serve time = 0.168536 
+6001:ytc94u read request average serve time = 0.095108 
+6002:ytc94u write and read request average serve time = 0.146800 
+6003:ytc94u striping_count = 0,striping_page= 0
+6004:ytc94u total_wait_striping_page_count == 0
+6005:ytc94u average block associate logical block = 59.425432
+6009:ytc94u ssd Response time average: 	0.148765
+6010:ytc94u ssd Response time std.dev.:	0.146563
+6011:ytc94u ssd Response time maximum:	1.464943
+8033:ytc94u ssd #0 Response time average: 	0.148765
+8034:ytc94u ssd #0 Response time std.dev.:	0.146563
+8035:ytc94u ssd #0 Response time maximum:	1.464943
+9845:ytc94u ssd #0  elem #0 Response time average: 	0.252444
+9846:ytc94u ssd #0  elem #0 Response time std.dev.:	0.101587
+9847:ytc94u ssd #0  elem #0 Response time maximum:	1.463036
+11657:ytc94u ssd #0  elem #1 Response time average: 	0.251740
+11658:ytc94u ssd #0  elem #1 Response time std.dev.:	0.099834
+11659:ytc94u ssd #0  elem #1 Response time maximum:	1.355568
+13469:ytc94u ssd #0  elem #2 Response time average: 	0.250793
+13470:ytc94u ssd #0  elem #2 Response time std.dev.:	0.102137
+13471:ytc94u ssd #0  elem #2 Response time maximum:	1.262293
+15281:ytc94u ssd #0  elem #3 Response time average: 	0.251969
+15282:ytc94u ssd #0  elem #3 Response time std.dev.:	0.102420
+15283:ytc94u ssd #0  elem #3 Response time maximum:	1.236118
+17093:ytc94u ssd #0  elem #4 Response time average: 	0.252387
+17094:ytc94u ssd #0  elem #4 Response time std.dev.:	0.101496
+17095:ytc94u ssd #0  elem #4 Response time maximum:	1.251743
+18905:ytc94u ssd #0  elem #5 Response time average: 	0.252681
+18906:ytc94u ssd #0  elem #5 Response time std.dev.:	0.101222
+18907:ytc94u ssd #0  elem #5 Response time maximum:	1.017932
+20717:ytc94u ssd #0  elem #6 Response time average: 	0.253102
+20718:ytc94u ssd #0  elem #6 Response time std.dev.:	0.102275
+20719:ytc94u ssd #0  elem #6 Response time maximum:	1.268280
+22529:ytc94u ssd #0  elem #7 Response time average: 	0.253591
+22530:ytc94u ssd #0  elem #7 Response time std.dev.:	0.100572
+22531:ytc94u ssd #0  elem #7 Response time maximum:	1.114850
+initial with locality allocation
+./ssdmodel/valid/ssd-iozone.parv ./iozone 16000 16000_websearch3 11_3 3
+1:ytc94u trace file = ./iozone
+2:ytc94u striping threshold  = 11_3
+3:ytc94u clear stastistic data in request = 0 
+4:ytc94u buffer no parallel policy turn on= 0 
+5:ytc94u the striping threshold method = 3 
+5993:ytc94u 468262 total_live_page_cp_count2 = 0 W resp time = 0.168925 R resp time = 0.098283 resp time = 0.148014 				 	striping count = 0 striping page = 0
+5994:ytc94u w_multiple = 99999.000000 ,cache_size = 16000
+5995: ytc94u total_live_page_cp_count2 = 0,total_gc_count = 0
+5996:ytc94u write hit count = 138349 write miss count = 191447 write hit rate = 0.419499
+5997:ytc94u read hit count = 41141 read miss count = 97469 read hit rate = 0.296811
+5998:ytc94u kick_read_intensive_page_count = 0 kick_write_intensive_page_count = 175447
+5999:ytc94u handle_write_count_in_activity_elem = 175447
+6000:ytc94u write request average serve time = 0.168925 
+6001:ytc94u read request average serve time = 0.098283 
+6002:ytc94u write and read request average serve time = 0.148014 
+6003:ytc94u striping_count = 0,striping_page= 0
+6004:ytc94u total_wait_striping_page_count == 0
+6005:ytc94u average block associate logical block = 6.923381
+6009:ytc94u ssd Response time average: 	0.149975
+6010:ytc94u ssd Response time std.dev.:	0.147318
+6011:ytc94u ssd Response time maximum:	1.559250
+8033:ytc94u ssd #0 Response time average: 	0.149975
+8034:ytc94u ssd #0 Response time std.dev.:	0.147318
+8035:ytc94u ssd #0 Response time maximum:	1.559250
+9845:ytc94u ssd #0  elem #0 Response time average: 	0.254071
+9846:ytc94u ssd #0  elem #0 Response time std.dev.:	0.100980
+9847:ytc94u ssd #0  elem #0 Response time maximum:	1.174968
+11657:ytc94u ssd #0  elem #1 Response time average: 	0.255014
+11658:ytc94u ssd #0  elem #1 Response time std.dev.:	0.100132
+11659:ytc94u ssd #0  elem #1 Response time maximum:	1.275536
+13469:ytc94u ssd #0  elem #2 Response time average: 	0.254102
+13470:ytc94u ssd #0  elem #2 Response time std.dev.:	0.102427
+13471:ytc94u ssd #0  elem #2 Response time maximum:	1.168543
+15281:ytc94u ssd #0  elem #3 Response time average: 	0.252739
+15282:ytc94u ssd #0  elem #3 Response time std.dev.:	0.101295
+15283:ytc94u ssd #0  elem #3 Response time maximum:	1.089031
+17093:ytc94u ssd #0  elem #4 Response time average: 	0.253835
+17094:ytc94u ssd #0  elem #4 Response time std.dev.:	0.103293
+17095:ytc94u ssd #0  elem #4 Response time maximum:	1.539811
+18905:ytc94u ssd #0  elem #5 Response time average: 	0.253796
+18906:ytc94u ssd #0  elem #5 Response time std.dev.:	0.103232
+18907:ytc94u ssd #0  elem #5 Response time maximum:	1.557343
+20717:ytc94u ssd #0  elem #6 Response time average: 	0.254272
+20718:ytc94u ssd #0  elem #6 Response time std.dev.:	0.100253
+20719:ytc94u ssd #0  elem #6 Response time maximum:	1.212250
+22529:ytc94u ssd #0  elem #7 Response time average: 	0.253871
+22530:ytc94u ssd #0  elem #7 Response time std.dev.:	0.101381
+22531:ytc94u ssd #0  elem #7 Response time maximum:	1.087250
+initial with striping allocation
+./ssdmodel/valid/ssd-iozone.parv ./iozone 16000 16000_websearch3 11_3 3
+1:ytc94u trace file = ./iozone
+2:ytc94u striping threshold  = 11_3
+3:ytc94u clear stastistic data in request = 0 
+4:ytc94u buffer no parallel policy turn on= 0 
+5:ytc94u the striping threshold method = 3 
+5993:ytc94u 468262 total_live_page_cp_count2 = 0 W resp time = 0.168536 R resp time = 0.095108 resp time = 0.146800 				 	striping count = 0 striping page = 0
+5994:ytc94u w_multiple = 0.000000 ,cache_size = 16000
+5995: ytc94u total_live_page_cp_count2 = 0,total_gc_count = 0
+5996:ytc94u write hit count = 138679 write miss count = 191117 write hit rate = 0.420499
+5997:ytc94u read hit count = 41308 read miss count = 97302 read hit rate = 0.298016
+5998:ytc94u kick_read_intensive_page_count = 175117 kick_write_intensive_page_count = 0
+5999:ytc94u handle_write_count_in_activity_elem = 175117
+6000:ytc94u write request average serve time = 0.168536 
+6001:ytc94u read request average serve time = 0.095108 
+6002:ytc94u write and read request average serve time = 0.146800 
+6003:ytc94u striping_count = 0,striping_page= 0
+6004:ytc94u total_wait_striping_page_count == 0
+6005:ytc94u average block associate logical block = 59.425432
+6009:ytc94u ssd Response time average: 	0.148765
+6010:ytc94u ssd Response time std.dev.:	0.146563
+6011:ytc94u ssd Response time maximum:	1.464943
+8033:ytc94u ssd #0 Response time average: 	0.148765
+8034:ytc94u ssd #0 Response time std.dev.:	0.146563
+8035:ytc94u ssd #0 Response time maximum:	1.464943
+9845:ytc94u ssd #0  elem #0 Response time average: 	0.252444
+9846:ytc94u ssd #0  elem #0 Response time std.dev.:	0.101587
+9847:ytc94u ssd #0  elem #0 Response time maximum:	1.463036
+11657:ytc94u ssd #0  elem #1 Response time average: 	0.251740
+11658:ytc94u ssd #0  elem #1 Response time std.dev.:	0.099834
+11659:ytc94u ssd #0  elem #1 Response time maximum:	1.355568
+13469:ytc94u ssd #0  elem #2 Response time average: 	0.250793
+13470:ytc94u ssd #0  elem #2 Response time std.dev.:	0.102137
+13471:ytc94u ssd #0  elem #2 Response time maximum:	1.262293
+15281:ytc94u ssd #0  elem #3 Response time average: 	0.251969
+15282:ytc94u ssd #0  elem #3 Response time std.dev.:	0.102420
+15283:ytc94u ssd #0  elem #3 Response time maximum:	1.236118
+17093:ytc94u ssd #0  elem #4 Response time average: 	0.252387
+17094:ytc94u ssd #0  elem #4 Response time std.dev.:	0.101496
+17095:ytc94u ssd #0  elem #4 Response time maximum:	1.251743
+18905:ytc94u ssd #0  elem #5 Response time average: 	0.252681
+18906:ytc94u ssd #0  elem #5 Response time std.dev.:	0.101222
+18907:ytc94u ssd #0  elem #5 Response time maximum:	1.017932
+20717:ytc94u ssd #0  elem #6 Response time average: 	0.253102
+20718:ytc94u ssd #0  elem #6 Response time std.dev.:	0.102275
+20719:ytc94u ssd #0  elem #6 Response time maximum:	1.268280
+22529:ytc94u ssd #0  elem #7 Response time average: 	0.253591
+22530:ytc94u ssd #0  elem #7 Response time std.dev.:	0.100572
+22531:ytc94u ssd #0  elem #7 Response time maximum:	1.114850
+initial with locality allocation
+./ssdmodel/valid/ssd-iozone.parv ./iozone 16000 16000_websearch3 11_3 3
+1:ytc94u trace file = ./iozone
+2:ytc94u striping threshold  = 11_3
+3:ytc94u clear stastistic data in request = 0 
+4:ytc94u buffer no parallel policy turn on= 0 
+5:ytc94u the striping threshold method = 3 
+5993:ytc94u 468262 total_live_page_cp_count2 = 0 W resp time = 0.168925 R resp time = 0.098283 resp time = 0.148014 				 	striping count = 0 striping page = 0
+5994:ytc94u w_multiple = 99999.000000 ,cache_size = 16000
+5995: ytc94u total_live_page_cp_count2 = 0,total_gc_count = 0
+5996:ytc94u write hit count = 138349 write miss count = 191447 write hit rate = 0.419499
+5997:ytc94u read hit count = 41141 read miss count = 97469 read hit rate = 0.296811
+5998:ytc94u kick_read_intensive_page_count = 0 kick_write_intensive_page_count = 175447
+5999:ytc94u handle_write_count_in_activity_elem = 175447
+6000:ytc94u write request average serve time = 0.168925 
+6001:ytc94u read request average serve time = 0.098283 
+6002:ytc94u write and read request average serve time = 0.148014 
+6003:ytc94u striping_count = 0,striping_page= 0
+6004:ytc94u total_wait_striping_page_count == 0
+6005:ytc94u average block associate logical block = 6.923381
+6009:ytc94u ssd Response time average: 	0.149975
+6010:ytc94u ssd Response time std.dev.:	0.147318
+6011:ytc94u ssd Response time maximum:	1.559250
+8033:ytc94u ssd #0 Response time average: 	0.149975
+8034:ytc94u ssd #0 Response time std.dev.:	0.147318
+8035:ytc94u ssd #0 Response time maximum:	1.559250
+9845:ytc94u ssd #0  elem #0 Response time average: 	0.254071
+9846:ytc94u ssd #0  elem #0 Response time std.dev.:	0.100980
+9847:ytc94u ssd #0  elem #0 Response time maximum:	1.174968
+11657:ytc94u ssd #0  elem #1 Response time average: 	0.255014
+11658:ytc94u ssd #0  elem #1 Response time std.dev.:	0.100132
+11659:ytc94u ssd #0  elem #1 Response time maximum:	1.275536
+13469:ytc94u ssd #0  elem #2 Response time average: 	0.254102
+13470:ytc94u ssd #0  elem #2 Response time std.dev.:	0.102427
+13471:ytc94u ssd #0  elem #2 Response time maximum:	1.168543
+15281:ytc94u ssd #0  elem #3 Response time average: 	0.252739
+15282:ytc94u ssd #0  elem #3 Response time std.dev.:	0.101295
+15283:ytc94u ssd #0  elem #3 Response time maximum:	1.089031
+17093:ytc94u ssd #0  elem #4 Response time average: 	0.253835
+17094:ytc94u ssd #0  elem #4 Response time std.dev.:	0.103293
+17095:ytc94u ssd #0  elem #4 Response time maximum:	1.539811
+18905:ytc94u ssd #0  elem #5 Response time average: 	0.253796
+18906:ytc94u ssd #0  elem #5 Response time std.dev.:	0.103232
+18907:ytc94u ssd #0  elem #5 Response time maximum:	1.557343
+20717:ytc94u ssd #0  elem #6 Response time average: 	0.254272
+20718:ytc94u ssd #0  elem #6 Response time std.dev.:	0.100253
+20719:ytc94u ssd #0  elem #6 Response time maximum:	1.212250
+22529:ytc94u ssd #0  elem #7 Response time average: 	0.253871
+22530:ytc94u ssd #0  elem #7 Response time std.dev.:	0.101381
+22531:ytc94u ssd #0  elem #7 Response time maximum:	1.087250

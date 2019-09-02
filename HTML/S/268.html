@@ -1,0 +1,544 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>src/disksim_ctlrsmart.c</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<a id='TOP' name='TOP'></a><h2 class='header'><a href='../mains.html'>root</a>/<a href='../files/402.html'>src</a>/disksim_ctlrsmart.c</h2>
+<em class='comment'>/* [&lt;][&gt;]<a href='#L110'>[^]</a><a href='#L472'>[v]</a>[top]<a href='#BOTTOM'>[bottom]</a><a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</em>
+<hr />
+<h2 class='header'>DEFINITIONS</h2>
+This source file includes following definitions.
+<ol>
+<li><a href='#L110' title='Defined at 110.'>controller_smart_queuefind</a></li>
+<li><a href='#L118' title='Defined at 118.'>controller_smart_wakeup</a></li>
+<li><a href='#L127' title='Defined at 127.'>controller_smart_issue_access</a></li>
+<li><a href='#L146' title='Defined at 146.'>controller_smart_disk_data_transfer</a></li>
+<li><a href='#L174' title='Defined at 174.'>controller_smart_disk_data_transfer_complete</a></li>
+<li><a href='#L199' title='Defined at 199.'>controller_smart_request_complete</a></li>
+<li><a href='#L212' title='Defined at 212.'>controller_smart_host_data_transfer_complete</a></li>
+<li><a href='#L240' title='Defined at 240.'>controller_smart_host_data_transfer</a></li>
+<li><a href='#L267' title='Defined at 267.'>controller_smart_request_arrive</a></li>
+<li><a href='#L279' title='Defined at 279.'>controller_smart_access_complete</a></li>
+<li><a href='#L311' title='Defined at 311.'>controller_smart_ready_to_transfer</a></li>
+<li><a href='#L321' title='Defined at 321.'>controller_smart_disconnect</a></li>
+<li><a href='#L330' title='Defined at 330.'>controller_smart_reconnect_to_transfer</a></li>
+<li><a href='#L339' title='Defined at 339.'>controller_smart_interrupt_arrive</a></li>
+<li><a href='#L366' title='Defined at 366.'>controller_smart_interrupt_complete</a></li>
+<li><a href='#L381' title='Defined at 381.'>controller_smart_event_arrive</a></li>
+<li><a href='#L422' title='Defined at 422.'>controller_smart_setcallbacks</a></li>
+<li><a href='#L434' title='Defined at 434.'>controller_smart_initialize</a></li>
+<li><a href='#L458' title='Defined at 458.'>controller_smart_resetstats</a></li>
+<li><a href='#L472' title='Defined at 472.'>controller_smart_printstats</a></li>
+</ol>
+<hr />
+<pre>
+<a id='L1' name='L1'></a>   1 <em class='comment'>/*</em>
+<a id='L2' name='L2'></a>   2 <em class='comment'> * DiskSim Storage Subsystem Simulation Environment (Version 4.0)</em>
+<a id='L3' name='L3'></a>   3 <em class='comment'> * Revision Authors: John Bucy, Greg Ganger</em>
+<a id='L4' name='L4'></a>   4 <em class='comment'> * Contributors: John Griffin, Jiri Schindler, Steve Schlosser</em>
+<a id='L5' name='L5'></a>   5 <em class='comment'> *</em>
+<a id='L6' name='L6'></a>   6 <em class='comment'> * Copyright (c) of Carnegie Mellon University, 2001-2008.</em>
+<a id='L7' name='L7'></a>   7 <em class='comment'> *</em>
+<a id='L8' name='L8'></a>   8 <em class='comment'> * This software is being provided by the copyright holders under the</em>
+<a id='L9' name='L9'></a>   9 <em class='comment'> * following license. By obtaining, using and/or copying this software,</em>
+<a id='L10' name='L10'></a>  10 <em class='comment'> * you agree that you have read, understood, and will comply with the</em>
+<a id='L11' name='L11'></a>  11 <em class='comment'> * following terms and conditions:</em>
+<a id='L12' name='L12'></a>  12 <em class='comment'> *</em>
+<a id='L13' name='L13'></a>  13 <em class='comment'> * Permission to reproduce, use, and prepare derivative works of this</em>
+<a id='L14' name='L14'></a>  14 <em class='comment'> * software is granted provided the copyright and "No Warranty" statements</em>
+<a id='L15' name='L15'></a>  15 <em class='comment'> * are included with all reproductions and derivative works and associated</em>
+<a id='L16' name='L16'></a>  16 <em class='comment'> * documentation. This software may also be redistributed without charge</em>
+<a id='L17' name='L17'></a>  17 <em class='comment'> * provided that the copyright and "No Warranty" statements are included</em>
+<a id='L18' name='L18'></a>  18 <em class='comment'> * in all redistributions.</em>
+<a id='L19' name='L19'></a>  19 <em class='comment'> *</em>
+<a id='L20' name='L20'></a>  20 <em class='comment'> * NO WARRANTY. THIS SOFTWARE IS FURNISHED ON AN "AS IS" BASIS.</em>
+<a id='L21' name='L21'></a>  21 <em class='comment'> * CARNEGIE MELLON UNIVERSITY MAKES NO WARRANTIES OF ANY KIND, EITHER</em>
+<a id='L22' name='L22'></a>  22 <em class='comment'> * EXPRESSED OR IMPLIED AS TO THE MATTER INCLUDING, BUT NOT LIMITED</em>
+<a id='L23' name='L23'></a>  23 <em class='comment'> * TO: WARRANTY OF FITNESS FOR PURPOSE OR MERCHANTABILITY, EXCLUSIVITY</em>
+<a id='L24' name='L24'></a>  24 <em class='comment'> * OF RESULTS OR RESULTS OBTAINED FROM USE OF THIS SOFTWARE. CARNEGIE</em>
+<a id='L25' name='L25'></a>  25 <em class='comment'> * MELLON UNIVERSITY DOES NOT MAKE ANY WARRANTY OF ANY KIND WITH RESPECT</em>
+<a id='L26' name='L26'></a>  26 <em class='comment'> * TO FREEDOM FROM PATENT, TRADEMARK, OR COPYRIGHT INFRINGEMENT.</em>
+<a id='L27' name='L27'></a>  27 <em class='comment'> * COPYRIGHT HOLDERS WILL BEAR NO LIABILITY FOR ANY USE OF THIS SOFTWARE</em>
+<a id='L28' name='L28'></a>  28 <em class='comment'> * OR DOCUMENTATION.</em>
+<a id='L29' name='L29'></a>  29 <em class='comment'> *</em>
+<a id='L30' name='L30'></a>  30 <em class='comment'> */</em>
+<a id='L31' name='L31'></a>  31 
+<a id='L32' name='L32'></a>  32 
+<a id='L33' name='L33'></a>  33 
+<a id='L34' name='L34'></a>  34 <em class='comment'>/*</em>
+<a id='L35' name='L35'></a>  35 <em class='comment'> * DiskSim Storage Subsystem Simulation Environment (Version 2.0)</em>
+<a id='L36' name='L36'></a>  36 <em class='comment'> * Revision Authors: Greg Ganger</em>
+<a id='L37' name='L37'></a>  37 <em class='comment'> * Contributors: Ross Cohen, John Griffin, Steve Schlosser</em>
+<a id='L38' name='L38'></a>  38 <em class='comment'> *</em>
+<a id='L39' name='L39'></a>  39 <em class='comment'> * Copyright (c) of Carnegie Mellon University, 1999.</em>
+<a id='L40' name='L40'></a>  40 <em class='comment'> *</em>
+<a id='L41' name='L41'></a>  41 <em class='comment'> * Permission to reproduce, use, and prepare derivative works of</em>
+<a id='L42' name='L42'></a>  42 <em class='comment'> * this software for internal use is granted provided the copyright</em>
+<a id='L43' name='L43'></a>  43 <em class='comment'> * and "No Warranty" statements are included with all reproductions</em>
+<a id='L44' name='L44'></a>  44 <em class='comment'> * and derivative works. This software may also be redistributed</em>
+<a id='L45' name='L45'></a>  45 <em class='comment'> * without charge provided that the copyright and "No Warranty"</em>
+<a id='L46' name='L46'></a>  46 <em class='comment'> * statements are included in all redistributions.</em>
+<a id='L47' name='L47'></a>  47 <em class='comment'> *</em>
+<a id='L48' name='L48'></a>  48 <em class='comment'> * NO WARRANTY. THIS SOFTWARE IS FURNISHED ON AN "AS IS" BASIS.</em>
+<a id='L49' name='L49'></a>  49 <em class='comment'> * CARNEGIE MELLON UNIVERSITY MAKES NO WARRANTIES OF ANY KIND, EITHER</em>
+<a id='L50' name='L50'></a>  50 <em class='comment'> * EXPRESSED OR IMPLIED AS TO THE MATTER INCLUDING, BUT NOT LIMITED</em>
+<a id='L51' name='L51'></a>  51 <em class='comment'> * TO: WARRANTY OF FITNESS FOR PURPOSE OR MERCHANTABILITY, EXCLUSIVITY</em>
+<a id='L52' name='L52'></a>  52 <em class='comment'> * OF RESULTS OR RESULTS OBTAINED FROM USE OF THIS SOFTWARE. CARNEGIE</em>
+<a id='L53' name='L53'></a>  53 <em class='comment'> * MELLON UNIVERSITY DOES NOT MAKE ANY WARRANTY OF ANY KIND WITH RESPECT</em>
+<a id='L54' name='L54'></a>  54 <em class='comment'> * TO FREEDOM FROM PATENT, TRADEMARK, OR COPYRIGHT INFRINGEMENT.</em>
+<a id='L55' name='L55'></a>  55 <em class='comment'> */</em>
+<a id='L56' name='L56'></a>  56 
+<a id='L57' name='L57'></a>  57 <em class='comment'>/*</em>
+<a id='L58' name='L58'></a>  58 <em class='comment'> * DiskSim Storage Subsystem Simulation Environment</em>
+<a id='L59' name='L59'></a>  59 <em class='comment'> * Authors: Greg Ganger, Bruce Worthington, Yale Patt</em>
+<a id='L60' name='L60'></a>  60 <em class='comment'> *</em>
+<a id='L61' name='L61'></a>  61 <em class='comment'> * Copyright (C) 1993, 1995, 1997 The Regents of the University of Michigan </em>
+<a id='L62' name='L62'></a>  62 <em class='comment'> *</em>
+<a id='L63' name='L63'></a>  63 <em class='comment'> * This software is being provided by the copyright holders under the</em>
+<a id='L64' name='L64'></a>  64 <em class='comment'> * following license. By obtaining, using and/or copying this software,</em>
+<a id='L65' name='L65'></a>  65 <em class='comment'> * you agree that you have read, understood, and will comply with the</em>
+<a id='L66' name='L66'></a>  66 <em class='comment'> * following terms and conditions:</em>
+<a id='L67' name='L67'></a>  67 <em class='comment'> *</em>
+<a id='L68' name='L68'></a>  68 <em class='comment'> * Permission to use, copy, modify, distribute, and sell this software</em>
+<a id='L69' name='L69'></a>  69 <em class='comment'> * and its documentation for any purpose and without fee or royalty is</em>
+<a id='L70' name='L70'></a>  70 <em class='comment'> * hereby granted, provided that the full text of this NOTICE appears on</em>
+<a id='L71' name='L71'></a>  71 <em class='comment'> * ALL copies of the software and documentation or portions thereof,</em>
+<a id='L72' name='L72'></a>  72 <em class='comment'> * including modifications, that you make.</em>
+<a id='L73' name='L73'></a>  73 <em class='comment'> *</em>
+<a id='L74' name='L74'></a>  74 <em class='comment'> * THIS SOFTWARE IS PROVIDED "AS IS," AND COPYRIGHT HOLDERS MAKE NO</em>
+<a id='L75' name='L75'></a>  75 <em class='comment'> * REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED. BY WAY OF EXAMPLE,</em>
+<a id='L76' name='L76'></a>  76 <em class='comment'> * BUT NOT LIMITATION, COPYRIGHT HOLDERS MAKE NO REPRESENTATIONS OR</em>
+<a id='L77' name='L77'></a>  77 <em class='comment'> * WARRANTIES OF MERCHANTABILITY OR FITNESS FOR ANY PARTICULAR PURPOSE OR</em>
+<a id='L78' name='L78'></a>  78 <em class='comment'> * THAT THE USE OF THE SOFTWARE OR DOCUMENTATION WILL NOT INFRINGE ANY</em>
+<a id='L79' name='L79'></a>  79 <em class='comment'> * THIRD PARTY PATENTS, COPYRIGHTS, TRADEMARKS OR OTHER RIGHTS. COPYRIGHT</em>
+<a id='L80' name='L80'></a>  80 <em class='comment'> * HOLDERS WILL BEAR NO LIABILITY FOR ANY USE OF THIS SOFTWARE OR</em>
+<a id='L81' name='L81'></a>  81 <em class='comment'> * DOCUMENTATION.</em>
+<a id='L82' name='L82'></a>  82 <em class='comment'> *</em>
+<a id='L83' name='L83'></a>  83 <em class='comment'> *  This software is provided AS IS, WITHOUT REPRESENTATION FROM THE</em>
+<a id='L84' name='L84'></a>  84 <em class='comment'> * UNIVERSITY OF MICHIGAN AS TO ITS FITNESS FOR ANY PURPOSE, AND</em>
+<a id='L85' name='L85'></a>  85 <em class='comment'> * WITHOUT WARRANTY BY THE UNIVERSITY OF MICHIGAN OF ANY KIND, EITHER</em>
+<a id='L86' name='L86'></a>  86 <em class='comment'> * EXPRESSED OR IMPLIED, INCLUDING WITHOUT LIMITATION THE IMPLIED</em>
+<a id='L87' name='L87'></a>  87 <em class='comment'> * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE REGENTS</em>
+<a id='L88' name='L88'></a>  88 <em class='comment'> * OF THE UNIVERSITY OF MICHIGAN SHALL NOT BE LIABLE FOR ANY DAMAGES,</em>
+<a id='L89' name='L89'></a>  89 <em class='comment'> * INCLUDING SPECIAL , INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES,</em>
+<a id='L90' name='L90'></a>  90 <em class='comment'> * WITH RESPECT TO ANY CLAIM ARISING OUT OF OR IN CONNECTION WITH THE</em>
+<a id='L91' name='L91'></a>  91 <em class='comment'> * USE OF OR IN CONNECTION WITH THE USE OF THE SOFTWARE, EVEN IF IT HAS</em>
+<a id='L92' name='L92'></a>  92 <em class='comment'> * BEEN OR IS HEREAFTER ADVISED OF THE POSSIBILITY OF SUCH DAMAGES</em>
+<a id='L93' name='L93'></a>  93 <em class='comment'> *</em>
+<a id='L94' name='L94'></a>  94 <em class='comment'> * The names and trademarks of copyright holders or authors may NOT be</em>
+<a id='L95' name='L95'></a>  95 <em class='comment'> * used in advertising or publicity pertaining to the software without</em>
+<a id='L96' name='L96'></a>  96 <em class='comment'> * specific, written prior permission. Title to copyright in this software</em>
+<a id='L97' name='L97'></a>  97 <em class='comment'> * and any associated documentation will at all times remain with copyright</em>
+<a id='L98' name='L98'></a>  98 <em class='comment'> * holders.</em>
+<a id='L99' name='L99'></a>  99 <em class='comment'> */</em>
+<a id='L100' name='L100'></a> 100 
+<a id='L101' name='L101'></a> 101 <em class='sharp'>#include</em> "<a href='283.html'>disksim_global.h</a>"
+<a id='L102' name='L102'></a> 102 <em class='sharp'>#include</em> "<a href='255.html'>disksim_iosim.h</a>"
+<a id='L103' name='L103'></a> 103 <em class='sharp'>#include</em> "<a href='257.html'>disksim_controller.h</a>"
+<a id='L104' name='L104'></a> 104 <em class='sharp'>#include</em> "<a href='284.html'>disksim_ctlr.h</a>"
+<a id='L105' name='L105'></a> 105 <em class='sharp'>#include</em> "<a href='189.html'>disksim_orgface.h</a>"
+<a id='L106' name='L106'></a> 106 <em class='sharp'>#include</em> "<a href='259.html'>disksim_ioqueue.h</a>"
+<a id='L107' name='L107'></a> 107 <em class='sharp'>#include</em> "<a href='267.html'>disksim_cache.h</a>"
+<a id='L108' name='L108'></a> 108 
+<a id='L109' name='L109'></a> 109 
+<a id='L110' name='L110'></a> 110 <strong class='reserved'>static</strong> <strong class='reserved'>struct</strong> <a href='../S/259.html#L255' title='Defined at 255 in src/disksim_ioqueue.h.'>ioq</a> * <a href='../S/268.html#L425' title='Referred from 425 in src/disksim_ctlrsmart.c.'>controller_smart_queuefind</a> (<strong class='reserved'>void</strong> *queuefindparam, <strong class='reserved'>int</strong> devno)
+<a id='L111' name='L111'></a> 111 <em class='brace'>{</em>
+<a id='L112' name='L112'></a> 112    <a href='../D/1071.html' title='Multiple defined in 2 places.'>controller</a> *currctlr = queuefindparam;
+<a id='L113' name='L113'></a> 113    <a href='../D/13.html' title='Multiple defined in 2 places.'>ASSERT1</a>((devno &gt;= 0) &amp;&amp; (devno &lt; <a href='../S/214.html#L341' title='Defined at 341 in src/disksim_device.c.'>device_get_numdevices</a>()), "devno", devno);
+<a id='L114' name='L114'></a> 114    <strong class='reserved'>return</strong>(currctlr-&gt;devices[devno].queue);
+<a id='L115' name='L115'></a> 115 <em class='brace'>}</em>
+<a id='L116' name='L116'></a> 116 
+<a id='L117' name='L117'></a> 117 
+<a id='L118' name='L118'></a> 118 <strong class='reserved'>static</strong> <strong class='reserved'>void</strong> <a href='../R/898.html' title='Multiple referred from 2 places.'>controller_smart_wakeup</a> (<strong class='reserved'>void</strong> *wakeupfuncparam, <strong class='reserved'>struct</strong> cacheevent *cacheevent)
+<a id='L119' name='L119'></a> 119 <em class='brace'>{</em>
+<a id='L120' name='L120'></a> 120    <a href='../D/1071.html' title='Multiple defined in 2 places.'>controller</a> *currctlr = wakeupfuncparam;
+<a id='L121' name='L121'></a> 121    <strong class='reserved'>if</strong> (cacheevent) <em class='brace'>{</em>
+<a id='L122' name='L122'></a> 122       currctlr-&gt;cache-&gt;cache_wakeup_complete(currctlr-&gt;cache, cacheevent);
+<a id='L123' name='L123'></a> 123    <em class='brace'>}</em>
+<a id='L124' name='L124'></a> 124 <em class='brace'>}</em>
+<a id='L125' name='L125'></a> 125 
+<a id='L126' name='L126'></a> 126 
+<a id='L127' name='L127'></a> 127 <strong class='reserved'>static</strong> <strong class='reserved'>void</strong> <a href='../S/268.html#L424' title='Referred from 424 in src/disksim_ctlrsmart.c.'>controller_smart_issue_access</a> (<strong class='reserved'>void</strong> *issuefuncparam, <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr)
+<a id='L128' name='L128'></a> 128 <em class='brace'>{</em>
+<a id='L129' name='L129'></a> 129    <a href='../D/1071.html' title='Multiple defined in 2 places.'>controller</a> *currctlr = issuefuncparam;
+<a id='L130' name='L130'></a> 130    <strong class='reserved'>struct</strong> <a href='../S/259.html#L255' title='Defined at 255 in src/disksim_ioqueue.h.'>ioq</a> *queue = currctlr-&gt;devices[curr-&gt;devno].queue;
+<a id='L131' name='L131'></a> 131    <strong class='reserved'>int</strong> numout = <a href='../S/254.html#L260' title='Defined at 260 in src/disksim_ioqueue.c.'>ioqueue_get_reqoutstanding</a>(queue);
+<a id='L132' name='L132'></a> 132 
+<a id='L133' name='L133'></a> 133    <em class='comment'>/* in case the cache changes to which device the request is sent */</em>
+<a id='L134' name='L134'></a> 134 <em class='comment'>//fprintf (stderr, "busno %x, buspath %x, slotno %x, slotpath %x\n", curr-&gt;busno, currctlr-&gt;devices[curr-&gt;devno].buspath.value, curr-&gt;slotno, currctlr-&gt;devices[curr-&gt;devno].slotpath.value);</em>
+<a id='L135' name='L135'></a> 135    curr-&gt;busno = currctlr-&gt;devices[curr-&gt;devno].buspath.value;
+<a id='L136' name='L136'></a> 136    curr-&gt;slotno = currctlr-&gt;devices[curr-&gt;devno].slotpath.value;
+<a id='L137' name='L137'></a> 137 
+<a id='L138' name='L138'></a> 138    <a href='../S/254.html#L3186' title='Defined at 3186 in src/disksim_ioqueue.c.'>ioqueue_add_new_request</a>(queue, curr);
+<a id='L139' name='L139'></a> 139    <strong class='reserved'>if</strong> (numout &lt; currctlr-&gt;devices[curr-&gt;devno].maxoutstanding) <em class='brace'>{</em>
+<a id='L140' name='L140'></a> 140       <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *sched = <a href='../S/254.html#L3150' title='Defined at 3150 in src/disksim_ioqueue.c.'>ioqueue_get_next_request</a>(queue);
+<a id='L141' name='L141'></a> 141       <a href='../S/204.html#L183' title='Defined at 183 in src/disksim_controller.c.'>controller_send_event_down_path</a>(currctlr, sched, currctlr-&gt;ovrhd_disk_request);
+<a id='L142' name='L142'></a> 142    <em class='brace'>}</em>
+<a id='L143' name='L143'></a> 143 <em class='brace'>}</em>
+<a id='L144' name='L144'></a> 144 
+<a id='L145' name='L145'></a> 145 
+<a id='L146' name='L146'></a> 146 <strong class='reserved'>static</strong> <strong class='reserved'>void</strong> <a href='../S/268.html#L398' title='Referred from 398 in src/disksim_ctlrsmart.c.'>controller_smart_disk_data_transfer</a> (<a href='../D/1071.html' title='Multiple defined in 2 places.'>controller</a> *currctlr, <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr)
+<a id='L147' name='L147'></a> 147 <em class='brace'>{</em>
+<a id='L148' name='L148'></a> 148    <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *tmp = (<a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *) <a href='../S/272.html#L193' title='Defined at 193 in src/disksim.c.'>getfromextraq</a>();
+<a id='L149' name='L149'></a> 149 <em class='comment'>/*</em>
+<a id='L150' name='L150'></a> 150 <em class='comment'>fprintf (outputfile, "%f: controller_smart_disk_data_transfer: devno %d, bcount %d\n", simtime, curr-&gt;devno, curr-&gt;bcount);</em>
+<a id='L151' name='L151'></a> 151 <em class='comment'>*/</em>
+<a id='L152' name='L152'></a> 152    curr-&gt;time = <a href='../D/1986.html' title='Multiple defined in 3 places.'>max</a>(<a href='../S/214.html#L354' title='Defined at 354 in src/disksim_device.c.'>device_get_blktranstime</a>(curr), currctlr-&gt;blktranstime);
+<a id='L153' name='L153'></a> 153    tmp-&gt;time = <a href='../S/283.html#L438' title='Defined at 438 in src/disksim_global.h.'>simtime</a> + ((<strong class='reserved'>double</strong>) curr-&gt;bcount * curr-&gt;time);
+<a id='L154' name='L154'></a> 154    tmp-&gt;type = <a href='../S/255.html#L140' title='Defined at 140 in src/disksim_iosim.h.'>CONTROLLER_DATA_TRANSFER_COMPLETE</a>;
+<a id='L155' name='L155'></a> 155    tmp-&gt;devno = curr-&gt;devno;
+<a id='L156' name='L156'></a> 156    tmp-&gt;blkno = curr-&gt;blkno;
+<a id='L157' name='L157'></a> 157    tmp-&gt;bcount = curr-&gt;bcount;
+<a id='L158' name='L158'></a> 158    tmp-&gt;tempint2 = currctlr-&gt;ctlno;
+<a id='L159' name='L159'></a> 159    tmp-&gt;tempptr1 = curr;
+<a id='L160' name='L160'></a> 160 
+<a id='L161' name='L161'></a> 161    <em class='comment'>/* want to use the tempptr1 value for something else! */</em>
+<a id='L162' name='L162'></a> 162    curr-&gt;tempptr1 = tmp;
+<a id='L163' name='L163'></a> 163    curr-&gt;next = currctlr-&gt;datatransfers;
+<a id='L164' name='L164'></a> 164    curr-&gt;prev = NULL;
+<a id='L165' name='L165'></a> 165    <strong class='reserved'>if</strong> (curr-&gt;next) <em class='brace'>{</em>
+<a id='L166' name='L166'></a> 166       curr-&gt;next-&gt;prev = curr;
+<a id='L167' name='L167'></a> 167    <em class='brace'>}</em>
+<a id='L168' name='L168'></a> 168    currctlr-&gt;datatransfers = curr;
+<a id='L169' name='L169'></a> 169 
+<a id='L170' name='L170'></a> 170    <a href='../S/272.html#L280' title='Defined at 280 in src/disksim.c.'>addtointq</a>((<a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a> *) tmp);
+<a id='L171' name='L171'></a> 171 <em class='brace'>}</em>
+<a id='L172' name='L172'></a> 172 
+<a id='L173' name='L173'></a> 173 
+<a id='L174' name='L174'></a> 174 <strong class='reserved'>static</strong> <strong class='reserved'>void</strong> <a href='../S/268.html#L403' title='Referred from 403 in src/disksim_ctlrsmart.c.'>controller_smart_disk_data_transfer_complete</a> (<a href='../D/1071.html' title='Multiple defined in 2 places.'>controller</a> *currctlr, <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr)
+<a id='L175' name='L175'></a> 175 <em class='brace'>{</em>
+<a id='L176' name='L176'></a> 176    <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *tmp = (<a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *) curr-&gt;tempptr1;
+<a id='L177' name='L177'></a> 177 
+<a id='L178' name='L178'></a> 178    tmp-&gt;bcount -= curr-&gt;bcount;
+<a id='L179' name='L179'></a> 179    <a href='../S/272.html#L176' title='Defined at 176 in src/disksim.c.'>addtoextraq</a>((<a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a> *) curr);
+<a id='L180' name='L180'></a> 180    <a href='../D/12.html' title='Multiple defined in 2 places.'>ASSERT</a>(tmp-&gt;bcount &gt;= 0);
+<a id='L181' name='L181'></a> 181    <strong class='reserved'>if</strong> (tmp-&gt;bcount == 0) <em class='brace'>{</em>
+<a id='L182' name='L182'></a> 182       <strong class='reserved'>if</strong> (tmp-&gt;next) <em class='brace'>{</em>
+<a id='L183' name='L183'></a> 183          tmp-&gt;next-&gt;prev = tmp-&gt;prev;
+<a id='L184' name='L184'></a> 184       <em class='brace'>}</em>
+<a id='L185' name='L185'></a> 185       <strong class='reserved'>if</strong> (tmp-&gt;prev) <em class='brace'>{</em>
+<a id='L186' name='L186'></a> 186          tmp-&gt;prev-&gt;next = tmp-&gt;next;
+<a id='L187' name='L187'></a> 187       <em class='brace'>}</em> <strong class='reserved'>else</strong> <em class='brace'>{</em>
+<a id='L188' name='L188'></a> 188          currctlr-&gt;datatransfers = tmp-&gt;next;
+<a id='L189' name='L189'></a> 189       <em class='brace'>}</em>
+<a id='L190' name='L190'></a> 190       tmp-&gt;time = <a href='../S/283.html#L438' title='Defined at 438 in src/disksim_global.h.'>simtime</a>;
+<a id='L191' name='L191'></a> 191       <a href='../S/272.html#L280' title='Defined at 280 in src/disksim.c.'>addtointq</a>((<a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a> *) tmp);
+<a id='L192' name='L192'></a> 192    <em class='brace'>}</em> <strong class='reserved'>else</strong> <em class='brace'>{</em>
+<a id='L193' name='L193'></a> 193       fprintf(stderr, "Haven't required less than all out transfer at controller_smart_disk_data_transfer_complete\n");
+<a id='L194' name='L194'></a> 194       exit(1);
+<a id='L195' name='L195'></a> 195    <em class='brace'>}</em>
+<a id='L196' name='L196'></a> 196 <em class='brace'>}</em>
+<a id='L197' name='L197'></a> 197 
+<a id='L198' name='L198'></a> 198 
+<a id='L199' name='L199'></a> 199 <strong class='reserved'>static</strong> <strong class='reserved'>void</strong> <a href='../R/895.html' title='Multiple referred from 2 places.'>controller_smart_request_complete</a> (<strong class='reserved'>void</strong> *donefuncparam, <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr)
+<a id='L200' name='L200'></a> 200 <em class='brace'>{</em>
+<a id='L201' name='L201'></a> 201    <a href='../D/1071.html' title='Multiple defined in 2 places.'>controller</a> *currctlr = donefuncparam;
+<a id='L202' name='L202'></a> 202 <em class='comment'>/*</em>
+<a id='L203' name='L203'></a> 203 <em class='comment'>fprintf (outputfile, "Request completed at smart controller: devno %d, blkno %d\n", curr-&gt;devno, curr-&gt;blkno);</em>
+<a id='L204' name='L204'></a> 204 <em class='comment'>*/</em>
+<a id='L205' name='L205'></a> 205 
+<a id='L206' name='L206'></a> 206    curr-&gt;type = <a href='../S/255.html#L125' title='Defined at 125 in src/disksim_iosim.h.'>IO_INTERRUPT_ARRIVE</a>;
+<a id='L207' name='L207'></a> 207    curr-&gt;cause = <a href='../S/255.html#L164' title='Defined at 164 in src/disksim_iosim.h.'>COMPLETION</a>;
+<a id='L208' name='L208'></a> 208    <a href='../S/204.html#L217' title='Defined at 217 in src/disksim_controller.c.'>controller_send_event_up_path</a>(currctlr, curr, currctlr-&gt;ovrhd_complete);
+<a id='L209' name='L209'></a> 209 <em class='brace'>}</em>
+<a id='L210' name='L210'></a> 210 
+<a id='L211' name='L211'></a> 211 
+<a id='L212' name='L212'></a> 212 <strong class='reserved'>static</strong> <strong class='reserved'>void</strong> <a href='../S/268.html#L405' title='Referred from 405 in src/disksim_ctlrsmart.c.'>controller_smart_host_data_transfer_complete</a> (<a href='../D/1071.html' title='Multiple defined in 2 places.'>controller</a> *currctlr, <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr)
+<a id='L213' name='L213'></a> 213 <em class='brace'>{</em>
+<a id='L214' name='L214'></a> 214    <em class='comment'>/* DMA to/from host complete */</em>
+<a id='L215' name='L215'></a> 215 
+<a id='L216' name='L216'></a> 216    <strong class='reserved'>if</strong> (curr-&gt;flags &amp; <a href='../S/283.html#L193' title='Defined at 193 in src/disksim_global.h.'>READ</a>) <em class='brace'>{</em>
+<a id='L217' name='L217'></a> 217       currctlr-&gt;cache-&gt;cache_free_block_clean(currctlr-&gt;cache, curr);
+<a id='L218' name='L218'></a> 218       <a href='../S/268.html#L199' title='Defined at 199 in src/disksim_ctlrsmart.c.'>controller_smart_request_complete</a>(currctlr, curr);
+<a id='L219' name='L219'></a> 219    <em class='brace'>}</em> <strong class='reserved'>else</strong> <em class='brace'>{</em>
+<a id='L220' name='L220'></a> 220       <em class='comment'>/* cache will call "done" function if request doesn't block */</em>
+<a id='L221' name='L221'></a> 221       currctlr-&gt;cache-&gt;cache_free_block_dirty(currctlr-&gt;cache, curr, &amp;<a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;donefunc_ctlrsmart_write, currctlr);
+<a id='L222' name='L222'></a> 222    <em class='brace'>}</em>
+<a id='L223' name='L223'></a> 223    <strong class='reserved'>if</strong> (currctlr-&gt;hostwaiters) <em class='brace'>{</em>
+<a id='L224' name='L224'></a> 224       curr = currctlr-&gt;hostwaiters-&gt;next;
+<a id='L225' name='L225'></a> 225       <strong class='reserved'>if</strong> (curr-&gt;next == curr) <em class='brace'>{</em>
+<a id='L226' name='L226'></a> 226          currctlr-&gt;hostwaiters = NULL;
+<a id='L227' name='L227'></a> 227       <em class='brace'>}</em> <strong class='reserved'>else</strong> <em class='brace'>{</em>
+<a id='L228' name='L228'></a> 228          currctlr-&gt;hostwaiters-&gt;next = curr-&gt;next;
+<a id='L229' name='L229'></a> 229       <em class='brace'>}</em>
+<a id='L230' name='L230'></a> 230       curr-&gt;next = NULL;
+<a id='L231' name='L231'></a> 231                                        <em class='comment'>/* Time for DMA */</em>
+<a id='L232' name='L232'></a> 232       curr-&gt;time = <a href='../S/283.html#L438' title='Defined at 438 in src/disksim_global.h.'>simtime</a> + ((<strong class='reserved'>double</strong>) curr-&gt;bcount * currctlr-&gt;blktranstime);
+<a id='L233' name='L233'></a> 233       <a href='../S/272.html#L280' title='Defined at 280 in src/disksim.c.'>addtointq</a>((<a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a> *) curr);
+<a id='L234' name='L234'></a> 234    <em class='brace'>}</em> <strong class='reserved'>else</strong> <em class='brace'>{</em>
+<a id='L235' name='L235'></a> 235       currctlr-&gt;hosttransfer = <a href='../D/374.html' title='Multiple defined in 2 places.'>FALSE</a>;
+<a id='L236' name='L236'></a> 236    <em class='brace'>}</em>
+<a id='L237' name='L237'></a> 237 <em class='brace'>}</em>
+<a id='L238' name='L238'></a> 238 
+<a id='L239' name='L239'></a> 239 
+<a id='L240' name='L240'></a> 240 <strong class='reserved'>static</strong> <strong class='reserved'>void</strong> <a href='../S/268.html#L427' title='Referred from 427 in src/disksim_ctlrsmart.c.'>controller_smart_host_data_transfer</a> (<strong class='reserved'>void</strong> *donefuncparam, <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr)
+<a id='L241' name='L241'></a> 241 <em class='brace'>{</em>
+<a id='L242' name='L242'></a> 242    <a href='../D/1071.html' title='Multiple defined in 2 places.'>controller</a> *currctlr = donefuncparam;
+<a id='L243' name='L243'></a> 243 
+<a id='L244' name='L244'></a> 244    <em class='comment'>/* DMA data to/from host */</em>
+<a id='L245' name='L245'></a> 245 
+<a id='L246' name='L246'></a> 246    curr-&gt;type = <a href='../S/255.html#L140' title='Defined at 140 in src/disksim_iosim.h.'>CONTROLLER_DATA_TRANSFER_COMPLETE</a>;
+<a id='L247' name='L247'></a> 247    curr-&gt;tempint2 = currctlr-&gt;ctlno;
+<a id='L248' name='L248'></a> 248    curr-&gt;tempptr1 = NULL;
+<a id='L249' name='L249'></a> 249 
+<a id='L250' name='L250'></a> 250    <strong class='reserved'>if</strong> (currctlr-&gt;hosttransfer) <em class='brace'>{</em>
+<a id='L251' name='L251'></a> 251       <strong class='reserved'>if</strong> (currctlr-&gt;hostwaiters) <em class='brace'>{</em>
+<a id='L252' name='L252'></a> 252          curr-&gt;next = currctlr-&gt;hostwaiters-&gt;next;
+<a id='L253' name='L253'></a> 253          currctlr-&gt;hostwaiters-&gt;next = curr;
+<a id='L254' name='L254'></a> 254       <em class='brace'>}</em> <strong class='reserved'>else</strong> <em class='brace'>{</em>
+<a id='L255' name='L255'></a> 255          curr-&gt;next = curr;
+<a id='L256' name='L256'></a> 256       <em class='brace'>}</em>
+<a id='L257' name='L257'></a> 257       currctlr-&gt;hostwaiters = curr;
+<a id='L258' name='L258'></a> 258       <strong class='reserved'>return</strong>;
+<a id='L259' name='L259'></a> 259    <em class='brace'>}</em>
+<a id='L260' name='L260'></a> 260                                        <em class='comment'>/* Time for DMA */</em>
+<a id='L261' name='L261'></a> 261    curr-&gt;time = <a href='../S/283.html#L438' title='Defined at 438 in src/disksim_global.h.'>simtime</a> + ((<strong class='reserved'>double</strong>) curr-&gt;bcount * currctlr-&gt;blktranstime);
+<a id='L262' name='L262'></a> 262    currctlr-&gt;hosttransfer = <a href='../D/803.html' title='Multiple defined in 2 places.'>TRUE</a>;
+<a id='L263' name='L263'></a> 263    <a href='../S/272.html#L280' title='Defined at 280 in src/disksim.c.'>addtointq</a>((<a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a> *) curr);
+<a id='L264' name='L264'></a> 264 <em class='brace'>}</em>
+<a id='L265' name='L265'></a> 265 
+<a id='L266' name='L266'></a> 266 
+<a id='L267' name='L267'></a> 267 <strong class='reserved'>static</strong> <strong class='reserved'>void</strong> <a href='../S/268.html#L386' title='Referred from 386 in src/disksim_ctlrsmart.c.'>controller_smart_request_arrive</a> (<a href='../D/1071.html' title='Multiple defined in 2 places.'>controller</a> *currctlr, <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr)
+<a id='L268' name='L268'></a> 268 <em class='brace'>{</em>
+<a id='L269' name='L269'></a> 269 <em class='comment'>/*</em>
+<a id='L270' name='L270'></a> 270 <em class='comment'>fprintf (outputfile, "Request arrived at smart controller: devno %d, blkno %d, flags %x\n", curr-&gt;devno, curr-&gt;blkno, curr-&gt;flags);</em>
+<a id='L271' name='L271'></a> 271 <em class='comment'>*/</em>
+<a id='L272' name='L272'></a> 272 
+<a id='L273' name='L273'></a> 273    <em class='comment'>/* Cache will call "done" function if cache access doesn't block */</em>
+<a id='L274' name='L274'></a> 274 
+<a id='L275' name='L275'></a> 275    currctlr-&gt;cache-&gt;cache_get_block(currctlr-&gt;cache, curr, &amp;<a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;donefunc_ctlrsmart_read, currctlr);
+<a id='L276' name='L276'></a> 276 <em class='brace'>}</em>
+<a id='L277' name='L277'></a> 277 
+<a id='L278' name='L278'></a> 278 
+<a id='L279' name='L279'></a> 279 <strong class='reserved'>static</strong> <strong class='reserved'>void</strong> <a href='../S/268.html#L344' title='Referred from 344 in src/disksim_ctlrsmart.c.'>controller_smart_access_complete</a> (<a href='../D/1071.html' title='Multiple defined in 2 places.'>controller</a> *currctlr, <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr)
+<a id='L280' name='L280'></a> 280 <em class='brace'>{</em>
+<a id='L281' name='L281'></a> 281    <strong class='reserved'>struct</strong> <a href='../S/259.html#L255' title='Defined at 255 in src/disksim_ioqueue.h.'>ioq</a> *queue = currctlr-&gt;devices[curr-&gt;devno].queue;
+<a id='L282' name='L282'></a> 282    <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *done = <a href='../S/194.html#L122' title='Defined at 122 in src/disksim_iosim.c.'>ioreq_copy</a>(curr);
+<a id='L283' name='L283'></a> 283    <strong class='reserved'>int</strong> devno = curr-&gt;devno;
+<a id='L284' name='L284'></a> 284    <strong class='reserved'>int</strong> numout;
+<a id='L285' name='L285'></a> 285 
+<a id='L286' name='L286'></a> 286    <em class='comment'>/* Responds to completion interrupt */</em>
+<a id='L287' name='L287'></a> 287 
+<a id='L288' name='L288'></a> 288    done-&gt;type = <a href='../S/255.html#L128' title='Defined at 128 in src/disksim_iosim.h.'>IO_INTERRUPT_COMPLETE</a>;
+<a id='L289' name='L289'></a> 289    currctlr-&gt;outbusowned = <a href='../S/204.html#L145' title='Defined at 145 in src/disksim_controller.c.'>controller_get_downward_busno</a>(currctlr, done, NULL);
+<a id='L290' name='L290'></a> 290    <a href='../S/204.html#L183' title='Defined at 183 in src/disksim_controller.c.'>controller_send_event_down_path</a>(currctlr, done, currctlr-&gt;ovrhd_disk_complete);
+<a id='L291' name='L291'></a> 291    currctlr-&gt;outbusowned = -1;
+<a id='L292' name='L292'></a> 292 
+<a id='L293' name='L293'></a> 293    <em class='comment'>/* Handles request completion, including call-backs into cache */</em>
+<a id='L294' name='L294'></a> 294 
+<a id='L295' name='L295'></a> 295    curr = <a href='../S/254.html#L3533' title='Defined at 3533 in src/disksim_ioqueue.c.'>ioqueue_physical_access_done</a>(queue, curr);
+<a id='L296' name='L296'></a> 296    <strong class='reserved'>while</strong> ((done = curr)) <em class='brace'>{</em>
+<a id='L297' name='L297'></a> 297       curr = curr-&gt;next;
+<a id='L298' name='L298'></a> 298       <em class='comment'>/* call back into cache with completion -- let it do request_complete */</em>
+<a id='L299' name='L299'></a> 299       <a href='../S/268.html#L118' title='Defined at 118 in src/disksim_ctlrsmart.c.'>controller_smart_wakeup</a>(currctlr, currctlr-&gt;cache-&gt;cache_disk_access_complete(currctlr-&gt;cache, done));
+<a id='L300' name='L300'></a> 300    <em class='brace'>}</em>
+<a id='L301' name='L301'></a> 301 
+<a id='L302' name='L302'></a> 302    <em class='comment'>/* Initiate another request, if any pending */</em>
+<a id='L303' name='L303'></a> 303 
+<a id='L304' name='L304'></a> 304    numout = <a href='../S/254.html#L260' title='Defined at 260 in src/disksim_ioqueue.c.'>ioqueue_get_reqoutstanding</a>(queue);
+<a id='L305' name='L305'></a> 305    <strong class='reserved'>if</strong> ((numout &lt; currctlr-&gt;devices[devno].maxoutstanding) &amp;&amp; (curr = <a href='../S/254.html#L3150' title='Defined at 3150 in src/disksim_ioqueue.c.'>ioqueue_get_next_request</a>(queue))) <em class='brace'>{</em>
+<a id='L306' name='L306'></a> 306       <a href='../S/204.html#L183' title='Defined at 183 in src/disksim_controller.c.'>controller_send_event_down_path</a>(currctlr, curr, currctlr-&gt;ovrhd_disk_request);
+<a id='L307' name='L307'></a> 307    <em class='brace'>}</em>
+<a id='L308' name='L308'></a> 308 <em class='brace'>}</em>
+<a id='L309' name='L309'></a> 309 
+<a id='L310' name='L310'></a> 310 
+<a id='L311' name='L311'></a> 311 <strong class='reserved'>static</strong> <strong class='reserved'>void</strong> <a href='../S/268.html#L356' title='Referred from 356 in src/disksim_ctlrsmart.c.'>controller_smart_ready_to_transfer</a> (<a href='../D/1071.html' title='Multiple defined in 2 places.'>controller</a> *currctlr, <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr)
+<a id='L312' name='L312'></a> 312 <em class='brace'>{</em>
+<a id='L313' name='L313'></a> 313    curr-&gt;type = <a href='../S/255.html#L128' title='Defined at 128 in src/disksim_iosim.h.'>IO_INTERRUPT_COMPLETE</a>;
+<a id='L314' name='L314'></a> 314    curr-&gt;cause = <a href='../S/255.html#L165' title='Defined at 165 in src/disksim_iosim.h.'>RECONNECT</a>;
+<a id='L315' name='L315'></a> 315    currctlr-&gt;outbusowned = <a href='../S/204.html#L145' title='Defined at 145 in src/disksim_controller.c.'>controller_get_downward_busno</a>(currctlr, curr, NULL);
+<a id='L316' name='L316'></a> 316    <a href='../S/204.html#L183' title='Defined at 183 in src/disksim_controller.c.'>controller_send_event_down_path</a>(currctlr, curr, currctlr-&gt;ovrhd_disk_ready);
+<a id='L317' name='L317'></a> 317    currctlr-&gt;outbusowned = -1;
+<a id='L318' name='L318'></a> 318 <em class='brace'>}</em>
+<a id='L319' name='L319'></a> 319 
+<a id='L320' name='L320'></a> 320 
+<a id='L321' name='L321'></a> 321 <strong class='reserved'>static</strong> <strong class='reserved'>void</strong> <a href='../S/268.html#L352' title='Referred from 352 in src/disksim_ctlrsmart.c.'>controller_smart_disconnect</a> (<a href='../D/1071.html' title='Multiple defined in 2 places.'>controller</a> *currctlr, <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr)
+<a id='L322' name='L322'></a> 322 <em class='brace'>{</em>
+<a id='L323' name='L323'></a> 323    curr-&gt;type = <a href='../S/255.html#L128' title='Defined at 128 in src/disksim_iosim.h.'>IO_INTERRUPT_COMPLETE</a>;
+<a id='L324' name='L324'></a> 324    currctlr-&gt;outbusowned = <a href='../S/204.html#L145' title='Defined at 145 in src/disksim_controller.c.'>controller_get_downward_busno</a>(currctlr, curr, NULL);
+<a id='L325' name='L325'></a> 325    <a href='../S/204.html#L183' title='Defined at 183 in src/disksim_controller.c.'>controller_send_event_down_path</a>(currctlr, curr, currctlr-&gt;ovrhd_disk_disconnect);
+<a id='L326' name='L326'></a> 326    currctlr-&gt;outbusowned = -1;
+<a id='L327' name='L327'></a> 327 <em class='brace'>}</em>
+<a id='L328' name='L328'></a> 328 
+<a id='L329' name='L329'></a> 329 
+<a id='L330' name='L330'></a> 330 <strong class='reserved'>static</strong> <strong class='reserved'>void</strong> <a href='../S/268.html#L348' title='Referred from 348 in src/disksim_ctlrsmart.c.'>controller_smart_reconnect_to_transfer</a> (<a href='../D/1071.html' title='Multiple defined in 2 places.'>controller</a> *currctlr, <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr)
+<a id='L331' name='L331'></a> 331 <em class='brace'>{</em>
+<a id='L332' name='L332'></a> 332    curr-&gt;type = <a href='../S/255.html#L128' title='Defined at 128 in src/disksim_iosim.h.'>IO_INTERRUPT_COMPLETE</a>;
+<a id='L333' name='L333'></a> 333    currctlr-&gt;outbusowned = <a href='../S/204.html#L145' title='Defined at 145 in src/disksim_controller.c.'>controller_get_downward_busno</a>(currctlr, curr, NULL);
+<a id='L334' name='L334'></a> 334    <a href='../S/204.html#L183' title='Defined at 183 in src/disksim_controller.c.'>controller_send_event_down_path</a>(currctlr, curr, currctlr-&gt;ovrhd_disk_reconnect);
+<a id='L335' name='L335'></a> 335    currctlr-&gt;outbusowned = -1;
+<a id='L336' name='L336'></a> 336 <em class='brace'>}</em>
+<a id='L337' name='L337'></a> 337 
+<a id='L338' name='L338'></a> 338 
+<a id='L339' name='L339'></a> 339 <strong class='reserved'>static</strong> <strong class='reserved'>void</strong> <a href='../S/268.html#L390' title='Referred from 390 in src/disksim_ctlrsmart.c.'>controller_smart_interrupt_arrive</a> (<a href='../D/1071.html' title='Multiple defined in 2 places.'>controller</a> *currctlr, <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr)
+<a id='L340' name='L340'></a> 340 <em class='brace'>{</em>
+<a id='L341' name='L341'></a> 341    <strong class='reserved'>switch</strong> (curr-&gt;cause) <em class='brace'>{</em>
+<a id='L342' name='L342'></a> 342 
+<a id='L343' name='L343'></a> 343       <strong class='reserved'>case</strong> <a href='../S/255.html#L164' title='Defined at 164 in src/disksim_iosim.h.'>COMPLETION</a>:
+<a id='L344' name='L344'></a> 344          <a href='../S/268.html#L279' title='Defined at 279 in src/disksim_ctlrsmart.c.'>controller_smart_access_complete</a>(currctlr, curr);
+<a id='L345' name='L345'></a> 345          <strong class='reserved'>break</strong>;
+<a id='L346' name='L346'></a> 346 
+<a id='L347' name='L347'></a> 347       <strong class='reserved'>case</strong> <a href='../S/255.html#L165' title='Defined at 165 in src/disksim_iosim.h.'>RECONNECT</a>:
+<a id='L348' name='L348'></a> 348          <a href='../S/268.html#L330' title='Defined at 330 in src/disksim_ctlrsmart.c.'>controller_smart_reconnect_to_transfer</a>(currctlr, curr);
+<a id='L349' name='L349'></a> 349          <strong class='reserved'>break</strong>;
+<a id='L350' name='L350'></a> 350 
+<a id='L351' name='L351'></a> 351       <strong class='reserved'>case</strong> <a href='../S/255.html#L166' title='Defined at 166 in src/disksim_iosim.h.'>DISCONNECT</a>:
+<a id='L352' name='L352'></a> 352          <a href='../S/268.html#L321' title='Defined at 321 in src/disksim_ctlrsmart.c.'>controller_smart_disconnect</a>(currctlr, curr);
+<a id='L353' name='L353'></a> 353          <strong class='reserved'>break</strong>;
+<a id='L354' name='L354'></a> 354 
+<a id='L355' name='L355'></a> 355       <strong class='reserved'>case</strong> <a href='../S/255.html#L167' title='Defined at 167 in src/disksim_iosim.h.'>READY_TO_TRANSFER</a>:
+<a id='L356' name='L356'></a> 356          <a href='../S/268.html#L311' title='Defined at 311 in src/disksim_ctlrsmart.c.'>controller_smart_ready_to_transfer</a>(currctlr, curr);
+<a id='L357' name='L357'></a> 357          <strong class='reserved'>break</strong>;
+<a id='L358' name='L358'></a> 358 
+<a id='L359' name='L359'></a> 359       <strong class='reserved'>default</strong>:
+<a id='L360' name='L360'></a> 360          fprintf(stderr, "Unknown interrupt cause in smart_interrupt_arrive: %d\n", curr-&gt;cause);
+<a id='L361' name='L361'></a> 361          exit(1);
+<a id='L362' name='L362'></a> 362    <em class='brace'>}</em>
+<a id='L363' name='L363'></a> 363 <em class='brace'>}</em>
+<a id='L364' name='L364'></a> 364 
+<a id='L365' name='L365'></a> 365 
+<a id='L366' name='L366'></a> 366 <strong class='reserved'>static</strong> <strong class='reserved'>void</strong> <a href='../S/268.html#L394' title='Referred from 394 in src/disksim_ctlrsmart.c.'>controller_smart_interrupt_complete</a> (<a href='../D/1071.html' title='Multiple defined in 2 places.'>controller</a> *currctlr, <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr)
+<a id='L367' name='L367'></a> 367 <em class='brace'>{</em>
+<a id='L368' name='L368'></a> 368    <strong class='reserved'>switch</strong> (curr-&gt;cause) <em class='brace'>{</em>
+<a id='L369' name='L369'></a> 369 
+<a id='L370' name='L370'></a> 370        <strong class='reserved'>case</strong> <a href='../S/255.html#L164' title='Defined at 164 in src/disksim_iosim.h.'>COMPLETION</a>:
+<a id='L371' name='L371'></a> 371           <a href='../S/272.html#L176' title='Defined at 176 in src/disksim.c.'>addtoextraq</a>((<a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a> *) curr);
+<a id='L372' name='L372'></a> 372           <strong class='reserved'>break</strong>;
+<a id='L373' name='L373'></a> 373 
+<a id='L374' name='L374'></a> 374       <strong class='reserved'>default</strong>:
+<a id='L375' name='L375'></a> 375          fprintf(stderr, "Unknown interrupt cause in smart_interrupt_complete: %d\n", curr-&gt;cause);
+<a id='L376' name='L376'></a> 376          exit(1);
+<a id='L377' name='L377'></a> 377    <em class='brace'>}</em>
+<a id='L378' name='L378'></a> 378 <em class='brace'>}</em>
+<a id='L379' name='L379'></a> 379 
+<a id='L380' name='L380'></a> 380 
+<a id='L381' name='L381'></a> 381 <strong class='reserved'>void</strong> <a href='../R/883.html' title='Multiple referred from 2 places.'>controller_smart_event_arrive</a> (<a href='../D/1071.html' title='Multiple defined in 2 places.'>controller</a> *currctlr, <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr)
+<a id='L382' name='L382'></a> 382 <em class='brace'>{</em>
+<a id='L383' name='L383'></a> 383    <strong class='reserved'>switch</strong> (curr-&gt;type) <em class='brace'>{</em>
+<a id='L384' name='L384'></a> 384 
+<a id='L385' name='L385'></a> 385       <strong class='reserved'>case</strong> <a href='../S/255.html#L124' title='Defined at 124 in src/disksim_iosim.h.'>IO_ACCESS_ARRIVE</a>:
+<a id='L386' name='L386'></a> 386          <a href='../S/268.html#L267' title='Defined at 267 in src/disksim_ctlrsmart.c.'>controller_smart_request_arrive</a>(currctlr, curr);
+<a id='L387' name='L387'></a> 387          <strong class='reserved'>break</strong>;
+<a id='L388' name='L388'></a> 388 
+<a id='L389' name='L389'></a> 389       <strong class='reserved'>case</strong> <a href='../S/255.html#L125' title='Defined at 125 in src/disksim_iosim.h.'>IO_INTERRUPT_ARRIVE</a>:
+<a id='L390' name='L390'></a> 390          <a href='../S/268.html#L339' title='Defined at 339 in src/disksim_ctlrsmart.c.'>controller_smart_interrupt_arrive</a>(currctlr, curr);
+<a id='L391' name='L391'></a> 391          <strong class='reserved'>break</strong>;
+<a id='L392' name='L392'></a> 392 
+<a id='L393' name='L393'></a> 393       <strong class='reserved'>case</strong> <a href='../S/255.html#L128' title='Defined at 128 in src/disksim_iosim.h.'>IO_INTERRUPT_COMPLETE</a>:
+<a id='L394' name='L394'></a> 394          <a href='../S/268.html#L366' title='Defined at 366 in src/disksim_ctlrsmart.c.'>controller_smart_interrupt_complete</a>(currctlr, curr);
+<a id='L395' name='L395'></a> 395          <strong class='reserved'>break</strong>;
+<a id='L396' name='L396'></a> 396 
+<a id='L397' name='L397'></a> 397       <strong class='reserved'>case</strong> <a href='../S/255.html#L132' title='Defined at 132 in src/disksim_iosim.h.'>DEVICE_DATA_TRANSFER_COMPLETE</a>:
+<a id='L398' name='L398'></a> 398          <a href='../S/268.html#L146' title='Defined at 146 in src/disksim_ctlrsmart.c.'>controller_smart_disk_data_transfer</a>(currctlr, curr);
+<a id='L399' name='L399'></a> 399          <strong class='reserved'>break</strong>;
+<a id='L400' name='L400'></a> 400 
+<a id='L401' name='L401'></a> 401       <strong class='reserved'>case</strong> <a href='../S/255.html#L140' title='Defined at 140 in src/disksim_iosim.h.'>CONTROLLER_DATA_TRANSFER_COMPLETE</a>:
+<a id='L402' name='L402'></a> 402          <strong class='reserved'>if</strong> (curr-&gt;tempptr1) <em class='brace'>{</em>
+<a id='L403' name='L403'></a> 403             <a href='../S/268.html#L174' title='Defined at 174 in src/disksim_ctlrsmart.c.'>controller_smart_disk_data_transfer_complete</a>(currctlr, curr);
+<a id='L404' name='L404'></a> 404          <em class='brace'>}</em> <strong class='reserved'>else</strong> <em class='brace'>{</em>
+<a id='L405' name='L405'></a> 405             <a href='../S/268.html#L212' title='Defined at 212 in src/disksim_ctlrsmart.c.'>controller_smart_host_data_transfer_complete</a>(currctlr, curr);
+<a id='L406' name='L406'></a> 406          <em class='brace'>}</em>
+<a id='L407' name='L407'></a> 407          <strong class='reserved'>break</strong>;
+<a id='L408' name='L408'></a> 408 
+<a id='L409' name='L409'></a> 409       <strong class='reserved'>case</strong> <a href='../S/255.html#L143' title='Defined at 143 in src/disksim_iosim.h.'>IO_QLEN_MAXCHECK</a>:
+<a id='L410' name='L410'></a> 410          curr-&gt;tempint1 = currctlr-&gt;ctlno;
+<a id='L411' name='L411'></a> 411          curr-&gt;tempint2 = currctlr-&gt;maxoutstanding;
+<a id='L412' name='L412'></a> 412          curr-&gt;bcount = currctlr-&gt;cache-&gt;cache_get_maxreqsize(currctlr-&gt;cache);
+<a id='L413' name='L413'></a> 413          <strong class='reserved'>break</strong>;
+<a id='L414' name='L414'></a> 414 
+<a id='L415' name='L415'></a> 415       <strong class='reserved'>default</strong>:
+<a id='L416' name='L416'></a> 416          fprintf(stderr, "Unknown event type arriving at 53c700 controller: %d\n", curr-&gt;type);
+<a id='L417' name='L417'></a> 417          exit(1);
+<a id='L418' name='L418'></a> 418    <em class='brace'>}</em>
+<a id='L419' name='L419'></a> 419 <em class='brace'>}</em>
+<a id='L420' name='L420'></a> 420 
+<a id='L421' name='L421'></a> 421 
+<a id='L422' name='L422'></a> 422 <strong class='reserved'>void</strong> <a href='../R/897.html' title='Multiple referred from 3 places.'>controller_smart_setcallbacks</a> ()
+<a id='L423' name='L423'></a> 423 <em class='brace'>{</em>
+<a id='L424' name='L424'></a> 424    <a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;issuefunc_ctlrsmart = <a href='../S/268.html#L127' title='Defined at 127 in src/disksim_ctlrsmart.c.'>controller_smart_issue_access</a>;
+<a id='L425' name='L425'></a> 425    <a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;queuefind_ctlrsmart = <a href='../S/268.html#L110' title='Defined at 110 in src/disksim_ctlrsmart.c.'>controller_smart_queuefind</a>;
+<a id='L426' name='L426'></a> 426    <a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;wakeupfunc_ctlrsmart = <a href='../S/268.html#L118' title='Defined at 118 in src/disksim_ctlrsmart.c.'>controller_smart_wakeup</a>;
+<a id='L427' name='L427'></a> 427    <a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;donefunc_ctlrsmart_read = <a href='../S/268.html#L240' title='Defined at 240 in src/disksim_ctlrsmart.c.'>controller_smart_host_data_transfer</a>;
+<a id='L428' name='L428'></a> 428    <a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;donefunc_ctlrsmart_write = <a href='../S/268.html#L199' title='Defined at 199 in src/disksim_ctlrsmart.c.'>controller_smart_request_complete</a>;
+<a id='L429' name='L429'></a> 429    <a href='../S/254.html#L3698' title='Defined at 3698 in src/disksim_ioqueue.c.'>ioqueue_setcallbacks</a> ();
+<a id='L430' name='L430'></a> 430    <a href='../S/270.html#L111' title='Defined at 111 in src/disksim_cache.c.'>cache_setcallbacks</a> ();
+<a id='L431' name='L431'></a> 431 <em class='brace'>}</em>
+<a id='L432' name='L432'></a> 432 
+<a id='L433' name='L433'></a> 433 
+<a id='L434' name='L434'></a> 434 <strong class='reserved'>void</strong> <a href='../R/886.html' title='Multiple referred from 2 places.'>controller_smart_initialize</a> (<a href='../D/1071.html' title='Multiple defined in 2 places.'>controller</a> *currctlr)
+<a id='L435' name='L435'></a> 435 <em class='brace'>{</em>
+<a id='L436' name='L436'></a> 436    <strong class='reserved'>int</strong> numdevs = <a href='../S/214.html#L341' title='Defined at 341 in src/disksim_device.c.'>device_get_numdevices</a>();
+<a id='L437' name='L437'></a> 437    <a href='../S/255.html#L233' title='Defined at 233 in src/disksim_iosim.h.'>device</a> *currdev;
+<a id='L438' name='L438'></a> 438    <strong class='reserved'>int</strong> i;
+<a id='L439' name='L439'></a> 439 
+<a id='L440' name='L440'></a> 440    <a href='../S/268.html#L422' title='Defined at 422 in src/disksim_ctlrsmart.c.'>controller_smart_setcallbacks</a> ();
+<a id='L441' name='L441'></a> 441    currctlr-&gt;<a href='../S/214.html#L82' title='Defined at 82 in src/disksim_device.c.'>numdevices</a> = numdevs;
+<a id='L442' name='L442'></a> 442    currctlr-&gt;devices = (<a href='../S/255.html#L233' title='Defined at 233 in src/disksim_iosim.h.'>device</a> *) <a href='../S/219.html#L64' title='Defined at 64 in src/disksim_malloc.c.'>DISKSIM_malloc</a>(numdevs * <strong class='reserved'>sizeof</strong>(<a href='../S/255.html#L233' title='Defined at 233 in src/disksim_iosim.h.'>device</a>));
+<a id='L443' name='L443'></a> 443    <a href='../D/12.html' title='Multiple defined in 2 places.'>ASSERT</a>(currctlr-&gt;devices != NULL);
+<a id='L444' name='L444'></a> 444    <strong class='reserved'>for</strong> (i=0; i&lt;numdevs; i++) <em class='brace'>{</em>
+<a id='L445' name='L445'></a> 445       currdev = &amp;currctlr-&gt;devices[i];
+<a id='L446' name='L446'></a> 446       currdev-&gt;devno = i;
+<a id='L447' name='L447'></a> 447       currdev-&gt;busy = <a href='../D/374.html' title='Multiple defined in 2 places.'>FALSE</a>;
+<a id='L448' name='L448'></a> 448       currdev-&gt;flag = 0;
+<a id='L449' name='L449'></a> 449       currdev-&gt;queue = <a href='../S/254.html#L3585' title='Defined at 3585 in src/disksim_ioqueue.c.'>ioqueue_copy</a>(currctlr-&gt;queue);
+<a id='L450' name='L450'></a> 450       <a href='../S/254.html#L3704' title='Defined at 3704 in src/disksim_ioqueue.c.'>ioqueue_initialize</a>(currdev-&gt;queue, i);
+<a id='L451' name='L451'></a> 451       <a href='../S/194.html#L325' title='Defined at 325 in src/disksim_iosim.c.'>iosim_get_path_to_device</a> (0, i, &amp;currdev-&gt;buspath, &amp;currdev-&gt;slotpath);
+<a id='L452' name='L452'></a> 452       currdev-&gt;maxoutstanding = currctlr-&gt;maxdiskqsize;
+<a id='L453' name='L453'></a> 453    <em class='brace'>}</em>
+<a id='L454' name='L454'></a> 454    currctlr-&gt;cache-&gt;cache_initialize(currctlr-&gt;cache, &amp;<a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;issuefunc_ctlrsmart, currctlr, &amp;<a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;queuefind_ctlrsmart, currctlr, &amp;<a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;wakeupfunc_ctlrsmart, currctlr, numdevs);
+<a id='L455' name='L455'></a> 455 <em class='brace'>}</em>
+<a id='L456' name='L456'></a> 456 
+<a id='L457' name='L457'></a> 457 
+<a id='L458' name='L458'></a> 458 <strong class='reserved'>void</strong> <a href='../R/896.html' title='Multiple referred from 2 places.'>controller_smart_resetstats</a> (<a href='../D/1071.html' title='Multiple defined in 2 places.'>controller</a> *currctlr)
+<a id='L459' name='L459'></a> 459 <em class='brace'>{</em>
+<a id='L460' name='L460'></a> 460    <strong class='reserved'>int</strong> numdevs = <a href='../S/214.html#L341' title='Defined at 341 in src/disksim_device.c.'>device_get_numdevices</a>();
+<a id='L461' name='L461'></a> 461    <strong class='reserved'>int</strong> i;
+<a id='L462' name='L462'></a> 462 
+<a id='L463' name='L463'></a> 463    <strong class='reserved'>for</strong> (i=0; i&lt;numdevs; i++) <em class='brace'>{</em>
+<a id='L464' name='L464'></a> 464       <a href='../S/254.html#L3668' title='Defined at 3668 in src/disksim_ioqueue.c.'>ioqueue_resetstats</a>(currctlr-&gt;devices[i].queue);
+<a id='L465' name='L465'></a> 465    <em class='brace'>}</em>
+<a id='L466' name='L466'></a> 466    currctlr-&gt;cache-&gt;cache_resetstats(currctlr-&gt;cache);
+<a id='L467' name='L467'></a> 467 <em class='brace'>}</em>
+<a id='L468' name='L468'></a> 468 
+<a id='L469' name='L469'></a> 469 
+<a id='L470' name='L470'></a> 470 
+<a id='L471' name='L471'></a> 471 
+<a id='L472' name='L472'></a> 472 <strong class='reserved'>void</strong> <a href='../R/890.html' title='Multiple referred from 2 places.'>controller_smart_printstats</a> (<a href='../D/1071.html' title='Multiple defined in 2 places.'>controller</a> *currctlr, <strong class='reserved'>char</strong> *prefix)
+<a id='L473' name='L473'></a> 473 <em class='brace'>{</em>
+<a id='L474' name='L474'></a> 474    <a href='../S/284.html#L194' title='Defined at 194 in src/disksim_ctlr.h.'>ctlrinfo_t</a> *<a href='../S/284.html#L176' title='Defined at 176 in src/disksim_ctlr.h.'>ctlrinfo</a> = <a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;<a href='../S/284.html#L176' title='Defined at 176 in src/disksim_ctlr.h.'>ctlrinfo</a>;
+<a id='L475' name='L475'></a> 475    <strong class='reserved'>int</strong> devno;
+<a id='L476' name='L476'></a> 476    <strong class='reserved'>char</strong> devprefix[181];
+<a id='L477' name='L477'></a> 477    <strong class='reserved'>struct</strong> <a href='../S/259.html#L255' title='Defined at 255 in src/disksim_ioqueue.h.'>ioq</a> **queueset = <a href='../S/219.html#L64' title='Defined at 64 in src/disksim_malloc.c.'>DISKSIM_malloc</a> (currctlr-&gt;<a href='../S/214.html#L82' title='Defined at 82 in src/disksim_device.c.'>numdevices</a> * <strong class='reserved'>sizeof</strong>(<strong class='reserved'>void</strong> *));
+<a id='L478' name='L478'></a> 478 
+<a id='L479' name='L479'></a> 479    <strong class='reserved'>if</strong> (<a href='../S/284.html#L176' title='Defined at 176 in src/disksim_ctlr.h.'>ctlrinfo</a>-&gt;ctl_printcachestats) <em class='brace'>{</em>
+<a id='L480' name='L480'></a> 480       currctlr-&gt;cache-&gt;cache_printstats(currctlr-&gt;cache, prefix);
+<a id='L481' name='L481'></a> 481    <em class='brace'>}</em>
+<a id='L482' name='L482'></a> 482 
+<a id='L483' name='L483'></a> 483    <strong class='reserved'>for</strong> (devno=0; devno&lt;currctlr-&gt;<a href='../S/214.html#L82' title='Defined at 82 in src/disksim_device.c.'>numdevices</a>; devno++) <em class='brace'>{</em>
+<a id='L484' name='L484'></a> 484       queueset[devno] = currctlr-&gt;devices[devno].queue;
+<a id='L485' name='L485'></a> 485    <em class='brace'>}</em>
+<a id='L486' name='L486'></a> 486    sprintf (devprefix, "%sdevices ", prefix);
+<a id='L487' name='L487'></a> 487    <a href='../S/254.html#L4099' title='Defined at 4099 in src/disksim_ioqueue.c.'>ioqueue_printstats</a> (queueset, currctlr-&gt;<a href='../S/214.html#L82' title='Defined at 82 in src/disksim_device.c.'>numdevices</a>, devprefix);
+<a id='L488' name='L488'></a> 488 
+<a id='L489' name='L489'></a> 489    <strong class='reserved'>if</strong> ((<a href='../S/284.html#L176' title='Defined at 176 in src/disksim_ctlr.h.'>ctlrinfo</a>-&gt;ctl_printperdiskstats) &amp;&amp; (currctlr-&gt;<a href='../S/214.html#L82' title='Defined at 82 in src/disksim_device.c.'>numdevices</a> &gt; 1)) <em class='brace'>{</em>
+<a id='L490' name='L490'></a> 490       <strong class='reserved'>for</strong> (devno=0; devno&lt;currctlr-&gt;<a href='../S/214.html#L82' title='Defined at 82 in src/disksim_device.c.'>numdevices</a>; devno++) <em class='brace'>{</em>
+<a id='L491' name='L491'></a> 491          <strong class='reserved'>struct</strong> <a href='../S/259.html#L255' title='Defined at 255 in src/disksim_ioqueue.h.'>ioq</a> *queue = currctlr-&gt;devices[devno].queue;
+<a id='L492' name='L492'></a> 492          <strong class='reserved'>if</strong> (<a href='../S/254.html#L271' title='Defined at 271 in src/disksim_ioqueue.c.'>ioqueue_get_number_of_requests</a>(queue)) <em class='brace'>{</em>
+<a id='L493' name='L493'></a> 493             sprintf(devprefix, "%sdevice #%d ", prefix, devno);
+<a id='L494' name='L494'></a> 494             <a href='../S/254.html#L4099' title='Defined at 4099 in src/disksim_ioqueue.c.'>ioqueue_printstats</a>(&amp;queue, 1, devprefix);
+<a id='L495' name='L495'></a> 495          <em class='brace'>}</em>
+<a id='L496' name='L496'></a> 496       <em class='brace'>}</em>
+<a id='L497' name='L497'></a> 497    <em class='brace'>}</em>
+<a id='L498' name='L498'></a> 498 <em class='brace'>}</em>
+<a id='L499' name='L499'></a> 499 
+</pre>
+<hr />
+<a id='BOTTOM' name='BOTTOM'></a>
+<em class='comment'>/* [&lt;][&gt;]<a href='#L110'>[^]</a><a href='#L472'>[v]</a><a href='#TOP'>[top]</a>[bottom]<a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</em>
+</body>
+</html>

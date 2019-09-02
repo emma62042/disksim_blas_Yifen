@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>idx</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/56.html#L59'>idx</a>                59 diskmodel/layout_g4.h struct idx;</span>
+<span class='curline'><a href='../S/56.html#L62'>idx</a>                62 diskmodel/layout_g4.h union g4_node { struct track *t; struct idx *i; void *x; };</span>
+<span class='curline'><a href='../S/56.html#L121'>idx</a>               121 diskmodel/layout_g4.h   struct idx *idx;</span>
+<span class='curline'><a href='../S/56.html#L128'>idx</a>               128 diskmodel/layout_g4.h   struct idx *root; // always an OP</span>
+<span class='curline'><a href='../S/58.html#L124'>idx</a>               124 diskmodel/layout_g4_load.c 		   struct idx *idx, </span>
+<span class='curline'><a href='../S/58.html#L158'>idx</a>               158 diskmodel/layout_g4_load.c     coffset = aoffset(idx, e-&gt;child.i, sizeof(*e-&gt;child.i));</span>
+<span class='curline'><a href='../S/58.html#L182'>idx</a>               182 diskmodel/layout_g4_load.c marshal_g4_idx(struct idx *idx, int n, struct idx *idxen, struct track *track) {</span>
+<span class='curline'><a href='../S/58.html#L189'>idx</a>               189 diskmodel/layout_g4_load.c     struct idx *ii = &amp;idx[i];</span>
+<span class='curline'><a href='../S/58.html#L195'>idx</a>               195 diskmodel/layout_g4_load.c     if(idx[i].ents[0].childtype == TRACK) {</span>
+<span class='curline'><a href='../S/58.html#L230'>idx</a>               230 diskmodel/layout_g4_load.c   l = marshal_g4_idx(lin-&gt;idx, lin-&gt;idx_len, lin-&gt;idx, lin-&gt;track);</span>
+<span class='curline'><a href='../S/58.html#L327'>idx</a>               327 diskmodel/layout_g4_load.c   r-&gt;idx = calloc(r-&gt;idx_len, sizeof(*r-&gt;idx));</span>
+<span class='curline'><a href='../S/58.html#L331'>idx</a>               331 diskmodel/layout_g4_load.c     struct idx *opi = &amp;r-&gt;idx[i];</span>
+<span class='curline'><a href='../S/58.html#L373'>idx</a>               373 diskmodel/layout_g4_load.c 	entj-&gt;child.i = &amp;r-&gt;idx[off];</span>
+<span class='curline'><a href='../S/58.html#L458'>idx</a>               458 diskmodel/layout_g4_load.c   result-&gt;root = &amp;result-&gt;idx[result-&gt;idx_len - 1];</span>
+<span class='curline'><a href='../S/102.html#L404'>idx</a>               404 diskmodel/layout_g4_tools/g4_skews.c 	   struct idx *parent,          // The index containing e</span>
+<span class='curline'><a href='../S/102.html#L553'>idx</a>               553 diskmodel/layout_g4_tools/g4_skews.c 	   struct idx *idx,         // The index node in question</span>
+<span class='curline'><a href='../S/102.html#L563'>idx</a>               563 diskmodel/layout_g4_tools/g4_skews.c   for(i = 0, e = &amp;idx-&gt;ents[0]; i &lt; idx-&gt;ents_len; i++, e++) {</span>
+<span class='curline'><a href='../S/102.html#L566'>idx</a>               566 diskmodel/layout_g4_tools/g4_skews.c     do_idx_ent(d, l, &amp;idx-&gt;ents[i], idx, ie, i, ds, t, lbn);</span>
+<span class='curline'><a href='../S/102.html#L574'>idx</a>               574 diskmodel/layout_g4_tools/g4_skews.c   for(i = 0, e = &amp;idx-&gt;ents[0]; i &lt; idx-&gt;ents_len; i++, e++) {</span>
+<span class='curline'><a href='../S/102.html#L576'>idx</a>               576 diskmodel/layout_g4_tools/g4_skews.c 	   dm_angle_itod(idx-&gt;ents[i].off),</span>
+<span class='curline'><a href='../S/102.html#L577'>idx</a>               577 diskmodel/layout_g4_tools/g4_skews.c 	   dm_angle_itod(idx-&gt;ents[i].alen));</span>
+</pre>
+</body>
+</html>

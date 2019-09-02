@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>iobuf</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/254.html#L170'>iobuf</a>             170 src/disksim_ioqueue.c   iobuf *tmp;</span>
+<span class='curline'><a href='../S/254.html#L203'>iobuf</a>             203 src/disksim_ioqueue.c    iobuf *tmp;</span>
+<span class='curline'><a href='../S/254.html#L231'>iobuf</a>             231 src/disksim_ioqueue.c    iobuf *tmp;</span>
+<span class='curline'><a href='../S/254.html#L313'>iobuf</a>             313 src/disksim_ioqueue.c 			     iobuf *curr, </span>
+<span class='curline'><a href='../S/254.html#L488'>iobuf</a>             488 src/disksim_ioqueue.c static void remove_tsps(iobuf *tmp);</span>
+<span class='curline'><a href='../S/254.html#L490'>iobuf</a>             490 src/disksim_ioqueue.c static void ioqueue_remove_from_subqueue (subqueue *queue, iobuf *tmp)</span>
+<span class='curline'><a href='../S/254.html#L509'>iobuf</a>             509 src/disksim_ioqueue.c static void ioqueue_remove_from_batch_fcfs_subqueue (subqueue *queue, iobuf *tmp, ioreq_event *done)</span>
+<span class='curline'><a href='../S/254.html#L528'>iobuf</a>             528 src/disksim_ioqueue.c static void ioqueue_insert_batch_fcfs_to_queue (subqueue *queue, iobuf *new_iobuf)</span>
+<span class='curline'><a href='../S/254.html#L530'>iobuf</a>             530 src/disksim_ioqueue.c   iobuf *tmp;</span>
+<span class='curline'><a href='../S/254.html#L531'>iobuf</a>             531 src/disksim_ioqueue.c   iobuf *first_in_batch = NULL;</span>
+<span class='curline'><a href='../S/254.html#L618'>iobuf</a>             618 src/disksim_ioqueue.c static void ioqueue_insert_fcfs_to_queue (subqueue *queue, iobuf *temp)</span>
+<span class='curline'><a href='../S/254.html#L630'>iobuf</a>             630 src/disksim_ioqueue.c static void ioqueue_insert_ordered_to_queue (subqueue *queue, iobuf *temp)</span>
+<span class='curline'><a href='../S/254.html#L632'>iobuf</a>             632 src/disksim_ioqueue.c    iobuf *head;</span>
+<span class='curline'><a href='../S/254.html#L633'>iobuf</a>             633 src/disksim_ioqueue.c    iobuf *run;</span>
+<span class='curline'><a href='../S/254.html#L677'>iobuf</a>             677 src/disksim_ioqueue.c static int ioqueue_check_concat (subqueue *queue, iobuf *req1, iobuf *req2, int concatmax)</span>
+<span class='curline'><a href='../S/254.html#L727'>iobuf</a>             727 src/disksim_ioqueue.c static void ioqueue_insert_new_request (subqueue *queue, iobuf *temp)</span>
+<span class='curline'><a href='../S/254.html#L777'>iobuf</a>             777 src/disksim_ioqueue.c static int ioqueue_seqstream_head (ioqueue *queue, iobuf *listhead, iobuf *current)</span>
+<span class='curline'><a href='../S/254.html#L824'>iobuf</a>             824 src/disksim_ioqueue.c static iobuf * ioqueue_get_request_from_fcfs_queue (subqueue *queue)</span>
+<span class='curline'><a href='../S/254.html#L826'>iobuf</a>             826 src/disksim_ioqueue.c    iobuf *tmp;</span>
+<span class='curline'><a href='../S/254.html#L852'>iobuf</a>             852 src/disksim_ioqueue.c static int ioqueue_get_priority_level (ioqueue *ioqueue, iobuf *req)</span>
+<span class='curline'><a href='../S/254.html#L891'>iobuf</a>             891 src/disksim_ioqueue.c static iobuf * ioqueue_get_request_from_pri_lbn_vscan_queue (subqueue *queue, int numlbns, int vscan_value)</span>
+<span class='curline'><a href='../S/254.html#L896'>iobuf</a>             896 src/disksim_ioqueue.c    iobuf *tmp;</span>
+<span class='curline'><a href='../S/254.html#L898'>iobuf</a>             898 src/disksim_ioqueue.c    iobuf *ret = NULL;</span>
+<span class='curline'><a href='../S/254.html#L945'>iobuf</a>             945 src/disksim_ioqueue.c static iobuf * ioqueue_get_request_from_lbn_scan_queue (subqueue *queue)</span>
+<span class='curline'><a href='../S/254.html#L947'>iobuf</a>             947 src/disksim_ioqueue.c    iobuf *temp;</span>
+<span class='curline'><a href='../S/254.html#L948'>iobuf</a>             948 src/disksim_ioqueue.c    iobuf *stop;</span>
+<span class='curline'><a href='../S/254.html#L971'>iobuf</a>             971 src/disksim_ioqueue.c static iobuf * ioqueue_get_request_from_lbn_vscan_queue (subqueue *queue, int value)</span>
+<span class='curline'><a href='../S/254.html#L973'>iobuf</a>             973 src/disksim_ioqueue.c    iobuf *temp;</span>
+<span class='curline'><a href='../S/254.html#L974'>iobuf</a>             974 src/disksim_ioqueue.c    iobuf *head;</span>
+<span class='curline'><a href='../S/254.html#L975'>iobuf</a>             975 src/disksim_ioqueue.c    iobuf *top = NULL;</span>
+<span class='curline'><a href='../S/254.html#L976'>iobuf</a>             976 src/disksim_ioqueue.c    iobuf *bottom = NULL;</span>
+<span class='curline'><a href='../S/254.html#L979'>iobuf</a>             979 src/disksim_ioqueue.c    iobuf *bestbottom;</span>
+<span class='curline'><a href='../S/254.html#L1079'>iobuf</a>            1079 src/disksim_ioqueue.c static iobuf *ioqueue_identify_request_on_cylinder (subqueue *queue)</span>
+<span class='curline'><a href='../S/254.html#L1081'>iobuf</a>            1081 src/disksim_ioqueue.c    iobuf *temp;</span>
+<span class='curline'><a href='../S/254.html#L1082'>iobuf</a>            1082 src/disksim_ioqueue.c    iobuf *head;</span>
+<span class='curline'><a href='../S/254.html#L1083'>iobuf</a>            1083 src/disksim_ioqueue.c    iobuf *cylstop;</span>
+<span class='curline'><a href='../S/254.html#L1084'>iobuf</a>            1084 src/disksim_ioqueue.c    iobuf *surfstop;</span>
+<span class='curline'><a href='../S/254.html#L1164'>iobuf</a>            1164 src/disksim_ioqueue.c static iobuf * ioqueue_get_request_from_cyl_scan_queue (subqueue *queue)</span>
+<span class='curline'><a href='../S/254.html#L1166'>iobuf</a>            1166 src/disksim_ioqueue.c    iobuf *temp;</span>
+<span class='curline'><a href='../S/254.html#L1167'>iobuf</a>            1167 src/disksim_ioqueue.c    iobuf *stop;</span>
+<span class='curline'><a href='../S/254.html#L1186'>iobuf</a>            1186 src/disksim_ioqueue.c static iobuf * ioqueue_get_request_from_cyl_vscan_queue (subqueue *queue, int value)</span>
+<span class='curline'><a href='../S/254.html#L1188'>iobuf</a>            1188 src/disksim_ioqueue.c    iobuf *temp;</span>
+<span class='curline'><a href='../S/254.html#L1189'>iobuf</a>            1189 src/disksim_ioqueue.c    iobuf *head;</span>
+<span class='curline'><a href='../S/254.html#L1190'>iobuf</a>            1190 src/disksim_ioqueue.c    iobuf *top = NULL;</span>
+<span class='curline'><a href='../S/254.html#L1191'>iobuf</a>            1191 src/disksim_ioqueue.c    iobuf *bottom = NULL;</span>
+<span class='curline'><a href='../S/254.html#L1192'>iobuf</a>            1192 src/disksim_ioqueue.c    iobuf *bottom2 = NULL;</span>
+<span class='curline'><a href='../S/254.html#L1193'>iobuf</a>            1193 src/disksim_ioqueue.c    iobuf *bestone;</span>
+<span class='curline'><a href='../S/254.html#L1301'>iobuf</a>            1301 src/disksim_ioqueue.c static iobuf *ioqueue_get_request_from_opt_sptf_queue (subqueue *queue, int checkcache, int ageweight, int posonly)</span>
+<span class='curline'><a href='../S/254.html#L1304'>iobuf</a>            1304 src/disksim_ioqueue.c    iobuf *temp;</span>
+<span class='curline'><a href='../S/254.html#L1305'>iobuf</a>            1305 src/disksim_ioqueue.c    iobuf *best = NULL;</span>
+<span class='curline'><a href='../S/254.html#L1476'>iobuf</a>            1476 src/disksim_ioqueue.c static iobuf *requests[MAX_TSPS];</span>
+<span class='curline'><a href='../S/254.html#L1478'>iobuf</a>            1478 src/disksim_ioqueue.c static void remove_tsps(iobuf *tmp){</span>
+<span class='curline'><a href='../S/254.html#L1480'>iobuf</a>            1480 src/disksim_ioqueue.c   iobuf *temp;</span>
+<span class='curline'><a href='../S/254.html#L1498'>iobuf</a>            1498 src/disksim_ioqueue.c static void calc_sp(iobuf **array, subqueue *queue, int checkcache, int no_requests){</span>
+<span class='curline'><a href='../S/254.html#L1505'>iobuf</a>            1505 src/disksim_ioqueue.c   iobuf *temp = NULL;</span>
+<span class='curline'><a href='../S/254.html#L1564'>iobuf</a>            1564 src/disksim_ioqueue.c static void perm(iobuf **array,</span>
+<span class='curline'><a href='../S/254.html#L1570'>iobuf</a>            1570 src/disksim_ioqueue.c   iobuf *temp;</span>
+<span class='curline'><a href='../S/254.html#L1594'>iobuf</a>            1594 src/disksim_ioqueue.c static iobuf *</span>
+<span class='curline'><a href='../S/254.html#L1601'>iobuf</a>            1601 src/disksim_ioqueue.c    iobuf *temp;</span>
+<span class='curline'><a href='../S/254.html#L1602'>iobuf</a>            1602 src/disksim_ioqueue.c    iobuf *best = NULL;</span>
+<span class='curline'><a href='../S/254.html#L1624'>iobuf</a>            1624 src/disksim_ioqueue.c    iobuf *test_requests[MAX_TSPS];</span>
+<span class='curline'><a href='../S/254.html#L1772'>iobuf</a>            1772 src/disksim_ioqueue.c static iobuf *ioqueue_get_request_from_opt_sptf_rot_weight_queue (subqueue *queue, int checkcache, int ageweight, int posonly)</span>
+<span class='curline'><a href='../S/254.html#L1775'>iobuf</a>            1775 src/disksim_ioqueue.c    iobuf *temp;</span>
+<span class='curline'><a href='../S/254.html#L1783'>iobuf</a>            1783 src/disksim_ioqueue.c    iobuf *best = NULL;</span>
+<span class='curline'><a href='../S/254.html#L1856'>iobuf</a>            1856 src/disksim_ioqueue.c static iobuf *ioqueue_get_request_from_opt_sptf_weight_queue (subqueue *queue, int checkcache, int ageweight, int posonly)</span>
+<span class='curline'><a href='../S/254.html#L1859'>iobuf</a>            1859 src/disksim_ioqueue.c    iobuf *temp;</span>
+<span class='curline'><a href='../S/254.html#L1866'>iobuf</a>            1866 src/disksim_ioqueue.c    iobuf *best = NULL;</span>
+<span class='curline'><a href='../S/254.html#L1867'>iobuf</a>            1867 src/disksim_ioqueue.c    iobuf *best2 = NULL;</span>
+<span class='curline'><a href='../S/254.html#L1997'>iobuf</a>            1997 src/disksim_ioqueue.c static iobuf *ioqueue_get_request_from_opt_sptf_seek_weight_queue (subqueue *queue, int checkcache, int ageweight, int posonly)</span>
+<span class='curline'><a href='../S/254.html#L2000'>iobuf</a>            2000 src/disksim_ioqueue.c    iobuf *temp;</span>
+<span class='curline'><a href='../S/254.html#L2001'>iobuf</a>            2001 src/disksim_ioqueue.c    iobuf *best = NULL;</span>
+<span class='curline'><a href='../S/254.html#L2002'>iobuf</a>            2002 src/disksim_ioqueue.c    iobuf *best2 = NULL;</span>
+<span class='curline'><a href='../S/254.html#L2216'>iobuf</a>            2216 src/disksim_ioqueue.c static iobuf *ioqueue_get_request_from_sdf_queue (subqueue *queue, int exact, int direction) {</span>
+<span class='curline'><a href='../S/254.html#L2219'>iobuf</a>            2219 src/disksim_ioqueue.c   iobuf *temp;</span>
+<span class='curline'><a href='../S/254.html#L2220'>iobuf</a>            2220 src/disksim_ioqueue.c   iobuf *best = NULL;</span>
+<span class='curline'><a href='../S/254.html#L2274'>iobuf</a>            2274 src/disksim_ioqueue.c static iobuf *ioqueue_get_request_from_batch_fcfs_queue(subqueue *queue)</span>
+<span class='curline'><a href='../S/254.html#L2276'>iobuf</a>            2276 src/disksim_ioqueue.c   iobuf *tmp;</span>
+<span class='curline'><a href='../S/254.html#L2277'>iobuf</a>            2277 src/disksim_ioqueue.c   iobuf *ret = NULL;</span>
+<span class='curline'><a href='../S/254.html#L2278'>iobuf</a>            2278 src/disksim_ioqueue.c   iobuf *first_in_batch = NULL;</span>
+<span class='curline'><a href='../S/254.html#L2279'>iobuf</a>            2279 src/disksim_ioqueue.c   iobuf *last_in_batch;</span>
+<span class='curline'><a href='../S/254.html#L2304'>iobuf</a>            2304 src/disksim_ioqueue.c    iobuf *temp = 0;</span>
+<span class='curline'><a href='../S/254.html#L2308'>iobuf</a>            2308 src/disksim_ioqueue.c    iobuf *temp_sdf = NULL;</span>
+<span class='curline'><a href='../S/254.html#L2309'>iobuf</a>            2309 src/disksim_ioqueue.c    iobuf *temp_sptf = NULL;</span>
+<span class='curline'><a href='../S/254.html#L2464'>iobuf</a>            2464 src/disksim_ioqueue.c    iobuf *temp = NULL;</span>
+<span class='curline'><a href='../S/254.html#L2466'>iobuf</a>            2466 src/disksim_ioqueue.c    iobuf *temp_sdf = NULL;</span>
+<span class='curline'><a href='../S/254.html#L2467'>iobuf</a>            2467 src/disksim_ioqueue.c    iobuf *temp_sptf = NULL;</span>
+<span class='curline'><a href='../S/254.html#L2713'>iobuf</a>            2713 src/disksim_ioqueue.c static int ioqueue_request_match (ioreq_event *wanted, iobuf *curr)</span>
+<span class='curline'><a href='../S/254.html#L2750'>iobuf</a>            2750 src/disksim_ioqueue.c    iobuf *temp;</span>
+<span class='curline'><a href='../S/254.html#L2792'>iobuf</a>            2792 src/disksim_ioqueue.c 	  iobuf *batch_ptr = temp;</span>
+<span class='curline'><a href='../S/254.html#L2853'>iobuf</a>            2853 src/disksim_ioqueue.c    iobuf *temp = queue-&gt;list;</span>
+<span class='curline'><a href='../S/254.html#L2877'>iobuf</a>            2877 src/disksim_ioqueue.c    iobuf *tmp;</span>
+<span class='curline'><a href='../S/254.html#L2878'>iobuf</a>            2878 src/disksim_ioqueue.c    iobuf *tail;</span>
+<span class='curline'><a href='../S/254.html#L3188'>iobuf</a>            3188 src/disksim_ioqueue.c    iobuf *tmp;</span>
+<span class='curline'><a href='../S/254.html#L3198'>iobuf</a>            3198 src/disksim_ioqueue.c    tmp = (iobuf *) getfromextraq();</span>
+<span class='curline'><a href='../S/254.html#L3199'>iobuf</a>            3199 src/disksim_ioqueue.c    StaticAssert (sizeof(iobuf) &lt;= sizeof(event));</span>
+<span class='curline'><a href='../S/254.html#L3289'>iobuf</a>            3289 src/disksim_ioqueue.c    iobuf *tmp;</span>
+<span class='curline'><a href='../S/254.html#L3291'>iobuf</a>            3291 src/disksim_ioqueue.c    iobuf *bump;</span>
+<span class='curline'><a href='../S/254.html#L3376'>iobuf</a>            3376 src/disksim_ioqueue.c    iobuf *tmp;</span>
+<span class='curline'><a href='../S/254.html#L3377'>iobuf</a>            3377 src/disksim_ioqueue.c    iobuf *done;</span>
+<span class='curline'><a href='../S/254.html#L3505'>iobuf</a>            3505 src/disksim_ioqueue.c    iobuf *tmp;</span>
+<span class='curline'><a href='../S/254.html#L3708'>iobuf</a>            3708 src/disksim_ioqueue.c    StaticAssert (sizeof(iobuf) &lt;= DISKSIM_EVENT_SIZE);</span>
+<span class='curline'><a href='../S/259.html#L211'>iobuf</a>             211 src/disksim_ioqueue.h    iobuf *	list;</span>
+<span class='curline'><a href='../S/259.html#L212'>iobuf</a>             212 src/disksim_ioqueue.h    iobuf *	current;</span>
+</pre>
+</body>
+</html>

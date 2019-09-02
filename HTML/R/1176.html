@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>dm_marshal_hdr</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/92.html#L1799'>dm_marshal_hdr</a>   1799 diskmodel/layout_g1.c   int result = sizeof(struct dm_marshal_hdr) + sizeof(struct dm_layout_g1); </span>
+<span class='curline'><a href='../S/92.html#L1821'>dm_marshal_hdr</a>   1821 diskmodel/layout_g1.c   struct dm_marshal_hdr *hdr = (struct dm_marshal_hdr *)buff;</span>
+<span class='curline'><a href='../S/92.html#L1825'>dm_marshal_hdr</a>   1825 diskmodel/layout_g1.c   ptr += sizeof(struct dm_marshal_hdr);</span>
+<span class='curline'><a href='../S/92.html#L1864'>dm_marshal_hdr</a>   1864 diskmodel/layout_g1.c layout_g1_unmarshal(struct dm_marshal_hdr *hdr, </span>
+<span class='curline'><a href='../S/92.html#L1874'>dm_marshal_hdr</a>   1874 diskmodel/layout_g1.c   ptr += sizeof(struct dm_marshal_hdr);</span>
+<span class='curline'><a href='../S/97.html#L38'>dm_marshal_hdr</a>     38 diskmodel/marshal.c dm_unmarshal(struct dm_marshal_hdr *h, int bufflen) {</span>
+<span class='curline'><a href='../S/97.html#L43'>dm_marshal_hdr</a>     43 diskmodel/marshal.c   if(bufflen &lt; sizeof(struct dm_marshal_hdr)) return 0;</span>
+<span class='curline'><a href='../S/97.html#L54'>dm_marshal_hdr</a>     54 diskmodel/marshal.c dm_unmarshal_disk(struct dm_marshal_hdr *h, </span>
+<span class='curline'><a href='../S/97.html#L59'>dm_marshal_hdr</a>     59 diskmodel/marshal.c   struct dm_marshal_hdr *hdrtmp;</span>
+<span class='curline'><a href='../S/97.html#L62'>dm_marshal_hdr</a>     62 diskmodel/marshal.c   ptr += sizeof(struct dm_marshal_hdr);</span>
+<span class='curline'><a href='../S/97.html#L67'>dm_marshal_hdr</a>     67 diskmodel/marshal.c   hdrtmp = (struct dm_marshal_hdr *)ptr;</span>
+<span class='curline'><a href='../S/97.html#L90'>dm_marshal_hdr</a>     90 diskmodel/marshal.c struct dm_marshal_hdr *</span>
+<span class='curline'><a href='../S/97.html#L92'>dm_marshal_hdr</a>     92 diskmodel/marshal.c   struct dm_marshal_hdr *result = 0;</span>
+<span class='curline'><a href='../S/97.html#L98'>dm_marshal_hdr</a>     98 diskmodel/marshal.c   alloc_size += sizeof(struct dm_marshal_hdr);</span>
+<span class='curline'><a href='../S/97.html#L101'>dm_marshal_hdr</a>    101 diskmodel/marshal.c   alloc_size += sizeof(struct dm_marshal_hdr);</span>
+<span class='curline'><a href='../S/97.html#L104'>dm_marshal_hdr</a>    104 diskmodel/marshal.c   alloc_size += sizeof(struct dm_marshal_hdr);</span>
+<span class='curline'><a href='../S/97.html#L111'>dm_marshal_hdr</a>    111 diskmodel/marshal.c   ptr = (char *)result + sizeof(struct dm_marshal_hdr);</span>
+<span class='curline'><a href='../S/99.html#L41'>dm_marshal_hdr</a>     41 diskmodel/marshal.h char *dm_unmarshal_disk(struct dm_marshal_hdr *, </span>
+<span class='curline'><a href='../S/99.html#L49'>dm_marshal_hdr</a>     49 diskmodel/marshal.h typedef char*(*dm_unmarshal_t)(struct dm_marshal_hdr *,</span>
+<span class='curline'><a href='../S/99.html#L67'>dm_marshal_hdr</a>     67 diskmodel/marshal.h struct dm_disk_if * dm_unmarshal(struct dm_marshal_hdr *h, int bufflen);</span>
+<span class='curline'><a href='../S/99.html#L68'>dm_marshal_hdr</a>     68 diskmodel/marshal.h struct dm_marshal_hdr * dm_marshal(struct dm_disk_if *d);</span>
+<span class='curline'><a href='../S/72.html#L753'>dm_marshal_hdr</a>    753 diskmodel/mech_g1.c   result += sizeof(struct dm_marshal_hdr);</span>
+<span class='curline'><a href='../S/72.html#L802'>dm_marshal_hdr</a>    802 diskmodel/mech_g1.c   struct dm_marshal_hdr *h = (struct dm_marshal_hdr *)b;</span>
+<span class='curline'><a href='../S/72.html#L851'>dm_marshal_hdr</a>    851 diskmodel/mech_g1.c mech_g1_unmarshal(struct dm_marshal_hdr *h,</span>
+</pre>
+</body>
+</html>

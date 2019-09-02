@@ -1,0 +1,423 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>diskmodel/layout_g2_load.c</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<a id='TOP' name='TOP'></a><h2 class='header'><a href='../mains.html'>root</a>/<a href='../files/396.html'>diskmodel</a>/layout_g2_load.c</h2>
+<em class='comment'>/* [&lt;][&gt;]<a href='#L56'>[^]</a><a href='#L382'>[v]</a>[top]<a href='#BOTTOM'>[bottom]</a><a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</em>
+<hr />
+<h2 class='header'>DEFINITIONS</h2>
+This source file includes following definitions.
+<ol>
+<li><a href='#L56' title='Defined at 56.'>trackcmp</a></li>
+<li><a href='#L87' title='Defined at 87.'>layout_g2_loadmap</a></li>
+<li><a href='#L215' title='Defined at 215.'>precompute_skews</a></li>
+<li><a href='#L279' title='Defined at 279.'>pbncmp</a></li>
+<li><a href='#L297' title='Defined at 297.'>g2_finish_defects</a></li>
+<li><a href='#L310' title='Defined at 310.'>dm_layout_g2_loadparams</a></li>
+<li><a href='#L343' title='Defined at 343.'>g2_load_zone</a></li>
+<li><a href='#L354' title='Defined at 354.'>g2_load_zones</a></li>
+<li><a href='#L382' title='Defined at 382.'>dm_layout_g2_zone_loadparams</a></li>
+</ol>
+<hr />
+<pre>
+<a id='L1' name='L1'></a>   1 <em class='comment'>/* diskmodel (version 1.1)</em>
+<a id='L2' name='L2'></a>   2 <em class='comment'> * Authors: John Bucy, Greg Ganger</em>
+<a id='L3' name='L3'></a>   3 <em class='comment'> * Contributors: John Griffin, Jiri Schindler, Steve Schlosser</em>
+<a id='L4' name='L4'></a>   4 <em class='comment'> *</em>
+<a id='L5' name='L5'></a>   5 <em class='comment'> * Copyright (c) of Carnegie Mellon University, 2003-2005</em>
+<a id='L6' name='L6'></a>   6 <em class='comment'> *</em>
+<a id='L7' name='L7'></a>   7 <em class='comment'> * This software is being provided by the copyright holders under the</em>
+<a id='L8' name='L8'></a>   8 <em class='comment'> * following license. By obtaining, using and/or copying this</em>
+<a id='L9' name='L9'></a>   9 <em class='comment'> * software, you agree that you have read, understood, and will comply</em>
+<a id='L10' name='L10'></a>  10 <em class='comment'> * with the following terms and conditions:</em>
+<a id='L11' name='L11'></a>  11 <em class='comment'> *</em>
+<a id='L12' name='L12'></a>  12 <em class='comment'> * Permission to reproduce, use, and prepare derivative works of this</em>
+<a id='L13' name='L13'></a>  13 <em class='comment'> * software is granted provided the copyright and "No Warranty"</em>
+<a id='L14' name='L14'></a>  14 <em class='comment'> * statements are included with all reproductions and derivative works</em>
+<a id='L15' name='L15'></a>  15 <em class='comment'> * and associated documentation. This software may also be</em>
+<a id='L16' name='L16'></a>  16 <em class='comment'> * redistributed without charge provided that the copyright and "No</em>
+<a id='L17' name='L17'></a>  17 <em class='comment'> * Warranty" statements are included in all redistributions.</em>
+<a id='L18' name='L18'></a>  18 <em class='comment'> *</em>
+<a id='L19' name='L19'></a>  19 <em class='comment'> * NO WARRANTY. THIS SOFTWARE IS FURNISHED ON AN "AS IS" BASIS.</em>
+<a id='L20' name='L20'></a>  20 <em class='comment'> * CARNEGIE MELLON UNIVERSITY MAKES NO WARRANTIES OF ANY KIND, EITHER</em>
+<a id='L21' name='L21'></a>  21 <em class='comment'> * EXPRESSED OR IMPLIED AS TO THE MATTER INCLUDING, BUT NOT LIMITED</em>
+<a id='L22' name='L22'></a>  22 <em class='comment'> * TO: WARRANTY OF FITNESS FOR PURPOSE OR MERCHANTABILITY, EXCLUSIVITY</em>
+<a id='L23' name='L23'></a>  23 <em class='comment'> * OF RESULTS OR RESULTS OBTAINED FROM USE OF THIS SOFTWARE. CARNEGIE</em>
+<a id='L24' name='L24'></a>  24 <em class='comment'> * MELLON UNIVERSITY DOES NOT MAKE ANY WARRANTY OF ANY KIND WITH</em>
+<a id='L25' name='L25'></a>  25 <em class='comment'> * RESPECT TO FREEDOM FROM PATENT, TRADEMARK, OR COPYRIGHT</em>
+<a id='L26' name='L26'></a>  26 <em class='comment'> * INFRINGEMENT.  COPYRIGHT HOLDERS WILL BEAR NO LIABILITY FOR ANY USE</em>
+<a id='L27' name='L27'></a>  27 <em class='comment'> * OF THIS SOFTWARE OR DOCUMENTATION.  </em>
+<a id='L28' name='L28'></a>  28 <em class='comment'> */</em>
+<a id='L29' name='L29'></a>  29 
+<a id='L30' name='L30'></a>  30 <em class='sharp'>#include</em> &lt;<a href='118.html'>libparam/libparam.h</a>&gt;
+<a id='L31' name='L31'></a>  31 <em class='sharp'>#include</em> &lt;<a href='113.html'>libparam/bitvector.h</a>&gt;
+<a id='L32' name='L32'></a>  32 
+<a id='L33' name='L33'></a>  33 <em class='sharp'>#include</em> &lt;string.h&gt;
+<a id='L34' name='L34'></a>  34 <em class='sharp'>#include</em> &lt;stdio.h&gt;
+<a id='L35' name='L35'></a>  35 <em class='sharp'>#include</em> &lt;stdlib.h&gt;
+<a id='L36' name='L36'></a>  36 
+<a id='L37' name='L37'></a>  37 <em class='sharp'>#include</em> "<a href='61.html'>layout_g2.h</a>"
+<a id='L38' name='L38'></a>  38 
+<a id='L39' name='L39'></a>  39 <em class='sharp'>#include</em> "modules/dm_layout_g2_param.h"
+<a id='L40' name='L40'></a>  40 
+<a id='L41' name='L41'></a>  41 
+<a id='L42' name='L42'></a>  42 <strong class='reserved'>extern</strong> <strong class='reserved'>struct</strong> <a href='../S/77.html#L170' title='Defined at 170 in diskmodel/dm.h.'>dm_layout_if</a> layout_g2;
+<a id='L43' name='L43'></a>  43 <strong class='reserved'>typedef</strong> <strong class='reserved'>enum</strong> <em class='brace'>{</em> REVOLUTIONS, SECTORS, NONE <em class='brace'>}</em> skew_unit_t;
+<a id='L44' name='L44'></a>  44 <em class='sharp'>#include</em> "modules/dm_layout_g2_zone_param.h"
+<a id='L45' name='L45'></a>  45 
+<a id='L46' name='L46'></a>  46 <strong class='reserved'>static</strong> <strong class='reserved'>int</strong> defects_len = 0;
+<a id='L47' name='L47'></a>  47 <strong class='reserved'>static</strong> <strong class='reserved'>struct</strong> <a href='../S/77.html#L69' title='Defined at 69 in diskmodel/dm.h.'>dm_pbn</a> *defects;
+<a id='L48' name='L48'></a>  48 
+<a id='L49' name='L49'></a>  49 
+<a id='L50' name='L50'></a>  50 <strong class='reserved'>void</strong>
+<a id='L51' name='L51'></a>  51 <a href='../S/44.html#L354' title='Defined at 354 in diskmodel/layout_g2_load.c.'>g2_load_zones</a>(<strong class='reserved'>struct</strong> <a href='../S/61.html#L35' title='Defined at 35 in diskmodel/layout_g2.h.'>dm_layout_g2</a> *l, 
+<a id='L52' name='L52'></a>  52               <strong class='reserved'>struct</strong> <a href='../S/118.html#L80' title='Defined at 80 in libparam/libparam.h.'>lp_list</a> *zl);
+<a id='L53' name='L53'></a>  53 
+<a id='L54' name='L54'></a>  54 
+<a id='L55' name='L55'></a>  55 <em class='comment'>// sort by ascending track</em>
+<a id='L56' name='L56'></a>  56 <strong class='reserved'>static</strong> <strong class='reserved'>int</strong> <a href='../S/44.html#L167' title='Referred from 167 in diskmodel/layout_g2_load.c.'>trackcmp</a>(<strong class='reserved'>const</strong> <strong class='reserved'>void</strong> *p1,
+<a id='L57' name='L57'></a>  57                     <strong class='reserved'>const</strong> <strong class='reserved'>void</strong> *p2)
+<a id='L58' name='L58'></a>  58 <em class='brace'>{</em>
+<a id='L59' name='L59'></a>  59   <strong class='reserved'>struct</strong> <a href='../S/61.html#L56' title='Defined at 56 in diskmodel/layout_g2.h.'>dm_layout_g2_node</a> *n1 = (<strong class='reserved'>struct</strong> <a href='../S/61.html#L56' title='Defined at 56 in diskmodel/layout_g2.h.'>dm_layout_g2_node</a> *)p1;
+<a id='L60' name='L60'></a>  60   <strong class='reserved'>struct</strong> <a href='../S/61.html#L56' title='Defined at 56 in diskmodel/layout_g2.h.'>dm_layout_g2_node</a> *n2 = (<strong class='reserved'>struct</strong> <a href='../S/61.html#L56' title='Defined at 56 in diskmodel/layout_g2.h.'>dm_layout_g2_node</a> *)p2;
+<a id='L61' name='L61'></a>  61 
+<a id='L62' name='L62'></a>  62   <strong class='reserved'>if</strong>(n1-&gt;loc.cyl &lt; n2-&gt;loc.cyl) <em class='brace'>{</em>
+<a id='L63' name='L63'></a>  63     <strong class='reserved'>return</strong> -1;
+<a id='L64' name='L64'></a>  64   <em class='brace'>}</em>
+<a id='L65' name='L65'></a>  65   <strong class='reserved'>else</strong> <strong class='reserved'>if</strong>(n1-&gt;loc.cyl &gt; n2-&gt;loc.cyl) <em class='brace'>{</em>
+<a id='L66' name='L66'></a>  66     <strong class='reserved'>return</strong> 1;
+<a id='L67' name='L67'></a>  67   <em class='brace'>}</em>
+<a id='L68' name='L68'></a>  68 
+<a id='L69' name='L69'></a>  69   <strong class='reserved'>if</strong>(n1-&gt;loc.head &lt; n2-&gt;loc.head) <em class='brace'>{</em>
+<a id='L70' name='L70'></a>  70     <strong class='reserved'>return</strong> -1;
+<a id='L71' name='L71'></a>  71   <em class='brace'>}</em>
+<a id='L72' name='L72'></a>  72   <strong class='reserved'>else</strong> <strong class='reserved'>if</strong>(n1-&gt;loc.head &gt; n2-&gt;loc.head) <em class='brace'>{</em>
+<a id='L73' name='L73'></a>  73     <strong class='reserved'>return</strong> 1;
+<a id='L74' name='L74'></a>  74   <em class='brace'>}</em>
+<a id='L75' name='L75'></a>  75 
+<a id='L76' name='L76'></a>  76   <strong class='reserved'>if</strong>(n1-&gt;loc.sector &lt; n2-&gt;loc.sector) <em class='brace'>{</em>
+<a id='L77' name='L77'></a>  77     <strong class='reserved'>return</strong> -1;
+<a id='L78' name='L78'></a>  78   <em class='brace'>}</em>
+<a id='L79' name='L79'></a>  79   <strong class='reserved'>else</strong> <strong class='reserved'>if</strong>(n1-&gt;loc.sector &gt; n2-&gt;loc.sector) <em class='brace'>{</em>
+<a id='L80' name='L80'></a>  80     <strong class='reserved'>return</strong> 1;
+<a id='L81' name='L81'></a>  81   <em class='brace'>}</em>
+<a id='L82' name='L82'></a>  82 
+<a id='L83' name='L83'></a>  83 
+<a id='L84' name='L84'></a>  84   <strong class='reserved'>return</strong> 0;
+<a id='L85' name='L85'></a>  85 <em class='brace'>}</em>
+<a id='L86' name='L86'></a>  86 
+<a id='L87' name='L87'></a>  87 <strong class='reserved'>static</strong> <strong class='reserved'>int</strong> <a href='../S/44.html#L320' title='Referred from 320 in diskmodel/layout_g2_load.c.'>layout_g2_loadmap</a>(<strong class='reserved'>struct</strong> <a href='../S/61.html#L35' title='Defined at 35 in diskmodel/layout_g2.h.'>dm_layout_g2</a> *l) 
+<a id='L88' name='L88'></a>  88 <em class='brace'>{</em>
+<a id='L89' name='L89'></a>  89   FILE *fd;
+<a id='L90' name='L90'></a>  90   <strong class='reserved'>char</strong> junk[1024];
+<a id='L91' name='L91'></a>  91   <strong class='reserved'>char</strong> countstr[16];
+<a id='L92' name='L92'></a>  92   <strong class='reserved'>char</strong> *mapfile;
+<a id='L93' name='L93'></a>  93 
+<a id='L94' name='L94'></a>  94   <strong class='reserved'>int</strong> extentguess;
+<a id='L95' name='L95'></a>  95   <strong class='reserved'>int</strong> extents_ct = 0;
+<a id='L96' name='L96'></a>  96 
+<a id='L97' name='L97'></a>  97   <strong class='reserved'>struct</strong> <a href='../S/77.html#L69' title='Defined at 69 in diskmodel/dm.h.'>dm_pbn</a> pbn;
+<a id='L98' name='L98'></a>  98   <strong class='reserved'>int</strong> lbn,c,h,s,count;
+<a id='L99' name='L99'></a>  99   <strong class='reserved'>int</strong> lastc, lasth;
+<a id='L100' name='L100'></a> 100   <strong class='reserved'>int</strong> cyls, heads;
+<a id='L101' name='L101'></a> 101   <strong class='reserved'>int</strong> i, j;
+<a id='L102' name='L102'></a> 102   <em class='comment'>// index [cyl][head], number of extents for that track</em>
+<a id='L103' name='L103'></a> 103   <strong class='reserved'>int</strong> **track_ext_counts;
+<a id='L104' name='L104'></a> 104 
+<a id='L105' name='L105'></a> 105   <strong class='reserved'>struct</strong> <a href='../S/61.html#L56' title='Defined at 56 in diskmodel/layout_g2.h.'>dm_layout_g2_node</a> *curr;
+<a id='L106' name='L106'></a> 106   <strong class='reserved'>struct</strong> <a href='../S/61.html#L56' title='Defined at 56 in diskmodel/layout_g2.h.'>dm_layout_g2_node</a> *track_extents;
+<a id='L107' name='L107'></a> 107 
+<a id='L108' name='L108'></a> 108   <strong class='reserved'>struct</strong> <a href='../S/77.html#L69' title='Defined at 69 in diskmodel/dm.h.'>dm_pbn</a> *currdefect;
+<a id='L109' name='L109'></a> 109 
+<a id='L110' name='L110'></a> 110   mapfile = <a href='../D/1964.html' title='Multiple defined in 2 places.'>lp_search_path</a>(lp_cwd, l-&gt;mapfile);
+<a id='L111' name='L111'></a> 111 
+<a id='L112' name='L112'></a> 112   fd = fopen(mapfile, "r");
+<a id='L113' name='L113'></a> 113   <a href='../D/1153.html' title='Multiple defined in 2 places.'>ddbg_assert3</a>(fd != 0, ("failed to open layout mappings file %s", l-&gt;mapfile));
+<a id='L114' name='L114'></a> 114 
+<a id='L115' name='L115'></a> 115   <em class='comment'>// ignore first 2 lines</em>
+<a id='L116' name='L116'></a> 116   fgets(junk, <strong class='reserved'>sizeof</strong>(junk), fd);
+<a id='L117' name='L117'></a> 117   fgets(junk, <strong class='reserved'>sizeof</strong>(junk), fd);
+<a id='L118' name='L118'></a> 118 
+<a id='L119' name='L119'></a> 119   <strong class='reserved'>if</strong>(fscanf(fd, "%d cylinders, %*d rot, %d heads\n", &amp;cyls, &amp;heads) != 2) <em class='brace'>{</em>
+<a id='L120' name='L120'></a> 120     <a href='../D/1152.html' title='Multiple defined in 2 places.'>ddbg_assert2</a>(0, "*** error: layout_g2_loadmap: need &lt;cyls&gt; ... &lt;heads&gt;\n");
+<a id='L121' name='L121'></a> 121   <em class='brace'>}</em>
+<a id='L122' name='L122'></a> 122 
+<a id='L123' name='L123'></a> 123   <em class='comment'>//  printf("*** layout_g2: %s %s\n", vendor, model);</em>
+<a id='L124' name='L124'></a> 124   <em class='comment'>//  printf("*** layout_g2: %d %d\n", cyls, heads);</em>
+<a id='L125' name='L125'></a> 125 
+<a id='L126' name='L126'></a> 126   extentguess = cyls * heads * 2; <em class='comment'>// 0t tracks</em>
+<a id='L127' name='L127'></a> 127   extentguess += extentguess/4;         <em class='comment'>// if there are a lot of defects</em>
+<a id='L128' name='L128'></a> 128   l-&gt;ltop_map = calloc(extentguess, <strong class='reserved'>sizeof</strong>(<strong class='reserved'>struct</strong> <a href='../S/61.html#L56' title='Defined at 56 in diskmodel/layout_g2.h.'>dm_layout_g2_node</a>));
+<a id='L129' name='L129'></a> 129   curr = &amp;l-&gt;ltop_map[0];
+<a id='L130' name='L130'></a> 130 
+<a id='L131' name='L131'></a> 131   l-&gt;ptol_map = calloc(cyls, <strong class='reserved'>sizeof</strong>(<strong class='reserved'>struct</strong> <a href='../S/61.html#L64' title='Defined at 64 in diskmodel/layout_g2.h.'>dm_layout_g2_cyl</a>));
+<a id='L132' name='L132'></a> 132 
+<a id='L133' name='L133'></a> 133   <strong class='reserved'>for</strong>(i = 0; i &lt; cyls; i++) <em class='brace'>{</em>
+<a id='L134' name='L134'></a> 134     l-&gt;ptol_map[i].surfaces = calloc(heads, <strong class='reserved'>sizeof</strong>(<strong class='reserved'>struct</strong> <a href='../S/61.html#L71' title='Defined at 71 in diskmodel/layout_g2.h.'>dm_layout_g2_surf</a>));
+<a id='L135' name='L135'></a> 135   <em class='brace'>}</em>
+<a id='L136' name='L136'></a> 136 
+<a id='L137' name='L137'></a> 137   track_ext_counts = calloc(cyls, <strong class='reserved'>sizeof</strong>(<strong class='reserved'>int</strong> *));
+<a id='L138' name='L138'></a> 138   <strong class='reserved'>for</strong>(i = 0; i &lt; cyls; i++) <em class='brace'>{</em>
+<a id='L139' name='L139'></a> 139     track_ext_counts[i] = calloc(heads, <strong class='reserved'>sizeof</strong>(<strong class='reserved'>int</strong>));
+<a id='L140' name='L140'></a> 140   <em class='brace'>}</em>
+<a id='L141' name='L141'></a> 141 
+<a id='L142' name='L142'></a> 142   curr = &amp;l-&gt;ltop_map[0];
+<a id='L143' name='L143'></a> 143   <em class='comment'>// ltop map</em>
+<a id='L144' name='L144'></a> 144   <strong class='reserved'>while</strong>(fscanf(fd, "lbn %d --&gt; cyl %d, head %d, sect %d, %s %d\n",
+<a id='L145' name='L145'></a> 145                &amp;curr-&gt;lbn,
+<a id='L146' name='L146'></a> 146                &amp;curr-&gt;loc.cyl,
+<a id='L147' name='L147'></a> 147                &amp;curr-&gt;loc.head,
+<a id='L148' name='L148'></a> 148                &amp;curr-&gt;loc.sector,
+<a id='L149' name='L149'></a> 149                countstr,
+<a id='L150' name='L150'></a> 150                &amp;curr-&gt;len) == 6) 
+<a id='L151' name='L151'></a> 151   <em class='brace'>{</em>
+<a id='L152' name='L152'></a> 152     <strong class='reserved'>if</strong>(!strcmp(countstr, "seqcnt")) <em class='brace'>{</em>
+<a id='L153' name='L153'></a> 153       curr-&gt;len++;
+<a id='L154' name='L154'></a> 154     <em class='brace'>}</em>
+<a id='L155' name='L155'></a> 155 
+<a id='L156' name='L156'></a> 156     track_ext_counts[curr-&gt;loc.cyl][curr-&gt;loc.head]++;
+<a id='L157' name='L157'></a> 157     curr++;
+<a id='L158' name='L158'></a> 158     extents_ct++;
+<a id='L159' name='L159'></a> 159     l-&gt;ltop_map_len++;
+<a id='L160' name='L160'></a> 160   <em class='brace'>}</em>
+<a id='L161' name='L161'></a> 161 
+<a id='L162' name='L162'></a> 162   <em class='comment'>// copy the ltop map and sort it by track</em>
+<a id='L163' name='L163'></a> 163   track_extents = calloc(extents_ct, <strong class='reserved'>sizeof</strong>(<strong class='reserved'>struct</strong> <a href='../S/61.html#L56' title='Defined at 56 in diskmodel/layout_g2.h.'>dm_layout_g2_node</a>));
+<a id='L164' name='L164'></a> 164   memcpy(track_extents, l-&gt;ltop_map, extents_ct * <strong class='reserved'>sizeof</strong>(<strong class='reserved'>struct</strong> <a href='../S/61.html#L56' title='Defined at 56 in diskmodel/layout_g2.h.'>dm_layout_g2_node</a>));
+<a id='L165' name='L165'></a> 165 
+<a id='L166' name='L166'></a> 166   qsort(track_extents, extents_ct, <strong class='reserved'>sizeof</strong>(<strong class='reserved'>struct</strong> <a href='../S/61.html#L56' title='Defined at 56 in diskmodel/layout_g2.h.'>dm_layout_g2_node</a>), 
+<a id='L167' name='L167'></a> 167         <a href='../S/44.html#L56' title='Defined at 56 in diskmodel/layout_g2_load.c.'>trackcmp</a>);
+<a id='L168' name='L168'></a> 168 
+<a id='L169' name='L169'></a> 169   <em class='comment'>// ptol map</em>
+<a id='L170' name='L170'></a> 170   curr = &amp;track_extents[0];
+<a id='L171' name='L171'></a> 171   <strong class='reserved'>for</strong>(i = 0; i &lt; cyls; i++) <em class='brace'>{</em>
+<a id='L172' name='L172'></a> 172     <strong class='reserved'>for</strong>(j = 0; j &lt; heads; j++) <em class='brace'>{</em>
+<a id='L173' name='L173'></a> 173       <strong class='reserved'>int</strong> k;
+<a id='L174' name='L174'></a> 174       <strong class='reserved'>int</strong> extents_len = track_ext_counts[i][j];
+<a id='L175' name='L175'></a> 175 
+<a id='L176' name='L176'></a> 176       l-&gt;ptol_map[i].surfaces[j].extents = calloc(extents_len, <strong class='reserved'>sizeof</strong>(<strong class='reserved'>struct</strong> <a href='../S/61.html#L56' title='Defined at 56 in diskmodel/layout_g2.h.'>dm_layout_g2_node</a>));
+<a id='L177' name='L177'></a> 177       l-&gt;ptol_map[i].surfaces[j].extents_len = extents_len;
+<a id='L178' name='L178'></a> 178 
+<a id='L179' name='L179'></a> 179       <strong class='reserved'>for</strong>(k = 0; k &lt; extents_len; k++) <em class='brace'>{</em>
+<a id='L180' name='L180'></a> 180         l-&gt;ptol_map[i].surfaces[j].extents[k] = *curr;
+<a id='L181' name='L181'></a> 181         curr++;
+<a id='L182' name='L182'></a> 182       <em class='brace'>}</em>
+<a id='L183' name='L183'></a> 183     <em class='brace'>}</em>
+<a id='L184' name='L184'></a> 184   <em class='brace'>}</em>
+<a id='L185' name='L185'></a> 185 
+<a id='L186' name='L186'></a> 186 
+<a id='L187' name='L187'></a> 187   <em class='comment'>// free the extra extent list</em>
+<a id='L188' name='L188'></a> 188   free(track_extents);
+<a id='L189' name='L189'></a> 189 
+<a id='L190' name='L190'></a> 190   <em class='comment'>//  ddbg_assert2(extents_ct &gt; (cyls * heads), "EOF on layout mappings file??");</em>
+<a id='L191' name='L191'></a> 191 
+<a id='L192' name='L192'></a> 192   <em class='comment'>//  l-&gt;extents_len = extents_ct;</em>
+<a id='L193' name='L193'></a> 193 
+<a id='L194' name='L194'></a> 194   <em class='comment'>// populate the defect list</em>
+<a id='L195' name='L195'></a> 195   defects = calloc(extents_ct &gt;&gt; 3, <strong class='reserved'>sizeof</strong>(<strong class='reserved'>struct</strong> <a href='../S/77.html#L69' title='Defined at 69 in diskmodel/dm.h.'>dm_pbn</a>));
+<a id='L196' name='L196'></a> 196   currdefect = &amp;defects[0];
+<a id='L197' name='L197'></a> 197   <strong class='reserved'>while</strong>(fscanf(fd, "Defect at cyl %d, head %d, sect %d\n",
+<a id='L198' name='L198'></a> 198                &amp;currdefect-&gt;cyl,
+<a id='L199' name='L199'></a> 199                &amp;currdefect-&gt;head,
+<a id='L200' name='L200'></a> 200                &amp;currdefect-&gt;sector) == 3)
+<a id='L201' name='L201'></a> 201   <em class='brace'>{</em>
+<a id='L202' name='L202'></a> 202     currdefect++;
+<a id='L203' name='L203'></a> 203     defects_len++;
+<a id='L204' name='L204'></a> 204   <em class='brace'>}</em>
+<a id='L205' name='L205'></a> 205 
+<a id='L206' name='L206'></a> 206 
+<a id='L207' name='L207'></a> 207 
+<a id='L208' name='L208'></a> 208 
+<a id='L209' name='L209'></a> 209   fclose(fd);
+<a id='L210' name='L210'></a> 210   <strong class='reserved'>return</strong> 0;
+<a id='L211' name='L211'></a> 211 <em class='brace'>}</em>
+<a id='L212' name='L212'></a> 212 
+<a id='L213' name='L213'></a> 213 
+<a id='L214' name='L214'></a> 214 <strong class='reserved'>static</strong> <strong class='reserved'>void</strong> 
+<a id='L215' name='L215'></a> 215 <a href='../S/44.html#L332' title='Referred from 332 in diskmodel/layout_g2_load.c.'>precompute_skews</a>(<strong class='reserved'>struct</strong> <a href='../D/1422.html' title='Multiple defined in 3 places.'>dm_disk_if</a> *d)
+<a id='L216' name='L216'></a> 216 <em class='brace'>{</em>
+<a id='L217' name='L217'></a> 217   <strong class='reserved'>int</strong> i = 0;
+<a id='L218' name='L218'></a> 218   <strong class='reserved'>struct</strong> <a href='../S/61.html#L35' title='Defined at 35 in diskmodel/layout_g2.h.'>dm_layout_g2</a> *l = (<strong class='reserved'>struct</strong> <a href='../S/61.html#L35' title='Defined at 35 in diskmodel/layout_g2.h.'>dm_layout_g2</a> *)d-&gt;layout;
+<a id='L219' name='L219'></a> 219   <strong class='reserved'>struct</strong> <a href='../S/61.html#L80' title='Defined at 80 in diskmodel/layout_g2.h.'>dm_layout_g2_zone</a> *z = &amp;l-&gt;zones[0];
+<a id='L220' name='L220'></a> 220   
+<a id='L221' name='L221'></a> 221   <strong class='reserved'>for</strong>(i = 0; i &lt; d-&gt;dm_cyls; i++) <em class='brace'>{</em>
+<a id='L222' name='L222'></a> 222     l-&gt;ptol_map[i].first_ltop_extent = -1;
+<a id='L223' name='L223'></a> 223   <em class='brace'>}</em>
+<a id='L224' name='L224'></a> 224 
+<a id='L225' name='L225'></a> 225   l-&gt;ptol_map[0].first_ltop_extent = 0;
+<a id='L226' name='L226'></a> 226   
+<a id='L227' name='L227'></a> 227   <strong class='reserved'>for</strong>(i = 0 ; i &lt; l-&gt;ltop_map_len; i++) <em class='brace'>{</em>
+<a id='L228' name='L228'></a> 228     <strong class='reserved'>int</strong> currcyl = l-&gt;ltop_map[i].loc.cyl;
+<a id='L229' name='L229'></a> 229   
+<a id='L230' name='L230'></a> 230     <strong class='reserved'>if</strong>(l-&gt;ptol_map[currcyl].first_ltop_extent == -1) <em class='brace'>{</em>
+<a id='L231' name='L231'></a> 231       l-&gt;ptol_map[currcyl].first_ltop_extent = i;
+<a id='L232' name='L232'></a> 232 
+<a id='L233' name='L233'></a> 233       <strong class='reserved'>if</strong>(z-&gt;cylhigh &lt; currcyl) <em class='brace'>{</em>
+<a id='L234' name='L234'></a> 234         z++;
+<a id='L235' name='L235'></a> 235       <em class='brace'>}</em>
+<a id='L236' name='L236'></a> 236       
+<a id='L237' name='L237'></a> 237       <em class='comment'>// start with the skew of the previous cylinder</em>
+<a id='L238' name='L238'></a> 238       <strong class='reserved'>if</strong>(currcyl == z-&gt;cyllow) <em class='brace'>{</em>
+<a id='L239' name='L239'></a> 239         l-&gt;ptol_map[currcyl].skew = z-&gt;zskew;
+<a id='L240' name='L240'></a> 240       <em class='brace'>}</em>
+<a id='L241' name='L241'></a> 241       <strong class='reserved'>else</strong> <em class='brace'>{</em>
+<a id='L242' name='L242'></a> 242         l-&gt;ptol_map[currcyl + 1].skew = l-&gt;ptol_map[currcyl].skew;
+<a id='L243' name='L243'></a> 243       <em class='brace'>}</em>
+<a id='L244' name='L244'></a> 244     <em class='brace'>}</em>
+<a id='L245' name='L245'></a> 245 
+<a id='L246' name='L246'></a> 246     <strong class='reserved'>if</strong>(l-&gt;ltop_map[i+1].loc.cyl != l-&gt;ltop_map[i].loc.cyl) <em class='brace'>{</em>
+<a id='L247' name='L247'></a> 247       l-&gt;ptol_map[currcyl+1].skew += z-&gt;csskew;
+<a id='L248' name='L248'></a> 248     <em class='brace'>}</em>
+<a id='L249' name='L249'></a> 249     <strong class='reserved'>else</strong> <strong class='reserved'>if</strong>(l-&gt;ltop_map[i+1].loc.head != l-&gt;ltop_map[i].loc.head) <em class='brace'>{</em>
+<a id='L250' name='L250'></a> 250       l-&gt;ptol_map[currcyl+1].skew += z-&gt;hsskew;
+<a id='L251' name='L251'></a> 251     <em class='brace'>}</em>
+<a id='L252' name='L252'></a> 252    
+<a id='L253' name='L253'></a> 253   <em class='brace'>}</em>
+<a id='L254' name='L254'></a> 254 
+<a id='L255' name='L255'></a> 255 <em class='brace'>}</em>
+<a id='L256' name='L256'></a> 256 
+<a id='L257' name='L257'></a> 257 
+<a id='L258' name='L258'></a> 258 <em class='comment'>// Defects are now loaded from the raw layout file itself.  bucy/20030714</em>
+<a id='L259' name='L259'></a> 259 <em class='comment'>//  int </em>
+<a id='L260' name='L260'></a> 260 <em class='comment'>//  g2_load_defects(struct lp_list *l) {</em>
+<a id='L261' name='L261'></a> 261 <em class='comment'>//    int i;</em>
+<a id='L262' name='L262'></a> 262 
+<a id='L263' name='L263'></a> 263 <em class='comment'>//    defects_len = 0;</em>
+<a id='L264' name='L264'></a> 264 <em class='comment'>//    defects = calloc(l-&gt;values_len / 3, sizeof(struct dm_pbn));</em>
+<a id='L265' name='L265'></a> 265 
+<a id='L266' name='L266'></a> 266 <em class='comment'>//    for(i = 0; i &lt; l-&gt;values_len / 3; i++) {</em>
+<a id='L267' name='L267'></a> 267 <em class='comment'>//      if(l-&gt;values[i*3]) {</em>
+<a id='L268' name='L268'></a> 268 <em class='comment'>//        defects[i].cyl = l-&gt;values[3*i]-&gt;v.i;</em>
+<a id='L269' name='L269'></a> 269 <em class='comment'>//        defects[i].head = l-&gt;values[3*i+1]-&gt;v.i;</em>
+<a id='L270' name='L270'></a> 270 <em class='comment'>//        defects[i].sector = l-&gt;values[3*i+2]-&gt;v.i;</em>
+<a id='L271' name='L271'></a> 271 <em class='comment'>//        defects_len++;</em>
+<a id='L272' name='L272'></a> 272 <em class='comment'>//      }</em>
+<a id='L273' name='L273'></a> 273 <em class='comment'>//    }</em>
+<a id='L274' name='L274'></a> 274 
+<a id='L275' name='L275'></a> 275 <em class='comment'>//    return 0;</em>
+<a id='L276' name='L276'></a> 276 <em class='comment'>//  }</em>
+<a id='L277' name='L277'></a> 277 
+<a id='L278' name='L278'></a> 278 <strong class='reserved'>static</strong> <strong class='reserved'>int</strong> 
+<a id='L279' name='L279'></a> 279 <a href='../S/44.html#L301' title='Referred from 301 in diskmodel/layout_g2_load.c.'>pbncmp</a>(<strong class='reserved'>const</strong> <strong class='reserved'>void</strong> *ptr1, <strong class='reserved'>const</strong> <strong class='reserved'>void</strong> *ptr2)
+<a id='L280' name='L280'></a> 280 <em class='brace'>{</em>
+<a id='L281' name='L281'></a> 281   <strong class='reserved'>const</strong> <strong class='reserved'>struct</strong> <a href='../S/77.html#L69' title='Defined at 69 in diskmodel/dm.h.'>dm_pbn</a> *p1 = ptr1;
+<a id='L282' name='L282'></a> 282   <strong class='reserved'>const</strong> <strong class='reserved'>struct</strong> <a href='../S/77.html#L69' title='Defined at 69 in diskmodel/dm.h.'>dm_pbn</a> *p2 = ptr2;
+<a id='L283' name='L283'></a> 283 
+<a id='L284' name='L284'></a> 284   <strong class='reserved'>if</strong>(p1-&gt;cyl &lt; p2-&gt;cyl) <strong class='reserved'>return</strong> -1;
+<a id='L285' name='L285'></a> 285   <strong class='reserved'>else</strong> <strong class='reserved'>if</strong>(p2-&gt;cyl &lt; p1-&gt;cyl) <strong class='reserved'>return</strong> 1;
+<a id='L286' name='L286'></a> 286 
+<a id='L287' name='L287'></a> 287   <strong class='reserved'>if</strong>(p1-&gt;head &lt; p2-&gt;head) <strong class='reserved'>return</strong> -1;
+<a id='L288' name='L288'></a> 288   <strong class='reserved'>else</strong> <strong class='reserved'>if</strong>(p2-&gt;head &lt; p1-&gt;head) <strong class='reserved'>return</strong> 1;
+<a id='L289' name='L289'></a> 289 
+<a id='L290' name='L290'></a> 290   <strong class='reserved'>if</strong>(p1-&gt;sector &lt; p2-&gt;sector) <strong class='reserved'>return</strong> -1;
+<a id='L291' name='L291'></a> 291   <strong class='reserved'>else</strong> <strong class='reserved'>if</strong>(p2-&gt;sector &lt; p1-&gt;sector) <strong class='reserved'>return</strong> 1;
+<a id='L292' name='L292'></a> 292   <strong class='reserved'>else</strong> <strong class='reserved'>return</strong> 0;
+<a id='L293' name='L293'></a> 293 <em class='brace'>}</em>
+<a id='L294' name='L294'></a> 294 
+<a id='L295' name='L295'></a> 295 
+<a id='L296' name='L296'></a> 296 <em class='comment'>// sort by ascending PBNs</em>
+<a id='L297' name='L297'></a> 297 <strong class='reserved'>void</strong> <a href='../S/44.html#L335' title='Referred from 335 in diskmodel/layout_g2_load.c.'>g2_finish_defects</a>(<strong class='reserved'>struct</strong> <a href='../S/61.html#L35' title='Defined at 35 in diskmodel/layout_g2.h.'>dm_layout_g2</a> *l) 
+<a id='L298' name='L298'></a> 298 <em class='brace'>{</em>
+<a id='L299' name='L299'></a> 299   l-&gt;defects = defects;
+<a id='L300' name='L300'></a> 300 
+<a id='L301' name='L301'></a> 301   qsort(l-&gt;defects, defects_len, <strong class='reserved'>sizeof</strong>(<strong class='reserved'>struct</strong> <a href='../S/77.html#L69' title='Defined at 69 in diskmodel/dm.h.'>dm_pbn</a>), <a href='../S/44.html#L279' title='Defined at 279 in diskmodel/layout_g2_load.c.'>pbncmp</a>);
+<a id='L302' name='L302'></a> 302   
+<a id='L303' name='L303'></a> 303   l-&gt;defects_len = defects_len;
+<a id='L304' name='L304'></a> 304 
+<a id='L305' name='L305'></a> 305   defects = 0;
+<a id='L306' name='L306'></a> 306   defects_len = 0;
+<a id='L307' name='L307'></a> 307 <em class='brace'>}</em>
+<a id='L308' name='L308'></a> 308 
+<a id='L309' name='L309'></a> 309 <strong class='reserved'>struct</strong> <a href='../S/77.html#L170' title='Defined at 170 in diskmodel/dm.h.'>dm_layout_if</a> *
+<a id='L310' name='L310'></a> 310 dm_layout_g2_loadparams(<strong class='reserved'>struct</strong> <a href='../S/118.html#L245' title='Defined at 245 in libparam/libparam.h.'>lp_block</a> *b, <strong class='reserved'>struct</strong> <a href='../D/1422.html' title='Multiple defined in 3 places.'>dm_disk_if</a> *parent) <em class='brace'>{</em>
+<a id='L311' name='L311'></a> 311   <strong class='reserved'>int</strong> i;
+<a id='L312' name='L312'></a> 312   <strong class='reserved'>int</strong> rv;
+<a id='L313' name='L313'></a> 313 
+<a id='L314' name='L314'></a> 314   <strong class='reserved'>struct</strong> <a href='../S/61.html#L35' title='Defined at 35 in diskmodel/layout_g2.h.'>dm_layout_g2</a> *result = <a href='../S/73.html#L58' title='Defined at 58 in diskmodel/dm_config.h.'>malloc</a>(<strong class='reserved'>sizeof</strong>(<strong class='reserved'>struct</strong> <a href='../S/61.html#L35' title='Defined at 35 in diskmodel/layout_g2.h.'>dm_layout_g2</a>));
+<a id='L315' name='L315'></a> 315   memset(result, 0, <strong class='reserved'>sizeof</strong>(<strong class='reserved'>struct</strong> <a href='../S/61.html#L35' title='Defined at 35 in diskmodel/layout_g2.h.'>dm_layout_g2</a>));
+<a id='L316' name='L316'></a> 316 
+<a id='L317' name='L317'></a> 317   <em class='comment'>//  #include "modules/dm_layout_g2_param.c"</em>
+<a id='L318' name='L318'></a> 318   <a href='../D/1940.html' title='Multiple defined in 2 places.'>lp_loadparams</a>(result, b, &amp;dm_layout_g2_mod);
+<a id='L319' name='L319'></a> 319 
+<a id='L320' name='L320'></a> 320   rv = <a href='../S/44.html#L87' title='Defined at 87 in diskmodel/layout_g2_load.c.'>layout_g2_loadmap</a>(result);
+<a id='L321' name='L321'></a> 321   <a href='../D/1151.html' title='Multiple defined in 2 places.'>ddbg_assert</a>(rv == 0);
+<a id='L322' name='L322'></a> 322   free(result-&gt;mapfile); <em class='comment'>// strdup()ed in loader code</em>
+<a id='L323' name='L323'></a> 323   result-&gt;mapfile = 0;
+<a id='L324' name='L324'></a> 324 
+<a id='L325' name='L325'></a> 325   <em class='comment'>// find the zone param</em>
+<a id='L326' name='L326'></a> 326 
+<a id='L327' name='L327'></a> 327   result-&gt;hdr = layout_g2;
+<a id='L328' name='L328'></a> 328 
+<a id='L329' name='L329'></a> 329   parent-&gt;layout = (<strong class='reserved'>struct</strong> <a href='../S/77.html#L170' title='Defined at 170 in diskmodel/dm.h.'>dm_layout_if</a> *)result;
+<a id='L330' name='L330'></a> 330 
+<a id='L331' name='L331'></a> 331   <em class='comment'>// do the skew precomputation</em>
+<a id='L332' name='L332'></a> 332   <a href='../S/44.html#L215' title='Defined at 215 in diskmodel/layout_g2_load.c.'>precompute_skews</a>(parent);
+<a id='L333' name='L333'></a> 333 
+<a id='L334' name='L334'></a> 334 
+<a id='L335' name='L335'></a> 335   <a href='../S/44.html#L297' title='Defined at 297 in diskmodel/layout_g2_load.c.'>g2_finish_defects</a>(result);
+<a id='L336' name='L336'></a> 336 
+<a id='L337' name='L337'></a> 337   <strong class='reserved'>return</strong> (<strong class='reserved'>struct</strong> <a href='../S/77.html#L170' title='Defined at 170 in diskmodel/dm.h.'>dm_layout_if</a> *)result;
+<a id='L338' name='L338'></a> 338 <em class='brace'>}</em>
+<a id='L339' name='L339'></a> 339 
+<a id='L340' name='L340'></a> 340 
+<a id='L341' name='L341'></a> 341 
+<a id='L342' name='L342'></a> 342 <strong class='reserved'>static</strong> <strong class='reserved'>int</strong>
+<a id='L343' name='L343'></a> 343 <a href='../S/44.html#L374' title='Referred from 374 in diskmodel/layout_g2_load.c.'>g2_load_zone</a>(<strong class='reserved'>struct</strong> <a href='../S/61.html#L80' title='Defined at 80 in diskmodel/layout_g2.h.'>dm_layout_g2_zone</a> *result, 
+<a id='L344' name='L344'></a> 344              <strong class='reserved'>struct</strong> <a href='../S/118.html#L245' title='Defined at 245 in libparam/libparam.h.'>lp_block</a> *b)
+<a id='L345' name='L345'></a> 345 <em class='brace'>{</em>
+<a id='L346' name='L346'></a> 346 
+<a id='L347' name='L347'></a> 347   <em class='comment'>//#include "modules/dm_layout_g2_zone_param.c"</em>
+<a id='L348' name='L348'></a> 348   <a href='../D/1940.html' title='Multiple defined in 2 places.'>lp_loadparams</a>(result, b, &amp;dm_layout_g2_zone_mod);
+<a id='L349' name='L349'></a> 349 
+<a id='L350' name='L350'></a> 350   <strong class='reserved'>return</strong> 0; <em class='comment'>// avoid a warning</em>
+<a id='L351' name='L351'></a> 351 <em class='brace'>}</em>
+<a id='L352' name='L352'></a> 352 
+<a id='L353' name='L353'></a> 353 <strong class='reserved'>void</strong>
+<a id='L354' name='L354'></a> 354 <a href='../S/44.html#L51' title='Referred from 51 in diskmodel/layout_g2_load.c.'>g2_load_zones</a>(<strong class='reserved'>struct</strong> <a href='../S/61.html#L35' title='Defined at 35 in diskmodel/layout_g2.h.'>dm_layout_g2</a> *l, 
+<a id='L355' name='L355'></a> 355               <strong class='reserved'>struct</strong> <a href='../S/118.html#L80' title='Defined at 80 in libparam/libparam.h.'>lp_list</a> *zl)
+<a id='L356' name='L356'></a> 356 <em class='brace'>{</em>
+<a id='L357' name='L357'></a> 357   <strong class='reserved'>int</strong> i;
+<a id='L358' name='L358'></a> 358   <strong class='reserved'>int</strong> z = 0;
+<a id='L359' name='L359'></a> 359 
+<a id='L360' name='L360'></a> 360   l-&gt;zones_len = 0;
+<a id='L361' name='L361'></a> 361 
+<a id='L362' name='L362'></a> 362   <strong class='reserved'>for</strong>(i = 0; i &lt; zl-&gt;values_len; i++) <em class='brace'>{</em>
+<a id='L363' name='L363'></a> 363     <strong class='reserved'>if</strong>(zl-&gt;values[i] != 0) <em class='brace'>{</em>
+<a id='L364' name='L364'></a> 364       l-&gt;zones_len++;
+<a id='L365' name='L365'></a> 365     <em class='brace'>}</em>
+<a id='L366' name='L366'></a> 366   <em class='brace'>}</em>
+<a id='L367' name='L367'></a> 367 
+<a id='L368' name='L368'></a> 368   l-&gt;zones = <a href='../S/73.html#L58' title='Defined at 58 in diskmodel/dm_config.h.'>malloc</a>(l-&gt;zones_len * <strong class='reserved'>sizeof</strong>(<strong class='reserved'>struct</strong> <a href='../S/61.html#L80' title='Defined at 80 in diskmodel/layout_g2.h.'>dm_layout_g2_zone</a>));
+<a id='L369' name='L369'></a> 369   memset(l-&gt;zones, 0, l-&gt;zones_len * <strong class='reserved'>sizeof</strong>(<strong class='reserved'>struct</strong> <a href='../S/61.html#L80' title='Defined at 80 in diskmodel/layout_g2.h.'>dm_layout_g2_zone</a>));
+<a id='L370' name='L370'></a> 370   
+<a id='L371' name='L371'></a> 371   <strong class='reserved'>for</strong>(i = 0; i &lt; zl-&gt;values_len; i++) <em class='brace'>{</em>
+<a id='L372' name='L372'></a> 372     <strong class='reserved'>if</strong>(!zl-&gt;values[i]) <strong class='reserved'>continue</strong>;
+<a id='L373' name='L373'></a> 373 
+<a id='L374' name='L374'></a> 374     <a href='../S/44.html#L343' title='Defined at 343 in diskmodel/layout_g2_load.c.'>g2_load_zone</a>(&amp;l-&gt;zones[z], zl-&gt;values[i]-&gt;v.b);
+<a id='L375' name='L375'></a> 375     z++;
+<a id='L376' name='L376'></a> 376   <em class='brace'>}</em>
+<a id='L377' name='L377'></a> 377 
+<a id='L378' name='L378'></a> 378 <em class='brace'>}</em>
+<a id='L379' name='L379'></a> 379 
+<a id='L380' name='L380'></a> 380 
+<a id='L381' name='L381'></a> 381 <em class='comment'>// dummy</em>
+<a id='L382' name='L382'></a> 382 <strong class='reserved'>int</strong> dm_layout_g2_zone_loadparams(<strong class='reserved'>struct</strong> <a href='../S/118.html#L245' title='Defined at 245 in libparam/libparam.h.'>lp_block</a> *b)
+<a id='L383' name='L383'></a> 383 <em class='brace'>{</em> 
+<a id='L384' name='L384'></a> 384   <a href='../D/1151.html' title='Multiple defined in 2 places.'>ddbg_assert</a>(0); 
+<a id='L385' name='L385'></a> 385 
+<a id='L386' name='L386'></a> 386   <strong class='reserved'>return</strong> <a href='../S/77.html#L101' title='Defined at 101 in diskmodel/dm.h.'>DM_OK</a>;
+<a id='L387' name='L387'></a> 387 <em class='brace'>}</em>
+<a id='L388' name='L388'></a> 388 
+<a id='L389' name='L389'></a> 389 
+</pre>
+<hr />
+<a id='BOTTOM' name='BOTTOM'></a>
+<em class='comment'>/* [&lt;][&gt;]<a href='#L56'>[^]</a><a href='#L382'>[v]</a><a href='#TOP'>[top]</a>[bottom]<a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</em>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>addtoextraq</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/36.html#L707'>addtoextraq</a>       707 memsmodel/mems_event.c 	    addtoextraq((event *)curr);  // I think curr gets freed later...</span>
+<span class='curline'><a href='../S/36.html#L891'>addtoextraq</a>       891 memsmodel/mems_event.c       addtoextraq((event *)curr);</span>
+<span class='curline'><a href='../S/36.html#L1141'>addtoextraq</a>      1141 memsmodel/mems_event.c 	  addtoextraq((event *)curr);</span>
+<span class='curline'><a href='../S/36.html#L1494'>addtoextraq</a>      1494 memsmodel/mems_event.c 		  addtoextraq((event *)extent_ptr-&gt;request);</span>
+<span class='curline'><a href='../S/36.html#L1523'>addtoextraq</a>      1523 memsmodel/mems_event.c 	  addtoextraq((event *)sled-&gt;active_request);</span>
+<span class='curline'><a href='../S/36.html#L1551'>addtoextraq</a>      1551 memsmodel/mems_event.c       addtoextraq((event *)curr);</span>
+<span class='curline'><a href='../S/36.html#L1568'>addtoextraq</a>      1568 memsmodel/mems_event.c       addtoextraq((event *)curr);</span>
+<span class='curline'><a href='../S/36.html#L1577'>addtoextraq</a>      1577 memsmodel/mems_event.c       addtoextraq((event *)curr);</span>
+<span class='curline'><a href='../S/36.html#L1754'>addtoextraq</a>      1754 memsmodel/mems_event.c 	  addtoextraq((event *)bus_extent-&gt;request);  // schlos</span>
+<span class='curline'><a href='../S/36.html#L1861'>addtoextraq</a>      1861 memsmodel/mems_event.c       addtoextraq((event *)curr);  // SCHLOS - this is where it messes up the intq!  curr is already there.</span>
+<span class='curline'><a href='../S/272.html#L235'>addtoextraq</a>       235 src/disksim.c       addtoextraq(tmp1);</span>
+<span class='curline'><a href='../S/272.html#L509'>addtoextraq</a>       509 src/disksim.c     addtoextraq((event *)timer);</span>
+<span class='curline'><a href='../S/272.html#L582'>addtoextraq</a>       582 src/disksim.c        addtoextraq(getfromintq());</span>
+<span class='curline'><a href='../S/200.html#L311'>addtoextraq</a>       311 src/disksim_bus.c    addtoextraq((event *)curr);</span>
+<span class='curline'><a href='../S/200.html#L480'>addtoextraq</a>       480 src/disksim_bus.c          addtoextraq((event *) currbus-&gt;arbwinner);</span>
+<span class='curline'><a href='../S/200.html#L498'>addtoextraq</a>       498 src/disksim_bus.c    addtoextraq((event *) tmp);</span>
+<span class='curline'><a href='../S/215.html#L143'>addtoextraq</a>       143 src/disksim_cachedev.c    addtoextraq((event *) req);</span>
+<span class='curline'><a href='../S/215.html#L410'>addtoextraq</a>       410 src/disksim_cachedev.c       addtoextraq ((event *) rwdesc);</span>
+<span class='curline'><a href='../S/215.html#L531'>addtoextraq</a>       531 src/disksim_cachedev.c          addtoextraq ((event *) rwdesc);</span>
+<span class='curline'><a href='../S/215.html#L540'>addtoextraq</a>       540 src/disksim_cachedev.c       addtoextraq ((event *) rwdesc);</span>
+<span class='curline'><a href='../S/215.html#L552'>addtoextraq</a>       552 src/disksim_cachedev.c       addtoextraq ((event *) rwdesc);</span>
+<span class='curline'><a href='../S/215.html#L571'>addtoextraq</a>       571 src/disksim_cachedev.c      addtoextraq ((event *) rwdesc);</span>
+<span class='curline'><a href='../S/215.html#L581'>addtoextraq</a>       581 src/disksim_cachedev.c    addtoextraq((event *) curr);</span>
+<span class='curline'><a href='../S/215.html#L608'>addtoextraq</a>       608 src/disksim_cachedev.c       addtoextraq((event *) desc);</span>
+<span class='curline'><a href='../S/222.html#L155'>addtoextraq</a>       155 src/disksim_cachemem.c    addtoextraq((event *) req);</span>
+<span class='curline'><a href='../S/222.html#L560'>addtoextraq</a>       560 src/disksim_cachemem.c             addtoextraq((event *) tmp);</span>
+<span class='curline'><a href='../S/222.html#L697'>addtoextraq</a>       697 src/disksim_cachemem.c          addtoextraq((event *) tmp);</span>
+<span class='curline'><a href='../S/222.html#L879'>addtoextraq</a>       879 src/disksim_cachemem.c       addtoextraq((event *) flushdesc);</span>
+<span class='curline'><a href='../S/222.html#L1116'>addtoextraq</a>      1116 src/disksim_cachemem.c       addtoextraq((event *) allocdesc);</span>
+<span class='curline'><a href='../S/222.html#L1184'>addtoextraq</a>      1184 src/disksim_cachemem.c    addtoextraq((event *) allocdesc);</span>
+<span class='curline'><a href='../S/222.html#L1562'>addtoextraq</a>      1562 src/disksim_cachemem.c       addtoextraq((event *) readdesc);</span>
+<span class='curline'><a href='../S/222.html#L1684'>addtoextraq</a>      1684 src/disksim_cachemem.c       addtoextraq((event *) writedesc);</span>
+<span class='curline'><a href='../S/222.html#L1727'>addtoextraq</a>      1727 src/disksim_cachemem.c       addtoextraq((event *) rwdesc);</span>
+<span class='curline'><a href='../S/222.html#L1937'>addtoextraq</a>      1937 src/disksim_cachemem.c          addtoextraq((event *) tmp);</span>
+<span class='curline'><a href='../S/222.html#L1944'>addtoextraq</a>      1944 src/disksim_cachemem.c       addtoextraq((event *) writedesc);</span>
+<span class='curline'><a href='../S/222.html#L2023'>addtoextraq</a>      2023 src/disksim_cachemem.c             addtoextraq((event *) tmp);</span>
+<span class='curline'><a href='../S/222.html#L2048'>addtoextraq</a>      2048 src/disksim_cachemem.c       addtoextraq((event *) req);</span>
+<span class='curline'><a href='../S/222.html#L2064'>addtoextraq</a>      2064 src/disksim_cachemem.c    addtoextraq((event *) curr);</span>
+<span class='curline'><a href='../S/222.html#L2090'>addtoextraq</a>      2090 src/disksim_cachemem.c       addtoextraq((event *) desc);</span>
+<span class='curline'><a href='../S/222.html#L2098'>addtoextraq</a>      2098 src/disksim_cachemem.c       addtoextraq((event *) flushreq);</span>
+<span class='curline'><a href='../S/204.html#L345'>addtoextraq</a>       345 src/disksim_controller.c       addtoextraq((event *) tmp);</span>
+<span class='curline'><a href='../S/220.html#L126'>addtoextraq</a>       126 src/disksim_ctlrdumb.c    addtoextraq((event *) curr);</span>
+<span class='curline'><a href='../S/220.html#L243'>addtoextraq</a>       243 src/disksim_ctlrdumb.c 			   addtoextraq((event *) curr);</span>
+<span class='curline'><a href='../S/220.html#L340'>addtoextraq</a>       340 src/disksim_ctlrdumb.c    addtoextraq((event *) curr);</span>
+<span class='curline'><a href='../S/268.html#L179'>addtoextraq</a>       179 src/disksim_ctlrsmart.c    addtoextraq((event *) curr);</span>
+<span class='curline'><a href='../S/268.html#L371'>addtoextraq</a>       371 src/disksim_ctlrsmart.c           addtoextraq((event *) curr);</span>
+<span class='curline'><a href='../S/273.html#L980'>addtoextraq</a>       980 src/disksim_disk.c        addtoextraq((event *) tmpdiskreq);</span>
+<span class='curline'><a href='../S/273.html#L990'>addtoextraq</a>       990 src/disksim_disk.c        addtoextraq((event *) tmpdiskreq);</span>
+<span class='curline'><a href='../S/273.html#L1003'>addtoextraq</a>      1003 src/disksim_disk.c        addtoextraq((event *) tmpdiskreq);</span>
+<span class='curline'><a href='../S/273.html#L1013'>addtoextraq</a>      1013 src/disksim_disk.c        addtoextraq((event *) tmpdiskreq);</span>
+<span class='curline'><a href='../S/273.html#L1023'>addtoextraq</a>      1023 src/disksim_disk.c        addtoextraq((event *) tmpdiskreq);</span>
+<span class='curline'><a href='../S/273.html#L1069'>addtoextraq</a>      1069 src/disksim_disk.c 	 addtoextraq((event *) tmpdiskreq);</span>
+<span class='curline'><a href='../S/196.html#L384'>addtoextraq</a>       384 src/disksim_diskctlr.c   addtoextraq((event *) curr);</span>
+<span class='curline'><a href='../S/196.html#L456'>addtoextraq</a>       456 src/disksim_diskctlr.c     addtoextraq((event *) curr);</span>
+<span class='curline'><a href='../S/196.html#L846'>addtoextraq</a>       846 src/disksim_diskctlr.c       addtoextraq((event *) tmpioreq);</span>
+<span class='curline'><a href='../S/196.html#L849'>addtoextraq</a>       849 src/disksim_diskctlr.c     addtoextraq((event *) currdiskreq);</span>
+<span class='curline'><a href='../S/196.html#L1110'>addtoextraq</a>      1110 src/disksim_diskctlr.c 	      addtoextraq((event *)currioreq);</span>
+<span class='curline'><a href='../S/196.html#L1216'>addtoextraq</a>      1216 src/disksim_diskctlr.c 	addtoextraq((event *) *busioreq);</span>
+<span class='curline'><a href='../S/196.html#L1655'>addtoextraq</a>      1655 src/disksim_diskctlr.c       addtoextraq((event *)nextioreq);</span>
+<span class='curline'><a href='../S/196.html#L2074'>addtoextraq</a>      2074 src/disksim_diskctlr.c     addtoextraq((event *) effective);</span>
+<span class='curline'><a href='../S/196.html#L2120'>addtoextraq</a>      2120 src/disksim_diskctlr.c       addtoextraq((event *) effective);</span>
+<span class='curline'><a href='../S/196.html#L2773'>addtoextraq</a>      2773 src/disksim_diskctlr.c   addtoextraq((event *) curr);</span>
+<span class='curline'><a href='../S/196.html#L2853'>addtoextraq</a>      2853 src/disksim_diskctlr.c   addtoextraq((event *) curr);</span>
+<span class='curline'><a href='../S/196.html#L2866'>addtoextraq</a>      2866 src/disksim_diskctlr.c     addtoextraq((event *) currdiskreq-&gt;ioreqlist);</span>
+<span class='curline'><a href='../S/196.html#L2867'>addtoextraq</a>      2867 src/disksim_diskctlr.c     addtoextraq((event *) currdiskreq);</span>
+<span class='curline'><a href='../S/196.html#L2874'>addtoextraq</a>      2874 src/disksim_diskctlr.c       addtoextraq((event *) tmpioreq);</span>
+<span class='curline'><a href='../S/196.html#L2887'>addtoextraq</a>      2887 src/disksim_diskctlr.c       addtoextraq((event *) currdiskreq);</span>
+<span class='curline'><a href='../S/196.html#L2914'>addtoextraq</a>      2914 src/disksim_diskctlr.c 	  addtoextraq((event *) tmpioreq);</span>
+<span class='curline'><a href='../S/196.html#L2917'>addtoextraq</a>      2917 src/disksim_diskctlr.c 	addtoextraq((event *) currdiskreq);</span>
+<span class='curline'><a href='../S/196.html#L3449'>addtoextraq</a>      3449 src/disksim_diskctlr.c 	addtoextraq((event *) curr);</span>
+<span class='curline'><a href='../S/196.html#L3522'>addtoextraq</a>      3522 src/disksim_diskctlr.c 	  addtoextraq((event *) curr);</span>
+<span class='curline'><a href='../S/283.html#L471'>addtoextraq</a>       471 src/disksim_global.h INLINE void addtoextraq (event *temp);</span>
+<span class='curline'><a href='../S/205.html#L262'>addtoextraq</a>       262 src/disksim_iodriver.c          addtoextraq((event *) curr);</span>
+<span class='curline'><a href='../S/205.html#L316'>addtoextraq</a>       316 src/disksim_iodriver.c             addtoextraq((event *) tmp);</span>
+<span class='curline'><a href='../S/205.html#L457'>addtoextraq</a>       457 src/disksim_iodriver.c 	  addtoextraq((event *) req);</span>
+<span class='curline'><a href='../S/205.html#L522'>addtoextraq</a>       522 src/disksim_iodriver.c 	addtoextraq((event *)temp);</span>
+<span class='curline'><a href='../S/205.html#L554'>addtoextraq</a>       554 src/disksim_iodriver.c       addtoextraq((event *) tmp);</span>
+<span class='curline'><a href='../S/205.html#L611'>addtoextraq</a>       611 src/disksim_iodriver.c          addtoextraq((event *) intrp-&gt;infoptr);</span>
+<span class='curline'><a href='../S/205.html#L632'>addtoextraq</a>       632 src/disksim_iodriver.c                            addtoextraq((event *) req);</span>
+<span class='curline'><a href='../S/205.html#L653'>addtoextraq</a>       653 src/disksim_iodriver.c    addtoextraq((event *) intrp);</span>
+<span class='curline'><a href='../S/205.html#L838'>addtoextraq</a>       838 src/disksim_iodriver.c    addtoextraq((event *) curr);</span>
+<span class='curline'><a href='../S/205.html#L893'>addtoextraq</a>       893 src/disksim_iodriver.c    addtoextraq((event *) chk);</span>
+<span class='curline'><a href='../S/254.html#L397'>addtoextraq</a>       397 src/disksim_ioqueue.c    addtoextraq((event *)timereq);</span>
+<span class='curline'><a href='../S/254.html#L589'>addtoextraq</a>       589 src/disksim_ioqueue.c       addtoextraq((event *)new_iobuf);</span>
+<span class='curline'><a href='../S/254.html#L722'>addtoextraq</a>       722 src/disksim_ioqueue.c    addtoextraq((event *) req2);</span>
+<span class='curline'><a href='../S/254.html#L1379'>addtoextraq</a>      1379 src/disksim_ioqueue.c    addtoextraq((event *) test);</span>
+<span class='curline'><a href='../S/254.html#L1561'>addtoextraq</a>      1561 src/disksim_ioqueue.c   addtoextraq((event *) test);</span>
+<span class='curline'><a href='../S/254.html#L1650'>addtoextraq</a>      1650 src/disksim_ioqueue.c        addtoextraq((event *) test);</span>
+<span class='curline'><a href='../S/254.html#L1753'>addtoextraq</a>      1753 src/disksim_ioqueue.c        addtoextraq((event *) test);</span>
+<span class='curline'><a href='../S/254.html#L1846'>addtoextraq</a>      1846 src/disksim_ioqueue.c    addtoextraq((event *) test);</span>
+<span class='curline'><a href='../S/254.html#L1928'>addtoextraq</a>      1928 src/disksim_ioqueue.c    addtoextraq((event *) test);</span>
+<span class='curline'><a href='../S/254.html#L1988'>addtoextraq</a>      1988 src/disksim_ioqueue.c    addtoextraq((event *) test);</span>
+<span class='curline'><a href='../S/254.html#L2080'>addtoextraq</a>      2080 src/disksim_ioqueue.c    addtoextraq((event *) test);</span>
+<span class='curline'><a href='../S/254.html#L2131'>addtoextraq</a>      2131 src/disksim_ioqueue.c    addtoextraq((event *) test);</span>
+<span class='curline'><a href='../S/254.html#L2191'>addtoextraq</a>      2191 src/disksim_ioqueue.c    addtoextraq((event *) test);</span>
+<span class='curline'><a href='../S/254.html#L2261'>addtoextraq</a>      2261 src/disksim_ioqueue.c   addtoextraq((event *) test);</span>
+<span class='curline'><a href='../S/254.html#L3038'>addtoextraq</a>      3038 src/disksim_ioqueue.c    addtoextraq((event *) tmp);</span>
+<span class='curline'><a href='../S/254.html#L3276'>addtoextraq</a>      3276 src/disksim_ioqueue.c       addtoextraq((event *)queue-&gt;idledetect);</span>
+<span class='curline'><a href='../S/194.html#L232'>addtoextraq</a>       232 src/disksim_iosim.c      addtoextraq((event *) curr);</span>
+<span class='curline'><a href='../S/194.html#L237'>addtoextraq</a>       237 src/disksim_iosim.c      addtoextraq((event *) curr);</span>
+<span class='curline'><a href='../S/264.html#L241'>addtoextraq</a>       241 src/disksim_iotrace.c       addtoextraq((event *) new);</span>
+<span class='curline'><a href='../S/264.html#L334'>addtoextraq</a>       334 src/disksim_iotrace.c          addtoextraq((event *) new);</span>
+<span class='curline'><a href='../S/264.html#L389'>addtoextraq</a>       389 src/disksim_iotrace.c          addtoextraq((event *) new);</span>
+<span class='curline'><a href='../S/264.html#L508'>addtoextraq</a>       508 src/disksim_iotrace.c       addtoextraq((event *) new);</span>
+<span class='curline'><a href='../S/264.html#L522'>addtoextraq</a>       522 src/disksim_iotrace.c       addtoextraq((event *) new);</span>
+<span class='curline'><a href='../S/264.html#L555'>addtoextraq</a>       555 src/disksim_iotrace.c       addtoextraq((event *) new);</span>
+<span class='curline'><a href='../S/264.html#L590'>addtoextraq</a>       590 src/disksim_iotrace.c       addtoextraq((event *) new);</span>
+<span class='curline'><a href='../S/264.html#L616'>addtoextraq</a>       616 src/disksim_iotrace.c       addtoextraq((event *) new);</span>
+<span class='curline'><a href='../S/278.html#L441'>addtoextraq</a>       441 src/disksim_logorg.c       addtoextraq((event *) curr);</span>
+<span class='curline'><a href='../S/278.html#L903'>addtoextraq</a>       903 src/disksim_logorg.c       addtoextraq((event *) req);</span>
+<span class='curline'><a href='../S/278.html#L1185'>addtoextraq</a>      1185 src/disksim_logorg.c          addtoextraq((event *) logorg_getfromoutstandq(logorgs[i], -1));</span>
+<span class='curline'><a href='../S/191.html#L318'>addtoextraq</a>       318 src/disksim_pfsim.c       addtoextraq((event *) tmp);</span>
+<span class='curline'><a href='../S/191.html#L354'>addtoextraq</a>       354 src/disksim_pfsim.c          addtoextraq((event *) tmp);</span>
+<span class='curline'><a href='../S/191.html#L642'>addtoextraq</a>       642 src/disksim_pfsim.c    addtoextraq((event *) intrp);</span>
+<span class='curline'><a href='../S/191.html#L744'>addtoextraq</a>       744 src/disksim_pfsim.c   addtoextraq((event *) curr);</span>
+<span class='curline'><a href='../S/274.html#L585'>addtoextraq</a>       585 src/disksim_redun.c             addtoextraq((event *) del);</span>
+<span class='curline'><a href='../S/274.html#L1141'>addtoextraq</a>      1141 src/disksim_redun.c       addtoextraq((event *) temp);</span>
+<span class='curline'><a href='../S/274.html#L1289'>addtoextraq</a>      1289 src/disksim_redun.c          addtoextraq((event *) del);</span>
+<span class='curline'><a href='../S/274.html#L1292'>addtoextraq</a>      1292 src/disksim_redun.c    addtoextraq((event *) tmpdep);</span>
+<span class='curline'><a href='../S/201.html#L395'>addtoextraq</a>       395 src/disksim_simpledisk.c          addtoextraq((event *) curr);</span>
+<span class='curline'><a href='../S/201.html#L513'>addtoextraq</a>       513 src/disksim_simpledisk.c    addtoextraq((event *) curr);</span>
+<span class='curline'><a href='../S/201.html#L530'>addtoextraq</a>       530 src/disksim_simpledisk.c    addtoextraq((event *) curr);</span>
+<span class='curline'><a href='../S/187.html#L692'>addtoextraq</a>       692 ssdmodel/ssd.c          addtoextraq((event *) curr);</span>
+<span class='curline'><a href='../S/187.html#L770'>addtoextraq</a>       770 ssdmodel/ssd.c    addtoextraq((event *) curr);</span>
+<span class='curline'><a href='../S/187.html#L828'>addtoextraq</a>       828 ssdmodel/ssd.c    addtoextraq((event *) curr);</span>
+<span class='curline'><a href='../S/187.html#L866'>addtoextraq</a>       866 ssdmodel/ssd.c    addtoextraq((event *) curr);</span>
+<span class='curline'><a href='../S/187.html#L883'>addtoextraq</a>       883 ssdmodel/ssd.c    addtoextraq((event *) curr);</span>
+<span class='curline'><a href='../S/146.html#L707'>addtoextraq</a>       707 ssdmodel/ssd_gang.c    addtoextraq((event *) curr);</span>
+<span class='curline'><a href='../S/146.html#L742'>addtoextraq</a>       742 ssdmodel/ssd_gang.c     addtoextraq((event *) curr);</span>
+<span class='curline'><a href='../S/146.html#L789'>addtoextraq</a>       789 ssdmodel/ssd_gang.c     addtoextraq((event *) curr);</span>
+</pre>
+</body>
+</html>

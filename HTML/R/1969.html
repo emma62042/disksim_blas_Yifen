@@ -1,0 +1,438 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>simtime</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/36.html#L114'>simtime</a>           114 memsmodel/mems_event.c   printf("Hi! I'm in mems_bus_ownership_grant: %f\n", simtime);</span>
+<span class='curline'><a href='../S/36.html#L148'>simtime</a>           148 memsmodel/mems_event.c   printf("Hello! I'm in mems_bus_delay_complete: %f\n", simtime);</span>
+<span class='curline'><a href='../S/36.html#L397'>simtime</a>           397 memsmodel/mems_event.c 	 curr-&gt;blkno, simtime, latency);</span>
+<span class='curline'><a href='../S/36.html#L481'>simtime</a>           481 memsmodel/mems_event.c     (sled-&gt;inactive_power_mw * (simtime - sled-&gt;lastreq_comptime)) / </span>
+<span class='curline'><a href='../S/36.html#L619'>simtime</a>           619 memsmodel/mems_event.c 	 simtime, (curr-&gt;flags &amp; READ) ? "R" : "W", curr-&gt;blkno, curr-&gt;bcount, curr-&gt;batchno, curr-&gt;batch_complete);</span>
+<span class='curline'><a href='../S/36.html#L636'>simtime</a>           636 memsmodel/mems_event.c   curr-&gt;time = simtime + dev-&gt;overhead;</span>
+<span class='curline'><a href='../S/36.html#L648'>simtime</a>           648 memsmodel/mems_event.c   printf("\nDEVICE_OVERHEAD_COMPLETE: %f\n", simtime);</span>
+<span class='curline'><a href='../S/36.html#L665'>simtime</a>           665 memsmodel/mems_event.c 	  printf("\n adding a MEMS_BUS_INITIATE event to the intq: %f\n", simtime);</span>
+<span class='curline'><a href='../S/36.html#L669'>simtime</a>           669 memsmodel/mems_event.c 	  busreq-&gt;time = simtime;</span>
+<span class='curline'><a href='../S/36.html#L703'>simtime</a>           703 memsmodel/mems_event.c 	      busreq-&gt;time = simtime;</span>
+<span class='curline'><a href='../S/36.html#L756'>simtime</a>           756 memsmodel/mems_event.c 	  r-&gt;time = simtime + sled-&gt;startup_time_ms;</span>
+<span class='curline'><a href='../S/36.html#L767'>simtime</a>           767 memsmodel/mems_event.c 		      (simtime - sled-&gt;lastreq_comptime));</span>
+<span class='curline'><a href='../S/36.html#L769'>simtime</a>           769 memsmodel/mems_event.c 		      (simtime - sled-&gt;lastreq_comptime));</span>
+<span class='curline'><a href='../S/36.html#L790'>simtime</a>           790 memsmodel/mems_event.c 	  r-&gt;time = simtime;</span>
+<span class='curline'><a href='../S/36.html#L799'>simtime</a>           799 memsmodel/mems_event.c 	  elapsed_time = simtime - sled-&gt;lastreq_comptime;</span>
+<span class='curline'><a href='../S/36.html#L868'>simtime</a>           868 memsmodel/mems_event.c   printf("MEMS_SLED_SCHEDULE: %f\n", simtime);</span>
+<span class='curline'><a href='../S/36.html#L1122'>simtime</a>          1122 memsmodel/mems_event.c 	  curr-&gt;time = simtime + sled-&gt;inactive_delay_ms;</span>
+<span class='curline'><a href='../S/36.html#L1235'>simtime</a>          1235 memsmodel/mems_event.c   printf("MEMS_SLED_SEEK: %f\n", simtime);</span>
+<span class='curline'><a href='../S/36.html#L1307'>simtime</a>          1307 memsmodel/mems_event.c   printf("MEMS_SLED_SERVO: %f\n", simtime);</span>
+<span class='curline'><a href='../S/36.html#L1386'>simtime</a>          1386 memsmodel/mems_event.c   printf("MEMS_SLED_DATA: %f\n", simtime);</span>
+<span class='curline'><a href='../S/36.html#L1415'>simtime</a>          1415 memsmodel/mems_event.c   printf("MEMS_SLED_UPDATE: %f\n", simtime);</span>
+<span class='curline'><a href='../S/36.html#L1453'>simtime</a>          1453 memsmodel/mems_event.c 	      busreq-&gt;time = simtime;</span>
+<span class='curline'><a href='../S/36.html#L1485'>simtime</a>          1485 memsmodel/mems_event.c 				  (simtime - reqinfo-&gt;batch_arrival_time));</span>
+<span class='curline'><a href='../S/36.html#L1487'>simtime</a>          1487 memsmodel/mems_event.c 				  (simtime - reqinfo-&gt;batch_arrival_time));</span>
+<span class='curline'><a href='../S/36.html#L1541'>simtime</a>          1541 memsmodel/mems_event.c   if (curr-&gt;cause==DISCONNECT) printf("IO_INTERRUPT_DISCONNECT: %f\n", simtime);</span>
+<span class='curline'><a href='../S/36.html#L1542'>simtime</a>          1542 memsmodel/mems_event.c   if (curr-&gt;cause==COMPLETION) printf("IO_INTERRUPT_COMPLETION: %f\n", simtime);</span>
+<span class='curline'><a href='../S/36.html#L1543'>simtime</a>          1543 memsmodel/mems_event.c   if (curr-&gt;cause==RECONNECT)  printf("IO_INTERRUPT_RECONNECT: %f\n", simtime);</span>
+<span class='curline'><a href='../S/36.html#L1579'>simtime</a>          1579 memsmodel/mems_event.c       dev-&gt;dataxfer_req-&gt;time = simtime;</span>
+<span class='curline'><a href='../S/36.html#L1602'>simtime</a>          1602 memsmodel/mems_event.c   printf("MEMS_BUS_INITIATE: %f\n", simtime);</span>
+<span class='curline'><a href='../S/36.html#L1663'>simtime</a>          1663 memsmodel/mems_event.c   printf("MEMS_BUS_TRANSFER: %f\n", simtime);</span>
+<span class='curline'><a href='../S/36.html#L1669'>simtime</a>          1669 memsmodel/mems_event.c   curr-&gt;time = simtime + device_get_blktranstime(curr);</span>
+<span class='curline'><a href='../S/36.html#L1686'>simtime</a>          1686 memsmodel/mems_event.c   printf("MEMS_BUS_UPDATE: %f\n", simtime);</span>
+<span class='curline'><a href='../S/36.html#L1749'>simtime</a>          1749 memsmodel/mems_event.c 			  (simtime - reqinfo-&gt;batch_arrival_time));</span>
+<span class='curline'><a href='../S/36.html#L1751'>simtime</a>          1751 memsmodel/mems_event.c 			  (simtime - reqinfo-&gt;batch_arrival_time));</span>
+<span class='curline'><a href='../S/272.html#L288'>simtime</a>           288 src/disksim.c     if ((temp-&gt;time + DISKSIM_TIME_THRESHOLD) &lt; simtime) {</span>
+<span class='curline'><a href='../S/272.html#L290'>simtime</a>           290 src/disksim.c        fprintf(stderr, "simtime %f, curr-&gt;time %f, type = %d\n", simtime, temp-&gt;time, temp-&gt;type);</span>
+<span class='curline'><a href='../S/272.html#L507'>simtime</a>           507 src/disksim.c     warmuptime = simtime;</span>
+<span class='curline'><a href='../S/272.html#L538'>simtime</a>           538 src/disksim.c     fprintf (outputfile, "Total time of run:       %f\n\n", simtime);</span>
+<span class='curline'><a href='../S/272.html#L592'>simtime</a>           592 src/disksim.c     simtime = 0.0;</span>
+<span class='curline'><a href='../S/272.html#L632'>simtime</a>           632 src/disksim.c        simtime = curr-&gt;time;</span>
+<span class='curline'><a href='../S/272.html#L671'>simtime</a>           671 src/disksim.c        fprintf (outputfile, "Checkpoint at simtime %f skipped because checkpointing is disabled\n", simtime);</span>
+<span class='curline'><a href='../S/272.html#L676'>simtime</a>           676 src/disksim.c        fprintf (outputfile, "Checkpoint at simtime %f skipped because checkpointfile cannot be opened for write access\n", simtime);</span>
+<span class='curline'><a href='../S/272.html#L682'>simtime</a>           682 src/disksim.c           fprintf (outputfile, "Checkpoint at simtime %f skipped because iotrace comes from stdin\n", simtime);</span>
+<span class='curline'><a href='../S/272.html#L742'>simtime</a>           742 src/disksim.c           curr-&gt;time = simtime + disksim-&gt;closedthinktime;</span>
+<span class='curline'><a href='../S/272.html#L747'>simtime</a>           747 src/disksim.c                 curr-&gt;time = simtime + disksim-&gt;closedthinktime;</span>
+<span class='curline'><a href='../S/272.html#L757'>simtime</a>           757 src/disksim.c  			  simtime, tmp-&gt;devno, tmp-&gt;blkno, tmp-&gt;time);</span>
+<span class='curline'><a href='../S/272.html#L786'>simtime</a>           786 src/disksim.c      simtime = curr-&gt;time;</span>
+<span class='curline'><a href='../S/272.html#L819'>simtime</a>           819 src/disksim.c  	disksim_register_checkpoint(simtime + disksim-&gt;checkpoint_interval);</span>
+<span class='curline'><a href='../S/272.html#L1126'>simtime</a>          1126 src/disksim.c     simtime = 0.0;	/* gets remapped to disksim-&gt;warmuptime */</span>
+<span class='curline'><a href='../S/199.html#L119'>simtime</a>           119 src/disksim_assertlib.h     fprintf(stderr, "simtime\t = %f\n", simtime);    \</span>
+<span class='curline'><a href='../S/199.html#L127'>simtime</a>           127 src/disksim_assertlib.h     fprintf(stderr, "simtime\t = %f\n", simtime);    \</span>
+<span class='curline'><a href='../S/199.html#L136'>simtime</a>           136 src/disksim_assertlib.h     fprintf(stderr, "simtime\t = %f\n", simtime);    \</span>
+<span class='curline'><a href='../S/199.html#L145'>simtime</a>           145 src/disksim_assertlib.h     fprintf(stderr, "simtime\t = %f\n", simtime);    \</span>
+<span class='curline'><a href='../S/199.html#L155'>simtime</a>           155 src/disksim_assertlib.h     fprintf(stderr, "simtime\t = %f\n", simtime);    \</span>
+<span class='curline'><a href='../S/200.html#L269'>simtime</a>           269 src/disksim_bus.c    tmp-&gt;time = simtime + delay;</span>
+<span class='curline'><a href='../S/200.html#L286'>simtime</a>           286 src/disksim_bus.c       stat_update (&amp;currbus-&gt;arbwaitstats, (simtime - curr-&gt;wait_start));</span>
+<span class='curline'><a href='../S/200.html#L295'>simtime</a>           295 src/disksim_bus.c 	    controller_bus_ownership_grant (curr-&gt;devno, curr-&gt;delayed_event, curr-&gt;busno, (simtime - curr-&gt;wait_start));</span>
+<span class='curline'><a href='../S/200.html#L303'>simtime</a>           303 src/disksim_bus.c 	    device_bus_ownership_grant (curr-&gt;devno, curr-&gt;delayed_event, curr-&gt;busno, (simtime - curr-&gt;wait_start));</span>
+<span class='curline'><a href='../S/200.html#L409'>simtime</a>           409 src/disksim_bus.c    tmp-&gt;wait_start = simtime;</span>
+<span class='curline'><a href='../S/200.html#L412'>simtime</a>           412 src/disksim_bus.c       tmp-&gt;time = simtime + currbus-&gt;arbtime;</span>
+<span class='curline'><a href='../S/200.html#L419'>simtime</a>           419 src/disksim_bus.c       currbus-&gt;runidletime += simtime - currbus-&gt;lastowned;</span>
+<span class='curline'><a href='../S/200.html#L420'>simtime</a>           420 src/disksim_bus.c       stat_update (&amp;currbus-&gt;busidlestats, (simtime - currbus-&gt;lastowned));</span>
+<span class='curline'><a href='../S/200.html#L454'>simtime</a>           454 src/disksim_bus.c       currbus-&gt;lastowned = simtime;</span>
+<span class='curline'><a href='../S/200.html#L458'>simtime</a>           458 src/disksim_bus.c       tmp-&gt;time = simtime + currbus-&gt;arbtime;</span>
+<span class='curline'><a href='../S/200.html#L596'>simtime</a>           596 src/disksim_bus.c       currbus-&gt;lastowned = simtime;</span>
+<span class='curline'><a href='../S/200.html#L638'>simtime</a>           638 src/disksim_bus.c          fprintf (outputfile, "Bus #%d Total utilization time: \t%.2f   \t%6.5f\n", i, (simtime - warmuptime - currbus-&gt;runidletime), ((simtime - warmuptime - currbus-&gt;runidletime) / (simtime - warmuptime)));</span>
+<span class='curline'><a href='../S/200.html#L659'>simtime</a>           659 src/disksim_bus.c          currbus-&gt;runidletime += simtime - currbus-&gt;lastowned;</span>
+<span class='curline'><a href='../S/200.html#L660'>simtime</a>           660 src/disksim_bus.c          stat_update (&amp;currbus-&gt;busidlestats, (simtime - currbus-&gt;lastowned));</span>
+<span class='curline'><a href='../S/204.html#L264'>simtime</a>           264 src/disksim_controller.c          tmptime = (tmptime - simtime) / tmp-&gt;time;</span>
+<span class='curline'><a href='../S/220.html#L323'>simtime</a>           323 src/disksim_ctlrdumb.c    tmp-&gt;time = simtime + (curr-&gt;time * (double) curr-&gt;bcount);</span>
+<span class='curline'><a href='../S/220.html#L353'>simtime</a>           353 src/disksim_ctlrdumb.c       tmp-&gt;time = simtime;</span>
+<span class='curline'><a href='../S/268.html#L153'>simtime</a>           153 src/disksim_ctlrsmart.c    tmp-&gt;time = simtime + ((double) curr-&gt;bcount * curr-&gt;time);</span>
+<span class='curline'><a href='../S/268.html#L190'>simtime</a>           190 src/disksim_ctlrsmart.c       tmp-&gt;time = simtime;</span>
+<span class='curline'><a href='../S/268.html#L232'>simtime</a>           232 src/disksim_ctlrsmart.c       curr-&gt;time = simtime + ((double) curr-&gt;bcount * currctlr-&gt;blktranstime);</span>
+<span class='curline'><a href='../S/268.html#L261'>simtime</a>           261 src/disksim_ctlrsmart.c    curr-&gt;time = simtime + ((double) curr-&gt;bcount * currctlr-&gt;blktranstime);</span>
+<span class='curline'><a href='../S/192.html#L155'>simtime</a>           155 src/disksim_diskcache.c if (disk_printhack &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/192.html#L156'>simtime</a>           156 src/disksim_diskcache.c fprintf (outputfile, "%12.6f  %8p  Entering disk_buffer_remove_from_seg\n",simtime,currdiskreq);</span>
+<span class='curline'><a href='../S/192.html#L229'>simtime</a>           229 src/disksim_diskcache.c if (disk_printhack &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/192.html#L230'>simtime</a>           230 src/disksim_diskcache.c fprintf (outputfile, "%12.6f            Entering disk_buffer_reusable_segment_check\n",simtime);</span>
+<span class='curline'><a href='../S/192.html#L250'>simtime</a>           250 src/disksim_diskcache.c if (disk_printhack &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/192.html#L267'>simtime</a>           267 src/disksim_diskcache.c if (disk_printhack &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/192.html#L277'>simtime</a>           277 src/disksim_diskcache.c if (disk_printhack &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/192.html#L291'>simtime</a>           291 src/disksim_diskcache.c if (disk_printhack &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/192.html#L292'>simtime</a>           292 src/disksim_diskcache.c fprintf (outputfile, "%12.6f            Entering disk_buffer_recyclable_segment_check\n",simtime);</span>
+<span class='curline'><a href='../S/192.html#L315'>simtime</a>           315 src/disksim_diskcache.c if (disk_printhack &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/192.html#L334'>simtime</a>           334 src/disksim_diskcache.c if (disk_printhack &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/192.html#L345'>simtime</a>           345 src/disksim_diskcache.c if (disk_printhack &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/192.html#L358'>simtime</a>           358 src/disksim_diskcache.c if (disk_printhack &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/192.html#L359'>simtime</a>           359 src/disksim_diskcache.c fprintf (outputfile, "%12.6f            Entering disk_buffer_recyclable_segment\n",simtime);</span>
+<span class='curline'><a href='../S/192.html#L371'>simtime</a>           371 src/disksim_diskcache.c if (disk_printhack &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/192.html#L382'>simtime</a>           382 src/disksim_diskcache.c if (disk_printhack &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/192.html#L590'>simtime</a>           590 src/disksim_diskcache.c if (disk_printhack &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/192.html#L591'>simtime</a>           591 src/disksim_diskcache.c fprintf (outputfile, "%12.6f  %8p  Entering disk_buffer_select_read_segment\n",simtime,currdiskreq);</span>
+<span class='curline'><a href='../S/192.html#L742'>simtime</a>           742 src/disksim_diskcache.c if (disk_printhack &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/192.html#L791'>simtime</a>           791 src/disksim_diskcache.c if (disk_printhack &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/192.html#L792'>simtime</a>           792 src/disksim_diskcache.c fprintf (outputfile, "%12.6f  %8p  Entering disk_buffer_select_write_segment\n",simtime,currdiskreq);</span>
+<span class='curline'><a href='../S/192.html#L1007'>simtime</a>          1007 src/disksim_diskcache.c if (disk_printhack &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/192.html#L1068'>simtime</a>          1068 src/disksim_diskcache.c if ((disk_printhack &gt; 1) &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/192.html#L1069'>simtime</a>          1069 src/disksim_diskcache.c fprintf (outputfile, "%12.6f  %8p  Entering disk_buffer_check_read_segments\n",simtime,currioreq);</span>
+<span class='curline'><a href='../S/192.html#L1145'>simtime</a>          1145 src/disksim_diskcache.c if ((disk_printhack &gt; 1) &amp;&amp; (simtime &gt;= disk_printhacktime) &amp;&amp; </span>
+<span class='curline'><a href='../S/192.html#L1166'>simtime</a>          1166 src/disksim_diskcache.c if ((disk_printhack &gt; 1) &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/192.html#L1167'>simtime</a>          1167 src/disksim_diskcache.c fprintf (outputfile, "%12.6f  %8p  Entering disk_buffer_check_write_segments\n",simtime,currioreq);</span>
+<span class='curline'><a href='../S/192.html#L1240'>simtime</a>          1240 src/disksim_diskcache.c if ((disk_printhack &gt; 1) &amp;&amp; (simtime &gt;= disk_printhacktime) &amp;&amp; </span>
+<span class='curline'><a href='../S/192.html#L1271'>simtime</a>          1271 src/disksim_diskcache.c if (disk_printhack &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/192.html#L1272'>simtime</a>          1272 src/disksim_diskcache.c fprintf (outputfile, "%12.6f  %8p  Entering disk_buffer_set_segment\n",simtime,currdiskreq);</span>
+<span class='curline'><a href='../S/192.html#L1492'>simtime</a>          1492 src/disksim_diskcache.c if (disk_printhack &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/192.html#L1493'>simtime</a>          1493 src/disksim_diskcache.c fprintf (outputfile, "%12.6f  %8p  Entering disk_buffer_attempt_seg_ownership\n",simtime,currdiskreq);</span>
+<span class='curline'><a href='../S/192.html#L1618'>simtime</a>          1618 src/disksim_diskcache.c if ((disk_printhack &gt; 1) &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/192.html#L1629'>simtime</a>          1629 src/disksim_diskcache.c if (disk_printhack &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/196.html#L276'>simtime</a>           276 src/disksim_diskctlr.c       currdisk-&gt;stat.requestedbus = simtime;</span>
+<span class='curline'><a href='../S/196.html#L321'>simtime</a>           321 src/disksim_diskctlr.c   currdisk-&gt;stat.waitingforbus += simtime - currdisk-&gt;stat.requestedbus;</span>
+<span class='curline'><a href='../S/196.html#L322'>simtime</a>           322 src/disksim_diskctlr.c   ddbg_assert(arbdelay == (simtime - currdisk-&gt;stat.requestedbus));</span>
+<span class='curline'><a href='../S/196.html#L397'>simtime</a>           397 src/disksim_diskctlr.c   if(disk_printhack &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/196.html#L398'>simtime</a>           398 src/disksim_diskctlr.c     fprintf (outputfile, "%12.6f            Entering disk_check_prefetch_swap for disk %d\n", simtime, currdisk-&gt;devno);</span>
+<span class='curline'><a href='../S/196.html#L443'>simtime</a>           443 src/disksim_diskctlr.c   if(disk_printhack &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/196.html#L445'>simtime</a>           445 src/disksim_diskctlr.c 	     " Entering disk_request_complete\n", simtime, currdiskreq);</span>
+<span class='curline'><a href='../S/196.html#L545'>simtime</a>           545 src/disksim_diskctlr.c   curr-&gt;time = simtime;</span>
+<span class='curline'><a href='../S/196.html#L583'>simtime</a>           583 src/disksim_diskctlr.c   if(disk_printhack &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/196.html#L586'>simtime</a>           586 src/disksim_diskctlr.c 	     simtime, currdiskreq, curr-&gt;devno);</span>
+<span class='curline'><a href='../S/196.html#L614'>simtime</a>           614 src/disksim_diskctlr.c   if(disk_printhack &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/196.html#L644'>simtime</a>           644 src/disksim_diskctlr.c     currdisk-&gt;starttrans = simtime;</span>
+<span class='curline'><a href='../S/196.html#L661'>simtime</a>           661 src/disksim_diskctlr.c   if(disk_printhack &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/196.html#L662'>simtime</a>           662 src/disksim_diskctlr.c     fprintf (outputfile, "%12.6f            Entering disk_find_new_seg_owner for disk %d\n", simtime, currdisk-&gt;devno);</span>
+<span class='curline'><a href='../S/196.html#L725'>simtime</a>           725 src/disksim_diskctlr.c   if(disk_printhack &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/196.html#L726'>simtime</a>           726 src/disksim_diskctlr.c     fprintf (outputfile, "%12.6f  %8p  Entering disk_release_hda for disk %d\n", simtime, currdiskreq,currdisk-&gt;devno);</span>
+<span class='curline'><a href='../S/196.html#L824'>simtime</a>           824 src/disksim_diskctlr.c 	   &amp;&amp; (simtime &gt;= disk_printhacktime)) </span>
+<span class='curline'><a href='../S/196.html#L836'>simtime</a>           836 src/disksim_diskctlr.c   if(disk_printhack &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/196.html#L906'>simtime</a>           906 src/disksim_diskctlr.c 	(currdiskreq-&gt;overhead_done &lt;= simtime)) {</span>
+<span class='curline'><a href='../S/196.html#L911'>simtime</a>           911 src/disksim_diskctlr.c 	busioreq-&gt;time = simtime;</span>
+<span class='curline'><a href='../S/196.html#L915'>simtime</a>           915 src/disksim_diskctlr.c 	busioreq-&gt;time = simtime;</span>
+<span class='curline'><a href='../S/196.html#L951'>simtime</a>           951 src/disksim_diskctlr.c 	      busioreq-&gt;time = simtime;</span>
+<span class='curline'><a href='../S/196.html#L955'>simtime</a>           955 src/disksim_diskctlr.c 	      busioreq-&gt;time = simtime;</span>
+<span class='curline'><a href='../S/196.html#L980'>simtime</a>           980 src/disksim_diskctlr.c 	      busioreq-&gt;time = simtime;</span>
+<span class='curline'><a href='../S/196.html#L984'>simtime</a>           984 src/disksim_diskctlr.c 	      busioreq-&gt;time = simtime;</span>
+<span class='curline'><a href='../S/196.html#L1053'>simtime</a>          1053 src/disksim_diskctlr.c   if(disk_printhack &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/196.html#L1054'>simtime</a>          1054 src/disksim_diskctlr.c     fprintf (outputfile, "%12.6f         Entering disk_select_bus_request for disk %d\n", simtime, currdisk-&gt;devno);</span>
+<span class='curline'><a href='../S/196.html#L1115'>simtime</a>          1115 src/disksim_diskctlr.c 	      if(disk_printhack &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/196.html#L1119'>simtime</a>          1119 src/disksim_diskctlr.c 			 simtime);</span>
+<span class='curline'><a href='../S/196.html#L1267'>simtime</a>          1267 src/disksim_diskctlr.c   if(disk_printhack &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/196.html#L1268'>simtime</a>          1268 src/disksim_diskctlr.c     fprintf (outputfile, "%12.6f  %8p  Entering disk_check_bus for disk %d\n", simtime, currdiskreq,currdisk-&gt;devno);</span>
+<span class='curline'><a href='../S/196.html#L1320'>simtime</a>          1320 src/disksim_diskctlr.c     if(disk_printhack &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/196.html#L1436'>simtime</a>          1436 src/disksim_diskctlr.c   curr-&gt;time = simtime + acctime;</span>
+<span class='curline'><a href='../S/196.html#L1527'>simtime</a>          1527 src/disksim_diskctlr.c   if(disk_printhack &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/196.html#L1528'>simtime</a>          1528 src/disksim_diskctlr.c     fprintf (outputfile, "%12.6f            Entering disk_initiate_seek to %d for disk %d\n", simtime, curr-&gt;blkno, curr-&gt;devno);</span>
+<span class='curline'><a href='../S/196.html#L1534'>simtime</a>          1534 src/disksim_diskctlr.c   seg-&gt;time = simtime + delay;</span>
+<span class='curline'><a href='../S/196.html#L1731'>simtime</a>          1731 src/disksim_diskctlr.c   if(disk_printhack &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/196.html#L1847'>simtime</a>          1847 src/disksim_diskctlr.c        || (seg-&gt;access-&gt;time != simtime)) </span>
+<span class='curline'><a href='../S/196.html#L1867'>simtime</a>          1867 src/disksim_diskctlr.c 	   &amp;&amp; (simtime &gt;= disk_printhacktime)) </span>
+<span class='curline'><a href='../S/196.html#L1923'>simtime</a>          1923 src/disksim_diskctlr.c   if(disk_printhack &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/196.html#L1925'>simtime</a>          1925 src/disksim_diskctlr.c 	     " for disk %d\n", simtime, currdiskreq,currdisk-&gt;devno);</span>
+<span class='curline'><a href='../S/196.html#L1991'>simtime</a>          1991 src/disksim_diskctlr.c   if(disk_printhack &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/196.html#L1999'>simtime</a>          1999 src/disksim_diskctlr.c     if(nextdiskreq-&gt;overhead_done &gt; simtime) {</span>
+<span class='curline'><a href='../S/196.html#L2000'>simtime</a>          2000 src/disksim_diskctlr.c       delay += nextdiskreq-&gt;overhead_done - simtime;</span>
+<span class='curline'><a href='../S/196.html#L2003'>simtime</a>          2003 src/disksim_diskctlr.c     if(disk_seek_stoptime &gt; simtime) {</span>
+<span class='curline'><a href='../S/196.html#L2004'>simtime</a>          2004 src/disksim_diskctlr.c       delay += disk_seek_stoptime - simtime;</span>
+<span class='curline'><a href='../S/196.html#L2042'>simtime</a>          2042 src/disksim_diskctlr.c   if(disk_printhack &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/196.html#L2043'>simtime</a>          2043 src/disksim_diskctlr.c     fprintf (outputfile, "%12.6f  %8p  Entering disk_buffer_stop_access\n", simtime, effective);</span>
+<span class='curline'><a href='../S/196.html#L2094'>simtime</a>          2094 src/disksim_diskctlr.c   if(disk_printhack &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/196.html#L2095'>simtime</a>          2095 src/disksim_diskctlr.c     fprintf (outputfile, "%12.6f  %8p  Entering disk_buffer_attempt_access_swap\n", simtime, currdiskreq);</span>
+<span class='curline'><a href='../S/196.html#L2143'>simtime</a>          2143 src/disksim_diskctlr.c     if(disk_printhack &amp;&amp; (simtime &gt;= disk_printhacktime)) </span>
+<span class='curline'><a href='../S/196.html#L2152'>simtime</a>          2152 src/disksim_diskctlr.c   if(disk_printhack &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/196.html#L2176'>simtime</a>          2176 src/disksim_diskctlr.c   if(disk_printhack &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/196.html#L2177'>simtime</a>          2177 src/disksim_diskctlr.c     fprintf (outputfile, "%12.6f  %8p  Entering disk_activate_read\n", simtime, currdiskreq);</span>
+<span class='curline'><a href='../S/196.html#L2189'>simtime</a>          2189 src/disksim_diskctlr.c       currdiskreq-&gt;overhead_done = simtime + currdisk-&gt;acctime;</span>
+<span class='curline'><a href='../S/196.html#L2273'>simtime</a>          2273 src/disksim_diskctlr.c   if(disk_printhack &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/196.html#L2274'>simtime</a>          2274 src/disksim_diskctlr.c     fprintf (outputfile, "%12.6f  %8p  Entering disk_activate_write\n", simtime, currdiskreq);</span>
+<span class='curline'><a href='../S/196.html#L2283'>simtime</a>          2283 src/disksim_diskctlr.c     currdiskreq-&gt;overhead_done = simtime + currdisk-&gt;acctime;</span>
+<span class='curline'><a href='../S/196.html#L2400'>simtime</a>          2400 src/disksim_diskctlr.c   if(disk_printhack &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/196.html#L2402'>simtime</a>          2402 src/disksim_diskctlr.c 	    simtime, new_diskreq);</span>
+<span class='curline'><a href='../S/196.html#L2469'>simtime</a>          2469 src/disksim_diskctlr.c   new_diskreq-&gt;overhead_done += simtime;</span>
+<span class='curline'><a href='../S/196.html#L2627'>simtime</a>          2627 src/disksim_diskctlr.c   new_diskreq-&gt;overhead_done += simtime;</span>
+<span class='curline'><a href='../S/196.html#L2657'>simtime</a>          2657 src/disksim_diskctlr.c 	  new_diskreq-&gt;overhead_done += simtime;</span>
+<span class='curline'><a href='../S/196.html#L2757'>simtime</a>          2757 src/disksim_diskctlr.c   if(disk_printhack &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/196.html#L2758'>simtime</a>          2758 src/disksim_diskctlr.c     fprintf (outputfile, "%12.6f  %8p  Entering disk_disconnect for disk %d\n", simtime, currdiskreq, currdisk-&gt;devno);</span>
+<span class='curline'><a href='../S/196.html#L2790'>simtime</a>          2790 src/disksim_diskctlr.c       tmpioreq-&gt;time = simtime + currdisk-&gt;extradisc_inter_disconnect;</span>
+<span class='curline'><a href='../S/196.html#L2825'>simtime</a>          2825 src/disksim_diskctlr.c   if(disk_printhack &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/196.html#L2826'>simtime</a>          2826 src/disksim_diskctlr.c     fprintf (outputfile, "%12.6f  %8p  Entering disk_completion for disk %d\n", simtime, currdiskreq,currdisk-&gt;devno);</span>
+<span class='curline'><a href='../S/196.html#L2978'>simtime</a>          2978 src/disksim_diskctlr.c       curr-&gt;time = simtime + (currdisk-&gt;overhead * currdisk-&gt;timescale);</span>
+<span class='curline'><a href='../S/196.html#L3073'>simtime</a>          3073 src/disksim_diskctlr.c   if((disk_printhack &gt; 1) &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/196.html#L3074'>simtime</a>          3074 src/disksim_diskctlr.c     fprintf (outputfile, "%12.6f  %8p  Entering disk_buffer_request_complete\n", simtime, currdiskreq);</span>
+<span class='curline'><a href='../S/196.html#L3085'>simtime</a>          3085 src/disksim_diskctlr.c     currdisk-&gt;outwait-&gt;time = simtime;</span>
+<span class='curline'><a href='../S/196.html#L3343'>simtime</a>          3343 src/disksim_diskctlr.c       blks = (int) ((simtime - currdisk-&gt;starttrans) / tmptime);</span>
+<span class='curline'><a href='../S/196.html#L3403'>simtime</a>          3403 src/disksim_diskctlr.c     if(currdiskreq-&gt;overhead_done &lt;= simtime) {</span>
+<span class='curline'><a href='../S/196.html#L3546'>simtime</a>          3546 src/disksim_diskctlr.c 	    if((disk_printhack &gt; 1) &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/196.html#L3730'>simtime</a>          3730 src/disksim_diskctlr.c   if(disk_printhack &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/196.html#L3731'>simtime</a>          3731 src/disksim_diskctlr.c     fprintf (outputfile, "%12.6f  %8p  Entering disk_buffer_stopable_access\n", simtime, currdiskreq);</span>
+<span class='curline'><a href='../S/196.html#L3763'>simtime</a>          3763 src/disksim_diskctlr.c     fprintf (outputfile, "%f, Inside background read portion of stopable_access - read %d\n", simtime, (curr-&gt;flags &amp; READ));</span>
+<span class='curline'><a href='../S/196.html#L3977'>simtime</a>          3977 src/disksim_diskctlr.c   mydiff = fabs(curr-&gt;time - simtime);</span>
+<span class='curline'><a href='../S/196.html#L3980'>simtime</a>          3980 src/disksim_diskctlr.c   if((mydiff &gt; 0.0001) &amp;&amp; (mydiff &gt; (0.00000000001 * simtime))) </span>
+<span class='curline'><a href='../S/196.html#L3982'>simtime</a>          3982 src/disksim_diskctlr.c       fprintf(stderr, "Access times don't match (1) - exp. %f  actual %f  mydiff %f\n", simtime, curr-&gt;time, mydiff);</span>
+<span class='curline'><a href='../S/196.html#L4016'>simtime</a>          4016 src/disksim_diskctlr.c   if(disk_printhack &amp;&amp; (simtime &gt;= disk_printhacktime)) {</span>
+<span class='curline'><a href='../S/196.html#L4017'>simtime</a>          4017 src/disksim_diskctlr.c     fprintf (outputfile, "%12.6f  %8p  Entering disk_buffer_seekdone for disk %d\n", simtime, currdiskreq,currdisk-&gt;devno);</span>
+<span class='curline'><a href='../S/196.html#L4031'>simtime</a>          4031 src/disksim_diskctlr.c   curr-&gt;time = simtime;</span>
+<span class='curline'><a href='../S/196.html#L4040'>simtime</a>          4040 src/disksim_diskctlr.c     currdisk-&gt;stat.latency = simtime;</span>
+<span class='curline'><a href='../S/196.html#L4089'>simtime</a>          4089 src/disksim_diskctlr.c   seg-&gt;time = simtime;</span>
+<span class='curline'><a href='../S/196.html#L4317'>simtime</a>          4317 src/disksim_diskctlr.c     mydiff = fabs(curr-&gt;time - simtime);</span>
+<span class='curline'><a href='../S/196.html#L4321'>simtime</a>          4321 src/disksim_diskctlr.c     ddbg_assert3((mydiff &lt;= 0.00001) || (mydiff &lt;= (0.00001 * simtime)),</span>
+<span class='curline'><a href='../S/196.html#L4325'>simtime</a>          4325 src/disksim_diskctlr.c 		simtime, </span>
+<span class='curline'><a href='../S/196.html#L4400'>simtime</a>          4400 src/disksim_diskctlr.c     curr-&gt;time = simtime;</span>
+<span class='curline'><a href='../S/196.html#L4408'>simtime</a>          4408 src/disksim_diskctlr.c   diff_i = dm_time_dtoi(simtime - seg-&gt;time);</span>
+<span class='curline'><a href='../S/196.html#L4413'>simtime</a>          4413 src/disksim_diskctlr.c   currdisk-&gt;currtime = simtime;</span>
+<span class='curline'><a href='../S/196.html#L4414'>simtime</a>          4414 src/disksim_diskctlr.c   currdisk-&gt;currtime_i = dm_time_dtoi(simtime);</span>
+<span class='curline'><a href='../S/196.html#L4551'>simtime</a>          4551 src/disksim_diskctlr.c     currdisk-&gt;stat.xfertime += simtime - seg-&gt;time;</span>
+<span class='curline'><a href='../S/196.html#L4627'>simtime</a>          4627 src/disksim_diskctlr.c     seg-&gt;time = simtime;</span>
+<span class='curline'><a href='../S/283.html#L352'>simtime</a>           352 src/disksim_global.h    double simtime;</span>
+<span class='curline'><a href='../S/283.html#L438'>simtime</a>           438 src/disksim_global.h #define simtime	         (disksim-&gt;simtime)</span>
+<span class='curline'><a href='../S/195.html#L173'>simtime</a>           173 src/disksim_interface.c   iface-&gt;complete_fn(simtime, req, iface-&gt;ctx);</span>
+<span class='curline'><a href='../S/195.html#L311'>simtime</a>           311 src/disksim_interface.c    if ((curtime + 0.0001) &lt; simtime) {</span>
+<span class='curline'><a href='../S/195.html#L312'>simtime</a>           312 src/disksim_interface.c       fprintf (stderr, "external time is ahead of disksim time: %f &gt; %f\n", curtime, simtime);</span>
+<span class='curline'><a href='../S/195.html#L316'>simtime</a>           316 src/disksim_interface.c    simtime = curtime;</span>
+<span class='curline'><a href='../S/195.html#L341'>simtime</a>           341 src/disksim_interface.c    if (((curtime + 0.0001) &lt; simtime) </span>
+<span class='curline'><a href='../S/195.html#L345'>simtime</a>           345 src/disksim_interface.c      fprintf (stderr, "external time is mismatched with disksim time: %f vs. %f (%f)\n", curtime, simtime, ((disksim-&gt;intq) ? disksim-&gt;intq-&gt;time : 0.0));</span>
+<span class='curline'><a href='../S/195.html#L349'>simtime</a>           349 src/disksim_interface.c    simtime = curtime;</span>
+<span class='curline'><a href='../S/195.html#L389'>simtime</a>           389 src/disksim_interface.c      ASSERT (disksim-&gt;intq-&gt;time &gt;= simtime);</span>
+<span class='curline'><a href='../S/252.html#L117'>simtime</a>           117 src/disksim_intr.c    intrp-&gt;time = simtime + curr-&gt;time;</span>
+<span class='curline'><a href='../S/205.html#L337'>simtime</a>           337 src/disksim_iodriver.c                               tmp-&gt;time = simtime;</span>
+<span class='curline'><a href='../S/205.html#L412'>simtime</a>           412 src/disksim_iodriver.c 		     simtime, req-&gt;devno, req-&gt;blkno);</span>
+<span class='curline'><a href='../S/205.html#L444'>simtime</a>           444 src/disksim_iodriver.c 	fprintf (outputfile, "%f, part of oversized request completed: opid %d, blkno %d, bcount %d, maxreqsize %d\n", simtime, req-&gt;opid, req-&gt;blkno, req-&gt;bcount, ctl-&gt;maxreqsize);</span>
+<span class='curline'><a href='../S/205.html#L491'>simtime</a>           491 src/disksim_iodriver.c 			   simtime, tmp-&gt;devno, tmp-&gt;blkno, tmp-&gt;time);</span>
+<span class='curline'><a href='../S/205.html#L501'>simtime</a>           501 src/disksim_iodriver.c          tmp-&gt;time = simtime + disksim-&gt;closedthinktime;</span>
+<span class='curline'><a href='../S/205.html#L544'>simtime</a>           544 src/disksim_iodriver.c 	    del-&gt;time += simtime + 0.0000000001; /* to affect an ordering */</span>
+<span class='curline'><a href='../S/205.html#L563'>simtime</a>           563 src/disksim_iodriver.c        iodrivers[iodriverno]-&gt;devices[devno].lastevent = simtime;</span>
+<span class='curline'><a href='../S/205.html#L591'>simtime</a>           591 src/disksim_iodriver.c          req-&gt;time = simtime;</span>
+<span class='curline'><a href='../S/205.html#L701'>simtime</a>           701 src/disksim_iodriver.c       intrp-&gt;time += simtime;</span>
+<span class='curline'><a href='../S/205.html#L756'>simtime</a>           756 src/disksim_iodriver.c       fprintf(outios, "%.6f\t%d\t%d\t%d\t%x\n", simtime, curr-&gt;devno, curr-&gt;blkno, curr-&gt;bcount, curr-&gt;flags);</span>
+<span class='curline'><a href='../S/205.html#L760'>simtime</a>           760 src/disksim_iodriver.c    fprintf (stderr, "Entered iodriver_request - simtime %f, devno %d, blkno %d, cause %d\n", simtime, curr-&gt;devno, curr-&gt;blkno, curr-&gt;cause);</span>
+<span class='curline'><a href='../S/205.html#L770'>simtime</a>           770 src/disksim_iodriver.c       disksim_register_checkpoint (simtime);</span>
+<span class='curline'><a href='../S/205.html#L773'>simtime</a>           773 src/disksim_iodriver.c       warmuptime = simtime;</span>
+<span class='curline'><a href='../S/205.html#L784'>simtime</a>           784 src/disksim_iodriver.c          ret-&gt;time = simtime + (double) ret-&gt;tempint1 / (double) 1000;</span>
+<span class='curline'><a href='../S/205.html#L790'>simtime</a>           790 src/disksim_iodriver.c             iodrivers[(iodriverno)]-&gt;devices[(curr-&gt;devno)].lastevent = simtime;</span>
+<span class='curline'><a href='../S/205.html#L797'>simtime</a>           797 src/disksim_iodriver.c          ret-&gt;time = simtime;</span>
+<span class='curline'><a href='../S/205.html#L813'>simtime</a>           813 src/disksim_iodriver.c          ret-&gt;time += simtime;</span>
+<span class='curline'><a href='../S/205.html#L828'>simtime</a>           828 src/disksim_iodriver.c    double tdiff = simtime - currdev-&gt;lastevent;</span>
+<span class='curline'><a href='../S/205.html#L842'>simtime</a>           842 src/disksim_iodriver.c    tmp-&gt;time = simtime;</span>
+<span class='curline'><a href='../S/205.html#L845'>simtime</a>           845 src/disksim_iodriver.c    if (tmp-&gt;time == simtime) {</span>
+<span class='curline'><a href='../S/254.html#L421'>simtime</a>           421 src/disksim_ioqueue.c    idledetect-&gt;time = simtime + queue-&gt;idledelay;</span>
+<span class='curline'><a href='../S/254.html#L431'>simtime</a>           431 src/disksim_ioqueue.c       tdiff = simtime - queue-&gt;lastarr;</span>
+<span class='curline'><a href='../S/254.html#L432'>simtime</a>           432 src/disksim_ioqueue.c       queue-&gt;lastarr = simtime;</span>
+<span class='curline'><a href='../S/254.html#L435'>simtime</a>           435 src/disksim_ioqueue.c          tdiff = simtime - queue-&gt;lastread;</span>
+<span class='curline'><a href='../S/254.html#L436'>simtime</a>           436 src/disksim_ioqueue.c          queue-&gt;lastread = simtime;</span>
+<span class='curline'><a href='../S/254.html#L439'>simtime</a>           439 src/disksim_ioqueue.c          tdiff = simtime - queue-&gt;lastwrite;</span>
+<span class='curline'><a href='../S/254.html#L440'>simtime</a>           440 src/disksim_ioqueue.c          queue-&gt;lastwrite = simtime;</span>
+<span class='curline'><a href='../S/254.html#L466'>simtime</a>           466 src/disksim_ioqueue.c    double tdiff = simtime - queue-&gt;lastalt;</span>
+<span class='curline'><a href='../S/254.html#L486'>simtime</a>           486 src/disksim_ioqueue.c    queue-&gt;lastalt = simtime;</span>
+<span class='curline'><a href='../S/254.html#L931'>simtime</a>           931 src/disksim_ioqueue.c 	 curr_effpri += (age_factor * (int) (simtime - tmp-&gt;starttime)) / 1280;</span>
+<span class='curline'><a href='../S/254.html#L1336'>simtime</a>          1336 src/disksim_ioqueue.c 	 test-&gt;time = simtime + delay;</span>
+<span class='curline'><a href='../S/254.html#L1346'>simtime</a>          1346 src/disksim_ioqueue.c 	    age = simtime - age;</span>
+<span class='curline'><a href='../S/254.html#L1525'>simtime</a>          1525 src/disksim_ioqueue.c     test-&gt;time = simtime;</span>
+<span class='curline'><a href='../S/254.html#L1648'>simtime</a>          1648 src/disksim_ioqueue.c        test-&gt;time = simtime;</span>
+<span class='curline'><a href='../S/254.html#L1751'>simtime</a>          1751 src/disksim_ioqueue.c        test-&gt;time = simtime;</span>
+<span class='curline'><a href='../S/254.html#L1805'>simtime</a>          1805 src/disksim_ioqueue.c 	 test-&gt;time = simtime + delay;</span>
+<span class='curline'><a href='../S/254.html#L1815'>simtime</a>          1815 src/disksim_ioqueue.c 	    age = simtime - age;</span>
+<span class='curline'><a href='../S/254.html#L1892'>simtime</a>          1892 src/disksim_ioqueue.c 	 test-&gt;time = simtime + delay;</span>
+<span class='curline'><a href='../S/254.html#L1902'>simtime</a>          1902 src/disksim_ioqueue.c 	    age = simtime - age;</span>
+<span class='curline'><a href='../S/254.html#L1943'>simtime</a>          1943 src/disksim_ioqueue.c 	 test-&gt;time = simtime + delay;</span>
+<span class='curline'><a href='../S/254.html#L1953'>simtime</a>          1953 src/disksim_ioqueue.c 	    age = simtime - age;</span>
+<span class='curline'><a href='../S/254.html#L2033'>simtime</a>          2033 src/disksim_ioqueue.c 	 test-&gt;time = simtime + delay;</span>
+<span class='curline'><a href='../S/254.html#L2043'>simtime</a>          2043 src/disksim_ioqueue.c 	    age = simtime - age;</span>
+<span class='curline'><a href='../S/254.html#L2090'>simtime</a>          2090 src/disksim_ioqueue.c 	 test-&gt;time = simtime + delay;</span>
+<span class='curline'><a href='../S/254.html#L2100'>simtime</a>          2100 src/disksim_ioqueue.c 	    age = simtime - age;</span>
+<span class='curline'><a href='../S/254.html#L2145'>simtime</a>          2145 src/disksim_ioqueue.c 	 test-&gt;time = simtime + delay;</span>
+<span class='curline'><a href='../S/254.html#L2155'>simtime</a>          2155 src/disksim_ioqueue.c 	    age = simtime - age;</span>
+<span class='curline'><a href='../S/254.html#L2442'>simtime</a>          2442 src/disksim_ioqueue.c       ret-&gt;time = simtime;</span>
+<span class='curline'><a href='../S/254.html#L2663'>simtime</a>          2663 src/disksim_ioqueue.c       temp-&gt;starttime = simtime;</span>
+<span class='curline'><a href='../S/254.html#L2798'>simtime</a>          2798 src/disksim_ioqueue.c 	      batch_ptr-&gt;starttime = simtime;</span>
+<span class='curline'><a href='../S/254.html#L2812'>simtime</a>          2812 src/disksim_ioqueue.c       temp-&gt;starttime = simtime;</span>
+<span class='curline'><a href='../S/254.html#L2868'>simtime</a>          2868 src/disksim_ioqueue.c       temp-&gt;starttime = simtime;</span>
+<span class='curline'><a href='../S/254.html#L2922'>simtime</a>          2922 src/disksim_ioqueue.c       stat_update(&amp;queue-&gt;accstats, (simtime - tmp-&gt;starttime));</span>
+<span class='curline'><a href='../S/254.html#L2923'>simtime</a>          2923 src/disksim_ioqueue.c       disksim-&gt;lastphystime = simtime - tmp-&gt;starttime;</span>
+<span class='curline'><a href='../S/254.html#L2924'>simtime</a>          2924 src/disksim_ioqueue.c       stat_update(&amp;queue-&gt;outtimestats, (simtime - tmp-&gt;iob_un.time));</span>
+<span class='curline'><a href='../S/254.html#L2928'>simtime</a>          2928 src/disksim_ioqueue.c             stat_update(&amp;queue-&gt;critreadstats, (simtime - tmp-&gt;iob_un.time));</span>
+<span class='curline'><a href='../S/254.html#L2930'>simtime</a>          2930 src/disksim_ioqueue.c             stat_update(&amp;queue-&gt;nocritreadstats, (simtime - tmp-&gt;iob_un.time));</span>
+<span class='curline'><a href='../S/254.html#L2934'>simtime</a>          2934 src/disksim_ioqueue.c             stat_update(&amp;queue-&gt;critwritestats, (simtime - tmp-&gt;iob_un.time));</span>
+<span class='curline'><a href='../S/254.html#L2936'>simtime</a>          2936 src/disksim_ioqueue.c             stat_update(&amp;queue-&gt;nocritwritestats, (simtime - tmp-&gt;iob_un.time));</span>
+<span class='curline'><a href='../S/254.html#L2977'>simtime</a>          2977 src/disksim_ioqueue.c        stat_update(&amp;queue-&gt;accstats, (simtime - tmp-&gt;starttime));</span>
+<span class='curline'><a href='../S/254.html#L2978'>simtime</a>          2978 src/disksim_ioqueue.c        disksim-&gt;lastphystime = simtime - tmp-&gt;starttime;</span>
+<span class='curline'><a href='../S/254.html#L2979'>simtime</a>          2979 src/disksim_ioqueue.c        stat_update(&amp;queue-&gt;outtimestats, (simtime - tmp-&gt;iob_un.time));</span>
+<span class='curline'><a href='../S/254.html#L2983'>simtime</a>          2983 src/disksim_ioqueue.c 	   stat_update(&amp;queue-&gt;critreadstats, (simtime - tmp-&gt;iob_un.time));</span>
+<span class='curline'><a href='../S/254.html#L2985'>simtime</a>          2985 src/disksim_ioqueue.c             stat_update(&amp;queue-&gt;nocritreadstats, (simtime - tmp-&gt;iob_un.time));</span>
+<span class='curline'><a href='../S/254.html#L2989'>simtime</a>          2989 src/disksim_ioqueue.c 	   stat_update(&amp;queue-&gt;critwritestats, (simtime - tmp-&gt;iob_un.time));</span>
+<span class='curline'><a href='../S/254.html#L2991'>simtime</a>          2991 src/disksim_ioqueue.c 	   stat_update(&amp;queue-&gt;nocritwritestats, (simtime - tmp-&gt;iob_un.time));</span>
+<span class='curline'><a href='../S/254.html#L3009'>simtime</a>          3009 src/disksim_ioqueue.c          stat_update(&amp;queue-&gt;accstats, (simtime - tmp-&gt;starttime));</span>
+<span class='curline'><a href='../S/254.html#L3010'>simtime</a>          3010 src/disksim_ioqueue.c          disksim-&gt;lastphystime = simtime - tmp-&gt;starttime;</span>
+<span class='curline'><a href='../S/254.html#L3011'>simtime</a>          3011 src/disksim_ioqueue.c          stat_update(&amp;queue-&gt;outtimestats, (simtime - trv-&gt;time));</span>
+<span class='curline'><a href='../S/254.html#L3015'>simtime</a>          3015 src/disksim_ioqueue.c                stat_update(&amp;queue-&gt;critreadstats, (simtime - trv-&gt;time));</span>
+<span class='curline'><a href='../S/254.html#L3017'>simtime</a>          3017 src/disksim_ioqueue.c                stat_update(&amp;queue-&gt;nocritreadstats, (simtime - trv-&gt;time));</span>
+<span class='curline'><a href='../S/254.html#L3021'>simtime</a>          3021 src/disksim_ioqueue.c                stat_update(&amp;queue-&gt;critwritestats, (simtime - trv-&gt;time));</span>
+<span class='curline'><a href='../S/254.html#L3023'>simtime</a>          3023 src/disksim_ioqueue.c                stat_update(&amp;queue-&gt;nocritwritestats, (simtime - trv-&gt;time));</span>
+<span class='curline'><a href='../S/254.html#L3196'>simtime</a>          3196 src/disksim_ioqueue.c    new-&gt;time = simtime;</span>
+<span class='curline'><a href='../S/254.html#L3268'>simtime</a>          3268 src/disksim_ioqueue.c       stat_update(&amp;queue-&gt;idlestats, (simtime - queue-&gt;idlestart));</span>
+<span class='curline'><a href='../S/254.html#L3270'>simtime</a>          3270 src/disksim_ioqueue.c    queue-&gt;idlestart = simtime;</span>
+<span class='curline'><a href='../S/254.html#L3540'>simtime</a>          3540 src/disksim_ioqueue.c    queue-&gt;idlestart = simtime;</span>
+<span class='curline'><a href='../S/254.html#L3559'>simtime</a>          3559 src/disksim_ioqueue.c       double arrtimemax = (queue-&gt;comboverlaps == 1) ? simtime : ret-&gt;time;</span>
+<span class='curline'><a href='../S/254.html#L3615'>simtime</a>          3615 src/disksim_ioqueue.c    queue-&gt;lastalt = simtime;</span>
+<span class='curline'><a href='../S/254.html#L3674'>simtime</a>          3674 src/disksim_ioqueue.c    queue-&gt;idlestart = simtime;</span>
+<span class='curline'><a href='../S/254.html#L3746'>simtime</a>          3746 src/disksim_ioqueue.c       tpass = simtime - queue-&gt;idlestart;</span>
+<span class='curline'><a href='../S/254.html#L3749'>simtime</a>          3749 src/disksim_ioqueue.c    queue-&gt;idlestart = simtime;</span>
+<span class='curline'><a href='../S/254.html#L3871'>simtime</a>          3871 src/disksim_ioqueue.c    fprintf(outputfile, "%ssimtime:                 %f\n", prefix, simtime);</span>
+<span class='curline'><a href='../S/254.html#L3875'>simtime</a>          3875 src/disksim_ioqueue.c    fprintf(outputfile, "%sAverage # requests:      %f\n", prefix, (runlistlen/((simtime - warmuptime) * (double) setsize)));</span>
+<span class='curline'><a href='../S/254.html#L3878'>simtime</a>          3878 src/disksim_ioqueue.c    fprintf(outputfile, "%sAverage queue length:    %f\n", prefix, ((runlistlen - runoutstanding)/((simtime - warmuptime) * (double) setsize)));</span>
+<span class='curline'><a href='../S/254.html#L3889'>simtime</a>          3889 src/disksim_ioqueue.c    fprintf (outputfile, "%sAvg # read requests:     %f\n", prefix, (runreadlen / ((simtime - warmuptime) * (double) setsize)));</span>
+<span class='curline'><a href='../S/254.html#L3891'>simtime</a>          3891 src/disksim_ioqueue.c    fprintf (outputfile, "%sAvg # write requests:    %f\n", prefix, (runwritelen / ((simtime - warmuptime) * (double) setsize)));</span>
+<span class='curline'><a href='../S/254.html#L4079'>simtime</a>          4079 src/disksim_ioqueue.c    fprintf(outputfile, "%sAverage # requests:      %f\n", prefix, (runlistlen/((simtime - warmuptime) * (double) setsize)));</span>
+<span class='curline'><a href='../S/254.html#L4082'>simtime</a>          4082 src/disksim_ioqueue.c    fprintf(outputfile, "%sAverage queue length:    %f\n", prefix, ((runlistlen - runoutstanding)/((simtime - warmuptime) * (double) setsize)));</span>
+<span class='curline'><a href='../S/254.html#L4180'>simtime</a>          4180 src/disksim_ioqueue.c    fprintf(outputfile, "%sRequests per second:   \t%f\n", sourcestr, ((double)1000 * (double)numcomplete / (simtime - warmuptime)));</span>
+<span class='curline'><a href='../S/254.html#L4181'>simtime</a>          4181 src/disksim_ioqueue.c    fprintf(outputfile, "%sCompletely idle time:  \t%f   \t%f\n", sourcestr, idletime, (idletime / (simtime - warmuptime)));</span>
+<span class='curline'><a href='../S/194.html#L160'>simtime</a>           160 src/disksim_iosim.c      curr-&gt;time = simtime + (curr-&gt;time * (double) curr-&gt;bcount);</span>
+<span class='curline'><a href='../S/194.html#L620'>simtime</a>           620 src/disksim_iosim.c       if ((temp-&gt;time &lt; simtime) &amp;&amp; (!disksim-&gt;closedios)) {</span>
+<span class='curline'><a href='../S/194.html#L621'>simtime</a>           621 src/disksim_iosim.c          fprintf(stderr, "Trace event appears out of time order in trace - simtime %f, time %f\n", simtime, temp-&gt;time);</span>
+<span class='curline'><a href='../S/264.html#L244'>simtime</a>           244 src/disksim_iotrace.c    new-&gt;time = simtime + (validate_nextinter / (double) 1000);</span>
+<span class='curline'><a href='../S/264.html#L349'>simtime</a>           349 src/disksim_iotrace.c          tracebasetime = simtime;</span>
+<span class='curline'><a href='../S/278.html#L172'>simtime</a>           172 src/disksim_logorg.c    tdiff = simtime - currlogorg-&gt;stat.lastarr;</span>
+<span class='curline'><a href='../S/278.html#L174'>simtime</a>           174 src/disksim_logorg.c    currlogorg-&gt;stat.lastarr = simtime;</span>
+<span class='curline'><a href='../S/278.html#L176'>simtime</a>           176 src/disksim_logorg.c       tdiff = simtime - currlogorg-&gt;stat.lastread;</span>
+<span class='curline'><a href='../S/278.html#L178'>simtime</a>           178 src/disksim_logorg.c       currlogorg-&gt;stat.lastread = simtime;</span>
+<span class='curline'><a href='../S/278.html#L180'>simtime</a>           180 src/disksim_logorg.c       tdiff = simtime - currlogorg-&gt;stat.lastwrite;</span>
+<span class='curline'><a href='../S/278.html#L182'>simtime</a>           182 src/disksim_logorg.c       currlogorg-&gt;stat.lastwrite = simtime;</span>
+<span class='curline'><a href='../S/278.html#L388'>simtime</a>           388 src/disksim_logorg.c       currlogorg-&gt;stat.nonzeroouttime += simtime - currlogorg-&gt;stat.outtime;</span>
+<span class='curline'><a href='../S/278.html#L390'>simtime</a>           390 src/disksim_logorg.c       tpass = simtime - currlogorg-&gt;stat.idlestart;</span>
+<span class='curline'><a href='../S/278.html#L393'>simtime</a>           393 src/disksim_logorg.c    currlogorg-&gt;stat.idlestart = simtime;</span>
+<span class='curline'><a href='../S/278.html#L394'>simtime</a>           394 src/disksim_logorg.c    currlogorg-&gt;stat.runouttime += (double) currlogorg-&gt;stat.outstanding * (simtime - currlogorg-&gt;stat.outtime);</span>
+<span class='curline'><a href='../S/278.html#L397'>simtime</a>           397 src/disksim_logorg.c       fprintf(stderr,"Stopping simulation because of saturation: simtime %f, totalreqs %d\n", simtime, disksim-&gt;totalreqs);</span>
+<span class='curline'><a href='../S/278.html#L399'>simtime</a>           399 src/disksim_logorg.c       fprintf (outputfile, "Stopping simulation because of saturation: simtime %f, totalreqs %d\n", simtime, disksim-&gt;totalreqs);</span>
+<span class='curline'><a href='../S/278.html#L409'>simtime</a>           409 src/disksim_logorg.c    currlogorg-&gt;stat.outtime = simtime;</span>
+<span class='curline'><a href='../S/278.html#L418'>simtime</a>           418 src/disksim_logorg.c    stat_update(&amp;currlogorg-&gt;stat.resptimestats, (simtime - req-&gt;arrtime));</span>
+<span class='curline'><a href='../S/278.html#L419'>simtime</a>           419 src/disksim_logorg.c    currlogorg-&gt;stat.nonzeroouttime += simtime - currlogorg-&gt;stat.outtime;</span>
+<span class='curline'><a href='../S/278.html#L420'>simtime</a>           420 src/disksim_logorg.c    currlogorg-&gt;stat.runouttime += currlogorg-&gt;stat.outstanding * (simtime - currlogorg-&gt;stat.outtime);</span>
+<span class='curline'><a href='../S/278.html#L425'>simtime</a>           425 src/disksim_logorg.c    currlogorg-&gt;stat.outtime = simtime;</span>
+<span class='curline'><a href='../S/278.html#L719'>simtime</a>           719 src/disksim_logorg.c    req-&gt;arrtime = simtime;</span>
+<span class='curline'><a href='../S/278.html#L867'>simtime</a>           867 src/disksim_logorg.c    logorgs[logorgno]-&gt;stat.idlestart = simtime;</span>
+<span class='curline'><a href='../S/278.html#L1054'>simtime</a>          1054 src/disksim_logorg.c       logorgs[i]-&gt;stat.outtime = simtime;</span>
+<span class='curline'><a href='../S/278.html#L1056'>simtime</a>          1056 src/disksim_logorg.c       logorgs[i]-&gt;stat.idlestart = simtime;</span>
+<span class='curline'><a href='../S/278.html#L1287'>simtime</a>          1287 src/disksim_logorg.c          logorgs[i]-&gt;stat.nonzeroouttime += simtime - logorgs[i]-&gt;stat.outtime;</span>
+<span class='curline'><a href='../S/278.html#L1289'>simtime</a>          1289 src/disksim_logorg.c          tpass = simtime - logorgs[i]-&gt;stat.idlestart;</span>
+<span class='curline'><a href='../S/278.html#L1292'>simtime</a>          1292 src/disksim_logorg.c       logorgs[i]-&gt;stat.idlestart = simtime;</span>
+<span class='curline'><a href='../S/278.html#L1293'>simtime</a>          1293 src/disksim_logorg.c       logorgs[i]-&gt;stat.runouttime += (double) logorgs[i]-&gt;stat.outstanding * (simtime - logorgs[i]-&gt;stat.outtime);</span>
+<span class='curline'><a href='../S/278.html#L1294'>simtime</a>          1294 src/disksim_logorg.c       logorgs[i]-&gt;stat.outtime = simtime;</span>
+<span class='curline'><a href='../S/278.html#L1314'>simtime</a>          1314 src/disksim_logorg.c    fprintf(outputfile, "%sAverage outstanding:      %f\n", prefix, (currlogorg-&gt;stat.runouttime / (simtime - warmuptime)));</span>
+<span class='curline'><a href='../S/278.html#L1321'>simtime</a>          1321 src/disksim_logorg.c    fprintf(outputfile, "%sCompletely idle time:     %f\n", prefix, (simtime - warmuptime - currlogorg-&gt;stat.nonzeroouttime));</span>
+<span class='curline'><a href='../S/191.html#L252'>simtime</a>           252 src/disksim_pfsim.c    new-&gt;time = simtime;</span>
+<span class='curline'><a href='../S/191.html#L308'>simtime</a>           308 src/disksim_pfsim.c       stat_update(&amp;timecritrespstats, (simtime - tmp-&gt;time));</span>
+<span class='curline'><a href='../S/191.html#L311'>simtime</a>           311 src/disksim_pfsim.c       stat_update(&amp;timelimitrespstats, (simtime - tmp-&gt;time));</span>
+<span class='curline'><a href='../S/191.html#L314'>simtime</a>           314 src/disksim_pfsim.c       stat_update(&amp;timenoncritrespstats, (simtime - tmp-&gt;time));</span>
+<span class='curline'><a href='../S/191.html#L350'>simtime</a>           350 src/disksim_pfsim.c             stat_update(&amp;procp-&gt;readtimelimitstats, (simtime - tmp-&gt;time));</span>
+<span class='curline'><a href='../S/191.html#L352'>simtime</a>           352 src/disksim_pfsim.c             stat_update(&amp;procp-&gt;writetimelimitstats, (simtime - tmp-&gt;time));</span>
+<span class='curline'><a href='../S/191.html#L364'>simtime</a>           364 src/disksim_pfsim.c          stat_update(&amp;procp-&gt;readtimelimitstats, (simtime - tmp-&gt;time));</span>
+<span class='curline'><a href='../S/191.html#L365'>simtime</a>           365 src/disksim_pfsim.c          stat_update(&amp;procp-&gt;readmisslimitstats, (simtime - tmp-&gt;time));</span>
+<span class='curline'><a href='../S/191.html#L367'>simtime</a>           367 src/disksim_pfsim.c          stat_update(&amp;procp-&gt;writetimelimitstats, (simtime - tmp-&gt;time));</span>
+<span class='curline'><a href='../S/191.html#L368'>simtime</a>           368 src/disksim_pfsim.c          stat_update(&amp;procp-&gt;writemisslimitstats, (simtime - tmp-&gt;time));</span>
+<span class='curline'><a href='../S/191.html#L414'>simtime</a>           414 src/disksim_pfsim.c    procp-&gt;eventlist-&gt;time = simtime;</span>
+<span class='curline'><a href='../S/191.html#L425'>simtime</a>           425 src/disksim_pfsim.c    intrp-&gt;eventlist-&gt;time = simtime;</span>
+<span class='curline'><a href='../S/191.html#L444'>simtime</a>           444 src/disksim_pfsim.c 	cpus[cpunum].idletime += simtime - cpus[cpunum].idlestart;</span>
+<span class='curline'><a href='../S/191.html#L445'>simtime</a>           445 src/disksim_pfsim.c 	cpus[cpunum].falseidletime += pf_add_false_idle_time(simtime - cpus[cpunum].idlestart);</span>
+<span class='curline'><a href='../S/191.html#L446'>simtime</a>           446 src/disksim_pfsim.c 	cpus[cpunum].current-&gt;time = simtime + (cpus[cpunum].scale * new-&gt;time);</span>
+<span class='curline'><a href='../S/191.html#L447'>simtime</a>           447 src/disksim_pfsim.c 	new-&gt;time = simtime;</span>
+<span class='curline'><a href='../S/191.html#L460'>simtime</a>           460 src/disksim_pfsim.c    fprintf (outputfile, "%.3f\tCONTEXT SWITCH cpu=%d pid=%d, newpid=%d\n", simtime, cpu_ev-&gt;cpunum, ((cpu_ev-&gt;procp) ? cpu_ev-&gt;procp-&gt;pid : 0), ((curr-&gt;newprocp) ? curr-&gt;newprocp-&gt;pid : 0));</span>
+<span class='curline'><a href='../S/191.html#L464'>simtime</a>           464 src/disksim_pfsim.c          lastuser = simtime;</span>
+<span class='curline'><a href='../S/191.html#L474'>simtime</a>           474 src/disksim_pfsim.c       idlein = simtime;</span>
+<span class='curline'><a href='../S/191.html#L503'>simtime</a>           503 src/disksim_pfsim.c    fprintf (outputfile, "%f\tIDLELOOP cpu=%d\n", simtime, cpu_ev-&gt;cpunum);</span>
+<span class='curline'><a href='../S/191.html#L519'>simtime</a>           519 src/disksim_pfsim.c    fprintf (outputfile, "%f\tSLEEP cpu=%d pid=%d chan=%p info=%d iosleep=%d\n", simtime, cpu_ev-&gt;cpunum, procp-&gt;pid, curr-&gt;chan, curr-&gt;info, curr-&gt;iosleep);</span>
+<span class='curline'><a href='../S/191.html#L534'>simtime</a>           534 src/disksim_pfsim.c    procp-&gt;lastsleep = simtime;</span>
+<span class='curline'><a href='../S/191.html#L545'>simtime</a>           545 src/disksim_pfsim.c 	      simtime, cpu_ev-&gt;cpunum, curr-&gt;chan, curr-&gt;info);</span>
+<span class='curline'><a href='../S/191.html#L554'>simtime</a>           554 src/disksim_pfsim.c      procp-&gt;runsleep += simtime - procp-&gt;lastsleep;</span>
+<span class='curline'><a href='../S/191.html#L556'>simtime</a>           556 src/disksim_pfsim.c        procp-&gt;runiosleep += simtime - procp-&gt;lastsleep;</span>
+<span class='curline'><a href='../S/191.html#L581'>simtime</a>           581 src/disksim_pfsim.c    fprintf (outputfile, "%f\tIOREQ cpu=%d opid=%d buf=%p blkno=%x flags=%x, bcount=%d\n", simtime, cpu_ev-&gt;cpunum, curr-&gt;opid, curr-&gt;buf, curr-&gt;blkno, curr-&gt;flags, curr-&gt;bcount);</span>
+<span class='curline'><a href='../S/191.html#L609'>simtime</a>           609 src/disksim_pfsim.c    fprintf (outputfile, "%f\tIOACC cpu=%d opid=%d blkno=%x\n", simtime, cpu_ev-&gt;cpunum, curr-&gt;opid, curr-&gt;blkno);</span>
+<span class='curline'><a href='../S/191.html#L618'>simtime</a>           618 src/disksim_pfsim.c    fprintf (outputfile, "%f\tIO INTERNAL cpu=%d type %d opid=%d blkno=%x buf=%p\n", simtime, cpu_ev-&gt;cpunum, curr-&gt;type, curr-&gt;opid, curr-&gt;blkno, curr-&gt;buf);</span>
+<span class='curline'><a href='../S/191.html#L653'>simtime</a>           653 src/disksim_pfsim.c    fprintf (outputfile, "%f\tINTEND cpu=%d\n", simtime, cpu_ev-&gt;cpunum);</span>
+<span class='curline'><a href='../S/191.html#L679'>simtime</a>           679 src/disksim_pfsim.c          if ((idlereset) &amp;&amp; ((simtime - idlein) &gt; (double) 50000.0)) {</span>
+<span class='curline'><a href='../S/191.html#L703'>simtime</a>           703 src/disksim_pfsim.c     fprintf (outputfile, "%f, entered pf_handle_event with event type %d\n", simtime, curr-&gt;type);</span>
+<span class='curline'><a href='../S/191.html#L752'>simtime</a>           752 src/disksim_pfsim.c fprintf (outputfile, "%f\tIO_INTERRUPT cpu %d  cause %d  buf %p\n", simtime, cpu_ev-&gt;cpunum, tmp-&gt;cause, tmp-&gt;buf);</span>
+<span class='curline'><a href='../S/191.html#L766'>simtime</a>           766 src/disksim_pfsim.c fprintf (outputfile, "%f,   CLOCK_INTERRUPT - new lbolt %d\n", simtime, curlbolt);</span>
+<span class='curline'><a href='../S/191.html#L796'>simtime</a>           796 src/disksim_pfsim.c    fprintf (outputfile, "%f\tINTR cpu=%d vector=%d cpustate=%d\n", simtime, cpunum, intrp-&gt;vector, currcpu-&gt;state);</span>
+<span class='curline'><a href='../S/191.html#L802'>simtime</a>           802 src/disksim_pfsim.c       currcpu-&gt;idletime += simtime - currcpu-&gt;idlestart;</span>
+<span class='curline'><a href='../S/191.html#L803'>simtime</a>           803 src/disksim_pfsim.c       currcpu-&gt;falseidletime += pf_add_false_idle_time(simtime - currcpu-&gt;idlestart);</span>
+<span class='curline'><a href='../S/191.html#L810'>simtime</a>           810 src/disksim_pfsim.c          intrp-&gt;next-&gt;runtime += simtime - intrp-&gt;next-&gt;eventlist-&gt;time;</span>
+<span class='curline'><a href='../S/191.html#L811'>simtime</a>           811 src/disksim_pfsim.c          intrp-&gt;next-&gt;eventlist-&gt;time = (cpu_ev-&gt;time - simtime) / currcpu-&gt;scale;</span>
+<span class='curline'><a href='../S/191.html#L813'>simtime</a>           813 src/disksim_pfsim.c          currcpu-&gt;idleworktime += simtime - currcpu-&gt;idleevents-&gt;time;</span>
+<span class='curline'><a href='../S/191.html#L814'>simtime</a>           814 src/disksim_pfsim.c          currcpu-&gt;idleevents-&gt;time = (cpu_ev-&gt;time - simtime) / currcpu-&gt;scale;</span>
+<span class='curline'><a href='../S/191.html#L816'>simtime</a>           816 src/disksim_pfsim.c          procp-&gt;runtime += simtime - procp-&gt;eventlist-&gt;time;</span>
+<span class='curline'><a href='../S/191.html#L817'>simtime</a>           817 src/disksim_pfsim.c          procp-&gt;eventlist-&gt;time = (cpu_ev-&gt;time - simtime) / currcpu-&gt;scale;</span>
+<span class='curline'><a href='../S/191.html#L832'>simtime</a>           832 src/disksim_pfsim.c    cpu_ev-&gt;time += simtime;</span>
+<span class='curline'><a href='../S/191.html#L858'>simtime</a>           858 src/disksim_pfsim.c       curr-&gt;intrp-&gt;runtime += simtime - tmp-&gt;time;</span>
+<span class='curline'><a href='../S/191.html#L862'>simtime</a>           862 src/disksim_pfsim.c       curr-&gt;procp-&gt;lasteventtime = simtime;</span>
+<span class='curline'><a href='../S/191.html#L864'>simtime</a>           864 src/disksim_pfsim.c       curr-&gt;procp-&gt;runtime += simtime - tmp-&gt;time;</span>
+<span class='curline'><a href='../S/191.html#L869'>simtime</a>           869 src/disksim_pfsim.c       currcpu-&gt;idleworktime += simtime - tmp-&gt;time;</span>
+<span class='curline'><a href='../S/191.html#L883'>simtime</a>           883 src/disksim_pfsim.c        currcpu-&gt;idlestart = simtime;</span>
+<span class='curline'><a href='../S/191.html#L887'>simtime</a>           887 src/disksim_pfsim.c      currcpu-&gt;idleevents-&gt;time = simtime;</span>
+<span class='curline'><a href='../S/191.html#L894'>simtime</a>           894 src/disksim_pfsim.c    curr-&gt;time = simtime + (currcpu-&gt;scale * curr-&gt;time);</span>
+<span class='curline'><a href='../S/191.html#L924'>simtime</a>           924 src/disksim_pfsim.c       cpus[i].idlestart = simtime;</span>
+<span class='curline'><a href='../S/191.html#L1076'>simtime</a>          1076 src/disksim_pfsim.c                       cpus[i].idletime += simtime - cpus[i].idlestart;</span>
+<span class='curline'><a href='../S/191.html#L1077'>simtime</a>          1077 src/disksim_pfsim.c                       cpus[i].falseidletime += pf_add_false_idle_time(simtime - cpus[i].idlestart);</span>
+<span class='curline'><a href='../S/191.html#L1080'>simtime</a>          1080 src/disksim_pfsim.c                       cpus[i].idleworktime += simtime - cpus[i].idleevents-&gt;time;</span>
+<span class='curline'><a href='../S/191.html#L1084'>simtime</a>          1084 src/disksim_pfsim.c                          lastuser = simtime;</span>
+<span class='curline'><a href='../S/191.html#L1086'>simtime</a>          1086 src/disksim_pfsim.c                       procp-&gt;runtime += simtime - procp-&gt;eventlist-&gt;time;</span>
+<span class='curline'><a href='../S/191.html#L1089'>simtime</a>          1089 src/disksim_pfsim.c                       intrp-&gt;runtime += simtime - intrp-&gt;eventlist-&gt;time;</span>
+<span class='curline'><a href='../S/191.html#L1099'>simtime</a>          1099 src/disksim_pfsim.c          procp-&gt;runsleep += simtime - procp-&gt;lastsleep;</span>
+<span class='curline'><a href='../S/191.html#L1101'>simtime</a>          1101 src/disksim_pfsim.c             procp-&gt;runiosleep += simtime - procp-&gt;lastsleep;</span>
+<span class='curline'><a href='../S/191.html#L1310'>simtime</a>          1310 src/disksim_pfsim.c    fprintf(outputfile, "%sPercentage idle cycles:       %f\n", cpustr, ((double) 100.0 * idletime / ((simtime - warmuptime) * (double) cpucnt)));</span>
+<span class='curline'><a href='../S/191.html#L1313'>simtime</a>          1313 src/disksim_pfsim.c    fprintf(outputfile, "%sPercentage false idle cycles: %f\n", cpustr, ((double) 100.0 * falseidletime / ((simtime - warmuptime) * (double) cpucnt)));</span>
+<span class='curline'><a href='../S/191.html#L1317'>simtime</a>          1317 src/disksim_pfsim.c    fprintf(outputfile, "%sPercentage switching cycles:  %f\n", cpustr, ((double) 100.0 * runswitchtime / ((simtime - warmuptime) * (double) cpucnt)));</span>
+<span class='curline'><a href='../S/191.html#L1320'>simtime</a>          1320 src/disksim_pfsim.c    fprintf(outputfile, "%sPercentage interrupt cycles:  %f\n", cpustr, ((double) 100.0 * runintr / ((simtime - warmuptime) * (double) cpucnt)));</span>
+<span class='curline'><a href='../S/201.html#L245'>simtime</a>           245 src/disksim_simpledisk.c 	 currdisk-&gt;stat.requestedbus = simtime;</span>
+<span class='curline'><a href='../S/201.html#L376'>simtime</a>           376 src/disksim_simpledisk.c       curr-&gt;time = simtime + currdisk-&gt;acctime;</span>
+<span class='curline'><a href='../S/201.html#L448'>simtime</a>           448 src/disksim_simpledisk.c          tmp-&gt;time = simtime + currdisk-&gt;acctime;</span>
+<span class='curline'><a href='../S/201.html#L544'>simtime</a>           544 src/disksim_simpledisk.c          curr-&gt;time = simtime + currdisk-&gt;acctime;</span>
+<span class='curline'><a href='../S/201.html#L594'>simtime</a>           594 src/disksim_simpledisk.c          curr-&gt;time = simtime + currdisk-&gt;overhead;</span>
+<span class='curline'><a href='../S/216.html#L360'>simtime</a>           360 src/disksim_synthio.c    if ((simtime &gt;= synthio_endtime) || (synthio_iocnt &gt;= synthio_endiocnt))</span>
+<span class='curline'><a href='../S/187.html#L158'>simtime</a>           158 ssdmodel/ssd.c          currdisk-&gt;stat.requestedbus = simtime;</span>
+<span class='curline'><a href='../S/187.html#L421'>simtime</a>           421 ssdmodel/ssd.c         tmp-&gt;time = simtime + max_cost;</span>
+<span class='curline'><a href='../S/187.html#L542'>simtime</a>           542 ssdmodel/ssd.c                 req-&gt;time = simtime;</span>
+<span class='curline'><a href='../S/187.html#L565'>simtime</a>           565 ssdmodel/ssd.c               read_reqs[i]-&gt;org_req-&gt;time = simtime + read_reqs[i]-&gt;schtime;</span>
+<span class='curline'><a href='../S/187.html#L592'>simtime</a>           592 ssdmodel/ssd.c               write_reqs[i]-&gt;org_req-&gt;time = simtime + schtime + write_reqs[i]-&gt;schtime;</span>
+<span class='curline'><a href='../S/187.html#L929'>simtime</a>           929 ssdmodel/ssd.c          curr-&gt;time = simtime + currdisk-&gt;overhead;</span>
+<span class='curline'><a href='../S/151.html#L337'>simtime</a>           337 ssdmodel/ssd_clean.c     double oldest_erase_time = simtime;</span>
+<span class='curline'><a href='../S/151.html#L635'>simtime</a>           635 ssdmodel/ssd_clean.c         ssd_update_block_lifetime(simtime+cost, block, metadata);</span>
+<span class='curline'><a href='../S/146.html#L47'>simtime</a>            47 ssdmodel/ssd_gang.c         tmp-&gt;time = simtime + max_cost;</span>
+<span class='curline'><a href='../S/146.html#L128'>simtime</a>           128 ssdmodel/ssd_gang.c                 req-&gt;time = simtime;</span>
+<span class='curline'><a href='../S/146.html#L288'>simtime</a>           288 ssdmodel/ssd_gang.c             req-&gt;time = simtime + req_time;</span>
+<span class='curline'><a href='../S/146.html#L392'>simtime</a>           392 ssdmodel/ssd_gang.c             req-&gt;time = simtime + req_time;</span>
+<span class='curline'><a href='../S/146.html#L455'>simtime</a>           455 ssdmodel/ssd_gang.c                 reqs_queue[i][0]-&gt;org_req-&gt;time = simtime + after + reqs_queue[i][0]-&gt;acctime;</span>
+<span class='curline'><a href='../S/146.html#L612'>simtime</a>           612 ssdmodel/ssd_gang.c             g-&gt;oldest = simtime;</span>
+<span class='curline'><a href='../S/146.html#L673'>simtime</a>           673 ssdmodel/ssd_gang.c            g-&gt;oldest = simtime;</span>
+<span class='curline'><a href='../S/185.html#L244'>simtime</a>           244 ssdmodel/ssd_init.c         metadata-&gt;block_usage[i].time_of_last_erasure = simtime;</span>
+</pre>
+</body>
+</html>

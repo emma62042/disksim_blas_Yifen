@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>cache_if</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/270.html#L116'>cache_if</a>          116 src/disksim_cache.c struct cache_if *disksim_cache_loadparams(struct lp_block *b)</span>
+<span class='curline'><a href='../S/270.html#L119'>cache_if</a>          119 src/disksim_cache.c   struct cache_if *result;</span>
+<span class='curline'><a href='../S/267.html#L112'>cache_if</a>          112 src/disksim_cache.h   void(*cache_initialize)(struct cache_if *cache, </span>
+<span class='curline'><a href='../S/267.html#L122'>cache_if</a>          122 src/disksim_cache.h   void(*cache_resetstats)(struct cache_if *cache);</span>
+<span class='curline'><a href='../S/267.html#L124'>cache_if</a>          124 src/disksim_cache.h   void(*cache_printstats)(struct cache_if *cache, char *prefix);</span>
+<span class='curline'><a href='../S/267.html#L126'>cache_if</a>          126 src/disksim_cache.h   void(*cache_cleanstats)(struct cache_if *cache);</span>
+<span class='curline'><a href='../S/267.html#L128'>cache_if</a>          128 src/disksim_cache.h   struct cache_if *(*cache_copy)(struct cache_if *cache);</span>
+<span class='curline'><a href='../S/267.html#L130'>cache_if</a>          130 src/disksim_cache.h   int (*cache_get_block)(struct cache_if *cache, </span>
+<span class='curline'><a href='../S/267.html#L135'>cache_if</a>          135 src/disksim_cache.h   void(*cache_free_block_clean)(struct cache_if *cache, </span>
+<span class='curline'><a href='../S/267.html#L138'>cache_if</a>          138 src/disksim_cache.h   int(*cache_free_block_dirty)(struct cache_if *cache, </span>
+<span class='curline'><a href='../S/267.html#L143'>cache_if</a>          143 src/disksim_cache.h   void*(*cache_disk_access_complete)(struct cache_if *cache, </span>
+<span class='curline'><a href='../S/267.html#L146'>cache_if</a>          146 src/disksim_cache.h   void (*cache_wakeup_complete)(struct cache_if *cache, </span>
+<span class='curline'><a href='../S/267.html#L149'>cache_if</a>          149 src/disksim_cache.h   int (*cache_sync)(struct cache_if *cache);</span>
+<span class='curline'><a href='../S/267.html#L151'>cache_if</a>          151 src/disksim_cache.h   int (*cache_get_maxreqsize)(struct cache_if *cache);</span>
+<span class='curline'><a href='../S/267.html#L154'>cache_if</a>          154 src/disksim_cache.h struct cache_if *disksim_cache_loadparams(struct lp_block *b);</span>
+<span class='curline'><a href='../S/215.html#L134'>cache_if</a>          134 src/disksim_cachedev.c cachedev_get_maxreqsize (struct cache_if *c)</span>
+<span class='curline'><a href='../S/215.html#L321'>cache_if</a>          321 src/disksim_cachedev.c cachedev_get_block (struct cache_if *c, </span>
+<span class='curline'><a href='../S/215.html#L393'>cache_if</a>          393 src/disksim_cachedev.c cachedev_free_block_clean (struct cache_if *c, </span>
+<span class='curline'><a href='../S/215.html#L422'>cache_if</a>          422 src/disksim_cachedev.c cachedev_free_block_dirty (struct cache_if *c, </span>
+<span class='curline'><a href='../S/215.html#L472'>cache_if</a>          472 src/disksim_cachedev.c int cachedev_sync (struct cache_if *c)</span>
+<span class='curline'><a href='../S/215.html#L479'>cache_if</a>          479 src/disksim_cachedev.c cachedev_disk_access_complete (struct cache_if *c,</span>
+<span class='curline'><a href='../S/215.html#L589'>cache_if</a>          589 src/disksim_cachedev.c cachedev_wakeup_complete (struct cache_if *c, </span>
+<span class='curline'><a href='../S/215.html#L620'>cache_if</a>          620 src/disksim_cachedev.c cachedev_resetstats (struct cache_if *c)</span>
+<span class='curline'><a href='../S/215.html#L651'>cache_if</a>          651 src/disksim_cachedev.c cachedev_initialize (struct cache_if *c, </span>
+<span class='curline'><a href='../S/215.html#L692'>cache_if</a>          692 src/disksim_cachedev.c cachedev_cleanstats (struct cache_if *cache)</span>
+<span class='curline'><a href='../S/215.html#L698'>cache_if</a>          698 src/disksim_cachedev.c cachedev_printstats (struct cache_if *c, char *prefix)</span>
+<span class='curline'><a href='../S/215.html#L746'>cache_if</a>          746 src/disksim_cachedev.c static struct cache_if * </span>
+<span class='curline'><a href='../S/215.html#L747'>cache_if</a>          747 src/disksim_cachedev.c cachedev_copy (struct cache_if *c)</span>
+<span class='curline'><a href='../S/215.html#L764'>cache_if</a>          764 src/disksim_cachedev.c   return (struct cache_if *)new;</span>
+<span class='curline'><a href='../S/215.html#L767'>cache_if</a>          767 src/disksim_cachedev.c static struct cache_if disksim_cache_dev = {</span>
+<span class='curline'><a href='../S/215.html#L783'>cache_if</a>          783 src/disksim_cachedev.c struct cache_if *disksim_cachedev_loadparams(struct lp_block *b)</span>
+<span class='curline'><a href='../S/215.html#L798'>cache_if</a>          798 src/disksim_cachedev.c   return (struct cache_if *)result;</span>
+<span class='curline'><a href='../S/253.html#L171'>cache_if</a>          171 src/disksim_cachedev.h   struct cache_if hdr;</span>
+<span class='curline'><a href='../S/222.html#L146'>cache_if</a>          146 src/disksim_cachemem.c int cachemem_get_maxreqsize (struct cache_if *c)</span>
+<span class='curline'><a href='../S/222.html#L1693'>cache_if</a>         1693 src/disksim_cachemem.c cachemem_get_block (struct cache_if *c, </span>
+<span class='curline'><a href='../S/222.html#L1739'>cache_if</a>         1739 src/disksim_cachemem.c cachemem_free_block_clean (struct cache_if *c, </span>
+<span class='curline'><a href='../S/222.html#L1784'>cache_if</a>         1784 src/disksim_cachemem.c cachemem_free_block_dirty (struct cache_if *c, </span>
+<span class='curline'><a href='../S/222.html#L1924'>cache_if</a>         1924 src/disksim_cachemem.c       cachemem_free_block_clean((struct cache_if *)cache, tmp-&gt;req);</span>
+<span class='curline'><a href='../S/222.html#L1942'>cache_if</a>         1942 src/disksim_cachemem.c          cachemem_free_block_dirty((struct cache_if *)cache, tmp-&gt;req, writedesc-&gt;donefunc, writedesc-&gt;doneparam);</span>
+<span class='curline'><a href='../S/222.html#L1952'>cache_if</a>         1952 src/disksim_cachemem.c static int cachemem_sync (struct cache_if *c)</span>
+<span class='curline'><a href='../S/222.html#L1959'>cache_if</a>         1959 src/disksim_cachemem.c cachemem_disk_access_complete (struct cache_if *c, ioreq_event *curr)</span>
+<span class='curline'><a href='../S/222.html#L2009'>cache_if</a>         2009 src/disksim_cachemem.c       cachemem_free_block_clean((struct cache_if *)cache, req);</span>
+<span class='curline'><a href='../S/222.html#L2047'>cache_if</a>         2047 src/disksim_cachemem.c       cachemem_free_block_clean((struct cache_if *)cache, req);</span>
+<span class='curline'><a href='../S/222.html#L2070'>cache_if</a>         2070 src/disksim_cachemem.c cachemem_wakeup_complete (struct cache_if *c, void *d)</span>
+<span class='curline'><a href='../S/222.html#L2107'>cache_if</a>         2107 src/disksim_cachemem.c static void cachemem_resetstats (struct cache_if *c)</span>
+<span class='curline'><a href='../S/222.html#L2149'>cache_if</a>         2149 src/disksim_cachemem.c cachemem_initialize (struct cache_if *c, </span>
+<span class='curline'><a href='../S/222.html#L2232'>cache_if</a>         2232 src/disksim_cachemem.c    cachemem_resetstats((struct cache_if *)cache);</span>
+<span class='curline'><a href='../S/222.html#L2236'>cache_if</a>         2236 src/disksim_cachemem.c static void cachemem_cleanstats (struct cache_if *c)</span>
+<span class='curline'><a href='../S/222.html#L2242'>cache_if</a>         2242 src/disksim_cachemem.c cachemem_printstats (struct cache_if *c, char *prefix)</span>
+<span class='curline'><a href='../S/222.html#L2305'>cache_if</a>         2305 src/disksim_cachemem.c static struct cache_if *</span>
+<span class='curline'><a href='../S/222.html#L2306'>cache_if</a>         2306 src/disksim_cachemem.c cachemem_copy (struct cache_if *c)</span>
+<span class='curline'><a href='../S/222.html#L2360'>cache_if</a>         2360 src/disksim_cachemem.c    return (struct cache_if *)new;</span>
+<span class='curline'><a href='../S/222.html#L2414'>cache_if</a>         2414 src/disksim_cachemem.c static struct cache_if disksim_cache_mem = {</span>
+<span class='curline'><a href='../S/222.html#L2432'>cache_if</a>         2432 src/disksim_cachemem.c struct cache_if *disksim_cachemem_loadparams(struct lp_block *b)</span>
+<span class='curline'><a href='../S/222.html#L2464'>cache_if</a>         2464 src/disksim_cachemem.c   return (struct cache_if *)result;</span>
+<span class='curline'><a href='../S/210.html#L198'>cache_if</a>          198 src/disksim_cachemem.h   struct cache_if hdr;</span>
+<span class='curline'><a href='../S/284.html#L140'>cache_if</a>          140 src/disksim_ctlr.h    struct cache_if *cache;</span>
+</pre>
+</body>
+</html>

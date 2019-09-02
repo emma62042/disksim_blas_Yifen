@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>malloc</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/73.html#L58'>malloc</a>             58 diskmodel/dm_config.h #define malloc(x) malloc((x), M_DEVBUF, M_WAITOK)</span>
+<span class='curline'><a href='../S/92.html#L1869'>malloc</a>           1869 diskmodel/layout_g1.c   struct dm_layout_g1 *l = malloc(sizeof(struct dm_layout_g1));</span>
+<span class='curline'><a href='../S/92.html#L1884'>malloc</a>           1884 diskmodel/layout_g1.c   l-&gt;bands = malloc(l-&gt;bands_len * sizeof(struct dm_layout_g1_band));</span>
+<span class='curline'><a href='../S/92.html#L1894'>malloc</a>           1894 diskmodel/layout_g1.c       b-&gt;slip = malloc(b-&gt;numslips * sizeof(int));</span>
+<span class='curline'><a href='../S/92.html#L1901'>malloc</a>           1901 diskmodel/layout_g1.c       b-&gt;defect = malloc(b-&gt;numdefects * sizeof(int));</span>
+<span class='curline'><a href='../S/92.html#L1906'>malloc</a>           1906 diskmodel/layout_g1.c       b-&gt;remap = malloc(b-&gt;numdefects * sizeof(int));</span>
+<span class='curline'><a href='../S/92.html#L1913'>malloc</a>           1913 diskmodel/layout_g1.c   l-&gt;band_blknos = malloc(l-&gt;bands_len * sizeof(int));</span>
+<span class='curline'><a href='../S/92.html#L2151'>malloc</a>           2151 diskmodel/layout_g1.c    *destbands = malloc(numbands * sizeof(struct dm_layout_g1_band));</span>
+<span class='curline'><a href='../S/92.html#L2155'>malloc</a>           2155 diskmodel/layout_g1.c       (*destbands)[i].slip = malloc (srcbands[i].numslips * sizeof(int));</span>
+<span class='curline'><a href='../S/92.html#L2156'>malloc</a>           2156 diskmodel/layout_g1.c       (*destbands)[i].defect = malloc (srcbands[i].numdefects * sizeof(int));</span>
+<span class='curline'><a href='../S/92.html#L2157'>malloc</a>           2157 diskmodel/layout_g1.c       (*destbands)[i].remap = malloc (srcbands[i].numdefects * sizeof(int));</span>
+<span class='curline'><a href='../S/57.html#L131'>malloc</a>            131 diskmodel/layout_g1_load.c   struct dm_layout_g1 *result = malloc(sizeof(*result));</span>
+<span class='curline'><a href='../S/57.html#L318'>malloc</a>            318 diskmodel/layout_g1_load.c   layout-&gt;bands = malloc(layout-&gt;bands_len * sizeof(struct dm_layout_g1_band));</span>
+<span class='curline'><a href='../S/57.html#L319'>malloc</a>            319 diskmodel/layout_g1_load.c   layout-&gt;band_blknos = malloc(layout-&gt;bands_len * sizeof(int));</span>
+<span class='curline'><a href='../S/57.html#L386'>malloc</a>            386 diskmodel/layout_g1_load.c   i = z-&gt;slip = malloc(z-&gt;numslips * sizeof(int));</span>
+<span class='curline'><a href='../S/57.html#L427'>malloc</a>            427 diskmodel/layout_g1_load.c   i = z-&gt;defect = malloc(z-&gt;numdefects * sizeof(int));</span>
+<span class='curline'><a href='../S/57.html#L428'>malloc</a>            428 diskmodel/layout_g1_load.c   j = z-&gt;remap = malloc(z-&gt;numdefects * sizeof(int));</span>
+<span class='curline'><a href='../S/44.html#L314'>malloc</a>            314 diskmodel/layout_g2_load.c   struct dm_layout_g2 *result = malloc(sizeof(struct dm_layout_g2));</span>
+<span class='curline'><a href='../S/44.html#L368'>malloc</a>            368 diskmodel/layout_g2_load.c   l-&gt;zones = malloc(l-&gt;zones_len * sizeof(struct dm_layout_g2_zone));</span>
+<span class='curline'><a href='../S/97.html#L60'>malloc</a>             60 diskmodel/marshal.c   struct dm_disk_if *d = malloc(sizeof(*d));</span>
+<span class='curline'><a href='../S/97.html#L106'>malloc</a>            106 diskmodel/marshal.c   result = malloc(alloc_size);</span>
+<span class='curline'><a href='../S/72.html#L856'>malloc</a>            856 diskmodel/mech_g1.c   struct dm_mech_g1 *m = malloc(sizeof(struct dm_mech_g1));</span>
+<span class='curline'><a href='../S/72.html#L876'>malloc</a>            876 diskmodel/mech_g1.c     m-&gt;xseekdists = malloc(distsize);</span>
+<span class='curline'><a href='../S/72.html#L877'>malloc</a>            877 diskmodel/mech_g1.c     m-&gt;xseektimes = malloc(timesize);</span>
+<span class='curline'><a href='../S/74.html#L131'>malloc</a>            131 diskmodel/mech_g1_load.c   struct dm_mech_g1 *result = malloc(sizeof(*result));</span>
+<span class='curline'><a href='../S/117.html#L118'>malloc</a>            118 libparam/libparam.y   $$ = malloc(sizeof(struct lp_inst));</span>
+<span class='curline'><a href='../S/117.html#L127'>malloc</a>            127 libparam/libparam.y   $$.l = malloc(sizeof(struct lp_topospec));</span>
+<span class='curline'><a href='../S/117.html#L159'>malloc</a>            159 libparam/libparam.y   $$ = malloc(sizeof(struct lp_block));</span>
+<span class='curline'><a href='../S/117.html#L191'>malloc</a>            191 libparam/libparam.y   $$ = malloc(sizeof(struct lp_block));</span>
+<span class='curline'><a href='../S/117.html#L214'>malloc</a>            214 libparam/libparam.y   $$.p = malloc(8 * sizeof(int *)); </span>
+<span class='curline'><a href='../S/117.html#L225'>malloc</a>            225 libparam/libparam.y   $$.p = malloc($1-&gt;values_len * sizeof(int *));</span>
+<span class='curline'><a href='../S/117.html#L232'>malloc</a>            232 libparam/libparam.y     tmp = malloc(sizeof(struct lp_param));</span>
+<span class='curline'><a href='../S/117.html#L410'>malloc</a>            410 libparam/libparam.y   $$ = malloc(sizeof(struct lp_value));</span>
+<span class='curline'><a href='../S/117.html#L417'>malloc</a>            417 libparam/libparam.y   $$ = malloc(sizeof(struct lp_value));</span>
+<span class='curline'><a href='../S/110.html#L985'>malloc</a>            985 libparam/myutil.c     lp_typetbl[c] = malloc(sizeof(struct lp_subtype));</span>
+<span class='curline'><a href='../S/115.html#L989'>malloc</a>            989 libparam/util.c     lp_typetbl[c] = malloc(sizeof(struct lp_subtype));</span>
+<span class='curline'><a href='../S/37.html#L272'>malloc</a>            272 memsmodel/mems_disksim.c       start_position = (coord_t *)malloc(sizeof(coord_t));</span>
+<span class='curline'><a href='../S/37.html#L1235'>malloc</a>           1235 memsmodel/mems_disksim.c   result = malloc(sizeof(mems_t));</span>
+<span class='curline'><a href='../S/37.html#L1243'>malloc</a>           1243 memsmodel/mems_disksim.c     disksim-&gt;memsinfo = malloc(sizeof(struct mems_info));</span>
+<span class='curline'><a href='../S/37.html#L1301'>malloc</a>           1301 memsmodel/mems_disksim.c   mems_t *result = malloc(sizeof(mems_t));</span>
+<span class='curline'><a href='../S/36.html#L193'>malloc</a>            193 memsmodel/mems_event.c   mems_extent_t *new_extent = (mems_extent_t *)malloc(sizeof(mems_extent_t));</span>
+<span class='curline'><a href='../S/36.html#L302'>malloc</a>            302 memsmodel/mems_event.c   mems_reqinfo_t *r = (mems_reqinfo_t *)malloc(sizeof(mems_reqinfo_t));</span>
+<span class='curline'><a href='../S/22.html#L901'>malloc</a>            901 memsmodel/mems_internals.c   dev-&gt;precompute_seek_distances = (int *)malloc((precompute_seek_count + 1) * sizeof(int));</span>
+<span class='curline'><a href='../S/22.html#L902'>malloc</a>            902 memsmodel/mems_internals.c   dev-&gt;precompute_x_seek_times = (double *)malloc((precompute_seek_count + 1) * sizeof(double));</span>
+<span class='curline'><a href='../S/22.html#L903'>malloc</a>            903 memsmodel/mems_internals.c   dev-&gt;precompute_y_seek_times = (double *)malloc((precompute_seek_count + 1) * sizeof(double));</span>
+<span class='curline'><a href='../S/38.html#L139'>malloc</a>            139 memsmodel/mems_seektest.c   dev.sled = malloc(sizeof(mems_sled_t));</span>
+<span class='curline'><a href='../S/200.html#L572'>malloc</a>            572 src/disksim_bus.c     disksim-&gt;businfo = malloc(sizeof(businfo_t));</span>
+<span class='curline'><a href='../S/200.html#L666'>malloc</a>            666 src/disksim_bus.c   bus *result = malloc(sizeof(bus));</span>
+<span class='curline'><a href='../S/200.html#L684'>malloc</a>            684 src/disksim_bus.c     disksim-&gt;businfo = malloc(sizeof(businfo_t));</span>
+<span class='curline'><a href='../S/200.html#L709'>malloc</a>            709 src/disksim_bus.c    result = malloc(sizeof(struct bus));</span>
+<span class='curline'><a href='../S/200.html#L761'>malloc</a>            761 src/disksim_bus.c   b-&gt;slots = malloc(b-&gt;numslots * sizeof(slot));</span>
+<span class='curline'><a href='../S/204.html#L433'>malloc</a>            433 src/disksim_controller.c     disksim-&gt;ctlrinfo = malloc(sizeof(ctlrinfo_t));</span>
+<span class='curline'><a href='../S/204.html#L449'>malloc</a>            449 src/disksim_controller.c   controller *result = malloc(sizeof(controller));</span>
+<span class='curline'><a href='../S/204.html#L505'>malloc</a>            505 src/disksim_controller.c   result = malloc(sizeof(controller));</span>
+<span class='curline'><a href='../S/204.html#L803'>malloc</a>            803 src/disksim_controller.c     ctlr-&gt;outbuses = malloc(slots * sizeof(int));</span>
+<span class='curline'><a href='../S/214.html#L127'>malloc</a>            127 src/disksim_device.c       disksim-&gt;deviceinfo = malloc (sizeof(device_info_t));</span>
+<span class='curline'><a href='../S/273.html#L503'>malloc</a>            503 src/disksim_disk.c   disksim-&gt;diskinfo = malloc (sizeof(disk_info_t));</span>
+<span class='curline'><a href='../S/273.html#L506'>malloc</a>            506 src/disksim_disk.c   disksim-&gt;diskinfo-&gt;disks = (struct disk**) malloc(MAXDEVICES * sizeof(disk));</span>
+<span class='curline'><a href='../S/273.html#L873'>malloc</a>            873 src/disksim_disk.c   result = malloc(sizeof(disk));</span>
+<span class='curline'><a href='../S/273.html#L897'>malloc</a>            897 src/disksim_disk.c   struct disk *result = malloc(sizeof(disk));</span>
+<span class='curline'><a href='../S/205.html#L1082'>malloc</a>           1082 src/disksim_iodriver.c     disksim-&gt;iodriver_info = malloc (sizeof(iodriver_info_t));</span>
+<span class='curline'><a href='../S/205.html#L1087'>malloc</a>           1087 src/disksim_iodriver.c   result = malloc(sizeof(iodriver));</span>
+<span class='curline'><a href='../S/205.html#L1158'>malloc</a>           1158 src/disksim_iodriver.c   iodriver *result = malloc(sizeof(iodriver));</span>
+<span class='curline'><a href='../S/254.html#L3587'>malloc</a>           3587 src/disksim_ioqueue.c    ioqueue *new = (ioqueue *) malloc(sizeof(ioqueue));</span>
+<span class='curline'><a href='../S/254.html#L3755'>malloc</a>           3755 src/disksim_ioqueue.c    ioqueue * queue = (ioqueue *) malloc(sizeof(ioqueue));</span>
+<span class='curline'><a href='../S/254.html#L3807'>malloc</a>           3807 src/disksim_ioqueue.c   result = malloc(sizeof(ioqueue));</span>
+<span class='curline'><a href='../S/278.html#L1593'>malloc</a>           1593 src/disksim_logorg.c   result-&gt;devs = malloc(l-&gt;values_len * sizeof(logorgdev));</span>
+<span class='curline'><a href='../S/278.html#L1650'>malloc</a>           1650 src/disksim_logorg.c   result = malloc(sizeof(struct logorg));</span>
+<span class='curline'><a href='../S/219.html#L84'>malloc</a>             84 src/disksim_malloc.c   return malloc(size);</span>
+<span class='curline'><a href='../S/201.html#L744'>malloc</a>            744 src/disksim_simpledisk.c    disksim-&gt;simplediskinfo = malloc (sizeof(simplediskinfo_t));</span>
+<span class='curline'><a href='../S/201.html#L746'>malloc</a>            746 src/disksim_simpledisk.c    disksim-&gt;simplediskinfo-&gt;simpledisks = malloc(MAXDEVICES * (sizeof(simpledisk_t)));</span>
+<span class='curline'><a href='../S/201.html#L831'>malloc</a>            831 src/disksim_simpledisk.c   result = malloc(sizeof(struct simpledisk));</span>
+<span class='curline'><a href='../S/201.html#L852'>malloc</a>            852 src/disksim_simpledisk.c   struct simpledisk *result = malloc(sizeof(struct simpledisk));</span>
+<span class='curline'><a href='../S/216.html#L723'>malloc</a>            723 src/disksim_synthio.c   synthio_gens = malloc(l-&gt;values_len * sizeof(synthio_generator));</span>
+<span class='curline'><a href='../S/216.html#L874'>malloc</a>            874 src/disksim_synthio.c   (*result) = malloc(sizeof(synthio_generator));</span>
+<span class='curline'><a href='../S/216.html#L896'>malloc</a>            896 src/disksim_synthio.c   result-&gt;devno = malloc(l-&gt;values_len * sizeof(int));</span>
+<span class='curline'><a href='../S/198.html#L120'>malloc</a>            120 src/raw_layout.c   if (!(sectspertrk = (spt_t *) malloc(sizeof(spt_t))))</span>
+<span class='curline'><a href='../S/198.html#L135'>malloc</a>            135 src/raw_layout.c 	    if (!(temp = (spt_t *) malloc(sizeof(spt_t)))) {</span>
+<span class='curline'><a href='../S/198.html#L260'>malloc</a>            260 src/raw_layout.c   if (!(sectfreq = (sfreq_t *) malloc(MAXSECTORS*sizeof(sfreq_t)))) </span>
+<span class='curline'><a href='../S/198.html#L266'>malloc</a>            266 src/raw_layout.c   if (!(sf_cyls = (int *) malloc(MAXSECTORS*sizeof(int)))) </span>
+<span class='curline'><a href='../S/198.html#L290'>malloc</a>            290 src/raw_layout.c   if (!(currdisk-&gt;lbnrange = (lbn_rawlayout_t *) malloc(currdisk-&gt;numcyls * </span>
+<span class='curline'><a href='../S/198.html#L295'>malloc</a>            295 src/raw_layout.c 	malloc(currdisk-&gt;numcyls * sizeof(cyl_rawlayout_t))))</span>
+<span class='curline'><a href='../S/198.html#L398'>malloc</a>            398 src/raw_layout.c   currdisk-&gt;defect_lists = (defect_t *) malloc (0x80000);</span>
+<span class='curline'><a href='../S/187.html#L499'>malloc</a>            499 ssdmodel/ssd.c         read_reqs = (ssd_req **) malloc(max_reqs * sizeof(ssd_req *));</span>
+<span class='curline'><a href='../S/187.html#L500'>malloc</a>            500 ssdmodel/ssd.c         write_reqs = (ssd_req **) malloc(max_reqs * sizeof(ssd_req *));</span>
+<span class='curline'><a href='../S/187.html#L519'>malloc</a>            519 ssdmodel/ssd.c                 ssd_req *r = malloc(sizeof(ssd_req));</span>
+<span class='curline'><a href='../S/187.html#L1101'>malloc</a>           1101 ssdmodel/ssd.c   result = malloc(sizeof(struct ssd));</span>
+<span class='curline'><a href='../S/187.html#L1122'>malloc</a>           1122 ssdmodel/ssd.c   struct ssd *result = malloc(sizeof(struct ssd));</span>
+<span class='curline'><a href='../S/187.html#L1182'>malloc</a>           1182 ssdmodel/ssd.c     hist = (int *) malloc(no_buckets * sizeof(int));</span>
+<span class='curline'><a href='../S/151.html#L717'>malloc</a>            717 ssdmodel/ssd_clean.c     table = (usage_table *) malloc(sizeof(usage_table) * (s-&gt;params.pages_per_block + 1));</span>
+<span class='curline'><a href='../S/151.html#L728'>malloc</a>            728 ssdmodel/ssd_clean.c         table[i].block = (int*)malloc(sizeof(int)*table[i].len);</span>
+<span class='curline'><a href='../S/146.html#L111'>malloc</a>            111 ssdmodel/ssd_gang.c                 ssd_req *r = malloc(sizeof(ssd_req));</span>
+<span class='curline'><a href='../S/146.html#L340'>malloc</a>            340 ssdmodel/ssd_gang.c             elem_req[0] = malloc(sizeof(ssd_req));</span>
+<span class='curline'><a href='../S/146.html#L417'>malloc</a>            417 ssdmodel/ssd_gang.c     first = (ssd_req ***) malloc (s-&gt;params.elements_per_gang * sizeof(ssd_req **));</span>
+<span class='curline'><a href='../S/146.html#L540'>malloc</a>            540 ssdmodel/ssd_gang.c         rd_q = (ssd_req ***) malloc(s-&gt;params.elements_per_gang * sizeof (ssd_req **));</span>
+<span class='curline'><a href='../S/146.html#L541'>malloc</a>            541 ssdmodel/ssd_gang.c         wr_q = (ssd_req ***) malloc(s-&gt;params.elements_per_gang * sizeof (ssd_req **));</span>
+<span class='curline'><a href='../S/146.html#L543'>malloc</a>            543 ssdmodel/ssd_gang.c             rd_q[i] = malloc(MAX_REQS * sizeof(ssd_req *));</span>
+<span class='curline'><a href='../S/146.html#L544'>malloc</a>            544 ssdmodel/ssd_gang.c             wr_q[i] = malloc(MAX_REQS * sizeof(ssd_req *));</span>
+<span class='curline'><a href='../S/185.html#L31'>malloc</a>             31 ssdmodel/ssd_init.c    disksim-&gt;ssdinfo = malloc (sizeof(ssdinfo_t));</span>
+<span class='curline'><a href='../S/185.html#L33'>malloc</a>             33 ssdmodel/ssd_init.c    disksim-&gt;ssdinfo-&gt;ssds = malloc(MAXDEVICES * (sizeof(ssd_t)));</span>
+<span class='curline'><a href='../S/185.html#L182'>malloc</a>            182 ssdmodel/ssd_init.c     if ((metadata-&gt;lba_table = (int *)malloc(export_size * sizeof(int))) == NULL) {</span>
+<span class='curline'><a href='../S/185.html#L197'>malloc</a>            197 ssdmodel/ssd_init.c     if (!(metadata-&gt;free_blocks = (unsigned char *)malloc(bytes_to_alloc))) {</span>
+<span class='curline'><a href='../S/185.html#L206'>malloc</a>            206 ssdmodel/ssd_init.c     if (!(metadata-&gt;block_usage = (block_metadata *)malloc(tot_blocks * sizeof(block_metadata)))) {</span>
+<span class='curline'><a href='../S/185.html#L217'>malloc</a>            217 ssdmodel/ssd_init.c         metadata-&gt;block_usage[i].page = (int*)malloc(sizeof(int) * currdisk-&gt;params.pages_per_block);</span>
+<span class='curline'><a href='../S/185.html#L432'>malloc</a>            432 ssdmodel/ssd_init.c           struct ioq *q = malloc(sizeof(ioqueue));</span>
+<span class='curline'><a href='../S/185.html#L439'>malloc</a>            439 ssdmodel/ssd_init.c           struct ioq *q = malloc(sizeof(ioqueue));</span>
+<span class='curline'><a href='../S/185.html#L495'>malloc</a>            495 ssdmodel/ssd_init.c              currdisk-&gt;gang_meta[j].pg2elem = malloc(sizeof(ssd_elem_number) * tot_pages);</span>
+<span class='curline'><a href='../S/159.html#L489'>malloc</a>            489 ssdmodel/ssd_timing.c     parunits = (listnode **)malloc(SSD_PARUNITS_PER_ELEM(s) * sizeof(listnode *));</span>
+<span class='curline'><a href='../S/159.html#L901'>malloc</a>            901 ssdmodel/ssd_timing.c     struct my_timing_t *tt = malloc(sizeof(struct my_timing_t));</span>
+<span class='curline'><a href='../S/186.html#L76'>malloc</a>             76 ssdmodel/ssd_utils.c     *start = (listnode *)malloc(sizeof(listnode));</span>
+<span class='curline'><a href='../S/186.html#L79'>malloc</a>             79 ssdmodel/ssd_utils.c     (*start)-&gt;data = (header_data *)malloc(sizeof(header_data));</span>
+<span class='curline'><a href='../S/186.html#L169'>malloc</a>            169 ssdmodel/ssd_utils.c     listnode *newnode = malloc(sizeof(listnode));</span>
+<span class='curline'><a href='../S/186.html#L184'>malloc</a>            184 ssdmodel/ssd_utils.c     listnode *newnode = malloc(sizeof(listnode));</span>
+</pre>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>iodrivers</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/205.html#L126'>iodrivers</a>         126 src/disksim_iodriver.c     if(iodrivers[c])</span>
+<span class='curline'><a href='../S/205.html#L127'>iodrivers</a>         127 src/disksim_iodriver.c       if(!strcmp(iodrivers[c]-&gt;name, name)) {</span>
+<span class='curline'><a href='../S/205.html#L129'>iodrivers</a>         129 src/disksim_iodriver.c 	return iodrivers[c];</span>
+<span class='curline'><a href='../S/205.html#L229'>iodrivers</a>         229 src/disksim_iodriver.c    if ((iodrivers[iodriverno]-&gt;consttime != 0.0) </span>
+<span class='curline'><a href='../S/205.html#L230'>iodrivers</a>         230 src/disksim_iodriver.c        &amp;&amp; (iodrivers[iodriverno]-&gt;consttime != IODRIVER_TRACED_QUEUE_TIMES)) </span>
+<span class='curline'><a href='../S/205.html#L233'>iodrivers</a>         233 src/disksim_iodriver.c       if (iodrivers[iodriverno]-&gt;consttime &gt; 0.0) {</span>
+<span class='curline'><a href='../S/205.html#L234'>iodrivers</a>         234 src/disksim_iodriver.c          curr-&gt;time = iodrivers[iodriverno]-&gt;consttime;</span>
+<span class='curline'><a href='../S/205.html#L244'>iodrivers</a>         244 src/disksim_iodriver.c    ctl = iodrivers[iodriverno]-&gt;devices[(curr-&gt;devno)].ctl;</span>
+<span class='curline'><a href='../S/205.html#L266'>iodrivers</a>         266 src/disksim_iodriver.c    curr-&gt;busno = iodrivers[iodriverno]-&gt;devices[(curr-&gt;devno)].buspath.value;</span>
+<span class='curline'><a href='../S/205.html#L267'>iodrivers</a>         267 src/disksim_iodriver.c    curr-&gt;slotno = iodrivers[iodriverno]-&gt;devices[(curr-&gt;devno)].slotpath.value;</span>
+<span class='curline'><a href='../S/205.html#L268'>iodrivers</a>         268 src/disksim_iodriver.c    if (iodrivers[iodriverno]-&gt;devices[(curr-&gt;devno)].queuectlr != -1) {</span>
+<span class='curline'><a href='../S/205.html#L269'>iodrivers</a>         269 src/disksim_iodriver.c       int ctlrno = iodrivers[iodriverno]-&gt;devices[(curr-&gt;devno)].queuectlr;</span>
+<span class='curline'><a href='../S/205.html#L270'>iodrivers</a>         270 src/disksim_iodriver.c       ctl = &amp;iodrivers[iodriverno]-&gt;ctlrs[ctlrno];</span>
+<span class='curline'><a href='../S/205.html#L403'>iodrivers</a>         403 src/disksim_iodriver.c    if (iodrivers[iodriverno]-&gt;type == STANDALONE) {</span>
+<span class='curline'><a href='../S/205.html#L414'>iodrivers</a>         414 src/disksim_iodriver.c    if (iodrivers[iodriverno]-&gt;devices[(req-&gt;devno)].queuectlr != -1) </span>
+<span class='curline'><a href='../S/205.html#L416'>iodrivers</a>         416 src/disksim_iodriver.c       int ctlrno = iodrivers[iodriverno]-&gt;devices[(req-&gt;devno)].queuectlr;</span>
+<span class='curline'><a href='../S/205.html#L417'>iodrivers</a>         417 src/disksim_iodriver.c       ctl = &amp;iodrivers[iodriverno]-&gt;ctlrs[ctlrno];</span>
+<span class='curline'><a href='../S/205.html#L474'>iodrivers</a>         474 src/disksim_iodriver.c    req = ioqueue_physical_access_done(iodrivers[iodriverno]-&gt;devices[devno].queue, req);</span>
+<span class='curline'><a href='../S/205.html#L525'>iodrivers</a>         525 src/disksim_iodriver.c 	if (iodrivers[iodriverno]-&gt;type != STANDALONE) {</span>
+<span class='curline'><a href='../S/205.html#L528'>iodrivers</a>         528 src/disksim_iodriver.c 					  iodrivers[iodriverno]-&gt;scale);</span>
+<span class='curline'><a href='../S/205.html#L542'>iodrivers</a>         542 src/disksim_iodriver.c 	  if (iodrivers[iodriverno]-&gt;type == STANDALONE) </span>
+<span class='curline'><a href='../S/205.html#L550'>iodrivers</a>         550 src/disksim_iodriver.c 					    iodrivers[iodriverno]-&gt;scale);</span>
+<span class='curline'><a href='../S/205.html#L557'>iodrivers</a>         557 src/disksim_iodriver.c    if ((iodrivers[iodriverno]-&gt;consttime == IODRIVER_TRACED_QUEUE_TIMES) </span>
+<span class='curline'><a href='../S/205.html#L558'>iodrivers</a>         558 src/disksim_iodriver.c        || (iodrivers[iodriverno]-&gt;consttime == IODRIVER_TRACED_BOTH_TIMES)) </span>
+<span class='curline'><a href='../S/205.html#L560'>iodrivers</a>         560 src/disksim_iodriver.c      if (ioqueue_get_number_in_queue(iodrivers[iodriverno]-&gt;devices[devno].queue) &gt; 0) </span>
+<span class='curline'><a href='../S/205.html#L562'>iodrivers</a>         562 src/disksim_iodriver.c        iodrivers[iodriverno]-&gt;devices[devno].flag = 1;</span>
+<span class='curline'><a href='../S/205.html#L563'>iodrivers</a>         563 src/disksim_iodriver.c        iodrivers[iodriverno]-&gt;devices[devno].lastevent = simtime;</span>
+<span class='curline'><a href='../S/205.html#L575'>iodrivers</a>         575 src/disksim_iodriver.c    req = ioqueue_get_next_request(iodrivers[iodriverno]-&gt;devices[devno].queue);</span>
+<span class='curline'><a href='../S/205.html#L590'>iodrivers</a>         590 src/disksim_iodriver.c       if (iodrivers[iodriverno]-&gt;type == STANDALONE) {</span>
+<span class='curline'><a href='../S/205.html#L597'>iodrivers</a>         597 src/disksim_iodriver.c 					 iodrivers[iodriverno]-&gt;scale);</span>
+<span class='curline'><a href='../S/205.html#L609'>iodrivers</a>         609 src/disksim_iodriver.c    if ((iodrivers[iodriverno]-&gt;consttime != 0.0) &amp;&amp; (iodrivers[iodriverno]-&gt;consttime != IODRIVER_TRACED_QUEUE_TIMES)) {</span>
+<span class='curline'><a href='../S/205.html#L610'>iodrivers</a>         610 src/disksim_iodriver.c       if (iodrivers[iodriverno]-&gt;type == STANDALONE) {</span>
+<span class='curline'><a href='../S/205.html#L624'>iodrivers</a>         624 src/disksim_iodriver.c                            if (iodrivers[iodriverno]-&gt;type != STANDALONE) {</span>
+<span class='curline'><a href='../S/205.html#L638'>iodrivers</a>         638 src/disksim_iodriver.c    iodriver_check_c700_based_status(iodrivers[iodriverno], devno, cause, IO_INTERRUPT_COMPLETE, 0);</span>
+<span class='curline'><a href='../S/205.html#L647'>iodrivers</a>         647 src/disksim_iodriver.c    if (iodrivers[iodriverno]-&gt;type == STANDALONE) {</span>
+<span class='curline'><a href='../S/205.html#L694'>iodrivers</a>         694 src/disksim_iodriver.c    if ((iodrivers[iodriverno]-&gt;consttime == 0.0) || (iodrivers[iodriverno]-&gt;consttime == IODRIVER_TRACED_QUEUE_TIMES)) {</span>
+<span class='curline'><a href='../S/205.html#L695'>iodrivers</a>         695 src/disksim_iodriver.c       intrp-&gt;time = iodriver_get_time_to_handle_interrupt(iodrivers[iodriverno], infoptr-&gt;cause, (infoptr-&gt;flags &amp; READ));</span>
+<span class='curline'><a href='../S/205.html#L696'>iodrivers</a>         696 src/disksim_iodriver.c       iodriver_check_c700_based_status(iodrivers[iodriverno], infoptr-&gt;devno, infoptr-&gt;cause, IO_INTERRUPT_ARRIVE, infoptr-&gt;blkno);</span>
+<span class='curline'><a href='../S/205.html#L700'>iodrivers</a>         700 src/disksim_iodriver.c    if (iodrivers[iodriverno]-&gt;type == STANDALONE) {</span>
+<span class='curline'><a href='../S/205.html#L721'>iodrivers</a>         721 src/disksim_iodriver.c       tmp-&gt;time = iodriver_get_time_to_respond_to_device(iodrivers[iodriverno], infoptr-&gt;cause, intrp-&gt;time);</span>
+<span class='curline'><a href='../S/205.html#L736'>iodrivers</a>         736 src/disksim_iodriver.c       for (j = 0; j &lt; iodrivers[i]-&gt;numdevices; j++) {</span>
+<span class='curline'><a href='../S/205.html#L737'>iodrivers</a>         737 src/disksim_iodriver.c          ret += ioqueue_tick(iodrivers[i]-&gt;devices[j].queue);</span>
+<span class='curline'><a href='../S/205.html#L782'>iodrivers</a>         782 src/disksim_iodriver.c       if ((iodrivers[iodriverno]-&gt;consttime == IODRIVER_TRACED_QUEUE_TIMES) || (iodrivers[iodriverno]-&gt;consttime == IODRIVER_TRACED_BOTH_TIMES)) {</span>
+<span class='curline'><a href='../S/205.html#L788'>iodrivers</a>         788 src/disksim_iodriver.c          if ((curr-&gt;slotno == 1) &amp;&amp; (ioqueue_get_number_in_queue(iodrivers[iodriverno]-&gt;devices[(curr-&gt;devno)].queue) == 0)) {</span>
+<span class='curline'><a href='../S/205.html#L789'>iodrivers</a>         789 src/disksim_iodriver.c             iodrivers[(iodriverno)]-&gt;devices[(curr-&gt;devno)].flag = 2;</span>
+<span class='curline'><a href='../S/205.html#L790'>iodrivers</a>         790 src/disksim_iodriver.c             iodrivers[(iodriverno)]-&gt;devices[(curr-&gt;devno)].lastevent = simtime;</span>
+<span class='curline'><a href='../S/205.html#L793'>iodrivers</a>         793 src/disksim_iodriver.c       ret = handle_new_request(iodrivers[iodriverno], curr);</span>
+<span class='curline'><a href='../S/205.html#L795'>iodrivers</a>         795 src/disksim_iodriver.c       if ((ret) &amp;&amp; (iodrivers[iodriverno]-&gt;type == STANDALONE) &amp;&amp; (ret-&gt;time == 0.0)) {</span>
+<span class='curline'><a href='../S/205.html#L808'>iodrivers</a>         808 src/disksim_iodriver.c    if (iodrivers[iodriverno]-&gt;type == STANDALONE) {</span>
+<span class='curline'><a href='../S/205.html#L827'>iodrivers</a>         827 src/disksim_iodriver.c    device *currdev = &amp;iodrivers[iodriverno]-&gt;devices[(curr-&gt;devno)];</span>
+<span class='curline'><a href='../S/205.html#L841'>iodrivers</a>         841 src/disksim_iodriver.c    schedule_disk_access(iodrivers[iodriverno], tmp);</span>
+<span class='curline'><a href='../S/205.html#L859'>iodrivers</a>         859 src/disksim_iodriver.c    for (i=0; i &lt; iodrivers[iodriverno]-&gt;numctlrs; i++) {</span>
+<span class='curline'><a href='../S/205.html#L860'>iodrivers</a>         860 src/disksim_iodriver.c       tmp = &amp;iodrivers[iodriverno]-&gt;ctlrs[i];</span>
+<span class='curline'><a href='../S/205.html#L904'>iodrivers</a>         904 src/disksim_iodriver.c       for (j = 0; j &lt; iodrivers[i]-&gt;numdevices; j++) {</span>
+<span class='curline'><a href='../S/205.html#L905'>iodrivers</a>         905 src/disksim_iodriver.c          fprintf (outputfile, "Device #%d: buspath = %x, slotpath = %x\n", j, iodrivers[i]-&gt;devices[j].buspath.value, iodrivers[i]-&gt;devices[j].slotpath.value);</span>
+<span class='curline'><a href='../S/205.html#L919'>iodrivers</a>         919 src/disksim_iodriver.c       for (j = 0; j &lt; iodrivers[i]-&gt;numctlrs; j++) {</span>
+<span class='curline'><a href='../S/205.html#L920'>iodrivers</a>         920 src/disksim_iodriver.c          fprintf (outputfile, "Controller #%d: buspath = %x, slotpath = %x\n", j, iodrivers[i]-&gt;ctlrs[j].buspath.value, iodrivers[i]-&gt;ctlrs[j].slotpath.value);</span>
+<span class='curline'><a href='../S/205.html#L948'>iodrivers</a>         948 src/disksim_iodriver.c       curriodriver = iodrivers[i];</span>
+<span class='curline'><a href='../S/205.html#L1025'>iodrivers</a>        1025 src/disksim_iodriver.c          ioqueue_resetstats(iodrivers[i]-&gt;devices[j].queue);</span>
+<span class='curline'><a href='../S/205.html#L1062'>iodrivers</a>        1062 src/disksim_iodriver.c     if(!iodrivers[c]) {</span>
+<span class='curline'><a href='../S/205.html#L1063'>iodrivers</a>        1063 src/disksim_iodriver.c       iodrivers[c] = d;</span>
+<span class='curline'><a href='../S/205.html#L1070'>iodrivers</a>        1070 src/disksim_iodriver.c   iodrivers = realloc(iodrivers, newlen * sizeof(iodriver *));</span>
+<span class='curline'><a href='../S/205.html#L1072'>iodrivers</a>        1072 src/disksim_iodriver.c   bzero((struct iodriver*)iodrivers + c, zerocnt * sizeof(iodriver *));</span>
+<span class='curline'><a href='../S/205.html#L1074'>iodrivers</a>        1074 src/disksim_iodriver.c   iodrivers[c] = d;</span>
+<span class='curline'><a href='../S/205.html#L1224'>iodrivers</a>        1224 src/disksim_iodriver.c       setsize += iodrivers[i]-&gt;numdevices;</span>
+<span class='curline'><a href='../S/205.html#L1231'>iodrivers</a>        1231 src/disksim_iodriver.c       for (j = 0; j &lt; iodrivers[i]-&gt;numdevices; j++) {</span>
+<span class='curline'><a href='../S/205.html#L1232'>iodrivers</a>        1232 src/disksim_iodriver.c          queueset[setsize] = iodrivers[i]-&gt;devices[j].queue;</span>
+<span class='curline'><a href='../S/205.html#L1244'>iodrivers</a>        1244 src/disksim_iodriver.c    if ((drv_printperdiskstats == TRUE) &amp;&amp; ((numiodrivers &gt; 1) || (iodrivers[0]-&gt;numdevices &gt; 1))) {</span>
+<span class='curline'><a href='../S/205.html#L1246'>iodrivers</a>        1246 src/disksim_iodriver.c          for (j = 0; j &lt; iodrivers[i]-&gt;numdevices; j++) {</span>
+<span class='curline'><a href='../S/205.html#L1249'>iodrivers</a>        1249 src/disksim_iodriver.c             ioqueue_printstats(&amp;iodrivers[i]-&gt;devices[j].queue, 1, prefix);</span>
+<span class='curline'><a href='../S/205.html#L1266'>iodrivers</a>        1266 src/disksim_iodriver.c       for (j = 0; j &lt; iodrivers[i]-&gt;numdevices; j++) {</span>
+<span class='curline'><a href='../S/205.html#L1267'>iodrivers</a>        1267 src/disksim_iodriver.c          ioqueue_cleanstats(iodrivers[i]-&gt;devices[j].queue);</span>
+<span class='curline'><a href='../S/218.html#L162'>iodrivers</a>         162 src/disksim_iodriver.h    iodriver **iodrivers;</span>
+<span class='curline'><a href='../S/218.html#L186'>iodrivers</a>         186 src/disksim_iodriver.h #define iodrivers               (disksim-&gt;iodriver_info-&gt;iodrivers)</span>
+</pre>
+</body>
+</html>

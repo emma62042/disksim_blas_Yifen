@@ -1,0 +1,258 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>src/disksim_iodriver.h</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<a id='TOP' name='TOP'></a><h2 class='header'><a href='../mains.html'>root</a>/<a href='../files/402.html'>src</a>/disksim_iodriver.h</h2>
+<em class='comment'>/* [&lt;][&gt;][^][v][top]<a href='#BOTTOM'>[bottom]</a><a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</em>
+<hr />
+<h2 class='header'><a href='../J/93.html' title='Multiple included from 4 places.'>INCLUDED FROM</a></h2>
+<hr />
+<pre>
+<a id='L1' name='L1'></a>   1 <em class='comment'>/*</em>
+<a id='L2' name='L2'></a>   2 <em class='comment'> * DiskSim Storage Subsystem Simulation Environment (Version 4.0)</em>
+<a id='L3' name='L3'></a>   3 <em class='comment'> * Revision Authors: John Bucy, Greg Ganger</em>
+<a id='L4' name='L4'></a>   4 <em class='comment'> * Contributors: John Griffin, Jiri Schindler, Steve Schlosser</em>
+<a id='L5' name='L5'></a>   5 <em class='comment'> *</em>
+<a id='L6' name='L6'></a>   6 <em class='comment'> * Copyright (c) of Carnegie Mellon University, 2001-2008.</em>
+<a id='L7' name='L7'></a>   7 <em class='comment'> *</em>
+<a id='L8' name='L8'></a>   8 <em class='comment'> * This software is being provided by the copyright holders under the</em>
+<a id='L9' name='L9'></a>   9 <em class='comment'> * following license. By obtaining, using and/or copying this software,</em>
+<a id='L10' name='L10'></a>  10 <em class='comment'> * you agree that you have read, understood, and will comply with the</em>
+<a id='L11' name='L11'></a>  11 <em class='comment'> * following terms and conditions:</em>
+<a id='L12' name='L12'></a>  12 <em class='comment'> *</em>
+<a id='L13' name='L13'></a>  13 <em class='comment'> * Permission to reproduce, use, and prepare derivative works of this</em>
+<a id='L14' name='L14'></a>  14 <em class='comment'> * software is granted provided the copyright and "No Warranty" statements</em>
+<a id='L15' name='L15'></a>  15 <em class='comment'> * are included with all reproductions and derivative works and associated</em>
+<a id='L16' name='L16'></a>  16 <em class='comment'> * documentation. This software may also be redistributed without charge</em>
+<a id='L17' name='L17'></a>  17 <em class='comment'> * provided that the copyright and "No Warranty" statements are included</em>
+<a id='L18' name='L18'></a>  18 <em class='comment'> * in all redistributions.</em>
+<a id='L19' name='L19'></a>  19 <em class='comment'> *</em>
+<a id='L20' name='L20'></a>  20 <em class='comment'> * NO WARRANTY. THIS SOFTWARE IS FURNISHED ON AN "AS IS" BASIS.</em>
+<a id='L21' name='L21'></a>  21 <em class='comment'> * CARNEGIE MELLON UNIVERSITY MAKES NO WARRANTIES OF ANY KIND, EITHER</em>
+<a id='L22' name='L22'></a>  22 <em class='comment'> * EXPRESSED OR IMPLIED AS TO THE MATTER INCLUDING, BUT NOT LIMITED</em>
+<a id='L23' name='L23'></a>  23 <em class='comment'> * TO: WARRANTY OF FITNESS FOR PURPOSE OR MERCHANTABILITY, EXCLUSIVITY</em>
+<a id='L24' name='L24'></a>  24 <em class='comment'> * OF RESULTS OR RESULTS OBTAINED FROM USE OF THIS SOFTWARE. CARNEGIE</em>
+<a id='L25' name='L25'></a>  25 <em class='comment'> * MELLON UNIVERSITY DOES NOT MAKE ANY WARRANTY OF ANY KIND WITH RESPECT</em>
+<a id='L26' name='L26'></a>  26 <em class='comment'> * TO FREEDOM FROM PATENT, TRADEMARK, OR COPYRIGHT INFRINGEMENT.</em>
+<a id='L27' name='L27'></a>  27 <em class='comment'> * COPYRIGHT HOLDERS WILL BEAR NO LIABILITY FOR ANY USE OF THIS SOFTWARE</em>
+<a id='L28' name='L28'></a>  28 <em class='comment'> * OR DOCUMENTATION.</em>
+<a id='L29' name='L29'></a>  29 <em class='comment'> *</em>
+<a id='L30' name='L30'></a>  30 <em class='comment'> */</em>
+<a id='L31' name='L31'></a>  31 
+<a id='L32' name='L32'></a>  32 
+<a id='L33' name='L33'></a>  33 
+<a id='L34' name='L34'></a>  34 <em class='comment'>/*</em>
+<a id='L35' name='L35'></a>  35 <em class='comment'> * DiskSim Storage Subsystem Simulation Environment (Version 2.0)</em>
+<a id='L36' name='L36'></a>  36 <em class='comment'> * Revision Authors: Greg Ganger</em>
+<a id='L37' name='L37'></a>  37 <em class='comment'> * Contributors: Ross Cohen, John Griffin, Steve Schlosser</em>
+<a id='L38' name='L38'></a>  38 <em class='comment'> *</em>
+<a id='L39' name='L39'></a>  39 <em class='comment'> * Copyright (c) of Carnegie Mellon University, 1999.</em>
+<a id='L40' name='L40'></a>  40 <em class='comment'> *</em>
+<a id='L41' name='L41'></a>  41 <em class='comment'> * Permission to reproduce, use, and prepare derivative works of</em>
+<a id='L42' name='L42'></a>  42 <em class='comment'> * this software for internal use is granted provided the copyright</em>
+<a id='L43' name='L43'></a>  43 <em class='comment'> * and "No Warranty" statements are included with all reproductions</em>
+<a id='L44' name='L44'></a>  44 <em class='comment'> * and derivative works. This software may also be redistributed</em>
+<a id='L45' name='L45'></a>  45 <em class='comment'> * without charge provided that the copyright and "No Warranty"</em>
+<a id='L46' name='L46'></a>  46 <em class='comment'> * statements are included in all redistributions.</em>
+<a id='L47' name='L47'></a>  47 <em class='comment'> *</em>
+<a id='L48' name='L48'></a>  48 <em class='comment'> * NO WARRANTY. THIS SOFTWARE IS FURNISHED ON AN "AS IS" BASIS.</em>
+<a id='L49' name='L49'></a>  49 <em class='comment'> * CARNEGIE MELLON UNIVERSITY MAKES NO WARRANTIES OF ANY KIND, EITHER</em>
+<a id='L50' name='L50'></a>  50 <em class='comment'> * EXPRESSED OR IMPLIED AS TO THE MATTER INCLUDING, BUT NOT LIMITED</em>
+<a id='L51' name='L51'></a>  51 <em class='comment'> * TO: WARRANTY OF FITNESS FOR PURPOSE OR MERCHANTABILITY, EXCLUSIVITY</em>
+<a id='L52' name='L52'></a>  52 <em class='comment'> * OF RESULTS OR RESULTS OBTAINED FROM USE OF THIS SOFTWARE. CARNEGIE</em>
+<a id='L53' name='L53'></a>  53 <em class='comment'> * MELLON UNIVERSITY DOES NOT MAKE ANY WARRANTY OF ANY KIND WITH RESPECT</em>
+<a id='L54' name='L54'></a>  54 <em class='comment'> * TO FREEDOM FROM PATENT, TRADEMARK, OR COPYRIGHT INFRINGEMENT.</em>
+<a id='L55' name='L55'></a>  55 <em class='comment'> */</em>
+<a id='L56' name='L56'></a>  56 
+<a id='L57' name='L57'></a>  57 <em class='comment'>/*</em>
+<a id='L58' name='L58'></a>  58 <em class='comment'> * DiskSim Storage Subsystem Simulation Environment</em>
+<a id='L59' name='L59'></a>  59 <em class='comment'> * Authors: Greg Ganger, Bruce Worthington, Yale Patt</em>
+<a id='L60' name='L60'></a>  60 <em class='comment'> *</em>
+<a id='L61' name='L61'></a>  61 <em class='comment'> * Copyright (C) 1993, 1995, 1997 The Regents of the University of Michigan </em>
+<a id='L62' name='L62'></a>  62 <em class='comment'> *</em>
+<a id='L63' name='L63'></a>  63 <em class='comment'> * This software is being provided by the copyright holders under the</em>
+<a id='L64' name='L64'></a>  64 <em class='comment'> * following license. By obtaining, using and/or copying this software,</em>
+<a id='L65' name='L65'></a>  65 <em class='comment'> * you agree that you have read, understood, and will comply with the</em>
+<a id='L66' name='L66'></a>  66 <em class='comment'> * following terms and conditions:</em>
+<a id='L67' name='L67'></a>  67 <em class='comment'> *</em>
+<a id='L68' name='L68'></a>  68 <em class='comment'> * Permission to use, copy, modify, distribute, and sell this software</em>
+<a id='L69' name='L69'></a>  69 <em class='comment'> * and its documentation for any purpose and without fee or royalty is</em>
+<a id='L70' name='L70'></a>  70 <em class='comment'> * hereby granted, provided that the full text of this NOTICE appears on</em>
+<a id='L71' name='L71'></a>  71 <em class='comment'> * ALL copies of the software and documentation or portions thereof,</em>
+<a id='L72' name='L72'></a>  72 <em class='comment'> * including modifications, that you make.</em>
+<a id='L73' name='L73'></a>  73 <em class='comment'> *</em>
+<a id='L74' name='L74'></a>  74 <em class='comment'> * THIS SOFTWARE IS PROVIDED "AS IS," AND COPYRIGHT HOLDERS MAKE NO</em>
+<a id='L75' name='L75'></a>  75 <em class='comment'> * REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED. BY WAY OF EXAMPLE,</em>
+<a id='L76' name='L76'></a>  76 <em class='comment'> * BUT NOT LIMITATION, COPYRIGHT HOLDERS MAKE NO REPRESENTATIONS OR</em>
+<a id='L77' name='L77'></a>  77 <em class='comment'> * WARRANTIES OF MERCHANTABILITY OR FITNESS FOR ANY PARTICULAR PURPOSE OR</em>
+<a id='L78' name='L78'></a>  78 <em class='comment'> * THAT THE USE OF THE SOFTWARE OR DOCUMENTATION WILL NOT INFRINGE ANY</em>
+<a id='L79' name='L79'></a>  79 <em class='comment'> * THIRD PARTY PATENTS, COPYRIGHTS, TRADEMARKS OR OTHER RIGHTS. COPYRIGHT</em>
+<a id='L80' name='L80'></a>  80 <em class='comment'> * HOLDERS WILL BEAR NO LIABILITY FOR ANY USE OF THIS SOFTWARE OR</em>
+<a id='L81' name='L81'></a>  81 <em class='comment'> * DOCUMENTATION.</em>
+<a id='L82' name='L82'></a>  82 <em class='comment'> *</em>
+<a id='L83' name='L83'></a>  83 <em class='comment'> *  This software is provided AS IS, WITHOUT REPRESENTATION FROM THE</em>
+<a id='L84' name='L84'></a>  84 <em class='comment'> * UNIVERSITY OF MICHIGAN AS TO ITS FITNESS FOR ANY PURPOSE, AND</em>
+<a id='L85' name='L85'></a>  85 <em class='comment'> * WITHOUT WARRANTY BY THE UNIVERSITY OF MICHIGAN OF ANY KIND, EITHER</em>
+<a id='L86' name='L86'></a>  86 <em class='comment'> * EXPRESSED OR IMPLIED, INCLUDING WITHOUT LIMITATION THE IMPLIED</em>
+<a id='L87' name='L87'></a>  87 <em class='comment'> * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE REGENTS</em>
+<a id='L88' name='L88'></a>  88 <em class='comment'> * OF THE UNIVERSITY OF MICHIGAN SHALL NOT BE LIABLE FOR ANY DAMAGES,</em>
+<a id='L89' name='L89'></a>  89 <em class='comment'> * INCLUDING SPECIAL , INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES,</em>
+<a id='L90' name='L90'></a>  90 <em class='comment'> * WITH RESPECT TO ANY CLAIM ARISING OUT OF OR IN CONNECTION WITH THE</em>
+<a id='L91' name='L91'></a>  91 <em class='comment'> * USE OF OR IN CONNECTION WITH THE USE OF THE SOFTWARE, EVEN IF IT HAS</em>
+<a id='L92' name='L92'></a>  92 <em class='comment'> * BEEN OR IS HEREAFTER ADVISED OF THE POSSIBILITY OF SUCH DAMAGES</em>
+<a id='L93' name='L93'></a>  93 <em class='comment'> *</em>
+<a id='L94' name='L94'></a>  94 <em class='comment'> * The names and trademarks of copyright holders or authors may NOT be</em>
+<a id='L95' name='L95'></a>  95 <em class='comment'> * used in advertising or publicity pertaining to the software without</em>
+<a id='L96' name='L96'></a>  96 <em class='comment'> * specific, written prior permission. Title to copyright in this software</em>
+<a id='L97' name='L97'></a>  97 <em class='comment'> * and any associated documentation will at all times remain with copyright</em>
+<a id='L98' name='L98'></a>  98 <em class='comment'> * holders.</em>
+<a id='L99' name='L99'></a>  99 <em class='comment'> */</em>
+<a id='L100' name='L100'></a> 100 
+<a id='L101' name='L101'></a> 101 <em class='sharp'>#ifndef</em> <a href='../S/218.html#L102' title='Defined at 102 in src/disksim_iodriver.h.'>DISKSIM_IODRIVER_H</a>
+<a id='L102' name='L102'></a> 102 <em class='sharp'>#define</em> <a href='../S/218.html#L101' title='Referred from 101 in src/disksim_iodriver.h.'>DISKSIM_IODRIVER_H</a>
+<a id='L103' name='L103'></a> 103 
+<a id='L104' name='L104'></a> 104 <em class='sharp'>#include</em> "<a href='276.html'>config.h</a>"
+<a id='L105' name='L105'></a> 105 <em class='sharp'>#include</em> "<a href='255.html'>disksim_iosim.h</a>" <em class='comment'>// for device </em>
+<a id='L106' name='L106'></a> 106 <em class='sharp'>#include</em> "<a href='288.html'>disksim_stat.h</a>"  <em class='comment'>// for statgen</em>
+<a id='L107' name='L107'></a> 107 
+<a id='L108' name='L108'></a> 108 
+<a id='L109' name='L109'></a> 109 <em class='comment'>/* Device driver types */</em>
+<a id='L110' name='L110'></a> 110 
+<a id='L111' name='L111'></a> 111 <em class='sharp'>#define</em> <a href='../R/570.html' title='Multiple referred from 11 places.'>STANDALONE</a>      1
+<a id='L112' name='L112'></a> 112 <em class='comment'>/* &amp; NOTSTANDALONE, which corresponds to a driver that is actually part of */</em>
+<a id='L113' name='L113'></a> 113 <em class='comment'>/* the process-flow model (i.e., a system-level simulation rather than a   */</em>
+<a id='L114' name='L114'></a> 114 <em class='comment'>/* standalone storage subsystem simulation). */</em>
+<a id='L115' name='L115'></a> 115 
+<a id='L116' name='L116'></a> 116 <em class='comment'>/* Device driver ctlr flags */</em>
+<a id='L117' name='L117'></a> 117 
+<a id='L118' name='L118'></a> 118 <em class='sharp'>#define</em> <a href='../R/277.html' title='Multiple referred from 4 places.'>DRIVER_C700</a>             0x2
+<a id='L119' name='L119'></a> 119 <em class='sharp'>#define</em> <a href='../R/278.html' title='Multiple referred from 4 places.'>DRIVER_CTLR_BUSY</a>        0x4
+<a id='L120' name='L120'></a> 120 
+<a id='L121' name='L121'></a> 121 <em class='comment'>/* Device driver computation times */</em>
+<a id='L122' name='L122'></a> 122 
+<a id='L123' name='L123'></a> 123 <em class='sharp'>#define</em> <a href='../S/205.html#L214' title='Referred from 214 in src/disksim_iodriver.c.'>IODRIVER_IMMEDSCHED_TIME</a>                0.0
+<a id='L124' name='L124'></a> 124 <em class='sharp'>#define</em> <a href='../S/205.html#L661' title='Referred from 661 in src/disksim_iodriver.c.'>IODRIVER_WRITE_DISCONNECT_TIME</a>          0.0
+<a id='L125' name='L125'></a> 125 <em class='sharp'>#define</em> <a href='../S/205.html#L661' title='Referred from 661 in src/disksim_iodriver.c.'>IODRIVER_READ_DISCONNECT_TIME</a>           0.0
+<a id='L126' name='L126'></a> 126 <em class='sharp'>#define</em> <a href='../S/205.html#L663' title='Referred from 663 in src/disksim_iodriver.c.'>IODRIVER_RECONNECT_TIME</a>                 0.0
+<a id='L127' name='L127'></a> 127 <em class='sharp'>#define</em> <a href='../S/205.html#L665' title='Referred from 665 in src/disksim_iodriver.c.'>IODRIVER_BASE_COMPLETION_TIME</a>           0.0
+<a id='L128' name='L128'></a> 128 
+<a id='L129' name='L129'></a> 129 <em class='sharp'>#define</em> <a href='../R/323.html' title='Multiple referred from 2 places.'>IODRIVER_COMPLETION_RESPTODEV_TIME</a>      0.0
+<a id='L130' name='L130'></a> 130 <em class='sharp'>#define</em> <a href='../S/205.html#L362' title='Referred from 362 in src/disksim_iodriver.c.'>IODRIVER_COMPLETION_RESPTOSCHED_TIME</a>    0.0
+<a id='L131' name='L131'></a> 131 <em class='sharp'>#define</em> <a href='../S/205.html#L378' title='Referred from 378 in src/disksim_iodriver.c.'>IODRIVER_COMPLETION_SCHEDTOEND_TIME</a>     0.0
+<a id='L132' name='L132'></a> 132 <em class='sharp'>#define</em> <a href='../S/205.html#L381' title='Referred from 381 in src/disksim_iodriver.c.'>IODRIVER_COMPLETION_SCHEDTOWAKEUP_TIME</a>  0.0
+<a id='L133' name='L133'></a> 133 <em class='sharp'>#define</em> <a href='../S/205.html#L378' title='Referred from 378 in src/disksim_iodriver.c.'>IODRIVER_COMPLETION_WAKEUPTOEND_TIME</a>    0.0
+<a id='L134' name='L134'></a> 134 <em class='sharp'>#define</em> <a href='../S/205.html#L366' title='Referred from 366 in src/disksim_iodriver.c.'>IODRIVER_COMPLETION_RESPTOWAKEUP_TIME</a>   0.0
+<a id='L135' name='L135'></a> 135 <em class='sharp'>#define</em> <a href='../S/205.html#L364' title='Referred from 364 in src/disksim_iodriver.c.'>IODRIVER_COMPLETION_RESPTOREQ_TIME</a>      0.0    <em class='comment'>/* e.g., Software RAID */</em>
+<a id='L136' name='L136'></a> 136 
+<a id='L137' name='L137'></a> 137 <em class='comment'>/* Special Constant Queue/Access times */</em>
+<a id='L138' name='L138'></a> 138 
+<a id='L139' name='L139'></a> 139 <em class='sharp'>#define</em> IODRIVER_TRACED_ACCESS_TIMES    -1.0
+<a id='L140' name='L140'></a> 140 <em class='sharp'>#define</em> <a href='../R/334.html' title='Multiple referred from 6 places.'>IODRIVER_TRACED_QUEUE_TIMES</a>     -2.0
+<a id='L141' name='L141'></a> 141 <em class='sharp'>#define</em> <a href='../R/333.html' title='Multiple referred from 3 places.'>IODRIVER_TRACED_BOTH_TIMES</a>      -3.0
+<a id='L142' name='L142'></a> 142 
+<a id='L143' name='L143'></a> 143 
+<a id='L144' name='L144'></a> 144 <strong class='reserved'>typedef</strong> <strong class='reserved'>struct</strong> <a href='../R/1397.html' title='Multiple referred from 23 places.'>iodriver</a> <em class='brace'>{</em>
+<a id='L145' name='L145'></a> 145   <strong class='reserved'>int</strong>           type;
+<a id='L146' name='L146'></a> 146   <strong class='reserved'>int</strong>           usequeue;
+<a id='L147' name='L147'></a> 147   <strong class='reserved'>int</strong>           numoutbuses;
+<a id='L148' name='L148'></a> 148   <strong class='reserved'>int</strong>           outbus;
+<a id='L149' name='L149'></a> 149   <strong class='reserved'>double</strong>        consttime;     <em class='comment'>/* Use value if positive, or traced if neg. */</em>
+<a id='L150' name='L150'></a> 150   <strong class='reserved'>double</strong>        scale;
+<a id='L151' name='L151'></a> 151   <strong class='reserved'>int</strong>           <a href='../S/214.html#L82' title='Defined at 82 in src/disksim_device.c.'>numdevices</a>;
+<a id='L152' name='L152'></a> 152   <strong class='reserved'>int</strong>           numctlrs;
+<a id='L153' name='L153'></a> 153   <strong class='reserved'>struct</strong> <a href='../S/259.html#L255' title='Defined at 255 in src/disksim_ioqueue.h.'>ioq</a> *  queue;
+<a id='L154' name='L154'></a> 154   <a href='../S/255.html#L233' title='Defined at 233 in src/disksim_iosim.h.'>device</a> *      devices;
+<a id='L155' name='L155'></a> 155   <a href='../S/255.html#L219' title='Defined at 219 in src/disksim_iosim.h.'>ctlr</a> *        ctlrs;
+<a id='L156' name='L156'></a> 156   <strong class='reserved'>char</strong>        *name;
+<a id='L157' name='L157'></a> 157 <em class='brace'>}</em> <a href='../R/1397.html' title='Multiple referred from 23 places.'>iodriver</a>;
+<a id='L158' name='L158'></a> 158 
+<a id='L159' name='L159'></a> 159 
+<a id='L160' name='L160'></a> 160 <strong class='reserved'>typedef</strong> <strong class='reserved'>struct</strong> <a href='../R/1405.html' title='Multiple referred from 33 places.'>iodriver_info</a> <em class='brace'>{</em>
+<a id='L161' name='L161'></a> 161    <strong class='reserved'>int</strong> <a href='../S/218.html#L185' title='Defined at 185 in src/disksim_iodriver.h.'>numiodrivers</a>;
+<a id='L162' name='L162'></a> 162    <a href='../D/1684.html' title='Multiple defined in 2 places.'>iodriver</a> **<a href='../S/218.html#L186' title='Defined at 186 in src/disksim_iodriver.h.'>iodrivers</a>;
+<a id='L163' name='L163'></a> 163    <strong class='reserved'>int</strong> iodrivers_len;
+<a id='L164' name='L164'></a> 164    <strong class='reserved'>int</strong> <a href='../S/218.html#L187' title='Defined at 187 in src/disksim_iodriver.h.'>numsysorgs</a>;
+<a id='L165' name='L165'></a> 165    <strong class='reserved'>struct</strong> <a href='../D/1865.html' title='Multiple defined in 2 places.'>logorg</a> **<a href='../S/218.html#L188' title='Defined at 188 in src/disksim_iodriver.h.'>sysorgs</a>;
+<a id='L166' name='L166'></a> 166    <strong class='reserved'>int</strong> sysorgs_len;
+<a id='L167' name='L167'></a> 167    <strong class='reserved'>struct</strong> <a href='../S/259.html#L255' title='Defined at 255 in src/disksim_ioqueue.h.'>ioq</a> *<a href='../S/218.html#L189' title='Defined at 189 in src/disksim_iodriver.h.'>overallqueue</a>;
+<a id='L168' name='L168'></a> 168    <strong class='reserved'>int</strong> <a href='../S/218.html#L190' title='Defined at 190 in src/disksim_iodriver.h.'>drv_printsizestats</a>;
+<a id='L169' name='L169'></a> 169    <strong class='reserved'>int</strong> <a href='../S/218.html#L191' title='Defined at 191 in src/disksim_iodriver.h.'>drv_printlocalitystats</a>;
+<a id='L170' name='L170'></a> 170    <strong class='reserved'>int</strong> <a href='../S/218.html#L192' title='Defined at 192 in src/disksim_iodriver.h.'>drv_printblockingstats</a>;
+<a id='L171' name='L171'></a> 171    <strong class='reserved'>int</strong> <a href='../S/218.html#L193' title='Defined at 193 in src/disksim_iodriver.h.'>drv_printinterferestats</a>;
+<a id='L172' name='L172'></a> 172    <strong class='reserved'>int</strong> <a href='../S/218.html#L194' title='Defined at 194 in src/disksim_iodriver.h.'>drv_printqueuestats</a>;
+<a id='L173' name='L173'></a> 173    <strong class='reserved'>int</strong> <a href='../S/218.html#L195' title='Defined at 195 in src/disksim_iodriver.h.'>drv_printcritstats</a>;
+<a id='L174' name='L174'></a> 174    <strong class='reserved'>int</strong> <a href='../S/218.html#L196' title='Defined at 196 in src/disksim_iodriver.h.'>drv_printidlestats</a>;
+<a id='L175' name='L175'></a> 175    <strong class='reserved'>int</strong> <a href='../S/218.html#L197' title='Defined at 197 in src/disksim_iodriver.h.'>drv_printintarrstats</a>;
+<a id='L176' name='L176'></a> 176    <strong class='reserved'>int</strong> <a href='../S/218.html#L198' title='Defined at 198 in src/disksim_iodriver.h.'>drv_printstreakstats</a>;
+<a id='L177' name='L177'></a> 177    <strong class='reserved'>int</strong> <a href='../S/218.html#L199' title='Defined at 199 in src/disksim_iodriver.h.'>drv_printstampstats</a>;
+<a id='L178' name='L178'></a> 178    <strong class='reserved'>int</strong> <a href='../S/218.html#L200' title='Defined at 200 in src/disksim_iodriver.h.'>drv_printperdiskstats</a>;
+<a id='L179' name='L179'></a> 179    <a href='../S/288.html#L123' title='Defined at 123 in src/disksim_stat.h.'>statgen</a> <a href='../S/218.html#L201' title='Defined at 201 in src/disksim_iodriver.h.'>emptyqueuestats</a>;
+<a id='L180' name='L180'></a> 180    <a href='../S/288.html#L123' title='Defined at 123 in src/disksim_stat.h.'>statgen</a> <a href='../S/218.html#L202' title='Defined at 202 in src/disksim_iodriver.h.'>initiatenextstats</a>;
+<a id='L181' name='L181'></a> 181 <em class='brace'>}</em> <a href='../R/1406.html' title='Multiple referred from 4 places.'>iodriver_info_t</a>;
+<a id='L182' name='L182'></a> 182 
+<a id='L183' name='L183'></a> 183 
+<a id='L184' name='L184'></a> 184 <em class='comment'>/* one remapping #define for each variable in iodriver_info_t */</em>
+<a id='L185' name='L185'></a> 185 <em class='sharp'>#define</em> <a href='../R/1799.html' title='Multiple referred from 16 places.'>numiodrivers</a>            (<a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;<a href='../S/218.html#L160' title='Defined at 160 in src/disksim_iodriver.h.'>iodriver_info</a>-&gt;<a href='../S/218.html#L185' title='Defined at 185 in src/disksim_iodriver.h.'>numiodrivers</a>)
+<a id='L186' name='L186'></a> 186 <em class='sharp'>#define</em> <a href='../R/1422.html' title='Multiple referred from 74 places.'>iodrivers</a>               (<a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;<a href='../S/218.html#L160' title='Defined at 160 in src/disksim_iodriver.h.'>iodriver_info</a>-&gt;<a href='../S/218.html#L186' title='Defined at 186 in src/disksim_iodriver.h.'>iodrivers</a>)
+<a id='L187' name='L187'></a> 187 <em class='sharp'>#define</em> <a href='../R/1803.html' title='Multiple referred from 13 places.'>numsysorgs</a>              (<a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;<a href='../S/218.html#L160' title='Defined at 160 in src/disksim_iodriver.h.'>iodriver_info</a>-&gt;<a href='../S/218.html#L187' title='Defined at 187 in src/disksim_iodriver.h.'>numsysorgs</a>)
+<a id='L188' name='L188'></a> 188 <em class='sharp'>#define</em> <a href='../R/2184.html' title='Multiple referred from 16 places.'>sysorgs</a>                 (<a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;<a href='../S/218.html#L160' title='Defined at 160 in src/disksim_iodriver.h.'>iodriver_info</a>-&gt;<a href='../S/218.html#L188' title='Defined at 188 in src/disksim_iodriver.h.'>sysorgs</a>)
+<a id='L189' name='L189'></a> 189 <em class='sharp'>#define</em> <a href='../R/1809.html' title='Multiple referred from 10 places.'>overallqueue</a>            (<a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;<a href='../S/218.html#L160' title='Defined at 160 in src/disksim_iodriver.h.'>iodriver_info</a>-&gt;<a href='../S/218.html#L189' title='Defined at 189 in src/disksim_iodriver.h.'>overallqueue</a>)
+<a id='L190' name='L190'></a> 190 <em class='sharp'>#define</em> <a href='../R/1225.html' title='Multiple referred from 3 places.'>drv_printsizestats</a>      (<a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;<a href='../S/218.html#L160' title='Defined at 160 in src/disksim_iodriver.h.'>iodriver_info</a>-&gt;<a href='../S/218.html#L190' title='Defined at 190 in src/disksim_iodriver.h.'>drv_printsizestats</a>)
+<a id='L191' name='L191'></a> 191 <em class='sharp'>#define</em> <a href='../R/1222.html' title='Multiple referred from 3 places.'>drv_printlocalitystats</a>  (<a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;<a href='../S/218.html#L160' title='Defined at 160 in src/disksim_iodriver.h.'>iodriver_info</a>-&gt;<a href='../S/218.html#L191' title='Defined at 191 in src/disksim_iodriver.h.'>drv_printlocalitystats</a>)
+<a id='L192' name='L192'></a> 192 <em class='sharp'>#define</em> <a href='../R/1217.html' title='Multiple referred from 3 places.'>drv_printblockingstats</a>  (<a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;<a href='../S/218.html#L160' title='Defined at 160 in src/disksim_iodriver.h.'>iodriver_info</a>-&gt;<a href='../S/218.html#L192' title='Defined at 192 in src/disksim_iodriver.h.'>drv_printblockingstats</a>)
+<a id='L193' name='L193'></a> 193 <em class='sharp'>#define</em> <a href='../R/1221.html' title='Multiple referred from 3 places.'>drv_printinterferestats</a> (<a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;<a href='../S/218.html#L160' title='Defined at 160 in src/disksim_iodriver.h.'>iodriver_info</a>-&gt;<a href='../S/218.html#L193' title='Defined at 193 in src/disksim_iodriver.h.'>drv_printinterferestats</a>)
+<a id='L194' name='L194'></a> 194 <em class='sharp'>#define</em> <a href='../R/1224.html' title='Multiple referred from 2 places.'>drv_printqueuestats</a>     (<a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;<a href='../S/218.html#L160' title='Defined at 160 in src/disksim_iodriver.h.'>iodriver_info</a>-&gt;<a href='../S/218.html#L194' title='Defined at 194 in src/disksim_iodriver.h.'>drv_printqueuestats</a>)
+<a id='L195' name='L195'></a> 195 <em class='sharp'>#define</em> <a href='../R/1218.html' title='Multiple referred from 2 places.'>drv_printcritstats</a>      (<a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;<a href='../S/218.html#L160' title='Defined at 160 in src/disksim_iodriver.h.'>iodriver_info</a>-&gt;<a href='../S/218.html#L195' title='Defined at 195 in src/disksim_iodriver.h.'>drv_printcritstats</a>)
+<a id='L196' name='L196'></a> 196 <em class='sharp'>#define</em> <a href='../R/1219.html' title='Multiple referred from 3 places.'>drv_printidlestats</a>      (<a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;<a href='../S/218.html#L160' title='Defined at 160 in src/disksim_iodriver.h.'>iodriver_info</a>-&gt;<a href='../S/218.html#L196' title='Defined at 196 in src/disksim_iodriver.h.'>drv_printidlestats</a>)
+<a id='L197' name='L197'></a> 197 <em class='sharp'>#define</em> <a href='../R/1220.html' title='Multiple referred from 3 places.'>drv_printintarrstats</a>    (<a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;<a href='../S/218.html#L160' title='Defined at 160 in src/disksim_iodriver.h.'>iodriver_info</a>-&gt;<a href='../S/218.html#L197' title='Defined at 197 in src/disksim_iodriver.h.'>drv_printintarrstats</a>)
+<a id='L198' name='L198'></a> 198 <em class='sharp'>#define</em> <a href='../R/1227.html' title='Multiple referred from 3 places.'>drv_printstreakstats</a>    (<a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;<a href='../S/218.html#L160' title='Defined at 160 in src/disksim_iodriver.h.'>iodriver_info</a>-&gt;<a href='../S/218.html#L198' title='Defined at 198 in src/disksim_iodriver.h.'>drv_printstreakstats</a>)
+<a id='L199' name='L199'></a> 199 <em class='sharp'>#define</em> <a href='../R/1226.html' title='Multiple referred from 3 places.'>drv_printstampstats</a>     (<a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;<a href='../S/218.html#L160' title='Defined at 160 in src/disksim_iodriver.h.'>iodriver_info</a>-&gt;<a href='../S/218.html#L199' title='Defined at 199 in src/disksim_iodriver.h.'>drv_printstampstats</a>)
+<a id='L200' name='L200'></a> 200 <em class='sharp'>#define</em> <a href='../R/1223.html' title='Multiple referred from 3 places.'>drv_printperdiskstats</a>   (<a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;<a href='../S/218.html#L160' title='Defined at 160 in src/disksim_iodriver.h.'>iodriver_info</a>-&gt;<a href='../S/218.html#L200' title='Defined at 200 in src/disksim_iodriver.h.'>drv_printperdiskstats</a>)
+<a id='L201' name='L201'></a> 201 <em class='sharp'>#define</em> <a href='../R/1233.html' title='Multiple referred from 7 places.'>emptyqueuestats</a>         (<a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;<a href='../S/218.html#L160' title='Defined at 160 in src/disksim_iodriver.h.'>iodriver_info</a>-&gt;<a href='../S/218.html#L201' title='Defined at 201 in src/disksim_iodriver.h.'>emptyqueuestats</a>)
+<a id='L202' name='L202'></a> 202 <em class='sharp'>#define</em> <a href='../R/1359.html' title='Multiple referred from 7 places.'>initiatenextstats</a>       (<a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;<a href='../S/218.html#L160' title='Defined at 160 in src/disksim_iodriver.h.'>iodriver_info</a>-&gt;<a href='../S/218.html#L202' title='Defined at 202 in src/disksim_iodriver.h.'>initiatenextstats</a>)
+<a id='L203' name='L203'></a> 203 
+<a id='L204' name='L204'></a> 204 
+<a id='L205' name='L205'></a> 205 
+<a id='L206' name='L206'></a> 206 
+<a id='L207' name='L207'></a> 207 <em class='comment'>/* exported disksim_iodriver.c functions */</em>
+<a id='L208' name='L208'></a> 208 
+<a id='L209' name='L209'></a> 209 <strong class='reserved'>void</strong>    iodriver_read_toprints (FILE *parfile);
+<a id='L210' name='L210'></a> 210 <strong class='reserved'>void</strong>    iodriver_read_specs (FILE *parfile);
+<a id='L211' name='L211'></a> 211 <strong class='reserved'>void</strong>    iodriver_read_physorg (FILE *parfile);
+<a id='L212' name='L212'></a> 212 <strong class='reserved'>void</strong>    iodriver_read_logorg (FILE *parfile);
+<a id='L213' name='L213'></a> 213 <strong class='reserved'>void</strong>    iodriver_param_override (<strong class='reserved'>char</strong> *paramname, <strong class='reserved'>char</strong> *paramval, <strong class='reserved'>int</strong> first, <strong class='reserved'>int</strong> last);
+<a id='L214' name='L214'></a> 214 <strong class='reserved'>void</strong>    iodriver_sysorg_param_override (<strong class='reserved'>char</strong> *paramname, <strong class='reserved'>char</strong> *paramval, <strong class='reserved'>int</strong> first, <strong class='reserved'>int</strong> last);
+<a id='L215' name='L215'></a> 215 <strong class='reserved'>void</strong>    <a href='../S/205.html#L929' title='Defined at 929 in src/disksim_iodriver.c.'>iodriver_setcallbacks</a> (<strong class='reserved'>void</strong>);
+<a id='L216' name='L216'></a> 216 <strong class='reserved'>void</strong>    <a href='../S/205.html#L935' title='Defined at 935 in src/disksim_iodriver.c.'>iodriver_initialize</a> (<strong class='reserved'>int</strong> standalone);
+<a id='L217' name='L217'></a> 217 <strong class='reserved'>void</strong>    <a href='../S/205.html#L1017' title='Defined at 1017 in src/disksim_iodriver.c.'>iodriver_resetstats</a> (<strong class='reserved'>void</strong>);
+<a id='L218' name='L218'></a> 218 <strong class='reserved'>void</strong>    <a href='../S/205.html#L1203' title='Defined at 1203 in src/disksim_iodriver.c.'>iodriver_printstats</a> (<strong class='reserved'>void</strong>);
+<a id='L219' name='L219'></a> 219 <strong class='reserved'>void</strong>    <a href='../S/205.html#L1258' title='Defined at 1258 in src/disksim_iodriver.c.'>iodriver_cleanstats</a> (<strong class='reserved'>void</strong>);
+<a id='L220' name='L220'></a> 220 <a href='../S/283.html#L266' title='Defined at 266 in src/disksim_global.h.'>event</a> * <a href='../S/205.html#L744' title='Defined at 744 in src/disksim_iodriver.c.'>iodriver_request</a> (<strong class='reserved'>int</strong> iodriverno, <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr);
+<a id='L221' name='L221'></a> 221 <strong class='reserved'>void</strong>    <a href='../S/205.html#L221' title='Defined at 221 in src/disksim_iodriver.c.'>iodriver_schedule</a> (<strong class='reserved'>int</strong> iodriverno, <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr);
+<a id='L222' name='L222'></a> 222 <strong class='reserved'>double</strong>  <a href='../S/205.html#L730' title='Defined at 730 in src/disksim_iodriver.c.'>iodriver_tick</a> (<strong class='reserved'>void</strong>);
+<a id='L223' name='L223'></a> 223 <strong class='reserved'>double</strong>  <a href='../S/205.html#L152' title='Defined at 152 in src/disksim_iodriver.c.'>iodriver_raise_priority</a> (<strong class='reserved'>int</strong> iodriverno, <strong class='reserved'>int</strong> opid, <strong class='reserved'>int</strong> devno, <strong class='reserved'>int</strong> blkno, <strong class='reserved'>void</strong> *chan);
+<a id='L224' name='L224'></a> 224 <strong class='reserved'>void</strong>    <a href='../S/205.html#L687' title='Defined at 687 in src/disksim_iodriver.c.'>iodriver_interrupt_arrive</a> (<strong class='reserved'>int</strong> iodriverno, <a href='../S/283.html#L319' title='Defined at 319 in src/disksim_global.h.'>intr_event</a> *intrp);
+<a id='L225' name='L225'></a> 225 <strong class='reserved'>void</strong>    <a href='../S/205.html#L392' title='Defined at 392 in src/disksim_iodriver.c.'>iodriver_access_complete</a> (<strong class='reserved'>int</strong> iodriverno, <a href='../S/283.html#L319' title='Defined at 319 in src/disksim_global.h.'>intr_event</a> *intrp);
+<a id='L226' name='L226'></a> 226 <strong class='reserved'>void</strong>    <a href='../S/205.html#L603' title='Defined at 603 in src/disksim_iodriver.c.'>iodriver_respond_to_device</a> (<strong class='reserved'>int</strong> iodriverno, <a href='../S/283.html#L319' title='Defined at 319 in src/disksim_global.h.'>intr_event</a> *intrp);
+<a id='L227' name='L227'></a> 227 <strong class='reserved'>void</strong>    <a href='../S/205.html#L642' title='Defined at 642 in src/disksim_iodriver.c.'>iodriver_interrupt_complete</a> (<strong class='reserved'>int</strong> iodriverno, <a href='../S/283.html#L319' title='Defined at 319 in src/disksim_global.h.'>intr_event</a> *intrp);
+<a id='L228' name='L228'></a> 228 <strong class='reserved'>void</strong>    <a href='../S/205.html#L824' title='Defined at 824 in src/disksim_iodriver.c.'>iodriver_trace_request_start</a> (<strong class='reserved'>int</strong> iodriverno, <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *curr);
+<a id='L229' name='L229'></a> 229 
+<a id='L230' name='L230'></a> 230 <strong class='reserved'>int</strong> <a href='../S/205.html#L1168' title='Defined at 1168 in src/disksim_iodriver.c.'>iodriver_load_logorg</a>(<strong class='reserved'>struct</strong> <a href='../S/118.html#L245' title='Defined at 245 in libparam/libparam.h.'>lp_block</a> *b);
+<a id='L231' name='L231'></a> 231 <strong class='reserved'>int</strong> <a href='../S/205.html#L1106' title='Defined at 1106 in src/disksim_iodriver.c.'>load_iodriver_topo</a>(<strong class='reserved'>struct</strong> <a href='../S/118.html#L95' title='Defined at 95 in libparam/libparam.h.'>lp_topospec</a> *t, <strong class='reserved'>int</strong> len);
+<a id='L232' name='L232'></a> 232 
+<a id='L233' name='L233'></a> 233 <strong class='reserved'>void</strong> <a href='../S/205.html#L1273' title='Defined at 1273 in src/disksim_iodriver.c.'>iodriver_cleanup</a>(<strong class='reserved'>void</strong>);
+<a id='L234' name='L234'></a> 234 
+<a id='L235' name='L235'></a> 235 <em class='sharp'>#endif</em> <em class='comment'>/* DISKSIM_IODRIVER_H */</em>
+<a id='L236' name='L236'></a> 236 
+</pre>
+<hr />
+<a id='BOTTOM' name='BOTTOM'></a>
+<em class='comment'>/* [&lt;][&gt;][^][v]<a href='#TOP'>[top]</a>[bottom]<a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</em>
+</body>
+</html>

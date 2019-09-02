@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>tracestats</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/194.html#L531'>tracestats</a>        531 src/disksim_iosim.c    if (tracestats == NULL) {</span>
+<span class='curline'><a href='../S/194.html#L532'>tracestats</a>        532 src/disksim_iosim.c       tracestats  = (statgen *)DISKSIM_malloc(tracemappings * sizeof(statgen));</span>
+<span class='curline'><a href='../S/194.html#L539'>tracestats</a>        539 src/disksim_iosim.c          stat_initialize(statdeffile, statdesc_tracequeuestats, &amp;tracestats[i]);</span>
+<span class='curline'><a href='../S/194.html#L572'>tracestats</a>        572 src/disksim_iosim.c 	 if (tracestats) {</span>
+<span class='curline'><a href='../S/194.html#L573'>tracestats</a>        573 src/disksim_iosim.c 	    stat_update(&amp;tracestats[i], ((double) temp-&gt;tempint1 / (double) 1000));</span>
+<span class='curline'><a href='../S/194.html#L661'>tracestats</a>        661 src/disksim_iosim.c    if ((tracestats) &amp;&amp; (PRINTTRACESTATS)) {</span>
+<span class='curline'><a href='../S/194.html#L665'>tracestats</a>        665 src/disksim_iosim.c          stat_print(&amp;tracestats[i], prefix);</span>
+<span class='curline'><a href='../S/255.html#L287'>tracestats</a>        287 src/disksim_iosim.h    statgen *tracestats;</span>
+<span class='curline'><a href='../S/255.html#L310'>tracestats</a>        310 src/disksim_iosim.h #define tracestats               (disksim-&gt;iosim_info-&gt;tracestats)</span>
+</pre>
+</body>
+</html>

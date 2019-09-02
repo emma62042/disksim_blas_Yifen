@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>hpwrites</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/264.html#L297'>hpwrites</a>          297 src/disksim_iotrace.c       hpwrites++;</span>
+<span class='curline'><a href='../S/264.html#L766'>hpwrites</a>          766 src/disksim_iotrace.c    if (hpreads | hpwrites) {</span>
+<span class='curline'><a href='../S/264.html#L768'>hpwrites</a>          768 src/disksim_iotrace.c       fprintf(outfile, "Total reads:    \t%d\t%5.2f\n", hpreads, ((double) hpreads / (double) (hpreads + hpwrites)));</span>
+<span class='curline'><a href='../S/264.html#L769'>hpwrites</a>          769 src/disksim_iotrace.c       fprintf(outfile, "Total writes:   \t%d\t%5.2f\n", hpwrites, ((double) hpwrites / (double) (hpreads + hpwrites)));</span>
+<span class='curline'><a href='../S/264.html#L770'>hpwrites</a>          770 src/disksim_iotrace.c       fprintf(outfile, "Sync Reads:  \t%d\t%5.2f\t%5.2f\n", syncreads, ((double) syncreads / (double) (hpreads + hpwrites)), ((double) syncreads / (double) hpreads));</span>
+<span class='curline'><a href='../S/264.html#L771'>hpwrites</a>          771 src/disksim_iotrace.c       fprintf(outfile, "Sync Writes: \t%d\t%5.2f\t%5.2f\n", syncwrites, ((double) syncwrites / (double) (hpreads + hpwrites)), ((double) syncwrites / (double) hpwrites));</span>
+<span class='curline'><a href='../S/264.html#L772'>hpwrites</a>          772 src/disksim_iotrace.c       fprintf(outfile, "Async Reads: \t%d\t%5.2f\t%5.2f\n", asyncreads, ((double) asyncreads / (double) (hpreads + hpwrites)), ((double) asyncreads / (double) hpreads));</span>
+<span class='curline'><a href='../S/264.html#L773'>hpwrites</a>          773 src/disksim_iotrace.c       fprintf(outfile, "Async Writes:\t%d\t%5.2f\t%5.2f\n", asyncwrites, ((double) asyncwrites / (double) (hpreads + hpwrites)), ((double) asyncwrites / (double) hpwrites));</span>
+<span class='curline'><a href='../S/280.html#L72'>hpwrites</a>           72 src/disksim_iotrace.h    int hpwrites;</span>
+<span class='curline'><a href='../S/280.html#L102'>hpwrites</a>          102 src/disksim_iotrace.h #define hpwrites                (disksim-&gt;iotrace_info-&gt;hpwrites)</span>
+</pre>
+</body>
+</html>

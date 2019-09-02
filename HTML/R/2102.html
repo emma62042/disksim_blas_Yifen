@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>ssd_req</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/156.html#L454'>ssd_req</a>           454 ssdmodel/include/ssdmodel/ssd.h int     ssd_already_present(ssd_req **reqs, int total, ioreq_event *req);</span>
+<span class='curline'><a href='../S/187.html#L376'>ssd_req</a>           376 ssdmodel/ssd.c int ssd_already_present(ssd_req **reqs, int total, ioreq_event *req)</span>
+<span class='curline'><a href='../S/187.html#L441'>ssd_req</a>           441 ssdmodel/ssd.c     ssd_req **read_reqs;</span>
+<span class='curline'><a href='../S/187.html#L442'>ssd_req</a>           442 ssdmodel/ssd.c     ssd_req **write_reqs;</span>
+<span class='curline'><a href='../S/187.html#L499'>ssd_req</a>           499 ssdmodel/ssd.c         read_reqs = (ssd_req **) malloc(max_reqs * sizeof(ssd_req *));</span>
+<span class='curline'><a href='../S/187.html#L500'>ssd_req</a>           500 ssdmodel/ssd.c         write_reqs = (ssd_req **) malloc(max_reqs * sizeof(ssd_req *));</span>
+<span class='curline'><a href='../S/187.html#L519'>ssd_req</a>           519 ssdmodel/ssd.c                 ssd_req *r = malloc(sizeof(ssd_req));</span>
+<span class='curline'><a href='../S/147.html#L454'>ssd_req</a>           454 ssdmodel/ssd.h int     ssd_already_present(ssd_req **reqs, int total, ioreq_event *req);</span>
+<span class='curline'><a href='../S/146.html#L71'>ssd_req</a>            71 ssdmodel/ssd_gang.c (ssd_t *s, int gang_num, ssd_req ***rd_q, ssd_req ***wr_q, int *rd_total, int *wr_total)</span>
+<span class='curline'><a href='../S/146.html#L111'>ssd_req</a>           111 ssdmodel/ssd_gang.c                 ssd_req *r = malloc(sizeof(ssd_req));</span>
+<span class='curline'><a href='../S/146.html#L305'>ssd_req</a>           305 ssdmodel/ssd_gang.c             ssd_req *elem_req[1];</span>
+<span class='curline'><a href='../S/146.html#L340'>ssd_req</a>           340 ssdmodel/ssd_gang.c             elem_req[0] = malloc(sizeof(ssd_req));</span>
+<span class='curline'><a href='../S/146.html#L341'>ssd_req</a>           341 ssdmodel/ssd_gang.c             memset(elem_req[0], 0, sizeof(ssd_req));</span>
+<span class='curline'><a href='../S/146.html#L407'>ssd_req</a>           407 ssdmodel/ssd_gang.c (ssd_t *s, gang_metadata *g, int gang_num, ssd_req ***reqs_queue, int read_flag, int total)</span>
+<span class='curline'><a href='../S/146.html#L410'>ssd_req</a>           410 ssdmodel/ssd_gang.c     ssd_req ***first;</span>
+<span class='curline'><a href='../S/146.html#L417'>ssd_req</a>           417 ssdmodel/ssd_gang.c     first = (ssd_req ***) malloc (s-&gt;params.elements_per_gang * sizeof(ssd_req **));</span>
+<span class='curline'><a href='../S/146.html#L432'>ssd_req</a>           432 ssdmodel/ssd_gang.c                 ssd_req *to_free;</span>
+<span class='curline'><a href='../S/146.html#L508'>ssd_req</a>           508 ssdmodel/ssd_gang.c     ssd_req ***rd_q;</span>
+<span class='curline'><a href='../S/146.html#L509'>ssd_req</a>           509 ssdmodel/ssd_gang.c     ssd_req ***wr_q;</span>
+<span class='curline'><a href='../S/146.html#L540'>ssd_req</a>           540 ssdmodel/ssd_gang.c         rd_q = (ssd_req ***) malloc(s-&gt;params.elements_per_gang * sizeof (ssd_req **));</span>
+<span class='curline'><a href='../S/146.html#L541'>ssd_req</a>           541 ssdmodel/ssd_gang.c         wr_q = (ssd_req ***) malloc(s-&gt;params.elements_per_gang * sizeof (ssd_req **));</span>
+<span class='curline'><a href='../S/146.html#L543'>ssd_req</a>           543 ssdmodel/ssd_gang.c             rd_q[i] = malloc(MAX_REQS * sizeof(ssd_req *));</span>
+<span class='curline'><a href='../S/146.html#L544'>ssd_req</a>           544 ssdmodel/ssd_gang.c             wr_q[i] = malloc(MAX_REQS * sizeof(ssd_req *));</span>
+<span class='curline'><a href='../S/146.html#L545'>ssd_req</a>           545 ssdmodel/ssd_gang.c             memset(rd_q[i], 0, MAX_REQS * sizeof(ssd_req *));</span>
+<span class='curline'><a href='../S/146.html#L546'>ssd_req</a>           546 ssdmodel/ssd_gang.c             memset(wr_q[i], 0, MAX_REQS * sizeof(ssd_req *));</span>
+<span class='curline'><a href='../S/159.html#L476'>ssd_req</a>           476 ssdmodel/ssd_timing.c listnode **ssd_pick_parunits(ssd_req **reqs, int total, int elem_num, ssd_element_metadata *metadata, ssd_t *s)</span>
+<span class='curline'><a href='../S/159.html#L559'>ssd_req</a>           559 ssdmodel/ssd_timing.c                             ssd_req *r;</span>
+<span class='curline'><a href='../S/159.html#L563'>ssd_req</a>           563 ssdmodel/ssd_timing.c                             r = ((ssd_req *)n-&gt;data);</span>
+<span class='curline'><a href='../S/159.html#L613'>ssd_req</a>           613 ssdmodel/ssd_timing.c static double ssd_issue_overlapped_ios(ssd_req **reqs, int total, int elem_num, ssd_t *s)</span>
+<span class='curline'><a href='../S/159.html#L672'>ssd_req</a>           672 ssdmodel/ssd_timing.c                 ssd_req *r;</span>
+<span class='curline'><a href='../S/159.html#L679'>ssd_req</a>           679 ssdmodel/ssd_timing.c                 r = (ssd_req *)n-&gt;data;</span>
+<span class='curline'><a href='../S/159.html#L805'>ssd_req</a>           805 ssdmodel/ssd_timing.c (ssd_req **reqs, int total, int elem_num, ssd_t *s)</span>
+<span class='curline'><a href='../S/159.html#L880'>ssd_req</a>           880 ssdmodel/ssd_timing.c void ssd_compute_access_time(ssd_t *s, int elem_num, ssd_req **reqs, int total)</span>
+<span class='curline'><a href='../S/143.html#L23'>ssd_req</a>            23 ssdmodel/ssd_timing.h void ssd_compute_access_time(ssd_t *s, int elem_num, ssd_req **reqs, int total);</span>
+</pre>
+</body>
+</html>

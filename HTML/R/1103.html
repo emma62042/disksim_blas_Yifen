@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>diskreq</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/273.html#L944'>diskreq</a>           944 src/disksim_disk.c    diskreq *tmpdiskreq;</span>
+<span class='curline'><a href='../S/273.html#L950'>diskreq</a>           950 src/disksim_disk.c    StaticAssert (sizeof(diskreq) &lt;= DISKSIM_EVENT_SIZE);</span>
+<span class='curline'><a href='../S/258.html#L433'>diskreq</a>           433 src/disksim_disk.h   diskreq     *pendxfer;</span>
+<span class='curline'><a href='../S/258.html#L434'>diskreq</a>           434 src/disksim_disk.h   diskreq     *currenthda;</span>
+<span class='curline'><a href='../S/258.html#L435'>diskreq</a>           435 src/disksim_disk.h   diskreq     *effectivehda;</span>
+<span class='curline'><a href='../S/258.html#L436'>diskreq</a>           436 src/disksim_disk.h   diskreq     *currentbus;</span>
+<span class='curline'><a href='../S/258.html#L437'>diskreq</a>           437 src/disksim_disk.h   diskreq     *effectivebus;</span>
+<span class='curline'><a href='../S/258.html#L553'>diskreq</a>           553 src/disksim_disk.h int  disk_buffer_stopable_access (disk *currdisk, diskreq *currdiskreq);</span>
+<span class='curline'><a href='../S/258.html#L562'>diskreq</a>           562 src/disksim_disk.h 				     diskreq *currdiskreq, </span>
+<span class='curline'><a href='../S/258.html#L566'>diskreq</a>           566 src/disksim_disk.h diskreq * disk_buffer_seg_owner(segment *seg, int effective);</span>
+<span class='curline'><a href='../S/258.html#L567'>diskreq</a>           567 src/disksim_disk.h int  disk_buffer_attempt_seg_ownership(disk *currdisk, diskreq *currdiskreq);</span>
+<span class='curline'><a href='../S/258.html#L580'>diskreq</a>           580 src/disksim_disk.h void disk_buffer_set_segment(disk *currdisk, diskreq *currdiskreq);</span>
+<span class='curline'><a href='../S/258.html#L582'>diskreq</a>           582 src/disksim_disk.h void disk_buffer_remove_from_seg(diskreq *currdiskreq);</span>
+<span class='curline'><a href='../S/192.html#L151'>diskreq</a>           151 src/disksim_diskcache.c void disk_buffer_remove_from_seg (diskreq *currdiskreq)</span>
+<span class='curline'><a href='../S/192.html#L165'>diskreq</a>           165 src/disksim_diskcache.c       diskreq *tmpdiskreq = seg-&gt;diskreqlist;</span>
+<span class='curline'><a href='../S/192.html#L187'>diskreq</a>           187 src/disksim_diskcache.c diskreq* disk_buffer_seg_owner (segment *seg, int effective)</span>
+<span class='curline'><a href='../S/192.html#L189'>diskreq</a>           189 src/disksim_diskcache.c    diskreq *seg_owner = seg-&gt;diskreqlist;</span>
+<span class='curline'><a href='../S/192.html#L190'>diskreq</a>           190 src/disksim_diskcache.c    diskreq *tmpdiskreq = seg-&gt;diskreqlist;</span>
+<span class='curline'><a href='../S/192.html#L226'>diskreq</a>           226 src/disksim_diskcache.c    diskreq *currdiskreq = currseg-&gt;diskreqlist;</span>
+<span class='curline'><a href='../S/192.html#L288'>diskreq</a>           288 src/disksim_diskcache.c    diskreq *currdiskreq = currseg-&gt;diskreqlist;</span>
+<span class='curline'><a href='../S/192.html#L398'>diskreq</a>           398 src/disksim_diskcache.c    diskreq *seg_owner;</span>
+<span class='curline'><a href='../S/192.html#L581'>diskreq</a>           581 src/disksim_diskcache.c disk_buffer_select_read_segment(disk *currdisk, diskreq *currdiskreq)</span>
+<span class='curline'><a href='../S/192.html#L776'>diskreq</a>           776 src/disksim_diskcache.c static segment* disk_buffer_select_write_segment(disk *currdisk, diskreq *currdiskreq)</span>
+<span class='curline'><a href='../S/192.html#L779'>diskreq</a>           779 src/disksim_diskcache.c    diskreq *tmp_diskreq;</span>
+<span class='curline'><a href='../S/192.html#L780'>diskreq</a>           780 src/disksim_diskcache.c    diskreq *holddiskreq;</span>
+<span class='curline'><a href='../S/192.html#L1016'>diskreq</a>          1016 src/disksim_diskcache.c segment * disk_buffer_select_segment (disk *currdisk, diskreq *currdiskreq,</span>
+<span class='curline'><a href='../S/192.html#L1162'>diskreq</a>          1162 src/disksim_diskcache.c    diskreq *tmp_diskreq;</span>
+<span class='curline'><a href='../S/192.html#L1163'>diskreq</a>          1163 src/disksim_diskcache.c    diskreq *holddiskreq;</span>
+<span class='curline'><a href='../S/192.html#L1263'>diskreq</a>          1263 src/disksim_diskcache.c void disk_buffer_set_segment (disk *currdisk, diskreq *currdiskreq)</span>
+<span class='curline'><a href='../S/192.html#L1267'>diskreq</a>          1267 src/disksim_diskcache.c    diskreq     *tmp_diskreq;</span>
+<span class='curline'><a href='../S/192.html#L1439'>diskreq</a>          1439 src/disksim_diskcache.c       diskreq *prev_diskreq = 0;</span>
+<span class='curline'><a href='../S/192.html#L1482'>diskreq</a>          1482 src/disksim_diskcache.c int disk_buffer_attempt_seg_ownership (disk *currdisk, diskreq *currdiskreq)</span>
+<span class='curline'><a href='../S/192.html#L1485'>diskreq</a>          1485 src/disksim_diskcache.c    diskreq     *tmp_diskreq;</span>
+<span class='curline'><a href='../S/196.html#L128'>diskreq</a>           128 src/disksim_diskctlr.c disk_check_bus (disk *currdisk, diskreq *currdiskreq);</span>
+<span class='curline'><a href='../S/196.html#L133'>diskreq</a>           133 src/disksim_diskctlr.c 		  diskreq *currdiskreq);</span>
+<span class='curline'><a href='../S/196.html#L137'>diskreq</a>           137 src/disksim_diskctlr.c 		diskreq *currdiskreq, </span>
+<span class='curline'><a href='../S/196.html#L142'>diskreq</a>           142 src/disksim_diskctlr.c 			   diskreq *currdiskreq, </span>
+<span class='curline'><a href='../S/196.html#L147'>diskreq</a>           147 src/disksim_diskctlr.c 		    diskreq *currdiskreq, </span>
+<span class='curline'><a href='../S/196.html#L153'>diskreq</a>           153 src/disksim_diskctlr.c 		     diskreq *currdiskreq, </span>
+<span class='curline'><a href='../S/196.html#L373'>diskreq</a>           373 src/disksim_diskctlr.c   diskreq *currdiskreq = curr-&gt;ioreq_hold_diskreq;</span>
+<span class='curline'><a href='../S/196.html#L394'>diskreq</a>           394 src/disksim_diskctlr.c   diskreq     *nextdiskreq;</span>
+<span class='curline'><a href='../S/196.html#L436'>diskreq</a>           436 src/disksim_diskctlr.c 				  diskreq *currdiskreq, </span>
+<span class='curline'><a href='../S/196.html#L440'>diskreq</a>           440 src/disksim_diskctlr.c   diskreq     *nextdiskreq;</span>
+<span class='curline'><a href='../S/196.html#L486'>diskreq</a>           486 src/disksim_diskctlr.c       nextdiskreq = (diskreq*) tmpioreq-&gt;ioreq_hold_diskreq;</span>
+<span class='curline'><a href='../S/196.html#L569'>diskreq</a>           569 src/disksim_diskctlr.c   diskreq     *currdiskreq;</span>
+<span class='curline'><a href='../S/196.html#L658'>diskreq</a>           658 src/disksim_diskctlr.c   diskreq *currdiskreq = seg-&gt;diskreqlist;</span>
+<span class='curline'><a href='../S/196.html#L659'>diskreq</a>           659 src/disksim_diskctlr.c   diskreq *bestdiskreq = NULL;</span>
+<span class='curline'><a href='../S/196.html#L714'>diskreq</a>           714 src/disksim_diskctlr.c static void disk_release_hda(disk *currdisk, diskreq *currdiskreq)</span>
+<span class='curline'><a href='../S/196.html#L719'>diskreq</a>           719 src/disksim_diskctlr.c   diskreq *tmpdiskreq;</span>
+<span class='curline'><a href='../S/196.html#L721'>diskreq</a>           721 src/disksim_diskctlr.c   diskreq *nextdiskreq = NULL;</span>
+<span class='curline'><a href='../S/196.html#L887'>diskreq</a>           887 src/disksim_diskctlr.c 		       diskreq *currdiskreq,</span>
+<span class='curline'><a href='../S/196.html#L892'>diskreq</a>           892 src/disksim_diskctlr.c   diskreq     *seg_owner;</span>
+<span class='curline'><a href='../S/196.html#L1041'>diskreq</a>          1041 src/disksim_diskctlr.c static diskreq * </span>
+<span class='curline'><a href='../S/196.html#L1044'>diskreq</a>          1044 src/disksim_diskctlr.c   diskreq *currdiskreq = currdisk-&gt;pendxfer;</span>
+<span class='curline'><a href='../S/196.html#L1045'>diskreq</a>          1045 src/disksim_diskctlr.c   diskreq *bestdiskreq = NULL;</span>
+<span class='curline'><a href='../S/196.html#L1258'>diskreq</a>          1258 src/disksim_diskctlr.c disk_check_bus (disk *currdisk, diskreq *currdiskreq)</span>
+<span class='curline'><a href='../S/196.html#L1260'>diskreq</a>          1260 src/disksim_diskctlr.c   diskreq     *nextdiskreq = currdiskreq;</span>
+<span class='curline'><a href='../S/196.html#L1261'>diskreq</a>          1261 src/disksim_diskctlr.c   diskreq     *tmpdiskreq;</span>
+<span class='curline'><a href='../S/196.html#L1394'>diskreq</a>          1394 src/disksim_diskctlr.c   diskreq *currdiskreq = currdisk-&gt;effectivehda;</span>
+<span class='curline'><a href='../S/196.html#L1472'>diskreq</a>          1472 src/disksim_diskctlr.c   diskreq *currdiskreq = currdisk-&gt;effectivehda;</span>
+<span class='curline'><a href='../S/196.html#L1631'>diskreq</a>          1631 src/disksim_diskctlr.c 		      diskreq *currdiskreq)</span>
+<span class='curline'><a href='../S/196.html#L1633'>diskreq</a>          1633 src/disksim_diskctlr.c   diskreq     *nextdiskreq = currdiskreq;</span>
+<span class='curline'><a href='../S/196.html#L1663'>diskreq</a>          1663 src/disksim_diskctlr.c 	nextdiskreq = (diskreq*) nextioreq-&gt;ioreq_hold_diskreq;</span>
+<span class='curline'><a href='../S/196.html#L1746'>diskreq</a>          1746 src/disksim_diskctlr.c 		       diskreq *nextdiskreq, </span>
+<span class='curline'><a href='../S/196.html#L1904'>diskreq</a>          1904 src/disksim_diskctlr.c 			   diskreq *currdiskreq, </span>
+<span class='curline'><a href='../S/196.html#L1908'>diskreq</a>          1908 src/disksim_diskctlr.c   diskreq     *nextdiskreq = 0;</span>
+<span class='curline'><a href='../S/196.html#L2039'>diskreq</a>          2039 src/disksim_diskctlr.c   diskreq* effective = currdisk-&gt;effectivehda;</span>
+<span class='curline'><a href='../S/196.html#L2088'>diskreq</a>          2088 src/disksim_diskctlr.c 				diskreq *currdiskreq)</span>
+<span class='curline'><a href='../S/196.html#L2090'>diskreq</a>          2090 src/disksim_diskctlr.c   diskreq     *effective = currdisk-&gt;effectivehda;</span>
+<span class='curline'><a href='../S/196.html#L2168'>diskreq</a>          2168 src/disksim_diskctlr.c 		   diskreq *currdiskreq, </span>
+<span class='curline'><a href='../S/196.html#L2265'>diskreq</a>          2265 src/disksim_diskctlr.c 		    diskreq *currdiskreq, </span>
+<span class='curline'><a href='../S/196.html#L2348'>diskreq</a>          2348 src/disksim_diskctlr.c   diskreq *new_diskreq;</span>
+<span class='curline'><a href='../S/196.html#L2390'>diskreq</a>          2390 src/disksim_diskctlr.c   new_diskreq = (diskreq *) getfromextraq();</span>
+<span class='curline'><a href='../S/196.html#L2446'>diskreq</a>          2446 src/disksim_diskctlr.c 		 diskreq *new_diskreq,</span>
+<span class='curline'><a href='../S/196.html#L2596'>diskreq</a>          2596 src/disksim_diskctlr.c 			     diskreq *new_diskreq,</span>
+<span class='curline'><a href='../S/196.html#L2750'>diskreq</a>          2750 src/disksim_diskctlr.c   diskreq     *currdiskreq;</span>
+<span class='curline'><a href='../S/196.html#L2817'>diskreq</a>          2817 src/disksim_diskctlr.c   diskreq     *currdiskreq;</span>
+<span class='curline'><a href='../S/196.html#L3060'>diskreq</a>          3060 src/disksim_diskctlr.c disk_buffer_request_complete(disk *currdisk, diskreq *currdiskreq)</span>
+<span class='curline'><a href='../S/196.html#L3250'>diskreq</a>          3250 src/disksim_diskctlr.c   diskreq *currdiskreq = currdisk-&gt;effectivehda;</span>
+<span class='curline'><a href='../S/196.html#L3301'>diskreq</a>          3301 src/disksim_diskctlr.c   diskreq* currdiskreq = currdisk-&gt;effectivebus;</span>
+<span class='curline'><a href='../S/196.html#L3304'>diskreq</a>          3304 src/disksim_diskctlr.c   diskreq *seg_owner;</span>
+<span class='curline'><a href='../S/196.html#L3390'>diskreq</a>          3390 src/disksim_diskctlr.c 			  diskreq *currdiskreq, </span>
+<span class='curline'><a href='../S/196.html#L3394'>diskreq</a>          3394 src/disksim_diskctlr.c   diskreq *seg_owner;</span>
+<span class='curline'><a href='../S/196.html#L3584'>diskreq</a>          3584 src/disksim_diskctlr.c   diskreq     *currdiskreq = (diskreq*) currioreq-&gt;ioreq_hold_diskreq;</span>
+<span class='curline'><a href='../S/196.html#L3587'>diskreq</a>          3587 src/disksim_diskctlr.c   diskreq     *seg_owner;</span>
+<span class='curline'><a href='../S/196.html#L3724'>diskreq</a>          3724 src/disksim_diskctlr.c int disk_buffer_stopable_access (disk *currdisk, diskreq *currdiskreq)</span>
+<span class='curline'><a href='../S/196.html#L3727'>diskreq</a>          3727 src/disksim_diskctlr.c   diskreq *effective = currdisk-&gt;effectivehda;</span>
+<span class='curline'><a href='../S/196.html#L3993'>diskreq</a>          3993 src/disksim_diskctlr.c   diskreq *currdiskreq = currdisk-&gt;effectivehda;</span>
+<span class='curline'><a href='../S/196.html#L4343'>diskreq</a>          4343 src/disksim_diskctlr.c   diskreq *currdiskreq = currdisk-&gt;effectivehda;</span>
+</pre>
+</body>
+</html>

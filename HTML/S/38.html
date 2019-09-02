@@ -1,0 +1,243 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>memsmodel/mems_seektest.c</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<a id='TOP' name='TOP'></a><h2 class='header'><a href='../mains.html'>root</a>/<a href='../files/401.html'>memsmodel</a>/mems_seektest.c</h2>
+<em class='comment'>/* [&lt;][&gt;]<a href='#L40'>[^]</a><a href='#L75'>[v]</a>[top]<a href='#BOTTOM'>[bottom]</a><a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</em>
+<hr />
+<h2 class='header'>DEFINITIONS</h2>
+This source file includes following definitions.
+<ol>
+<li><a href='#L40' title='Defined at 40.'>initialize_device</a></li>
+<li><a href='#L75' title='Defined at 75.'>main</a></li>
+</ol>
+<hr />
+<pre>
+<a id='L1' name='L1'></a>   1 <em class='comment'>/*</em>
+<a id='L2' name='L2'></a>   2 <em class='comment'> * DiskSim Storage Subsystem Simulation Environment (Version 4.0)</em>
+<a id='L3' name='L3'></a>   3 <em class='comment'> * Revision Authors: John Bucy, Greg Ganger</em>
+<a id='L4' name='L4'></a>   4 <em class='comment'> * Contributors: John Griffin, Jiri Schindler, Steve Schlosser</em>
+<a id='L5' name='L5'></a>   5 <em class='comment'> *</em>
+<a id='L6' name='L6'></a>   6 <em class='comment'> * Copyright (c) of Carnegie Mellon University, 2001-2008.</em>
+<a id='L7' name='L7'></a>   7 <em class='comment'> *</em>
+<a id='L8' name='L8'></a>   8 <em class='comment'> * This software is being provided by the copyright holders under the</em>
+<a id='L9' name='L9'></a>   9 <em class='comment'> * following license. By obtaining, using and/or copying this software,</em>
+<a id='L10' name='L10'></a>  10 <em class='comment'> * you agree that you have read, understood, and will comply with the</em>
+<a id='L11' name='L11'></a>  11 <em class='comment'> * following terms and conditions:</em>
+<a id='L12' name='L12'></a>  12 <em class='comment'> *</em>
+<a id='L13' name='L13'></a>  13 <em class='comment'> * Permission to reproduce, use, and prepare derivative works of this</em>
+<a id='L14' name='L14'></a>  14 <em class='comment'> * software is granted provided the copyright and "No Warranty" statements</em>
+<a id='L15' name='L15'></a>  15 <em class='comment'> * are included with all reproductions and derivative works and associated</em>
+<a id='L16' name='L16'></a>  16 <em class='comment'> * documentation. This software may also be redistributed without charge</em>
+<a id='L17' name='L17'></a>  17 <em class='comment'> * provided that the copyright and "No Warranty" statements are included</em>
+<a id='L18' name='L18'></a>  18 <em class='comment'> * in all redistributions.</em>
+<a id='L19' name='L19'></a>  19 <em class='comment'> *</em>
+<a id='L20' name='L20'></a>  20 <em class='comment'> * NO WARRANTY. THIS SOFTWARE IS FURNISHED ON AN "AS IS" BASIS.</em>
+<a id='L21' name='L21'></a>  21 <em class='comment'> * CARNEGIE MELLON UNIVERSITY MAKES NO WARRANTIES OF ANY KIND, EITHER</em>
+<a id='L22' name='L22'></a>  22 <em class='comment'> * EXPRESSED OR IMPLIED AS TO THE MATTER INCLUDING, BUT NOT LIMITED</em>
+<a id='L23' name='L23'></a>  23 <em class='comment'> * TO: WARRANTY OF FITNESS FOR PURPOSE OR MERCHANTABILITY, EXCLUSIVITY</em>
+<a id='L24' name='L24'></a>  24 <em class='comment'> * OF RESULTS OR RESULTS OBTAINED FROM USE OF THIS SOFTWARE. CARNEGIE</em>
+<a id='L25' name='L25'></a>  25 <em class='comment'> * MELLON UNIVERSITY DOES NOT MAKE ANY WARRANTY OF ANY KIND WITH RESPECT</em>
+<a id='L26' name='L26'></a>  26 <em class='comment'> * TO FREEDOM FROM PATENT, TRADEMARK, OR COPYRIGHT INFRINGEMENT.</em>
+<a id='L27' name='L27'></a>  27 <em class='comment'> * COPYRIGHT HOLDERS WILL BEAR NO LIABILITY FOR ANY USE OF THIS SOFTWARE</em>
+<a id='L28' name='L28'></a>  28 <em class='comment'> * OR DOCUMENTATION.</em>
+<a id='L29' name='L29'></a>  29 <em class='comment'> *</em>
+<a id='L30' name='L30'></a>  30 <em class='comment'> */</em>
+<a id='L31' name='L31'></a>  31 
+<a id='L32' name='L32'></a>  32 
+<a id='L33' name='L33'></a>  33 <em class='sharp'>#include</em> &lt;stdlib.h&gt;
+<a id='L34' name='L34'></a>  34 <em class='sharp'>#include</em> &lt;stdio.h&gt;
+<a id='L35' name='L35'></a>  35 <em class='sharp'>#include</em> &lt;math.h&gt;
+<a id='L36' name='L36'></a>  36 
+<a id='L37' name='L37'></a>  37 <em class='sharp'>#include</em> "<a href='25.html'>mems_internals.h</a>"
+<a id='L38' name='L38'></a>  38 <em class='sharp'>#include</em> "<a href='197.html'>disksim_malloc.h</a>"
+<a id='L39' name='L39'></a>  39 
+<a id='L40' name='L40'></a>  40 <strong class='reserved'>void</strong> <a href='../S/38.html#L141' title='Referred from 141 in memsmodel/mems_seektest.c.'>initialize_device</a>(<a href='../S/30.html#L235' title='Defined at 235 in memsmodel/mems_global.h.'>mems_t</a> *dev,
+<a id='L41' name='L41'></a>  41                        <strong class='reserved'>double</strong> spring_factor,
+<a id='L42' name='L42'></a>  42                        <strong class='reserved'>double</strong> time_constants,
+<a id='L43' name='L43'></a>  43                        <strong class='reserved'>int</strong> hong) <em class='brace'>{</em>
+<a id='L44' name='L44'></a>  44 
+<a id='L45' name='L45'></a>  45   <a href='../S/30.html#L194' title='Defined at 194 in memsmodel/mems_global.h.'>mems_sled_t</a> *sled;
+<a id='L46' name='L46'></a>  46 
+<a id='L47' name='L47'></a>  47   sled = &amp;(dev-&gt;sled[0]);
+<a id='L48' name='L48'></a>  48   sled-&gt;dev = dev;
+<a id='L49' name='L49'></a>  49 
+<a id='L50' name='L50'></a>  50   sled-&gt;pos.x_pos = 0;
+<a id='L51' name='L51'></a>  51   sled-&gt;pos.y_pos = 0;
+<a id='L52' name='L52'></a>  52   sled-&gt;pos.y_vel = 0;
+<a id='L53' name='L53'></a>  53   
+<a id='L54' name='L54'></a>  54   sled-&gt;x_accel_nm_s2 = 746.2 * 1000000000.0; 
+<a id='L55' name='L55'></a>  55   sled-&gt;y_accel_nm_s2 = 746.2 * 1000000000.0; 
+<a id='L56' name='L56'></a>  56   sled-&gt;bit_length_nm = 50.0;
+<a id='L57' name='L57'></a>  57   sled-&gt;y_access_speed_bit_s = 200000;
+<a id='L58' name='L58'></a>  58   sled-&gt;x_length_nm = 2000.0 * 50.0;
+<a id='L59' name='L59'></a>  59   sled-&gt;y_length_nm = 2000.0 * 50.0;
+<a id='L60' name='L60'></a>  60   sled-&gt;spring_factor = spring_factor;
+<a id='L61' name='L61'></a>  61 
+<a id='L62' name='L62'></a>  62   sled-&gt;num_time_constants = time_constants;
+<a id='L63' name='L63'></a>  63   sled-&gt;sled_resonant_freq_hz = 739;
+<a id='L64' name='L64'></a>  64 
+<a id='L65' name='L65'></a>  65   sled-&gt;servo_burst_length_bits = 10;
+<a id='L66' name='L66'></a>  66   sled-&gt;tip_sector_length_bits = 80;
+<a id='L67' name='L67'></a>  67   sled-&gt;tip_sectors_per_lbn = 64;
+<a id='L68' name='L68'></a>  68 
+<a id='L69' name='L69'></a>  69   dev-&gt;precompute_seek_count = 0;
+<a id='L70' name='L70'></a>  70   dev-&gt;seek_function = hong;
+<a id='L71' name='L71'></a>  71   <em class='comment'>// mems_precompute_seek_curve(dev);</em>
+<a id='L72' name='L72'></a>  72   
+<a id='L73' name='L73'></a>  73 <em class='brace'>}</em>
+<a id='L74' name='L74'></a>  74 
+<a id='L75' name='L75'></a>  75 <strong class='reserved'>int</strong> main(<strong class='reserved'>int</strong> argc, <strong class='reserved'>char</strong> *argv[]) <em class='brace'>{</em>
+<a id='L76' name='L76'></a>  76 
+<a id='L77' name='L77'></a>  77   <a href='../S/30.html#L235' title='Defined at 235 in memsmodel/mems_global.h.'>mems_t</a> dev;
+<a id='L78' name='L78'></a>  78   <a href='../S/30.html#L56' title='Defined at 56 in memsmodel/mems_global.h.'>coord_t</a> begin, end;
+<a id='L79' name='L79'></a>  79 
+<a id='L80' name='L80'></a>  80   <strong class='reserved'>double</strong> spring_factor = 0.0;
+<a id='L81' name='L81'></a>  81   <strong class='reserved'>double</strong> accel;
+<a id='L82' name='L82'></a>  82   <strong class='reserved'>double</strong> length_nm;
+<a id='L83' name='L83'></a>  83   <strong class='reserved'>double</strong> velocity_nm_s;
+<a id='L84' name='L84'></a>  84 
+<a id='L85' name='L85'></a>  85   <strong class='reserved'>double</strong> seek_time;
+<a id='L86' name='L86'></a>  86   <strong class='reserved'>double</strong> seek_time_zero = 0.0;
+<a id='L87' name='L87'></a>  87 
+<a id='L88' name='L88'></a>  88   <strong class='reserved'>int</strong> bit_step = 10;
+<a id='L89' name='L89'></a>  89   <strong class='reserved'>int</strong> i;
+<a id='L90' name='L90'></a>  90   <strong class='reserved'>int</strong> verbose = 0;
+<a id='L91' name='L91'></a>  91   <strong class='reserved'>int</strong> three_dee = 0;
+<a id='L92' name='L92'></a>  92   <strong class='reserved'>int</strong> mathematica = 0;
+<a id='L93' name='L93'></a>  93   <strong class='reserved'>int</strong> transpose = 0;
+<a id='L94' name='L94'></a>  94   <strong class='reserved'>int</strong> hong = 0;
+<a id='L95' name='L95'></a>  95 
+<a id='L96' name='L96'></a>  96   <strong class='reserved'>double</strong> time_constants = 0.0;
+<a id='L97' name='L97'></a>  97 
+<a id='L98' name='L98'></a>  98   <strong class='reserved'>int</strong> x_pos, y_pos;
+<a id='L99' name='L99'></a>  99   begin.x_pos = 1000;
+<a id='L100' name='L100'></a> 100   begin.y_pos = 1000;
+<a id='L101' name='L101'></a> 101 
+<a id='L102' name='L102'></a> 102   <em class='comment'>//start_nm = -1;</em>
+<a id='L103' name='L103'></a> 103   <em class='comment'>//end_nm = -1;</em>
+<a id='L104' name='L104'></a> 104 
+<a id='L105' name='L105'></a> 105   spring_factor = 0.0;
+<a id='L106' name='L106'></a> 106 
+<a id='L107' name='L107'></a> 107   <strong class='reserved'>for</strong> (i = 0; i &lt; argc; i++) <em class='brace'>{</em>
+<a id='L108' name='L108'></a> 108     <strong class='reserved'>if</strong> (strcmp(argv[i], "-v") == 0)
+<a id='L109' name='L109'></a> 109       verbose = 1;
+<a id='L110' name='L110'></a> 110     <strong class='reserved'>if</strong> (strcmp(argv[i], "-spring") == 0)
+<a id='L111' name='L111'></a> 111       spring_factor = atof(argv[i+1]);
+<a id='L112' name='L112'></a> 112     <strong class='reserved'>if</strong> (strcmp(argv[i], "-step") == 0)
+<a id='L113' name='L113'></a> 113       bit_step = atoi(argv[i+1]);
+<a id='L114' name='L114'></a> 114     <strong class='reserved'>if</strong> (strcmp(argv[i], "-start") == 0)
+<a id='L115' name='L115'></a> 115       <em class='comment'>//start_nm = atof(argv[i+1]);</em>
+<a id='L116' name='L116'></a> 116     <strong class='reserved'>if</strong> (strcmp(argv[i], "-end") == 0)
+<a id='L117' name='L117'></a> 117       <em class='comment'>//end_nm = atof(argv[i+1]);</em>
+<a id='L118' name='L118'></a> 118     <strong class='reserved'>if</strong> (strcmp(argv[i], "-3d") == 0)
+<a id='L119' name='L119'></a> 119       three_dee = 1;
+<a id='L120' name='L120'></a> 120     <strong class='reserved'>if</strong> (strcmp(argv[i], "-num") == 0)
+<a id='L121' name='L121'></a> 121       time_constants = atof(argv[i+1]);
+<a id='L122' name='L122'></a> 122     <strong class='reserved'>if</strong> (strcmp(argv[i], "-x") == 0)
+<a id='L123' name='L123'></a> 123       begin.x_pos = atoi(argv[i+1]);
+<a id='L124' name='L124'></a> 124     <strong class='reserved'>if</strong> (strcmp(argv[i], "-y") == 0)
+<a id='L125' name='L125'></a> 125       begin.y_pos = atoi(argv[i+1]);
+<a id='L126' name='L126'></a> 126     <strong class='reserved'>if</strong> (strcmp(argv[i], "-math") == 0)
+<a id='L127' name='L127'></a> 127       mathematica = atoi(argv[i+1]);
+<a id='L128' name='L128'></a> 128     <strong class='reserved'>if</strong> (strcmp(argv[i], "-transpose") == 0)
+<a id='L129' name='L129'></a> 129       transpose = 1;
+<a id='L130' name='L130'></a> 130     <strong class='reserved'>if</strong> (strcmp(argv[i], "-hong") == 0)
+<a id='L131' name='L131'></a> 131       hong = 1;
+<a id='L132' name='L132'></a> 132   <em class='brace'>}</em>
+<a id='L133' name='L133'></a> 133   
+<a id='L134' name='L134'></a> 134   accel = 746.2 * 1000000000.0;
+<a id='L135' name='L135'></a> 135   length_nm = 2000.0 * 50.0;
+<a id='L136' name='L136'></a> 136   <em class='comment'>//velocity_nm_s = 200000.0 * 50.0;</em>
+<a id='L137' name='L137'></a> 137   velocity_nm_s = 0.0;
+<a id='L138' name='L138'></a> 138 
+<a id='L139' name='L139'></a> 139   dev.sled = <a href='../S/73.html#L58' title='Defined at 58 in diskmodel/dm_config.h.'>malloc</a>(<strong class='reserved'>sizeof</strong>(<a href='../S/30.html#L194' title='Defined at 194 in memsmodel/mems_global.h.'>mems_sled_t</a>));
+<a id='L140' name='L140'></a> 140 
+<a id='L141' name='L141'></a> 141   <a href='../S/38.html#L40' title='Defined at 40 in memsmodel/mems_seektest.c.'>initialize_device</a>(&amp;dev,
+<a id='L142' name='L142'></a> 142                     spring_factor,
+<a id='L143' name='L143'></a> 143                     time_constants,
+<a id='L144' name='L144'></a> 144                     hong);
+<a id='L145' name='L145'></a> 145 
+<a id='L146' name='L146'></a> 146   begin.y_vel = 0;
+<a id='L147' name='L147'></a> 147 
+<a id='L148' name='L148'></a> 148   end.x_pos = 0;
+<a id='L149' name='L149'></a> 149   end.y_pos = 0;
+<a id='L150' name='L150'></a> 150   end.y_vel = 0;
+<a id='L151' name='L151'></a> 151   
+<a id='L152' name='L152'></a> 152   <em class='comment'>//fprintf(stdout, "spring_factor = %f\n", spring_factor);</em>
+<a id='L153' name='L153'></a> 153 
+<a id='L154' name='L154'></a> 154   <strong class='reserved'>for</strong>(x_pos = -1000; x_pos &lt;= 1000; x_pos += bit_step) <em class='brace'>{</em>
+<a id='L155' name='L155'></a> 155     <strong class='reserved'>for</strong>(y_pos = -1000; y_pos &lt;= 1000; y_pos += bit_step) <em class='brace'>{</em>
+<a id='L156' name='L156'></a> 156 
+<a id='L157' name='L157'></a> 157   <em class='comment'>/*</em>
+<a id='L158' name='L158'></a> 158 <em class='comment'>  for(x_pos = 0; x_pos &lt;= 1000; x_pos += bit_step) {</em>
+<a id='L159' name='L159'></a> 159 <em class='comment'>    for(y_pos = 0; y_pos &lt;= 1000; y_pos += bit_step) {</em>
+<a id='L160' name='L160'></a> 160 <em class='comment'>  */</em>  
+<a id='L161' name='L161'></a> 161       <em class='comment'>//x_pos = 1000;</em>
+<a id='L162' name='L162'></a> 162       <em class='comment'>//y_pos = 500;</em>
+<a id='L163' name='L163'></a> 163       
+<a id='L164' name='L164'></a> 164       <strong class='reserved'>if</strong> (!transpose) <em class='brace'>{</em>
+<a id='L165' name='L165'></a> 165         end.x_pos = x_pos;
+<a id='L166' name='L166'></a> 166         end.y_pos = y_pos;
+<a id='L167' name='L167'></a> 167       <em class='brace'>}</em> <strong class='reserved'>else</strong> <em class='brace'>{</em>
+<a id='L168' name='L168'></a> 168         end.x_pos = y_pos;
+<a id='L169' name='L169'></a> 169         end.y_pos = x_pos;
+<a id='L170' name='L170'></a> 170       <em class='brace'>}</em>
+<a id='L171' name='L171'></a> 171       
+<a id='L172' name='L172'></a> 172       <strong class='reserved'>if</strong> (verbose) fprintf(stdout, "main:  starting a new seek (monkey)\n");
+<a id='L173' name='L173'></a> 173       
+<a id='L174' name='L174'></a> 174       seek_time = <a href='../S/22.html#L384' title='Defined at 384 in memsmodel/mems_internals.c.'>mems_seek_time</a>(&amp;(dev.sled[0]),
+<a id='L175' name='L175'></a> 175                                   &amp;begin, &amp;end,
+<a id='L176' name='L176'></a> 176                                   NULL, NULL,
+<a id='L177' name='L177'></a> 177                                   NULL, NULL);
+<a id='L178' name='L178'></a> 178 
+<a id='L179' name='L179'></a> 179       spring_factor = dev.sled[0].spring_factor;
+<a id='L180' name='L180'></a> 180       dev.sled[0].spring_factor = 0.0;
+<a id='L181' name='L181'></a> 181       
+<a id='L182' name='L182'></a> 182       seek_time_zero = <a href='../S/22.html#L384' title='Defined at 384 in memsmodel/mems_internals.c.'>mems_seek_time</a>(&amp;(dev.sled[0]),
+<a id='L183' name='L183'></a> 183                                        &amp;begin, &amp;end,
+<a id='L184' name='L184'></a> 184                                        NULL, NULL,
+<a id='L185' name='L185'></a> 185                                        NULL, NULL);
+<a id='L186' name='L186'></a> 186       
+<a id='L187' name='L187'></a> 187       dev.sled[0].spring_factor = spring_factor;
+<a id='L188' name='L188'></a> 188 
+<a id='L189' name='L189'></a> 189       <strong class='reserved'>if</strong> (verbose) fprintf(stdout, "goose\n");
+<a id='L190' name='L190'></a> 190       <strong class='reserved'>if</strong> (mathematica == 1) <em class='brace'>{</em>
+<a id='L191' name='L191'></a> 191         fprintf(stdout, "%f ", seek_time);
+<a id='L192' name='L192'></a> 192       <em class='brace'>}</em> <strong class='reserved'>else</strong> <strong class='reserved'>if</strong> (mathematica == 2) <em class='brace'>{</em>
+<a id='L193' name='L193'></a> 193         fprintf(stdout, "%f ", (seek_time - seek_time_zero));
+<a id='L194' name='L194'></a> 194       <em class='brace'>}</em> <strong class='reserved'>else</strong> <em class='brace'>{</em>
+<a id='L195' name='L195'></a> 195         <strong class='reserved'>if</strong> (!transpose) <em class='brace'>{</em>
+<a id='L196' name='L196'></a> 196           fprintf(stdout, "%d %d %f %f %f\n",
+<a id='L197' name='L197'></a> 197                   x_pos, y_pos, seek_time, seek_time_zero, (seek_time - seek_time_zero));
+<a id='L198' name='L198'></a> 198         <em class='brace'>}</em> <strong class='reserved'>else</strong> <em class='brace'>{</em>
+<a id='L199' name='L199'></a> 199           fprintf(stdout, "%d %d %f %f %f\n",
+<a id='L200' name='L200'></a> 200                   y_pos, x_pos, seek_time, seek_time_zero, (seek_time - seek_time_zero));
+<a id='L201' name='L201'></a> 201         <em class='brace'>}</em>         
+<a id='L202' name='L202'></a> 202 
+<a id='L203' name='L203'></a> 203         <em class='comment'>/*</em>
+<a id='L204' name='L204'></a> 204 <em class='comment'>        fprintf(stdout, "%f %f %f %f\n",</em>
+<a id='L205' name='L205'></a> 205 <em class='comment'>                x_velocity_diff, x_time_diff, y_velocity_diff, y_time_diff);</em>
+<a id='L206' name='L206'></a> 206 <em class='comment'>        */</em>
+<a id='L207' name='L207'></a> 207 
+<a id='L208' name='L208'></a> 208       <em class='brace'>}</em>
+<a id='L209' name='L209'></a> 209     <em class='brace'>}</em>
+<a id='L210' name='L210'></a> 210     <strong class='reserved'>if</strong> (mathematica != 0) fprintf(stdout, "\n");
+<a id='L211' name='L211'></a> 211   <em class='brace'>}</em>
+<a id='L212' name='L212'></a> 212 
+<a id='L213' name='L213'></a> 213   free(dev.sled);
+<a id='L214' name='L214'></a> 214   
+<a id='L215' name='L215'></a> 215   <strong class='reserved'>return</strong> 0;
+<a id='L216' name='L216'></a> 216 <em class='brace'>}</em>
+</pre>
+<hr />
+<a id='BOTTOM' name='BOTTOM'></a>
+<em class='comment'>/* [&lt;][&gt;]<a href='#L40'>[^]</a><a href='#L75'>[v]</a><a href='#TOP'>[top]</a>[bottom]<a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</em>
+</body>
+</html>

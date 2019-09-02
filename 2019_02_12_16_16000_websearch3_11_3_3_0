@@ -1,0 +1,18 @@
+initial with striping allocation
+./ssdmodel/valid/ssd-win-5-1_v2_bg.parv ../trace/websearch3_500M.dis_reserve_rate_8 16000 16000_websearch3 11_3 3
+initial with locality allocation
+./ssdmodel/valid/ssd-win-5-1_v2_bg.parv ../trace/websearch3_500M.dis_reserve_rate_8 16000 16000_websearch3 11_3 3
+initial with striping allocation
+./ssdmodel/valid/ssd-win-5-1_v2_bg.parv ../trace/websearch3_500M.dis_reserve_rate_8 16000 16000_websearch3 11_3 3
+1:ytc94u trace file = ../trace/websearch3_500M.dis_reserve_rate_8
+2:ytc94u striping threshold  = 11_3
+3:ytc94u clear stastistic data in request = 0 
+4:ytc94u buffer no parallel policy turn on= 0 
+5:ytc94u the striping threshold method = 3 
+initial with locality allocation
+./ssdmodel/valid/ssd-win-5-1_v2_bg.parv ../trace/websearch3_500M.dis_reserve_rate_8 16000 16000_websearch3 11_3 3
+1:ytc94u trace file = ../trace/websearch3_500M.dis_reserve_rate_8
+2:ytc94u striping threshold  = 11_3
+3:ytc94u clear stastistic data in request = 0 
+4:ytc94u buffer no parallel policy turn on= 0 
+5:ytc94u the striping threshold method = 3 

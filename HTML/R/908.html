@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>ctlr</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/204.html#L783'>ctlr</a>              783 src/disksim_controller.c   controller *ctlr;</span>
+<span class='curline'><a href='../S/204.html#L789'>ctlr</a>              789 src/disksim_controller.c   ctlr = getctlrbyname(t-&gt;name, &amp;num);</span>
+<span class='curline'><a href='../S/204.html#L790'>ctlr</a>              790 src/disksim_controller.c   if(!ctlr) {</span>
+<span class='curline'><a href='../S/204.html#L797'>ctlr</a>              797 src/disksim_controller.c     ctlr-&gt;inbuses[0] = *inbus;</span>
+<span class='curline'><a href='../S/204.html#L800'>ctlr</a>              800 src/disksim_controller.c   if(!ctlr-&gt;outbuses) {</span>
+<span class='curline'><a href='../S/204.html#L801'>ctlr</a>              801 src/disksim_controller.c     ctlr-&gt;numoutbuses = 0;</span>
+<span class='curline'><a href='../S/204.html#L803'>ctlr</a>              803 src/disksim_controller.c     ctlr-&gt;outbuses = malloc(slots * sizeof(int));</span>
+<span class='curline'><a href='../S/204.html#L804'>ctlr</a>              804 src/disksim_controller.c     bzero(ctlr-&gt;outbuses, slots * sizeof(int));</span>
+<span class='curline'><a href='../S/204.html#L812'>ctlr</a>              812 src/disksim_controller.c       getbusbyname(ts-&gt;name, &amp;ctlr-&gt;outbuses[c]);</span>
+<span class='curline'><a href='../S/204.html#L814'>ctlr</a>              814 src/disksim_controller.c       if(ctlr-&gt;outbuses[c] == -1) {</span>
+<span class='curline'><a href='../S/204.html#L824'>ctlr</a>              824 src/disksim_controller.c       ctlr-&gt;numoutbuses++;</span>
+<span class='curline'><a href='../S/205.html#L223'>ctlr</a>              223 src/disksim_iodriver.c    ctlr *ctl;</span>
+<span class='curline'><a href='../S/205.html#L300'>ctlr</a>              300 src/disksim_iodriver.c    ctlr *ctl;</span>
+<span class='curline'><a href='../S/205.html#L401'>ctlr</a>              401 src/disksim_iodriver.c    ctlr *ctl = NULL;</span>
+<span class='curline'><a href='../S/205.html#L856'>ctlr</a>              856 src/disksim_iodriver.c    ctlr *tmp;</span>
+<span class='curline'><a href='../S/205.html#L955'>ctlr</a>              955 src/disksim_iodriver.c       curriodriver-&gt;ctlrs = (ctlr*) DISKSIM_malloc(numdevs * (sizeof(ctlr)));</span>
+<span class='curline'><a href='../S/205.html#L958'>ctlr</a>              958 src/disksim_iodriver.c          ctlr *currctlr = &amp;curriodriver-&gt;ctlrs[j];</span>
+<span class='curline'><a href='../S/218.html#L155'>ctlr</a>              155 src/disksim_iodriver.h   ctlr *	ctlrs;</span>
+<span class='curline'><a href='../S/255.html#L231'>ctlr</a>              231 src/disksim_iosim.h    ctlr         *ctl;</span>
+</pre>
+</body>
+</html>

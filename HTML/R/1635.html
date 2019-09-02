@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>lp_block</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/77.html#L499'>lp_block</a>          499 diskmodel/dm.h struct lp_block;</span>
+<span class='curline'><a href='../S/77.html#L502'>lp_block</a>          502 diskmodel/dm.h typedef struct dm_mech_if *(*dm_mech_loader_t)(struct lp_block *, struct dm_disk_if *);</span>
+<span class='curline'><a href='../S/77.html#L503'>lp_block</a>          503 diskmodel/dm.h typedef struct dm_layout_if *(*dm_layout_loader_t)(struct lp_block *, struct dm_disk_if *);</span>
+<span class='curline'><a href='../S/75.html#L46'>lp_block</a>           46 diskmodel/dm_load.c dm_disk_loadparams(struct lp_block *b, int *junk)</span>
+<span class='curline'><a href='../S/57.html#L129'>lp_block</a>          129 diskmodel/layout_g1_load.c dm_layout_g1_loadparams(struct lp_block *b, struct dm_disk_if *d)</span>
+<span class='curline'><a href='../S/57.html#L300'>lp_block</a>          300 diskmodel/layout_g1_load.c int dm_layout_g1_zone_loadparams(struct lp_block *b) { ddbg_assert(0); return 0; }</span>
+<span class='curline'><a href='../S/44.html#L310'>lp_block</a>          310 diskmodel/layout_g2_load.c dm_layout_g2_loadparams(struct lp_block *b, struct dm_disk_if *parent) {</span>
+<span class='curline'><a href='../S/44.html#L344'>lp_block</a>          344 diskmodel/layout_g2_load.c 	     struct lp_block *b)</span>
+<span class='curline'><a href='../S/44.html#L382'>lp_block</a>          382 diskmodel/layout_g2_load.c int dm_layout_g2_zone_loadparams(struct lp_block *b)</span>
+<span class='curline'><a href='../S/58.html#L213'>lp_block</a>          213 diskmodel/layout_g4_load.c struct lp_block *</span>
+<span class='curline'><a href='../S/58.html#L216'>lp_block</a>          216 diskmodel/layout_g4_load.c   struct lp_block *b = lp_new_block();</span>
+<span class='curline'><a href='../S/58.html#L446'>lp_block</a>          446 diskmodel/layout_g4_load.c dm_layout_g4_loadparams(struct lp_block *b,</span>
+<span class='curline'><a href='../S/102.html#L608'>lp_block</a>          608 diskmodel/layout_g4_tools/g4_skews.c   struct lp_block *unm;</span>
+<span class='curline'><a href='../S/102.html#L682'>lp_block</a>          682 diskmodel/layout_g4_tools/g4_skews.c   extern struct lp_block* marshal_layout_g4(struct dm_layout_g4 *);</span>
+<span class='curline'><a href='../S/74.html#L129'>lp_block</a>          129 diskmodel/mech_g1_load.c dm_mech_g1_loadparams(struct lp_block *b, int *junk) {</span>
+<span class='curline'><a href='../S/118.html#L45'>lp_block</a>           45 libparam/libparam.h struct lp_block;</span>
+<span class='curline'><a href='../S/118.html#L108'>lp_block</a>          108 libparam/libparam.h     struct lp_block *b;</span>
+<span class='curline'><a href='../S/118.html#L121'>lp_block</a>          121 libparam/libparam.h struct lp_value *lp_new_blockv(struct lp_block *);</span>
+<span class='curline'><a href='../S/118.html#L125'>lp_block</a>          125 libparam/libparam.h struct lp_block *lp_new_block(void);</span>
+<span class='curline'><a href='../S/118.html#L142'>lp_block</a>          142 libparam/libparam.h   struct lp_block *spec; /* parse tree for sub */</span>
+<span class='curline'><a href='../S/118.html#L164'>lp_block</a>          164 libparam/libparam.h     struct lp_block *block;</span>
+<span class='curline'><a href='../S/118.html#L171'>lp_block</a>          171 libparam/libparam.h typedef int*(*lp_modloader_t)(struct lp_block *, int);</span>
+<span class='curline'><a href='../S/118.html#L176'>lp_block</a>          176 libparam/libparam.h typedef void(*lp_paramloader_block)(void *, struct lp_block *);</span>
+<span class='curline'><a href='../S/118.html#L201'>lp_block</a>          201 libparam/libparam.h struct lp_tlt *lp_new_tl_block(struct lp_block *, char *);</span>
+<span class='curline'><a href='../S/118.html#L231'>lp_block</a>          231 libparam/libparam.h void load_block(struct lp_block *);</span>
+<span class='curline'><a href='../S/118.html#L283'>lp_block</a>          283 libparam/libparam.h lp_override_inst(struct lp_block *b, </span>
+<span class='curline'><a href='../S/118.html#L337'>lp_block</a>          337 libparam/libparam.h void unparse_block(struct lp_block *b, FILE *outfile);</span>
+<span class='curline'><a href='../S/118.html#L346'>lp_block</a>          346 libparam/libparam.h struct lp_block *lp_lookup_spec(char *name);</span>
+<span class='curline'><a href='../S/118.html#L349'>lp_block</a>          349 libparam/libparam.h int lp_setup_subtype(struct lp_block *parent,</span>
+<span class='curline'><a href='../S/118.html#L350'>lp_block</a>          350 libparam/libparam.h 		     struct lp_block *child);</span>
+<span class='curline'><a href='../S/118.html#L373'>lp_block</a>          373 libparam/libparam.h lp_loadparams(void *it, struct lp_block *b, struct lp_mod *m);</span>
+<span class='curline'><a href='../S/117.html#L60'>lp_block</a>           60 libparam/libparam.y   struct lp_block *b;</span>
+<span class='curline'><a href='../S/117.html#L61'>lp_block</a>           61 libparam/libparam.y   struct { struct lp_block **b; int blen; } blocks;</span>
+<span class='curline'><a href='../S/117.html#L155'>lp_block</a>          155 libparam/libparam.y   struct lp_block *parent;</span>
+<span class='curline'><a href='../S/117.html#L159'>lp_block</a>          159 libparam/libparam.y   $$ = malloc(sizeof(struct lp_block));</span>
+<span class='curline'><a href='../S/117.html#L160'>lp_block</a>          160 libparam/libparam.y   bzero($$, sizeof(struct lp_block));</span>
+<span class='curline'><a href='../S/117.html#L191'>lp_block</a>          191 libparam/libparam.y   $$ = malloc(sizeof(struct lp_block));</span>
+<span class='curline'><a href='../S/117.html#L192'>lp_block</a>          192 libparam/libparam.y   bzero($$, sizeof(struct lp_block));</span>
+<span class='curline'><a href='../S/110.html#L87'>lp_block</a>           87 libparam/myutil.c static void destroy_block(struct lp_block *b);</span>
+<span class='curline'><a href='../S/110.html#L139'>lp_block</a>          139 libparam/myutil.c struct lp_value *lp_new_blockv(struct lp_block *b)</span>
+<span class='curline'><a href='../S/110.html#L171'>lp_block</a>          171 libparam/myutil.c struct lp_block *</span>
+<span class='curline'><a href='../S/110.html#L174'>lp_block</a>          174 libparam/myutil.c   struct lp_block *b = calloc(1, sizeof(struct lp_block));</span>
+<span class='curline'><a href='../S/110.html#L271'>lp_block</a>          271 libparam/myutil.c static void destroy_block(struct lp_block *b) {</span>
+<span class='curline'><a href='../S/110.html#L292'>lp_block</a>          292 libparam/myutil.c static struct lp_block *copy_block(struct lp_block *);</span>
+<span class='curline'><a href='../S/110.html#L297'>lp_block</a>          297 libparam/myutil.c static struct lp_block *copy_block(struct lp_block *b)</span>
+<span class='curline'><a href='../S/110.html#L300'>lp_block</a>          300 libparam/myutil.c   struct lp_block *result = calloc(1, sizeof(*result));</span>
+<span class='curline'><a href='../S/110.html#L301'>lp_block</a>          301 libparam/myutil.c   memcpy(result, b, sizeof(struct lp_block));</span>
+<span class='curline'><a href='../S/110.html#L472'>lp_block</a>          472 libparam/myutil.c void unparse_block(struct lp_block *b, FILE *outfile) {</span>
+<span class='curline'><a href='../S/110.html#L579'>lp_block</a>          579 libparam/myutil.c   struct lp_block *spec;</span>
+<span class='curline'><a href='../S/110.html#L618'>lp_block</a>          618 libparam/myutil.c int check_types(struct lp_block *b) {</span>
+<span class='curline'><a href='../S/110.html#L678'>lp_block</a>          678 libparam/myutil.c void load_block(struct lp_block *b) {</span>
+<span class='curline'><a href='../S/110.html#L710'>lp_block</a>          710 libparam/myutil.c void dummy (struct lp_block *b) { </span>
+<span class='curline'><a href='../S/110.html#L815'>lp_block</a>          815 libparam/myutil.c struct lp_block *lp_lookup_spec(char *name) {</span>
+<span class='curline'><a href='../S/110.html#L854'>lp_block</a>          854 libparam/myutil.c struct lp_tlt *lp_new_tl_block(struct lp_block *b, char *source_file)</span>
+<span class='curline'><a href='../S/110.html#L955'>lp_block</a>          955 libparam/myutil.c int lp_setup_subtype(struct lp_block *parent,</span>
+<span class='curline'><a href='../S/110.html#L956'>lp_block</a>          956 libparam/myutil.c 		     struct lp_block *child)</span>
+<span class='curline'><a href='../S/110.html#L1045'>lp_block</a>         1045 libparam/myutil.c static int param_override(struct lp_block *b, </span>
+<span class='curline'><a href='../S/110.html#L1128'>lp_block</a>         1128 libparam/myutil.c int *lp_override_inst(struct lp_block *spec, </span>
+<span class='curline'><a href='../S/110.html#L1135'>lp_block</a>         1135 libparam/myutil.c   struct lp_block *spec_copy;</span>
+<span class='curline'><a href='../S/110.html#L1274'>lp_block</a>         1274 libparam/myutil.c lp_loadparams(void *it, struct lp_block *b, struct lp_mod *m) {</span>
+<span class='curline'><a href='../S/115.html#L91'>lp_block</a>           91 libparam/util.c static void destroy_block(struct lp_block *b);</span>
+<span class='curline'><a href='../S/115.html#L143'>lp_block</a>          143 libparam/util.c struct lp_value *lp_new_blockv(struct lp_block *b)</span>
+<span class='curline'><a href='../S/115.html#L175'>lp_block</a>          175 libparam/util.c struct lp_block *</span>
+<span class='curline'><a href='../S/115.html#L178'>lp_block</a>          178 libparam/util.c   struct lp_block *b = calloc(1, sizeof(struct lp_block));</span>
+<span class='curline'><a href='../S/115.html#L275'>lp_block</a>          275 libparam/util.c static void destroy_block(struct lp_block *b) {</span>
+<span class='curline'><a href='../S/115.html#L296'>lp_block</a>          296 libparam/util.c static struct lp_block *copy_block(struct lp_block *);</span>
+<span class='curline'><a href='../S/115.html#L301'>lp_block</a>          301 libparam/util.c static struct lp_block *copy_block(struct lp_block *b)</span>
+<span class='curline'><a href='../S/115.html#L304'>lp_block</a>          304 libparam/util.c   struct lp_block *result = calloc(1, sizeof(*result));</span>
+<span class='curline'><a href='../S/115.html#L305'>lp_block</a>          305 libparam/util.c   memcpy(result, b, sizeof(struct lp_block));</span>
+<span class='curline'><a href='../S/115.html#L476'>lp_block</a>          476 libparam/util.c void unparse_block(struct lp_block *b, FILE *outfile) {</span>
+<span class='curline'><a href='../S/115.html#L583'>lp_block</a>          583 libparam/util.c   struct lp_block *spec;</span>
+<span class='curline'><a href='../S/115.html#L622'>lp_block</a>          622 libparam/util.c int check_types(struct lp_block *b) {</span>
+<span class='curline'><a href='../S/115.html#L682'>lp_block</a>          682 libparam/util.c void load_block(struct lp_block *b) {</span>
+<span class='curline'><a href='../S/115.html#L714'>lp_block</a>          714 libparam/util.c void dummy (struct lp_block *b) { </span>
+<span class='curline'><a href='../S/115.html#L819'>lp_block</a>          819 libparam/util.c struct lp_block *lp_lookup_spec(char *name) {</span>
+<span class='curline'><a href='../S/115.html#L858'>lp_block</a>          858 libparam/util.c struct lp_tlt *lp_new_tl_block(struct lp_block *b, char *source_file)</span>
+<span class='curline'><a href='../S/115.html#L959'>lp_block</a>          959 libparam/util.c int lp_setup_subtype(struct lp_block *parent,</span>
+<span class='curline'><a href='../S/115.html#L960'>lp_block</a>          960 libparam/util.c 		     struct lp_block *child)</span>
+<span class='curline'><a href='../S/115.html#L1049'>lp_block</a>         1049 libparam/util.c static int param_override(struct lp_block *b, </span>
+<span class='curline'><a href='../S/115.html#L1132'>lp_block</a>         1132 libparam/util.c int *lp_override_inst(struct lp_block *spec, </span>
+<span class='curline'><a href='../S/115.html#L1139'>lp_block</a>         1139 libparam/util.c   struct lp_block *spec_copy;</span>
+<span class='curline'><a href='../S/115.html#L1297'>lp_block</a>         1297 libparam/util.c lp_loadparams(void *it, struct lp_block *b, struct lp_mod *m) {</span>
+<span class='curline'><a href='../S/37.html#L1223'>lp_block</a>         1223 memsmodel/mems_disksim.c struct mems *memsmodel_mems_loadparams(struct lp_block *b,</span>
+<span class='curline'><a href='../S/30.html#L298'>lp_block</a>          298 memsmodel/mems_global.h struct mems* memsmodel_mems_loadparams(struct lp_block* b, int* numptr);</span>
+<span class='curline'><a href='../S/272.html#L515'>lp_block</a>          515 src/disksim.c  int disksim_global_loadparams(struct lp_block *b)</span>
+<span class='curline'><a href='../S/200.html#L569'>lp_block</a>          569 src/disksim_bus.c int disksim_bus_stats_loadparams(struct lp_block *b) {</span>
+<span class='curline'><a href='../S/200.html#L677'>lp_block</a>          677 src/disksim_bus.c bus *disksim_bus_loadparams(struct lp_block *b, </span>
+<span class='curline'><a href='../S/270.html#L116'>lp_block</a>          116 src/disksim_cache.c struct cache_if *disksim_cache_loadparams(struct lp_block *b)</span>
+<span class='curline'><a href='../S/267.html#L154'>lp_block</a>          154 src/disksim_cache.h struct cache_if *disksim_cache_loadparams(struct lp_block *b);</span>
+<span class='curline'><a href='../S/215.html#L783'>lp_block</a>          783 src/disksim_cachedev.c struct cache_if *disksim_cachedev_loadparams(struct lp_block *b)</span>
+<span class='curline'><a href='../S/222.html#L2432'>lp_block</a>         2432 src/disksim_cachemem.c struct cache_if *disksim_cachemem_loadparams(struct lp_block *b)</span>
+<span class='curline'><a href='../S/204.html#L428'>lp_block</a>          428 src/disksim_controller.c int disksim_ctlr_stats_loadparams(struct lp_block *b) {</span>
+<span class='curline'><a href='../S/204.html#L465'>lp_block</a>          465 src/disksim_controller.c struct controller *disksim_ctlr_loadparams(struct lp_block *b)</span>
+<span class='curline'><a href='../S/214.html#L188'>lp_block</a>          188 src/disksim_device.c int disksim_device_stats_loadparams(struct lp_block *b) {</span>
+<span class='curline'><a href='../S/214.html#L472'>lp_block</a>          472 src/disksim_device.c int disksim_syncset_loadparams(struct lp_block *b)</span>
+<span class='curline'><a href='../S/273.html#L858'>lp_block</a>          858 src/disksim_disk.c disk *disksim_disk_loadparams(struct lp_block *b,</span>
+<span class='curline'><a href='../S/273.html#L908'>lp_block</a>          908 src/disksim_disk.c int disk_load_syncsets(struct lp_block *b) {</span>
+<span class='curline'><a href='../S/258.html#L664'>lp_block</a>          664 src/disksim_disk.h int disk_load_syncsets(struct lp_block *b);</span>
+<span class='curline'><a href='../S/258.html#L673'>lp_block</a>          673 src/disksim_disk.h int disk_load_syncsets(struct lp_block *b);</span>
+<span class='curline'><a href='../S/205.html#L1036'>lp_block</a>         1036 src/disksim_iodriver.c int disksim_iodriver_stats_loadparams(struct lp_block *b) {</span>
+<span class='curline'><a href='../S/205.html#L1078'>lp_block</a>         1078 src/disksim_iodriver.c struct iodriver *disksim_iodriver_loadparams(struct lp_block *b) {</span>
+<span class='curline'><a href='../S/205.html#L1168'>lp_block</a>         1168 src/disksim_iodriver.c int iodriver_load_logorg(struct lp_block *b) {</span>
+<span class='curline'><a href='../S/218.html#L230'>lp_block</a>          230 src/disksim_iodriver.h int iodriver_load_logorg(struct lp_block *b);</span>
+<span class='curline'><a href='../S/254.html#L3798'>lp_block</a>         3798 src/disksim_ioqueue.c struct ioq *disksim_ioqueue_loadparams(struct lp_block *b,</span>
+<span class='curline'><a href='../S/194.html#L359'>lp_block</a>          359 src/disksim_iosim.c static int iosim_load_map(struct lp_block *b, int n) {</span>
+<span class='curline'><a href='../S/194.html#L405'>lp_block</a>          405 src/disksim_iosim.c int disksim_iomap_loadparams(struct lp_block *b) { </span>
+<span class='curline'><a href='../S/194.html#L411'>lp_block</a>          411 src/disksim_iosim.c int disksim_iosim_loadparams(struct lp_block *b) {</span>
+<span class='curline'><a href='../S/278.html#L1643'>lp_block</a>         1643 src/disksim_logorg.c struct logorg *disksim_logorg_loadparams(struct lp_block *b) </span>
+<span class='curline'><a href='../S/191.html#L1026'>lp_block</a>         1026 src/disksim_pfsim.c int disksim_pf_loadparams(struct lp_block *b) {</span>
+<span class='curline'><a href='../S/191.html#L1045'>lp_block</a>         1045 src/disksim_pfsim.c int disksim_pf_stats_loadparams(struct lp_block *b) {</span>
+<span class='curline'><a href='../S/201.html#L823'>lp_block</a>          823 src/disksim_simpledisk.c struct simpledisk *disksim_simpledisk_loadparams(struct lp_block *b)</span>
+<span class='curline'><a href='../S/190.html#L43'>lp_block</a>           43 src/disksim_statload.c int disksim_stats_loadparams(struct lp_block *b) {</span>
+<span class='curline'><a href='../S/216.html#L691'>lp_block</a>          691 src/disksim_synthio.c int disksim_synthio_loadparams(struct lp_block *b) {</span>
+<span class='curline'><a href='../S/216.html#L708'>lp_block</a>          708 src/disksim_synthio.c static int loadgen(struct lp_block *b, synthio_generator **result);</span>
+<span class='curline'><a href='../S/216.html#L865'>lp_block</a>          865 src/disksim_synthio.c int disksim_synthgen_loadparams(struct lp_block *b) { </span>
+<span class='curline'><a href='../S/216.html#L872'>lp_block</a>          872 src/disksim_synthio.c static int loadgen(struct lp_block *b, synthio_generator **result) {</span>
+<span class='curline'><a href='../S/158.html#L12'>lp_block</a>           12 ssdmodel/include/ssdmodel/modules/ssdmodel_ssd_param.h struct ssd *ssdmodel_ssd_loadparams(struct lp_block *b, int *num);</span>
+<span class='curline'><a href='../S/161.html#L14'>lp_block</a>           14 ssdmodel/old/ssd_param.c                 struct ssd * result, struct lp_block *blk) {</span>
+<span class='curline'><a href='../S/162.html#L19'>lp_block</a>           19 ssdmodel/old/ssd_param.h    struct ssd *disksim_ssd_loadparams(struct lp_block *b);</span>
+<span class='curline'><a href='../S/187.html#L1093'>lp_block</a>         1093 ssdmodel/ssd.c struct ssd *ssdmodel_ssd_loadparams(struct lp_block *b, int *num)</span>
+<span class='curline'><a href='../S/8.html#L87'>lp_block</a>           87 utils/params/libparam_to_v3.c int *noop(struct lp_block *junk1, int junk2) { return 0; }</span>
+<span class='curline'><a href='../S/8.html#L88'>lp_block</a>           88 utils/params/libparam_to_v3.c int *loader(struct lp_block *b, int foo) {</span>
+<span class='curline'><a href='../S/8.html#L94'>lp_block</a>           94 utils/params/libparam_to_v3.c   struct lp_block disk, dmdisk, layout, mech;</span>
+<span class='curline'><a href='../S/8.html#L98'>lp_block</a>           98 utils/params/libparam_to_v3.c   bzero(&amp;mech, sizeof(struct lp_block));</span>
+<span class='curline'><a href='../S/8.html#L99'>lp_block</a>           99 utils/params/libparam_to_v3.c   bzero(&amp;disk, sizeof(struct lp_block));</span>
+<span class='curline'><a href='../S/8.html#L100'>lp_block</a>          100 utils/params/libparam_to_v3.c   bzero(&amp;dmdisk, sizeof(struct lp_block));</span>
+<span class='curline'><a href='../S/8.html#L101'>lp_block</a>          101 utils/params/libparam_to_v3.c   bzero(&amp;layout, sizeof(struct lp_block));</span>
+<span class='curline'><a href='../S/12.html#L20'>lp_block</a>           20 utils/params/merge_blocks.c struct lp_block *</span>
+<span class='curline'><a href='../S/12.html#L21'>lp_block</a>           21 utils/params/merge_blocks.c do_subst(struct lp_block *b, </span>
+<span class='curline'><a href='../S/12.html#L22'>lp_block</a>           22 utils/params/merge_blocks.c 	 struct lp_block *newthing, </span>
+<span class='curline'><a href='../S/12.html#L90'>lp_block</a>           90 utils/params/merge_blocks.c   struct lp_block *result;</span>
+</pre>
+</body>
+</html>

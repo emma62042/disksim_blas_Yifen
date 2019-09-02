@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>dm_angle_t</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/91.html#L57'>dm_angle_t</a>         57 diskmodel/convert.c INLINE double      dm_angle_itod(dm_angle_t a)</span>
+<span class='curline'><a href='../S/91.html#L63'>dm_angle_t</a>         63 diskmodel/convert.c INLINE dm_angle_t  dm_angle_dtoi(double a)</span>
+<span class='curline'><a href='../S/91.html#L68'>dm_angle_t</a>         68 diskmodel/convert.c   return (dm_angle_t)(a * (double)((long long)1 &lt;&lt; 32));</span>
+<span class='curline'><a href='../S/77.html#L88'>dm_angle_t</a>         88 diskmodel/dm.h   dm_angle_t theta;</span>
+<span class='curline'><a href='../S/77.html#L93'>dm_angle_t</a>         93 diskmodel/dm.h double      dm_angle_itod(dm_angle_t);</span>
+<span class='curline'><a href='../S/77.html#L94'>dm_angle_t</a>         94 diskmodel/dm.h dm_angle_t  dm_angle_dtoi(double);</span>
+<span class='curline'><a href='../S/77.html#L238'>dm_angle_t</a>        238 diskmodel/dm.h   dm_angle_t</span>
+<span class='curline'><a href='../S/77.html#L243'>dm_angle_t</a>        243 diskmodel/dm.h   dm_angle_t</span>
+<span class='curline'><a href='../S/77.html#L257'>dm_angle_t</a>        257 diskmodel/dm.h 		     dm_angle_t *start,</span>
+<span class='curline'><a href='../S/77.html#L258'>dm_angle_t</a>        258 diskmodel/dm.h 		     dm_angle_t *width);</span>
+<span class='curline'><a href='../S/77.html#L273'>dm_angle_t</a>        273 diskmodel/dm.h   dm_angle_t</span>
+<span class='curline'><a href='../S/77.html#L279'>dm_angle_t</a>        279 diskmodel/dm.h   dm_angle_t</span>
+<span class='curline'><a href='../S/77.html#L437'>dm_angle_t</a>        437 diskmodel/dm.h 			 dm_angle_t begin,</span>
+<span class='curline'><a href='../S/77.html#L438'>dm_angle_t</a>        438 diskmodel/dm.h 			 dm_angle_t end);</span>
+<span class='curline'><a href='../S/77.html#L457'>dm_angle_t</a>        457 diskmodel/dm.h   dm_angle_t(*dm_rotate)(struct dm_disk_if *, </span>
+<span class='curline'><a href='../S/76.html#L50'>dm_angle_t</a>         50 diskmodel/dm_testsuite.c     dm_angle_t skew, zerol;</span>
+<span class='curline'><a href='../S/76.html#L80'>dm_angle_t</a>         80 diskmodel/dm_testsuite.c   dm_angle_t a;</span>
+<span class='curline'><a href='../S/76.html#L92'>dm_angle_t</a>         92 diskmodel/dm_testsuite.c   dm_angle_t skew;</span>
+<span class='curline'><a href='../S/76.html#L455'>dm_angle_t</a>        455 diskmodel/dm_testsuite.c   dm_angle_t result;</span>
+<span class='curline'><a href='../S/76.html#L525'>dm_angle_t</a>        525 diskmodel/dm_testsuite.c   dm_angle_t result;</span>
+<span class='curline'><a href='../S/76.html#L541'>dm_angle_t</a>        541 diskmodel/dm_testsuite.c   dm_angle_t a1, a2;</span>
+<span class='curline'><a href='../S/93.html#L59'>dm_angle_t</a>         59 diskmodel/dm_types.h #define DM_ANGLE_DENOM ((dm_angle_t)-1)</span>
+<span class='curline'><a href='../S/92.html#L110'>dm_angle_t</a>        110 diskmodel/layout_g1.c static __inline dm_angle_t </span>
+<span class='curline'><a href='../S/92.html#L112'>dm_angle_t</a>        112 diskmodel/layout_g1.c static inline dm_angle_t </span>
+<span class='curline'><a href='../S/92.html#L114'>dm_angle_t</a>        114 diskmodel/layout_g1.c addmult(dm_angle_t start, int mult, dm_angle_t q, dm_angle_t x) </span>
+<span class='curline'><a href='../S/92.html#L117'>dm_angle_t</a>        117 diskmodel/layout_g1.c   dm_angle_t result = start;</span>
+<span class='curline'><a href='../S/92.html#L221'>dm_angle_t</a>        221 diskmodel/layout_g1.c static dm_angle_t</span>
+<span class='curline'><a href='../S/92.html#L230'>dm_angle_t</a>        230 diskmodel/layout_g1.c   dm_angle_t result = b-&gt;firstblkangle;</span>
+<span class='curline'><a href='../S/92.html#L291'>dm_angle_t</a>        291 diskmodel/layout_g1.c static dm_angle_t </span>
+<span class='curline'><a href='../S/92.html#L315'>dm_angle_t</a>        315 diskmodel/layout_g1.c 		dm_angle_t *angle,</span>
+<span class='curline'><a href='../S/92.html#L316'>dm_angle_t</a>        316 diskmodel/layout_g1.c 		dm_angle_t *width)</span>
+<span class='curline'><a href='../S/92.html#L322'>dm_angle_t</a>        322 diskmodel/layout_g1.c   dm_angle_t result = b-&gt;firstblkangle;</span>
+<span class='curline'><a href='../S/92.html#L377'>dm_angle_t</a>        377 diskmodel/layout_g1.c   dm_angle_t angle;</span>
+<span class='curline'><a href='../S/92.html#L449'>dm_angle_t</a>        449 diskmodel/layout_g1.c   dm_angle_t zerol;</span>
+<span class='curline'><a href='../S/92.html#L1365'>dm_angle_t</a>       1365 diskmodel/layout_g1.c   dm_angle_t a;</span>
+<span class='curline'><a href='../S/92.html#L1755'>dm_angle_t</a>       1755 diskmodel/layout_g1.c static dm_angle_t</span>
+<span class='curline'><a href='../S/92.html#L1763'>dm_angle_t</a>       1763 diskmodel/layout_g1.c   dm_angle_t result;</span>
+<span class='curline'><a href='../S/92.html#L1774'>dm_angle_t</a>       1774 diskmodel/layout_g1.c static dm_angle_t</span>
+<span class='curline'><a href='../S/92.html#L1778'>dm_angle_t</a>       1778 diskmodel/layout_g1.c   dm_angle_t a1, a2;</span>
+<span class='curline'><a href='../S/71.html#L180'>dm_angle_t</a>        180 diskmodel/layout_g1.h   dm_angle_t firstblkangle;</span>
+<span class='curline'><a href='../S/71.html#L181'>dm_angle_t</a>        181 diskmodel/layout_g1.h   dm_angle_t cylskew;</span>
+<span class='curline'><a href='../S/71.html#L182'>dm_angle_t</a>        182 diskmodel/layout_g1.h   dm_angle_t trackskew;</span>
+<span class='curline'><a href='../S/71.html#L194'>dm_angle_t</a>        194 diskmodel/layout_g1.h   dm_angle_t sector_width;</span>
+<span class='curline'><a href='../S/71.html#L199'>dm_angle_t</a>        199 diskmodel/layout_g1.h   dm_angle_t trkspace;  </span>
+<span class='curline'><a href='../S/98.html#L288'>dm_angle_t</a>        288 diskmodel/layout_g2.c static dm_angle_t</span>
+<span class='curline'><a href='../S/98.html#L299'>dm_angle_t</a>        299 diskmodel/layout_g2.c static dm_angle_t</span>
+<span class='curline'><a href='../S/98.html#L310'>dm_angle_t</a>        310 diskmodel/layout_g2.c   dm_angle_t result = l-&gt;ptol_map[p-&gt;cyl].skew;</span>
+<span class='curline'><a href='../S/98.html#L339'>dm_angle_t</a>        339 diskmodel/layout_g2.c static dm_angle_t</span>
+<span class='curline'><a href='../S/98.html#L345'>dm_angle_t</a>        345 diskmodel/layout_g2.c   dm_angle_t result = 0;</span>
+<span class='curline'><a href='../S/98.html#L381'>dm_angle_t</a>        381 diskmodel/layout_g2.c      dm_angle_t *start,</span>
+<span class='curline'><a href='../S/98.html#L382'>dm_angle_t</a>        382 diskmodel/layout_g2.c      dm_angle_t *width)</span>
+<span class='curline'><a href='../S/61.html#L67'>dm_angle_t</a>         67 diskmodel/layout_g2.h   dm_angle_t skew;</span>
+<span class='curline'><a href='../S/61.html#L88'>dm_angle_t</a>         88 diskmodel/layout_g2.h   dm_angle_t csskew; // cyl switch</span>
+<span class='curline'><a href='../S/61.html#L89'>dm_angle_t</a>         89 diskmodel/layout_g2.h   dm_angle_t hsskew; // head switch</span>
+<span class='curline'><a href='../S/61.html#L90'>dm_angle_t</a>         90 diskmodel/layout_g2.h   dm_angle_t zskew;  // skew to beginning of zone ("first block offset")</span>
+<span class='curline'><a href='../S/61.html#L92'>dm_angle_t</a>         92 diskmodel/layout_g2.h   dm_angle_t sector_width;</span>
+<span class='curline'><a href='../S/70.html#L625'>dm_angle_t</a>        625 diskmodel/layout_g4.c dm_angle_t</span>
+<span class='curline'><a href='../S/70.html#L632'>dm_angle_t</a>        632 diskmodel/layout_g4.c   dm_angle_t result;</span>
+<span class='curline'><a href='../S/70.html#L660'>dm_angle_t</a>        660 diskmodel/layout_g4.c dm_angle_t</span>
+<span class='curline'><a href='../S/70.html#L668'>dm_angle_t</a>        668 diskmodel/layout_g4.c   dm_angle_t result;</span>
+<span class='curline'><a href='../S/70.html#L717'>dm_angle_t</a>        717 diskmodel/layout_g4.c   dm_angle_t sw;</span>
+<span class='curline'><a href='../S/56.html#L55'>dm_angle_t</a>         55 diskmodel/layout_g4.h   dm_angle_t sw;  // sector_width</span>
+<span class='curline'><a href='../S/56.html#L69'>dm_angle_t</a>         69 diskmodel/layout_g4.h   dm_angle_t sw;  // sector_width</span>
+<span class='curline'><a href='../S/56.html#L82'>dm_angle_t</a>         82 diskmodel/layout_g4.h   dm_angle_t off;</span>
+<span class='curline'><a href='../S/56.html#L91'>dm_angle_t</a>         91 diskmodel/layout_g4.h   dm_angle_t alen; </span>
+<span class='curline'><a href='../S/72.html#L148'>dm_angle_t</a>        148 diskmodel/mech_g1.c   dm_angle_t seekrotate;</span>
+<span class='curline'><a href='../S/72.html#L391'>dm_angle_t</a>        391 diskmodel/mech_g1.c   dm_angle_t start, end;</span>
+<span class='curline'><a href='../S/72.html#L392'>dm_angle_t</a>        392 diskmodel/mech_g1.c   dm_angle_t theta = begin-&gt;theta; // rotational position of the disk</span>
+<span class='curline'><a href='../S/72.html#L425'>dm_angle_t</a>        425 diskmodel/mech_g1.c     dm_angle_t extra = 0;</span>
+<span class='curline'><a href='../S/72.html#L505'>dm_angle_t</a>        505 diskmodel/mech_g1.c   dm_angle_t start, end, skew;</span>
+<span class='curline'><a href='../S/72.html#L507'>dm_angle_t</a>        507 diskmodel/mech_g1.c   dm_angle_t theta = initial-&gt;theta;</span>
+<span class='curline'><a href='../S/72.html#L547'>dm_angle_t</a>        547 diskmodel/mech_g1.c       dm_angle_t track_skew;</span>
+<span class='curline'><a href='../S/72.html#L551'>dm_angle_t</a>        551 diskmodel/mech_g1.c       dm_angle_t sectWidth = </span>
+<span class='curline'><a href='../S/72.html#L609'>dm_angle_t</a>        609 diskmodel/mech_g1.c 		      dm_angle_t junk1,</span>
+<span class='curline'><a href='../S/72.html#L610'>dm_angle_t</a>        610 diskmodel/mech_g1.c 		      dm_angle_t junk2)</span>
+<span class='curline'><a href='../S/72.html#L620'>dm_angle_t</a>        620 diskmodel/mech_g1.c 	      dm_angle_t begin,</span>
+<span class='curline'><a href='../S/72.html#L621'>dm_angle_t</a>        621 diskmodel/mech_g1.c 	      dm_angle_t end)</span>
+<span class='curline'><a href='../S/72.html#L624'>dm_angle_t</a>        624 diskmodel/mech_g1.c   dm_angle_t diff;</span>
+<span class='curline'><a href='../S/72.html#L654'>dm_angle_t</a>        654 diskmodel/mech_g1.c   dm_angle_t theta;</span>
+<span class='curline'><a href='../S/72.html#L699'>dm_angle_t</a>        699 diskmodel/mech_g1.c static dm_angle_t</span>
+<span class='curline'><a href='../S/88.html#L48'>dm_angle_t</a>         48 diskmodel/tests/layout_simple.c     dm_angle_t skew, zerol;</span>
+<span class='curline'><a href='../S/87.html#L46'>dm_angle_t</a>         46 diskmodel/tests/layout_skew.c     dm_angle_t skew;</span>
+</pre>
+</body>
+</html>

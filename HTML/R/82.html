@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>CACHE_VALID</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/222.html#L270'>CACHE_VALID</a>       270 src/disksim_cachemem.c       if ((line == NULL) || ((line-&gt;state &amp; CACHE_VALID) == 0)) {</span>
+<span class='curline'><a href='../S/222.html#L801'>CACHE_VALID</a>       801 src/disksim_cachemem.c       } else if ((writelocked) || (!(line-&gt;state &amp; CACHE_VALID))) {</span>
+<span class='curline'><a href='../S/222.html#L831'>CACHE_VALID</a>       831 src/disksim_cachemem.c       } else if ((dirtystart != -1) &amp;&amp; ((!(tmp-&gt;state &amp; CACHE_VALID)) || (writelocked))) {</span>
+<span class='curline'><a href='../S/222.html#L1276'>CACHE_VALID</a>      1276 src/disksim_cachemem.c          if (line-&gt;state &amp; CACHE_VALID) {</span>
+<span class='curline'><a href='../S/222.html#L1301'>CACHE_VALID</a>      1301 src/disksim_cachemem.c          line-&gt;state |= CACHE_VALID;</span>
+<span class='curline'><a href='../S/222.html#L1315'>CACHE_VALID</a>      1315 src/disksim_cachemem.c          if (line-&gt;state &amp; CACHE_VALID) {</span>
+<span class='curline'><a href='../S/222.html#L1340'>CACHE_VALID</a>      1340 src/disksim_cachemem.c          line-&gt;state |= CACHE_VALID;</span>
+<span class='curline'><a href='../S/222.html#L1474'>CACHE_VALID</a>      1474 src/disksim_cachemem.c          int locktype = (tmp-&gt;state &amp; CACHE_VALID) ? 1 : 2;</span>
+<span class='curline'><a href='../S/222.html#L1498'>CACHE_VALID</a>      1498 src/disksim_cachemem.c          if ((tmp-&gt;state &amp; CACHE_VALID) == 0) {</span>
+<span class='curline'><a href='../S/222.html#L1499'>CACHE_VALID</a>      1499 src/disksim_cachemem.c             tmp-&gt;state |= CACHE_VALID;</span>
+<span class='curline'><a href='../S/222.html#L1630'>CACHE_VALID</a>      1630 src/disksim_cachemem.c          if ((tmp-&gt;lbn &lt; lbn) &amp;&amp; ((tmp-&gt;state &amp; CACHE_VALID) == 0)) {</span>
+<span class='curline'><a href='../S/222.html#L1632'>CACHE_VALID</a>      1632 src/disksim_cachemem.c             tmp-&gt;state |= CACHE_VALID;</span>
+<span class='curline'><a href='../S/222.html#L1637'>CACHE_VALID</a>      1637 src/disksim_cachemem.c          } else if ((tmp-&gt;state &amp; CACHE_VALID) == 0) {</span>
+<span class='curline'><a href='../S/222.html#L1641'>CACHE_VALID</a>      1641 src/disksim_cachemem.c                tmp-&gt;state |= CACHE_VALID;</span>
+<span class='curline'><a href='../S/222.html#L1852'>CACHE_VALID</a>      1852 src/disksim_cachemem.c       line-&gt;state |= (writethru) ? CACHE_VALID : (CACHE_VALID|CACHE_DIRTY);</span>
+</pre>
+</body>
+</html>

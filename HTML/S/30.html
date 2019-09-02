@@ -1,0 +1,322 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>memsmodel/mems_global.h</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<a id='TOP' name='TOP'></a><h2 class='header'><a href='../mains.html'>root</a>/<a href='../files/401.html'>memsmodel</a>/mems_global.h</h2>
+<em class='comment'>/* [&lt;][&gt;][^][v][top]<a href='#BOTTOM'>[bottom]</a><a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</em>
+<hr />
+<h2 class='header'><a href='../J/52.html' title='Multiple included from 10 places.'>INCLUDED FROM</a></h2>
+<hr />
+<pre>
+<a id='L1' name='L1'></a>   1 <em class='comment'>/*</em>
+<a id='L2' name='L2'></a>   2 <em class='comment'> * DiskSim Storage Subsystem Simulation Environment (Version 4.0)</em>
+<a id='L3' name='L3'></a>   3 <em class='comment'> * Revision Authors: John Bucy, Greg Ganger</em>
+<a id='L4' name='L4'></a>   4 <em class='comment'> * Contributors: John Griffin, Jiri Schindler, Steve Schlosser</em>
+<a id='L5' name='L5'></a>   5 <em class='comment'> *</em>
+<a id='L6' name='L6'></a>   6 <em class='comment'> * Copyright (c) of Carnegie Mellon University, 2001-2008.</em>
+<a id='L7' name='L7'></a>   7 <em class='comment'> *</em>
+<a id='L8' name='L8'></a>   8 <em class='comment'> * This software is being provided by the copyright holders under the</em>
+<a id='L9' name='L9'></a>   9 <em class='comment'> * following license. By obtaining, using and/or copying this software,</em>
+<a id='L10' name='L10'></a>  10 <em class='comment'> * you agree that you have read, understood, and will comply with the</em>
+<a id='L11' name='L11'></a>  11 <em class='comment'> * following terms and conditions:</em>
+<a id='L12' name='L12'></a>  12 <em class='comment'> *</em>
+<a id='L13' name='L13'></a>  13 <em class='comment'> * Permission to reproduce, use, and prepare derivative works of this</em>
+<a id='L14' name='L14'></a>  14 <em class='comment'> * software is granted provided the copyright and "No Warranty" statements</em>
+<a id='L15' name='L15'></a>  15 <em class='comment'> * are included with all reproductions and derivative works and associated</em>
+<a id='L16' name='L16'></a>  16 <em class='comment'> * documentation. This software may also be redistributed without charge</em>
+<a id='L17' name='L17'></a>  17 <em class='comment'> * provided that the copyright and "No Warranty" statements are included</em>
+<a id='L18' name='L18'></a>  18 <em class='comment'> * in all redistributions.</em>
+<a id='L19' name='L19'></a>  19 <em class='comment'> *</em>
+<a id='L20' name='L20'></a>  20 <em class='comment'> * NO WARRANTY. THIS SOFTWARE IS FURNISHED ON AN "AS IS" BASIS.</em>
+<a id='L21' name='L21'></a>  21 <em class='comment'> * CARNEGIE MELLON UNIVERSITY MAKES NO WARRANTIES OF ANY KIND, EITHER</em>
+<a id='L22' name='L22'></a>  22 <em class='comment'> * EXPRESSED OR IMPLIED AS TO THE MATTER INCLUDING, BUT NOT LIMITED</em>
+<a id='L23' name='L23'></a>  23 <em class='comment'> * TO: WARRANTY OF FITNESS FOR PURPOSE OR MERCHANTABILITY, EXCLUSIVITY</em>
+<a id='L24' name='L24'></a>  24 <em class='comment'> * OF RESULTS OR RESULTS OBTAINED FROM USE OF THIS SOFTWARE. CARNEGIE</em>
+<a id='L25' name='L25'></a>  25 <em class='comment'> * MELLON UNIVERSITY DOES NOT MAKE ANY WARRANTY OF ANY KIND WITH RESPECT</em>
+<a id='L26' name='L26'></a>  26 <em class='comment'> * TO FREEDOM FROM PATENT, TRADEMARK, OR COPYRIGHT INFRINGEMENT.</em>
+<a id='L27' name='L27'></a>  27 <em class='comment'> * COPYRIGHT HOLDERS WILL BEAR NO LIABILITY FOR ANY USE OF THIS SOFTWARE</em>
+<a id='L28' name='L28'></a>  28 <em class='comment'> * OR DOCUMENTATION.</em>
+<a id='L29' name='L29'></a>  29 <em class='comment'> *</em>
+<a id='L30' name='L30'></a>  30 <em class='comment'> */</em>
+<a id='L31' name='L31'></a>  31 
+<a id='L32' name='L32'></a>  32 
+<a id='L33' name='L33'></a>  33 <em class='sharp'>#ifndef</em> <a href='../S/30.html#L34' title='Defined at 34 in memsmodel/mems_global.h.'>_MEMS_GLOBAL_H_</a>
+<a id='L34' name='L34'></a>  34 <em class='sharp'>#define</em> <a href='../S/30.html#L33' title='Referred from 33 in memsmodel/mems_global.h.'>_MEMS_GLOBAL_H_</a>
+<a id='L35' name='L35'></a>  35 
+<a id='L36' name='L36'></a>  36 <em class='sharp'>#include</em> "<a href='283.html'>disksim_global.h</a>"
+<a id='L37' name='L37'></a>  37 <em class='sharp'>#include</em> "<a href='255.html'>disksim_iosim.h</a>"      <em class='comment'>/* Provides MAXINBUSES */</em>
+<a id='L38' name='L38'></a>  38 <em class='sharp'>#include</em> "<a href='288.html'>disksim_stat.h</a>"
+<a id='L39' name='L39'></a>  39 
+<a id='L40' name='L40'></a>  40 <em class='sharp'>#define</em> <a href='../S/37.html#L559' title='Referred from 559 in memsmodel/mems_disksim.c.'>MEMS_MAXSLEDS</a>           9
+<a id='L41' name='L41'></a>  41 <em class='sharp'>#define</em> <a href='../R/406.html' title='Multiple referred from 3 places.'>MEMS_SEEKCACHE</a>          2       <em class='comment'>/* Number of entries in seekcache */</em>
+<a id='L42' name='L42'></a>  42 
+<a id='L43' name='L43'></a>  43 <em class='sharp'>#define</em> <a href='../R/1336.html' title='Multiple referred from 62 places.'>getmems</a>(d) (<a href='../S/283.html#L342' title='Defined at 342 in src/disksim_global.h.'>disksim</a>-&gt;memsinfo-&gt;devices[d])
+<a id='L44' name='L44'></a>  44 
+<a id='L45' name='L45'></a>  45 <em class='sharp'>#define</em> <a href='../R/412.html' title='Multiple referred from 4 places.'>MEMS_SLED_INACTIVE</a>     0       <em class='comment'>/*  sled states  */</em>
+<a id='L46' name='L46'></a>  46 <em class='sharp'>#define</em> <a href='../R/411.html' title='Multiple referred from 4 places.'>MEMS_SLED_IDLE</a>         1
+<a id='L47' name='L47'></a>  47 <em class='sharp'>#define</em> <a href='../R/409.html' title='Multiple referred from 3 places.'>MEMS_SLED_ACTIVE</a>       2
+<a id='L48' name='L48'></a>  48 
+<a id='L49' name='L49'></a>  49 <em class='sharp'>#define</em> MEMS_SEEK_PIECEWISE    0
+<a id='L50' name='L50'></a>  50 <em class='sharp'>#define</em> <a href='../R/407.html' title='Multiple referred from 2 places.'>MEMS_SEEK_HONG</a>         1
+<a id='L51' name='L51'></a>  51 
+<a id='L52' name='L52'></a>  52 <strong class='reserved'>typedef</strong> <strong class='reserved'>struct</strong> coord <em class='brace'>{</em>
+<a id='L53' name='L53'></a>  53   <strong class='reserved'>int</strong> x_pos;  <em class='comment'>/*  bit position offsets  */</em>
+<a id='L54' name='L54'></a>  54   <strong class='reserved'>int</strong> y_pos;
+<a id='L55' name='L55'></a>  55   <strong class='reserved'>int</strong> y_vel;
+<a id='L56' name='L56'></a>  56 <em class='brace'>}</em> <a href='../R/899.html' title='Multiple referred from 29 places.'>coord_t</a>;
+<a id='L57' name='L57'></a>  57 
+<a id='L58' name='L58'></a>  58 <strong class='reserved'>typedef</strong> <strong class='reserved'>struct</strong> tipsector_coord_set <em class='brace'>{</em>
+<a id='L59' name='L59'></a>  59   <a href='../S/30.html#L56' title='Defined at 56 in memsmodel/mems_global.h.'>coord_t</a> servo_start;
+<a id='L60' name='L60'></a>  60   <a href='../S/30.html#L56' title='Defined at 56 in memsmodel/mems_global.h.'>coord_t</a> tipsector_start;
+<a id='L61' name='L61'></a>  61   <a href='../S/30.html#L56' title='Defined at 56 in memsmodel/mems_global.h.'>coord_t</a> tipsector_end;
+<a id='L62' name='L62'></a>  62 <em class='brace'>}</em> <a href='../R/2197.html' title='Multiple referred from 25 places.'>tipsector_coord_set_t</a>;
+<a id='L63' name='L63'></a>  63 
+<a id='L64' name='L64'></a>  64 <strong class='reserved'>typedef</strong> <strong class='reserved'>struct</strong> <a href='../R/2198.html' title='Multiple referred from 29 places.'>tipset</a> <em class='brace'>{</em>
+<a id='L65' name='L65'></a>  65   <strong class='reserved'>int</strong> tip_start;
+<a id='L66' name='L66'></a>  66   <strong class='reserved'>int</strong> tip_end;
+<a id='L67' name='L67'></a>  67   <strong class='reserved'>int</strong> num_tips;
+<a id='L68' name='L68'></a>  68 <em class='brace'>}</em> <a href='../R/2199.html' title='Multiple referred from 7 places.'>tipset_t</a>;
+<a id='L69' name='L69'></a>  69 
+<a id='L70' name='L70'></a>  70 
+<a id='L71' name='L71'></a>  71 <em class='comment'>/* Informational structure for prefetching support */</em>
+<a id='L72' name='L72'></a>  72 <strong class='reserved'>struct</strong> <a href='../R/1755.html' title='Multiple referred from 4 places.'>mems_prefetch_info</a> <em class='brace'>{</em>
+<a id='L73' name='L73'></a>  73   <strong class='reserved'>int</strong> firstblock;
+<a id='L74' name='L74'></a>  74   <strong class='reserved'>int</strong> lastblock;
+<a id='L75' name='L75'></a>  75 
+<a id='L76' name='L76'></a>  76   <strong class='reserved'>int</strong> completed_block;
+<a id='L77' name='L77'></a>  77   <strong class='reserved'>int</strong> next_block_start;
+<a id='L78' name='L78'></a>  78   <strong class='reserved'>int</strong> next_block_end;
+<a id='L79' name='L79'></a>  79 <em class='brace'>}</em>;
+<a id='L80' name='L80'></a>  80 
+<a id='L81' name='L81'></a>  81 
+<a id='L82' name='L82'></a>  82 <em class='comment'>/* Marshalling structure for mems_seek_time_checkcache() */</em>
+<a id='L83' name='L83'></a>  83 <strong class='reserved'>struct</strong> <a href='../R/1764.html' title='Multiple referred from 2 places.'>mems_seekcache</a> <em class='brace'>{</em>
+<a id='L84' name='L84'></a>  84   <strong class='reserved'>double</strong>  time;         <em class='comment'>/* total time returned by mems_seek_time() */</em>
+<a id='L85' name='L85'></a>  85   <a href='../S/30.html#L56' title='Defined at 56 in memsmodel/mems_global.h.'>coord_t</a> begin;        <em class='comment'>/* begin coordinate */</em>
+<a id='L86' name='L86'></a>  86   <a href='../S/30.html#L56' title='Defined at 56 in memsmodel/mems_global.h.'>coord_t</a> end;          <em class='comment'>/* end coordinate */</em>
+<a id='L87' name='L87'></a>  87   <strong class='reserved'>double</strong>  x_seek_time;          <em class='comment'>/* stat returned for X seek time */</em>
+<a id='L88' name='L88'></a>  88   <strong class='reserved'>double</strong>  y_seek_time;          <em class='comment'>/* stat returned for Y seek time */</em>
+<a id='L89' name='L89'></a>  89   <strong class='reserved'>double</strong>  turnaround_time;      <em class='comment'>/* stat returned for turnaround time */</em>
+<a id='L90' name='L90'></a>  90   <strong class='reserved'>int</strong>     turnaround_number;    <em class='comment'>/* stat returned for num turnarounds */</em>
+<a id='L91' name='L91'></a>  91 <em class='brace'>}</em>;
+<a id='L92' name='L92'></a>  92 
+<a id='L93' name='L93'></a>  93 
+<a id='L94' name='L94'></a>  94 <strong class='reserved'>struct</strong> <a href='../R/1766.html' title='Multiple referred from 9 places.'>mems_segment</a> <em class='brace'>{</em>
+<a id='L95' name='L95'></a>  95   <strong class='reserved'>double</strong> time;
+<a id='L96' name='L96'></a>  96   <strong class='reserved'>struct</strong> <a href='../S/30.html#L94' title='Defined at 94 in memsmodel/mems_global.h.'>mems_segment</a> *next;
+<a id='L97' name='L97'></a>  97   <strong class='reserved'>struct</strong> <a href='../S/30.html#L94' title='Defined at 94 in memsmodel/mems_global.h.'>mems_segment</a> *prev;
+<a id='L98' name='L98'></a>  98   <strong class='reserved'>int</strong>    startblkno;
+<a id='L99' name='L99'></a>  99   <strong class='reserved'>int</strong>    endblkno;
+<a id='L100' name='L100'></a> 100 <em class='brace'>}</em>;
+<a id='L101' name='L101'></a> 101 
+<a id='L102' name='L102'></a> 102 
+<a id='L103' name='L103'></a> 103 <strong class='reserved'>struct</strong> <a href='../R/1775.html' title='Multiple referred from 2 places.'>mems_stat</a> <em class='brace'>{</em>
+<a id='L104' name='L104'></a> 104   <a href='../S/288.html#L123' title='Defined at 123 in src/disksim_stat.h.'>statgen</a> request_energy_uj;    <em class='comment'>/* Average energy dissipated per request */</em>
+<a id='L105' name='L105'></a> 105   <strong class='reserved'>double</strong>  total_energy_j;       <em class='comment'>/* Total sled dissipated energy over run */</em>
+<a id='L106' name='L106'></a> 106   <strong class='reserved'>double</strong>  servicing_energy_j;   <em class='comment'>/* Energy expended servicing requests */</em>
+<a id='L107' name='L107'></a> 107   <strong class='reserved'>double</strong>  startup_energy_j;     <em class='comment'>/* Energy expended while transitioning */</em>
+<a id='L108' name='L108'></a> 108   <strong class='reserved'>double</strong>  idle_energy_j;        <em class='comment'>/* Energy expended while idle */</em>
+<a id='L109' name='L109'></a> 109   <strong class='reserved'>double</strong>  inactive_energy_j;    <em class='comment'>/* Energy expended while inactive */</em>
+<a id='L110' name='L110'></a> 110 
+<a id='L111' name='L111'></a> 111   <a href='../S/288.html#L123' title='Defined at 123 in src/disksim_stat.h.'>statgen</a> seek_time;            <em class='comment'>/* Initial positioning time */</em>
+<a id='L112' name='L112'></a> 112   <a href='../S/288.html#L123' title='Defined at 123 in src/disksim_stat.h.'>statgen</a> x_seek_time;          <em class='comment'>/* Initial positioning time in X */</em>
+<a id='L113' name='L113'></a> 113   <a href='../S/288.html#L123' title='Defined at 123 in src/disksim_stat.h.'>statgen</a> y_seek_time;          <em class='comment'>/* Initial positioning time in Y */</em>
+<a id='L114' name='L114'></a> 114 
+<a id='L115' name='L115'></a> 115   <strong class='reserved'>int</strong> num_initial_turnarounds;  <em class='comment'>/* Number of initial turnarounds */</em>
+<a id='L116' name='L116'></a> 116 
+<a id='L117' name='L117'></a> 117   <a href='../S/288.html#L123' title='Defined at 123 in src/disksim_stat.h.'>statgen</a> turnaround_time;      <em class='comment'>/* Initial turnaround time to position */</em>      
+<a id='L118' name='L118'></a> 118   <a href='../S/288.html#L123' title='Defined at 123 in src/disksim_stat.h.'>statgen</a> turnaround_number;    <em class='comment'>/* Initial number of to's to position */</em>
+<a id='L119' name='L119'></a> 119 
+<a id='L120' name='L120'></a> 120   <strong class='reserved'>int</strong> num_stream_turnarounds;   <em class='comment'>/* Number of streaming turnarounds  */</em>
+<a id='L121' name='L121'></a> 121 
+<a id='L122' name='L122'></a> 122   <a href='../S/288.html#L123' title='Defined at 123 in src/disksim_stat.h.'>statgen</a> stream_turnaround_time; <em class='comment'>/* "Streaming" turnaround time */</em>
+<a id='L123' name='L123'></a> 123   <a href='../S/288.html#L123' title='Defined at 123 in src/disksim_stat.h.'>statgen</a> stream_turnaround_number; <em class='comment'>/* "Streaming turnaround number */</em>
+<a id='L124' name='L124'></a> 124 
+<a id='L125' name='L125'></a> 125   <a href='../S/288.html#L123' title='Defined at 123 in src/disksim_stat.h.'>statgen</a> subtrack_accesses;    <em class='comment'>/* Sectors accessed per request */</em>
+<a id='L126' name='L126'></a> 126   <a href='../S/288.html#L123' title='Defined at 123 in src/disksim_stat.h.'>statgen</a> tips_per_access;      <em class='comment'>/* Average number of tips per sector access */</em>
+<a id='L127' name='L127'></a> 127 
+<a id='L128' name='L128'></a> 128   <strong class='reserved'>int</strong> num_spinups;              <em class='comment'>/* Number of times sled spins up */</em>
+<a id='L129' name='L129'></a> 129   <strong class='reserved'>int</strong> num_spindowns;            <em class='comment'>/* Number of times sled spins down */</em>
+<a id='L130' name='L130'></a> 130   <a href='../S/288.html#L123' title='Defined at 123 in src/disksim_stat.h.'>statgen</a> inactive_time;        <em class='comment'>/* Time spent inactive before spinup */</em>
+<a id='L131' name='L131'></a> 131 
+<a id='L132' name='L132'></a> 132   <strong class='reserved'>int</strong> num_buffer_accesses;      <em class='comment'>/* Number of times buffer is checked */</em>
+<a id='L133' name='L133'></a> 133   <strong class='reserved'>int</strong> num_buffer_hits;          <em class='comment'>/* Number of hits in the buffer */</em>
+<a id='L134' name='L134'></a> 134 
+<a id='L135' name='L135'></a> 135   <a href='../S/288.html#L123' title='Defined at 123 in src/disksim_stat.h.'>statgen</a> prefetched_blocks;    <em class='comment'>/* Number of blocks prefetched each request */</em>
+<a id='L136' name='L136'></a> 136   <a href='../S/288.html#L123' title='Defined at 123 in src/disksim_stat.h.'>statgen</a> batch_response_time;  <em class='comment'>/* Response time for batches */</em>
+<a id='L137' name='L137'></a> 137 
+<a id='L138' name='L138'></a> 138 <em class='brace'>}</em>;
+<a id='L139' name='L139'></a> 139 
+<a id='L140' name='L140'></a> 140 
+<a id='L141' name='L141'></a> 141 <strong class='reserved'>typedef</strong> <strong class='reserved'>struct</strong> <em class='brace'>{</em>
+<a id='L142' name='L142'></a> 142   <strong class='reserved'>struct</strong> <a href='../S/30.html#L197' title='Defined at 197 in memsmodel/mems_global.h.'>mems</a> *dev;     <em class='comment'>/* Sled is component of this mems device */</em>
+<a id='L143' name='L143'></a> 143 
+<a id='L144' name='L144'></a> 144   <strong class='reserved'>int</strong> active;           <em class='comment'>/* true if sled is active (e.g., not sleeping) */</em>
+<a id='L145' name='L145'></a> 145   <strong class='reserved'>int</strong> numblocks;        <em class='comment'>/* number of blocks per sled */</em>
+<a id='L146' name='L146'></a> 146 
+<a id='L147' name='L147'></a> 147   <strong class='reserved'>struct</strong> <a href='../S/30.html#L103' title='Defined at 103 in memsmodel/mems_global.h.'>mems_stat</a> stat;        <em class='comment'>/* Statistics gathering */</em>
+<a id='L148' name='L148'></a> 148 
+<a id='L149' name='L149'></a> 149   <strong class='reserved'>struct</strong> <a href='../S/259.html#L255' title='Defined at 255 in src/disksim_ioqueue.h.'>ioq</a>    *queue;
+<a id='L150' name='L150'></a> 150   <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a>   *active_request;        <em class='comment'>/* Req currently being processed */</em>
+<a id='L151' name='L151'></a> 151   <strong class='reserved'>struct</strong> <a href='../S/30.html#L72' title='Defined at 72 in memsmodel/mems_global.h.'>mems_prefetch_info</a> *prefetch_info;     <em class='comment'>/* Info on prefetching */</em>
+<a id='L152' name='L152'></a> 152   <strong class='reserved'>int</strong>           prefetch_depth;         <em class='comment'>/* Blocks to prefetch per req */</em>
+<a id='L153' name='L153'></a> 153 
+<a id='L154' name='L154'></a> 154   <strong class='reserved'>double</strong> lastreq_comptime;      <em class='comment'>/* Time the last request completed      */</em>
+<a id='L155' name='L155'></a> 155   <strong class='reserved'>double</strong> inactive_delay_ms;     <em class='comment'>/* Idle delay before sled goes inactive */</em>
+<a id='L156' name='L156'></a> 156   <strong class='reserved'>double</strong> startup_time_ms;       <em class='comment'>/* Inactive-to-active (startup) time    */</em>
+<a id='L157' name='L157'></a> 157   <strong class='reserved'>int</strong> lastreq_lbn;      <em class='comment'>/* blkno of last completed request */</em>
+<a id='L158' name='L158'></a> 158 
+<a id='L159' name='L159'></a> 159   <a href='../S/30.html#L56' title='Defined at 56 in memsmodel/mems_global.h.'>coord_t</a> pos;          <em class='comment'>/* last known valid position of sled */</em>
+<a id='L160' name='L160'></a> 160   <a href='../S/30.html#L62' title='Defined at 62 in memsmodel/mems_global.h.'>tipsector_coord_set_t</a> coordset;
+<a id='L161' name='L161'></a> 161   <a href='../S/30.html#L62' title='Defined at 62 in memsmodel/mems_global.h.'>tipsector_coord_set_t</a> coordset_up;
+<a id='L162' name='L162'></a> 162   <a href='../S/30.html#L62' title='Defined at 62 in memsmodel/mems_global.h.'>tipsector_coord_set_t</a> coordset_dn;
+<a id='L163' name='L163'></a> 163   <strong class='reserved'>struct</strong> <a href='../S/30.html#L64' title='Defined at 64 in memsmodel/mems_global.h.'>tipset</a>         <a href='../S/30.html#L64' title='Defined at 64 in memsmodel/mems_global.h.'>tipset</a>;
+<a id='L164' name='L164'></a> 164 
+<a id='L165' name='L165'></a> 165   <strong class='reserved'>int</strong> layout_policy;    <em class='comment'>/* How data are divided among multiple sleds */</em>
+<a id='L166' name='L166'></a> 166   <strong class='reserved'>int</strong> x_length_nm;      <em class='comment'>/* Sled mobility in X */</em>
+<a id='L167' name='L167'></a> 167   <strong class='reserved'>int</strong> y_length_nm;      <em class='comment'>/* Sled mobility in Y */</em>
+<a id='L168' name='L168'></a> 168 
+<a id='L169' name='L169'></a> 169   <strong class='reserved'>int</strong> bit_length_nm;    <em class='comment'>/* length of side of the bit cell */</em>
+<a id='L170' name='L170'></a> 170   <strong class='reserved'>int</strong> tip_sector_length_bits;   <em class='comment'>/* Length of tipsector */</em>
+<a id='L171' name='L171'></a> 171   <strong class='reserved'>int</strong> servo_burst_length_bits;  <em class='comment'>/* Length of pre-tipsector servo burst */</em>
+<a id='L172' name='L172'></a> 172   <strong class='reserved'>int</strong> tip_sectors_per_lbn;      <em class='comment'>/* Each sector striped across how many tips */</em>
+<a id='L173' name='L173'></a> 173 
+<a id='L174' name='L174'></a> 174   <strong class='reserved'>int</strong> tips_usable;              <em class='comment'>/* number of usable (good) tips */</em>
+<a id='L175' name='L175'></a> 175   <strong class='reserved'>int</strong> tips_simultaneous;        <em class='comment'>/* number of simultaneously active tips */</em>
+<a id='L176' name='L176'></a> 176   <strong class='reserved'>int</strong>    bidirectional_access;  <em class='comment'>/* =1 if bidirectional OK */</em>
+<a id='L177' name='L177'></a> 177   <strong class='reserved'>double</strong> x_accel_nm_s2;         <em class='comment'>/* available acceleration in X direction */</em>
+<a id='L178' name='L178'></a> 178   <strong class='reserved'>double</strong> y_accel_nm_s2;         <em class='comment'>/* available acceleration in Y direction */</em>
+<a id='L179' name='L179'></a> 179 
+<a id='L180' name='L180'></a> 180   <strong class='reserved'>int</strong>    y_access_speed_bit_s;  <em class='comment'>/* max read/write speed of sled */</em>
+<a id='L181' name='L181'></a> 181   <strong class='reserved'>int</strong>     sled_resonant_freq_hz;<em class='comment'>/* sled resonant frequency */</em>
+<a id='L182' name='L182'></a> 182   <strong class='reserved'>double</strong> num_time_constants;    <em class='comment'>/* number of time constants for settling */</em>
+<a id='L183' name='L183'></a> 183   <strong class='reserved'>double</strong> spring_factor; <em class='comment'>/* percentage of actuator acceleration the springs </em>
+<a id='L184' name='L184'></a> 184 <em class='comment'>                         * provide at the full throw of the media.  see </em>
+<a id='L185' name='L185'></a> 185 <em class='comment'>                         * memsdevice_mapping.c  */</em>
+<a id='L186' name='L186'></a> 186 
+<a id='L187' name='L187'></a> 187   <em class='comment'>/* Variables used by mems_seek_time_seekcache */</em>
+<a id='L188' name='L188'></a> 188   <strong class='reserved'>struct</strong> <a href='../S/30.html#L83' title='Defined at 83 in memsmodel/mems_global.h.'>mems_seekcache</a> seekcache[<a href='../S/30.html#L41' title='Defined at 41 in memsmodel/mems_global.h.'>MEMS_SEEKCACHE</a>];
+<a id='L189' name='L189'></a> 189   <strong class='reserved'>int</strong> seekcache_next;           <em class='comment'>/* Next available cache entry */</em>
+<a id='L190' name='L190'></a> 190 
+<a id='L191' name='L191'></a> 191   <strong class='reserved'>double</strong> active_power_mw;       <em class='comment'>/* Per-sled power when sled active */</em>
+<a id='L192' name='L192'></a> 192   <strong class='reserved'>double</strong> inactive_power_mw;     <em class='comment'>/* Per-sled power when sled inactive */</em>
+<a id='L193' name='L193'></a> 193   <strong class='reserved'>double</strong> tip_power_mw;          <em class='comment'>/* Per-tip access power */</em>
+<a id='L194' name='L194'></a> 194 <em class='brace'>}</em> <a href='../R/1773.html' title='Multiple referred from 57 places.'>mems_sled_t</a>;
+<a id='L195' name='L195'></a> 195 
+<a id='L196' name='L196'></a> 196 
+<a id='L197' name='L197'></a> 197 <strong class='reserved'>typedef</strong> <strong class='reserved'>struct</strong> <a href='../R/1697.html' title='Multiple referred from 5 places.'>mems</a> <em class='brace'>{</em>
+<a id='L198' name='L198'></a> 198   <strong class='reserved'>struct</strong> <a href='../S/223.html#L170' title='Defined at 170 in src/disksim_device.h.'>device_header</a> hdr;
+<a id='L199' name='L199'></a> 199   <strong class='reserved'>int</strong>    devno;         <em class='comment'>/* Disksim internal device number               */</em>
+<a id='L200' name='L200'></a> 200   <strong class='reserved'>int</strong>    inited;        <em class='comment'>/* Set when disksim initialize routine called   */</em>
+<a id='L201' name='L201'></a> 201 
+<a id='L202' name='L202'></a> 202   <strong class='reserved'>struct</strong> <a href='../S/30.html#L103' title='Defined at 103 in memsmodel/mems_global.h.'>mems_stat</a> stat;        <em class='comment'>/* Statistics gathering */</em>
+<a id='L203' name='L203'></a> 203 
+<a id='L204' name='L204'></a> 204   <strong class='reserved'>double</strong> overhead;      <em class='comment'>/* Per-request device overhead time             */</em>
+<a id='L205' name='L205'></a> 205   <strong class='reserved'>double</strong> blktranstime;  <em class='comment'>/* Minimum 1-sector transfer time               */</em>
+<a id='L206' name='L206'></a> 206   <strong class='reserved'>int</strong>    printstats;    <em class='comment'>/* Print statistics for this device?            */</em>
+<a id='L207' name='L207'></a> 207   <strong class='reserved'>int</strong>    maxqlen;       <em class='comment'>/* Maximum internal request queue length        */</em>
+<a id='L208' name='L208'></a> 208   <strong class='reserved'>int</strong>    numblocks;     <em class='comment'>/* Size of device (in 512 byte blocks)          */</em>
+<a id='L209' name='L209'></a> 209 
+<a id='L210' name='L210'></a> 210   <strong class='reserved'>int</strong>    depth[<a href='../S/255.html#L112' title='Defined at 112 in src/disksim_iosim.h.'>MAXINBUSES</a>];     <em class='comment'>/* How far down the bus tree is device  */</em>
+<a id='L211' name='L211'></a> 211   <strong class='reserved'>int</strong>    inbuses[<a href='../S/255.html#L112' title='Defined at 112 in src/disksim_iosim.h.'>MAXINBUSES</a>];   <em class='comment'>/* Which inbuses connect to device      */</em>
+<a id='L212' name='L212'></a> 212   <strong class='reserved'>int</strong>    slotno[<a href='../S/255.html#L112' title='Defined at 112 in src/disksim_iosim.h.'>MAXINBUSES</a>];    <em class='comment'>/* To which bus slot device connects    */</em>
+<a id='L213' name='L213'></a> 213   <strong class='reserved'>int</strong>    numinbuses;            <em class='comment'>/* How many inbuses connect to device   */</em>
+<a id='L214' name='L214'></a> 214 
+<a id='L215' name='L215'></a> 215   <strong class='reserved'>int</strong>         busowned;         <em class='comment'>/* Bus number owned by device */</em>
+<a id='L216' name='L216'></a> 216   <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *buswait;         <em class='comment'>/* Sleds waiting on bus access */</em>
+<a id='L217' name='L217'></a> 217   <strong class='reserved'>struct</strong> <a href='../S/259.html#L255' title='Defined at 255 in src/disksim_ioqueue.h.'>ioq</a>  *queue;
+<a id='L218' name='L218'></a> 218   <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *dataxfer_req;    <em class='comment'>/* Request currently owning bus for xfer */</em>
+<a id='L219' name='L219'></a> 219   <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *dataxfer_queue;  <em class='comment'>/* Requests waiting to transfer data */</em>
+<a id='L220' name='L220'></a> 220 
+<a id='L221' name='L221'></a> 221   <a href='../S/30.html#L194' title='Defined at 194 in memsmodel/mems_global.h.'>mems_sled_t</a> *sled;
+<a id='L222' name='L222'></a> 222   <strong class='reserved'>int</strong> num_sleds;
+<a id='L223' name='L223'></a> 223 
+<a id='L224' name='L224'></a> 224   <strong class='reserved'>int</strong> numsegs;                  <em class='comment'>/* Number of buffer segments */</em>
+<a id='L225' name='L225'></a> 225   <strong class='reserved'>int</strong> segsize;                  <em class='comment'>/* Segment size (in blks) */</em>
+<a id='L226' name='L226'></a> 226   <strong class='reserved'>struct</strong> <a href='../S/30.html#L94' title='Defined at 94 in memsmodel/mems_global.h.'>mems_segment</a> *seglist; <em class='comment'>/* Buffer segments */</em>
+<a id='L227' name='L227'></a> 227 
+<a id='L228' name='L228'></a> 228   <strong class='reserved'>int</strong> seek_function;
+<a id='L229' name='L229'></a> 229 
+<a id='L230' name='L230'></a> 230   <strong class='reserved'>int</strong> precompute_seek_count;    <em class='comment'>/* Number of points in the pre-computed seek curve */</em>
+<a id='L231' name='L231'></a> 231   <strong class='reserved'>int</strong> *precompute_seek_distances;  <em class='comment'>/* Seek distances in precomputed seek curve */</em>
+<a id='L232' name='L232'></a> 232   <strong class='reserved'>double</strong> *precompute_x_seek_times; <em class='comment'>/* X seek times in precomputed seek curve */</em>
+<a id='L233' name='L233'></a> 233   <strong class='reserved'>double</strong> *precompute_y_seek_times; <em class='comment'>/* Y seek times in precomputed seek curve */</em>
+<a id='L234' name='L234'></a> 234 
+<a id='L235' name='L235'></a> 235 <em class='brace'>}</em> <a href='../R/1777.html' title='Multiple referred from 61 places.'>mems_t</a>;
+<a id='L236' name='L236'></a> 236 
+<a id='L237' name='L237'></a> 237 
+<a id='L238' name='L238'></a> 238 <strong class='reserved'>struct</strong> <a href='../R/1745.html' title='Multiple referred from 4 places.'>mems_info</a> <em class='brace'>{</em>
+<a id='L239' name='L239'></a> 239   <a href='../S/30.html#L235' title='Defined at 235 in memsmodel/mems_global.h.'>mems_t</a> **devices;     <em class='comment'>/* Array of all mems devices in simulator */</em>
+<a id='L240' name='L240'></a> 240   <strong class='reserved'>int</strong> <a href='../S/214.html#L82' title='Defined at 82 in src/disksim_device.c.'>numdevices</a>;       <em class='comment'>/* Count of above devices */</em>
+<a id='L241' name='L241'></a> 241   <strong class='reserved'>int</strong> devices_len;      <em class='comment'>/* allocated size of devices */</em>
+<a id='L242' name='L242'></a> 242 <em class='brace'>}</em>;
+<a id='L243' name='L243'></a> 243 
+<a id='L244' name='L244'></a> 244 <strong class='reserved'>typedef</strong> <strong class='reserved'>struct</strong> <a href='../R/1782.html' title='Multiple referred from 2 places.'>mems_x</a> <em class='brace'>{</em>
+<a id='L245' name='L245'></a> 245   <strong class='reserved'>int</strong> firstblock;
+<a id='L246' name='L246'></a> 246   <strong class='reserved'>int</strong> lastblock;
+<a id='L247' name='L247'></a> 247 
+<a id='L248' name='L248'></a> 248   <a href='../S/30.html#L62' title='Defined at 62 in memsmodel/mems_global.h.'>tipsector_coord_set_t</a> coordset_up;
+<a id='L249' name='L249'></a> 249   <a href='../S/30.html#L62' title='Defined at 62 in memsmodel/mems_global.h.'>tipsector_coord_set_t</a> coordset_dn;
+<a id='L250' name='L250'></a> 250   <a href='../S/30.html#L68' title='Defined at 68 in memsmodel/mems_global.h.'>tipset_t</a> <a href='../S/30.html#L64' title='Defined at 64 in memsmodel/mems_global.h.'>tipset</a>;
+<a id='L251' name='L251'></a> 251   <strong class='reserved'>int</strong> firstblock_cylinder, firstblock_surface, firstblock_block;
+<a id='L252' name='L252'></a> 252 
+<a id='L253' name='L253'></a> 253   <a href='../S/30.html#L62' title='Defined at 62 in memsmodel/mems_global.h.'>tipsector_coord_set_t</a> lastblock_up_coord_set;
+<a id='L254' name='L254'></a> 254   <a href='../S/30.html#L62' title='Defined at 62 in memsmodel/mems_global.h.'>tipsector_coord_set_t</a> lastblock_dn_coord_set;
+<a id='L255' name='L255'></a> 255   <a href='../S/30.html#L68' title='Defined at 68 in memsmodel/mems_global.h.'>tipset_t</a> lastblock_tipset;
+<a id='L256' name='L256'></a> 256   <strong class='reserved'>int</strong> lastblock_cylinder, lastblock_surface, lastblock_block;
+<a id='L257' name='L257'></a> 257 
+<a id='L258' name='L258'></a> 258   <strong class='reserved'>int</strong> completed_block_media;
+<a id='L259' name='L259'></a> 259   <strong class='reserved'>int</strong> completed_block_bus;
+<a id='L260' name='L260'></a> 260   <strong class='reserved'>int</strong> next_block_start;
+<a id='L261' name='L261'></a> 261   <strong class='reserved'>int</strong> next_block_end;
+<a id='L262' name='L262'></a> 262 
+<a id='L263' name='L263'></a> 263   <strong class='reserved'>int</strong> bus_done;
+<a id='L264' name='L264'></a> 264   <strong class='reserved'>int</strong> media_done;
+<a id='L265' name='L265'></a> 265 
+<a id='L266' name='L266'></a> 266   <strong class='reserved'>struct</strong> <a href='../S/30.html#L244' title='Defined at 244 in memsmodel/mems_global.h.'>mems_x</a> *next;
+<a id='L267' name='L267'></a> 267   <strong class='reserved'>struct</strong> <a href='../S/30.html#L244' title='Defined at 244 in memsmodel/mems_global.h.'>mems_x</a> *prev;
+<a id='L268' name='L268'></a> 268   <a href='../S/283.html#L296' title='Defined at 296 in src/disksim_global.h.'>ioreq_event</a> *request;
+<a id='L269' name='L269'></a> 269 <em class='brace'>}</em> <a href='../R/1722.html' title='Multiple referred from 15 places.'>mems_extent_t</a>;
+<a id='L270' name='L270'></a> 270 
+<a id='L271' name='L271'></a> 271 <strong class='reserved'>typedef</strong> <strong class='reserved'>struct</strong> <em class='brace'>{</em>
+<a id='L272' name='L272'></a> 272   <strong class='reserved'>int</strong> firstblock;       <em class='comment'>/* First block of request (curr-&gt;blkno) */</em>
+<a id='L273' name='L273'></a> 273   <strong class='reserved'>int</strong> lastblock;        <em class='comment'>/* Last block of request (blkno + bcount - 1) */</em>
+<a id='L274' name='L274'></a> 274   
+<a id='L275' name='L275'></a> 275   <strong class='reserved'>double</strong> batch_arrival_time;
+<a id='L276' name='L276'></a> 276   
+<a id='L277' name='L277'></a> 277   <a href='../S/30.html#L269' title='Defined at 269 in memsmodel/mems_global.h.'>mems_extent_t</a> *extents;
+<a id='L278' name='L278'></a> 278   <strong class='reserved'>int</strong> num_extents;
+<a id='L279' name='L279'></a> 279   
+<a id='L280' name='L280'></a> 280   <a href='../S/30.html#L269' title='Defined at 269 in memsmodel/mems_global.h.'>mems_extent_t</a> *bus_extent;
+<a id='L281' name='L281'></a> 281 
+<a id='L282' name='L282'></a> 282   <strong class='reserved'>int</strong> bus_pending;      <em class='comment'>/* TRUE when request on dataxfer_queue */</em>
+<a id='L283' name='L283'></a> 283   <strong class='reserved'>int</strong> bus_done;         <em class='comment'>/* TRUE when busxfer done */</em>
+<a id='L284' name='L284'></a> 284   <strong class='reserved'>int</strong> media_done;       <em class='comment'>/* TRUE when media access done */</em>
+<a id='L285' name='L285'></a> 285 
+<a id='L286' name='L286'></a> 286   <strong class='reserved'>int</strong> completed_block_media;    <em class='comment'>/* last block completed by media subsystem */</em>
+<a id='L287' name='L287'></a> 287   <strong class='reserved'>int</strong> completed_block_bus;      <em class='comment'>/* last block completed by bus subsystem */</em>
+<a id='L288' name='L288'></a> 288   <strong class='reserved'>int</strong> next_block_start;
+<a id='L289' name='L289'></a> 289   <strong class='reserved'>int</strong> next_block_end;
+<a id='L290' name='L290'></a> 290 
+<a id='L291' name='L291'></a> 291   <em class='comment'>/* Statistics support */</em>
+<a id='L292' name='L292'></a> 292   <strong class='reserved'>double</strong> request_energy_uj;     <em class='comment'>/* Energy consumed by this request */</em>
+<a id='L293' name='L293'></a> 293   <strong class='reserved'>int</strong>    firstseek;             <em class='comment'>/* TRUE when first seek hasn't happened yet */</em>
+<a id='L294' name='L294'></a> 294   <strong class='reserved'>int</strong>    subtrack_access_num;   <em class='comment'>/* Number of subtrack accesses */</em>
+<a id='L295' name='L295'></a> 295   <strong class='reserved'>int</strong>    subtrack_access_tips;  <em class='comment'>/* Sum of all tips used during accesses */</em>
+<a id='L296' name='L296'></a> 296 <em class='brace'>}</em> <a href='../R/1759.html' title='Multiple referred from 19 places.'>mems_reqinfo_t</a>;
+<a id='L297' name='L297'></a> 297 
+<a id='L298' name='L298'></a> 298 <strong class='reserved'>struct</strong> <a href='../S/30.html#L197' title='Defined at 197 in memsmodel/mems_global.h.'>mems</a>* <a href='../S/37.html#L1223' title='Defined at 1223 in memsmodel/mems_disksim.c.'>memsmodel_mems_loadparams</a>(<strong class='reserved'>struct</strong> <a href='../S/118.html#L245' title='Defined at 245 in libparam/libparam.h.'>lp_block</a>* b, <strong class='reserved'>int</strong>* numptr);
+<a id='L299' name='L299'></a> 299 
+<a id='L300' name='L300'></a> 300 <em class='sharp'>#endif</em>
+</pre>
+<hr />
+<a id='BOTTOM' name='BOTTOM'></a>
+<em class='comment'>/* [&lt;][&gt;][^][v]<a href='#TOP'>[top]</a>[bottom]<a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</em>
+</body>
+</html>

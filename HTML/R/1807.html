@@ -1,0 +1,604 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>outputfile</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/57.html#L201'>outputfile</a>        201 diskmodel/layout_g1_load.c   FILE *outputfile = stderr;</span>
+<span class='curline'><a href='../S/74.html#L313'>outputfile</a>        313 diskmodel/mech_g1_load.c   FILE *outputfile = stderr;</span>
+<span class='curline'><a href='../S/74.html#L322'>outputfile</a>        322 diskmodel/mech_g1_load.c       fprintf (outputfile, "seekone %lld, seekavg %lld, seekfull %lld\n", </span>
+<span class='curline'><a href='../S/37.html#L255'>outputfile</a>        255 memsmodel/mems_disksim.c   fprintf(outputfile, "mems_get_distance -- devno = %d, req-&gt;blkno = %d, exact = %d, direction = %d\n",</span>
+<span class='curline'><a href='../S/37.html#L294'>outputfile</a>        294 memsmodel/mems_disksim.c   fprintf(outputfile, "mems_get_distance -- UP - x1 = %d, y1 = %d, x2 = %d, y2 = %d\n",</span>
+<span class='curline'><a href='../S/37.html#L306'>outputfile</a>        306 memsmodel/mems_disksim.c   fprintf(outputfile, "mems_get_distance -- DOWN - x1 = %d, y1 = %d, x2 = %d, y2 = %d\n",</span>
+<span class='curline'><a href='../S/37.html#L318'>outputfile</a>        318 memsmodel/mems_disksim.c   fprintf(outputfile, "mems_get_distance -- distance1 = %d, distance2 = %d\n",</span>
+<span class='curline'><a href='../S/37.html#L325'>outputfile</a>        325 memsmodel/mems_disksim.c       fprintf(outputfile, "returning distance1 = %d\n", distance1);</span>
+<span class='curline'><a href='../S/37.html#L332'>outputfile</a>        332 memsmodel/mems_disksim.c       fprintf(outputfile, "returning distance2 = %d\n", distance2);</span>
+<span class='curline'><a href='../S/37.html#L727'>outputfile</a>        727 memsmodel/mems_disksim.c   fprintf(outputfile, "%sTotal initial turnarounds: %d\n",</span>
+<span class='curline'><a href='../S/37.html#L743'>outputfile</a>        743 memsmodel/mems_disksim.c     fprintf(outputfile, "%sTotal initial turnarounds: %d\n",</span>
+<span class='curline'><a href='../S/37.html#L788'>outputfile</a>        788 memsmodel/mems_disksim.c   fprintf(outputfile, "%sTotal streaming turnarounds: %d\n",</span>
+<span class='curline'><a href='../S/37.html#L804'>outputfile</a>        804 memsmodel/mems_disksim.c     fprintf(outputfile, "%sTotal streaming turnarounds: %d\n",</span>
+<span class='curline'><a href='../S/37.html#L872'>outputfile</a>        872 memsmodel/mems_disksim.c     fprintf(outputfile, "%sTotal energy (J): %f\n", prefix, total_energy);</span>
+<span class='curline'><a href='../S/37.html#L873'>outputfile</a>        873 memsmodel/mems_disksim.c     fprintf(outputfile, </span>
+<span class='curline'><a href='../S/37.html#L875'>outputfile</a>        875 memsmodel/mems_disksim.c     fprintf(outputfile, </span>
+<span class='curline'><a href='../S/37.html#L877'>outputfile</a>        877 memsmodel/mems_disksim.c     fprintf(outputfile, </span>
+<span class='curline'><a href='../S/37.html#L879'>outputfile</a>        879 memsmodel/mems_disksim.c     fprintf(outputfile, </span>
+<span class='curline'><a href='../S/37.html#L881'>outputfile</a>        881 memsmodel/mems_disksim.c     fprintf(outputfile, "\n");</span>
+<span class='curline'><a href='../S/37.html#L887'>outputfile</a>        887 memsmodel/mems_disksim.c     fprintf(outputfile, "%sTotal energy (J) for device %d: %f\n", </span>
+<span class='curline'><a href='../S/37.html#L889'>outputfile</a>        889 memsmodel/mems_disksim.c     fprintf(outputfile, "%sServicing energy (J) for device %d: %f\n", </span>
+<span class='curline'><a href='../S/37.html#L891'>outputfile</a>        891 memsmodel/mems_disksim.c     fprintf(outputfile, "%sStartup energy   (J) for device %d: %f\n",</span>
+<span class='curline'><a href='../S/37.html#L893'>outputfile</a>        893 memsmodel/mems_disksim.c     fprintf(outputfile, "%sIdle energy      (J) for device %d: %f\n", </span>
+<span class='curline'><a href='../S/37.html#L895'>outputfile</a>        895 memsmodel/mems_disksim.c     fprintf(outputfile, "%sInactive energy  (J) for device %d: %f\n", </span>
+<span class='curline'><a href='../S/37.html#L899'>outputfile</a>        899 memsmodel/mems_disksim.c       fprintf(outputfile, "%sTotal energy (J) for device %d sled %d: %f\n", </span>
+<span class='curline'><a href='../S/37.html#L901'>outputfile</a>        901 memsmodel/mems_disksim.c       fprintf(outputfile, </span>
+<span class='curline'><a href='../S/37.html#L904'>outputfile</a>        904 memsmodel/mems_disksim.c       fprintf(outputfile,</span>
+<span class='curline'><a href='../S/37.html#L907'>outputfile</a>        907 memsmodel/mems_disksim.c       fprintf(outputfile, </span>
+<span class='curline'><a href='../S/37.html#L910'>outputfile</a>        910 memsmodel/mems_disksim.c       fprintf(outputfile, </span>
+<span class='curline'><a href='../S/37.html#L914'>outputfile</a>        914 memsmodel/mems_disksim.c     fprintf(outputfile, "\n");</span>
+<span class='curline'><a href='../S/37.html#L937'>outputfile</a>        937 memsmodel/mems_disksim.c   fprintf(outputfile, "%sNumber of buffer accesses: %d\n",</span>
+<span class='curline'><a href='../S/37.html#L939'>outputfile</a>        939 memsmodel/mems_disksim.c   fprintf(outputfile, "%sNumber of hits:            %d\n",</span>
+<span class='curline'><a href='../S/37.html#L941'>outputfile</a>        941 memsmodel/mems_disksim.c   fprintf(outputfile, "%sBuffer hit ratio:          %f\n",</span>
+<span class='curline'><a href='../S/37.html#L943'>outputfile</a>        943 memsmodel/mems_disksim.c   fprintf(outputfile, "%sBuffer miss ratio:         %f\n", </span>
+<span class='curline'><a href='../S/37.html#L945'>outputfile</a>        945 memsmodel/mems_disksim.c   fprintf(outputfile, "\n");</span>
+<span class='curline'><a href='../S/37.html#L955'>outputfile</a>        955 memsmodel/mems_disksim.c     fprintf(outputfile, "%sNumber of buffer accesses for device %d: %d\n",</span>
+<span class='curline'><a href='../S/37.html#L957'>outputfile</a>        957 memsmodel/mems_disksim.c     fprintf(outputfile, "%sNumber of buffer hits for device %d:     %d\n",</span>
+<span class='curline'><a href='../S/37.html#L959'>outputfile</a>        959 memsmodel/mems_disksim.c     fprintf(outputfile, "%sBuffer hit ratio for device %d:          %f\n",</span>
+<span class='curline'><a href='../S/37.html#L961'>outputfile</a>        961 memsmodel/mems_disksim.c     fprintf(outputfile, "%sBuffer miss ratio for device %d:         %f\n",</span>
+<span class='curline'><a href='../S/37.html#L963'>outputfile</a>        963 memsmodel/mems_disksim.c     fprintf(outputfile, "\n");</span>
+<span class='curline'><a href='../S/37.html#L965'>outputfile</a>        965 memsmodel/mems_disksim.c       fprintf(outputfile, "%sNo buffer accesses for device %d\n",</span>
+<span class='curline'><a href='../S/37.html#L990'>outputfile</a>        990 memsmodel/mems_disksim.c     fprintf(outputfile, "%sNumber of spinups: %d\n\n", </span>
+<span class='curline'><a href='../S/37.html#L997'>outputfile</a>        997 memsmodel/mems_disksim.c     fprintf(outputfile, "%sNumber of spinups for device %d: %d\n",</span>
+<span class='curline'><a href='../S/37.html#L1000'>outputfile</a>       1000 memsmodel/mems_disksim.c       fprintf(outputfile, "%sNumber of spinups for device %d sled %d: %d\n",</span>
+<span class='curline'><a href='../S/37.html#L1003'>outputfile</a>       1003 memsmodel/mems_disksim.c     fprintf(outputfile, "\n");</span>
+<span class='curline'><a href='../S/37.html#L1016'>outputfile</a>       1016 memsmodel/mems_disksim.c     fprintf(outputfile, "%sNumber of spindowns: %d\n\n", </span>
+<span class='curline'><a href='../S/37.html#L1023'>outputfile</a>       1023 memsmodel/mems_disksim.c     fprintf(outputfile, "%sNumber of spindowns for device %d: %d\n",</span>
+<span class='curline'><a href='../S/37.html#L1026'>outputfile</a>       1026 memsmodel/mems_disksim.c       fprintf(outputfile, "%sNumber of spindowns for device %d sled %d: %d\n",</span>
+<span class='curline'><a href='../S/37.html#L1029'>outputfile</a>       1029 memsmodel/mems_disksim.c     fprintf(outputfile, "\n");</span>
+<span class='curline'><a href='../S/37.html#L1141'>outputfile</a>       1141 memsmodel/mems_disksim.c     fprintf(outputfile, "\nNo mems requests for members of this set\n\n");</span>
+<span class='curline'><a href='../S/37.html#L1168'>outputfile</a>       1168 memsmodel/mems_disksim.c   fprintf(outputfile, "\nMEMS STATISTICS\n----------------\n\n");</span>
+<span class='curline'><a href='../S/37.html#L1172'>outputfile</a>       1172 memsmodel/mems_disksim.c     fprintf(outputfile, "No mems requests encountered (1)\n");</span>
+<span class='curline'><a href='../S/37.html#L1214'>outputfile</a>       1214 memsmodel/mems_disksim.c   fprintf(outputfile, "\n\n");</span>
+<span class='curline'><a href='../S/22.html#L47'>outputfile</a>         47 memsmodel/mems_internals.c #define __OUTPUTFILE__  outputfile</span>
+<span class='curline'><a href='../S/23.html#L45'>outputfile</a>         45 memsmodel/mems_piecewise_seek.c #define __OUTPUTFILE__  outputfile</span>
+<span class='curline'><a href='../S/272.html#L267'>outputfile</a>        267 src/disksim.c        fprintf (outputfile, "time %f, type %d\n", </span>
+<span class='curline'><a href='../S/272.html#L453'>outputfile</a>        453 src/disksim.c     fprintf (outputfile, "%s: %d\n", parname, *parptr);</span>
+<span class='curline'><a href='../S/272.html#L472'>outputfile</a>        472 src/disksim.c     fprintf (outputfile, "%s: %f\n", parname, *parptr);</span>
+<span class='curline'><a href='../S/272.html#L490'>outputfile</a>        490 src/disksim.c     fprintf (outputfile, "%s %d\n", parname, *parptr);</span>
+<span class='curline'><a href='../S/272.html#L536'>outputfile</a>        536 src/disksim.c     fprintf (outputfile, "\nSIMULATION STATISTICS\n");</span>
+<span class='curline'><a href='../S/272.html#L537'>outputfile</a>        537 src/disksim.c     fprintf (outputfile, "---------------------\n\n");</span>
+<span class='curline'><a href='../S/272.html#L538'>outputfile</a>        538 src/disksim.c     fprintf (outputfile, "Total time of run:       %f\n\n", simtime);</span>
+<span class='curline'><a href='../S/272.html#L539'>outputfile</a>        539 src/disksim.c     fprintf (outputfile, "Warm-up time:            %f\n\n", warmuptime);</span>
+<span class='curline'><a href='../S/272.html#L657'>outputfile</a>        657 src/disksim.c        fprintf (outputfile, "Returning NULL from getnextevent\n");</span>
+<span class='curline'><a href='../S/272.html#L658'>outputfile</a>        658 src/disksim.c        fflush (outputfile);</span>
+<span class='curline'><a href='../S/272.html#L671'>outputfile</a>        671 src/disksim.c        fprintf (outputfile, "Checkpoint at simtime %f skipped because checkpointing is disabled\n", simtime);</span>
+<span class='curline'><a href='../S/272.html#L676'>outputfile</a>        676 src/disksim.c        fprintf (outputfile, "Checkpoint at simtime %f skipped because checkpointfile cannot be opened for write access\n", simtime);</span>
+<span class='curline'><a href='../S/272.html#L682'>outputfile</a>        682 src/disksim.c           fprintf (outputfile, "Checkpoint at simtime %f skipped because iotrace comes from stdin\n", simtime);</span>
+<span class='curline'><a href='../S/272.html#L694'>outputfile</a>        694 src/disksim.c     if (outputfile) {</span>
+<span class='curline'><a href='../S/272.html#L695'>outputfile</a>        695 src/disksim.c        fflush (outputfile);</span>
+<span class='curline'><a href='../S/272.html#L696'>outputfile</a>        696 src/disksim.c        fgetpos (outputfile, &amp;disksim-&gt;outputfileposition);</span>
+<span class='curline'><a href='../S/272.html#L839'>outputfile</a>        839 src/disksim.c      fprintf (outputfile, "Event handled, going for next\n");</span>
+<span class='curline'><a href='../S/272.html#L840'>outputfile</a>        840 src/disksim.c      fflush (outputfile);</span>
+<span class='curline'><a href='../S/272.html#L851'>outputfile</a>        851 src/disksim.c        outputfile = stdout;</span>
+<span class='curline'><a href='../S/272.html#L854'>outputfile</a>        854 src/disksim.c       if ((outputfile = fopen(filename,mode)) == NULL) {</span>
+<span class='curline'><a href='../S/272.html#L868'>outputfile</a>        868 src/disksim.c     setvbuf(outputfile, 0, _IONBF, 0); </span>
+<span class='curline'><a href='../S/272.html#L933'>outputfile</a>        933 src/disksim.c    fprintf (outputfile, "\n*** Output file name: %s\n", argv[2]); </span>
+<span class='curline'><a href='../S/272.html#L934'>outputfile</a>        934 src/disksim.c    fflush (outputfile); </span>
+<span class='curline'><a href='../S/272.html#L943'>outputfile</a>        943 src/disksim.c    fprintf (outputfile, "*** Input trace format: %s\n", argv[3]); </span>
+<span class='curline'><a href='../S/272.html#L944'>outputfile</a>        944 src/disksim.c    fflush (outputfile); </span>
+<span class='curline'><a href='../S/272.html#L947'>outputfile</a>        947 src/disksim.c    fprintf (outputfile, "*** I/O trace used: %s\n", argv[4]); </span>
+<span class='curline'><a href='../S/272.html#L948'>outputfile</a>        948 src/disksim.c    fflush (outputfile); </span>
+<span class='curline'><a href='../S/272.html#L955'>outputfile</a>        955 src/disksim.c    fprintf(outputfile, "*** Synthgen to be used?: %d\n\n", </span>
+<span class='curline'><a href='../S/272.html#L958'>outputfile</a>        958 src/disksim.c    fflush(outputfile); </span>
+<span class='curline'><a href='../S/272.html#L995'>outputfile</a>        995 src/disksim.c      fprintf(outputfile, "loadparams complete\n");</span>
+<span class='curline'><a href='../S/272.html#L996'>outputfile</a>        996 src/disksim.c      fflush(outputfile);</span>
+<span class='curline'><a href='../S/272.html#L1007'>outputfile</a>       1007 src/disksim.c    fprintf(outputfile, "Initialization complete\n");</span>
+<span class='curline'><a href='../S/272.html#L1008'>outputfile</a>       1008 src/disksim.c    fflush(outputfile);</span>
+<span class='curline'><a href='../S/272.html#L1038'>outputfile</a>       1038 src/disksim.c     if (outputfile != NULL) {</span>
+<span class='curline'><a href='../S/272.html#L1039'>outputfile</a>       1039 src/disksim.c        ret = fsetpos (outputfile, &amp;disksim-&gt;outputfileposition);</span>
+<span class='curline'><a href='../S/272.html#L1080'>outputfile</a>       1080 src/disksim.c    if (outputfile) </span>
+<span class='curline'><a href='../S/272.html#L1082'>outputfile</a>       1082 src/disksim.c      fclose (outputfile);</span>
+<span class='curline'><a href='../S/272.html#L1102'>outputfile</a>       1102 src/disksim.c     fprintf(outputfile, "Simulation complete\n");</span>
+<span class='curline'><a href='../S/272.html#L1103'>outputfile</a>       1103 src/disksim.c     fflush(outputfile);</span>
+<span class='curline'><a href='../S/200.html#L630'>outputfile</a>        630 src/disksim_bus.c    fprintf (outputfile, "\nBUS STATISTICS\n");</span>
+<span class='curline'><a href='../S/200.html#L631'>outputfile</a>        631 src/disksim_bus.c    fprintf (outputfile, "--------------\n\n");</span>
+<span class='curline'><a href='../S/200.html#L637'>outputfile</a>        637 src/disksim_bus.c          fprintf (outputfile, "Bus #%d\n", i);</span>
+<span class='curline'><a href='../S/200.html#L638'>outputfile</a>        638 src/disksim_bus.c          fprintf (outputfile, "Bus #%d Total utilization time: \t%.2f   \t%6.5f\n", i, (simtime - warmuptime - currbus-&gt;runidletime), ((simtime - warmuptime - currbus-&gt;runidletime) / (simtime - warmuptime)));</span>
+<span class='curline'><a href='../S/200.html#L643'>outputfile</a>        643 src/disksim_bus.c             fprintf (outputfile, "Bus #%d Number of arbitrations: \t%d\n", i, stat_get_count (&amp;currbus-&gt;arbwaitstats));</span>
+<span class='curline'><a href='../S/200.html#L646'>outputfile</a>        646 src/disksim_bus.c          fprintf (outputfile, "\n");</span>
+<span class='curline'><a href='../S/215.html#L704'>outputfile</a>        704 src/disksim_cachedev.c    fprintf (outputfile, "%scache requests:             %6d\n", prefix, reqs);</span>
+<span class='curline'><a href='../S/215.html#L709'>outputfile</a>        709 src/disksim_cachedev.c    fprintf (outputfile, "%scache read requests:        %6d  \t%6.4f\n", prefix, cache-&gt;stat.reads, ((double) cache-&gt;stat.reads / (double) reqs));</span>
+<span class='curline'><a href='../S/215.html#L712'>outputfile</a>        712 src/disksim_cachedev.c      fprintf(outputfile, "%scache blocks read:           %6d  \t%6.4f\n", prefix, cache-&gt;stat.readblocks, ((double) cache-&gt;stat.readblocks / (double) blocks));</span>
+<span class='curline'><a href='../S/215.html#L713'>outputfile</a>        713 src/disksim_cachedev.c      fprintf(outputfile, "%scache read misses:          %6d  \t%6.4f  \t%6.4f\n", prefix, cache-&gt;stat.readmisses, ((double) cache-&gt;stat.readmisses / (double) reqs), ((double) cache-&gt;stat.readmisses / (double) cache-&gt;stat.reads));</span>
+<span class='curline'><a href='../S/215.html#L715'>outputfile</a>        715 src/disksim_cachedev.c  fprintf(outputfile, "%scache read full hits:       %6d  \t%6.4f  \t%6.4f\n", prefix, cache-&gt;stat.readhitsfull, ((double) cache-&gt;stat.readhitsfull / (double) reqs), ((double) cache-&gt;stat.readhitsfull / (double) cache-&gt;stat.reads));</span>
+<span class='curline'><a href='../S/215.html#L717'>outputfile</a>        717 src/disksim_cachedev.c      fprintf(outputfile, "%scache population writes:         %6d  \t%6.4f  \t%6.4f\n", prefix, cache-&gt;stat.popwrites, ((double) cache-&gt;stat.popwrites / (double) reqs), ((double) cache-&gt;stat.popwrites / (double) cache-&gt;stat.reads));</span>
+<span class='curline'><a href='../S/215.html#L719'>outputfile</a>        719 src/disksim_cachedev.c      fprintf(outputfile, "%scache block population writes:    %6d  \t%6.4f  \t%6.4f\n", prefix, cache-&gt;stat.popwriteblocks, ((double) cache-&gt;stat.popwriteblocks / (double) blocks), ((double) cache-&gt;stat.popwriteblocks / (double) cache-&gt;stat.readblocks));</span>
+<span class='curline'><a href='../S/215.html#L722'>outputfile</a>        722 src/disksim_cachedev.c    fprintf(outputfile, "%scache write requests:       %6d  \t%6.4f\n", prefix, cache-&gt;stat.writes, ((double) cache-&gt;stat.writes / (double) reqs));</span>
+<span class='curline'><a href='../S/215.html#L725'>outputfile</a>        725 src/disksim_cachedev.c      fprintf(outputfile, "%scache blocks written:        %6d  \t%6.4f\n", prefix, cache-&gt;stat.writeblocks, ((double) cache-&gt;stat.writeblocks / (double) blocks));</span>
+<span class='curline'><a href='../S/215.html#L726'>outputfile</a>        726 src/disksim_cachedev.c      fprintf(outputfile, "%scache write misses:         %6d  \t%6.4f  \t%6.4f\n", prefix, cache-&gt;stat.writemisses, ((double) cache-&gt;stat.writemisses / (double) reqs), ((double) cache-&gt;stat.writemisses / (double) cache-&gt;stat.writes));</span>
+<span class='curline'><a href='../S/215.html#L728'>outputfile</a>        728 src/disksim_cachedev.c       fprintf(outputfile, "%scache full write hits:   %6d  \t%6.4f  \t%6.4f\n", prefix, cache-&gt;stat.writehitsfull, ((double) cache-&gt;stat.writehitsfull / (double) reqs), ((double) cache-&gt;stat.writehitsfull / (double) cache-&gt;stat.writes));</span>
+<span class='curline'><a href='../S/215.html#L730'>outputfile</a>        730 src/disksim_cachedev.c       fprintf(outputfile, "%scache destage pre-reads:     %6d  \t%6.4f  \t%6.4f\n", prefix, cache-&gt;stat.destagereads, ((double) cache-&gt;stat.destagereads / (double) reqs), ((double) cache-&gt;stat.destagereads / (double) cache-&gt;stat.writes));</span>
+<span class='curline'><a href='../S/215.html#L731'>outputfile</a>        731 src/disksim_cachedev.c       fprintf(outputfile, "%scache block destage pre-reads: %6d  \t%6.4f  \t%6.4f\n", prefix, cache-&gt;stat.destagereadblocks, ((double) cache-&gt;stat.destagereadblocks / (double) blocks), ((double) cache-&gt;stat.destagereadblocks / (double) cache-&gt;stat.writeblocks));</span>
+<span class='curline'><a href='../S/215.html#L733'>outputfile</a>        733 src/disksim_cachedev.c       fprintf(outputfile, "%scache destages (write):     %6d  \t%6.4f  \t%6.4f\n", prefix, cache-&gt;stat.destagewrites, ((double) cache-&gt;stat.destagewrites / (double) reqs), ((double) cache-&gt;stat.destagewrites / (double) cache-&gt;stat.writes));</span>
+<span class='curline'><a href='../S/215.html#L735'>outputfile</a>        735 src/disksim_cachedev.c       fprintf(outputfile, "%scache block destages (write): %6d  \t%6.4f  \t%6.4f\n", prefix, cache-&gt;stat.destagewriteblocks, ((double) cache-&gt;stat.destagewriteblocks / (double) blocks), ((double) cache-&gt;stat.destagewriteblocks / (double) cache-&gt;stat.writeblocks));</span>
+<span class='curline'><a href='../S/215.html#L737'>outputfile</a>        737 src/disksim_cachedev.c       fprintf(outputfile, "%scache end dirty blocks:      %6d  \t%6.4f\n", prefix, cachedev_count_dirty_blocks(cache), ((double) cachedev_count_dirty_blocks(cache) / (double) cache-&gt;stat.writeblocks));</span>
+<span class='curline'><a href='../S/215.html#L740'>outputfile</a>        740 src/disksim_cachedev.c    fprintf (outputfile, "%scache bufferspace use end:             %6d\n", prefix, cache-&gt;bufferspace);</span>
+<span class='curline'><a href='../S/215.html#L742'>outputfile</a>        742 src/disksim_cachedev.c    fprintf (outputfile, "%scache bufferspace use max:             %6d\n", prefix, cache-&gt;stat.maxbufferspace);</span>
+<span class='curline'><a href='../S/222.html#L2249'>outputfile</a>       2249 src/disksim_cachemem.c    fprintf (outputfile, "%scache requests:             %6d\n", prefix, reqs);</span>
+<span class='curline'><a href='../S/222.html#L2254'>outputfile</a>       2254 src/disksim_cachemem.c    fprintf (outputfile, "%scache read requests:        %6d  \t%6.4f\n", prefix, cache-&gt;stat.reads, ((double) cache-&gt;stat.reads / (double) reqs));</span>
+<span class='curline'><a href='../S/222.html#L2258'>outputfile</a>       2258 src/disksim_cachemem.c       fprintf(outputfile, "%scache atoms read:           %6d  \t%6.4f\n", prefix, cache-&gt;stat.readatoms, ((double) cache-&gt;stat.readatoms / (double) atoms));</span>
+<span class='curline'><a href='../S/222.html#L2260'>outputfile</a>       2260 src/disksim_cachemem.c       fprintf(outputfile, "%scache read misses:          %6d  \t%6.4f  \t%6.4f\n", prefix, cache-&gt;stat.readmisses, ((double) cache-&gt;stat.readmisses / (double) reqs), ((double) cache-&gt;stat.readmisses / (double) cache-&gt;stat.reads));</span>
+<span class='curline'><a href='../S/222.html#L2262'>outputfile</a>       2262 src/disksim_cachemem.c       fprintf(outputfile, "%scache read full hits:       %6d  \t%6.4f  \t%6.4f\n", prefix, cache-&gt;stat.readhitsfull, ((double) cache-&gt;stat.readhitsfull / (double) reqs), ((double) cache-&gt;stat.readhitsfull / (double) cache-&gt;stat.reads));</span>
+<span class='curline'><a href='../S/222.html#L2264'>outputfile</a>       2264 src/disksim_cachemem.c       fprintf(outputfile, "%scache fills (read):         %6d  \t%6.4f  \t%6.4f\n", prefix, cache-&gt;stat.fillreads, ((double) cache-&gt;stat.fillreads / (double) reqs), ((double) cache-&gt;stat.fillreads / (double) cache-&gt;stat.reads));</span>
+<span class='curline'><a href='../S/222.html#L2266'>outputfile</a>       2266 src/disksim_cachemem.c       fprintf(outputfile, "%scache atom fills (read):    %6d  \t%6.4f  \t%6.4f\n", prefix, cache-&gt;stat.fillreadatoms, ((double) cache-&gt;stat.fillreadatoms / (double) atoms), ((double) cache-&gt;stat.fillreadatoms / (double) cache-&gt;stat.readatoms));</span>
+<span class='curline'><a href='../S/222.html#L2269'>outputfile</a>       2269 src/disksim_cachemem.c    fprintf(outputfile, "%scache write requests:       %6d  \t%6.4f\n", prefix, cache-&gt;stat.writes, ((double) cache-&gt;stat.writes / (double) reqs));</span>
+<span class='curline'><a href='../S/222.html#L2273'>outputfile</a>       2273 src/disksim_cachemem.c       fprintf(outputfile, "%scache atoms written:        %6d  \t%6.4f\n", prefix, cache-&gt;stat.writeatoms, ((double) cache-&gt;stat.writeatoms / (double) atoms));</span>
+<span class='curline'><a href='../S/222.html#L2275'>outputfile</a>       2275 src/disksim_cachemem.c       fprintf(outputfile, "%scache write misses:         %6d  \t%6.4f  \t%6.4f\n", prefix, cache-&gt;stat.writemisses, ((double) cache-&gt;stat.writemisses / (double) reqs), ((double) cache-&gt;stat.writemisses / (double) cache-&gt;stat.writes));</span>
+<span class='curline'><a href='../S/222.html#L2277'>outputfile</a>       2277 src/disksim_cachemem.c       fprintf(outputfile, "%scache write hits (clean):   %6d  \t%6.4f  \t%6.4f\n", prefix, cache-&gt;stat.writehitsclean, ((double) cache-&gt;stat.writehitsclean / (double) reqs), ((double) cache-&gt;stat.writehitsclean / (double) cache-&gt;stat.writes));</span>
+<span class='curline'><a href='../S/222.html#L2279'>outputfile</a>       2279 src/disksim_cachemem.c       fprintf(outputfile, "%scache write hits (dirty):   %6d  \t%6.4f  \t%6.4f\n", prefix, cache-&gt;stat.writehitsdirty, ((double) cache-&gt;stat.writehitsdirty / (double) reqs), ((double) cache-&gt;stat.writehitsdirty / (double) cache-&gt;stat.writes));</span>
+<span class='curline'><a href='../S/222.html#L2281'>outputfile</a>       2281 src/disksim_cachemem.c       fprintf(outputfile, "%scache fills (write):        %6d  \t%6.4f  \t%6.4f\n", prefix, cache-&gt;stat.writeinducedfills, ((double)cache-&gt;stat.writeinducedfills / (double) reqs), ((double) cache-&gt;stat.writeinducedfills / (double) cache-&gt;stat.writes));</span>
+<span class='curline'><a href='../S/222.html#L2283'>outputfile</a>       2283 src/disksim_cachemem.c       fprintf(outputfile, "%scache atom fills (write):   %6d  \t%6.4f  \t%6.4f\n", prefix, cache-&gt;stat.writeinducedfillatoms, ((double)cache-&gt;stat.writeinducedfillatoms / (double) atoms), ((double) cache-&gt;stat.writeinducedfillatoms / (double) cache-&gt;stat.writeatoms));</span>
+<span class='curline'><a href='../S/222.html#L2285'>outputfile</a>       2285 src/disksim_cachemem.c       fprintf(outputfile, "%scache destages (write):     %6d  \t%6.4f  \t%6.4f\n", prefix, cache-&gt;stat.destagewrites, ((double) cache-&gt;stat.destagewrites / (double) reqs), ((double) cache-&gt;stat.destagewrites / (double) cache-&gt;stat.writes));</span>
+<span class='curline'><a href='../S/222.html#L2287'>outputfile</a>       2287 src/disksim_cachemem.c       fprintf(outputfile, "%scache atom destages (write): %6d  \t%6.4f  \t%6.4f\n", prefix, cache-&gt;stat.destagewriteatoms, ((double) cache-&gt;stat.destagewriteatoms / (double) atoms), ((double) cache-&gt;stat.destagewriteatoms / (double) cache-&gt;stat.writeatoms));</span>
+<span class='curline'><a href='../S/222.html#L2289'>outputfile</a>       2289 src/disksim_cachemem.c       fprintf(outputfile, "%scache end dirty atoms:      %6d  \t%6.4f\n", prefix, cache_count_dirty_atoms(cache), ((double) cache_count_dirty_atoms(cache) / (double) cache-&gt;stat.writeatoms));</span>
+<span class='curline'><a href='../S/222.html#L2294'>outputfile</a>       2294 src/disksim_cachemem.c    fprintf(outputfile, "%scache get_block starts (read): %6d\n", prefix, cache-&gt;stat.getblockreadstarts);</span>
+<span class='curline'><a href='../S/222.html#L2295'>outputfile</a>       2295 src/disksim_cachemem.c    fprintf(outputfile, "%scache get_block dones (read):  %6d\n", prefix, cache-&gt;stat.getblockreaddones);</span>
+<span class='curline'><a href='../S/222.html#L2296'>outputfile</a>       2296 src/disksim_cachemem.c    fprintf(outputfile, "%scache get_block starts (write): %6d\n", prefix, cache-&gt;stat.getblockwritestarts);</span>
+<span class='curline'><a href='../S/222.html#L2297'>outputfile</a>       2297 src/disksim_cachemem.c    fprintf(outputfile, "%scache get_block dones (write):  %6d\n", prefix, cache-&gt;stat.getblockwritedones);</span>
+<span class='curline'><a href='../S/222.html#L2298'>outputfile</a>       2298 src/disksim_cachemem.c    fprintf(outputfile, "%scache free_block_cleans:       %6d\n", prefix, cache-&gt;stat.freeblockcleans);</span>
+<span class='curline'><a href='../S/222.html#L2299'>outputfile</a>       2299 src/disksim_cachemem.c    fprintf(outputfile, "%scache free_block_dirtys:       %6d\n", prefix, cache-&gt;stat.freeblockdirtys);</span>
+<span class='curline'><a href='../S/204.html#L742'>outputfile</a>        742 src/disksim_controller.c    fprintf (outputfile, "\nCONTROLLER STATISTICS\n");</span>
+<span class='curline'><a href='../S/204.html#L743'>outputfile</a>        743 src/disksim_controller.c    fprintf (outputfile, "---------------------\n\n");</span>
+<span class='curline'><a href='../S/204.html#L752'>outputfile</a>        752 src/disksim_controller.c       fprintf (outputfile, "%s\n\n", prefix);</span>
+<span class='curline'><a href='../S/204.html#L772'>outputfile</a>        772 src/disksim_controller.c    fprintf (outputfile, "Total controller bus wait time: %f\n", waitingforbus);</span>
+<span class='curline'><a href='../S/214.html#L477'>outputfile</a>        477 src/disksim_device.c   unparse_block(b, outputfile);</span>
+<span class='curline'><a href='../S/273.html#L571'>outputfile</a>        571 src/disksim_disk.c   fprintf (outputfile, "%sSequential interference: %d\n", prefix, seq);</span>
+<span class='curline'><a href='../S/273.html#L572'>outputfile</a>        572 src/disksim_disk.c   fprintf (outputfile, "%sLocal interference:      %d\n", prefix, loc);</span>
+<span class='curline'><a href='../S/273.html#L627'>outputfile</a>        627 src/disksim_disk.c   fprintf(outputfile, "%sNumber of buffer accesses:    %d\n", prefix, total);</span>
+<span class='curline'><a href='../S/273.html#L628'>outputfile</a>        628 src/disksim_disk.c   fprintf(outputfile, "%sBuffer hit ratio:        %6d \t%f\n", prefix, hits, ((double) hits / (double) total));</span>
+<span class='curline'><a href='../S/273.html#L629'>outputfile</a>        629 src/disksim_disk.c   fprintf(outputfile, "%sBuffer miss ratio:            %6d \t%f\n", prefix, misses, ((double) misses / (double) total));</span>
+<span class='curline'><a href='../S/273.html#L630'>outputfile</a>        630 src/disksim_disk.c   fprintf(outputfile, "%sBuffer read hit ratio:        %6d \t%f \t%f\n", prefix, fullreadhits, ((double) fullreadhits / (double) max(1,reads)), ((double) fullreadhits / (double) total));</span>
+<span class='curline'><a href='../S/273.html#L631'>outputfile</a>        631 src/disksim_disk.c   fprintf(outputfile, "%sBuffer prepend hit ratio:       %6d \t%f\n", prefix, prependhits, ((double) prependhits / (double) max(1,writes)));</span>
+<span class='curline'><a href='../S/273.html#L632'>outputfile</a>        632 src/disksim_disk.c   fprintf(outputfile, "%sBuffer append hit ratio:       %6d \t%f\n", prefix, appendhits, ((double) appendhits / (double) max(1,writes)));</span>
+<span class='curline'><a href='../S/273.html#L633'>outputfile</a>        633 src/disksim_disk.c   fprintf(outputfile, "%sWrite combinations:           %6d \t%f\n", prefix, writecombs, ((double) writecombs / (double) max(1,writes)));</span>
+<span class='curline'><a href='../S/273.html#L634'>outputfile</a>        634 src/disksim_disk.c   fprintf(outputfile, "%sOngoing read-ahead hit ratio: %6d \t%f \t%f\n", prefix, readinghits, ((double) readinghits / (double) max(1,reads)), ((double) readinghits / (double) total));</span>
+<span class='curline'><a href='../S/273.html#L635'>outputfile</a>        635 src/disksim_disk.c   fprintf(outputfile, "%sAverage read-ahead hit size:  %f\n", prefix, (runreadingsize / (double) max(1,readinghits)));</span>
+<span class='curline'><a href='../S/273.html#L636'>outputfile</a>        636 src/disksim_disk.c   fprintf(outputfile, "%sAverage remaining read-ahead: %f\n", prefix, (remreadingsize / (double) max(1,readinghits)));</span>
+<span class='curline'><a href='../S/273.html#L637'>outputfile</a>        637 src/disksim_disk.c   fprintf(outputfile, "%sPartial read hit ratio: %6d \t%f \t%f\n", prefix, parthits, ((double) parthits / (double) max(1,reads)), ((double) parthits / (double) total));</span>
+<span class='curline'><a href='../S/273.html#L638'>outputfile</a>        638 src/disksim_disk.c   fprintf(outputfile, "%sAverage partial hit size:     %f\n", prefix, (runpartsize / (double) max(1,parthits)));</span>
+<span class='curline'><a href='../S/273.html#L639'>outputfile</a>        639 src/disksim_disk.c   fprintf(outputfile, "%sAverage remaining partial:    %f\n", prefix, (rempartsize / (double) max(1,parthits)));</span>
+<span class='curline'><a href='../S/273.html#L640'>outputfile</a>        640 src/disksim_disk.c   fprintf(outputfile, "%sTotal disk bus wait time: %f\n", prefix, waitingforbus);</span>
+<span class='curline'><a href='../S/273.html#L641'>outputfile</a>        641 src/disksim_disk.c   fprintf(outputfile, "%sNumber of disk bus waits: %d\n", prefix, numbuswaits);</span>
+<span class='curline'><a href='../S/273.html#L666'>outputfile</a>        666 src/disksim_disk.c   fprintf (outputfile, "%sSeeks of zero distance:\t%d\t%f\n", prefix, zeros, zerofrac);</span>
+<span class='curline'><a href='../S/273.html#L695'>outputfile</a>        695 src/disksim_disk.c     fprintf (outputfile, "%sFull rotation time:      %f\n", prefix, dm_time_itod(currdisk-&gt;model-&gt;mech-&gt;dm_period(currdisk-&gt;model)));</span>
+<span class='curline'><a href='../S/273.html#L702'>outputfile</a>        702 src/disksim_disk.c   fprintf (outputfile, "%sZero rotate latency:\t%d\t%f\n", prefix, zeros, zerofrac);</span>
+<span class='curline'><a href='../S/273.html#L756'>outputfile</a>        756 src/disksim_disk.c     fprintf (outputfile, "\nNo disk requests for members of this set\n\n");</span>
+<span class='curline'><a href='../S/273.html#L779'>outputfile</a>        779 src/disksim_disk.c   fprintf(outputfile, "\nDISK STATISTICS\n");</span>
+<span class='curline'><a href='../S/273.html#L780'>outputfile</a>        780 src/disksim_disk.c   fprintf(outputfile, "---------------\n\n");</span>
+<span class='curline'><a href='../S/273.html#L796'>outputfile</a>        796 src/disksim_disk.c     fprintf(outputfile, "No disk requests encountered\n");</span>
+<span class='curline'><a href='../S/273.html#L820'>outputfile</a>        820 src/disksim_disk.c   fprintf (outputfile, "\n\n");</span>
+<span class='curline'><a href='../S/273.html#L832'>outputfile</a>        832 src/disksim_disk.c       fprintf(outputfile, "No requests for disk #%d\n\n\n", set[i]);</span>
+<span class='curline'><a href='../S/273.html#L835'>outputfile</a>        835 src/disksim_disk.c     fprintf(outputfile, "Disk #%d:\n\n", set[i]);</span>
+<span class='curline'><a href='../S/273.html#L836'>outputfile</a>        836 src/disksim_disk.c     fprintf(outputfile, "Disk #%d highest block number requested: %d\n", set[i], currdisk-&gt;stat.highblkno);</span>
+<span class='curline'><a href='../S/273.html#L845'>outputfile</a>        845 src/disksim_disk.c     fprintf (outputfile, "\n\n");</span>
+<span class='curline'><a href='../S/192.html#L156'>outputfile</a>        156 src/disksim_diskcache.c fprintf (outputfile, "%12.6f  %8p  Entering disk_buffer_remove_from_seg\n",simtime,currdiskreq);</span>
+<span class='curline'><a href='../S/192.html#L157'>outputfile</a>        157 src/disksim_diskcache.c fflush(outputfile);</span>
+<span class='curline'><a href='../S/192.html#L230'>outputfile</a>        230 src/disksim_diskcache.c fprintf (outputfile, "%12.6f            Entering disk_buffer_reusable_segment_check\n",simtime);</span>
+<span class='curline'><a href='../S/192.html#L231'>outputfile</a>        231 src/disksim_diskcache.c fflush(outputfile);</span>
+<span class='curline'><a href='../S/192.html#L251'>outputfile</a>        251 src/disksim_diskcache.c fprintf (outputfile, "                        segment %8p is reusable\n",currseg);</span>
+<span class='curline'><a href='../S/192.html#L252'>outputfile</a>        252 src/disksim_diskcache.c fflush(outputfile);</span>
+<span class='curline'><a href='../S/192.html#L268'>outputfile</a>        268 src/disksim_diskcache.c fprintf (outputfile, "                        segment %8p is reusable\n",currseg);</span>
+<span class='curline'><a href='../S/192.html#L269'>outputfile</a>        269 src/disksim_diskcache.c fflush(outputfile);</span>
+<span class='curline'><a href='../S/192.html#L278'>outputfile</a>        278 src/disksim_diskcache.c fprintf (outputfile, "                        segment %8p is NOT reusable\n",currseg);</span>
+<span class='curline'><a href='../S/192.html#L279'>outputfile</a>        279 src/disksim_diskcache.c fflush(outputfile);</span>
+<span class='curline'><a href='../S/192.html#L292'>outputfile</a>        292 src/disksim_diskcache.c fprintf (outputfile, "%12.6f            Entering disk_buffer_recyclable_segment_check\n",simtime);</span>
+<span class='curline'><a href='../S/192.html#L293'>outputfile</a>        293 src/disksim_diskcache.c fflush(outputfile);</span>
+<span class='curline'><a href='../S/192.html#L316'>outputfile</a>        316 src/disksim_diskcache.c fprintf (outputfile, "                        segment %8p is recyclable\n",currseg);</span>
+<span class='curline'><a href='../S/192.html#L317'>outputfile</a>        317 src/disksim_diskcache.c fflush(outputfile);</span>
+<span class='curline'><a href='../S/192.html#L335'>outputfile</a>        335 src/disksim_diskcache.c fprintf (outputfile, "                        segment %8p is recyclable\n",currseg);</span>
+<span class='curline'><a href='../S/192.html#L336'>outputfile</a>        336 src/disksim_diskcache.c fflush(outputfile);</span>
+<span class='curline'><a href='../S/192.html#L346'>outputfile</a>        346 src/disksim_diskcache.c fprintf (outputfile, "                        segment %8p is NOT recyclable\n",currseg);</span>
+<span class='curline'><a href='../S/192.html#L347'>outputfile</a>        347 src/disksim_diskcache.c fflush(outputfile);</span>
+<span class='curline'><a href='../S/192.html#L359'>outputfile</a>        359 src/disksim_diskcache.c fprintf (outputfile, "%12.6f            Entering disk_buffer_recyclable_segment\n",simtime);</span>
+<span class='curline'><a href='../S/192.html#L360'>outputfile</a>        360 src/disksim_diskcache.c fprintf (outputfile, "                        numdirty = %d\n", currdisk-&gt;numdirty);</span>
+<span class='curline'><a href='../S/192.html#L361'>outputfile</a>        361 src/disksim_diskcache.c fflush(outputfile);</span>
+<span class='curline'><a href='../S/192.html#L372'>outputfile</a>        372 src/disksim_diskcache.c fprintf (outputfile, "                        recyclable segment found\n");</span>
+<span class='curline'><a href='../S/192.html#L373'>outputfile</a>        373 src/disksim_diskcache.c fflush(outputfile);</span>
+<span class='curline'><a href='../S/192.html#L383'>outputfile</a>        383 src/disksim_diskcache.c fprintf(outputfile, "                        No recyclable segment found\n");</span>
+<span class='curline'><a href='../S/192.html#L384'>outputfile</a>        384 src/disksim_diskcache.c fflush(outputfile);</span>
+<span class='curline'><a href='../S/192.html#L591'>outputfile</a>        591 src/disksim_diskcache.c fprintf (outputfile, "%12.6f  %8p  Entering disk_buffer_select_read_segment\n",simtime,currdiskreq);</span>
+<span class='curline'><a href='../S/192.html#L592'>outputfile</a>        592 src/disksim_diskcache.c fflush(outputfile);</span>
+<span class='curline'><a href='../S/192.html#L743'>outputfile</a>        743 src/disksim_diskcache.c fprintf (outputfile, "                        segment = %8p, hittype = %d\n",currdiskreq-&gt;seg,currdiskreq-&gt;hittype);</span>
+<span class='curline'><a href='../S/192.html#L744'>outputfile</a>        744 src/disksim_diskcache.c fflush(outputfile);</span>
+<span class='curline'><a href='../S/192.html#L792'>outputfile</a>        792 src/disksim_diskcache.c fprintf (outputfile, "%12.6f  %8p  Entering disk_buffer_select_write_segment\n",simtime,currdiskreq);</span>
+<span class='curline'><a href='../S/192.html#L793'>outputfile</a>        793 src/disksim_diskcache.c fprintf (outputfile, "                        numdirty = %d\n", currdisk-&gt;numdirty);</span>
+<span class='curline'><a href='../S/192.html#L794'>outputfile</a>        794 src/disksim_diskcache.c fflush(outputfile);</span>
+<span class='curline'><a href='../S/192.html#L1008'>outputfile</a>       1008 src/disksim_diskcache.c fprintf (outputfile, "                        segment = %8p, hittype = %d\n",currdiskreq-&gt;seg,currdiskreq-&gt;hittype);</span>
+<span class='curline'><a href='../S/192.html#L1009'>outputfile</a>       1009 src/disksim_diskcache.c fflush(outputfile);</span>
+<span class='curline'><a href='../S/192.html#L1069'>outputfile</a>       1069 src/disksim_diskcache.c fprintf (outputfile, "%12.6f  %8p  Entering disk_buffer_check_read_segments\n",simtime,currioreq);</span>
+<span class='curline'><a href='../S/192.html#L1070'>outputfile</a>       1070 src/disksim_diskcache.c fflush(outputfile);</span>
+<span class='curline'><a href='../S/192.html#L1147'>outputfile</a>       1147 src/disksim_diskcache.c fprintf (outputfile, "                        HITable segment found\n");</span>
+<span class='curline'><a href='../S/192.html#L1148'>outputfile</a>       1148 src/disksim_diskcache.c fflush(outputfile);</span>
+<span class='curline'><a href='../S/192.html#L1167'>outputfile</a>       1167 src/disksim_diskcache.c fprintf (outputfile, "%12.6f  %8p  Entering disk_buffer_check_write_segments\n",simtime,currioreq);</span>
+<span class='curline'><a href='../S/192.html#L1168'>outputfile</a>       1168 src/disksim_diskcache.c fflush(outputfile);</span>
+<span class='curline'><a href='../S/192.html#L1242'>outputfile</a>       1242 src/disksim_diskcache.c fprintf (outputfile, "                        APPENDable segment found\n");</span>
+<span class='curline'><a href='../S/192.html#L1243'>outputfile</a>       1243 src/disksim_diskcache.c fflush(outputfile);</span>
+<span class='curline'><a href='../S/192.html#L1272'>outputfile</a>       1272 src/disksim_diskcache.c fprintf (outputfile, "%12.6f  %8p  Entering disk_buffer_set_segment\n",simtime,currdiskreq);</span>
+<span class='curline'><a href='../S/192.html#L1273'>outputfile</a>       1273 src/disksim_diskcache.c fflush(outputfile);</span>
+<span class='curline'><a href='../S/192.html#L1493'>outputfile</a>       1493 src/disksim_diskcache.c fprintf (outputfile, "%12.6f  %8p  Entering disk_buffer_attempt_seg_ownership\n",simtime,currdiskreq);</span>
+<span class='curline'><a href='../S/192.html#L1494'>outputfile</a>       1494 src/disksim_diskcache.c fflush(outputfile);</span>
+<span class='curline'><a href='../S/192.html#L1619'>outputfile</a>       1619 src/disksim_diskcache.c fprintf (outputfile, "                        numdirty++ = %d\n",currdisk-&gt;numdirty);</span>
+<span class='curline'><a href='../S/192.html#L1620'>outputfile</a>       1620 src/disksim_diskcache.c fflush(outputfile);</span>
+<span class='curline'><a href='../S/192.html#L1630'>outputfile</a>       1630 src/disksim_diskcache.c fprintf (outputfile, "                        Ownership = %d\n",(currdiskreq-&gt;flags &amp; SEG_OWNED));</span>
+<span class='curline'><a href='../S/192.html#L1631'>outputfile</a>       1631 src/disksim_diskcache.c fflush(outputfile);</span>
+<span class='curline'><a href='../S/196.html#L398'>outputfile</a>        398 src/disksim_diskctlr.c     fprintf (outputfile, "%12.6f            Entering disk_check_prefetch_swap for disk %d\n", simtime, currdisk-&gt;devno);</span>
+<span class='curline'><a href='../S/196.html#L399'>outputfile</a>        399 src/disksim_diskctlr.c     fflush(outputfile);</span>
+<span class='curline'><a href='../S/196.html#L444'>outputfile</a>        444 src/disksim_diskctlr.c     fprintf (outputfile, "%12.6f  %8p "</span>
+<span class='curline'><a href='../S/196.html#L446'>outputfile</a>        446 src/disksim_diskctlr.c     fflush(outputfile);</span>
+<span class='curline'><a href='../S/196.html#L584'>outputfile</a>        584 src/disksim_diskctlr.c     fprintf (outputfile, "%12.6f  %8p  "</span>
+<span class='curline'><a href='../S/196.html#L587'>outputfile</a>        587 src/disksim_diskctlr.c     fflush(outputfile);</span>
+<span class='curline'><a href='../S/196.html#L615'>outputfile</a>        615 src/disksim_diskctlr.c     fprintf (outputfile, "                        disk_buffer_transfer_size set bcount to %d\n", curr-&gt;bcount);</span>
+<span class='curline'><a href='../S/196.html#L616'>outputfile</a>        616 src/disksim_diskctlr.c     fflush(outputfile);</span>
+<span class='curline'><a href='../S/196.html#L662'>outputfile</a>        662 src/disksim_diskctlr.c     fprintf (outputfile, "%12.6f            Entering disk_find_new_seg_owner for disk %d\n", simtime, currdisk-&gt;devno);</span>
+<span class='curline'><a href='../S/196.html#L663'>outputfile</a>        663 src/disksim_diskctlr.c     fflush(outputfile);</span>
+<span class='curline'><a href='../S/196.html#L726'>outputfile</a>        726 src/disksim_diskctlr.c     fprintf (outputfile, "%12.6f  %8p  Entering disk_release_hda for disk %d\n", simtime, currdiskreq,currdisk-&gt;devno);</span>
+<span class='curline'><a href='../S/196.html#L727'>outputfile</a>        727 src/disksim_diskctlr.c     fflush(outputfile);</span>
+<span class='curline'><a href='../S/196.html#L826'>outputfile</a>        826 src/disksim_diskctlr.c 	    fprintf (outputfile, "                        numdirty-- = %d\n",currdisk-&gt;numdirty);</span>
+<span class='curline'><a href='../S/196.html#L827'>outputfile</a>        827 src/disksim_diskctlr.c 	    fflush(outputfile);</span>
+<span class='curline'><a href='../S/196.html#L837'>outputfile</a>        837 src/disksim_diskctlr.c     fprintf (outputfile, "                        free_structs = %d, release_hda = %d\n", free_structs, release_hda);</span>
+<span class='curline'><a href='../S/196.html#L838'>outputfile</a>        838 src/disksim_diskctlr.c     fflush(outputfile);</span>
+<span class='curline'><a href='../S/196.html#L1054'>outputfile</a>       1054 src/disksim_diskctlr.c     fprintf (outputfile, "%12.6f         Entering disk_select_bus_request for disk %d\n", simtime, currdisk-&gt;devno);</span>
+<span class='curline'><a href='../S/196.html#L1055'>outputfile</a>       1055 src/disksim_diskctlr.c     fflush(outputfile);</span>
+<span class='curline'><a href='../S/196.html#L1116'>outputfile</a>       1116 src/disksim_diskctlr.c 		fprintf (outputfile, "%12.6f         "</span>
+<span class='curline'><a href='../S/196.html#L1121'>outputfile</a>       1121 src/disksim_diskctlr.c 		fprintf (outputfile, "                       "</span>
+<span class='curline'><a href='../S/196.html#L1126'>outputfile</a>       1126 src/disksim_diskctlr.c 		fprintf (outputfile, "                       "</span>
+<span class='curline'><a href='../S/196.html#L1132'>outputfile</a>       1132 src/disksim_diskctlr.c 		fflush(outputfile);</span>
+<span class='curline'><a href='../S/196.html#L1268'>outputfile</a>       1268 src/disksim_diskctlr.c     fprintf (outputfile, "%12.6f  %8p  Entering disk_check_bus for disk %d\n", simtime, currdiskreq,currdisk-&gt;devno);</span>
+<span class='curline'><a href='../S/196.html#L1269'>outputfile</a>       1269 src/disksim_diskctlr.c     fflush(outputfile);</span>
+<span class='curline'><a href='../S/196.html#L1321'>outputfile</a>       1321 src/disksim_diskctlr.c       fprintf (outputfile, "                        nextdiskreq = %8p\n", nextdiskreq);</span>
+<span class='curline'><a href='../S/196.html#L1322'>outputfile</a>       1322 src/disksim_diskctlr.c       fflush(outputfile);</span>
+<span class='curline'><a href='../S/196.html#L1528'>outputfile</a>       1528 src/disksim_diskctlr.c     fprintf (outputfile, "%12.6f            Entering disk_initiate_seek to %d for disk %d\n", simtime, curr-&gt;blkno, curr-&gt;devno);</span>
+<span class='curline'><a href='../S/196.html#L1529'>outputfile</a>       1529 src/disksim_diskctlr.c     fflush(outputfile);</span>
+<span class='curline'><a href='../S/196.html#L1732'>outputfile</a>       1732 src/disksim_diskctlr.c     fprintf (outputfile, "                        "</span>
+<span class='curline'><a href='../S/196.html#L1734'>outputfile</a>       1734 src/disksim_diskctlr.c     fflush(outputfile);</span>
+<span class='curline'><a href='../S/196.html#L1869'>outputfile</a>       1869 src/disksim_diskctlr.c 	    fprintf (outputfile, "                        "</span>
+<span class='curline'><a href='../S/196.html#L1871'>outputfile</a>       1871 src/disksim_diskctlr.c 	    fflush(outputfile);</span>
+<span class='curline'><a href='../S/196.html#L1924'>outputfile</a>       1924 src/disksim_diskctlr.c     fprintf (outputfile, "%12.6f  %8p  Entering disk_check_hda"</span>
+<span class='curline'><a href='../S/196.html#L1926'>outputfile</a>       1926 src/disksim_diskctlr.c     fflush(outputfile);</span>
+<span class='curline'><a href='../S/196.html#L1992'>outputfile</a>       1992 src/disksim_diskctlr.c     fprintf (outputfile, "                        "</span>
+<span class='curline'><a href='../S/196.html#L1995'>outputfile</a>       1995 src/disksim_diskctlr.c     fflush(outputfile);</span>
+<span class='curline'><a href='../S/196.html#L2043'>outputfile</a>       2043 src/disksim_diskctlr.c     fprintf (outputfile, "%12.6f  %8p  Entering disk_buffer_stop_access\n", simtime, effective);</span>
+<span class='curline'><a href='../S/196.html#L2044'>outputfile</a>       2044 src/disksim_diskctlr.c     fflush(outputfile);</span>
+<span class='curline'><a href='../S/196.html#L2095'>outputfile</a>       2095 src/disksim_diskctlr.c     fprintf (outputfile, "%12.6f  %8p  Entering disk_buffer_attempt_access_swap\n", simtime, currdiskreq);</span>
+<span class='curline'><a href='../S/196.html#L2096'>outputfile</a>       2096 src/disksim_diskctlr.c     fprintf (outputfile, "                        trying to swap %8p\n", effective);</span>
+<span class='curline'><a href='../S/196.html#L2097'>outputfile</a>       2097 src/disksim_diskctlr.c     fflush(outputfile);</span>
+<span class='curline'><a href='../S/196.html#L2145'>outputfile</a>       2145 src/disksim_diskctlr.c       fprintf (outputfile, "                        Swap successful\n");</span>
+<span class='curline'><a href='../S/196.html#L2146'>outputfile</a>       2146 src/disksim_diskctlr.c       fflush(outputfile);</span>
+<span class='curline'><a href='../S/196.html#L2153'>outputfile</a>       2153 src/disksim_diskctlr.c     fprintf (outputfile, "                        Swap unsuccessful\n");</span>
+<span class='curline'><a href='../S/196.html#L2154'>outputfile</a>       2154 src/disksim_diskctlr.c     fflush(outputfile);</span>
+<span class='curline'><a href='../S/196.html#L2177'>outputfile</a>       2177 src/disksim_diskctlr.c     fprintf (outputfile, "%12.6f  %8p  Entering disk_activate_read\n", simtime, currdiskreq);</span>
+<span class='curline'><a href='../S/196.html#L2178'>outputfile</a>       2178 src/disksim_diskctlr.c     fprintf (outputfile, "                        setseg = %d\n", setseg);</span>
+<span class='curline'><a href='../S/196.html#L2179'>outputfile</a>       2179 src/disksim_diskctlr.c     fflush(outputfile);</span>
+<span class='curline'><a href='../S/196.html#L2274'>outputfile</a>       2274 src/disksim_diskctlr.c     fprintf (outputfile, "%12.6f  %8p  Entering disk_activate_write\n", simtime, currdiskreq);</span>
+<span class='curline'><a href='../S/196.html#L2275'>outputfile</a>       2275 src/disksim_diskctlr.c     fprintf (outputfile, "                        setseg = %d\n", setseg);</span>
+<span class='curline'><a href='../S/196.html#L2276'>outputfile</a>       2276 src/disksim_diskctlr.c     fflush(outputfile);</span>
+<span class='curline'><a href='../S/196.html#L2401'>outputfile</a>       2401 src/disksim_diskctlr.c     fprintf(outputfile, "%12.6f  %8p  Entering disk_request_arrive\n", </span>
+<span class='curline'><a href='../S/196.html#L2404'>outputfile</a>       2404 src/disksim_diskctlr.c     fprintf(outputfile, "                        disk = %d, "</span>
+<span class='curline'><a href='../S/196.html#L2407'>outputfile</a>       2407 src/disksim_diskctlr.c     fflush(outputfile);</span>
+<span class='curline'><a href='../S/196.html#L2758'>outputfile</a>       2758 src/disksim_diskctlr.c     fprintf (outputfile, "%12.6f  %8p  Entering disk_disconnect for disk %d\n", simtime, currdiskreq, currdisk-&gt;devno);</span>
+<span class='curline'><a href='../S/196.html#L2759'>outputfile</a>       2759 src/disksim_diskctlr.c     fflush(outputfile);</span>
+<span class='curline'><a href='../S/196.html#L2826'>outputfile</a>       2826 src/disksim_diskctlr.c     fprintf (outputfile, "%12.6f  %8p  Entering disk_completion for disk %d\n", simtime, currdiskreq,currdisk-&gt;devno);</span>
+<span class='curline'><a href='../S/196.html#L2827'>outputfile</a>       2827 src/disksim_diskctlr.c     fflush(outputfile);</span>
+<span class='curline'><a href='../S/196.html#L3030'>outputfile</a>       3030 src/disksim_diskctlr.c   fprintf (outputfile, "Exiting disk_event_arrive\n");</span>
+<span class='curline'><a href='../S/196.html#L3074'>outputfile</a>       3074 src/disksim_diskctlr.c     fprintf (outputfile, "%12.6f  %8p  Entering disk_buffer_request_complete\n", simtime, currdiskreq);</span>
+<span class='curline'><a href='../S/196.html#L3075'>outputfile</a>       3075 src/disksim_diskctlr.c     fflush(outputfile);</span>
+<span class='curline'><a href='../S/196.html#L3331'>outputfile</a>       3331 src/disksim_diskctlr.c   fprintf (outputfile, "Entered disk_buffer_update_ongoing - devno %d\n", seg-&gt;access-&gt;devno);</span>
+<span class='curline'><a href='../S/196.html#L3373'>outputfile</a>       3373 src/disksim_diskctlr.c fprintf (outputfile, "Exiting disk_buffer_update_ongoing\n");</span>
+<span class='curline'><a href='../S/196.html#L3731'>outputfile</a>       3731 src/disksim_diskctlr.c     fprintf (outputfile, "%12.6f  %8p  Entering disk_buffer_stopable_access\n", simtime, currdiskreq);</span>
+<span class='curline'><a href='../S/196.html#L3732'>outputfile</a>       3732 src/disksim_diskctlr.c     fprintf (outputfile, "                        checking if %8p is stoppable\n", effective);</span>
+<span class='curline'><a href='../S/196.html#L3733'>outputfile</a>       3733 src/disksim_diskctlr.c     fflush(outputfile);</span>
+<span class='curline'><a href='../S/196.html#L3763'>outputfile</a>       3763 src/disksim_diskctlr.c     fprintf (outputfile, "%f, Inside background read portion of stopable_access - read %d\n", simtime, (curr-&gt;flags &amp; READ));</span>
+<span class='curline'><a href='../S/196.html#L4017'>outputfile</a>       4017 src/disksim_diskctlr.c     fprintf (outputfile, "%12.6f  %8p  Entering disk_buffer_seekdone for disk %d\n", simtime, currdiskreq,currdisk-&gt;devno);</span>
+<span class='curline'><a href='../S/196.html#L4018'>outputfile</a>       4018 src/disksim_diskctlr.c     fflush(outputfile);</span>
+<span class='curline'><a href='../S/196.html#L4076'>outputfile</a>       4076 src/disksim_diskctlr.c   fprintf (outputfile, "remapsector %d, endoftrack %d, firstontrack %d, blkspertrack %d\n", remapsector, currdisk-&gt;endoftrack, first, curr-&gt;bcount);</span>
+<span class='curline'><a href='../S/196.html#L4168'>outputfile</a>       4168 src/disksim_diskctlr.c   fprintf (outputfile, "startblkno %d, endblkno %d, outblkno %d, "</span>
+<span class='curline'><a href='../S/196.html#L4173'>outputfile</a>       4173 src/disksim_diskctlr.c   fprintf (outputfile, "Leaving disk_buffer_seekdone\n");</span>
+<span class='curline'><a href='../S/283.html#L371'>outputfile</a>        371 src/disksim_global.h    FILE * outputfile;</span>
+<span class='curline'><a href='../S/283.html#L440'>outputfile</a>        440 src/disksim_global.h #define outputfile       (disksim-&gt;outputfile)</span>
+<span class='curline'><a href='../S/205.html#L444'>outputfile</a>        444 src/disksim_iodriver.c 	fprintf (outputfile, "%f, part of oversized request completed: opid %d, blkno %d, bcount %d, maxreqsize %d\n", simtime, req-&gt;opid, req-&gt;blkno, req-&gt;bcount, ctl-&gt;maxreqsize);</span>
+<span class='curline'><a href='../S/205.html#L448'>outputfile</a>        448 src/disksim_iodriver.c 	  fprintf (outputfile, "more to go\n");</span>
+<span class='curline'><a href='../S/205.html#L455'>outputfile</a>        455 src/disksim_iodriver.c 	  fprintf (outputfile, "done for real\n");</span>
+<span class='curline'><a href='../S/205.html#L903'>outputfile</a>        903 src/disksim_iodriver.c       fprintf (outputfile, "I/O driver #%d\n", i);</span>
+<span class='curline'><a href='../S/205.html#L905'>outputfile</a>        905 src/disksim_iodriver.c          fprintf (outputfile, "Device #%d: buspath = %x, slotpath = %x\n", j, iodrivers[i]-&gt;devices[j].buspath.value, iodrivers[i]-&gt;devices[j].slotpath.value);</span>
+<span class='curline'><a href='../S/205.html#L918'>outputfile</a>        918 src/disksim_iodriver.c       fprintf (outputfile, "I/O driver #%d\n", i);</span>
+<span class='curline'><a href='../S/205.html#L920'>outputfile</a>        920 src/disksim_iodriver.c          fprintf (outputfile, "Controller #%d: buspath = %x, slotpath = %x\n", j, iodrivers[i]-&gt;ctlrs[j].buspath.value, iodrivers[i]-&gt;ctlrs[j].slotpath.value);</span>
+<span class='curline'><a href='../S/205.html#L1211'>outputfile</a>       1211 src/disksim_iodriver.c    fprintf (outputfile, "\nOVERALL I/O SYSTEM STATISTICS\n");</span>
+<span class='curline'><a href='../S/205.html#L1212'>outputfile</a>       1212 src/disksim_iodriver.c    fprintf (outputfile, "-----------------------------\n\n");</span>
+<span class='curline'><a href='../S/205.html#L1216'>outputfile</a>       1216 src/disksim_iodriver.c    fprintf (outputfile, "\nSYSTEM-LEVEL LOGORG STATISTICS\n");</span>
+<span class='curline'><a href='../S/205.html#L1217'>outputfile</a>       1217 src/disksim_iodriver.c    fprintf (outputfile, "------------------------------\n\n");</span>
+<span class='curline'><a href='../S/205.html#L1221'>outputfile</a>       1221 src/disksim_iodriver.c    fprintf (outputfile, "\nIODRIVER STATISTICS\n");</span>
+<span class='curline'><a href='../S/205.html#L1222'>outputfile</a>       1222 src/disksim_iodriver.c    fprintf (outputfile, "-------------------\n\n");</span>
+<span class='curline'><a href='../S/205.html#L1247'>outputfile</a>       1247 src/disksim_iodriver.c             fprintf (outputfile, "\nI/O Driver #%d - Device #%d\n", i, j);</span>
+<span class='curline'><a href='../S/254.html#L206'>outputfile</a>        206 src/disksim_ioqueue.c    fprintf (outputfile, "Contents of base queue: listlen %d\n", queue-&gt;base.listlen);</span>
+<span class='curline'><a href='../S/254.html#L208'>outputfile</a>        208 src/disksim_ioqueue.c       fprintf(outputfile, "State: %d, blkno: %d\n", tmp-&gt;state, tmp-&gt;blkno);</span>
+<span class='curline'><a href='../S/254.html#L213'>outputfile</a>        213 src/disksim_ioqueue.c    fprintf(outputfile, "Contents of timeout queue: listlen %d\n", queue-&gt;timeout.listlen);</span>
+<span class='curline'><a href='../S/254.html#L215'>outputfile</a>        215 src/disksim_ioqueue.c       fprintf(outputfile, "State: %d, blkno: %d\n", tmp-&gt;state, tmp-&gt;blkno);</span>
+<span class='curline'><a href='../S/254.html#L220'>outputfile</a>        220 src/disksim_ioqueue.c    fprintf(outputfile, "Contents of priority queue: listlen %d\n", queue-&gt;priority.listlen);</span>
+<span class='curline'><a href='../S/254.html#L222'>outputfile</a>        222 src/disksim_ioqueue.c       fprintf(outputfile, "State: %d, blkno: %d\n", tmp-&gt;state, tmp-&gt;blkno);</span>
+<span class='curline'><a href='../S/254.html#L234'>outputfile</a>        234 src/disksim_ioqueue.c    fprintf(outputfile, "\nContents of subqueue: listlen %d\n", queue-&gt;listlen);</span>
+<span class='curline'><a href='../S/254.html#L235'>outputfile</a>        235 src/disksim_ioqueue.c    fprintf(outputfile, "Subqueue state: lastblkno %d, lastcylno %d, lastsurface %d, dir %d\n", queue-&gt;lastblkno, queue-&gt;lastcylno, queue-&gt;lastsurface, queue-&gt;dir);</span>
+<span class='curline'><a href='../S/254.html#L237'>outputfile</a>        237 src/disksim_ioqueue.c       fprintf(outputfile, "State: %d, blkno: %d, cylno %d, surface %d\n", tmp-&gt;state, tmp-&gt;blkno, tmp-&gt;cylinder, tmp-&gt;surface);</span>
+<span class='curline'><a href='../S/254.html#L2356'>outputfile</a>       2356 src/disksim_ioqueue.c 	   fprintf(outputfile, "sptf_scheduler::  sptf = %d, sdf = %d\n",</span>
+<span class='curline'><a href='../S/254.html#L2362'>outputfile</a>       2362 src/disksim_ioqueue.c 	     fprintf(outputfile, "sptf scheduler::  sptf = %d, sdf = %d, num_different = %d\n",</span>
+<span class='curline'><a href='../S/254.html#L2545'>outputfile</a>       2545 src/disksim_ioqueue.c 	   fprintf(outputfile, "sptf_scheduler::  sptf = %d, sdf = %d\n",</span>
+<span class='curline'><a href='../S/254.html#L2551'>outputfile</a>       2551 src/disksim_ioqueue.c 	     fprintf(outputfile, "sptf scheduler::  sptf = %d, sdf = %d, num_different = %d\n",</span>
+<span class='curline'><a href='../S/254.html#L3869'>outputfile</a>       3869 src/disksim_ioqueue.c    fprintf(outputfile, "%srunlistlen:              %f\n", prefix, runlistlen);</span>
+<span class='curline'><a href='../S/254.html#L3870'>outputfile</a>       3870 src/disksim_ioqueue.c    fprintf(outputfile, "%srunoutstanding:          %f\n", prefix, runoutstanding);</span>
+<span class='curline'><a href='../S/254.html#L3871'>outputfile</a>       3871 src/disksim_ioqueue.c    fprintf(outputfile, "%ssimtime:                 %f\n", prefix, simtime);</span>
+<span class='curline'><a href='../S/254.html#L3872'>outputfile</a>       3872 src/disksim_ioqueue.c    fprintf(outputfile, "%swarmuptime:              %f\n", prefix, warmuptime);</span>
+<span class='curline'><a href='../S/254.html#L3873'>outputfile</a>       3873 src/disksim_ioqueue.c    fprintf(outputfile, "%ssetsize:                 %d\n", prefix, setsize);</span>
+<span class='curline'><a href='../S/254.html#L3875'>outputfile</a>       3875 src/disksim_ioqueue.c    fprintf(outputfile, "%sAverage # requests:      %f\n", prefix, (runlistlen/((simtime - warmuptime) * (double) setsize)));</span>
+<span class='curline'><a href='../S/254.html#L3876'>outputfile</a>       3876 src/disksim_ioqueue.c    fprintf(outputfile, "%sMaximum # requests:      %d\n", prefix, maxlistlen);</span>
+<span class='curline'><a href='../S/254.html#L3877'>outputfile</a>       3877 src/disksim_ioqueue.c    fprintf(outputfile, "%sEnd # requests:          %d\n", prefix, listlen);</span>
+<span class='curline'><a href='../S/254.html#L3878'>outputfile</a>       3878 src/disksim_ioqueue.c    fprintf(outputfile, "%sAverage queue length:    %f\n", prefix, ((runlistlen - runoutstanding)/((simtime - warmuptime) * (double) setsize)));</span>
+<span class='curline'><a href='../S/254.html#L3879'>outputfile</a>       3879 src/disksim_ioqueue.c    fprintf(outputfile, "%sMaximum queue length:    %d\n", prefix, maxqlen);</span>
+<span class='curline'><a href='../S/254.html#L3880'>outputfile</a>       3880 src/disksim_ioqueue.c    fprintf(outputfile, "%sEnd queued requests:     %d\n", prefix, (listlen - numoutstanding));</span>
+<span class='curline'><a href='../S/254.html#L3889'>outputfile</a>       3889 src/disksim_ioqueue.c    fprintf (outputfile, "%sAvg # read requests:     %f\n", prefix, (runreadlen / ((simtime - warmuptime) * (double) setsize)));</span>
+<span class='curline'><a href='../S/254.html#L3890'>outputfile</a>       3890 src/disksim_ioqueue.c    fprintf (outputfile, "%sMax # read requests:     %d\n", prefix, maxreadlen);</span>
+<span class='curline'><a href='../S/254.html#L3891'>outputfile</a>       3891 src/disksim_ioqueue.c    fprintf (outputfile, "%sAvg # write requests:    %f\n", prefix, (runwritelen / ((simtime - warmuptime) * (double) setsize)));</span>
+<span class='curline'><a href='../S/254.html#L3892'>outputfile</a>       3892 src/disksim_ioqueue.c    fprintf (outputfile, "%sMax # write requests:    %d\n", prefix, maxwritelen);</span>
+<span class='curline'><a href='../S/254.html#L3904'>outputfile</a>       3904 src/disksim_ioqueue.c    fprintf (outputfile, "%sNumber of batches:  %d\n", prefix, stat_get_count_set(statset, setsize));</span>
+<span class='curline'><a href='../S/254.html#L3982'>outputfile</a>       3982 src/disksim_ioqueue.c    fprintf (outputfile, "%sNumber of idle periods:  %d\n", prefix, stat_get_count_set(statset, setsize));</span>
+<span class='curline'><a href='../S/254.html#L4004'>outputfile</a>       4004 src/disksim_ioqueue.c    fprintf (outputfile, "%sCritical Reads:      \t%6d  \t%f\n", prefix, cnt, ((double) cnt / (double) max(numreqs,1)));</span>
+<span class='curline'><a href='../S/254.html#L4012'>outputfile</a>       4012 src/disksim_ioqueue.c    fprintf (outputfile, "%sNon-Critical Reads:  \t%6d  \t%f\n", prefix, cnt, ((double) cnt / (double) max(numreqs,1)));</span>
+<span class='curline'><a href='../S/254.html#L4020'>outputfile</a>       4020 src/disksim_ioqueue.c    fprintf (outputfile, "%sCritical Writes:     \t%6d  \t%f\n", prefix, cnt, ((double) cnt / (double) max(numreqs,1)));</span>
+<span class='curline'><a href='../S/254.html#L4028'>outputfile</a>       4028 src/disksim_ioqueue.c    fprintf (outputfile, "%sNon-Critical Writes: \t%6d  \t%f\n", prefix, cnt, ((double) cnt / (double) max(numreqs,1)));</span>
+<span class='curline'><a href='../S/254.html#L4079'>outputfile</a>       4079 src/disksim_ioqueue.c    fprintf(outputfile, "%sAverage # requests:      %f\n", prefix, (runlistlen/((simtime - warmuptime) * (double) setsize)));</span>
+<span class='curline'><a href='../S/254.html#L4080'>outputfile</a>       4080 src/disksim_ioqueue.c    fprintf(outputfile, "%sMaximum # requests:      %d\n", prefix, maxlistlen);</span>
+<span class='curline'><a href='../S/254.html#L4081'>outputfile</a>       4081 src/disksim_ioqueue.c    fprintf(outputfile, "%sEnd # requests:          %d\n", prefix, listlen);</span>
+<span class='curline'><a href='../S/254.html#L4082'>outputfile</a>       4082 src/disksim_ioqueue.c    fprintf(outputfile, "%sAverage queue length:    %f\n", prefix, ((runlistlen - runoutstanding)/((simtime - warmuptime) * (double) setsize)));</span>
+<span class='curline'><a href='../S/254.html#L4083'>outputfile</a>       4083 src/disksim_ioqueue.c    fprintf(outputfile, "%sMaximum queue length:    %d\n", prefix, maxqlen);</span>
+<span class='curline'><a href='../S/254.html#L4084'>outputfile</a>       4084 src/disksim_ioqueue.c    fprintf(outputfile, "%sEnd queued requests:     %d\n", prefix, (listlen - numoutstanding));</span>
+<span class='curline'><a href='../S/254.html#L4179'>outputfile</a>       4179 src/disksim_ioqueue.c    fprintf(outputfile, "%sTotal Requests handled:\t%d\n", sourcestr, numcomplete);</span>
+<span class='curline'><a href='../S/254.html#L4180'>outputfile</a>       4180 src/disksim_ioqueue.c    fprintf(outputfile, "%sRequests per second:   \t%f\n", sourcestr, ((double)1000 * (double)numcomplete / (simtime - warmuptime)));</span>
+<span class='curline'><a href='../S/254.html#L4181'>outputfile</a>       4181 src/disksim_ioqueue.c    fprintf(outputfile, "%sCompletely idle time:  \t%f   \t%f\n", sourcestr, idletime, (idletime / (simtime - warmuptime)));</span>
+<span class='curline'><a href='../S/254.html#L4185'>outputfile</a>       4185 src/disksim_ioqueue.c    fprintf(outputfile, "%sOverlaps combined:     \t%d\t%f\n", sourcestr, overlapscombed, ((double) overlapscombed / (double) max(numcomplete,1)));</span>
+<span class='curline'><a href='../S/254.html#L4186'>outputfile</a>       4186 src/disksim_ioqueue.c    fprintf(outputfile, "%sRead overlaps combined:\t%d\t%f\t%f\n", sourcestr, readoverlapscombed, ((double) readoverlapscombed / (double) max(overlapscombed,1)), ((double) readoverlapscombed / (double) max(numreads,1)));</span>
+<span class='curline'><a href='../S/254.html#L4197'>outputfile</a>       4197 src/disksim_ioqueue.c    fprintf(outputfile, "%sNumber of reads:    %6d  \t%f\n", sourcestr, numreads, ((double) numreads / max(numreqs,1)));</span>
+<span class='curline'><a href='../S/254.html#L4198'>outputfile</a>       4198 src/disksim_ioqueue.c    fprintf(outputfile, "%sNumber of writes:   %6d  \t%f\n", sourcestr, numwrites, ((double) numwrites / max(numreqs,1)));</span>
+<span class='curline'><a href='../S/254.html#L4199'>outputfile</a>       4199 src/disksim_ioqueue.c    fprintf(outputfile, "%sSequential reads:   %6d  \t%f  \t%f\n", sourcestr, seqreads, ((double) seqreads / (double) max(numreads,1)), ((double) seqreads / max(numreqs,1)));</span>
+<span class='curline'><a href='../S/254.html#L4200'>outputfile</a>       4200 src/disksim_ioqueue.c    fprintf(outputfile, "%sSequential writes:  %6d  \t%f  \t%f\n", sourcestr, seqwrites, ((double) seqwrites / (double) max(numwrites,1)), ((double) seqwrites / max(numreqs,1)));</span>
+<span class='curline'><a href='../S/254.html#L4202'>outputfile</a>       4202 src/disksim_ioqueue.c    fprintf(outputfile, "%sBase SPTF/SDF Different: %6d / %6d \t%f\n",</span>
+<span class='curline'><a href='../S/254.html#L4205'>outputfile</a>       4205 src/disksim_ioqueue.c    fprintf(outputfile, "%sTimeout SPTF/SDF Different: %6d / %6d \t%f\n",</span>
+<span class='curline'><a href='../S/254.html#L4208'>outputfile</a>       4208 src/disksim_ioqueue.c    fprintf(outputfile, "%sPriority SPTF/SDF Different: %6d / %6d \t%f\n",</span>
+<span class='curline'><a href='../S/254.html#L4230'>outputfile</a>       4230 src/disksim_ioqueue.c       fprintf (outputfile, "%sBase queue statistics\n", sourcestr);</span>
+<span class='curline'><a href='../S/254.html#L4237'>outputfile</a>       4237 src/disksim_ioqueue.c          fprintf (outputfile, "%sTimeout queue statistics\n", sourcestr);</span>
+<span class='curline'><a href='../S/254.html#L4246'>outputfile</a>       4246 src/disksim_ioqueue.c 	 fprintf (outputfile, "%sRequests switched to timeout queue:   %d\n", sourcestr, switches);</span>
+<span class='curline'><a href='../S/254.html#L4247'>outputfile</a>       4247 src/disksim_ioqueue.c 	 fprintf(outputfile, "%sTimed out requests:                   %d\n", sourcestr, timeouts);</span>
+<span class='curline'><a href='../S/254.html#L4248'>outputfile</a>       4248 src/disksim_ioqueue.c 	 fprintf(outputfile, "%sHalfway timed out requests:           %d\n", sourcestr, halfouts);</span>
+<span class='curline'><a href='../S/254.html#L4252'>outputfile</a>       4252 src/disksim_ioqueue.c          fprintf(outputfile, "%sPriority queue statistics\n", sourcestr);</span>
+<span class='curline'><a href='../S/254.html#L4259'>outputfile</a>       4259 src/disksim_ioqueue.c 	 fprintf (outputfile, "%sRequests switched to priority queue:   %d\n", sourcestr, switches);</span>
+<span class='curline'><a href='../S/194.html#L656'>outputfile</a>        656 src/disksim_iosim.c    fprintf (outputfile, "\nSTORAGE SUBSYSTEM STATISTICS\n");</span>
+<span class='curline'><a href='../S/194.html#L657'>outputfile</a>        657 src/disksim_iosim.c    fprintf (outputfile, "----------------------------\n");</span>
+<span class='curline'><a href='../S/194.html#L659'>outputfile</a>        659 src/disksim_iosim.c    iotrace_printstats (outputfile);</span>
+<span class='curline'><a href='../S/194.html#L673'>outputfile</a>        673 src/disksim_iosim.c       fprintf (outputfile, "\n");</span>
+<span class='curline'><a href='../S/194.html#L681'>outputfile</a>        681 src/disksim_iosim.c       fprintf (outputfile, "VALIDATE double disconnects:  %5d  \t%f\n", validatebuf[0], ((double) validatebuf[0] / (double) cnt));</span>
+<span class='curline'><a href='../S/194.html#L682'>outputfile</a>        682 src/disksim_iosim.c       fprintf (outputfile, "VALIDATE triple disconnects:  %5d  \t%f\n", validatebuf[1], ((double) validatebuf[1] / (double) cnt));</span>
+<span class='curline'><a href='../S/194.html#L683'>outputfile</a>        683 src/disksim_iosim.c       fprintf (outputfile, "VALIDATE read buffer hits:    %5d  \t%f\n", validatebuf[3], ((double) validatebuf[3] / (double) cnt));</span>
+<span class='curline'><a href='../S/194.html#L684'>outputfile</a>        684 src/disksim_iosim.c       fprintf (outputfile, "VALIDATE buffer misses:       %5d  \t%f\n", validatebuf[2], ((double) validatebuf[2] / (double) cnt));</span>
+<span class='curline'><a href='../S/269.html#L104'>outputfile</a>        104 src/disksim_loadparams.c   lp_unparse_tlts(tlts, tlts_len, outputfile, inputfile);</span>
+<span class='curline'><a href='../S/278.html#L399'>outputfile</a>        399 src/disksim_logorg.c       fprintf (outputfile, "Stopping simulation because of saturation: simtime %f, totalreqs %d\n", simtime, disksim-&gt;totalreqs);</span>
+<span class='curline'><a href='../S/278.html#L400'>outputfile</a>        400 src/disksim_logorg.c       fprintf (outputfile, "last request:  dev=%d, blk=%d, cnt=%d, %d (R==1)\n",curr-&gt;devno, curr-&gt;blkno, curr-&gt;bcount, (curr-&gt;flags &amp; READ));</span>
+<span class='curline'><a href='../S/278.html#L1304'>outputfile</a>       1304 src/disksim_logorg.c    fprintf(outputfile, "%sNumber of requests:       %d\n", prefix, tmp1);</span>
+<span class='curline'><a href='../S/278.html#L1307'>outputfile</a>       1307 src/disksim_logorg.c    fprintf(outputfile, "%sNumber of read requests:  %d  \t%f\n", prefix, tmp2, ((double) tmp2 / (double) max(1,tmp1)));</span>
+<span class='curline'><a href='../S/278.html#L1310'>outputfile</a>       1310 src/disksim_logorg.c    fprintf(outputfile, "%sNumber of accesses:       %d\n", prefix, tmp1);</span>
+<span class='curline'><a href='../S/278.html#L1312'>outputfile</a>       1312 src/disksim_logorg.c    fprintf(outputfile, "%sNumber of read accesses:  %d  \t%f\n", prefix, tmp2, ((double) tmp2 / (double) max(1,tmp1)));</span>
+<span class='curline'><a href='../S/278.html#L1314'>outputfile</a>       1314 src/disksim_logorg.c    fprintf(outputfile, "%sAverage outstanding:      %f\n", prefix, (currlogorg-&gt;stat.runouttime / (simtime - warmuptime)));</span>
+<span class='curline'><a href='../S/278.html#L1315'>outputfile</a>       1315 src/disksim_logorg.c    fprintf(outputfile, "%sMaximum outstanding:      %d\n", prefix, currlogorg-&gt;stat.maxoutstanding);</span>
+<span class='curline'><a href='../S/278.html#L1317'>outputfile</a>       1317 src/disksim_logorg.c       fprintf(outputfile, "%sAvg nonzero outstanding:  none\n", prefix);</span>
+<span class='curline'><a href='../S/278.html#L1319'>outputfile</a>       1319 src/disksim_logorg.c       fprintf(outputfile, "%sAvg nonzero outstanding:  %f\n", prefix, (currlogorg-&gt;stat.runouttime / currlogorg-&gt;stat.nonzeroouttime));</span>
+<span class='curline'><a href='../S/278.html#L1321'>outputfile</a>       1321 src/disksim_logorg.c    fprintf(outputfile, "%sCompletely idle time:     %f\n", prefix, (simtime - warmuptime - currlogorg-&gt;stat.nonzeroouttime));</span>
+<span class='curline'><a href='../S/278.html#L1351'>outputfile</a>       1351 src/disksim_logorg.c       fprintf(outputfile, "%sSequential reads:           %4d\t%f\t%f\n", prefix, seqreads, ((double) seqreads / (double) max(numreqs,1)), ((double) seqreads / (double) max(numreads,1)));</span>
+<span class='curline'><a href='../S/278.html#L1352'>outputfile</a>       1352 src/disksim_logorg.c       fprintf(outputfile, "%sSequential writes:          %4d\t%f\t%f\n", prefix, seqwrites, ((double) seqwrites / (double) max(numreqs,1)), ((double) seqwrites / (double) max(numwrites,1)));</span>
+<span class='curline'><a href='../S/278.html#L1353'>outputfile</a>       1353 src/disksim_logorg.c       fprintf(outputfile, "%sInterleaved reads:          %4d\t%f\t%f\n", prefix, intreads, ((double) intreads / (double) max(numreqs,1)), ((double) intreads / (double) max(numreads,1)));</span>
+<span class='curline'><a href='../S/278.html#L1354'>outputfile</a>       1354 src/disksim_logorg.c       fprintf(outputfile, "%sInterleaved writes:         %4d\t%f\t%f\n", prefix, intwrites, ((double) intwrites / (double) max(numreqs,1)), ((double) intwrites / (double) max(numwrites,1)));</span>
+<span class='curline'><a href='../S/278.html#L1356'>outputfile</a>       1356 src/disksim_logorg.c       fprintf(outputfile, "%sLogical sequential reads:   %4d\t%f\t%f\n", prefix, currlogorg-&gt;stat.seqreads, ((double) currlogorg-&gt;stat.seqreads / (double) max(numreqs,1)), ((double) currlogorg-&gt;stat.seqreads / (double) max(numreads,1)));</span>
+<span class='curline'><a href='../S/278.html#L1357'>outputfile</a>       1357 src/disksim_logorg.c       fprintf(outputfile, "%sLogical sequential writes:  %4d\t%f\t%f\n", prefix, currlogorg-&gt;stat.seqwrites, ((double) currlogorg-&gt;stat.seqwrites / (double) max(numreqs,1)), ((double) currlogorg-&gt;stat.seqwrites / (double) max(numwrites,1)));</span>
+<span class='curline'><a href='../S/278.html#L1359'>outputfile</a>       1359 src/disksim_logorg.c       fprintf(outputfile, "%sSequential disk switches:   %4d\t%f\n", prefix, currlogorg-&gt;stat.seqdiskswitches, ((double) currlogorg-&gt;stat.seqdiskswitches / (double) max(seqreads,1)));</span>
+<span class='curline'><a href='../S/278.html#L1360'>outputfile</a>       1360 src/disksim_logorg.c       fprintf(outputfile, "%sLogical local accesses:     %4d\t%f\n", prefix, currlogorg-&gt;stat.numlocal, ((double) currlogorg-&gt;stat.numlocal / (double) max(numreqs,1)));</span>
+<span class='curline'><a href='../S/278.html#L1361'>outputfile</a>       1361 src/disksim_logorg.c       fprintf(outputfile, "%sLocal disk swicthes:        %4d\t%f\n", prefix, currlogorg-&gt;stat.locdiskswitches, ((double) currlogorg-&gt;stat.locdiskswitches / (double) max(currlogorg-&gt;stat.numlocal,1)));</span>
+<span class='curline'><a href='../S/278.html#L1390'>outputfile</a>       1390 src/disksim_logorg.c          fprintf (outputfile, "%sSequential step %2d:  %6d \t%f\n", prefix, (i/INTDISTMAX), intdist[i], frac);</span>
+<span class='curline'><a href='../S/278.html#L1397'>outputfile</a>       1397 src/disksim_logorg.c 	    fprintf (outputfile, "%sLocal (%3d) step %2d:  %6d \t%f\n", prefix, localoff[(i % INTDISTMAX)], (i/INTDISTMAX), intdist[i], frac);</span>
+<span class='curline'><a href='../S/278.html#L1415'>outputfile</a>       1415 src/disksim_logorg.c    fprintf(outputfile, "%sBlocking statistics\n", prefix);</span>
+<span class='curline'><a href='../S/278.html#L1419'>outputfile</a>       1419 src/disksim_logorg.c 	 fprintf(outputfile, "%sBlocking factor: %3d \t%6d \t%f\n", prefix, (i+1), currlogorg-&gt;stat.blocked[i], frac);</span>
+<span class='curline'><a href='../S/278.html#L1422'>outputfile</a>       1422 src/disksim_logorg.c    fprintf(outputfile, "%sAlignment statistics\n", prefix);</span>
+<span class='curline'><a href='../S/278.html#L1426'>outputfile</a>       1426 src/disksim_logorg.c 	 fprintf(outputfile, "%sAlignment factor: %3d \t%6d \t%f\n", prefix, (i+1), currlogorg-&gt;stat.aligned[i], frac);</span>
+<span class='curline'><a href='../S/278.html#L1448'>outputfile</a>       1448 src/disksim_logorg.c    fprintf(outputfile, "%sTimestamped # outstanding distribution (interval = %f)\n", prefix, currlogorg-&gt;stampinterval);</span>
+<span class='curline'><a href='../S/278.html#L1449'>outputfile</a>       1449 src/disksim_logorg.c    fprintf(outputfile, "     0       1       2       3       4       5       6       7       8      9+\n");</span>
+<span class='curline'><a href='../S/278.html#L1450'>outputfile</a>       1450 src/disksim_logorg.c    fprintf(outputfile, "%6d  %6d  %6d  %6d  %6d  %6d  %6d  %6d  %6d  %6d\n",</span>
+<span class='curline'><a href='../S/278.html#L1454'>outputfile</a>       1454 src/disksim_logorg.c    fprintf(outputfile, "%sTimestamped avg # outstanding difference distribution\n", prefix);</span>
+<span class='curline'><a href='../S/278.html#L1455'>outputfile</a>       1455 src/disksim_logorg.c    fprintf(outputfile, "   &lt;.5      &lt;1    &lt;1.5      &lt;2    &lt;2.5      &lt;3      &lt;4      &lt;5      &lt;6      6+\n");</span>
+<span class='curline'><a href='../S/278.html#L1456'>outputfile</a>       1456 src/disksim_logorg.c    fprintf(outputfile, "%6d  %6d  %6d  %6d  %6d  %6d  %6d  %6d  %6d  %6d\n",</span>
+<span class='curline'><a href='../S/278.html#L1462'>outputfile</a>       1462 src/disksim_logorg.c    fprintf(outputfile, "%sTimestamped max # outstanding difference distribution\n", prefix);</span>
+<span class='curline'><a href='../S/278.html#L1463'>outputfile</a>       1463 src/disksim_logorg.c    fprintf(outputfile, "   &lt;.5      &lt;1    &lt;1.5      &lt;2    &lt;2.5      &lt;3      &lt;4      &lt;5      &lt;6      6+\n");</span>
+<span class='curline'><a href='../S/278.html#L1464'>outputfile</a>       1464 src/disksim_logorg.c    fprintf(outputfile, "%6d  %6d  %6d  %6d  %6d  %6d  %6d  %6d  %6d  %6d\n",</span>
+<span class='curline'><a href='../S/278.html#L1482'>outputfile</a>       1482 src/disksim_logorg.c       fprintf (outputfile, "%sLogical Organization #%d\n", sourcestr, i);</span>
+<span class='curline'><a href='../S/278.html#L1486'>outputfile</a>       1486 src/disksim_logorg.c       fprintf (outputfile, "%sTime-critical reads:  %d\n", prefix, logorgs[i]-&gt;stat.critreads);</span>
+<span class='curline'><a href='../S/278.html#L1487'>outputfile</a>       1487 src/disksim_logorg.c       fprintf (outputfile, "%sTime-critical writes: %d\n", prefix, logorgs[i]-&gt;stat.critwrites);</span>
+<span class='curline'><a href='../S/278.html#L1502'>outputfile</a>       1502 src/disksim_logorg.c          fprintf (outputfile, "%sNumber of streaks:\t\t%d\n", prefix, stat_get_count_set(statset, actualnumdisks));</span>
+<span class='curline'><a href='../S/278.html#L1515'>outputfile</a>       1515 src/disksim_logorg.c          fprintf (outputfile, "%sNumber of idle periods:	%d\n", prefix, stat_get_count(&amp;logorgs[i]-&gt;stat.idlestats));</span>
+<span class='curline'><a href='../S/278.html#L1524'>outputfile</a>       1524 src/disksim_logorg.c          fprintf (outputfile, "\n");</span>
+<span class='curline'><a href='../S/191.html#L277'>outputfile</a>        277 src/disksim_pfsim.c      fprintf (outputfile, "pf_io_done_notify: curr-&gt;buf %p, curr-&gt;opid %x, curr-&gt;blkno %d\n", curr-&gt;buf, curr-&gt;opid, curr-&gt;blkno);</span>
+<span class='curline'><a href='../S/191.html#L360'>outputfile</a>        360 src/disksim_pfsim.c fprintf (outputfile, "pf_iowait: chan %p, read %d, crit %d, opid %d, blkno %x\n", tmp-&gt;buf, (tmp-&gt;flags &amp; READ), (tmp-&gt;flags &amp; (TIME_LIMITED|TIME_CRITICAL)), tmp-&gt;opid, tmp-&gt;blkno);</span>
+<span class='curline'><a href='../S/191.html#L408'>outputfile</a>        408 src/disksim_pfsim.c       fprintf (outputfile, "Active process at end of eventlist: %d\n", procp-&gt;pid);</span>
+<span class='curline'><a href='../S/191.html#L460'>outputfile</a>        460 src/disksim_pfsim.c    fprintf (outputfile, "%.3f\tCONTEXT SWITCH cpu=%d pid=%d, newpid=%d\n", simtime, cpu_ev-&gt;cpunum, ((cpu_ev-&gt;procp) ? cpu_ev-&gt;procp-&gt;pid : 0), ((curr-&gt;newprocp) ? curr-&gt;newprocp-&gt;pid : 0));</span>
+<span class='curline'><a href='../S/191.html#L503'>outputfile</a>        503 src/disksim_pfsim.c    fprintf (outputfile, "%f\tIDLELOOP cpu=%d\n", simtime, cpu_ev-&gt;cpunum);</span>
+<span class='curline'><a href='../S/191.html#L519'>outputfile</a>        519 src/disksim_pfsim.c    fprintf (outputfile, "%f\tSLEEP cpu=%d pid=%d chan=%p info=%d iosleep=%d\n", simtime, cpu_ev-&gt;cpunum, procp-&gt;pid, curr-&gt;chan, curr-&gt;info, curr-&gt;iosleep);</span>
+<span class='curline'><a href='../S/191.html#L544'>outputfile</a>        544 src/disksim_pfsim.c      fprintf (outputfile, "%f\tWAKEUP cpu=%d chan=%p info=%d\n", </span>
+<span class='curline'><a href='../S/191.html#L551'>outputfile</a>        551 src/disksim_pfsim.c        fprintf (outputfile, "Waking up process %d\n", procp-&gt;pid);</span>
+<span class='curline'><a href='../S/191.html#L581'>outputfile</a>        581 src/disksim_pfsim.c    fprintf (outputfile, "%f\tIOREQ cpu=%d opid=%d buf=%p blkno=%x flags=%x, bcount=%d\n", simtime, cpu_ev-&gt;cpunum, curr-&gt;opid, curr-&gt;buf, curr-&gt;blkno, curr-&gt;flags, curr-&gt;bcount);</span>
+<span class='curline'><a href='../S/191.html#L609'>outputfile</a>        609 src/disksim_pfsim.c    fprintf (outputfile, "%f\tIOACC cpu=%d opid=%d blkno=%x\n", simtime, cpu_ev-&gt;cpunum, curr-&gt;opid, curr-&gt;blkno);</span>
+<span class='curline'><a href='../S/191.html#L618'>outputfile</a>        618 src/disksim_pfsim.c    fprintf (outputfile, "%f\tIO INTERNAL cpu=%d type %d opid=%d blkno=%x buf=%p\n", simtime, cpu_ev-&gt;cpunum, curr-&gt;type, curr-&gt;opid, curr-&gt;blkno, curr-&gt;buf);</span>
+<span class='curline'><a href='../S/191.html#L653'>outputfile</a>        653 src/disksim_pfsim.c    fprintf (outputfile, "%f\tINTEND cpu=%d\n", simtime, cpu_ev-&gt;cpunum);</span>
+<span class='curline'><a href='../S/191.html#L680'>outputfile</a>        680 src/disksim_pfsim.c             fprintf (outputfile, "Idle process has been running for more than 50 seconds\n");</span>
+<span class='curline'><a href='../S/191.html#L703'>outputfile</a>        703 src/disksim_pfsim.c     fprintf (outputfile, "%f, entered pf_handle_event with event type %d\n", simtime, curr-&gt;type);</span>
+<span class='curline'><a href='../S/191.html#L704'>outputfile</a>        704 src/disksim_pfsim.c     fflush(outputfile);</span>
+<span class='curline'><a href='../S/191.html#L752'>outputfile</a>        752 src/disksim_pfsim.c fprintf (outputfile, "%f\tIO_INTERRUPT cpu %d  cause %d  buf %p\n", simtime, cpu_ev-&gt;cpunum, tmp-&gt;cause, tmp-&gt;buf);</span>
+<span class='curline'><a href='../S/191.html#L766'>outputfile</a>        766 src/disksim_pfsim.c fprintf (outputfile, "%f,   CLOCK_INTERRUPT - new lbolt %d\n", simtime, curlbolt);</span>
+<span class='curline'><a href='../S/191.html#L796'>outputfile</a>        796 src/disksim_pfsim.c    fprintf (outputfile, "%f\tINTR cpu=%d vector=%d cpustate=%d\n", simtime, cpunum, intrp-&gt;vector, currcpu-&gt;state);</span>
+<span class='curline'><a href='../S/191.html#L852'>outputfile</a>        852 src/disksim_pfsim.c      fprintf (outputfile, "Entered handle_cpu_event: %d\n", curr-&gt;type);</span>
+<span class='curline'><a href='../S/191.html#L853'>outputfile</a>        853 src/disksim_pfsim.c      fflush(outputfile);</span>
+<span class='curline'><a href='../S/191.html#L899'>outputfile</a>        899 src/disksim_pfsim.c      fprintf(outputfile, "Exited handle_cpu_event\n");</span>
+<span class='curline'><a href='../S/191.html#L900'>outputfile</a>        900 src/disksim_pfsim.c      fflush(outputfile);</span>
+<span class='curline'><a href='../S/191.html#L1006'>outputfile</a>       1006 src/disksim_pfsim.c      fprintf (outputfile, "Kicking off cpu #%d\n", i);</span>
+<span class='curline'><a href='../S/191.html#L1015'>outputfile</a>       1015 src/disksim_pfsim.c 	 fprintf (outputfile, "First event occurs at time %f\n", </span>
+<span class='curline'><a href='../S/191.html#L1134'>outputfile</a>       1134 src/disksim_pfsim.c    fprintf (outputfile, "%sNumber of IO interrupts:            %d\n", cpustr, iointrs);</span>
+<span class='curline'><a href='../S/191.html#L1135'>outputfile</a>       1135 src/disksim_pfsim.c    fprintf (outputfile, "%sTime spent in I/O interrupts:       %f\n", cpustr, runiointr);</span>
+<span class='curline'><a href='../S/191.html#L1136'>outputfile</a>       1136 src/disksim_pfsim.c    fprintf (outputfile, "%sNumber of clock interrupts:         %d\n", cpustr, clockintrs);</span>
+<span class='curline'><a href='../S/191.html#L1137'>outputfile</a>       1137 src/disksim_pfsim.c    fprintf (outputfile, "%sTime spent in clock interrupts:     %f\n", cpustr, runclockintr);</span>
+<span class='curline'><a href='../S/191.html#L1160'>outputfile</a>       1160 src/disksim_pfsim.c    fprintf (outputfile, "Number of sleep events:     %d\n", sleeps);</span>
+<span class='curline'><a href='../S/191.html#L1161'>outputfile</a>       1161 src/disksim_pfsim.c    fprintf (outputfile, "Number of I/O sleep events: %d\n", iosleeps);</span>
+<span class='curline'><a href='../S/191.html#L1162'>outputfile</a>       1162 src/disksim_pfsim.c    fprintf (outputfile, "Average sleep time:         %f\n", (runsleep / (double) max(sleeps,1)));</span>
+<span class='curline'><a href='../S/191.html#L1163'>outputfile</a>       1163 src/disksim_pfsim.c    fprintf (outputfile, "Average I/O sleep time:     %f\n", (runiosleep / (double) max(iosleeps,1)));</span>
+<span class='curline'><a href='../S/191.html#L1188'>outputfile</a>       1188 src/disksim_pfsim.c    fprintf (outputfile, "\nPROCESS STATISTICS\n");</span>
+<span class='curline'><a href='../S/191.html#L1220'>outputfile</a>       1220 src/disksim_pfsim.c    fprintf(outputfile, "Process Total computation time:  %f\n", runtime);</span>
+<span class='curline'><a href='../S/191.html#L1221'>outputfile</a>       1221 src/disksim_pfsim.c    fprintf(outputfile, "Process Last event time:         %f\n", lasteventtime);</span>
+<span class='curline'><a href='../S/191.html#L1222'>outputfile</a>       1222 src/disksim_pfsim.c    fprintf(outputfile, "Process Number of I/O requests:  %d\n", ios);</span>
+<span class='curline'><a href='../S/191.html#L1223'>outputfile</a>       1223 src/disksim_pfsim.c    fprintf(outputfile, "Process Number of read requests: %d\n", ioreads);</span>
+<span class='curline'><a href='../S/191.html#L1224'>outputfile</a>       1224 src/disksim_pfsim.c    fprintf(outputfile, "Process Number of C-switches:    %d\n", cswitches);</span>
+<span class='curline'><a href='../S/191.html#L1225'>outputfile</a>       1225 src/disksim_pfsim.c    fprintf(outputfile, "Process Number of sleeps:        %d\n", sleeps);</span>
+<span class='curline'><a href='../S/191.html#L1226'>outputfile</a>       1226 src/disksim_pfsim.c    fprintf(outputfile, "Process Average sleep time:      %f\n", (runsleep / (double) max(sleeps,1)));</span>
+<span class='curline'><a href='../S/191.html#L1227'>outputfile</a>       1227 src/disksim_pfsim.c    fprintf(outputfile, "Process Number of I/O sleeps:    %d\n", iosleeps);</span>
+<span class='curline'><a href='../S/191.html#L1228'>outputfile</a>       1228 src/disksim_pfsim.c    fprintf(outputfile, "Process Average I/O sleep time:  %f\n", (runiosleep / (double) max(iosleeps,1)));</span>
+<span class='curline'><a href='../S/191.html#L1229'>outputfile</a>       1229 src/disksim_pfsim.c    fprintf(outputfile, "Process False idle time:         %f\n", falseidletime);</span>
+<span class='curline'><a href='../S/191.html#L1230'>outputfile</a>       1230 src/disksim_pfsim.c    fprintf(outputfile, "Process Read Time limits measured: %d\n", stat_get_count_set(readlimitstats, proccnt));</span>
+<span class='curline'><a href='../S/191.html#L1232'>outputfile</a>       1232 src/disksim_pfsim.c    fprintf(outputfile, "Process Write Time limits measured: %d\n", stat_get_count_set(writelimitstats, proccnt));</span>
+<span class='curline'><a href='../S/191.html#L1234'>outputfile</a>       1234 src/disksim_pfsim.c    fprintf(outputfile, "Process Read Time limits missed: %d\n", stat_get_count_set(readmissstats, proccnt));</span>
+<span class='curline'><a href='../S/191.html#L1236'>outputfile</a>       1236 src/disksim_pfsim.c    fprintf(outputfile, "Process Write Time limits missed: %d\n", stat_get_count_set(writemissstats, proccnt));</span>
+<span class='curline'><a href='../S/191.html#L1249'>outputfile</a>       1249 src/disksim_pfsim.c       fprintf(outputfile, "\nProcess %d\n", procp-&gt;pid);</span>
+<span class='curline'><a href='../S/191.html#L1250'>outputfile</a>       1250 src/disksim_pfsim.c       fprintf(outputfile, "Process %d Total computation time:  %f\n", procp-&gt;pid, procp-&gt;runtime);</span>
+<span class='curline'><a href='../S/191.html#L1251'>outputfile</a>       1251 src/disksim_pfsim.c       fprintf(outputfile, "Process %d Last event time:         %f\n", procp-&gt;pid, procp-&gt;lasteventtime);</span>
+<span class='curline'><a href='../S/191.html#L1252'>outputfile</a>       1252 src/disksim_pfsim.c       fprintf(outputfile, "Process %d Number of I/O requests:  %d\n", procp-&gt;pid, procp-&gt;ios);</span>
+<span class='curline'><a href='../S/191.html#L1253'>outputfile</a>       1253 src/disksim_pfsim.c       fprintf(outputfile, "Process %d Number of read requests: %d\n", procp-&gt;pid, procp-&gt;ioreads);</span>
+<span class='curline'><a href='../S/191.html#L1254'>outputfile</a>       1254 src/disksim_pfsim.c       fprintf(outputfile, "Process %d Number of C-switches:    %d\n", procp-&gt;pid, procp-&gt;cswitches);</span>
+<span class='curline'><a href='../S/191.html#L1255'>outputfile</a>       1255 src/disksim_pfsim.c       fprintf(outputfile, "Process %d Number of sleeps:        %d\n", procp-&gt;pid, procp-&gt;sleeps);</span>
+<span class='curline'><a href='../S/191.html#L1256'>outputfile</a>       1256 src/disksim_pfsim.c       fprintf(outputfile, "Process %d Average sleep time:      %f\n", procp-&gt;pid, (procp-&gt;runsleep / (double) max(procp-&gt;sleeps,1)));</span>
+<span class='curline'><a href='../S/191.html#L1257'>outputfile</a>       1257 src/disksim_pfsim.c       fprintf(outputfile, "Process %d Number of I/O sleeps:    %d\n", procp-&gt;pid, procp-&gt;iosleeps);</span>
+<span class='curline'><a href='../S/191.html#L1258'>outputfile</a>       1258 src/disksim_pfsim.c       fprintf(outputfile, "Process %d Average I/O sleep time:  %f\n", procp-&gt;pid, (procp-&gt;runiosleep / (double) max(procp-&gt;iosleeps,1)));</span>
+<span class='curline'><a href='../S/191.html#L1259'>outputfile</a>       1259 src/disksim_pfsim.c       fprintf(outputfile, "Process %d False idle time:         %f\n", procp-&gt;pid, procp-&gt;falseidletime);</span>
+<span class='curline'><a href='../S/191.html#L1260'>outputfile</a>       1260 src/disksim_pfsim.c       fprintf(outputfile, "Process %d Read Time limits measured: %d\n", procp-&gt;pid, stat_get_count(&amp;procp-&gt;readtimelimitstats));</span>
+<span class='curline'><a href='../S/191.html#L1263'>outputfile</a>       1263 src/disksim_pfsim.c       fprintf(outputfile, "Process %d Write Time limits measured: %d\n", procp-&gt;pid, stat_get_count(&amp;procp-&gt;writetimelimitstats));</span>
+<span class='curline'><a href='../S/191.html#L1266'>outputfile</a>       1266 src/disksim_pfsim.c       fprintf(outputfile, "Process %d Read Time limits missed: %d\n", procp-&gt;pid, stat_get_count(&amp;procp-&gt;readmisslimitstats));</span>
+<span class='curline'><a href='../S/191.html#L1269'>outputfile</a>       1269 src/disksim_pfsim.c       fprintf(outputfile, "Process %d Write Time limits missed: %d\n", procp-&gt;pid, stat_get_count(&amp;procp-&gt;writemisslimitstats));</span>
+<span class='curline'><a href='../S/191.html#L1274'>outputfile</a>       1274 src/disksim_pfsim.c    fprintf(outputfile, "\n");</span>
+<span class='curline'><a href='../S/191.html#L1308'>outputfile</a>       1308 src/disksim_pfsim.c    fprintf(outputfile, "%sTotal idle milliseconds:      %f\n", cpustr, idletime);</span>
+<span class='curline'><a href='../S/191.html#L1309'>outputfile</a>       1309 src/disksim_pfsim.c    fprintf(outputfile, "%sIdle time per processor:      %f\n", cpustr, (idletime / (double) cpucnt));</span>
+<span class='curline'><a href='../S/191.html#L1310'>outputfile</a>       1310 src/disksim_pfsim.c    fprintf(outputfile, "%sPercentage idle cycles:       %f\n", cpustr, ((double) 100.0 * idletime / ((simtime - warmuptime) * (double) cpucnt)));</span>
+<span class='curline'><a href='../S/191.html#L1311'>outputfile</a>       1311 src/disksim_pfsim.c    fprintf(outputfile, "%sTotal false idle ms:          %f\n", cpustr, falseidletime);</span>
+<span class='curline'><a href='../S/191.html#L1312'>outputfile</a>       1312 src/disksim_pfsim.c    fprintf(outputfile, "%sFalse idle time per CPU:      %f\n", cpustr, (falseidletime / (double) cpucnt));</span>
+<span class='curline'><a href='../S/191.html#L1313'>outputfile</a>       1313 src/disksim_pfsim.c    fprintf(outputfile, "%sPercentage false idle cycles: %f\n", cpustr, ((double) 100.0 * falseidletime / ((simtime - warmuptime) * (double) cpucnt)));</span>
+<span class='curline'><a href='../S/191.html#L1314'>outputfile</a>       1314 src/disksim_pfsim.c    fprintf(outputfile, "%sTotal idle work ms:           %f\n", cpustr, idleworktime);</span>
+<span class='curline'><a href='../S/191.html#L1315'>outputfile</a>       1315 src/disksim_pfsim.c    fprintf(outputfile, "%sContext Switches: %d\n", cpustr, cswitches);</span>
+<span class='curline'><a href='../S/191.html#L1316'>outputfile</a>       1316 src/disksim_pfsim.c    fprintf(outputfile, "%sTime spent context switching: %f\n", cpustr, runswitchtime);</span>
+<span class='curline'><a href='../S/191.html#L1317'>outputfile</a>       1317 src/disksim_pfsim.c    fprintf(outputfile, "%sPercentage switching cycles:  %f\n", cpustr, ((double) 100.0 * runswitchtime / ((simtime - warmuptime) * (double) cpucnt)));</span>
+<span class='curline'><a href='../S/191.html#L1318'>outputfile</a>       1318 src/disksim_pfsim.c    fprintf(outputfile, "%sNumber of interrupts: %d\n", cpustr, numintrs);</span>
+<span class='curline'><a href='../S/191.html#L1319'>outputfile</a>       1319 src/disksim_pfsim.c    fprintf(outputfile, "%sTotal time in interrupts: %.3f\n", cpustr, runintr);</span>
+<span class='curline'><a href='../S/191.html#L1320'>outputfile</a>       1320 src/disksim_pfsim.c    fprintf(outputfile, "%sPercentage interrupt cycles:  %f\n", cpustr, ((double) 100.0 * runintr / ((simtime - warmuptime) * (double) cpucnt)));</span>
+<span class='curline'><a href='../S/191.html#L1321'>outputfile</a>       1321 src/disksim_pfsim.c    fprintf(outputfile, "%sTime-Critical request count:      %d\n", cpustr, stat_get_count(&amp;timecritrespstats));</span>
+<span class='curline'><a href='../S/191.html#L1324'>outputfile</a>       1324 src/disksim_pfsim.c    fprintf(outputfile, "%sTime-Limited request count:       %d\n", cpustr, stat_get_count(&amp;timelimitrespstats));</span>
+<span class='curline'><a href='../S/191.html#L1327'>outputfile</a>       1327 src/disksim_pfsim.c    fprintf(outputfile, "%sTime-Noncritical request count:   %d\n", cpustr, stat_get_count(&amp;timenoncritrespstats));</span>
+<span class='curline'><a href='../S/191.html#L1341'>outputfile</a>       1341 src/disksim_pfsim.c    fprintf (outputfile, "\nPER-CPU STATISTICS\n");</span>
+<span class='curline'><a href='../S/191.html#L1344'>outputfile</a>       1344 src/disksim_pfsim.c       fprintf (outputfile, "\nCPU #%d\n\n", i);</span>
+<span class='curline'><a href='../S/191.html#L1353'>outputfile</a>       1353 src/disksim_pfsim.c    fprintf (outputfile, "\nPROCESS FLOW STATISTICS\n");</span>
+<span class='curline'><a href='../S/191.html#L1354'>outputfile</a>       1354 src/disksim_pfsim.c    fprintf (outputfile, "-----------------------\n\n");</span>
+<span class='curline'><a href='../S/201.html#L892'>outputfile</a>        892 src/disksim_simpledisk.c    fprintf(outputfile, "%sTotal bus wait time: %f\n", prefix, waitingforbus);</span>
+<span class='curline'><a href='../S/201.html#L893'>outputfile</a>        893 src/disksim_simpledisk.c    fprintf(outputfile, "%sNumber of bus waits: %d\n", prefix, numbuswaits);</span>
+<span class='curline'><a href='../S/201.html#L911'>outputfile</a>        911 src/disksim_simpledisk.c       fprintf (outputfile, "\nNo simpledisk requests for members of this set\n\n");</span>
+<span class='curline'><a href='../S/201.html#L930'>outputfile</a>        930 src/disksim_simpledisk.c    fprintf(outputfile, "\nSIMPLEDISK STATISTICS\n");</span>
+<span class='curline'><a href='../S/201.html#L931'>outputfile</a>        931 src/disksim_simpledisk.c    fprintf(outputfile, "---------------------\n\n");</span>
+<span class='curline'><a href='../S/201.html#L947'>outputfile</a>        947 src/disksim_simpledisk.c       fprintf(outputfile, "No simpledisk requests encountered\n");</span>
+<span class='curline'><a href='../S/201.html#L965'>outputfile</a>        965 src/disksim_simpledisk.c    fprintf (outputfile, "\n\n");</span>
+<span class='curline'><a href='../S/201.html#L977'>outputfile</a>        977 src/disksim_simpledisk.c 	 fprintf(outputfile, "No requests for simpledisk #%d\n\n\n", set[i]);</span>
+<span class='curline'><a href='../S/201.html#L980'>outputfile</a>        980 src/disksim_simpledisk.c       fprintf(outputfile, "Simpledisk #%d:\n\n", set[i]);</span>
+<span class='curline'><a href='../S/201.html#L985'>outputfile</a>        985 src/disksim_simpledisk.c       fprintf (outputfile, "\n\n");</span>
+<span class='curline'><a href='../S/285.html#L215'>outputfile</a>        215 src/disksim_stat.c    fprintf (outputfile, "%s%s distribution\n", identstr, statptr-&gt;statdesc);</span>
+<span class='curline'><a href='../S/285.html#L229'>outputfile</a>        229 src/disksim_stat.c          fprintf (outputfile, "%6.3f  \t%7d  \t%f  \t%f\n", ((double) bucketno / scale), bucketcnt, density, dist);</span>
+<span class='curline'><a href='../S/285.html#L231'>outputfile</a>        231 src/disksim_stat.c          fprintf (outputfile, "%4d  \t%7d  \t%f  \t%f\n", bucketno, bucketcnt, density, dist);</span>
+<span class='curline'><a href='../S/285.html#L240'>outputfile</a>        240 src/disksim_stat.c   stat_print_file(statptr, identstr, outputfile);</span>
+<span class='curline'><a href='../S/285.html#L330'>outputfile</a>        330 src/disksim_stat.c    fprintf(outputfile, "%s%s average: \t%f\n", identstr, statdesc, avg);</span>
+<span class='curline'><a href='../S/285.html#L331'>outputfile</a>        331 src/disksim_stat.c    fprintf(outputfile, "%s%s std.dev.:\t%f\n", identstr, statdesc, runsquares);</span>
+<span class='curline'><a href='../S/285.html#L333'>outputfile</a>        333 src/disksim_stat.c       fprintf(outputfile, "%s%s maximum:\t%d\n", identstr, statdesc, (int)maxval);</span>
+<span class='curline'><a href='../S/285.html#L335'>outputfile</a>        335 src/disksim_stat.c       fprintf(outputfile, "%s%s maximum:\t%f\n", identstr, statdesc, maxval);</span>
+<span class='curline'><a href='../S/285.html#L341'>outputfile</a>        341 src/disksim_stat.c    fprintf(outputfile, "%s%s distribution\n", identstr, statdesc);</span>
+<span class='curline'><a href='../S/285.html#L348'>outputfile</a>        348 src/disksim_stat.c          fprintf(outputfile, "   %c%3d ", distchar, statptr-&gt;distbrks[i]);</span>
+<span class='curline'><a href='../S/285.html#L350'>outputfile</a>        350 src/disksim_stat.c          fprintf(outputfile, "  %c%4.1f ", distchar, ((double) statptr-&gt;distbrks[i] / (double) scale));</span>
+<span class='curline'><a href='../S/285.html#L356'>outputfile</a>        356 src/disksim_stat.c    fprintf(outputfile, "   %3d+\n", intval);</span>
+<span class='curline'><a href='../S/285.html#L368'>outputfile</a>        368 src/disksim_stat.c       fprintf(outputfile, " %6d ", smalldistvals[i]);</span>
+<span class='curline'><a href='../S/285.html#L370'>outputfile</a>        370 src/disksim_stat.c    fprintf(outputfile, "\n");</span>
+<span class='curline'><a href='../S/216.html#L348'>outputfile</a>        348 src/disksim_synthio.c fprintf (outputfile, "Initialized synthio process #%d, first event at time %f\n", procp-&gt;pid, procp-&gt;eventlist-&gt;time);</span>
+<span class='curline'><a href='../S/216.html#L494'>outputfile</a>        494 src/disksim_synthio.c    fprintf (outputfile, "Minimum value: %f\n", newdistr-&gt;base);</span>
+<span class='curline'><a href='../S/216.html#L500'>outputfile</a>        500 src/disksim_synthio.c    fprintf (outputfile, "Maximum value: %f\n", newdistr-&gt;var);</span>
+<span class='curline'><a href='../S/216.html#L516'>outputfile</a>        516 src/disksim_synthio.c    fprintf (outputfile, "Mean: %f\n", newdistr-&gt;mean);</span>
+<span class='curline'><a href='../S/216.html#L522'>outputfile</a>        522 src/disksim_synthio.c    fprintf (outputfile, "Variance: %f\n", newdistr-&gt;var);</span>
+<span class='curline'><a href='../S/216.html#L538'>outputfile</a>        538 src/disksim_synthio.c    fprintf (outputfile, "Base value: %f\n", newdistr-&gt;base);</span>
+<span class='curline'><a href='../S/216.html#L544'>outputfile</a>        544 src/disksim_synthio.c    fprintf (outputfile, "Mean: %f\n", newdistr-&gt;mean);</span>
+<span class='curline'><a href='../S/216.html#L556'>outputfile</a>        556 src/disksim_synthio.c    fprintf (outputfile, "Base value: %f\n", newdistr-&gt;base);</span>
+<span class='curline'><a href='../S/216.html#L562'>outputfile</a>        562 src/disksim_synthio.c    fprintf (outputfile, "Mean: %f\n", newdistr-&gt;mean);</span>
+<span class='curline'><a href='../S/216.html#L574'>outputfile</a>        574 src/disksim_synthio.c    fprintf(outputfile, "Default value: %f\n", newdistr-&gt;base);</span>
+<span class='curline'><a href='../S/216.html#L580'>outputfile</a>        580 src/disksim_synthio.c    fprintf(outputfile, "Second value: %f\n", newdistr-&gt;mean);</span>
+<span class='curline'><a href='../S/216.html#L590'>outputfile</a>        590 src/disksim_synthio.c    fprintf(outputfile, "Probability of second value: %f\n", newdistr-&gt;var);</span>
+<span class='curline'><a href='../S/216.html#L602'>outputfile</a>        602 src/disksim_synthio.c    fprintf (outputfile, "Type of distribution: %s\n", type);</span>
+<span class='curline'><a href='../S/187.html#L1163'>outputfile</a>       1163 ssdmodel/ssd.c    fprintf(outputfile, "%sTotal bus wait time: %f\n", prefix, waitingforbus);</span>
+<span class='curline'><a href='../S/187.html#L1164'>outputfile</a>       1164 ssdmodel/ssd.c    fprintf(outputfile, "%sNumber of bus waits: %d\n", prefix, numbuswaits);</span>
+<span class='curline'><a href='../S/187.html#L1218'>outputfile</a>       1218 ssdmodel/ssd.c     fprintf(outputfile, "%s #%d elem #%d   ", sourcestr, ssdno, elem_num);</span>
+<span class='curline'><a href='../S/187.html#L1219'>outputfile</a>       1219 ssdmodel/ssd.c     fprintf(outputfile, "Block Lifetime Distribution\n");</span>
+<span class='curline'><a href='../S/187.html#L1222'>outputfile</a>       1222 ssdmodel/ssd.c     fprintf(outputfile, "%s #%d elem #%d   ", sourcestr, ssdno, elem_num);</span>
+<span class='curline'><a href='../S/187.html#L1224'>outputfile</a>       1224 ssdmodel/ssd.c         fprintf(outputfile, "&lt; %d\t", i);</span>
+<span class='curline'><a href='../S/187.html#L1226'>outputfile</a>       1226 ssdmodel/ssd.c     fprintf(outputfile, "&gt;= 100\t\n");</span>
+<span class='curline'><a href='../S/187.html#L1229'>outputfile</a>       1229 ssdmodel/ssd.c     fprintf(outputfile, "%s #%d elem #%d   ", sourcestr, ssdno, elem_num);</span>
+<span class='curline'><a href='../S/187.html#L1231'>outputfile</a>       1231 ssdmodel/ssd.c         fprintf(outputfile, "%d\t", hist[i/bucket_size - 1]);</span>
+<span class='curline'><a href='../S/187.html#L1233'>outputfile</a>       1233 ssdmodel/ssd.c     fprintf(outputfile, "%d\t\n", hist[no_buckets - 1]);</span>
+<span class='curline'><a href='../S/187.html#L1237'>outputfile</a>       1237 ssdmodel/ssd.c     fprintf(outputfile, "%s #%d elem #%d   Average of life time:\t%f\n",</span>
+<span class='curline'><a href='../S/187.html#L1239'>outputfile</a>       1239 ssdmodel/ssd.c     fprintf(outputfile, "%s #%d elem #%d   Variance of life time:\t%f\n",</span>
+<span class='curline'><a href='../S/187.html#L1241'>outputfile</a>       1241 ssdmodel/ssd.c     fprintf(outputfile, "%s #%d elem #%d   Total dead blocks:\t%d\n",</span>
+<span class='curline'><a href='../S/187.html#L1253'>outputfile</a>       1253 ssdmodel/ssd.c     fprintf(outputfile, "\n\nSSD CLEANING STATISTICS\n");</span>
+<span class='curline'><a href='../S/187.html#L1254'>outputfile</a>       1254 ssdmodel/ssd.c     fprintf(outputfile, "---------------------------------------------\n\n");</span>
+<span class='curline'><a href='../S/187.html#L1274'>outputfile</a>       1274 ssdmodel/ssd.c                 fprintf(outputfile, "%s #%d elem #%d   Total reqs issued:\t%d\n",</span>
+<span class='curline'><a href='../S/187.html#L1276'>outputfile</a>       1276 ssdmodel/ssd.c                 fprintf(outputfile, "%s #%d elem #%d   Total time taken:\t%f\n",</span>
+<span class='curline'><a href='../S/187.html#L1280'>outputfile</a>       1280 ssdmodel/ssd.c                     fprintf(outputfile, "%s #%d elem #%d   IOPS:\t%f\n",</span>
+<span class='curline'><a href='../S/187.html#L1284'>outputfile</a>       1284 ssdmodel/ssd.c                 fprintf(outputfile, "%s #%d elem #%d   Total cleaning reqs issued:\t%d\n",</span>
+<span class='curline'><a href='../S/187.html#L1286'>outputfile</a>       1286 ssdmodel/ssd.c                 fprintf(outputfile, "%s #%d elem #%d   Total cleaning time taken:\t%f\n",</span>
+<span class='curline'><a href='../S/187.html#L1288'>outputfile</a>       1288 ssdmodel/ssd.c                 fprintf(outputfile, "%s #%d elem #%d   Total migrations:\t%d\n",</span>
+<span class='curline'><a href='../S/187.html#L1290'>outputfile</a>       1290 ssdmodel/ssd.c                 fprintf(outputfile, "%s #%d elem #%d   Total pages migrated:\t%d\n",</span>
+<span class='curline'><a href='../S/187.html#L1292'>outputfile</a>       1292 ssdmodel/ssd.c                 fprintf(outputfile, "%s #%d elem #%d   Total migrations cost:\t%f\n",</span>
+<span class='curline'><a href='../S/187.html#L1298'>outputfile</a>       1298 ssdmodel/ssd.c                     fprintf(outputfile, "%s #%d elem #%d   clean IOPS:\t%f\n",</span>
+<span class='curline'><a href='../S/187.html#L1302'>outputfile</a>       1302 ssdmodel/ssd.c                 fprintf(outputfile, "%s #%d elem #%d   Overall IOPS:\t%f\n",</span>
+<span class='curline'><a href='../S/187.html#L1307'>outputfile</a>       1307 ssdmodel/ssd.c                 fprintf(outputfile, "%s #%d elem #%d   Number of free blocks:\t%d\n",</span>
+<span class='curline'><a href='../S/187.html#L1309'>outputfile</a>       1309 ssdmodel/ssd.c                 fprintf(outputfile, "%s #%d elem #%d   Number of cleans:\t%d\n",</span>
+<span class='curline'><a href='../S/187.html#L1311'>outputfile</a>       1311 ssdmodel/ssd.c                 fprintf(outputfile, "%s #%d elem #%d   Pages moved:\t%d\n",</span>
+<span class='curline'><a href='../S/187.html#L1313'>outputfile</a>       1313 ssdmodel/ssd.c                 fprintf(outputfile, "%s #%d elem #%d   Total xfer time:\t%f\n",</span>
+<span class='curline'><a href='../S/187.html#L1316'>outputfile</a>       1316 ssdmodel/ssd.c                     fprintf(outputfile, "%s #%d elem #%d   Xfer time per page:\t%f\n",</span>
+<span class='curline'><a href='../S/187.html#L1319'>outputfile</a>       1319 ssdmodel/ssd.c                     fprintf(outputfile, "%s #%d elem #%d   Xfer time per page:\t0\n",</span>
+<span class='curline'><a href='../S/187.html#L1322'>outputfile</a>       1322 ssdmodel/ssd.c                 fprintf(outputfile, "%s #%d elem #%d   Average lifetime:\t%f\n",</span>
+<span class='curline'><a href='../S/187.html#L1324'>outputfile</a>       1324 ssdmodel/ssd.c                 fprintf(outputfile, "%s #%d elem #%d   Plane Level Statistics\n",</span>
+<span class='curline'><a href='../S/187.html#L1326'>outputfile</a>       1326 ssdmodel/ssd.c                 fprintf(outputfile, "%s #%d elem #%d   ", sourcestr, set[i], j);</span>
+<span class='curline'><a href='../S/187.html#L1328'>outputfile</a>       1328 ssdmodel/ssd.c                     fprintf(outputfile, "%d:(%d)  ",</span>
+<span class='curline'><a href='../S/187.html#L1331'>outputfile</a>       1331 ssdmodel/ssd.c                 fprintf(outputfile, "\n");</span>
+<span class='curline'><a href='../S/187.html#L1335'>outputfile</a>       1335 ssdmodel/ssd.c                 fprintf(outputfile, "\n");</span>
+<span class='curline'><a href='../S/187.html#L1344'>outputfile</a>       1344 ssdmodel/ssd.c             fprintf(outputfile, "\n");</span>
+<span class='curline'><a href='../S/187.html#L1349'>outputfile</a>       1349 ssdmodel/ssd.c         fprintf(outputfile, "%s   Total SSD IOPS:\t%f\n",</span>
+<span class='curline'><a href='../S/187.html#L1351'>outputfile</a>       1351 ssdmodel/ssd.c         fprintf(outputfile, "%s   Average SSD element IOPS:\t%f\n",</span>
+<span class='curline'><a href='../S/187.html#L1377'>outputfile</a>       1377 ssdmodel/ssd.c       fprintf (outputfile, "\nNo ssd requests for members of this set\n\n");</span>
+<span class='curline'><a href='../S/187.html#L1397'>outputfile</a>       1397 ssdmodel/ssd.c    fprintf(outputfile, "\nSSD STATISTICS\n");</span>
+<span class='curline'><a href='../S/187.html#L1398'>outputfile</a>       1398 ssdmodel/ssd.c    fprintf(outputfile, "---------------------\n\n");</span>
+<span class='curline'><a href='../S/187.html#L1417'>outputfile</a>       1417 ssdmodel/ssd.c       fprintf(outputfile, "No ssd requests encountered\n");</span>
+<span class='curline'><a href='../S/187.html#L1438'>outputfile</a>       1438 ssdmodel/ssd.c    fprintf (outputfile, "\n\n");</span>
+<span class='curline'><a href='../S/187.html#L1451'>outputfile</a>       1451 ssdmodel/ssd.c           fprintf(outputfile, "No requests for ssd #%d\n\n\n", set[i]);</span>
+<span class='curline'><a href='../S/187.html#L1454'>outputfile</a>       1454 ssdmodel/ssd.c       fprintf(outputfile, "ssd #%d:\n\n", set[i]);</span>
+<span class='curline'><a href='../S/187.html#L1470'>outputfile</a>       1470 ssdmodel/ssd.c       fprintf (outputfile, "\n\n");</span>
+</pre>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>ssd_element_metadata</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/156.html#L188'>ssd_element_metadata</a>  188 ssdmodel/include/ssdmodel/ssd.h    ssd_element_metadata metadata;               // contains the mapping info b/w lba and flash pages</span>
+<span class='curline'><a href='../S/156.html#L440'>ssd_element_metadata</a>  440 ssdmodel/include/ssdmodel/ssd.h void    ssd_assert_free_blocks(ssd_t *s, ssd_element_metadata *metadata);</span>
+<span class='curline'><a href='../S/156.html#L441'>ssd_element_metadata</a>  441 ssdmodel/include/ssdmodel/ssd.h void    ssd_assert_valid_pages(int plane_num, ssd_element_metadata *metadata, ssd_t *s);</span>
+<span class='curline'><a href='../S/156.html#L444'>ssd_element_metadata</a>  444 ssdmodel/include/ssdmodel/ssd.h double  _ssd_write_page_osr(ssd_t *s, ssd_element_metadata *metadata, int lpn);</span>
+<span class='curline'><a href='../S/156.html#L449'>ssd_element_metadata</a>  449 ssdmodel/include/ssdmodel/ssd.h int     ssd_free_bits(int plane_num, int elem_num, ssd_element_metadata *metadata, ssd_t *s);</span>
+<span class='curline'><a href='../S/156.html#L450'>ssd_element_metadata</a>  450 ssdmodel/include/ssdmodel/ssd.h void    ssd_assert_plane_freebits(int plane_num, int elem_num, ssd_element_metadata *metadata, ssd_t *s);</span>
+<span class='curline'><a href='../S/187.html#L1179'>ssd_element_metadata</a> 1179 ssdmodel/ssd.c     ssd_element_metadata *metadata = &amp;(s-&gt;elements[elem_num].metadata);</span>
+<span class='curline'><a href='../S/147.html#L188'>ssd_element_metadata</a>  188 ssdmodel/ssd.h    ssd_element_metadata metadata;               // contains the mapping info b/w lba and flash pages</span>
+<span class='curline'><a href='../S/147.html#L440'>ssd_element_metadata</a>  440 ssdmodel/ssd.h void    ssd_assert_free_blocks(ssd_t *s, ssd_element_metadata *metadata);</span>
+<span class='curline'><a href='../S/147.html#L441'>ssd_element_metadata</a>  441 ssdmodel/ssd.h void    ssd_assert_valid_pages(int plane_num, ssd_element_metadata *metadata, ssd_t *s);</span>
+<span class='curline'><a href='../S/147.html#L444'>ssd_element_metadata</a>  444 ssdmodel/ssd.h double  _ssd_write_page_osr(ssd_t *s, ssd_element_metadata *metadata, int lpn);</span>
+<span class='curline'><a href='../S/147.html#L449'>ssd_element_metadata</a>  449 ssdmodel/ssd.h int     ssd_free_bits(int plane_num, int elem_num, ssd_element_metadata *metadata, ssd_t *s);</span>
+<span class='curline'><a href='../S/147.html#L450'>ssd_element_metadata</a>  450 ssdmodel/ssd.h void    ssd_assert_plane_freebits(int plane_num, int elem_num, ssd_element_metadata *metadata, ssd_t *s);</span>
+<span class='curline'><a href='../S/151.html#L12'>ssd_element_metadata</a>   12 ssdmodel/ssd_clean.c (ssd_t *s, ssd_element_metadata *metadata, int from_blk, int to_blk)</span>
+<span class='curline'><a href='../S/151.html#L20'>ssd_element_metadata</a>   20 ssdmodel/ssd_clean.c int ssd_can_clean_block(ssd_t *s, ssd_element_metadata *metadata, int blk)</span>
+<span class='curline'><a href='../S/151.html#L30'>ssd_element_metadata</a>   30 ssdmodel/ssd_clean.c (ssd_t *s, ssd_element_metadata *metadata, int from_blk, int to_blk)</span>
+<span class='curline'><a href='../S/151.html#L50'>ssd_element_metadata</a>   50 ssdmodel/ssd_clean.c     ssd_element_metadata *metadata = &amp;s-&gt;elements[elem_num].metadata;</span>
+<span class='curline'><a href='../S/151.html#L81'>ssd_element_metadata</a>   81 ssdmodel/ssd_clean.c (int lp_num, int pp_index, int blk, int plane_num, int elem_num, ssd_element_metadata *metadata, ssd_t *s)</span>
+<span class='curline'><a href='../S/151.html#L114'>ssd_element_metadata</a>  114 ssdmodel/ssd_clean.c void ssd_update_block_lifetime(double time, int blk, ssd_element_metadata *metadata)</span>
+<span class='curline'><a href='../S/151.html#L130'>ssd_element_metadata</a>  130 ssdmodel/ssd_clean.c void ssd_update_free_block_status(int blk, int plane_num, ssd_element_metadata *metadata, ssd_t *s)</span>
+<span class='curline'><a href='../S/151.html#L200'>ssd_element_metadata</a>  200 ssdmodel/ssd_clean.c     ssd_element_metadata *metadata = &amp;(s-&gt;elements[elem_num].metadata);</span>
+<span class='curline'><a href='../S/151.html#L220'>ssd_element_metadata</a>  220 ssdmodel/ssd_clean.c     ssd_element_metadata *metadata = &amp;(s-&gt;elements[elem_num].metadata);</span>
+<span class='curline'><a href='../S/151.html#L305'>ssd_element_metadata</a>  305 ssdmodel/ssd_clean.c (int blk, int plane_num, int elem_num, ssd_element_metadata *metadata, ssd_t *s)</span>
+<span class='curline'><a href='../S/151.html#L346'>ssd_element_metadata</a>  346 ssdmodel/ssd_clean.c     ssd_element_metadata *metadata = &amp;(s-&gt;elements[elem_num].metadata);</span>
+<span class='curline'><a href='../S/151.html#L485'>ssd_element_metadata</a>  485 ssdmodel/ssd_clean.c static int ssd_pick_block_to_clean2(int plane_num, int elem_num, double *mcost, ssd_element_metadata *metadata, ssd_t *s)</span>
+<span class='curline'><a href='../S/151.html#L571'>ssd_element_metadata</a>  571 ssdmodel/ssd_clean.c static int ssd_pick_block_to_clean1(int plane_num, int elem_num, ssd_element_metadata *metadata, ssd_t *s)</span>
+<span class='curline'><a href='../S/151.html#L595'>ssd_element_metadata</a>  595 ssdmodel/ssd_clean.c static int ssd_pick_block_to_clean(int plane_num, int elem_num, double *mcost, ssd_element_metadata *metadata, ssd_t *s)</span>
+<span class='curline'><a href='../S/151.html#L606'>ssd_element_metadata</a>  606 ssdmodel/ssd_clean.c     ssd_element_metadata *metadata = &amp;(s-&gt;elements[elem_num].metadata);</span>
+<span class='curline'><a href='../S/151.html#L645'>ssd_element_metadata</a>  645 ssdmodel/ssd_clean.c     ssd_element_metadata *metadata = &amp;(s-&gt;elements[elem_num].metadata);</span>
+<span class='curline'><a href='../S/151.html#L670'>ssd_element_metadata</a>  670 ssdmodel/ssd_clean.c double _ssd_clean_block_fully(int blk, int plane_num, int elem_num, ssd_element_metadata *metadata, ssd_t *s)</span>
+<span class='curline'><a href='../S/151.html#L695'>ssd_element_metadata</a>  695 ssdmodel/ssd_clean.c     ssd_element_metadata *metadata = &amp;s-&gt;elements[elem_num].metadata;</span>
+<span class='curline'><a href='../S/151.html#L712'>ssd_element_metadata</a>  712 ssdmodel/ssd_clean.c     ssd_element_metadata *metadata = &amp;(s-&gt;elements[elem_num].metadata);</span>
+<span class='curline'><a href='../S/151.html#L767'>ssd_element_metadata</a>  767 ssdmodel/ssd_clean.c     ssd_element_metadata *metadata = &amp;(s-&gt;elements[elem_num].metadata);</span>
+<span class='curline'><a href='../S/151.html#L819'>ssd_element_metadata</a>  819 ssdmodel/ssd_clean.c     ssd_element_metadata *metadata = &amp;(s-&gt;elements[elem_num].metadata);</span>
+<span class='curline'><a href='../S/151.html#L967'>ssd_element_metadata</a>  967 ssdmodel/ssd_clean.c     ssd_element_metadata *metadata = &amp;s-&gt;elements[elem_num].metadata;</span>
+<span class='curline'><a href='../S/144.html#L55'>ssd_element_metadata</a>   55 ssdmodel/ssd_clean.h int ssd_free_bits(int plane_num, int elem_num, ssd_element_metadata *metadata, ssd_t *s);</span>
+<span class='curline'><a href='../S/144.html#L56'>ssd_element_metadata</a>   56 ssdmodel/ssd_clean.h void ssd_assert_plane_freebits(int plane_num, int elem_num, ssd_element_metadata *metadata, ssd_t *s);</span>
+<span class='curline'><a href='../S/144.html#L58'>ssd_element_metadata</a>   58 ssdmodel/ssd_clean.h double _ssd_clean_block_fully(int blk, int plane_num, int elem_num, ssd_element_metadata *metadata, ssd_t *s);</span>
+<span class='curline'><a href='../S/185.html#L66'>ssd_element_metadata</a>   66 ssdmodel/ssd_init.c void ssd_element_metadata_init(int elem_number, ssd_element_metadata *metadata, ssd_t *currdisk)</span>
+<span class='curline'><a href='../S/160.html#L11'>ssd_element_metadata</a>   11 ssdmodel/ssd_init.h void ssd_element_metadata_init(int elem_number, ssd_element_metadata *metadata, ssd_t *currdisk);</span>
+<span class='curline'><a href='../S/159.html#L124'>ssd_element_metadata</a>  124 ssdmodel/ssd_timing.c int ssd_free_bits(int plane_num, int elem_num, ssd_element_metadata *metadata, ssd_t *s)</span>
+<span class='curline'><a href='../S/159.html#L142'>ssd_element_metadata</a>  142 ssdmodel/ssd_timing.c void ssd_assert_plane_freebits(int plane_num, int elem_num, ssd_element_metadata *metadata, ssd_t *s)</span>
+<span class='curline'><a href='../S/159.html#L154'>ssd_element_metadata</a>  154 ssdmodel/ssd_timing.c void ssd_assert_free_blocks(ssd_t *s, ssd_element_metadata *metadata)</span>
+<span class='curline'><a href='../S/159.html#L169'>ssd_element_metadata</a>  169 ssdmodel/ssd_timing.c void ssd_assert_page_version(int prev_page, int active_page, ssd_element_metadata *metadata, ssd_t *s)</span>
+<span class='curline'><a href='../S/159.html#L181'>ssd_element_metadata</a>  181 ssdmodel/ssd_timing.c void ssd_assert_valid_pages(int plane_num, ssd_element_metadata *metadata, ssd_t *s)</span>
+<span class='curline'><a href='../S/159.html#L300'>ssd_element_metadata</a>  300 ssdmodel/ssd_timing.c double _ssd_write_page_osr(ssd_t *s, ssd_element_metadata *metadata, int lpn)</span>
+<span class='curline'><a href='../S/159.html#L390'>ssd_element_metadata</a>  390 ssdmodel/ssd_timing.c     ssd_element_metadata *metadata = &amp;(s-&gt;elements[elem_num].metadata);</span>
+<span class='curline'><a href='../S/159.html#L476'>ssd_element_metadata</a>  476 ssdmodel/ssd_timing.c listnode **ssd_pick_parunits(ssd_req **reqs, int total, int elem_num, ssd_element_metadata *metadata, ssd_t *s)</span>
+<span class='curline'><a href='../S/159.html#L618'>ssd_element_metadata</a>  618 ssdmodel/ssd_timing.c     ssd_element_metadata *metadata;</span>
+<span class='curline'><a href='../S/159.html#L751'>ssd_element_metadata</a>  751 ssdmodel/ssd_timing.c     ssd_element_metadata *metadata;</span>
+</pre>
+</body>
+</html>

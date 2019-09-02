@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>read</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.5.6' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/272.html#L312'>read</a>              312 src/disksim.c         ddbg_assert(read(disksim-&gt;tracepipes[0], (char *)&amp;tmpevt, sizeof(event)) &gt; 0);</span>
+<span class='curline'><a href='../S/272.html#L1028'>read</a>             1028 src/disksim.c     ret = read (fd, &amp;startaddr, sizeof (void *));</span>
+<span class='curline'><a href='../S/272.html#L1030'>read</a>             1030 src/disksim.c     ret = read (fd, &amp;totallength, sizeof (int));</span>
+<span class='curline'><a href='../S/200.html#L250'>read</a>              250 src/disksim_bus.c double bus_get_transfer_time(int busno, int bcount, int read)</span>
+<span class='curline'><a href='../S/200.html#L255'>read</a>              255 src/disksim_bus.c    blktranstime = (read) ? currbus-&gt;readblktranstime : currbus-&gt;writeblktranstime;</span>
+<span class='curline'><a href='../S/262.html#L175'>read</a>              175 src/disksim_bus.h double  bus_get_transfer_time (int busno, int bcount, int read);</span>
+<span class='curline'><a href='../S/220.html#L141'>read</a>              141 src/disksim_ctlrdumb.c    int read = curr-&gt;flags &amp; READ;</span>
+<span class='curline'><a href='../S/220.html#L147'>read</a>              147 src/disksim_ctlrdumb.c    currctlr-&gt;state = (read) ? READ_DATA_TRANSFER : WRITE_DATA_TRANSFER;</span>
+<span class='curline'><a href='../S/205.html#L657'>read</a>              657 src/disksim_iodriver.c static double iodriver_get_time_to_handle_interrupt (iodriver *curriodriver, int cause, int read)</span>
+<span class='curline'><a href='../S/205.html#L661'>read</a>              661 src/disksim_iodriver.c       retval = (read) ? IODRIVER_READ_DISCONNECT_TIME : IODRIVER_WRITE_DISCONNECT_TIME;</span>
+<span class='curline'><a href='../S/254.html#L1398'>read</a>             1398 src/disksim_ioqueue.c 	     int read,</span>
+<span class='curline'><a href='../S/254.html#L1425'>read</a>             1425 src/disksim_ioqueue.c 					       read);</span>
+<span class='curline'><a href='../S/254.html#L3507'>read</a>             3507 src/disksim_ioqueue.c    int read = ret-&gt;flags &amp; READ;</span>
+<span class='curline'><a href='../S/254.html#L3509'>read</a>             3509 src/disksim_ioqueue.c       if ((tmp-&gt;state != WAITING) || (tmp-&gt;blkno != ret-&gt;blkno) || (tmp-&gt;totalsize != ret-&gt;bcount) || ((read) &amp;&amp; !(tmp-&gt;flags &amp; READ)) || (tmp-&gt;iolist-&gt;time &gt; arrtimemax)) {</span>
+<span class='curline'><a href='../S/254.html#L3511'>read</a>             3511 src/disksim_ioqueue.c          while ((tmp != queue-&gt;list) &amp;&amp; ((tmp-&gt;state != WAITING) || (tmp-&gt;blkno != ret-&gt;blkno) || (tmp-&gt;totalsize != ret-&gt;bcount) || ((read) &amp;&amp; !(tmp-&gt;flags &amp; READ)) || (tmp-&gt;iolist-&gt;time &gt; arrtimemax))) {</span>
+</pre>
+</body>
+</html>
