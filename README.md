@@ -18,7 +18,7 @@ A Host-hinted Write Buffer Management and Striping Scheme for SSDs
 ## 如何執行
 
 **Make**  
-```php
+```php=
     # The first example has two steps
     # 只要有修改裡面的檔案都要make,make的順序是1.ssdmodel 2.src
     # 例如修改了/ssdmodel/ssd.c 就要在ssdmodel make, 接著修改src中任一檔案再make src
@@ -27,7 +27,7 @@ A Host-hinted Write Buffer Management and Striping Scheme for SSDs
 ```
   
 **執行程式**
-```php
+```php=
     # 在根目錄執行
     # 參數設定 ./src/syssim <param file> <output file> <#sectors> <input trace file> <max_req> <memory_size(#pages)>
     # <max_req> : 如果要計算後1/3的平均req responsetime,設定這個trace送下去ssd的max request個數,若計算全部的response time則設成1即可
@@ -35,7 +35,7 @@ A Host-hinted Write Buffer Management and Striping Scheme for SSDs
     /: ./src/syssim ./ssdmodel/valid/ssd-iozone.parv ./outpup.txt 2676846 /home/osnet/SNIA_trace/FIU/User2/run1_asim_usr20.txt 1 6488
 ```
 **define參數調整**
-```cmd
+```php=
     /ssdmodel/ssd.c :
     "RWRATIO"     : write buffer eviction window 當中每個'block'的read count/read count+write count > 這個值,就page striping
                     <例> 論文中的write ratio=0.6就是"RWRATIO"設成0.4
