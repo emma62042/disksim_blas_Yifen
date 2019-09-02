@@ -3,10 +3,9 @@ disksim_blas_Yifen
 
 ## Table of Contents
 - [disksim_blas_Yifen](#disksim-blas-yifen)
-  * [Table of Contents](#table-of-contents)
   * [Beginners Guide](#beginners-guide)
-  * [如何執行](#----)
-  * [執行結果](#----)
+  * [如何執行](#如何執行)
+  * [執行結果](#執行結果)
 
 ## Beginners Guide
 
@@ -16,8 +15,7 @@ A Host-hinted Write Buffer Management and Striping Scheme for SSDs
 利用主機端資訊管理固態硬碟寫入緩衝區與資料擺放的方法
 
 
-如何執行
----
+## 如何執行
 
 **Make**  
 ```cmd
@@ -52,8 +50,7 @@ A Host-hinted Write Buffer Management and Striping Scheme for SSDs
 ```
 >I choose a lazy person to do a hard job. Because a lazy person will find an easy way to do it. [name=Bill Gates]
 
-執行結果
----
+## 執行結果
 
 
 **參數顯示**
