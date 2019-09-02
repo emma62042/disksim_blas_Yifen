@@ -49,7 +49,7 @@ int kick_block_striping_page_count=0;
 int kick_page_striping_page_count=0;
 int kick_Lg_count=0;
 int kick_Pg_count=0;
-int State0=0, State1=0, State2=0;
+int State0=0, State1=0, State2=0;//ch
 struct timeval start,start1;
 struct timeval end,end1;
 int have_hinted_node=0;
