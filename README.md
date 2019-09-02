@@ -35,7 +35,7 @@ A Host-hinted Write Buffer Management and Striping Scheme for SSDs
     /: ./src/syssim ./ssdmodel/valid/ssd-iozone.parv ./outpup.txt 2676846 /home/osnet/SNIA_trace/FIU/User2/run1_asim_usr20.txt 1 6488
 ```
 **define參數調整**
-```cmd
+```php
     /ssdmodel/ssd.c :
     "RWRATIO"     : write buffer eviction window 當中每個'block'的read count/read count+write count > 這個值,就page striping
                     <例> 論文中的write ratio=0.6就是"RWRATIO"設成0.4
@@ -71,7 +71,7 @@ A Host-hinted Write Buffer Management and Striping Scheme for SSDs
 ```cmd
     [YIFEN] kick_page_striping_page_count=9662, kick_block_striping_page_count=42995, kick_all_page_count = 52657
 ```
-** GC **
+**GC**
 ```cmd
     ytc94u total_live_page_cp_count2 = 0,total_gc_count = 0
     ytc94u average block associate logical block = 9.529412
